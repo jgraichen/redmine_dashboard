@@ -1,0 +1,22 @@
+<div class="dashboard-filter">
+<%= select_tag :view, 
+      options_for_select(
+        [['Card View', 'card'], ['List View', 'list']],
+        @view.to_s
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'view=' + value",
+    :url => { :action => :update })
+%>
+<%= select_tag :owner, 
+      options_for_select(
+        [['My Issues', 'me'], ['All Issues', 'all']],
+        @owner.to_s
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'owner=' + value",
+    :url => { :action => :update })
+%>
+</div>

@@ -1,0 +1,17 @@
+<!-- ISSUE ITEM -->
+<div class="dashboard-issue-item">
+  <div class="dashboard-issue-priority status-<%= issue.status.position %> priority-<%= issue.priority.position %>">
+    <div class="dashboard-issue-item-progress">
+      <div class="dashboard-issue-item-progress-bar" style="width: <%= issue.done_ratio %>%;">
+      </div>
+    </div>
+    <div class="dashboard-issue-item-header">
+      <span class="dashboard-issue-item-title">
+        <%= link_to "##{issue.id}", issue_path(issue) %>
+      </span>
+    </div>
+    <div class="dashboard-issue-item-content">
+      <span class="dashboard-issue-item-property dashboard-issue-item-subject"><%= issue.subject %></span>
+    </div>
+  </div>
+</div>

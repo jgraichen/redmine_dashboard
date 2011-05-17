@@ -11,18 +11,23 @@
   </div>
   <div id="dashboard-body">
 <% @statuses.each do |status| %>
-<%= render :partial => 'dashboard_column', :locals => {:status => status} %>
+<%= render :partial => 'dashboard_column', 
+           :locals => {
+             :status => status,
+             :width => (100.0 / @statuses.length),
+             :issues => @issues.select { |i| i.status == status }
+           } %>
 <% end %>
 <!-- STATUS COLUMN SCRIPTS -->
 <% @statuses.each do |status| %>
 <%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
   :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-  :url    => {:action => :update_issue},                        # The action to call
+  :url    => {:action => :update},                        # The action to call
   :hoverclass => 'dashboard-column-hovered',
   :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
     :update => "dashboard",
     :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
-    :url => { :action => :update_issue }) + ' }'
+    :url => { :action => :update }) + ' }'
 )%>
 <% end %>
   </div>

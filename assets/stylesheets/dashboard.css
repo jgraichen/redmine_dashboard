@@ -1,87 +1,141 @@
 /* dashboard css */
 
 #dashboard {
-        width: 100%;
+	width: 100%;
 }
-
 #dashboard .dashboard-title-wrapper, #dashboard .dashboard-column-wrapper {
-        float: left;
+	float: left;
 }
 .dashboard-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        padding: 4px 4px 4px 6px;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 4px;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 4px 4px 4px 6px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 4px;
 }
 .dashboard-column {
-        min-height: 500px;
-        min-width: 162px;
+	min-height: 500px;
+	min-width: 162px;
+	padding: 3px;
 }
-/* ______ */
-.dashboard-issue-card {
-        float: left;
-        width: 160px;
-        height: 120px;
-        position: relative;
-        margin: 1px;
-        border: 1px solid #ccc;
-        background: #FFFFDD;
-        overflow: hidden;
-        cursor: move;
+.dashboard-column-title {
+	color: #777;
+	font-size: .9em;
+	padding: 0 2px 4px 6px;
 }
+.dashboard-column-hovered {
+	background-color: #eee;
+}
+.dashboard-filter {
+	text-align: right;
+}
+/* ISSUE */
 .dashboard-issue-priority {
-        border-left: 5px solid #ccc;
-        height: 100%;
+	border-left: 5px solid #ccc;
+	height: 100%;
 }
-.dashboard-issue-priority.priority-1 { border-color: #ccc; }
-.dashboard-issue-priority.priority-2 { border-color: blue; }
-.dashboard-issue-priority.priority-3 { border-color: green; }
-.dashboard-issue-priority.priority-4 { border-color: orange; }
-.dashboard-issue-priority.priority-5 { border-color: red; }
-
+.dashboard-issue-priority.priority-1 {
+	border-color: #ccc;
+}
+.dashboard-issue-priority.priority-2 {
+	border-color: blue;
+}
+.dashboard-issue-priority.priority-3 {
+	border-color: green;
+}
+.dashboard-issue-priority.priority-4 {
+	border-color: orange;
+}
+.dashboard-issue-priority.priority-5 {
+	border-color: red;
+}
+/* ISSUE CARD */
+.dashboard-issue-card {
+	float: left;
+	width: 160px;
+	height: 120px;
+	position: relative;
+	margin: 1px;
+	border: 1px solid #ccc;
+	background: #FFFFDD;
+	overflow: hidden;
+	cursor: move;
+}
 .dashboard-issue-card-header {
-        padding: 4px 2px 2px 6px;
-        font-size: 0.9em;
+	padding: 4px 2px 2px 6px;
+	font-size: 0.9em;
 }
 .dashboard-issue-card-header a {
-        display: block;
+	display: block;
 }
 .dashboard-issue-card-content {
-        padding: 2px 1px 1px 6px;
-        font-size: .9em;
+	padding: 2px 1px 1px 6px;
+	font-size: .9em;
 }
 .dashboard-issue-card-assignee, .dashboard-issue-card-category, .dashboard-issue-card-subject {
-        display: block;
+	display: block;
 }
 .dashboard-issue-card-subject {
-        margin-top: 3px;
+	margin-top: 3px;
 }
 .dashboard-issue-card-assignee {
-        margin-top: 3px;
+	margin-top: 3px;
 }
 .dashboard-issue-card-title {
-        display: block;
-        overflow: hidden;
-        height: 1.4em;
-        width: 1000px;
+	display: block;
+	overflow: hidden;
+	height: 1.4em;
+	width: 1000px;
 }
 .dashboard-issue-card-priority, .dashboard-issue-card-version {
-        font-size: .8em;
-        color: #888;
+	font-size: .8em;
+	color: #888;
 }
 .dashboard-issue-card-progress {
-        background-color: #ddd;
+	background-color: #ddd;
 }
 .dashboard-issue-card-progress-bar {
-        background-color: green;
-        height: 2px;
+	background-color: green;
+	height: 2px;
 }
 .dashboard-issue-card-progress-percent {
-        float: right;
-        display: block;
-        font-size: 0.7em;
-        text-align: right;
-        color: #999;
-        margin-top: -8px;
+	float: right;
+	display: block;
+	font-size: 0.7em;
+	text-align: right;
+	color: #999;
+	margin-top: -8px;
+}
+/* ISSUE ITEM */
+.dashboard-issue-item {
+	float: left;
+	width: 95%;
+	height: 35px;
+	position: relative;
+	margin: 1px;
+	border: 1px solid #ccc;
+	background: #FFFFDD;
+	overflow: hidden;
+	cursor: move;
+}
+.dashboard-issue-item-header {
+	float: left;
+	height: 35px;
+	width: 25px;
+	padding: 3px 2px 0px 4px;
+	font-size: 0.9em;
+}
+.dashboard-issue-item-title {
+	display: block;
+}
+.dashboard-issue-item-content {
+	padding: 3px 1px 1px 4px;
+	font-size: .9em;
+}
+.dashboard-issue-item-progress {
+	background-color: #eee;
+}
+.dashboard-issue-item-progress-bar {
+	background-color: green;
+	height: 2px;
 }
