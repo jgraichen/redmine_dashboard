@@ -1,4 +1,13 @@
 <div class="dashboard-filter">
+<%= select_tag :version, 
+      options_for_select([['All Versions', 'all'], ['Unassigned', 0]] + @filter_versions,
+        @version.to_s
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'version=' + value",
+    :url => { :action => :update })
+%>
 <%= select_tag :view, 
       options_for_select(
         [['Card View', 'card'], ['List View', 'list']],

@@ -52,10 +52,17 @@ private
     # issues ordered by priority desc
     @issues = @project.issues
     @issues = @issues.select { |i| i.assigned_to == User.current } if @owner == :me
+    if @version != :all
+      @issues = @issues.select { |i| i.fixed_version_id == @version or (!i.fixed_version_id? and @version == 0) }
+    end
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
     @statuses = IssueStatus.find(:all).select { |s| !s.is_closed? }
     @statuses << IssueStatus.new({:name => 'Done', :is_closed => true})
+    @filter_versions = []
+    @project.versions.each do |v|
+      @filter_versions << [v.name, v.id]
+    end
     @priorities = IssuePriority.find(:all)
   end
   
@@ -70,11 +77,14 @@ private
   end
   
   def setup
+    # TODO: Filter überarbeiten
     session[:view] = (params[:view].nil? or params[:view] == 'card') ? :card : :list unless params[:view].nil?
     session[:owner] = (params[:owner].nil? or params[:owner] == 'all') ? :all : :me unless params[:owner].nil?
+    session[:version] = (params[:version].nil? or params[:version] == 'all') ? :all : params[:version].to_i unless params[:version].nil?
     
     @view = (session[:view].nil? or session[:view] == :card) ? :card : :list
     @owner = (session[:owner].nil? or session[:owner] == :all) ? :all : :me
+    @version = (session[:version].nil? or session[:version] == :all) ? :all : session[:version]
     @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end
