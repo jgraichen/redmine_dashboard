@@ -101,6 +101,7 @@
 }
 .dashboard-issue-card-progress {
 	background-color: #ddd;
+	margin: 0 1px;
 }
 .dashboard-issue-card-progress-bar {
 	background-color: green;
@@ -142,8 +143,9 @@
 }
 .dashboard-issue-item-progress {
 	background-color: #eee;
+	margin: 0 1px;
 }
 .dashboard-issue-item-progress-bar {
 	background-color: green;
-	height: 2px;
+	height: 1px;
 }
