@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
   end
   
   def update
-    if !params[:issue].nil?
+    if !params[:issue].nil? and @edit_enabled
       @issue = Issue.find(params[:issue]);
       if params[:status] == 'done'
         @done_statuses = []
@@ -40,11 +40,11 @@ class DashboardController < ApplicationController
     
     load_issues
     render '_dashboard', :layout => false
-#  rescue
-    #@message = 'Error: ' + $!
-#    
-    #load_issues
-    #render '_dashboard', :layout => false
+  rescue
+    @message = 'Error: ' + $!
+    
+    load_issues
+    render '_dashboard', :layout => false
   end
   
 private
@@ -61,6 +61,7 @@ private
   
   def find_project
     @project = Project.find(params[:id])
+    @edit_enabled = User.current.allowed_to?(:edit_issues, @project)
   end
   
   def setup

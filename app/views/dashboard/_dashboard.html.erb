@@ -31,7 +31,7 @@
     :update => "dashboard",
     :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
     :url => { :action => :update}) + ' }'
-)%>
+) if @edit_enabled %>
 <% else %>
 <%= drop_receiving_element('status-done',                       # The id of the receiving element
   :accept => "dashboard-issue",                                 # The CSS class of the dropped element
@@ -40,7 +40,7 @@
     :update => "dashboard",
     :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
     :url => { :action => :update}) + ' }'
-)%>
+) if @edit_enabled %>
 <% end %>
 <% end %>
   </div>

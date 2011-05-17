@@ -12,10 +12,10 @@
            } %>
     </div>
 <%= draggable_element(
-  "issue-"+issue.id.to_s, 
-  :scroll => :window, 
-  :revert => :true
-)%>
+      "issue-"+issue.id.to_s, 
+      :scroll => :window, 
+      :revert => :true
+    ) if @edit_enabled %>
 <% end %>
     <br style="clear: left;" />
   </div>
