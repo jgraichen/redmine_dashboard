@@ -1,0 +1,15 @@
+<div class="dashboard-done-question">
+  <%= render :partial => 'issue_card', :locals => { :issue => @issue } %>
+  <div class="dashboard-done-question-content">
+    <h3>Select Status</h3>
+<%= select_tag :status, 
+      options_for_select([['Select...', '']] + @done_statuses, ''),
+      :onchange => 'if(value == null) retunr; ' + remote_function(
+        :update => "dashboard",
+        :with   => "'issue="+@issue.id.to_s+"&status=' + value",
+        :url => { :action => :update }
+      )
+%>
+  </div>
+  <br style="clear: left;" />
+</div>

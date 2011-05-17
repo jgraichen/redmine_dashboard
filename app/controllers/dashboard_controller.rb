@@ -9,17 +9,26 @@ class DashboardController < ApplicationController
   
   def update
     if !params[:issue].nil?
-      issue = Issue.find(params[:issue]);
+      @issue = Issue.find(params[:issue]);
+      if params[:status] == 'done'
+        @done_statuses = []
+        IssueStatus.find(:all).each do |s|
+          @done_statuses << [s.name, s.id.to_s] if s.is_closed?
+        end
+        render '_dashboard_done', :layout => false
+        return
+      end
+      
       status = IssueStatus.find_by_id(params[:status])
-      old_status = issue.status
-      allowed_statuses = issue.new_statuses_allowed_to(User.current)
+      old_status = @issue.status
+      allowed_statuses = @issue.new_statuses_allowed_to(User.current)
       
       # check if user is allowed to change ticket status und ticket status
       # is not the same as before
       if allowed_statuses.include?(status) and status != old_status
-        issue.update_attribute(:status_id, status.id)
+        @issue.update_attribute(:status_id, status.id)
         # Update the journal containing all the changes to the issue.
-        journal = issue.init_journal(User.current)
+        journal = @issue.init_journal(User.current)
         journal.details << JournalDetail.new(
                                 :property => 'attr',
                                 :prop_key => 'status_id',
@@ -31,6 +40,11 @@ class DashboardController < ApplicationController
     
     load_issues
     render '_dashboard', :layout => false
+#  rescue
+    #@message = 'Error: ' + $!
+#    
+    #load_issues
+    #render '_dashboard', :layout => false
   end
   
 private
@@ -40,7 +54,8 @@ private
     @issues = @issues.select { |i| i.assigned_to == User.current } if @owner == :me
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
-    @statuses = IssueStatus.find(:all)[0..2]
+    @statuses = IssueStatus.find(:all).select { |s| !s.is_closed? }
+    @statuses << IssueStatus.new({:name => 'Done', :is_closed => true})
     @priorities = IssuePriority.find(:all)
   end
   
@@ -54,5 +69,6 @@ private
     
     @view = (session[:view].nil? or session[:view] == :card) ? :card : :list
     @owner = (session[:owner].nil? or session[:owner] == :all) ? :all : :me
+    @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end

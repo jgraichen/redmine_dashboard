@@ -3,7 +3,7 @@
 	<%= @message %>
 </div>
 <% end %>
-<div style="min-width: <%=@statuses.length*165 %>px">
+<div style="min-width: <%= @statuses.length*165 %>px">
   <div id="dashboard-head">
 <% @statuses.each do |status| %>
     <div class="dashboard-title-wrapper" style="width: <%= 100.0/@statuses.length %>%">
@@ -16,21 +16,32 @@
 <%= render :partial => 'dashboard_column', 
            :locals => {
              :status => status,
-             :width => (100.0 / @statuses.length),
-             :issues => @issues.select { |i| i.status == status }
+             :width => (100.0/@statuses.length),
+              # TODO: Dirty is_closed? hack
+             :issues => @issues.select { |i| status == i.status or (i.status.is_closed? and status.is_closed?) }
            } %>
 <% end %>
 <!-- STATUS COLUMN SCRIPTS -->
 <% @statuses.each do |status| %>
+<% if !status.is_closed? %>
 <%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
   :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-  :url    => {:action => :update},                        # The action to call
   :hoverclass => 'dashboard-column-hovered',
   :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
     :update => "dashboard",
     :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
     :url => { :action => :update}) + ' }'
 )%>
+<% else %>
+<%= drop_receiving_element('status-done',                       # The id of the receiving element
+  :accept => "dashboard-issue",                                 # The CSS class of the dropped element
+  :hoverclass => 'dashboard-column-hovered',
+  :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
+    :update => "dashboard",
+    :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
+    :url => { :action => :update}) + ' }'
+)%>
+<% end %>
 <% end %>
   </div>
   <br style="clear: left" />

@@ -26,6 +26,9 @@
 .dashboard-column-hovered {
 	background-color: #eee;
 }
+.dashboard-done-question-content {
+	margin-left: 180px;
+}
 /* FILTER */
 .dashboard-filter {
 	text-align: right;

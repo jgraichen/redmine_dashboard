@@ -1,6 +1,6 @@
 
 <% content_tag :div, :class => 'dashboard-column-wrapper', :style => width.is_a?(String) ? width : ('width: '+width.to_i.to_s+'%') do %>
-  <div class="dashboard-column status-<%= status.id %>" id="status-<%= status.position %>">
+  <div class="dashboard-column status-<%= status.id.nil? ? 'done' : status.id  %>" id="status-<%= status.id.nil? ? 'done' : status.id %>">
     <div class="dashboard-column-title">
       <span><%= pluralize(issues.length, 'Issue') %></span>
     </div>
