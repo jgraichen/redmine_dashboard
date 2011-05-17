@@ -36,7 +36,9 @@
 /* LEGEND */
 .dashboard-priority-legend {
 	text-align: right;
-	padding: 10px 0 0 0;
+	padding: 15px 0 0 0;
+	margin: 15px 0 0 0;
+	border-top: 1px solid #eee;
 }
 .dashboard-priority-legend span {
 	padding: 0 10px 0 3px;
