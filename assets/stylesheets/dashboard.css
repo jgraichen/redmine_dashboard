@@ -1,0 +1,86 @@
+/* dashboard css */
+
+#dashboard {
+        width: 100%;
+}
+
+#dashboard .dashboard-title-wrapper, #dashboard .dashboard-column-wrapper {
+        float: left;
+}
+.dashboard-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 4px 4px 4px 6px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 4px;
+}
+
+.dashboard-issue-card {
+        float: left;
+        width: 180px;
+        height: 110px;
+        position: relative;
+        margin: 1px;
+        border: 1px solid #ccc;
+        background: #FFFFDD;
+        overflow: hidden;
+        cursor: move;
+}
+.dashboard-issue-priority {
+        border-left: 5px solid #ccc;
+        height: 100%;
+}
+.dashboard-issue-priority.priority-1 { border-color: #ccc; }
+.dashboard-issue-priority.priority-2 { border-color: blue; }
+.dashboard-issue-priority.priority-3 { border-color: green; }
+.dashboard-issue-priority.priority-4 { border-color: orange; }
+.dashboard-issue-priority.priority-5 { border-color: red; }
+
+.dashboard-issue-card-header {
+        padding: 4px 2px 2px 6px;
+        font-size: 0.9em;
+}
+.dashboard-issue-card-header a {
+        display: block;
+}
+.dashboard-issue-card-content {
+        padding: 2px 1px 1px 6px;
+        font-size: .9em;
+}
+.dashboard-column {
+        min-height: 500px;
+}
+.dashboard-issue-card-assignee, .dashboard-issue-card-category, .dashboard-issue-card-subject {
+        display: block;
+}
+.dashboard-issue-card-subject {
+        margin-top: 3px;
+}
+.dashboard-issue-card-assignee {
+        margin-top: 6px;
+}
+.dashboard-issue-card-title {
+        display: block;
+        overflow: hidden;
+        height: 1.4em;
+        width: 1000px;
+}
+.dashboard-issue-card-priority, .dashboard-issue-card-version {
+        font-size: .8em;
+        color: #888;
+}
+.dashboard-issue-card-progress {
+        background-color: #ddd;
+}
+.dashboard-issue-card-progress-bar {
+        background-color: green;
+        height: 2px;
+}
+.dashboard-issue-card-progress-percent {
+        float: right;
+        display: block;
+        font-size: 0.7em;
+        text-align: right;
+        color: #999;
+        margin-top: -8px;
+}

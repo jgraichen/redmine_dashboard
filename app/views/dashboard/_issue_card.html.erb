@@ -1,0 +1,32 @@
+<!-- ISSUE CARD -->
+<div class="dashboard-issue-card">
+  <div class="dashboard-issue-priority status-<%= issue.status.position %> priority-<%= issue.priority.position %>">
+    <div class="dashboard-issue-card-header">
+      <span class="dashboard-issue-card-title">
+<% if issue.project.name.strip.length > 16 %>
+        <%= link_to "#{issue.project.identifier[0,16]}: ##{issue.id}", issue_path(issue) %>
+<% else %>
+        <%= link_to "#{issue.project.name.strip}: ##{issue.id}", issue_path(issue) %>
+<% end %>
+      </span>
+<% if issue.done_ratio.between?(1,99)%>
+      <span class="dashboard-issue-card-progress-percent"><%= issue.done_ratio %>%</span>
+<% end %>
+    </div>
+    <div class="dashboard-issue-card-progress">
+      <div class="dashboard-issue-card-progress-bar" style="width: <%= issue.done_ratio %>%;">
+      </div>
+    </div>
+    <div class="dashboard-issue-card-content">
+      <span class="dashboard-issue-card-property dashboard-issue-card-priority"><%= issue.priority %></span>
+      <span class="dashboard-issue-card-property dashboard-issue-card-version">- <%= issue.tracker %></span>
+<% if !issue.fixed_version.nil? %>
+      <span class="dashboard-issue-card-property dashboard-issue-card-version">- <%= issue.fixed_version %></span>
+<% end %>
+      <span class="dashboard-issue-card-property dashboard-issue-card-subject"><%= issue.subject %></span>
+<% if !issue.assigned_to.nil? %>
+      <span class="dashboard-issue-card-property dashboard-issue-card-assignee"><%= link_to issue.assigned_to.name, user_path(issue.assigned_to) %></span>
+<% end %>
+    </div>
+  </div>
+</div>

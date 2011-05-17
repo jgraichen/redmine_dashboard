@@ -1,0 +1,8 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'dashboard', :plugin => 'redmine_dashboard' %>
+  <%= javascript_include_tag 'move', :plugin => 'redmine_dashboard' %>
+<% end %>
+
+<h2><%= @project %>: Dashboard</h2>
+
+<%= render :partial => 'dashboard' %>
