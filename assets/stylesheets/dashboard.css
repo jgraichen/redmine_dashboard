@@ -77,7 +77,7 @@
 }
 .dashboard-issue-card-header {
 	padding: 4px 2px 2px 4px;
-	font-size: 0.9em;
+	font-size: 0.95em;
 }
 .dashboard-issue-card-header a, .dashboard-issue-item-header a {
 	padding-left: 16px;
@@ -85,7 +85,7 @@
 }
 .dashboard-issue-card-content {
 	padding: 2px 1px 1px 6px;
-	font-size: .9em;
+	font-size: .95em;
 }
 .dashboard-issue-card-assignee, .dashboard-issue-card-category, .dashboard-issue-card-subject {
 	display: block;
@@ -103,24 +103,24 @@
 	width: 1000px;
 }
 .dashboard-issue-card-version, .dashboard-issue-card-tracker {
-	font-size: .8em;
+	font-size: .9em;
 	color: #888;
 }
-.dashboard-issue-card-progress {
+.dashboard-issue-card-progress, .dashboard-issue-item-progress {
 	background-color: #ddd;
 	margin: 0 1px;
 }
-.dashboard-issue-card-progress-bar {
+.dashboard-issue-card-progress-bar, .dashboard-issue-item-progress-bar {
 	background-color: green;
 	height: 2px;
 }
 .dashboard-issue-card-progress-percent {
 	float: right;
 	display: block;
-	font-size: 0.7em;
+	font-size: 0.75em;
 	text-align: right;
 	color: #999;
-	margin-top: -8px;
+	margin-top: -1em;
 }
 /* ISSUE ITEM */
 .dashboard-issue-item {
@@ -146,12 +146,4 @@
 .dashboard-issue-item-content {
 	padding: 3px 1px 1px 4px;
 	font-size: .9em;
-}
-.dashboard-issue-item-progress {
-	background-color: #eee;
-	margin: 0 1px;
-}
-.dashboard-issue-item-progress-bar {
-	background-color: green;
-	height: 2px;
 }
