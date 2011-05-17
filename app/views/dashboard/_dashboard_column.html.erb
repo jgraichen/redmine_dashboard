@@ -1,0 +1,19 @@
+<div class="dashboard-column-wrapper" style="width: <%= 100.0/@statuses.length %>%">
+  <div class="dashboard-column status-<%= status.position %>" id="status-<%= status.position %>">
+    <div class="dashboard-column-title">
+      <span>Issues</span>
+    </div>
+<% @issues.each do |issue| %>
+<% if issue.status == status %>
+    <div class="dashboard-issue" id="issue-<%= issue.id %>">
+<%= render :partial => 'issue_card', :locals => {:issue => issue}  %>
+    </div>
+<%= draggable_element(
+  "issue-"+issue.id.to_s, 
+  :scroll => :window, 
+  :revert => :true
+)%>
+<% end %>
+<% end %>
+  </div>
+</div>

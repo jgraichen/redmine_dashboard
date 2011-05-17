@@ -29,7 +29,7 @@ class DashboardController < ApplicationController
     # issues ordered by priority desc
     @issues = @project.issues.sort { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
-    @statuses = IssueStatus.find(:all)
+    @statuses = IssueStatus.find(:all)[0..2]
   end
   
   def find_project
