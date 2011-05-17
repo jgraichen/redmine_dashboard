@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   unloadable
 
-  before_filter :setup
+  before_filter :find_project, :authorize, :setup
   
   def index
     load_issues
@@ -33,12 +33,13 @@ class DashboardController < ApplicationController
     @statuses = IssueStatus.find(:all)[0..2]
   end
   
-  def setup
+  def find_project
     @project = Project.find(params[:id])
-    
+  end
+  
+  def setup
     session[:view] = (params[:view].nil? or params[:view] == 'card') ? :card : :list unless params[:view].nil?
     session[:owner] = (params[:owner].nil? or params[:owner] == 'all') ? :all : :mine unless params[:owner].nil?
-    
     @view = (session[:view].nil? or session[:view] == :card) ? :card : :list
     @owner = (session[:owner].nil? or session[:owner] == :all) ? :all : :mine
   end
