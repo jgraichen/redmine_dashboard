@@ -62,6 +62,11 @@ private
   def find_project
     @project = Project.find(params[:id])
     @edit_enabled = User.current.allowed_to?(:edit_issues, @project)
+    
+    @project_abbr = '#'
+    @project.custom_field_values.each do |f|
+      @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.name.downcase == 'abbreviation'
+    end
   end
   
   def setup

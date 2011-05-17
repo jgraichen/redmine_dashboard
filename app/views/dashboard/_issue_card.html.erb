@@ -3,13 +3,7 @@
   <div class="dashboard-issue-priority status-<%= issue.status.id %> priority-<%= issue.priority.position %>">
     <div class="dashboard-issue-card-header">
       <span class="dashboard-issue-card-title">
-<% if issue.project.name.strip.length < 16 %>
-        <%= link_to "#{issue.project.name.strip}: ##{issue.id}", issue_path(issue) %>
-<% elsif issue.project.identifier.length < 16 %>
-        <%= link_to "#{issue.project.identifier}: ##{issue.id}", issue_path(issue) %>
-<% else%>
-        <%= link_to "##{issue.id}", issue_path(issue) %>
-<% end %>
+        <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
       </span>
 <% if issue.done_ratio.between?(1,99)%>
       <span class="dashboard-issue-card-progress-percent"><%= issue.done_ratio %>%</span>
