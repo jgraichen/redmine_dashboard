@@ -65,7 +65,7 @@ private
     
     @project_abbr = '#'
     @project.custom_field_values.each do |f|
-      @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.name.downcase == 'abbreviation'
+      @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
     end
   end
   
