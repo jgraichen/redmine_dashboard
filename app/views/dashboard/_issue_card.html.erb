@@ -18,10 +18,9 @@
       </div>
     </div>
     <div class="dashboard-issue-card-content">
-      <span class="dashboard-issue-card-property dashboard-issue-card-priority"><%= issue.priority %></span>
-      <span class="dashboard-issue-card-property dashboard-issue-card-version">- <%= issue.tracker %></span>
+      <span class="dashboard-issue-card-property dashboard-issue-card-tracker"><%= issue.tracker %></span>
 <% if !issue.fixed_version.nil? %>
-      <span class="dashboard-issue-card-property dashboard-issue-card-version">- <%= issue.fixed_version %></span>
+      <span class="dashboard-issue-card-property dashboard-issue-card-version"><%= issue.fixed_version %></span>
 <% end %>
       <span class="dashboard-issue-card-property dashboard-issue-card-subject"><%= issue.subject %></span>
 <% if !issue.assigned_to.nil? %>

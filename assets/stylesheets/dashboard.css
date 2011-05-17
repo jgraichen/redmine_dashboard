@@ -95,7 +95,7 @@
 	height: 1.4em;
 	width: 1000px;
 }
-.dashboard-issue-card-priority, .dashboard-issue-card-version {
+.dashboard-issue-card-version, .dashboard-issue-card-tracker {
 	font-size: .8em;
 	color: #888;
 }

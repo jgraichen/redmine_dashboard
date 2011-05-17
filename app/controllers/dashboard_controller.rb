@@ -50,8 +50,9 @@ private
   
   def setup
     session[:view] = (params[:view].nil? or params[:view] == 'card') ? :card : :list unless params[:view].nil?
-    session[:filter] = (params[:filter].nil?) ? :all : :mine unless params[:owner].nil?
+    session[:owner] = (params[:owner].nil? or params[:owner] == 'all') ? :all : :me unless params[:owner].nil?
+    
     @view = (session[:view].nil? or session[:view] == :card) ? :card : :list
-    @owner = (session[:filter].nil? or session[:owner] == :all) ? :all : :me
+    @owner = (session[:owner].nil? or session[:owner] == :all) ? :all : :me
   end
 end
