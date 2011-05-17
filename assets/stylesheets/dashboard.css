@@ -133,8 +133,7 @@
 .dashboard-issue-item-header {
 	float: left;
 	height: 35px;
-	width: 25px;
-	padding: 3px 2px 0px 4px;
+	padding: 3px 6px 0 4px;
 	font-size: 0.9em;
 }
 .dashboard-issue-item-title {

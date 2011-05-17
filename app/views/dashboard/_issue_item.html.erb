@@ -7,7 +7,7 @@
     </div>
     <div class="dashboard-issue-item-header">
       <span class="dashboard-issue-item-title">
-        <%= link_to "##{issue.id}", issue_path(issue) %>
+        <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
       </span>
     </div>
     <div class="dashboard-issue-item-content">
