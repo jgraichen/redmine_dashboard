@@ -1,6 +1,9 @@
 <div class="dashboard-filter">
+<% if !@message.nil? %>
+  <div class="dashboard-message"><%= @message %></div>
+<% end %>
 <%= select_tag :version, 
-      options_for_select([['All Versions', 'all'], ['Unassigned', 0]] + @filter_versions,
+      options_for_select([['All Versions', 'all'], ['Unassigned', '0']] + @filter_versions,
         @version.to_s
       ),
       :onchange => remote_function(

@@ -1,8 +1,5 @@
-<% if !@message.nil? %>
-<div class="dashboard-message">
-	<%= @message %>
-</div>
-<% end %>
+
+<%= render :partial => 'filter_view' %>
 <div style="min-width: <%= @statuses.length*165 %>px">
   <div id="dashboard-head">
 <% @statuses.each do |status| %>

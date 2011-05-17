@@ -67,7 +67,7 @@
 .dashboard-issue-card {
 	float: left;
 	width: 160px;
-	height: 120px;
+	height: 9.5em;
 	position: relative;
 	margin: 1px;
 	border: 1px solid #ccc;
@@ -78,9 +78,6 @@
 .dashboard-issue-card-header {
 	padding: 4px 2px 2px 6px;
 	font-size: 0.9em;
-}
-.dashboard-issue-card-header a {
-	display: block;
 }
 .dashboard-issue-card-content {
 	padding: 2px 1px 1px 6px;
