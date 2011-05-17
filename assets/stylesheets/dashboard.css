@@ -84,17 +84,16 @@
 	background: transparent url("../images/cog.png") no-repeat 2px 2px;
 }
 .dashboard-issue-card-content {
-	padding: 2px 1px 1px 6px;
+	padding: 2px 4px 2px 5px;
 	font-size: .95em;
 }
 .dashboard-issue-card-assignee, .dashboard-issue-card-category, .dashboard-issue-card-subject {
 	display: block;
 }
-.dashboard-issue-card-subject {
-	margin-top: 3px;
-}
 .dashboard-issue-card-assignee {
-	margin-top: 3px;
+	margin-top: 2px;
+	padding-left: 14px;
+	background: transparent url("../images/user.png") no-repeat 0 60%;
 }
 .dashboard-issue-card-title {
 	display: block;
