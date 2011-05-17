@@ -53,7 +53,7 @@ private
     @issues = @project.issues
     @issues = @issues.select { |i| i.assigned_to == User.current } if @owner == :me
     if @version != :all
-      @issues = @issues.select { |i| i.fixed_version_id == @version.to_i or (!i.fixed_version_id? and @version == 0) }
+      @issues = @issues.select { |i| i.fixed_version_id == @version.to_i or (i.fixed_version_id.to_s == '' and @version == '0') }
     end
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
