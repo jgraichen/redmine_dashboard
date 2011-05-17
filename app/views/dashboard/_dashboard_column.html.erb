@@ -6,7 +6,7 @@
     </div>
 <% issues.each do |issue| %>
     <div class="dashboard-issue" id="issue-<%= issue.id %>">
-<%= render :partial => (@view == :card) ? 'issue_card' : 'issue_item', 
+<%= render :partial => DashboardController::VIEW_MODES[@view], 
            :locals => {
              :issue => issue
            } %>

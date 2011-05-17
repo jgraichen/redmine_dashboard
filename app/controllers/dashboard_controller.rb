@@ -3,6 +3,11 @@ class DashboardController < ApplicationController
 
   before_filter :find_project, :authorize, :setup
   
+  VIEW_MODES = {
+    :card => 'issue_card', 
+    :list => 'issue_item'
+  }
+  
   def index
     load_issues
   end
@@ -52,7 +57,7 @@ private
     # issues ordered by priority desc
     @issues = @project.issues
     @issues = @issues.select { |i| i.assigned_to == User.current } if @owner == :me
-    if @version != :all
+    if @version != 'all'
       @issues = @issues.select { |i| i.fixed_version_id == @version.to_i or (i.fixed_version_id.to_s == '' and @version == '0') }
     end
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
@@ -78,13 +83,13 @@ private
   
   def setup
     # TODO: Filter überarbeiten
-    session[:view] = (params[:view].nil? or params[:view] == 'card') ? :card : :list unless params[:view].nil?
-    session[:owner] = (params[:owner].nil? or params[:owner] == 'all') ? :all : :me unless params[:owner].nil?
-    session[:version] = (params[:version].nil? or params[:version] == 'all') ? :all : params[:version] unless params[:version].nil?
+    session[:view] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+    session[:owner] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+    session[:version] = params[:version]     if !params[:version].nil?
     
-    @view = (session[:view].nil? or session[:view] == :card) ? :card : :list
-    @owner = (session[:owner].nil? or session[:owner] == :all) ? :all : :me
-    @version = (session[:version].nil? or session[:version] == :all) ? :all : session[:version]
+    @view = session[:view] || :card;
+    @owner = session[:owner] || :all;
+    @version = session[:version] || :all;
     @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end
