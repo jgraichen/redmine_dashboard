@@ -36,6 +36,7 @@
 /* LEGEND */
 .dashboard-priority-legend {
 	text-align: right;
+	padding: 10px 0 0 0;
 }
 .dashboard-priority-legend span {
 	padding: 0 10px 0 3px;
@@ -149,5 +150,5 @@
 }
 .dashboard-issue-item-progress-bar {
 	background-color: green;
-	height: 1px;
+	height: 2px;
 }
