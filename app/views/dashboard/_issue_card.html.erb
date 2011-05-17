@@ -20,7 +20,7 @@
 <% end %>
       <span class="dashboard-issue-card-property dashboard-issue-card-subject"><%= issue.subject %></span>
 <% if !issue.assigned_to.nil? %>
-      <span class="dashboard-issue-card-property dashboard-issue-card-assignee"><%= link_to issue.assigned_to.name, user_path(issue.assigned_to) %></span>
+      <span class="dashboard-issue-card-property dashboard-issue-card-assignee"><%= issue.assigned_to.name %></span>
 <% end %>
     </div>
   </div>

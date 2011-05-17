@@ -2,9 +2,10 @@
 
 #dashboard {
 	width: 100%;
+	position: relative;
 }
-#dashboard .dashboard-title-wrapper, #dashboard .dashboard-column-wrapper {
-	float: left;
+#dashboard td { 
+	vertical-align: top; 
 }
 .dashboard-title {
 	font-size: 1.2em;
@@ -14,7 +15,6 @@
 	margin-bottom: 4px;
 }
 .dashboard-column {
-	min-height: 500px;
 	min-width: 162px;
 	padding: 3px;
 }
@@ -76,8 +76,12 @@
 	cursor: move;
 }
 .dashboard-issue-card-header {
-	padding: 4px 2px 2px 6px;
+	padding: 4px 2px 2px 4px;
 	font-size: 0.9em;
+}
+.dashboard-issue-card-header a, .dashboard-issue-item-header a {
+	padding-left: 16px;
+	background: transparent url("../images/cog.png") no-repeat 2px 2px;
 }
 .dashboard-issue-card-content {
 	padding: 2px 1px 1px 6px;

@@ -1,14 +1,15 @@
 
 <%= render :partial => 'filter_view' %>
-<div style="min-width: <%= @statuses.length*165 %>px">
-  <div id="dashboard-head">
+<table id="dashboard" style="min-width: <%= @statuses.length*165 %>px">
+  <thead id="dashboard-head">
+    <tr>
 <% @statuses.each do |status| %>
-    <div class="dashboard-title-wrapper" style="width: <%= 100.0/@statuses.length %>%">
-      <div class="dashboard-title"><%= status.name %></div>
-    </div>
+      <th class="dashboard-title" style="width: <%= 100.0/@statuses.length %>%"><%= status.name %></th>
 <% end %>
-  </div>
-  <div id="dashboard-body">
+    </tr>
+  </thead>
+  <tbody id="dashboard-body">
+    <tr>
 <% @statuses.each do |status| %>
 <%= render :partial => 'dashboard_column', 
            :locals => {
@@ -18,28 +19,28 @@
              :issues => @issues.select { |i| status == i.status or (i.status.is_closed? and status.is_closed?) }
            } %>
 <% end %>
+    </tr>
+  </tbody>
+</table>
 <!-- STATUS COLUMN SCRIPTS -->
 <% @statuses.each do |status| %>
-<% if !status.is_closed? %>
-<%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
-  :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-  :hoverclass => 'dashboard-column-hovered',
-  :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
-    :update => "dashboard",
-    :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
-    :url => { :action => :update}) + ' }'
-) if @edit_enabled %>
-<% else %>
-<%= drop_receiving_element('status-done',                       # The id of the receiving element
-  :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-  :hoverclass => 'dashboard-column-hovered',
-  :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
-    :update => "dashboard",
-    :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
-    :url => { :action => :update}) + ' }'
-) if @edit_enabled %>
+  <% if !status.is_closed? %>
+    <%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
+      :accept => "dashboard-issue",                                 # The CSS class of the dropped element
+      :hoverclass => 'dashboard-column-hovered',
+      :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
+        :update => "dashboard",
+        :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
+        :url => { :action => :update}) + ' }'
+      ) if @edit_enabled %>
+  <% else %>
+    <%= drop_receiving_element('status-done',                       # The id of the receiving element
+      :accept => "dashboard-issue",                                 # The CSS class of the dropped element
+     :hoverclass => 'dashboard-column-hovered',
+     :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
+        :update => "dashboard",
+        :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
+        :url => { :action => :update}) + ' }'
+      ) if @edit_enabled %>
+  <% end %>
 <% end %>
-<% end %>
-  </div>
-  <br style="clear: left" />
-</div>
