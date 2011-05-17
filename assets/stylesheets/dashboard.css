@@ -81,7 +81,7 @@
 }
 .dashboard-issue-card-header a, .dashboard-issue-item-header a {
 	padding-left: 16px;
-	background: transparent url("../images/cog.png") no-repeat 2px 2px;
+	background: transparent url("../images/cog.png") no-repeat 2px 60%;
 }
 .dashboard-issue-card-content {
 	padding: 2px 4px 2px 5px;
@@ -145,4 +145,9 @@
 .dashboard-issue-item-content {
 	padding: 3px 1px 1px 4px;
 	font-size: .9em;
+}
+.dashboard-issue-item-assignee {
+	padding: 0 0 0 14px;
+	white-space: nowrap;
+	background: transparent url("../images/user.png") no-repeat 0 60%;
 }

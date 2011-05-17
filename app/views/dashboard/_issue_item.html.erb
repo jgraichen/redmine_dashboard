@@ -12,6 +12,9 @@
     </div>
     <div class="dashboard-issue-item-content">
       <span class="dashboard-issue-item-property dashboard-issue-item-subject"><%= issue.subject %></span>
+<% if !issue.assigned_to.nil? %>
+      <span class="dashboard-issue-item-property dashboard-issue-item-assignee"><%= issue.assigned_to.name %></span>
+<% end %>
     </div>
   </div>
 </div>
