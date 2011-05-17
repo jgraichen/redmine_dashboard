@@ -1,7 +1,7 @@
-<!--<div style="padding: 10px;">
+<div style="padding: 10px;">
 	<%=@message unless @message.nil? %>
-</div>-->
-<div id="dashboard" style="min-width: <%=@statuses.length*165 %>px">
+</div>
+<div style="min-width: <%=@statuses.length*165 %>px">
   <div id="dashboard-head">
 <% @statuses.each do |status| %>
     <div class="dashboard-title-wrapper" style="width: <%= 100.0/@statuses.length %>%">
@@ -27,8 +27,9 @@
   :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
     :update => "dashboard",
     :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
-    :url => { :action => :update }) + ' }'
+    :url => { :action => :update}) + ' }'
 )%>
 <% end %>
   </div>
+  <br style="clear: left" />
 </div>

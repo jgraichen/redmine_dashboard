@@ -6,4 +6,12 @@
 <h2><%= @project %>: Dashboard</h2>
 
 <%= render :partial => 'filter_view' %>
+<div id="dashboard">
 <%= render :partial => 'dashboard' %>
+</div>
+
+<div class="dashboard-priority-legend">
+<% @priorities.each do |priority| %>
+  <span class="dashboard-issue-priority priority-<%= priority.position %>"><%= priority %></span>
+<% end %>
+</div>

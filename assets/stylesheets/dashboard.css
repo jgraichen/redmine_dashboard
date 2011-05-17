@@ -26,8 +26,16 @@
 .dashboard-column-hovered {
 	background-color: #eee;
 }
+/* FILTER */
 .dashboard-filter {
 	text-align: right;
+}
+/* LEGEND */
+.dashboard-priority-legend {
+	text-align: right;
+}
+.dashboard-priority-legend span {
+	padding: 0 10px 0 3px;
 }
 /* ISSUE */
 .dashboard-issue-priority {

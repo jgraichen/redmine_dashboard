@@ -9,7 +9,8 @@ Redmine::Plugin.register :redmine_dashboard do
   author_url 'http://altimos.de/'
   
   project_module :dashboard do
-    permission :view_dashboard, {:dashboard => [:index, :update]}
+    permission :view_dashboard, { :dashboard => :index }
+    permission :edit_dashboard, { :dashboard => :update }
   end
   menu :project_menu, :dashboard, { :controller => 'dashboard', :action => 'index' }
   
