@@ -17,7 +17,7 @@
 
 .dashboard-issue-card {
         float: left;
-        width: 180px;
+        width: 160px;
         height: 110px;
         position: relative;
         margin: 1px;
@@ -57,7 +57,7 @@
         margin-top: 3px;
 }
 .dashboard-issue-card-assignee {
-        margin-top: 6px;
+        margin-top: 3px;
 }
 .dashboard-issue-card-title {
         display: block;
