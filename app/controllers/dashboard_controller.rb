@@ -89,7 +89,7 @@ private
     
     @view = session[:view] || :card;
     @owner = session[:owner] || :all;
-    @version = session[:version] || :all;
+    @version = session[:version] || 'all';
     @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end
