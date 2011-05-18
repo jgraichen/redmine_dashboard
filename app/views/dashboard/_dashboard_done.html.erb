@@ -2,20 +2,20 @@
   <%= render :partial => 'issue_card', :locals => { :issue => @issue } %>
   <div class="dashboard-done-question-content">
     <h3>Select Status</h3>
-<%= select_tag :status, 
-      options_for_select([['Select...', '']] + @done_statuses, ''),
-      :onchange => 'if(value == null) retunr; ' + remote_function(
-        :update => "dashboard",
-        :with   => "'issue="+@issue.id.to_s+"&status=' + value",
-        :url => { :action => :update }
-      )
-%>
+<% form_remote_tag(
+      :url => { :action => 'update' },
+      :update => "dashboard") do %>
+<%= hidden_field_tag :issue, @issue.id.to_s %>
+<%= select_tag :status, options_for_select(@done_statuses, '') %>
+<%= select_tag :resolution, options_for_select(@done_resolved, '') if @done_resolved.any? %>
     <br />
     <br />
+    <%= submit_tag 'Update issue' %> 
     <a href="#" onclick="<%= remote_function(
         :update => "dashboard",
         :url => { :action => :update }
       )%>">Cancel</a>
+<% end %>
   </div>
   <br style="clear: left;" />
 </div>

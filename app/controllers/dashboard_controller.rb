@@ -15,7 +15,9 @@ class DashboardController < ApplicationController
   def update
     if !params[:issue].nil? and @edit_enabled
       @issue = Issue.find(params[:issue]);
+      
       if params[:status] == 'done'
+        load_issue_resolutions(@issue)
         @done_statuses = []
         IssueStatus.find(:all).each do |s|
           @done_statuses << [s.name, s.id.to_s] if s.is_closed?
@@ -39,17 +41,28 @@ class DashboardController < ApplicationController
                                 :prop_key => 'status_id',
                                 :old_value => old_status.id,
                                 :value => status.id )
+
+        load_issue_resolutions(@issue)
+        resolution_field = issue_resolution_field(@issue)
+        old_resolution = resolution_field.value
+        resolution_field.value = params[:resolution].to_s
+        resolution_field.save
+        journal.details << JournalDetail.new(
+                                :property => 'cf',
+                                :prop_key => resolution_field.custom_field.id,
+                                :old_value => old_resolution,
+                                :value => resolution_field.value )
         journal.save
       end
     end
     
     load_issues
     render '_dashboard', :layout => false
-  rescue
-    @message = 'Error: ' + $!
-    
-    load_issues
-    render '_dashboard', :layout => false
+#  rescue
+#    @message = 'Error: ' + $!
+#    
+#    load_issues
+#    render '_dashboard', :layout => false
   end
   
 private
@@ -77,7 +90,24 @@ private
     @project.trackers.each do |t|
       @filter_trackers << [t.name, t.id.to_s]
     end
-    
+  end
+  
+  def load_issue_resolutions(issue)
+    @done_resolved = []
+    resolution_field = issue_resolution_field(issue)
+    resolution_field.custom_field.possible_values.each do |v|
+      @done_resolved << [v, v] 
+    end
+    return @done_resolved
+  end
+  
+  # TODO: Dirty method
+  def issue_resolution_field(issue)
+    issue.custom_field_values.each do |f|
+      if f.custom_field.read_attribute(:name).downcase == 'resolution' and f.custom_field.field_format == 'list'
+        return f
+      end
+    end
   end
   
   def find_project
