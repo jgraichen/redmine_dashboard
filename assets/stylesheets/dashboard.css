@@ -32,6 +32,9 @@
 .dashboard-filter {
 	text-align: right;
 }
+.dashboard-filter-view {
+	padding-left: 50px;
+}
 /* LEGEND */
 .dashboard-priority-legend {
 	text-align: right;

@@ -23,7 +23,7 @@ class DashboardController < ApplicationController
         render '_dashboard_done', :layout => false
         return
       end
-      
+      	
       status = IssueStatus.find_by_id(params[:status])
       old_status = @issue.status
       allowed_statuses = @issue.new_statuses_allowed_to(User.current)
@@ -60,15 +60,24 @@ private
     if @version != 'all'
       @issues = @issues.select { |i| i.fixed_version_id == @version.to_i or (i.fixed_version_id.to_s == '' and @version == '0') }
     end
+    if @tracker != 'all'
+      @issues = @issues.select { |i| i.tracker_id == @tracker.to_i }
+    end
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
     @statuses = IssueStatus.find(:all).select { |s| !s.is_closed? }
     @statuses << IssueStatus.new({:name => 'Done', :is_closed => true})
+    @priorities = IssuePriority.find(:all)
+    
     @filter_versions = []
     @project.versions.each do |v|
       @filter_versions << [v.name, v.id.to_s]
     end
-    @priorities = IssuePriority.find(:all)
+    @filter_trackers = []
+    @project.trackers.each do |t|
+      @filter_trackers << [t.name, t.id.to_s]
+    end
+    
   end
   
   def find_project
@@ -86,10 +95,12 @@ private
     session[:view] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
     session[:owner] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
     session[:version] = params[:version]     if !params[:version].nil?
+    session[:tracker] = params[:tracker]     if !params[:tracker].nil?
     
     @view = session[:view] || :card;
     @owner = session[:owner] || :all;
     @version = session[:version] || 'all';
+    @tracker = session[:tracker] || 'all';
     @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end

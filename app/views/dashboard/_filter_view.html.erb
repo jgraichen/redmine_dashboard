@@ -1,7 +1,17 @@
 <div class="dashboard-filter">
 <% if !@message.nil? %>
   <div class="dashboard-message"><%= @message %></div>
+  <span class="dashboard-filter-options">
 <% end %>
+<%= select_tag :tracker, 
+      options_for_select([['All Trackers', 'all']] + @filter_trackers,
+        @tracker.to_s
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'tracker=' + value",
+    :url => { :action => :update })
+%>
 <%= select_tag :version, 
       options_for_select([['All Versions', 'all'], ['Unassigned', '0']] + @filter_versions,
         @version.to_s
@@ -9,16 +19,6 @@
       :onchange => remote_function(
     :update => "dashboard",
     :with   => "'version=' + value",
-    :url => { :action => :update })
-%>
-<%= select_tag :view, 
-      options_for_select(
-        [['Card View', 'card'], ['List View', 'list']],
-        @view.to_s
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'view=' + value",
     :url => { :action => :update })
 %>
 <%= select_tag :owner, 
@@ -31,4 +31,17 @@
     :with   => "'owner=' + value",
     :url => { :action => :update })
 %>
+  </span>
+  <span class="dashboard-filter-view">
+<%= select_tag :view, 
+      options_for_select(
+        [['Card View', 'card'], ['List View', 'list']],
+        @view.to_s
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'view=' + value",
+    :url => { :action => :update })
+%>
+  </span>
 </div>
