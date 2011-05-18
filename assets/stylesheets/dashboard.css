@@ -44,24 +44,25 @@
 }
 /* ISSUE */
 .dashboard-issue-priority {
-	border-left: 5px solid #ccc;
-	height: 100%;
+        border-left: 5px solid #ccc;
+        height: 100%;
 }
 .dashboard-issue-priority.priority-1 {
-	border-color: #ccc;
+        border-color: #aaa;
 }
 .dashboard-issue-priority.priority-2 {
-	border-color: blue;
+        border-color: #6b6;
 }
 .dashboard-issue-priority.priority-3 {
-	border-color: green;
+        border-color: orange;
 }
 .dashboard-issue-priority.priority-4 {
-	border-color: orange;
+        border-color: red;
 }
 .dashboard-issue-priority.priority-5 {
-	border-color: red;
+        border-color: black;
 }
+
 /* ISSUE CARD */
 .dashboard-issue-card {
 	float: left;
@@ -146,6 +147,9 @@
 	font-size: .9em;
 	height: 2.6em;
 	overflow: hidden;
+}
+.dashboard-issue-item-subject {
+	display: block;
 }
 .dashboard-issue-item-assignee {
 	padding: 0 0 0 14px;
