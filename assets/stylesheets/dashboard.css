@@ -4,10 +4,8 @@
 	width: 100%;
 	position: relative;
 }
-#dashboard td { 
-	vertical-align: top; 
-}
 .dashboard-title {
+	text-align: left;
 	font-size: 1.2em;
 	font-weight: bold;
 	padding: 4px 4px 4px 6px;
@@ -15,6 +13,7 @@
 	margin-bottom: 4px;
 }
 .dashboard-column {
+	vertical-align: top;
 	min-width: 162px;
 	padding: 3px;
 }
@@ -145,6 +144,8 @@
 .dashboard-issue-item-content {
 	padding: 3px 1px 1px 4px;
 	font-size: .9em;
+	height: 2.6em;
+	overflow: hidden;
 }
 .dashboard-issue-item-assignee {
 	padding: 0 0 0 14px;
