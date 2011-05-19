@@ -23,24 +23,24 @@
   </tbody>
 </table>
 <!-- STATUS COLUMN SCRIPTS -->
-<% @statuses.each do |status| %>
-  <% if !status.is_closed? %>
-    <%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
+<% @statuses.each do |status|
+  if !status.is_closed? 
+	%><%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
       :accept => "dashboard-issue",                                 # The CSS class of the dropped element
       :hoverclass => 'dashboard-column-hovered',
       :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
         :update => "dashboard",
         :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
         :url => { :action => :update}) + ' }'
-      ) if @edit_enabled %>
-  <% else %>
-    <%= drop_receiving_element('status-done',                       # The id of the receiving element
+      ) %><%
+  else
+    %><%= drop_receiving_element('status-done',                       # The id of the receiving element
       :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-     :hoverclass => 'dashboard-column-hovered',
-     :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
+      :hoverclass => 'dashboard-column-hovered',
+      :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
         :update => "dashboard",
         :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
         :url => { :action => :update}) + ' }'
-      ) if @edit_enabled %>
-  <% end %>
-<% end %>
+      ) %><%
+  end
+end if @edit_enabled %>

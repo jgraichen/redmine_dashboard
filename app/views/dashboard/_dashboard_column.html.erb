@@ -6,7 +6,7 @@
     <span><%= pluralize(issues.length, 'Issue') %></span>
   </div>
 <% issues.each do |issue| %>
-  <div class="dashboard-issue" id="issue-<%= issue.id %>">
+  <div class="dashboard-issue hascontextmenu" id="issue-<%= issue.id %>">
 <%= render :partial => DashboardController::VIEW_MODES[@view], 
            :locals => {
              :issue => issue
