@@ -31,7 +31,7 @@
       :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
         :update => "dashboard",
         :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
-        :url => { :action => :update}) + ' }'
+        :url => { :action => :index }) + ' }'
       ) %><%
   else
     %><%= drop_receiving_element('status-done',                       # The id of the receiving element
@@ -40,7 +40,7 @@
       :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
         :update => "dashboard",
         :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
-        :url => { :action => :update}) + ' }'
+        :url => { :action => :index }) + ' }'
       ) %><%
   end
 end if @edit_enabled %>

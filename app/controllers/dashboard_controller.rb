@@ -9,10 +9,6 @@ class DashboardController < ApplicationController
   }
   
   def index
-    load_issues
-  end
-  
-  def update
     if !params[:issue].nil? and @edit_enabled
       @issue = Issue.find(params[:issue]);
       
@@ -22,10 +18,14 @@ class DashboardController < ApplicationController
         IssueStatus.find(:all).each do |s|
           @done_statuses << [s.name, s.id.to_s] if s.is_closed?
         end
-        render '_dashboard_done', :layout => false
+        if request.xhr?
+          render '_dashboard_done', :layout => false
+        else
+          render 'index_done'
+        end
         return
       end
-      	
+      
       status = IssueStatus.find_by_id(params[:status])
       old_status = @issue.status
       allowed_statuses = @issue.new_statuses_allowed_to(User.current)
@@ -57,12 +57,15 @@ class DashboardController < ApplicationController
     end
     
     load_issues
-    render '_dashboard', :layout => false
+    render '_dashboard', :layout => false if request.xhr?
 #  rescue
 #    @message = 'Error: ' + $!
 #    
 #    load_issues
 #    render '_dashboard', :layout => false
+  end
+  
+  def update_dashboard_xhr
   end
   
 private

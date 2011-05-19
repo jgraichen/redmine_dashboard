@@ -9,6 +9,7 @@
       <span class="dashboard-issue-item-title">
         <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
       </span>
+      <span class="dashboard-issue-item-property dashboard-issue-item-tracker"><%= issue.tracker %></span>
     </div>
     <div class="dashboard-issue-item-content">
       <span class="dashboard-issue-item-property dashboard-issue-item-subject"><%= issue.subject %></span>

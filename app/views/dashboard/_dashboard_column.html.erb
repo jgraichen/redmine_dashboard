@@ -3,7 +3,7 @@
         :class => 'dashboard-column status-'+(status.id.nil? ? 'done' : status.id.to_s), 
         :id => 'status-'+(status.id.nil? ? 'done' : status.id.to_s) do %>
   <div class="dashboard-column-title">
-    <span><%= pluralize(issues.length, 'Issue') %></span>
+    <span><%= l(:label_x_issues, :count => issues.length) %></span>
   </div>
 <% issues.each do |issue| %>
   <div class="dashboard-issue hascontextmenu" id="issue-<%= issue.id %>">

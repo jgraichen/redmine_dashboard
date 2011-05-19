@@ -1,51 +1,52 @@
 <div class="dashboard-filter">
+<% form_remote_tag :action => 'index' do %>
 <% if !@message.nil? %>
   <div class="dashboard-message"><%= @message %></div>
-<% end %>
+<%end%>
   <span class="dashboard-filter-options">
-  <a href="#" onclick="<%= remote_function(
-        :update => "dashboard",
-        :url => { :action => :update }
-  )%>">Update</a> | 
 <%= select_tag :tracker, 
-      options_for_select([['All Trackers', 'all']] + @filter_trackers,
+      options_for_select([[l(:all_trackers), 'all']] + @filter_trackers,
         @tracker.to_s
       ),
       :onchange => remote_function(
     :update => "dashboard",
     :with   => "'tracker=' + value",
-    :url => { :action => :update })
+    :url => { :action => :index })
 %>
 <%= select_tag :version, 
-      options_for_select([['All Versions', 'all'], ['Unassigned', '0']] + @filter_versions,
+      options_for_select([[l(:all_versions), 'all'], [l(:unassigned), '0']] + @filter_versions,
         @version.to_s
       ),
       :onchange => remote_function(
     :update => "dashboard",
     :with   => "'version=' + value",
-    :url => { :action => :update })
+    :url => { :action => :index })
 %>
 <%= select_tag :owner, 
       options_for_select(
-        [['My Issues', 'me'], ['All Issues', 'all']],
+        [[l(:my_issues), 'me'], [l(:all_issues), 'all']],
         @owner.to_s
       ),
       :onchange => remote_function(
     :update => "dashboard",
     :with   => "'owner=' + value",
-    :url => { :action => :update })
+    :url => { :action => :index })
 %>
   </span>
   <span class="dashboard-filter-view">
 <%= select_tag :view, 
       options_for_select(
-        [['Card View', 'card'], ['List View', 'list']],
+        [[l(:card_view), 'card'], [l(:list_view), 'list']],
         @view.to_s
       ),
       :onchange => remote_function(
     :update => "dashboard",
     :with   => "'view=' + value",
-    :url => { :action => :update })
+    :url => { :action => :index })
 %>
   </span>
+  <span class="dashboard-filter-submit">
+    <input type="submit" value="Update" />
+  </span>
+<%end%>
 </div>
