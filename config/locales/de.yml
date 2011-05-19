@@ -1,0 +1,12 @@
+# German strings go here for Rails i18n
+de:
+  label_x_issues:
+    one: 1 Ticket
+    other: %{count} Tickets
+  all_trackers: Alle Tracker
+  all_issues: Alle Tickets
+  my_issues: Meine Tickets
+  all_versions: Alle Versionen
+  unassigned: Nicht zugewiesen
+  card_view: Kartenansicht
+  list_view: Listenansicht

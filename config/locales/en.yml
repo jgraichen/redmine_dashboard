@@ -1,3 +1,13 @@
 # English strings go here for Rails i18n
 en:
-  my_label: "My label"
+  label_x_issues:
+    one: 1 Issue
+    other: %{count} Issues
+  all_trackers: All Trackers
+  all_issues: All Issues
+  my_issues: My Issues
+  all_versions: All Versions
+  unassigned: Unassigned
+  card_view: Card View
+  list_view: List View
+
