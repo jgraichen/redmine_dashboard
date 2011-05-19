@@ -3,7 +3,7 @@
   <div class="dashboard-done-question-content">
     <h3>Select Status</h3>
 <% form_remote_tag(
-      :url => { :action => 'update' },
+      :url => { :action => :index },
       :update => "dashboard") do %>
 <%= hidden_field_tag :issue, @issue.id.to_s %>
 <%= select_tag :status, options_for_select(@done_statuses, '') %>
@@ -13,7 +13,7 @@
     <%= submit_tag 'Update issue' %> 
     <a href="#" onclick="<%= remote_function(
         :update => "dashboard",
-        :url => { :action => :update }
+        :url => { :action => :index }
       )%>">Cancel</a>
 <% end %>
   </div>

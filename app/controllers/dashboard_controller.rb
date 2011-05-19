@@ -82,7 +82,7 @@ private
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @trackers = Tracker.find(:all)
     @statuses = IssueStatus.find(:all).select { |s| !s.is_closed? }
-    @statuses << IssueStatus.new({:name => 'Done', :is_closed => true})
+    @statuses << IssueStatus.new({:name => l(:label_column_done), :is_closed => true})
     @priorities = IssuePriority.find(:all)
     
     @filter_versions = []
@@ -138,6 +138,5 @@ private
     @owner = session[filter_name(:owner)] || :all;
     @version = session[filter_name(:version)] || 'all';
     @tracker = session[filter_name(:tracker)] || 'all';
-    @done_status = IssueStatus.new({:name => l(:label_column_done), :is_closed => true})
   end
 end
