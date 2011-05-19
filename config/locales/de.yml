@@ -1,5 +1,6 @@
 # German strings go here for Rails i18n
 de:
+  label_column_done: Fertig
   label_x_issues:
     one: 1 Ticket
     other: %{count} Tickets

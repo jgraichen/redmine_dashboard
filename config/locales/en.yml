@@ -1,5 +1,6 @@
 # English strings go here for Rails i18n
 en:
+  label_column_done: Done
   label_x_issues:
     one: 1 Issue
     other: %{count} Issues
