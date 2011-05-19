@@ -1,8 +1,12 @@
 <div class="dashboard-filter">
 <% if !@message.nil? %>
   <div class="dashboard-message"><%= @message %></div>
-  <span class="dashboard-filter-options">
 <% end %>
+  <span class="dashboard-filter-options">
+  <a href="#" onclick="<%= remote_function(
+        :update => "dashboard",
+        :url => { :action => :update }
+  )%>">Update</a> | 
 <%= select_tag :tracker, 
       options_for_select([['All Trackers', 'all']] + @filter_trackers,
         @tracker.to_s

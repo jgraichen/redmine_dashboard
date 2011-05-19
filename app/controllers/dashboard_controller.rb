@@ -32,7 +32,7 @@ class DashboardController < ApplicationController
       
       # check if user is allowed to change ticket status und ticket status
       # is not the same as before
-      if User.current.admin? or (allowed_statuses.include?(status) and status != old_status)
+      if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
         @issue.update_attribute(:status_id, status.id)
         # Update the journal containing all the changes to the issue.
         journal = @issue.init_journal(User.current)
