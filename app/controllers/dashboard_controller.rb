@@ -110,7 +110,12 @@ private
       @project.issue_categories.each do |category|
         @dashboard << DashboardGroup.new(category.name, 'category-'+category.id.to_s) { |issue| issue.category_id == category.id }
       end
-      @dashboard << DashboardGroup.new(l(:no_category), 'category-none') { |issue| issue.category.nil? }
+      @dashboard << DashboardGroup.new(l(:unassigned), 'category-none') { |issue| issue.category.nil? }
+    elsif @group == 'versions'
+      @project.versions.each do |version|
+        @dashboard << DashboardGroup.new(version.name, 'version-'+version.id.to_s) { |issue| issue.fixed_version_id == version.id }
+      end
+      @dashboard << DashboardGroup.new(l(:unassigned), 'version-none') { |issue| issue.fixed_version.nil? }
     end
 
     if @dashboard.groups.empty?

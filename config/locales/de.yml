@@ -18,4 +18,5 @@ de:
   groups_assignee: Verantwortlicher
   groups_trackers: Tracker
   groups_priorities: Priorität
+  groups_versions: Versionen
   select_done_status: Ticket aktualisieren
