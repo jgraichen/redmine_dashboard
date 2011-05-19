@@ -15,7 +15,7 @@
 <% if @dashboard.groups.length > 1 -%>
     <tr class="<%= group.id %>">
       <th colspan="<%= @dashboard.columns.length %>">
-        <span><%= group.name %></span>
+        <span><%= h(group.name) %></span>
       </th>
     </tr>
 <% end -%>

@@ -9,10 +9,10 @@
       <span class="dashboard-item-title">
         <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
       </span>
-      <span class="dashboard-item-property dashboard-item-tracker"><%= issue.tracker %></span>
+      <span class="dashboard-item-property dashboard-item-tracker"><%=h issue.tracker %></span>
     </div>
     <div class="dashboard-item-content">
-      <span class="dashboard-item-property dashboard-item-subject"><%= issue.subject %></span>
+      <span class="dashboard-item-property dashboard-item-subject"><%=h issue.subject %></span>
     </div>
   </div>
 </div>

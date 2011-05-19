@@ -11,6 +11,6 @@
 
 <div class="dashboard-priority-legend">
 <% @priorities.each do |priority| %>
-  <span class="dashboard-issue-priority priority-<%= priority.position %>"><%= priority %></span>
+  <span class="dashboard-issue-priority priority-<%= priority.position %>"><%=h priority %></span>
 <% end %>
 </div>

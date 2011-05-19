@@ -14,16 +14,16 @@
       </div>
     </div>
     <div class="dashboard-card-content">
-      <span class="dashboard-card-property dashboard-card-tracker"><%= issue.tracker %></span>
+      <span class="dashboard-card-property dashboard-card-tracker"><%=h issue.tracker %></span>
 <% if !issue.fixed_version.nil? %>
-      <span class="dashboard-card-property dashboard-card-version"><%= issue.fixed_version %></span>
+      <span class="dashboard-card-property dashboard-card-version"><%=h issue.fixed_version %></span>
 <% end %>
-      <span class="dashboard-card-property dashboard-card-subject"><%= issue.subject %></span>
+      <span class="dashboard-card-property dashboard-card-subject"><%=h issue.subject %></span>
 <% if !issue.category.nil? %>
-      <span class="dashboard-card-property dashboard-card-category"><%= issue.category.name %></span>
+      <span class="dashboard-card-property dashboard-card-category"><%=h issue.category.name %></span>
 <% end %>
 <% if !issue.assigned_to.nil? %>
-      <span class="dashboard-card-property dashboard-card-assignee"><%= issue.assigned_to.name %></span>
+      <span class="dashboard-card-property dashboard-card-assignee"><%=h issue.assigned_to.name %></span>
 <% end %>
     </div>
   </div>
