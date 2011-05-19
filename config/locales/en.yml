@@ -18,4 +18,4 @@ en:
   groups_assignee: Assignee
   groups_trackers: Tracker
   groups_priorities: Priority
-
+  select_done_status: Finish isssue

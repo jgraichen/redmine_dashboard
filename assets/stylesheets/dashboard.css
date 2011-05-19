@@ -100,7 +100,7 @@
 	display: block;
 }
 .dashboard-card-subject {
-	padding-bottom: 2px;
+	margin: 1px 0 3px 0;
 	max-height:3.3em;
 	overflow:hidden;
 }
