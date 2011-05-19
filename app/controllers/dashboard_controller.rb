@@ -120,17 +120,21 @@ private
     end
   end
   
+  def filter_name(name)
+    return 'dashboard_filter_'+@project.id.to_s+'_'+name.to_s
+  end
+  
   def setup
     # TODO: Filter überarbeiten
-    session[:view] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
-    session[:owner] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
-    session[:version] = params[:version]     if !params[:version].nil?
-    session[:tracker] = params[:tracker]     if !params[:tracker].nil?
+    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
+    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
     
-    @view = session[:view] || :card;
-    @owner = session[:owner] || :all;
-    @version = session[:version] || 'all';
-    @tracker = session[:tracker] || 'all';
+    @view = session[filter_name(:view)] || :card;
+    @owner = session[filter_name(:owner)] || :all;
+    @version = session[filter_name(:version)] || 'all';
+    @tracker = session[filter_name(:tracker)] || 'all';
     @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
   end
 end
