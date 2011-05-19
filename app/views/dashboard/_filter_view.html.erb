@@ -44,6 +44,20 @@
     :with   => "'view=' + value",
     :url => { :action => :index })
 %>
+<%= select_tag :group, 
+      options_for_select(
+        [[l(:groups_no_grouping), 'none'], 
+         [l(:groups_trackers), 'trackers'], 
+         [l(:groups_priorities), 'priorities'], 
+         [l(:groups_assignee), 'assignee'], 
+         [l(:groups_category), 'categories']],
+        @group
+      ),
+      :onchange => remote_function(
+    :update => "dashboard",
+    :with   => "'group=' + value",
+    :url => { :action => :index })
+%>
   </span>
   <span class="dashboard-filter-submit">
     <input type="submit" value="Update" />

@@ -11,4 +11,11 @@ en:
   unassigned: Unassigned
   card_view: Card View
   list_view: List View
+  others: Others
+  no_category: Uncategorized
+  groups_no_grouping: No Grouping
+  groups_category: Category
+  groups_assignee: Assignee
+  groups_trackers: Tracker
+  groups_priorities: Priority
 

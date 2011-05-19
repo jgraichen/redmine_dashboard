@@ -1,46 +1,51 @@
-
 <%= render :partial => 'filter_view' %>
-<table id="dashboard" style="min-width: <%= @statuses.length*165 %>px">
-  <thead id="dashboard-head">
+
+<table id="dashboard" style="min-width: <%= @dashboard.columns.length*165 %>px">
+  <thead>
     <tr>
-<% @statuses.each do |status| %>
-      <th class="dashboard-title" style="width: <%= 100.0/@statuses.length %>%"><%= status.name %></th>
-<% end %>
+<% @dashboard.columns.each do |column| -%>
+      <th style="width: <%= 100.0/@dashboard.columns.length %>%"><%= column.name %></th>
+<% end -%>
     </tr>
   </thead>
-  <tbody id="dashboard-body">
-    <tr>
-<% @statuses.each do |status| %>
+  <tbody>
+<% @dashboard.groups.each do |group| -%>
+<% # TODO: Dirty empty group check
+   if @issues.select{|issue| group.accept?(issue)}.length > 0 -%>
+<% if @dashboard.groups.length > 1 -%>
+    <tr class="<%= group.id %>">
+      <th colspan="<%= @dashboard.columns.length %>">
+        <span><%= group.name %></span>
+      </th>
+    </tr>
+<% end -%>
+    <tr class="<%= group.id %>">
+<% @dashboard.columns.each do |column| -%>
 <%= render :partial => 'dashboard_column', 
            :locals => {
-             :status => status,
-             :width => (100.0/@statuses.length),
-              # TODO: Dirty is_closed? hack
-             :issues => @issues.select { |i| status == i.status or (i.status.is_closed? and status.is_closed?) }
+             :column => column,
+             :group => group,
+             :width => (100.0/@dashboard.columns.length),
+             :issues => @issues.select { |issue| group.accept?(issue) && column.accept?(issue) }
            } %>
-<% end %>
+<% end -%>
     </tr>
+<% end -%>
+<% end -%>
   </tbody>
 </table>
-<!-- STATUS COLUMN SCRIPTS -->
-<% @statuses.each do |status|
-  if !status.is_closed? 
-	%><%= drop_receiving_element('status-'+status.position.to_s,      # The id of the receiving element
-      :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-      :hoverclass => 'dashboard-column-hovered',
-      :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
-        :update => "dashboard",
-        :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())",     # The query string parameters
-        :url => { :action => :index }) + ' }'
-      ) %><%
-  else
-    %><%= drop_receiving_element('status-done',                       # The id of the receiving element
-      :accept => "dashboard-issue",                                 # The CSS class of the dropped element
-      :hoverclass => 'dashboard-column-hovered',
-      :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + remote_function(
-        :update => "dashboard",
-        :with   => "'status=done&issue=' + (element.id.split('-').last())",     # The query string parameters
-        :url => { :action => :index }) + ' }'
-      ) %><%
-  end
-end if @edit_enabled %>
+
+<% @dashboard.groups.each do |group| -%>
+<% @dashboard.columns.each do |column| -%>
+<%= drop_receiving_element('drop-'+group.id+'-'+column.id, 
+         :accept => 'drag-'+group.id, 
+         :hoverclass => 'dashboard-column-hovered', 
+         :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + 
+           remote_function(
+             :update => "dashboard", 
+             :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())", 
+             :url => { :action => :index }
+           ) + ' }'
+       ) %>
+<% end -%>
+<% end -%>

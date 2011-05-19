@@ -11,3 +11,10 @@ de:
   unassigned: Nicht zugewiesen
   card_view: Kartenansicht
   list_view: Listenansicht
+  others: Andere
+  no_category: Keine Kategorie
+  groups_no_grouping: Keine Gruppierung
+  groups_category: Kategorie
+  groups_assignee: Verantwortlicher
+  groups_trackers: Tracker
+  groups_priorities: Priorität

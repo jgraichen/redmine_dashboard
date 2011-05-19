@@ -69,6 +69,55 @@ class DashboardController < ApplicationController
   end
   
 private
+  def setup
+    # TODO: Filter überarbeiten
+    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
+    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
+    session[filter_name(:group)] = params[:group]         if !params[:group].nil?
+    
+    @view = session[filter_name(:view)] || :card;
+    @owner = session[filter_name(:owner)] || :all;
+    @version = session[filter_name(:version)] || 'all';
+    @tracker = session[filter_name(:tracker)] || 'all';
+    @group = session[filter_name(:group)] || 'none';
+    
+    load_dashboard
+  end
+  
+  def load_dashboard
+    @dashboard = Dashboard.new(:drag_allowed => User.current.allowed_to?(:edit_issues, @project))
+    
+    IssueStatus.find(:all).each do |status|
+      @dashboard << DashboardColumn.new(status.name, 'status-'+status.id.to_s) { |issue| issue.status == status } unless status.is_closed?
+    end
+    @dashboard << DashboardColumn.new(l(:label_column_done), 'status-done') { |issue| issue.status.is_closed? }
+    
+    if @group == 'trackers'
+      @project.trackers.each do |tracker|
+       @dashboard << DashboardGroup.new(tracker.name, 'tracker-'+tracker.id.to_s) { |issue| issue.tracker == tracker }
+      end
+    elsif @group == 'priorities'
+      IssuePriority.find(:all).reverse.each do |p|
+        @dashboard << DashboardGroup.new(p.name, 'priority-'+p.id.to_s) { |issue| issue.priority == p }
+      end
+    elsif @group == 'assignee'
+      @dashboard << DashboardGroup.new(l(:my_issues), 'assignee-me') { |issue| issue.assigned_to_id == User.current.id }
+      @dashboard << DashboardGroup.new(l(:unassigned), 'unassigned') { |issue| issue.assigned_to_id.nil? }
+      @dashboard << DashboardGroup.new(l(:others), 'assignee-others') { |issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id }
+    elsif @group == 'categories'
+      @project.issue_categories.each do |category|
+        @dashboard << DashboardGroup.new(category.name, 'category-'+category.id.to_s) { |issue| issue.category_id == category.id }
+      end
+      @dashboard << DashboardGroup.new(l(:no_category), 'category-none') { |issue| issue.category.nil? }
+    end
+
+    if @dashboard.groups.empty?
+      @dashboard << DashboardGroup.new(l(:all_issues), 'all')
+    end
+  end
+
   def load_issues
     # issues ordered by priority desc
     @issues = @project.issues
@@ -80,9 +129,6 @@ private
       @issues = @issues.select { |i| i.tracker_id == @tracker.to_i }
     end
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
-    @trackers = Tracker.find(:all)
-    @statuses = IssueStatus.find(:all).select { |s| !s.is_closed? }
-    @statuses << IssueStatus.new({:name => l(:label_column_done), :is_closed => true})
     @priorities = IssuePriority.find(:all)
     
     @filter_versions = []
@@ -125,18 +171,5 @@ private
   
   def filter_name(name)
     return 'dashboard_filter_'+@project.id.to_s+'_'+name.to_s
-  end
-  
-  def setup
-    # TODO: Filter überarbeiten
-    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
-    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
-    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
-    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
-    
-    @view = session[filter_name(:view)] || :card;
-    @owner = session[filter_name(:owner)] || :all;
-    @version = session[filter_name(:version)] || 'all';
-    @tracker = session[filter_name(:tracker)] || 'all';
   end
 end

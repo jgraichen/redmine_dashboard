@@ -1,12 +1,12 @@
 
-<% content_tag :td, 
-        :class => 'dashboard-column status-'+(status.id.nil? ? 'done' : status.id.to_s), 
-        :id => 'status-'+(status.id.nil? ? 'done' : status.id.to_s) do %>
-  <div class="dashboard-column-title">
+<% content_tag :td, :class => column.id.to_s, :id => 'drop-'+group.id+'-'+column.id do -%>
+<% if issues.length > 0 %>
+  <div class="dashboard-count">
     <span><%= l(:label_x_issues, :count => issues.length) %></span>
   </div>
+<% end -%>
 <% issues.each do |issue| %>
-  <div class="dashboard-issue hascontextmenu" id="issue-<%= issue.id %>">
+  <div class="dashboard-issue drag-<%=group.id%> hascontextmenu" id="issue-<%=issue.id%>">
 <%= render :partial => DashboardController::VIEW_MODES[@view], 
            :locals => {
              :issue => issue
@@ -16,6 +16,6 @@
       "issue-"+issue.id.to_s, 
       :scroll => :window, 
       :revert => :true
-    ) if @edit_enabled %>
-<% end %>
-<% end %>
+    ) if @edit_enabled -%>
+<% end -%>
+<% end -%>
