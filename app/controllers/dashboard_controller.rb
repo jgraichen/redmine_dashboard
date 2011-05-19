@@ -138,6 +138,6 @@ private
     @owner = session[filter_name(:owner)] || :all;
     @version = session[filter_name(:version)] || 'all';
     @tracker = session[filter_name(:tracker)] || 'all';
-    @done_status = IssueStatus.new({:name => 'Done', :is_closed => true})
+    @done_status = IssueStatus.new({:name => l(:label_column_done), :is_closed => true})
   end
 end
