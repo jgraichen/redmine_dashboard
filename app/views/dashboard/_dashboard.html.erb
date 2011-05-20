@@ -38,6 +38,7 @@
 <% javascript_tag do -%>
 <% @dashboard.groups.each do |group| -%>
 <% @dashboard.columns.each do |column| -%>
+<% if @issues.select{|issue| group.accept?(issue)}.length > 0 -%>
 <%= drop_receiving_element_js('drop-'+group.id+'-'+column.id, 
          :accept => 'drag-'+group.id, 
          :hoverclass => 'dashboard-column-hovered', 
@@ -48,6 +49,7 @@
              :url => { :action => :index }
            ) + ' }'
        ) %>
+<% end -%>
 <% end -%>
 <% end -%>
 <% end -%>

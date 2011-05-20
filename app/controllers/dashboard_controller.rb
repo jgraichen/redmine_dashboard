@@ -100,7 +100,7 @@ private
       end
     elsif @group == 'priorities'
       IssuePriority.find(:all).reverse.each do |p|
-        @dashboard << DashboardGroup.new(p.name, 'priority', p.id) { |issue| issue.priority == p }
+        @dashboard << DashboardGroup.new(p.name, 'priority', p.position) { |issue| issue.priority_id == p.id }
       end
     elsif @group == 'assignee'
       @dashboard << DashboardGroup.new(l(:my_issues), 'assignee', User.current.id) { |issue| issue.assigned_to_id == User.current.id }

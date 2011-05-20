@@ -5,9 +5,9 @@
       <span class="dashboard-card-title">
         <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
       </span>
-<% if issue.done_ratio.between?(1,99)%>
+<% if issue.done_ratio.between?(1,99) -%>
       <span class="dashboard-card-progress-percent"><%= issue.done_ratio %>%</span>
-<% end %>
+<% end -%>
     </div>
     <div class="dashboard-card-progress">
       <div class="dashboard-card-progress-bar" style="width: <%= issue.done_ratio %>%;">
@@ -15,16 +15,16 @@
     </div>
     <div class="dashboard-card-content">
       <span class="dashboard-card-property dashboard-card-tracker"><%=h issue.tracker %></span>
-<% if !issue.fixed_version.nil? %>
+<% if !issue.fixed_version.nil? -%>
       <span class="dashboard-card-property dashboard-card-version"><%=h issue.fixed_version %></span>
-<% end %>
+<% end -%>
       <span class="dashboard-card-property dashboard-card-subject"><%=h issue.subject %></span>
-<% if !issue.category.nil? %>
+<% if !issue.category.nil? -%>
       <span class="dashboard-card-property dashboard-card-category"><%=h issue.category.name %></span>
-<% end %>
-<% if !issue.assigned_to.nil? %>
+<% end -%>
+<% if !issue.assigned_to.nil? -%>
       <span class="dashboard-card-property dashboard-card-assignee"><%=h issue.assigned_to.name %></span>
-<% end %>
+<% end -%>
     </div>
   </div>
 </div>
