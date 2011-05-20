@@ -15,7 +15,8 @@
     draggable_element_js(
       "issue-"+issue.id.to_s, 
       :scroll => :window, 
-      :revert => :true
+      :revert => :true,
+      :onEnd => "function(obj){obj.element.setStyle({top:0,left:0});}"
     ) if @edit_enabled %></script>
 <% end -%>
 </td>
