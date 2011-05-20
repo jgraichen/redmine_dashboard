@@ -35,17 +35,19 @@
   </tbody>
 </table>
 
+<% javascript_tag do -%>
 <% @dashboard.groups.each do |group| -%>
 <% @dashboard.columns.each do |column| -%>
-<%= drop_receiving_element('drop-'+group.id+'-'+column.id, 
+<%= drop_receiving_element_js('drop-'+group.id+'-'+column.id, 
          :accept => 'drag-'+group.id, 
          :hoverclass => 'dashboard-column-hovered', 
          :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + 
            remote_function(
              :update => "dashboard", 
-             :with   => "'issue=' + (element.id.split('-').last()) + '&status=' + (drop.id.split('-').last())", 
+             :with   => "'issue=' + (element.id.split('-').last()) + '&"+column.param+"&"+group.param+"'", 
              :url => { :action => :index }
            ) + ' }'
        ) %>
+<% end -%>
 <% end -%>
 <% end -%>

@@ -76,7 +76,7 @@
 .dashboard-card {
 	float: left;
 	width: 160px;
-	height: 9.8em;
+	height: 9.9em;
 	position: relative;
 	margin: 1px;
 	border: 1px solid #ccc;
@@ -85,24 +85,24 @@
 	cursor: move;
 }
 .dashboard-card-header {
-	padding: 4px 2px 2px 4px;
-	font-size: 0.95em;
+	padding: 2px 2px 2px 4px;
+	font-size: 1em;
 }
 .dashboard-card-header a, .dashboard-item-header a {
 	padding-left: 16px;
-	background: transparent url("../images/cog.png") no-repeat 2px 60%;
+	background: transparent url("../images/cog.png") no-repeat 2px 50%;
 }
 .dashboard-card-content {
-	padding: 2px 4px 2px 5px;
+	padding: 0 4px 2px 5px;
 	font-size: .95em;
 }
 .dashboard-card-assignee, .dashboard-card-category, .dashboard-card-subject {
 	display: block;
 }
 .dashboard-card-subject {
-	margin: 1px 0 3px 0;
-	max-height:3.3em;
-	overflow:hidden;
+	margin: .15em 0 .25em 0;
+	height: 3.3em;
+	overflow: hidden;
 }
 .dashboard-card-assignee {
 	padding-left: 14px;
@@ -153,8 +153,8 @@
 .dashboard-item-header {
 	float: left;
 	height: 35px;
-	padding: 3px 6px 0 4px;
-	font-size: 0.9em;
+	padding: 1px 2px 0 4px;
+	font-size: 1em;
 }
 .dashboard-item-title, .dashboard-item-tracker {
 	display: block;
@@ -167,7 +167,6 @@
 }
 .dashboard-item-tracker {
 	font-size: .9em;
-	padding-top: 1px;
 	color: #666;
 }
 .dashboard-item-subject {

@@ -1,9 +1,10 @@
 class DashboardGroup
-  attr_accessor :name, :id
+  attr_accessor :name, :id, :param
   
-  def initialize(name, id, &filter) 
+  def initialize(name, param, id, &filter) 
     @name = name
-    @id = id
+    @id = param.to_s+'-'+id.to_s
+    @param = param.to_s+'='+id.to_s
     @filter = filter
   end
   
