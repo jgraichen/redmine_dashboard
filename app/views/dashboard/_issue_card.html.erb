@@ -1,6 +1,6 @@
 <!-- ISSUE CARD -->
 <div class="dashboard-card">
-  <div class="dashboard-issue-priority status-<%= issue.status.id %> priority-<%= issue.priority.position %>">
+  <div class="dashboard-issue-priority dashboard-status-<%= issue.status.id %> dashboard-priority-<%= issue.priority.position %>">
     <div class="dashboard-card-header">
       <span class="dashboard-card-title">
         <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>

@@ -57,19 +57,19 @@
 	border-left: 5px solid #ccc;
 	height: 100%;
 }
-.dashboard-issue-priority.priority-1 {
+.dashboard-priority-1 {
 	border-color: #aaa;
 }
-.dashboard-issue-priority.priority-2 {
+.dashboard-priority-2 {
 	border-color: #6b6;
 }
-.dashboard-issue-priority.priority-3 {
+.dashboard-priority-3 {
 	border-color: orange;
 }
-.dashboard-issue-priority.priority-4 {
+.dashboard-priority-4 {
 	border-color: red;
 }
-.dashboard-issue-priority.priority-5 {
+.dashboard-priority-5 {
 	border-color: black;
 }
 /* ISSUE CARD */
