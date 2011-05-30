@@ -58,11 +58,10 @@ class DashboardController < ApplicationController
     
     load_issues
     render '_dashboard', :layout => false if request.xhr?
-#  rescue
-#    @message = 'Error: ' + $!
-#    
-#    load_issues
-#    render '_dashboard', :layout => false
+  rescue
+    @message = 'Error: ' + $!
+    load_issues
+    render '_dashboard', :layout => false
   end
   
   def update_dashboard_xhr
