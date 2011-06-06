@@ -96,7 +96,7 @@ private
   def find_version
   	version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date > 0')
   	return version.id unless version.nil?
-  	version = @project.versions.open.find(:first)
+  	version = @project.versions.open.find(:first, :order => 'name ASC')
   	return version.id unless version.nil?
   	nil
   end
