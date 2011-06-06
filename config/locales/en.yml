@@ -12,6 +12,9 @@ en:
   card_view: Card View
   list_view: List View
   others: Others
+  open: Open
+  closed: Closed
+  open_without_date: Open (No Date)
   no_category: Uncategorized
   groups_no_grouping: No Grouping
   groups_category: Category

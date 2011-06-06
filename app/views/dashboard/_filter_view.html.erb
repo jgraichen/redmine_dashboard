@@ -13,8 +13,15 @@
     :with   => "'tracker=' + value",
     :url => { :action => :index })
 %>
+<%	versions = [
+		['', [[l(:all_versions), 'all'], [l(:unassigned), '0']]], 
+		[l(:open), @versions_open.map{|v| [v.name, v.id.to_s]}], 
+		[l(:open_without_date), @versions_open_wodate.map{|v| [v.name, v.id.to_s]}], 
+		[l(:closed), @versions_done.map{|v| [v.name, v.id.to_s]}]
+	]
+%>
 <%= select_tag :version, 
-      options_for_select([[l(:all_versions), 'all'], [l(:unassigned), '0']] + @filter_versions,
+      grouped_options_for_select(versions,
         @version.to_s
       ),
       :onchange => remote_function(

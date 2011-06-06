@@ -12,6 +12,9 @@ de:
   card_view: Kartenansicht
   list_view: Listenansicht
   others: Andere
+  open: Offen
+  closed: Abgeschlossen
+  open_without_date: Offen (Ohne Datum)
   no_category: Keine Kategorie
   groups_no_grouping: Keine Gruppierung
   groups_category: Kategorie

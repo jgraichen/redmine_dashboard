@@ -70,19 +70,35 @@ class DashboardController < ApplicationController
 private
   def setup
     # TODO: Filter überarbeiten
-    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
-    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
-    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
-    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
-    session[filter_name(:group)] = params[:group]         if !params[:group].nil?
+    if params[:reset]
+	    session[filter_name(:view)] = nil
+	    session[filter_name(:owner)] = nil
+	    session[filter_name(:version)] = nil
+	    session[filter_name(:tracker)] = nil
+	    session[filter_name(:group)] = nil
+    else
+	    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+	    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+	    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
+	    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
+	    session[filter_name(:group)] = params[:group]         if !params[:group].nil?
+    end
     
     @view = session[filter_name(:view)] || :card;
-    @owner = session[filter_name(:owner)] || :all;
-    @version = session[filter_name(:version)] || 'all';
+    @owner = session[filter_name(:owner)] || :me;
+    @version = session[filter_name(:version)] || find_version || :all
     @tracker = session[filter_name(:tracker)] || 'all';
     @group = session[filter_name(:group)] || 'none';
     
     load_dashboard
+  end
+  
+  def find_version
+  	version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date > 0')
+  	return version.id unless version.nil?
+  	version = @project.versions.open.find(:first)
+  	return version.id unless version.nil?
+  	nil
   end
   
   def load_dashboard
@@ -135,10 +151,12 @@ private
     @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
     @priorities = IssuePriority.find(:all)
     
-    @filter_versions = []
-    @project.versions.each do |v|
-      @filter_versions << [v.name, v.id.to_s]
-    end
+    versions = @project.versions.find(:all) || []
+    versions = versions.uniq.sort
+    @versions_done = versions.select { |version| !version.open? }
+    @versions_open = versions.select { |version| version.open? && !version.effective_date.nil? }
+    @versions_open_wodate = versions.select { |version| version.open? && version.effective_date.nil? }
+    
     @filter_trackers = []
     @project.trackers.each do |t|
       @filter_trackers << [t.name, t.id.to_s]
