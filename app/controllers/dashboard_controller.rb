@@ -104,7 +104,7 @@ private
   def load_dashboard
     @dashboard = Dashboard.new(:drag_allowed => User.current.allowed_to?(:edit_issues, @project))
     
-    IssueStatus.find(:all).each do |status|
+    IssueStatus.find(:all, :order => 'position').each do |status|
       @dashboard << DashboardColumn.new(status.name, 'status', status.id) { |issue| issue.status == status } unless status.is_closed?
     end
     @dashboard << DashboardColumn.new(l(:label_column_done), 'status', 'done') { |issue| issue.status.is_closed? }
