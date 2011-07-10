@@ -12,15 +12,13 @@
     :update => "dashboard",
     :with   => "'tracker=' + value",
     :url => { :action => :index })
-%>
-<%	versions = [
+%><%	versions = [
 		['', [[l(:all_versions), 'all'], [l(:unassigned), '0']]], 
 		[l(:open), @versions_open.map{|v| [v.name, v.id.to_s]}], 
 		[l(:open_without_date), @versions_open_wodate.map{|v| [v.name, v.id.to_s]}], 
 		[l(:closed), @versions_done.map{|v| [v.name, v.id.to_s]}]
 	]
-%>
-<%= select_tag :version, 
+%><%= select_tag :version, 
       grouped_options_for_select(versions,
         @version.to_s
       ),
@@ -28,8 +26,7 @@
     :update => "dashboard",
     :with   => "'version=' + value",
     :url => { :action => :index })
-%>
-<%= select_tag :owner, 
+%><%= select_tag :owner, 
       options_for_select(
         [[l(:my_issues), 'me'], [l(:all_issues), 'all']],
         @owner.to_s
@@ -50,8 +47,7 @@
     :update => "dashboard",
     :with   => "'view=' + value",
     :url => { :action => :index })
-%>
-<%= select_tag :group, 
+%><%= select_tag :group, 
       options_for_select(
         [[l(:groups_no_grouping), 'none'], 
          [l(:groups_trackers), 'trackers'], 
@@ -69,6 +65,7 @@
   </span>
   <span class="dashboard-filter-submit">
     <input type="submit" value="Update" />
+    <%= link_to l(:reset), {:action => :index, :reset => 1} %>
   </span>
 <%end%>
 </div>
