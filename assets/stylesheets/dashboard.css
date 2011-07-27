@@ -74,6 +74,7 @@
 }
 .dashboard-dragged {
 	cursor: move;
+	cursor: grabbing;
 }
 /* ISSUE CARD */
 .dashboard-card {
@@ -85,6 +86,7 @@
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	overflow: hidden;
+	cursor: grab;
 }
 .dashboard-card-header {
 	padding: 2px 2px 2px 4px;
@@ -151,6 +153,7 @@
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	overflow: hidden;
+	cursor: grab;
 }
 .dashboard-item-header {
 	float: left;
