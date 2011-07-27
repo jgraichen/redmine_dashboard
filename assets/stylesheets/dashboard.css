@@ -72,11 +72,6 @@
 .dashboard-priority-5 {
 	border-color: black;
 }
-.dashboard-dragged {
-	cursor: move;
-	cursor: -moz-grabbing;
-	cursor: grabbing;
-}
 /* ISSUE CARD */
 .dashboard-card {
 	float: left;
@@ -179,4 +174,10 @@
 }
 .dashboard-item-subject {
 	display: block;
+}
+/* ANIMATION */
+.dashboard-dragged {
+	cursor: move;
+	cursor: -moz-grabbing;
+	cursor: grabbing;
 }
