@@ -73,7 +73,7 @@
 	border-color: black;
 }
 .dashboard-dragged {
-	cursor: grabbing;
+	cursor: move;
 }
 /* ISSUE CARD */
 .dashboard-card {
