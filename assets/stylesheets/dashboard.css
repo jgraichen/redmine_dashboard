@@ -176,7 +176,7 @@
 	display: block;
 }
 /* ANIMATION */
-.dashboard-dragged {
+.dashboard-dragged .dashboard-card, .dashboard-dragged .dashboard-item {
 	cursor: move;
 	cursor: -moz-grabbing;
 	cursor: grabbing;
