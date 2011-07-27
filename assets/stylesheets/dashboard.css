@@ -72,6 +72,9 @@
 .dashboard-priority-5 {
 	border-color: black;
 }
+.dashboard-dragged {
+	cursor: grabbing;
+}
 /* ISSUE CARD */
 .dashboard-card {
 	float: left;
@@ -82,7 +85,7 @@
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	overflow: hidden;
-	cursor: move;
+	cursor: grab;
 }
 .dashboard-card-header {
 	padding: 2px 2px 2px 4px;
@@ -149,7 +152,7 @@
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	overflow: hidden;
-	cursor: move;
+	cursor: grab;
 }
 .dashboard-item-header {
 	float: left;
