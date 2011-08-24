@@ -7,6 +7,13 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports
 drag and drop for issues and various filters and groups.
 
 
+Install
+-------
+
+Clone git repository to `vendor/plugins` and restart redmine. A database 
+migration is not needed.
+
+
 How to Use
 ----------
 
