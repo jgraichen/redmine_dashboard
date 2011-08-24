@@ -15,11 +15,13 @@ grouped together in the "Done" column. A dialog where the done status can be
 selected will be shown when dropping an issue on the done column.
 
 The dashboard supports filters to show only a subset of all project issues:
+
 - Version
 - Tracker
 - All or mine tickets
 
 Issues can be grouped in rows by:
+
 - Tracker
 - Priority
 - Assignee
