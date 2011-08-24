@@ -1,3 +1,0 @@
-= dashboard
-
-Description goes here
