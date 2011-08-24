@@ -30,7 +30,7 @@ class DashboardController < ApplicationController
       old_status = @issue.status
       allowed_statuses = @issue.new_statuses_allowed_to(User.current)
       
-      # check if user is allowed to change ticket status und ticket status
+      # check if user is allowed to change ticket status and ticket status
       # is not the same as before
       if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
         @issue.update_attribute(:status_id, status.id)
