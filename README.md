@@ -57,6 +57,14 @@ Supported languages
 - German
 
 
+Screenshots
+-----------
+
+![Card view](http://altimos.de/redmine_dashboard/redmine_dashboard-cardview.png)
+![List view](http://altimos.de/redmine_dashboard/redmine_dashboard-listview.png)
+![Grouped by assignee](http://altimos.de/redmine_dashboard/redmine_dashboard-groupassignee.png)
+
+
 License
 -------
 
