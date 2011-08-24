@@ -15,16 +15,16 @@ grouped together in the "Done" column. A dialog where the done status can be
 selected will be shown when dropping an issue on the done column.
 
 The dashboard supports filters to show only a subset of all project issues:
- - Version
- - Tracker
- - All or mine tickets
+- Version
+- Tracker
+- All or mine tickets
 
 Issues can be grouped in rows by:
- - Tracker
- - Priority
- - Assignee
- - Category
- - Version
+- Tracker
+- Priority
+- Assignee
+- Category
+- Version
 
 Dashboard contains two different issue views, a card view and a list view. Both
 view modes show issue id, tracker, title, done ratio. Card view also shows 
@@ -44,8 +44,8 @@ will be used as prefix for issue id.
 
 Supported languages
 -------------------
- - English
- - German
+- English
+- German
 
 
 License
