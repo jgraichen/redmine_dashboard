@@ -14,7 +14,7 @@ Clone git repository to `vendor/plugins` and restart redmine. A database
 migration is not needed.
 
 
-How to Use
+Features
 ----------
 
 The dashboard columns are the different issue statuses. Closed statuses are 
@@ -35,11 +35,21 @@ Issues can be grouped in rows by:
 - Category
 - Version
 
-Dashboard contains two different issue views, a card view and a list view. Both
-view modes show issue id, tracker, title, done ratio. Card view also shows 
+Filters are saved per project, so you always have your preferred settings 
+when changing a project.
+
+Dashboard contains two different view modes: card view and list view. 
+Both show issue id, tracker, title, done ratio. Card view also shows 
 assignee and version.
-The border color indicates the issue priority. More important issue will be
-shown first in a column.
+
+**Colors**
+
+- Issue priority is indicated by color of left border.
+- Overdue issues are red outlined.
+
+**Options**
+
+- Change assignee to current user when an issue is moved.
 
 
 Custom Fields
@@ -47,8 +57,8 @@ Custom Fields
 
 Dashboard supports two custom fields providing additional information.
 If an issue list field named `resolution` exists it will also be shown 
-when dropping an issue on "Done". A project custom field named `abbreviation` 
-will be used as prefix for issue id.
+when dropping an issue on "Done". 
+A project custom field named `abbreviation` will be used as prefix for issue id.
 
 
 Supported languages
