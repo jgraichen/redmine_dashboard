@@ -13,6 +13,7 @@ Install
 Clone git repository to `vendor/plugins` and restart redmine. A database 
 migration is not needed.
 
+Developed and roughly tested with Redmine 1.2 but may work with other versions.
 
 Features
 ----------
