@@ -2,8 +2,6 @@
 
 #dashboard-table {
 	width: 100%;
-	position: relative;
-	margin-top: 4.5em;
 }
 #dashboard-table thead th {
 	text-align: left;
@@ -41,31 +39,29 @@
 }
 /* FILTER */
 .dashboard-filter {
+	padding: 0;
+	height: 4.5em;
 }
 .dashboard-filter fieldset {
 	float: right; 
 	margin-left: 10px;
 	overflow: hidden;
-	min-height: 2.8em;
-	max-height: 2.8em;
+	min-height: 3.5em;
+	/*max-height: 3.5em;
 	background-color: #fff;
 	z-index: 80;
-	position: relative;
 }
 .dashboard-filter fieldset:hover {
 	max-height: 100em;
+	position: absolute;*/
 }
 /* OPTIONS */
 .dashboard-options ul {
-	position: relative;
 	text-align: left;
 	list-style: none;
 	padding: 3px;
 	margin: 0;
 	font-size: 1em;
-}
-.dashboard-options:hover ul {
-	display: block;
 }
 .dashboard-options ul input {
 	float: left;
@@ -75,8 +71,10 @@
 	float: right;
 }
 .dashboard-options li {
-	padding: 0 0 2px 0;
-	visibility: hidden;
+	margin: 1px;
+	padding: 0 3px 2px 3px;
+	float: left;
+	/*visibility: hidden;*/
 }
 .dashboard-options:hover li, .dashboard-options ul li.first {
 	visibility: visible;
