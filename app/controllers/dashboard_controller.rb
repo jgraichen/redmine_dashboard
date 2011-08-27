@@ -86,7 +86,8 @@ private
       :version => :all,
       :tracker => 'all',
       :group => 'none',
-      :change_assignee => false
+      :change_assignee => false,
+      :hide_done => false
     }
     
     if params[:reset].nil?
@@ -97,7 +98,8 @@ private
       @options[:version] = params[:version]     unless params[:version].nil?
       @options[:tracker] = params[:tracker]     unless params[:tracker].nil?
       @options[:group] = params[:group]         unless params[:group].nil?
-      @options[:change_assignee] = params[:change_assignee] ? true : false unless params[:change_assignee].nil?
+      @options[:change_assignee] = (params[:change_assignee] == "1" ? true : false) unless params[:change_assignee].nil?
+      @options[:hide_done] = (params[:hide_done] == "1" ? true : false) unless params[:hide_done].nil?
       
       session['dashboard_'+@project.id.to_s] = @options
     end
@@ -111,7 +113,7 @@ private
     IssueStatus.find(:all, :order => 'position').each do |status|
       @dashboard << DashboardColumn.new("status-#{status.id}", status.name, :status => status.id) { |issue| issue.status == status } unless status.is_closed?
     end
-    @dashboard << DashboardColumn.new('status-done', :label_column_done, :status => 'done') { |issue| issue.status.is_closed? }
+    @dashboard << DashboardColumn.new('status-done', :label_column_done, :status => 'done') { |issue| issue.status.is_closed? && !@options[:hide_done] }
     
     case @options[:group]
     when 'trackers'

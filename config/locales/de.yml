@@ -31,3 +31,5 @@ de:
   filters_and_view: Filter & Ansicht
   change_assignee: Ändere Verantwortlichen
   change_assignee_info: Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird.
+  hide_done: Verberge fertige Tickets
+  hide_done_info: Verbirgt fertige Tickets und verkleinert Fertig-Spalte. 

@@ -1,5 +1,5 @@
 <div class="dashboard-filter">
-<% form_remote_tag :action => 'index' do %>
+<% form_remote_tag :url => {:action => 'index'}, :update => "dashboard" do %>
 	<fieldset>
 		<legend><%=l(:filters_and_view) %></legend>
 		<%= select_tag :tracker, 
@@ -63,6 +63,11 @@
 				<input type="hidden" name="change_assignee" value="0" />
 				<input type="checkbox" id="change_assignee" name="change_assignee"<%= ' checked="checked"' if @options[:change_assignee] %> value="1" />
 				<label for="change_assignee" title="<%=l(:change_assignee_info) %>"><%=l(:change_assignee) %></label>
+			</li>
+			<li>
+				<input type="hidden" name="hide_done" value="0" />
+				<input type="checkbox" id="hide_done" name="hide_done"<%= ' checked="checked"' if @options[:hide_done] %> value="1" />
+				<label for="hide_done" title="<%=l(:hide_done_info) %>"><%=l(:hide_done) %></label>
 			</li>
 			<li>
 				<br />

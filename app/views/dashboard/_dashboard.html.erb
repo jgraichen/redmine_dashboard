@@ -9,7 +9,15 @@
   <thead>
     <tr>
 <% @dashboard.columns.each do |column| -%>
+<% if @options[:hide_done] -%>
+<% if column.id == 'status-done' -%>
+		<th style="width: 10%"><%=h column.title %></th>
+<% else -%>
+      <th style="width: <%= 90.0/(@dashboard.columns.length-1) %>%"><%=h column.title %></th>
+<% end -%>
+<% else -%>
       <th style="width: <%= 100.0/@dashboard.columns.length %>%"><%=h column.title %></th>
+<% end -%>
 <% end -%>
     </tr>
   </thead>
