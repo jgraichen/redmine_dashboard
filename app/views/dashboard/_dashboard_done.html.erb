@@ -12,10 +12,12 @@
 					<label for="status"><%=l(:field_status) %></label>
 					<%= select_tag :status, options_for_select(@done_statuses, '') %>
 				</p>
+<% if @done_resolved.any? %>
 				<p>
 					<label for="resolution"><%=l(:field_resolution) %></label>
-					<%= select_tag :resolution, options_for_select(@done_resolved, '') if @done_resolved.any? %>
+					<%= select_tag :resolution, options_for_select(@done_resolved, '') %>
 				</p>
+<% end -%>
 			</div>
 			<div class="splitcontentright attributes">
 				<p>

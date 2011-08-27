@@ -22,11 +22,6 @@ class DashboardController < ApplicationController
     
     load_issues
     render '_dashboard', :layout => false if request.xhr?
-  rescue
-    @message = 'Error: ' + $!
-    
-    load_issues
-    render '_dashboard', :layout => false
   end
   
   def show_done_form(issue)
@@ -57,31 +52,25 @@ class DashboardController < ApplicationController
         
         # Update the journal containing all the changes to the issue.
         journal = issue.init_journal(User.current, attributes[:notes] || nil)
-        journal.details << JournalDetail.new(
-                                :property => 'attr',
-                                :prop_key => 'status_id',
-                                :old_value => old_status.id,
-                                :value => status.id )
+        journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'status_id', :old_value => old_status.id, :value => status.id )
                                 
         if not attributes[:done_ratio].nil?
-          journal.details << JournalDetail.new(
-                                  :property => 'attr',
-                                  :prop_key => 'done_ratio',
-                                  :old_value => old_done_ratio,
-                                  :value => issue.done_ratio )
+          journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'done_ratio', :old_value => old_done_ratio, :value => issue.done_ratio )
         end
 
         load_issue_resolutions(issue)
         resolution_field = issue_resolution_field(issue)
-        if resolution_field.value != attributes[:resolution].to_s
+        if !resolution_field.nil? and resolution_field.value != attributes[:resolution].to_s
           old_resolution = resolution_field.value
           resolution_field.value = attributes[:resolution].to_s
           resolution_field.save
-          journal.details << JournalDetail.new(
-                                  :property => 'cf',
-                                  :prop_key => resolution_field.custom_field.id,
-                                  :old_value => old_resolution,
-                                  :value => resolution_field.value )
+          journal.details << JournalDetail.new(:property => 'cf', :prop_key => resolution_field.custom_field.id, :old_value => old_resolution, :value => resolution_field.value )
+        end
+        
+        if @options[:change_assignee] && issue.assigned_to_id != User.current.id
+          # not required?
+          #journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'assigned_to', :old_value => issue.assigned_to_id, :value => User.current.id )
+          issue.update_attribute(:assigned_to_id, User.current.id)
         end
         journal.save
         return true
@@ -91,36 +80,29 @@ class DashboardController < ApplicationController
   
 private
   def setup
-    # TODO: Filter überarbeiten
+    @options = {
+      :view => :card,
+      :owner => :me,
+      :version => :all,
+      :tracker => 'all',
+      :group => 'none',
+      :change_assignee => false
+    }
+    
     if params[:reset].nil?
-      session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
-      session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
-      session[filter_name(:version)] = params[:version]     if !params[:version].nil?
-      session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
-      session[filter_name(:group)] = params[:group]         if !params[:group].nil?
-    else
-      session[filter_name(:view)] = nil
-      session[filter_name(:owner)] = nil
-      session[filter_name(:version)] = nil
-      session[filter_name(:tracker)] = nil
-      session[filter_name(:group)] = nil
+      @options = session['dashboard_'+@project.id.to_s] if session['dashboard_'+@project.id.to_s].is_a?(Hash)
+      
+      @options[:view] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+      @options[:owner] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+      @options[:version] = params[:version]     unless params[:version].nil?
+      @options[:tracker] = params[:tracker]     unless params[:tracker].nil?
+      @options[:group] = params[:group]         unless params[:group].nil?
+      @options[:change_assignee] = params[:change_assignee] ? true : false unless params[:change_assignee].nil?
+      
+      session['dashboard_'+@project.id.to_s] = @options
     end
     
-    @view = session[filter_name(:view)] || :card;
-    @owner = session[filter_name(:owner)] || :me;
-    @version = session[filter_name(:version)] || find_version || :all
-    @tracker = session[filter_name(:tracker)] || 'all';
-    @group = session[filter_name(:group)] || 'none';
-    
     load_dashboard
-  end
-  
-  def find_version
-  	version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date > 0')
-  	return version.id unless version.nil?
-  	version = @project.versions.open.find(:first, :order => 'name ASC')
-  	return version.id unless version.nil?
-  	nil
   end
   
   def load_dashboard
@@ -131,14 +113,14 @@ private
     end
     @dashboard << DashboardColumn.new('status-done', :label_column_done, :status => 'done') { |issue| issue.status.is_closed? }
     
-    case @group
+    case @options[:group]
     when 'trackers'
       @project.trackers.each do |tracker|
        @dashboard << DashboardGroup.new("tracker-#{tracker.id}", tracker.name, :tracker => tracker.id) { |issue| issue.tracker == tracker }
       end
     when 'priorities'
       IssuePriority.find(:all).reverse.each do |p|
-        @dashboard << DashboardGroup.new("priority-#{p.id}", p.name, :priority => p.position) { |issue| issue.priority_id == p.id }
+        @dashboard << DashboardGroup.new("priority-#{p.position}", p.name, :priority => p.position) { |issue| issue.priority_id == p.id }
       end
     when 'assignee'
       @dashboard << DashboardGroup.new(:assigne_me, :my_issues, :assignee => User.current.id) { |issue| issue.assigned_to_id == User.current.id }
@@ -162,33 +144,26 @@ private
   end
 
   def load_issues
-    # issues ordered by priority desc
-    @issues = @project.issues
-    @issues = @issues.select { |i| i.assigned_to == User.current } if @owner == :me
-    if @version != 'all'
-      @issues = @issues.select { |i| i.fixed_version_id == @version.to_i or (i.fixed_version_id.to_s == '' and @version == '0') }
-    end
-    if @tracker != 'all'
-      @issues = @issues.select { |i| i.tracker_id == @tracker.to_i }
-    end
-    @issues.sort! { |a,b| b.priority.position <=> a.priority.position }
-    @priorities = IssuePriority.find(:all)
+    @issues = @project.issues.to_a
     
-    versions = @project.versions.find(:all) || []
-    versions = versions.uniq.sort
-    @versions_done = versions.select { |version| !version.open? }
-    @versions_open = versions.select { |version| version.open? && !version.effective_date.nil? }
-    @versions_open_wodate = versions.select { |version| version.open? && version.effective_date.nil? }
-    
-    @filter_trackers = []
-    @project.trackers.each do |t|
-      @filter_trackers << [t.name, t.id.to_s]
+    if not @options[:owner] == :all
+      @issues = @issues.select { |i| i.assigned_to == User.current }
     end
+    if not @options[:version].to_s == 'all'
+      @issues = @issues.select { |i| i.fixed_version_id == @options[:version].to_i or (i.fixed_version_id.to_s == '' and @options[:version] == '0') }
+    end
+    if not @options[:tracker].to_s == 'all'
+      @issues = @issues.select { |i| i.tracker_id == @options[:tracker].to_i }
+    end
+    
+    @issues = @issues.sort { |a,b| b.priority.position <=> a.priority.position }
   end
   
   def load_issue_resolutions(issue)
     @done_resolved = []
     resolution_field = issue_resolution_field(issue)
+    return nil if resolution_field.nil?
+    
     resolution_field.custom_field.possible_values.each do |v|
       @done_resolved << [v, v] 
     end
@@ -202,6 +177,7 @@ private
         return f
       end
     end
+    return nil
   end
   
   def find_project
@@ -212,9 +188,5 @@ private
     @project.custom_field_values.each do |f|
       @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
     end
-  end
-  
-  def filter_name(name)
-    return 'dashboard_filter_'+@project.id.to_s+'_'+name.to_s
   end
 end

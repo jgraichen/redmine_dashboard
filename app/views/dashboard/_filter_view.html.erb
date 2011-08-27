@@ -1,78 +1,74 @@
 <div class="dashboard-filter">
 <% form_remote_tag :action => 'index' do %>
-<% if !@message.nil? %>
-  <div class="dashboard-message"><%= @message %></div>
-<%end%>
-  <span class="dashboard-filter-options">
-<%= select_tag :tracker, 
-      options_for_select([[l(:all_trackers), 'all']] + @filter_trackers,
-        @tracker.to_s
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'tracker=' + value",
-    :url => { :action => :index })
-%><%	versions = [
-		['', [[l(:all_versions), 'all'], [l(:unassigned), '0']]], 
-		[l(:open), @versions_open.map{|v| [v.name, v.id.to_s]}], 
-		[l(:open_without_date), @versions_open_wodate.map{|v| [v.name, v.id.to_s]}], 
-		[l(:closed), @versions_done.map{|v| [v.name, v.id.to_s]}]
-	]
-%>
-<%= select_tag :version, 
-      grouped_options_for_select(versions,
-        @version.to_s
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'version=' + value",
-    :url => { :action => :index })
-%>
-<%= select_tag :owner, 
-      options_for_select(
-        [[l(:my_issues), 'me'], [l(:all_issues), 'all']],
-        @owner.to_s
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'owner=' + value",
-    :url => { :action => :index })
-%>
-  </span>
-  <span class="dashboard-filter-view">
-<%= select_tag :view, 
-      options_for_select(
-        [[l(:card_view), 'card'], [l(:list_view), 'list']],
-        @view.to_s
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'view=' + value",
-    :url => { :action => :index })
-%>
-<%= select_tag :group, 
-      options_for_select(
-        [[l(:groups_no_grouping), 'none'], 
-         [l(:groups_trackers), 'trackers'], 
-         [l(:groups_priorities), 'priorities'], 
-         [l(:groups_assignee), 'assignee'], 
-         [l(:groups_category), 'categories'], 
-         [l(:groups_versions), 'versions']],
-        @group
-      ),
-      :onchange => remote_function(
-    :update => "dashboard",
-    :with   => "'group=' + value",
-    :url => { :action => :index })
-%>
-  </span>
-  <span class="dashboard-filter-submit">
-    <input type="submit" value="<%=l(:update) %>" />
-    <a href="#" onclick="<%= 
-    	remote_function(
-          :update => "dashboard",
-          :with   => "'reset=1'",
-          :url => { :action => :index }) %>"><button type="button"><%=l(:reset) %></button></a>
-  </span>
-<%end%>
+	<fieldset>
+		<legend><%=l(:filters_and_view) %></legend>
+		<%= select_tag :tracker, 
+		      options_for_select([[l(:all_trackers), 'all']] + @project.trackers.map{|t| [t.name, t.id.to_s]},
+		        @options[:tracker].to_s
+		      ),
+		      :onchange => remote_function(
+		    :update => "dashboard",
+		    :with   => "'tracker=' + value",
+		    :url => { :action => :index })
+		%>
+		<%= select_filter_versions %>
+		<%= select_tag :owner, 
+		      options_for_select(
+		        [[l(:my_issues), 'me'], [l(:all_issues), 'all']],
+		        @options[:owner].to_s
+		      ),
+		      :onchange => remote_function(
+		    :update => "dashboard",
+		    :with   => "'owner=' + value",
+		    :url => { :action => :index })
+		%>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= select_tag :view, 
+		      options_for_select(
+		        [[l(:card_view), 'card'], [l(:list_view), 'list']],
+		        @options[:view].to_s
+		      ),
+		      :onchange => remote_function(
+		    :update => "dashboard",
+		    :with   => "'view=' + value",
+		    :url => { :action => :index })
+		%>
+		<%= select_tag :group, 
+		      options_for_select(
+		        [[l(:groups_no_grouping), 'none'], 
+		         [l(:groups_trackers), 'trackers'], 
+		         [l(:groups_priorities), 'priorities'], 
+		         [l(:groups_assignee), 'assignee'], 
+		         [l(:groups_category), 'categories'], 
+		         [l(:groups_versions), 'versions']],
+		        @options[:group]
+		      ),
+		      :onchange => remote_function(
+		    :update => "dashboard",
+		    :with   => "'group=' + value",
+		    :url => { :action => :index })
+		%>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" value="<%=l(:update) %>" />
+		<a href="#" onclick="<%= 
+	    	remote_function(
+	          :update => "dashboard",
+	          :with   => "'reset=1'",
+	          :url => { :action => :index }) %>"><button type="button"><%=l(:reset) %></button></a>
+	</fieldset>
+	<fieldset class="dashboard-options">
+		<legend><%=l(:options) %></legend>
+		<ul>
+			<li class="first">
+				<input type="hidden" name="change_assignee" value="0" />
+				<input type="checkbox" id="change_assignee" name="change_assignee"<%= ' checked="checked"' if @options[:change_assignee] %> value="1" />
+				<label for="change_assignee" title="<%=l(:change_assignee_info) %>"><%=l(:change_assignee) %></label>
+			</li>
+			<li>
+				<br />
+				<input class="submit" type="submit" value="<%=l(:update) %>" />
+			</li>
+		</ul>
+	</fieldset>
+<% end -%>
 </div>

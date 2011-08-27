@@ -26,3 +26,7 @@ en:
   reset: Reset
   update: Update
   field_resolution: Resolution
+  options: Options
+  filters_and_view: Filters & View
+  change_assignee: Change assignee
+  change_assignee_info: Change assignee to current user when issue is moved.

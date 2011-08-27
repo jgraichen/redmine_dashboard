@@ -1,8 +1,10 @@
-<%= render :partial => 'filter_view' %>
-<p>
-	<%= @error_message %>
-	<%= @message %>
+<% if not @message.nil? -%>
+<p class="dashboard-error">
+	<%=h @message %>
 </p>
+<% end -%>
+<%= render :partial => 'filter_view' %>
+
 <table id="dashboard-table" style="min-width: <%= @dashboard.columns.length*165 %>px">
   <thead>
     <tr>

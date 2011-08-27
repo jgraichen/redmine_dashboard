@@ -9,7 +9,7 @@
 </div>
 
 <div class="dashboard-priority-legend">
-<% @priorities.each do |priority| %>
+<% IssuePriority.find(:all).each do |priority| %>
   <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
 <% end %>
 </div>

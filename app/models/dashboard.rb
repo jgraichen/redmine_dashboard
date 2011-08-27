@@ -20,6 +20,13 @@ class Dashboard
     @groups << DashboardGroup.new(name, params, block)
   end
   
+  def accept?(issue)
+    @filters.each do |key, proc|
+      return false unless proc.nil? or proc.call(issue)
+    end 
+    return true
+  end
+  
   def drag_enabled?
     !!@drag_enabled
   end

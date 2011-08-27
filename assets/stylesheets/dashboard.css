@@ -3,6 +3,7 @@
 #dashboard-table {
 	width: 100%;
 	position: relative;
+	margin-top: 4.5em;
 }
 #dashboard-table thead th {
 	text-align: left;
@@ -35,12 +36,50 @@
 .dashboard-done-question-content {
 	margin-left: 180px;
 }
+.dashboard-error {
+	border: 1px solid red;
+}
 /* FILTER */
 .dashboard-filter {
-	text-align: right;
 }
-.dashboard-filter-view, .dashboard-filter-submit {
-	padding-left: 20px;
+.dashboard-filter fieldset {
+	float: right; 
+	margin-left: 10px;
+	overflow: hidden;
+	min-height: 2.8em;
+	max-height: 2.8em;
+	background-color: #fff;
+	z-index: 80;
+	position: relative;
+}
+.dashboard-filter fieldset:hover {
+	max-height: 100em;
+}
+/* OPTIONS */
+.dashboard-options ul {
+	position: relative;
+	text-align: left;
+	list-style: none;
+	padding: 3px;
+	margin: 0;
+	font-size: 1em;
+}
+.dashboard-options:hover ul {
+	display: block;
+}
+.dashboard-options ul input {
+	float: left;
+	margin-right: 4px;
+}
+.dashboard-options ul input.submit {
+	float: right;
+}
+.dashboard-options li {
+	padding: 0 0 2px 0;
+	visibility: hidden;
+}
+.dashboard-options:hover li, .dashboard-options ul li.first {
+	visibility: visible;
 }
 /* LEGEND */
 .dashboard-priority-legend {

@@ -26,3 +26,7 @@ de:
   reset: Zurücksetzen
   update: Aktualisieren
   field_resolution: Lösung
+  options: Optionen
+  filters_and_view: Filter & Ansicht
+  change_assignee: Ändere Verantwortlichen
+  change_assignee_info: Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird.
