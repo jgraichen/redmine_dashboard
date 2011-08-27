@@ -57,6 +57,10 @@
 	border-left: 5px solid #ccc;
 	height: 100%;
 }
+.dashboard-issue-overdue .dashboard-card, 
+.dashboard-issue-overdue .dashboard-item {
+	border-color: #f00;
+}
 .dashboard-priority-1 {
 	border-color: #aaa;
 }

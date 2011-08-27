@@ -64,9 +64,6 @@ class DashboardController < ApplicationController
     render '_dashboard', :layout => false
   end
   
-  def update_dashboard_xhr
-  end
-  
 private
   def setup
     # TODO: Filter überarbeiten
@@ -109,24 +106,25 @@ private
     end
     @dashboard << DashboardColumn.new(l(:label_column_done), 'status', 'done') { |issue| issue.status.is_closed? }
     
-    if @group == 'trackers'
+    case @group
+    when 'trackers'
       @project.trackers.each do |tracker|
        @dashboard << DashboardGroup.new(tracker.name, 'tracker', tracker.id) { |issue| issue.tracker == tracker }
       end
-    elsif @group == 'priorities'
+    when 'priorities'
       IssuePriority.find(:all).reverse.each do |p|
         @dashboard << DashboardGroup.new(p.name, 'priority', p.position) { |issue| issue.priority_id == p.id }
       end
-    elsif @group == 'assignee'
+    when 'assignee'
       @dashboard << DashboardGroup.new(l(:my_issues), 'assignee', User.current.id) { |issue| issue.assigned_to_id == User.current.id }
       @dashboard << DashboardGroup.new(l(:unassigned), 'assignee', 'none') { |issue| issue.assigned_to_id.nil? }
       @dashboard << DashboardGroup.new(l(:others), 'assignee', 'other') { |issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id }
-    elsif @group == 'categories'
+    when 'categories'
       @project.issue_categories.each do |category|
         @dashboard << DashboardGroup.new(category.name, 'category', category.id) { |issue| issue.category_id == category.id }
       end
       @dashboard << DashboardGroup.new(l(:unassigned), 'category', 'none') { |issue| issue.category.nil? }
-    elsif @group == 'versions'
+    when 'versions'
       @project.versions.each do |version|
         @dashboard << DashboardGroup.new(version.name, 'version', version.id) { |issue| issue.fixed_version_id == version.id }
       end

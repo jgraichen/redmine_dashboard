@@ -5,7 +5,7 @@
   </div>
 <% end -%>
 <% issues.each do |issue| -%>
-  <div class="dashboard-issue drag-<%=group.id%>" id="issue-<%=issue.id%>">
+  <div class="dashboard-issue drag-<%=group.id%><%= " dashboard-issue-overdue" if issue.overdue? %>" id="issue-<%=issue.id%>">
 <%= render :partial => DashboardController::VIEW_MODES[@view], 
            :locals => {
            :issue => issue
