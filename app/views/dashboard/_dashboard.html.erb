@@ -48,7 +48,7 @@
          :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + 
            remote_function(
              :update => "dashboard", 
-             :with   => "'issue=' + (element.id.split('-').last()) + '&"+to_query(column.params)+'&'+to_query(group.params)+"'", 
+             :with   => "'issue=' + (element.id.split('-').last()) + '&"+column.params.to_query+'&'+group.params.to_query+"'", 
              :url => { :action => :index }
            ) + ' }'
        ) -%>
