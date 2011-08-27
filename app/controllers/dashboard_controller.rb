@@ -157,6 +157,9 @@ private
     if not @options[:tracker].to_s == 'all'
       @issues = @issues.select { |i| i.tracker_id == @options[:tracker].to_i }
     end
+    if @options[:hide_done]
+      @issues = @issues.select { |i| !i.status.is_closed? }
+    end
     
     @issues = @issues.sort { |a,b| b.priority.position <=> a.priority.position }
   end
