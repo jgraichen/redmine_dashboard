@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
   description 'Add an issue dashboard to Redmine'
-  version '1.1'
+  version '1.2'
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jan.graichen@altimos.de'
 

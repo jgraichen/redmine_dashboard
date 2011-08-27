@@ -50,6 +50,7 @@ assignee and version.
 **Options**
 
 - Change assignee to current user when an issue is moved.
+- Hide closed issue and resize done column.
 
 
 Custom Fields
