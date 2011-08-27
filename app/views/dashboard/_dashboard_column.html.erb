@@ -11,13 +11,14 @@
            :issue => issue
     } %>
   </div>
-  <script type="text/javascript"><%= 
-    draggable_element_js(
+<% javascript_tag do -%>
+<%= draggable_element_js(
       "issue-"+issue.id.to_s, 
       :scroll => :window, 
       :revert => :true,
       :onEnd => "function(obj){obj.element.setStyle({top:0,left:0});obj.element.removeClassName('dashboard-dragged');}",
       :onStart => "function(obj){obj.element.addClassName('dashboard-dragged');}"
-    ) if @edit_enabled %></script>
+    ) %>
 <% end -%>
+<% end  if @edit_enabled -%>
 </td>

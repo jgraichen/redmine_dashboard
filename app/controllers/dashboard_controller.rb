@@ -124,40 +124,40 @@ private
   end
   
   def load_dashboard
-    @dashboard = Dashboard.new(:drag_allowed => User.current.allowed_to?(:edit_issues, @project))
+    @dashboard = Dashboard.new(@project, :drag_allowed => User.current.allowed_to?(:edit_issues, @project))
     
     IssueStatus.find(:all, :order => 'position').each do |status|
-      @dashboard << DashboardColumn.new(status.name, 'status', status.id) { |issue| issue.status == status } unless status.is_closed?
+      @dashboard << DashboardColumn.new("status-#{status.id}", status.name, :status => status.id) { |issue| issue.status == status } unless status.is_closed?
     end
-    @dashboard << DashboardColumn.new(l(:label_column_done), 'status', 'done') { |issue| issue.status.is_closed? }
+    @dashboard << DashboardColumn.new('status-done', :label_column_done, :status => 'done') { |issue| issue.status.is_closed? }
     
     case @group
     when 'trackers'
       @project.trackers.each do |tracker|
-       @dashboard << DashboardGroup.new(tracker.name, 'tracker', tracker.id) { |issue| issue.tracker == tracker }
+       @dashboard << DashboardGroup.new("tracker-#{tracker.id}", tracker.name, :tracker => tracker.id) { |issue| issue.tracker == tracker }
       end
     when 'priorities'
       IssuePriority.find(:all).reverse.each do |p|
-        @dashboard << DashboardGroup.new(p.name, 'priority', p.position) { |issue| issue.priority_id == p.id }
+        @dashboard << DashboardGroup.new("priority-#{p.id}", p.name, :priority => p.position) { |issue| issue.priority_id == p.id }
       end
     when 'assignee'
-      @dashboard << DashboardGroup.new(l(:my_issues), 'assignee', User.current.id) { |issue| issue.assigned_to_id == User.current.id }
-      @dashboard << DashboardGroup.new(l(:unassigned), 'assignee', 'none') { |issue| issue.assigned_to_id.nil? }
-      @dashboard << DashboardGroup.new(l(:others), 'assignee', 'other') { |issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id }
+      @dashboard << DashboardGroup.new(:assigne_me, :my_issues, :assignee => User.current.id) { |issue| issue.assigned_to_id == User.current.id }
+      @dashboard << DashboardGroup.new(:assigne_none, :unassigned, :assignee => 'none') { |issue| issue.assigned_to_id.nil? }
+      @dashboard << DashboardGroup.new(:assigne_other, :others, :assignee => 'other') { |issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id }
     when 'categories'
       @project.issue_categories.each do |category|
-        @dashboard << DashboardGroup.new(category.name, 'category', category.id) { |issue| issue.category_id == category.id }
+        @dashboard << DashboardGroup.new("category-#{category.id}", category.name, :category => category.id) { |issue| issue.category_id == category.id }
       end
-      @dashboard << DashboardGroup.new(l(:unassigned), 'category', 'none') { |issue| issue.category.nil? }
+      @dashboard << DashboardGroup.new(:category_none, :unassigned, :category => 'none') { |issue| issue.category.nil? }
     when 'versions'
       @project.versions.each do |version|
-        @dashboard << DashboardGroup.new(version.name, 'version', version.id) { |issue| issue.fixed_version_id == version.id }
+        @dashboard << DashboardGroup.new("version-#{version.id}", version.name, :version => version.id) { |issue| issue.fixed_version_id == version.id }
       end
-      @dashboard << DashboardGroup.new(l(:unassigned), 'version', 'none') { |issue| issue.fixed_version.nil? }
+      @dashboard << DashboardGroup.new(:version_none, :unassigned, :version => 'none') { |issue| issue.fixed_version.nil? }
     end
 
     if @dashboard.groups.empty?
-      @dashboard << DashboardGroup.new(l(:all_issues), 'all', 'all')
+      @dashboard << DashboardGroup.new(:all, :all_issues)
     end
   end
 

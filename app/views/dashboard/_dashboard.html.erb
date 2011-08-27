@@ -7,7 +7,7 @@
   <thead>
     <tr>
 <% @dashboard.columns.each do |column| -%>
-      <th style="width: <%= 100.0/@dashboard.columns.length %>%"><%= column.name %></th>
+      <th style="width: <%= 100.0/@dashboard.columns.length %>%"><%=h column.title %></th>
 <% end -%>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
 <% if @dashboard.groups.length > 1 -%>
     <tr class="dashboard-<%= group.id %>">
       <th colspan="<%= @dashboard.columns.length %>">
-        <span><%= h(group.name) %></span>
+        <span><%= h(group.title) %></span>
       </th>
     </tr>
 <% end -%>
@@ -48,11 +48,11 @@
          :onDrop => 'function(element, drop) { if(element.parentNode == drop) return; element.hide(); ' + 
            remote_function(
              :update => "dashboard", 
-             :with   => "'issue=' + (element.id.split('-').last()) + '&"+column.param+"&"+group.param+"'", 
+             :with   => "'issue=' + (element.id.split('-').last()) + '&"+to_query(column.params)+'&'+to_query(group.params)+"'", 
              :url => { :action => :index }
            ) + ' }'
        ) -%>
-<% end -%>
+<% end %>
 <% end -%>
 <% end -%>
 <% end -%>

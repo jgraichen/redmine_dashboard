@@ -1,7 +1,8 @@
 class Dashboard
   attr_reader :groups, :columns
   
-  def initialize(options={})
+  def initialize(project, options = {})
+    @project = project
     @groups, @columns = [], []
     @grag_enabled = options[:drag_enabled] || true
   end
@@ -9,6 +10,14 @@ class Dashboard
   def <<(element)
     @groups  << element if element.is_a?(DashboardGroup)
     @columns << element if element.is_a?(DashboardColumn)
+  end
+  
+  def add_column(name, params = {}, &block)
+    @columns << DashboardColumn.new(name, params, block)
+  end
+  
+  def add_group(name, params = {}, &block)
+    @groups << DashboardGroup.new(name, params, block)
   end
   
   def drag_enabled?

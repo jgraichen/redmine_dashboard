@@ -1,10 +1,10 @@
 class DashboardGroup
-  attr_accessor :name, :id, :param
+  attr_reader :name, :params, :id
   
-  def initialize(name, param, id, &filter) 
+  def initialize(id, name, params = {}, &filter) 
+    @id = id
     @name = name
-    @id = param.to_s+'-'+id.to_s
-    @param = param.to_s+'='+id.to_s
+    @params = params
     @filter = filter
   end
   
@@ -12,5 +12,13 @@ class DashboardGroup
     return true if @filter.nil?
     
     @filter.call(issue)
+  end
+  
+  def id 
+    @id.to_s
+  end
+  
+  def title
+    name.is_a?(Symbol) ? I18n.translate(name) : name.to_s
   end
 end
