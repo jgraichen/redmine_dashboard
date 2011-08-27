@@ -83,7 +83,7 @@ private
     @options = {
       :view => :card,
       :owner => :me,
-      :version => :all,
+      :version => find_version || :all,
       :tracker => 'all',
       :group => 'none',
       :change_assignee => false,
@@ -190,5 +190,15 @@ private
     @project.custom_field_values.each do |f|
       @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
     end
+  end
+  
+  def find_version
+    version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date > 0')
+    return version.id unless version.nil?
+    
+    version = @project.versions.open.find(:first, :order => 'name ASC')
+    return version.id unless version.nil?
+    
+    nil
   end
 end
