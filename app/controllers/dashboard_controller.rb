@@ -92,18 +92,18 @@ class DashboardController < ApplicationController
 private
   def setup
     # TODO: Filter überarbeiten
-    if params[:reset]
-	    session[filter_name(:view)] = nil
-	    session[filter_name(:owner)] = nil
-	    session[filter_name(:version)] = nil
-	    session[filter_name(:tracker)] = nil
-	    session[filter_name(:group)] = nil
+    if params[:reset].nil?
+      session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
+      session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
+      session[filter_name(:version)] = params[:version]     if !params[:version].nil?
+      session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
+      session[filter_name(:group)] = params[:group]         if !params[:group].nil?
     else
-	    session[filter_name(:view)] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
-	    session[filter_name(:owner)] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
-	    session[filter_name(:version)] = params[:version]     if !params[:version].nil?
-	    session[filter_name(:tracker)] = params[:tracker]     if !params[:tracker].nil?
-	    session[filter_name(:group)] = params[:group]         if !params[:group].nil?
+      session[filter_name(:view)] = nil
+      session[filter_name(:owner)] = nil
+      session[filter_name(:version)] = nil
+      session[filter_name(:tracker)] = nil
+      session[filter_name(:group)] = nil
     end
     
     @view = session[filter_name(:view)] || :card;

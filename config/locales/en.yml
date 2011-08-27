@@ -24,4 +24,5 @@ en:
   groups_versions: Version
   select_done_status: Finish isssue
   reset: Reset
+  update: Update
   field_resolution: Resolution
