@@ -70,7 +70,8 @@ Supported languages
 Screenshots
 -----------
 
-[![Card view](http://altimos.de/redmine_dashboard/redmine_dashboard.png)](http://altimos.de/redmine_dashboard/redmine_dashboard.png)
+[![Card view](http://altimos.de/redmine_dashboard/redmine_dashboard_thumb.png)](http://altimos.de/redmine_dashboard/redmine_dashboard.png)
+[![List view](http://altimos.de/redmine_dashboard/redmine_dashboard-list_thumb.png)](http://altimos.de/redmine_dashboard/redmine_dashboard-list.png)
 
 
 License
