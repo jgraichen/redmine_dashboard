@@ -1,0 +1,15 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'dashboard', :plugin => 'redmine_dashboard' %>
+<% end %>
+
+<h2>Dashboard</h2>
+
+<div id="dashboard">
+<%= render :partial => 'dashboard_done' %>
+</div>
+
+<div class="dashboard-priority-legend">
+<% @priorities.each do |priority| %>
+  <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
+<% end %>
+</div>

@@ -13,60 +13,10 @@ class DashboardController < ApplicationController
       @issue = Issue.find(params[:issue]);
       
       if params[:status] == 'done'
-        load_issue_resolutions(@issue)
-        @done_statuses = []
-        IssueStatus.find(:all).each do |s|
-          @done_statuses << [s.name, s.id.to_s] if s.is_closed?
-        end
-        if request.xhr?
-          render '_dashboard_done', :layout => false
-        else
-          render 'index_done'
-        end
+        show_done_form(@issue)
         return
-      end
-      
-      status = IssueStatus.find_by_id(params[:status])
-      old_status = @issue.status
-      old_done_ratio = @issue.done_ratio
-      allowed_statuses = @issue.new_statuses_allowed_to(User.current)
-      
-      # check if user is allowed to change ticket status and ticket status
-      # is not the same as before
-      if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
-        
-        @issue.update_attribute(:status_id, status.id)
-        @issue.update_attribute(:done_ratio, params[:done_ratio].to_i) unless params[:done_ratio].nil?
-        
-        # Update the journal containing all the changes to the issue.
-        journal = @issue.init_journal(User.current, params[:notes] || nil)
-        journal.details << JournalDetail.new(
-                                :property => 'attr',
-                                :prop_key => 'status_id',
-                                :old_value => old_status.id,
-                                :value => status.id )
-                                
-        if not params[:done_ratio].nil?
-          journal.details << JournalDetail.new(
-                                  :property => 'attr',
-                                  :prop_key => 'done_ratio',
-                                  :old_value => old_done_ratio,
-                                  :value => @issue.done_ratio )
-        end
-
-        load_issue_resolutions(@issue)
-        resolution_field = issue_resolution_field(@issue)
-        if resolution_field.value != params[:resolution].to_s
-          old_resolution = resolution_field.value
-          resolution_field.value = params[:resolution].to_s
-          resolution_field.save
-          journal.details << JournalDetail.new(
-                                  :property => 'cf',
-                                  :prop_key => resolution_field.custom_field.id,
-                                  :old_value => old_resolution,
-                                  :value => resolution_field.value )
-        end
-        journal.save
+      else
+        update_issue(@issue, params)
       end
     end
     
@@ -77,6 +27,66 @@ class DashboardController < ApplicationController
     
     load_issues
     render '_dashboard', :layout => false
+  end
+  
+  def show_done_form(issue)
+    load_issue_resolutions(@issue)
+    @done_statuses = []
+    IssueStatus.find(:all).each do |s|
+      @done_statuses << [s.name, s.id.to_s] if s.is_closed?
+    end
+    if request.xhr?
+      render '_dashboard_done', :layout => false
+    else
+      render 'index_done'
+    end
+  end
+  
+  def update_issue(issue, attributes)
+      status = IssueStatus.find_by_id(attributes[:status])
+      old_status = issue.status
+      old_done_ratio = issue.done_ratio
+      allowed_statuses = issue.new_statuses_allowed_to(User.current)
+      
+      # check if user is allowed to change ticket status and ticket status
+      # is not the same as before
+      if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
+        
+        issue.update_attribute(:status_id, status.id)
+        issue.update_attribute(:done_ratio, attributes[:done_ratio].to_i) unless attributes[:done_ratio].nil?
+        
+        # Update the journal containing all the changes to the issue.
+        journal = issue.init_journal(User.current, attributes[:notes] || nil)
+        journal.details << JournalDetail.new(
+                                :property => 'attr',
+                                :prop_key => 'status_id',
+                                :old_value => old_status.id,
+                                :value => status.id )
+                                
+        if not attributes[:done_ratio].nil?
+          journal.details << JournalDetail.new(
+                                  :property => 'attr',
+                                  :prop_key => 'done_ratio',
+                                  :old_value => old_done_ratio,
+                                  :value => issue.done_ratio )
+        end
+
+        load_issue_resolutions(issue)
+        resolution_field = issue_resolution_field(issue)
+        if resolution_field.value != attributes[:resolution].to_s
+          old_resolution = resolution_field.value
+          resolution_field.value = attributes[:resolution].to_s
+          resolution_field.save
+          journal.details << JournalDetail.new(
+                                  :property => 'cf',
+                                  :prop_key => resolution_field.custom_field.id,
+                                  :old_value => old_resolution,
+                                  :value => resolution_field.value )
+        end
+        journal.save
+        return true
+      end
+      false
   end
   
 private
