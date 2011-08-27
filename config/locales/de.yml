@@ -25,6 +25,7 @@ de:
   select_done_status: Ticket aktualisieren
   reset: Zurücksetzen
   update: Aktualisieren
+  save: Speichern
   field_resolution: Lösung
   options: Optionen
   filters_and_view: Filter & Ansicht

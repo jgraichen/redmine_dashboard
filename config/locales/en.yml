@@ -25,6 +25,7 @@ en:
   select_done_status: Finish isssue
   reset: Reset
   update: Update
+  save: Save
   field_resolution: Resolution
   options: Options
   filters_and_view: Filters & View
