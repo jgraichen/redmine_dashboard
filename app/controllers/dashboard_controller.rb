@@ -2,16 +2,16 @@ class DashboardController < ApplicationController
   unloadable
 
   before_filter :find_project, :authorize, :setup
-  
+
   VIEW_MODES = {
-    :card => 'issue_card', 
+    :card => 'issue_card',
     :list => 'issue_item'
   }
-  
+
   def index
     if !params[:issue].nil? and @edit_enabled
       @issue = Issue.find(params[:issue]);
-      
+
       if params[:status] == 'done'
         show_done_form(@issue)
         return
@@ -19,11 +19,11 @@ class DashboardController < ApplicationController
         update_issue(@issue, params)
       end
     end
-    
+
     load_issues
     render '_dashboard', :layout => false if request.xhr?
   end
-  
+
   def show_done_form(issue)
     load_issue_resolutions(@issue)
     @done_statuses = []
@@ -36,48 +36,34 @@ class DashboardController < ApplicationController
       render 'index_done'
     end
   end
-  
-  def update_issue(issue, attributes)
-      status = IssueStatus.find_by_id(attributes[:status])
-      old_status = issue.status
-      old_done_ratio = issue.done_ratio
-      allowed_statuses = issue.new_statuses_allowed_to(User.current)
-      
-      # check if user is allowed to change ticket status and ticket status
-      # is not the same as before
-      if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
-        
-        issue.update_attribute(:status_id, status.id)
-        issue.update_attribute(:done_ratio, attributes[:done_ratio].to_i) unless attributes[:done_ratio].nil?
-        
-        # Update the journal containing all the changes to the issue.
-        journal = issue.init_journal(User.current, attributes[:notes] || nil)
-        journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'status_id', :old_value => old_status.id, :value => status.id )
-                                
-        if not attributes[:done_ratio].nil?
-          journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'done_ratio', :old_value => old_done_ratio, :value => issue.done_ratio )
-        end
 
-        load_issue_resolutions(issue)
-        resolution_field = issue_resolution_field(issue)
-        if !resolution_field.nil? and resolution_field.value != attributes[:resolution].to_s
-          old_resolution = resolution_field.value
-          resolution_field.value = attributes[:resolution].to_s
-          resolution_field.save
-          journal.details << JournalDetail.new(:property => 'cf', :prop_key => resolution_field.custom_field.id, :old_value => old_resolution, :value => resolution_field.value )
-        end
-        
-        if @options[:change_assignee] && issue.assigned_to_id != User.current.id
-          # not required?
-          #journal.details << JournalDetail.new(:property => 'attr', :prop_key => 'assigned_to', :old_value => issue.assigned_to_id, :value => User.current.id )
-          issue.update_attribute(:assigned_to_id, User.current.id)
-        end
-        journal.save
-        return true
+  def update_issue(issue, attributes)
+    status = IssueStatus.find_by_id(attributes[:status])
+    old_status = issue.status
+    old_done_ratio = issue.done_ratio
+    allowed_statuses = issue.new_statuses_allowed_to(User.current)
+
+    # check if user is allowed to change ticket status and ticket status
+    # is not the same as before
+    if (User.current.admin? or allowed_statuses.include?(status)) and status != old_status
+      load_issue_resolutions(issue)
+      resolution_field = issue_resolution_field(issue)
+
+      issue.init_journal(User.current, attributes[:notes] || nil)
+
+      issue.status_id = status.id
+      issue.done_ratio = attributes[:done_ratio].to_i if attributes[:done_ratio]
+      issue.assigned_to_id = User.current.id if @options[:change_assignee] && issue.assigned_to_id != User.current.id
+
+      if !resolution_field.nil? and resolution_field.value != attributes[:resolution].to_s
+        issue.custom_field_values = { resolution_field.custom_field.id => attributes[:resolution].to_s }
       end
-      false
+
+      return issue.save
+    end
+    false
   end
-  
+
 private
   def setup
     @options = {
@@ -89,10 +75,10 @@ private
       :change_assignee => false,
       :hide_done => false
     }
-    
+
     if params[:reset].nil?
       @options = session['dashboard_'+@project.id.to_s] if session['dashboard_'+@project.id.to_s].is_a?(Hash)
-      
+
       @options[:view] = params[:view].to_sym    if !params[:view].nil? and !VIEW_MODES[params[:view].to_sym].nil?
       @options[:owner] = params[:owner].to_sym  if params[:owner] == 'all' or params[:owner] == 'me'
       @options[:version] = params[:version]     unless params[:version].nil?
@@ -100,21 +86,21 @@ private
       @options[:group] = params[:group]         unless params[:group].nil?
       @options[:change_assignee] = (params[:change_assignee] == "1" ? true : false) unless params[:change_assignee].nil?
       @options[:hide_done] = (params[:hide_done] == "1" ? true : false) unless params[:hide_done].nil?
-      
+
       session['dashboard_'+@project.id.to_s] = @options
     end
-    
+
     load_dashboard
   end
-  
+
   def load_dashboard
     @dashboard = Dashboard.new(@project, :drag_allowed => User.current.allowed_to?(:edit_issues, @project))
-    
+
     IssueStatus.find(:all, :order => 'position').each do |status|
       @dashboard << DashboardColumn.new("status-#{status.id}", status.name, :status => status.id) { |issue| issue.status == status } unless status.is_closed?
     end
     @dashboard << DashboardColumn.new('status-done', :label_column_done, :status => 'done') { |issue| issue.status.is_closed? && !@options[:hide_done] }
-    
+
     case @options[:group]
     when 'trackers'
       @project.trackers.each do |tracker|
@@ -147,7 +133,7 @@ private
 
   def load_issues
     @issues = @project.issues.to_a
-    
+
     if not @options[:owner] == :all
       @issues = @issues.select { |i| i.assigned_to == User.current }
     end
@@ -160,21 +146,21 @@ private
     if @options[:hide_done]
       @issues = @issues.select { |i| !i.status.is_closed? }
     end
-    
+
     @issues = @issues.sort { |a,b| b.priority.position <=> a.priority.position }
   end
-  
+
   def load_issue_resolutions(issue)
     @done_resolved = []
     resolution_field = issue_resolution_field(issue)
     return nil if resolution_field.nil?
-    
+
     resolution_field.custom_field.possible_values.each do |v|
-      @done_resolved << [v, v] 
+      @done_resolved << [v, v]
     end
     return @done_resolved
   end
-  
+
   # TODO: Dirty method
   def issue_resolution_field(issue)
     issue.custom_field_values.each do |f|
@@ -184,24 +170,24 @@ private
     end
     return nil
   end
-  
+
   def find_project
     @project = Project.find(params[:id])
     @edit_enabled = User.current.allowed_to?(:edit_issues, @project)
-    
+
     @project_abbr = '#'
     @project.custom_field_values.each do |f|
       @project_abbr = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
     end
   end
-  
+
   def find_version
-    version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date > 0')
+    version = @project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
     return version.id unless version.nil?
-    
+
     version = @project.versions.open.find(:first, :order => 'name ASC')
     return version.id unless version.nil?
-    
+
     nil
   end
 end

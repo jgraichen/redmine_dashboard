@@ -3,7 +3,7 @@ en:
   label_column_done: Done
   label_x_issues:
     one: 1 Issue
-    other: %{count} Issues
+    other: "%{count} Issues"
   all_trackers: All Trackers
   all_issues: All Issues
   my_issues: My Issues
@@ -28,7 +28,7 @@ en:
   save: Save
   field_resolution: Resolution
   options: Options
-  filters_and_view: Filters & View
+  filters_and_view: "Filters & View"
   change_assignee: Change assignee
   change_assignee_info: Change assignee to current user when issue is moved.
   hide_done: Hide closed issues
