@@ -1,0 +1,135 @@
+
+
+
+<div id="dashboard-header">
+  <span id="dashboard-refresh">
+    <%= link_to taskboard_path, :data => { :dashboard => :async }, :class => "inactive dashboard-reload" do %>
+      <%= image_tag 'reload.png' %>
+    <% end %>
+  </span>
+  <span id="dashboard-type">
+    <span class="dashboard-menu">
+      <h2><a href="#" class="dashboard-menu-link"><%= @board.name %></a></h2>
+      <span class="dashboard-menu-container">
+        <ul>
+          <li><%= link_to t(:dashboard_taskboard), taskboard_path %></li>
+          <li><%= link_to t(:dashboard_planboard), planboard_path %></li>
+        </ul>
+      </span>
+    </span>
+  </span>
+  <span id="dashboard-version" class="dashboard-header-filter">
+    <%= dashboard_menu 'Version', :version, @board.options[:version],
+      [
+        [[l(:dashboard_all_versions), 'all', nil]],
+        @open_versions.map {|v| [v.name, v.id]},
+        @closed_versions.map {|v| [v.name, v.id]}
+      ] do |title, id|
+        link_to title, taskboard_path(:version => id), :data => { :dashboard => :async }
+    end %>
+  </span>
+  <span id="dashboard-tracker" class="dashboard-header-filter">
+    <%= dashboard_menu 'Tracker', :tracker, @board.options[:tracker],
+      [
+        [[l(:dashboard_all_trackers), 'all', nil]],
+        @project.trackers.map{|t| [t.name, t.id] }
+      ] do |title, id|
+        link_to title, taskboard_path(:tracker => id), :data => { :dashboard => :async }
+    end %>
+  </span>
+  <span id="dashboard-assignee" class="dashboard-header-filter">
+    <%= dashboard_menu 'Assignee', :assignee, @board.options[:assignee],
+      [
+        [[l(:dashboard_my_issues), :me, nil],
+          [l(:dashboard_all_issues), :all]],
+        @project.members.map{|m| [m.name, m.id] }
+      ] do |title, id|
+        link_to title, taskboard_path(:assignee => id), :data => { :dashboard => :async }
+    end %>
+  </span>
+  <span id="dashboard-view-options" class="dashboard-header-options">
+    <span class="dashboard-menu">
+      <a href="#" class="dashboard-menu-link"><%=t :dashboard_options_view %></a>
+      <span class="dashboard-menu-container">
+        <h4><%=t :dashboard_options_issue_view %></h4>
+        <ul>
+          <% Dashboard::VIEW_MODES.each do |mode|  %>
+            <li><%= link_to t(:"dashboard_options_issue_view_#{mode}"), taskboard_path(:view => mode), :data => { :dashboard => :async },
+              :class => @board.options[:view] == mode ? :active : :inactive %></li>
+          <% end %>
+        </ul>
+        <h4><%=t :dashboard_options_group %></h4>
+        <ul>
+          <% ['none', 'tracker', 'category', 'priority', 'assignee', 'version'].each do |mode|  %>
+            <li><%= link_to t(:"dashboard_group_#{mode}"), taskboard_path(:group => mode), :data => { :dashboard => :async },
+              :class => @board.options[:group] == mode ? :active : :inactive  %></li>
+          <% end %>
+        </ul>
+      </span>
+    </span>
+  </span>
+  <span id="dashboard-options" class="dashboard-header-options">
+    <span class="dashboard-menu">
+      <a href="#" class="dashboard-menu-link"><%=t :dashboard_options %></a>
+      <span class="dashboard-menu-container">
+        <ul>
+          <li><%= link_to t(:dashboard_options_change_assignee), taskboard_path(:change_assignee => !@board.options[:change_assignee]),
+            :class => (@board.options[:change_assignee] ? 'active' : 'inactive'), :title => t(:dashboard_options_change_assignee_info),
+            :data => { :dashboard => :async } %></li>
+          <li><%= link_to t(:dashboard_options_hide_done), taskboard_path(:hide_done => !@board.options[:hide_done]),
+            :class => (@board.options[:hide_done] ? 'active' : 'inactive'), :title => t(:dashboard_options_hide_done_info),
+            :data => { :dashboard => :async } %></li>
+        </ul>
+        <ul>
+          <li><%= link_to t(:dashboard_options_reset), taskboard_path(:reset => 1), :data => { :dashboard => :async }, :class => "inactive dashboard-reset",
+            :title => t(:dashboard_options_reset_info) %></li>
+        </ul>
+      </span>
+    </span>
+  </span>
+</div>
+
+<div id="dashboard">
+  <table id="dashboard-taskboard" style="min-width: <%= @board.columns.length*165 %>px">
+    <thead>
+      <tr>
+        <% @board.columns.each do |column| -%>
+          <% if @board.options[:hide_done] -%>
+            <% if column.id == 'status-done' -%>
+              <th style="width: 10%"><%=h column.title %></th>
+            <% else -%>
+              <th style="width: <%= 90.0/(@board.columns.length-1) %>%"><%=h column.title %></th>
+            <% end -%>
+          <% else -%>
+            <th style="width: <%= 100.0/@board.columns.length %>%"><%=h column.title %></th>
+          <% end -%>
+        <% end -%>
+      </tr>
+    </thead>
+    <tbody>
+      <% @board.groups.each do |group| -%>
+        <% # TODO: Dirty empty group check %>
+        <% if group.filter(@board.issues).length > 0 -%>
+          <% if @board.groups.length > 1 -%>
+            <tr class="dashboard-<%= group.id %>">
+              <th colspan="<%= @board.columns.length %>">
+                <span><%= h(group.title) %></span>
+              </th>
+            </tr>
+          <% end -%>
+          <tr class="dashboard-<%= group.id %>">
+            <% @board.columns.each do |column| -%>
+              <%= render :partial => 'taskboard_column',
+                         :locals => {
+                           :column => column,
+                           :group => group,
+                           :width => (100.0/@board.columns.length),
+                           :issues => column.filter(group.filter(@board.issues))
+                         } %>
+            <% end -%>
+          </tr>
+        <% end -%>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

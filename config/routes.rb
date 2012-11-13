@@ -1,4 +1,5 @@
+# Plugin's routes
+# See: http://guides.rubyonrails.org/routing.html
 
-ActionController::Routing::Routes.draw do |map|
-  map.connect 'projects/:id/dashboard', :controller => 'dashboard', :action => 'index'
-end
+match 'projects/:id/dashboard', :controller => 'taskboard', :action => 'index', :as => :taskboard
+match 'projects/:id/dashboard/plan', :controller => 'planboard', :action => 'index', :as => :planboard

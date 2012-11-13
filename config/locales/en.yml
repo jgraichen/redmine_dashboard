@@ -1,35 +1,50 @@
 # English strings go here for Rails i18n
 en:
-  label_column_done: Done
-  label_x_issues:
+  dashboard_taskboard: Task Board
+  dashboard_planboard: Plan Board
+  dashboard_all_issues: All Issues
+  dashboard_all_versions: All Versions
+  dashboard_all_trackers: All Trackers
+  dashboard_my_issues: My Issues
+
+  dashboard_options: Options
+  dashboard_options_change_assignee: Change assignee
+  dashboard_options_change_assignee_info: Change assignee to current user when issue is moved.
+  dashboard_options_hide_done: Hide closed issues
+  dashboard_options_hide_done_info: Hide closed issues and makes done column smaller.
+  dashboard_options_reset: Reset options
+  dashboard_options_reset_info: Reset all filters and options back to default
+
+  dashboard_options_view: View
+  dashboard_options_issue_view: Issue View
+  dashboard_options_issue_view_card: Card
+  dashboard_options_issue_view_compact: Compact
+  dashboard_options_group: Issue Grouping
+  dashboard_group_none: No Grouping
+  dashboard_group_category: Category
+  dashboard_group_assignee: Assignee
+  dashboard_group_tracker: Tracker
+  dashboard_group_priority: Priority
+  dashboard_group_version: Version
+
+
+  dashboard_label_column_done: Done
+  dashboard_label_x_issues:
     one: 1 Issue
     other: "%{count} Issues"
-  all_trackers: All Trackers
-  all_issues: All Issues
-  my_issues: My Issues
-  all_versions: All Versions
-  unassigned: Unassigned
-  card_view: Card View
-  list_view: List View
-  others: Others
-  open: Open
-  closed: Closed
-  open_without_date: Open (No Date)
-  no_category: Uncategorized
-  groups_no_grouping: No Grouping
-  groups_category: Category
-  groups_assignee: Assignee
-  groups_trackers: Tracker
-  groups_priorities: Priority
-  groups_versions: Version
-  select_done_status: Finish isssue
-  reset: Reset
-  update: Update
-  save: Save
-  field_resolution: Resolution
-  options: Options
-  filters_and_view: "Filters & View"
-  change_assignee: Change assignee
-  change_assignee_info: Change assignee to current user when issue is moved.
-  hide_done: Hide closed issues
-  hide_done_info: Hide closed issues and makes done column smaller.
+  dashboard_unassigned: Unassigned
+  dashboard_others: Others
+
+  old:
+    card_view: Card View
+    list_view: List View
+    open: Open
+    closed: Closed
+    open_without_date: Open (No Date)
+    no_category: Uncategorized
+    select_done_status: Finish isssue
+    update: Update
+    save: Save
+    field_resolution: Resolution
+    options: Options
+    filters_and_view: "Filters & View"

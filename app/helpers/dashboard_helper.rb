@@ -1,34 +1,31 @@
 module DashboardHelper
-  
-  def select_filter_versions
-    versions = @project.versions.find(:all) || []
-    versions = versions.uniq.sort
-    versions_done = versions.select { |version| !version.open? }
-    versions_open = versions.select { |version| version.open? && !version.effective_date.nil? }
-    versions_open_wodate = versions.select { |version| version.open? && version.effective_date.nil? }
-    
-    versions = [['', [[l(:all_versions), 'all'], [l(:unassigned), '0']]]]
-    
-    if versions_open.length > 0
-      versions << [l(:open), versions_open.map{|v| [v.name, v.id.to_s]}]
+
+  def dashboard_menu(name, param, value, options, &block)
+    title = nil
+    content_tag :span, :class => 'dashboard-menu' do
+      s = content_tag(:span, :class => 'dashboard-menu-container') do
+        options.map do |list|
+          sx = ''
+
+          sx << content_tag(:h3, list.first[1]) if list.first[1].nil?
+          sx << content_tag(:ul) do
+            list.map do |item|
+              next unless item.is_a? Array
+              if not title
+                if (item[1].to_s == value.to_s) or (item.size >= 3 and item[2] == value)
+                  title = item[0]
+                end
+              end
+
+              content_tag :li do
+                block.call item[0], item[1]
+              end
+            end.join("\n").html_safe
+          end
+          sx
+        end.join("\n").html_safe
+      end
+      content_tag(:a, title || name, :href => '#', :class => 'dashboard-menu-link') + s.html_safe
     end
-    
-    if versions_open_wodate.length > 0
-      versions << [l(:open_without_date), versions_open_wodate.map{|v| [v.name, v.id.to_s]}]
-    end
-  
-    if versions_done.length > 0
-      versions << [l(:closed), versions_done.map{|v| [v.name, v.id.to_s]}]
-    end
-  
-    options = grouped_options_for_select(versions,  @options[:version].to_s)
-    
-    select_tag(:version, options, :onchange => 
-      remote_function(
-        :update => "dashboard",
-        :with   => "'version=' + value",
-        :url => { :action => :index }
-      )
-    )
   end
 end

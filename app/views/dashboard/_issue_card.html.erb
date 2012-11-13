@@ -3,7 +3,7 @@
   <div class="dashboard-issue-priority dashboard-status-<%= issue.status.id %> dashboard-priority-<%= issue.priority.position %>">
     <div class="dashboard-card-header">
       <span class="dashboard-card-title">
-        <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
+        <%= link_to "#{@board.abbreviation}#{issue.id}", issue_path(issue) %>
       </span>
 <% if issue.done_ratio.between?(1,99) -%>
       <span class="dashboard-card-progress-percent"><%= issue.done_ratio %>%</span>

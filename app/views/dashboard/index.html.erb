@@ -1,15 +1,17 @@
 <% content_for :header_tags do %>
-  <%= stylesheet_link_tag 'dashboard', :plugin => 'redmine_dashboard' %>
+  <%= stylesheet_link_tag 'dashboard', :plugin => 'redmine_dashboard_linked' %>
+  <%= javascript_include_tag 'dashboard', :plugin => 'redmine_dashboard_linked' %>
 <% end %>
-
-<h2>Dashboard</h2>
-
-<div id="dashboard">
-<%= render :partial => 'dashboard' %>
+<div id="dashboard-origin">
+	<%= render :partial => @board.type %>
 </div>
-
-<div class="dashboard-priority-legend">
-<% IssuePriority.find(:all).each do |priority| %>
-  <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
-<% end %>
+<div id="dashboard-footer">
+	<div id="dashboard-copyright">
+		<a href="https://github.com/jgraichen/redmine_dashboard">Redmine Dashboard</a>
+	</div>
+	<div class="dashboard-priority-legend">
+	<% IssuePriority.find(:all).each do |priority| %>
+	  <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
+	<% end %>
+	</div>
 </div>
