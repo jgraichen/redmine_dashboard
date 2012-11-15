@@ -43,8 +43,29 @@
 .dashboard-priority-legend {
 	float: left;
 }
+.dashboard-priority-legend div {
+	padding: 0 0 4px 0;
+}
+.dashboard-priority-legend p {
+	float: left;
+	width: 60px;
+	margin: 0;
+	padding: 0;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+}
 .dashboard-priority-legend span {
 	padding: 0 10px 0 3px;
+}
+.dashboard-priority-legend .dashboard-issue-overdue {
+	padding: 0;
+}
+.dashboard-priority-legend .dashboard-issue-overdue span {
+	border: 1px solid red;
+	padding: 0;
+	margin-right: 3px;
 }
 
 /* menu */
@@ -136,13 +157,10 @@
 
 /* ------ */
 
-.dashboard-count {
+.dashboard-cell-header {
 	color: #777;
 	font-size: .8em;
 	padding: 0 2px 4px 6px;
-}
-.dashboard-column-hovered {
-	background-color: #eee;
 }
 .dashboard-done-question-content {
 	margin-left: 180px;
@@ -174,25 +192,34 @@
 
 #dashboard-taskboard {
 	width: 100%;
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 #dashboard-taskboard thead th {
 	text-align: left;
 	font-size: 1.2em;
 	font-weight: bold;
 	padding: 4px 4px 4px 6px;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #ccc;
 	margin-bottom: 4px;
 }
-#dashboard-taskboard tbody td {
+#dashboard-taskboard .dashboard-column {
 	vertical-align: top;
 	min-width: 162px;
-	padding: 3px 3px 20px 3px;
-	border-bottom: 1px solid #ddd;
+	padding: 3px 3px 3px 3px;
+	/*border-bottom: 1px solid #ddd;*/
 }
-#dashboard-taskboard tbody th span {
+#dashboard-taskboard tr:last-child .dashboard-column {
+	border-bottom: none;
+}
+/*#dashboard-taskboard tbody th span {
 	display: block;
 	font-size: .9em;
 	padding: 2px 0 0 4px;
+	text-align: left;
+}*/
+#dashboard-taskboard tbody th {
 	text-align: left;
 }
 
@@ -321,6 +348,10 @@
 	background: #FFFFDD;
 	overflow: hidden;
 }
+.dashboard-item, .dashboard-parent-header {
+	height: 35px;
+	overflow: hidden;
+}
 .dashboard-item-header {
 	float: left;
 	height: 35px;
@@ -337,6 +368,9 @@
 	height: 2.6em;
 	overflow: hidden;
 }
+.dashboard-item-content[data-dashboard-event-tpv] {
+	cursor: pointer;
+}
 .dashboard-item-tracker {
 	font-size: .9em;
 	color: #666;
@@ -344,7 +378,67 @@
 .dashboard-item-subject {
 	display: block;
 }
+
+.dashboard-parent {
+	margin: 1px;
+	border: 1px solid #ccc;
+	background: #FFFFF5;
+}
+#dashboard td {
+	/*border-left: 1px solid #eee;*/
+}
+.dashboard-parent-issue td {
+	/*padding: 0 !important;*/
+	border-bottom: none !important;
+}
+.dashboard-parents .dashboard-parent-children {
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.dashboard-parents .dashboard-parent-header {
+	border-bottom: 1px solid #ccc;
+	background: #FFFFDD;
+}
+.dashboard-parents .dashboard-parent-children-header th span {
+	visibility: hidden;
+	display: none !important;
+}
+.dashboard-parents tbody td:first-child {
+	border-left: none;
+}
+.dashboard-parents-end td, .dashboard-group-header th {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 5px 0 5px !important;
+}
+.dashboard-parents-end td > span, .dashboard-group-header th > span {
+	font-weight: bold;
+	background-color: #fff;
+	position: relative;
+	top: .5em;
+	padding: 0 4px;
+}
+.dashboard-parents-end td > span > span {
+	font-weight: normal;
+	font-size: .8em;
+}
+.dashboard-parent .dashboard-parents-end td > span {
+	background: #FFFFF5;
+}
+#dashboard-taskboard .dashboard-parents-end ~ tr .dashboard-column,
+#dashboard-taskboard .dashboard-group-header ~ tr .dashboard-column {
+	padding-top: 9px;
+}
 /* ANIMATION */
-.dashboard-dragged {
+.dashboard-issue-dragged {
 	cursor: move;
+	opacity: 0.9;
+	z-index: 100;
+}
+.dashboard-column-drop-active {
+	background-color: #F3FFF5;
+}
+.dashboard-column-drop-hover {
+	background-color: #eee;
 }
