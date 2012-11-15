@@ -4,7 +4,7 @@
   </div>
 <% end -%>
 <div class="dashboard-cell">
-  <% issues.each do |issue| -%>
+  <% issues.sort_by{|i| i.priority.position}.reverse.each do |issue| -%>
     <%= render :partial => "issue", :locals => { :issue => issue, :row_id => row_id } %>
   <% end -%>
 </div>
