@@ -4,6 +4,8 @@ class Dashboard
   VIEW_MODES = [ :card, :compact ]
   BOARD_MODES = [ :outline, :compact ]
 
+  class EmptyParentIssueError < Exception; end
+
   def initialize(project)
     @project = project
     @options = { :filters => {} }
@@ -50,7 +52,31 @@ class Dashboard
   end
 
   def filter(issues)
-    filters.inject(issues) {|issues, filter| filter[1].scope issues }
+    issues = filters.inject(issues) {|issues, filter| filter[1].scope issues }
+    filters.inject(issues) {|issues, filter| filter[1].filter issues }
+  end
+
+  def filter_child_issues(issues)
+    issues = filters.inject(issues) do |issues, filter|
+      filter[1].apply_to_child_issues? ? filter[1].scope(issues) : issues
+    end
+    issues = filters.inject(issues) do |issues, filter|
+      filter[1].apply_to_child_issues? ? filter[1].filter(issues) : issues
+    end
+    issues
+  end
+
+  def issue_visible?(issue)
+    return true if child_issues(issue).any?
+    child_parent_issues(issue).any? {|issue| issue_visible? issue}
+  end
+
+  def child_issues(issue)
+    filter_child_issues(issue.children).select{|issue| issue.children.empty? }
+  end
+
+  def child_parent_issues(issue)
+    issue.children.select{|issue| issue.children.any? };
   end
 
   def abbreviation

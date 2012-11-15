@@ -4,13 +4,17 @@ class Dashboard::AssigneeFilter < Dashboard::Filter
     super(:assignee)
   end
 
-  def scope(scope)
+  def filter(issues)
     case value
-    when :me   then scope.where(:assigned_to_id => User.current.id)
-    when :none then scope.where(:assigned_to_id => nil)
-    when :all  then scope
-    else scope.where(:assigned_to_id => value)
+    when :me   then issues.select{|i| i.children.any? or i.assigned_to_id == User.current.id }
+    when :none then issues.select{|i| i.children.any? or i.assigned_to_id == nil }
+    when :all  then issues
+    else issues.select{|i| i.children.any? or i.assigned_to_id == value }
     end
+  end
+
+  def apply_to_child_issues?
+    true
   end
 
   def default_values

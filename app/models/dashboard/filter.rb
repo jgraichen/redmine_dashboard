@@ -49,6 +49,18 @@ class Dashboard::Filter
     [ ]
   end
 
+  def scope(scope)
+    scope
+  end
+
+  def filter(issues)
+    issues
+  end
+
+  def apply_to_child_issues?
+    false
+  end
+
   def update(params)
 
   end

@@ -1,8 +1,10 @@
-<% if issues.length > 0 -%>
-  <div class="dashboard-cell-header">
+<div class="dashboard-cell-header">
+  <% if issues.length > 0 -%>
     <span><%= l(:dashboard_label_x_issues, :count => issues.length) %></span>
-  </div>
-<% end -%>
+  <% else -%>
+    <span>&nbsp;</span>
+  <% end %>
+</div>
 <div class="dashboard-cell">
   <% issues.sort_by{|i| i.priority.position}.reverse.each do |issue| -%>
     <%= render :partial => "issue", :locals => { :issue => issue, :row_id => row_id } %>

@@ -8,6 +8,17 @@ class Dashboard::VersionFilter < Dashboard::Filter
     value == :all ? scope : scope.where(:fixed_version_id => value)
   end
 
+  def filter(issues)
+    case value
+    when :all  then issues
+    else issues.select{|i| i.children.any? or i.fixed_version_id == value }
+    end
+  end
+
+  def apply_to_child_issues?
+    true
+  end
+
   def default_values
     version = @board.project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
     return [ version.id ] unless version.nil?

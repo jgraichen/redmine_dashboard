@@ -1,6 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  dashboard_taskboard: Task Board
+  dashboard_taskboard: Dashboard
   dashboard_planboard: Planning Board
   dashboard_all_issues: All Issues
   dashboard_all_versions: All Versions
@@ -27,7 +27,7 @@ en:
   dashboard_group_priority: Priority
   dashboard_group_version: Version
   dashboard_options_board_view: Board View
-  dashboard_options_board_view_compact: Compact
+  dashboard_options_board_view_compact: Compact (Classic)
   dashboard_options_board_view_outline: Outline
   dashboard_other_issues: "Other Issues <span>(%{count})</span>"
   dashboard_legend_priorities: Priorities

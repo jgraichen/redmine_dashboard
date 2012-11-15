@@ -4,8 +4,13 @@ class Dashboard::TrackerFilter < Dashboard::Filter
     super(:tracker)
   end
 
-  def scope(scope)
-    value == :all ? scope : scope.where(:tracker_id => values)
+  def filter(issues)
+    return issues if value == :all
+    issues.select{|i| i.children.any? or values.include?(i.tracker_id) }
+  end
+
+  def apply_to_child_issues?
+    true
   end
 
   def default_values
