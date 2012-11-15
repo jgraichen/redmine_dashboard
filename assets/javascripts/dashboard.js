@@ -96,6 +96,7 @@ $(document).ready(function() {
 				}
 
 				el.find('.dashboard-parent-children').first().show();
+				el.dashboardInitDragAndDrop();
 			}
 		};
 
@@ -134,10 +135,12 @@ $(document).ready(function() {
 			var el = $(this);
 			el.find(".dashboard-issue").each(function() {
 				var issue = $(this);
+				issue.draggable('destroy');
 				issue.draggable({
 					revert: true,
 					axis: "x",
-					cursorAt: { top: issue.height()/2, left: issue.width()/2 },
+					cursorAt: { left: Math.floor(issue.width() / 2) },
+					containment: issue.parents('tr').first(),
 					start: function() { $(this).addClass('dashboard-issue-dragged'); },
 					stop: function() { $(this).removeClass('dashboard-issue-dragged'); }
 				});
@@ -154,15 +157,20 @@ $(document).ready(function() {
 					drop: function(event, ui) {
 						var issue = $(event.srcElement).findUp('.dashboard-issue');
 						var id = issue.dashboardIssueId();
-
-						// if(id && coluid) {
-							issue.remove();
+						if(id && issue.findUp('.dashboard-column').data('dashboard-column-id') != coluid) {
+							issue.appendTo(column);
+							issue.css({ position: 'static' });
 							$.getScript('?issue=' + id + '&column=' + coluid);
-						// }
+						}
 					}
 				});
 			});
 		};
+
+		$.fn.dashboardDestroyDragAndDrop = function () {
+			$(this).find(".dashboard-issue").draggable('destroy');
+		};
+
 	})(jQuery);
 
 	/*
