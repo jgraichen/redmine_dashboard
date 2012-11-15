@@ -21,8 +21,8 @@
         <%= render :partial => 'taskboard_column_headers' %>
       </tr>
       <%= render :partial => 'taskboard_group', :locals => { :group => group, :row_id => "i#{issue.id}",
-        :issues => @board.filter(issue.children).select{|issue| issue.children.empty? },
-        :parent_issues =>  @board.filter(issue.children).select{|issue| issue.children.any? } } %>
+        :issues => issue.children.select{|issue| issue.children.empty? },
+        :parent_issues =>  issue.children.select{|issue| issue.children.any? } } %>
     </table>
   </div>
 </div>
