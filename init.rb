@@ -9,10 +9,9 @@ Redmine::Plugin.register :redmine_dashboard do
   author_url 'mailto:jg@altimos.de'
 
   project_module :dashboard do
-    permission :view_taskboard, { :taskboard => [:index] }
-    permission :view_teamboard, { :teamboard => [:index] }
-    permission :view_planboard, { :planboard => [:index] }
+    permission :view_taskboard, { :dashboard => [:taskboard] }
+    permission :view_planboard, { :dashboard => [:planboard] }
   end
-  menu :project_menu, :dashboard, { :controller => 'taskboard', :action => 'index' }
+  menu :project_menu, :dashboard, { :controller => 'dashboard', :action => 'taskboard' }
 
 end
