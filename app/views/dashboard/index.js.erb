@@ -1,1 +1,2 @@
-$('#dashboard-origin').html("<%= escape_javascript(render :partial => @board.type) %>");
+$('#dashboard-origin').html("<%= escape_javascript(render :partial => @board.id.to_s) %>");
+$('#dashboard-taskboard').dashboardInit();

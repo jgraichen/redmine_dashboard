@@ -1,0 +1,3 @@
+<div class="dashboard-issue dashboard-drop-<%= row_id %> <%= "dashboard-issue-overdue" if issue.overdue? %>" id="issue-<%= issue.id %>" data-dashboard-issue="<%= issue.id %>">
+  <%= render :partial => "issue_#{@board.options[:view]}", :locals => { :issue => issue } %>
+</div>

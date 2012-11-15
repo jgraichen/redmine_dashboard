@@ -1,0 +1,17 @@
+<div id="dashboard-footer">
+  <div id="dashboard-copyright">
+    <a href="https://github.com/jgraichen/redmine_dashboard">Redmine Dashboard</a>
+  </div>
+  <div class="dashboard-priority-legend">
+    <div>
+      <p><%= t :dashboard_legend_priorities %></p>
+      <% IssuePriority.find(:all).each do |priority| %>
+        <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
+      <% end %>
+    </div>
+    <div>
+      <p><%= t :dashboard_legend_warnings %></p>
+      <span class="dashboard-issue-overdue"><span>&nbsp;</span><%=t :dashboard_issue_overdue %></span>
+    </div>
+  </div>
+</div>

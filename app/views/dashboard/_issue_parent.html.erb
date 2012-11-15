@@ -1,0 +1,28 @@
+<!-- ISSUE ITEM -->
+<div class="dashboard-parent" data-dashboard-issue="<%= issue.id %>">
+  <div class="dashboard-issue-priority dashboard-status-<%= issue.status.id %> dashboard-priority-<%= issue.priority.position %>">
+    <div class="dashboard-parent-header">
+      <div class="dashboard-item-progress">
+        <div class="dashboard-item-progress-bar" style="width: <%= issue.done_ratio %>%;">
+        </div>
+      </div>
+      <div class="dashboard-item-header">
+        <span class="dashboard-item-title">
+          <%= link_to "#{@project_abbr}#{issue.id}", issue_path(issue) %>
+        </span>
+        <span class="dashboard-item-property dashboard-item-tracker"><%=h issue.tracker %></span>
+      </div>
+      <div class="dashboard-item-content" data-dashboard-event-tpv="<%= issue.id %>">
+        <span class="dashboard-item-property dashboard-item-subject"><%=h issue.subject %></span>
+      </div>
+    </div>
+    <table class="dashboard-parent-children">
+      <tr class="dashboard-parent-children-header">
+        <%= render :partial => 'taskboard_column_headers' %>
+      </tr>
+      <%= render :partial => 'taskboard_group', :locals => { :group => group, :row_id => "i#{issue.id}",
+        :issues => @board.filter(issue.children).select{|issue| issue.children.empty? },
+        :parent_issues =>  @board.filter(issue.children).select{|issue| issue.children.any? } } %>
+    </table>
+  </div>
+</div>

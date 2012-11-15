@@ -1,0 +1,10 @@
+<% if issues.length > 0 -%>
+  <div class="dashboard-cell-header">
+    <span><%= l(:dashboard_label_x_issues, :count => issues.length) %></span>
+  </div>
+<% end -%>
+<div class="dashboard-cell">
+  <% issues.each do |issue| -%>
+    <%= render :partial => "issue", :locals => { :issue => issue, :row_id => row_id } %>
+  <% end -%>
+</div>

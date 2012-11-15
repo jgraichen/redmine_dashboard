@@ -1,17 +1,11 @@
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag 'dashboard', :plugin => 'redmine_dashboard_linked' %>
+  <%= javascript_include_tag 'jquery.total-storage.js', :plugin => 'redmine_dashboard_linked' %>
   <%= javascript_include_tag 'dashboard', :plugin => 'redmine_dashboard_linked' %>
 <% end %>
+
 <div id="dashboard-origin">
-	<%= render :partial => @board.type %>
+	<%= render :partial => @board.id.to_s %>
 </div>
-<div id="dashboard-footer">
-	<div id="dashboard-copyright">
-		<a href="https://github.com/jgraichen/redmine_dashboard">Redmine Dashboard</a>
-	</div>
-	<div class="dashboard-priority-legend">
-	<% IssuePriority.find(:all).each do |priority| %>
-	  <span class="dashboard-issue-priority dashboard-priority-<%= priority.position %>"><%=h priority %></span>
-	<% end %>
-	</div>
-</div>
+
+<%= render :partial => 'footer' %>
