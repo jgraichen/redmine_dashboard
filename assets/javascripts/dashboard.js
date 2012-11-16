@@ -138,9 +138,9 @@ $(document).ready(function() {
 				issue.draggable('destroy');
 				issue.draggable({
 					revert: true,
-					axis: "x",
+					// axis: "x",
 					cursorAt: { left: Math.floor(issue.width() / 2) },
-					containment: issue.parents('tr').first(),
+					containment: 'body',
 					start: function() { $(this).addClass('dashboard-issue-dragged'); },
 					stop: function() { $(this).removeClass('dashboard-issue-dragged'); }
 				});
