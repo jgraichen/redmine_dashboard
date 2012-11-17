@@ -11,8 +11,8 @@
       = link_to t("rdb_filter_version_#{val}"), taskboard_path(:version => val)
     - render_rdb_menu_list @board.filters[:version].versions do |val|
       = link_to val.name, taskboard_path(:version => val.id)
-    - render_rdb_menu_list @board.filters[:version].done_versions do |val|
-      = link_to val.name, taskboard_path(:version => val.id)
+    - #render_rdb_menu_list @board.filters[:version].done_versions do |val|
+    - #  = link_to val.name, taskboard_path(:version => val.id)
 
 .rdb-filter.rdb-evt-tracker-filter.rdb-async
   - render_rdb_menu @board.filters[:tracker].title, :icons => true do
