@@ -18,8 +18,9 @@
 	var lastMenu;
 
 	$(document).click(function(e) {
-		var link = $(e.target).rdbFindUp('a');
+		var link = $(e.target).rdbFindUp('a.rdb-menu-link');
 		if(link.rdbAny() && link.parents('.rdb-menu-container').rdbEmpty() ) {
+			e.preventDefault();
 			var menu = link.parents('.rdb-menu').first();
 			if(menu.rdbAny()) {
 				if(menu.is(lastMenu)) {

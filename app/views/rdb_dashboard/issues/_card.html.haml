@@ -3,7 +3,9 @@
   %div{:class => "rdb-priority rdb-priority-#{issue.priority.position}" }
     %header.rdb-card-header
       %span.rdb-card-title
-        = link_to "#{@board.abbreviation}#{issue.id}", issue_path(issue)
+        = render :partial => 'rdb_dashboard/issues/issue_menu', :locals => { :issue => issue }
+
+      %div.rdb-card-property.rdb-card-tracker= issue.tracker
 
       - if issue.done_ratio.between?(1,99)
         %span.rdb-card-progress-percent= issue.done_ratio
@@ -13,7 +15,6 @@
 
     %div.rdb-card-content
       %div.rdb-card-subject.rdb-property-subject= issue.subject
-      %div.rdb-card-property.rdb-card-tracker= issue.tracker
       - if issue.fixed_version
         %div.rdb-card-property.rdb-card-version= issue.fixed_version.name
       - if issue.assigned_to

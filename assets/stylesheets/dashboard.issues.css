@@ -4,7 +4,6 @@
 
 .rdb-issue {
 	margin: 3px;
-	overflow: hidden;
 }
 .rdb-issue-card {
 	float: left;
@@ -56,21 +55,38 @@
 	overflow: hidden;
 	position: relative;
 }
+
 .rdb-card .rdb-priority {
 	height: 11.6em;
 }
-.rdb-card-header {
-	padding: 2px 2px 0 4px;
+
+.rdb-card-title a.rdb-menu-link {
+	display: inline-block;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	font-size: 1em;
+	border-right: 1px solid #ddd;
 }
-.rdb-card-header a, .rdb-compact-header a {
+.rdb-card-title a.rdb-menu-link:hover {
+	background-color: #eee;
+}
+
+.rdb-card-header a.rdb-menu-link, .rdb-compact-header a.rdb-menu-link {
 	padding-left: 16px;
-	background: transparent url("img/cog.png") no-repeat 2px 50%;
+	background-image: url("img/cog.png");
+	background-repeat: no-repeat;
+	background-position: 4px 50%;
 }
+
+.rdb-card-header .rdb-container, .rdb-compact-header .rdb-container {
+	margin-top: 4px;
+}
+
 .rdb-card-content {
 	padding: 2px 4px 2px 5px;
 	font-size: .95em;
 }
+
 .rdb-card-subject {
 	display: block;
 	margin: 0 0 .25em 0;
@@ -78,7 +94,6 @@
 	max-height: 4.6em;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	/*white-space: pre-line;*/
 }
 
 .rdb-card-property, .rdb-compact-property {
@@ -86,6 +101,11 @@
 	padding: 1px 0 0 14px;
 	background: transparent none no-repeat 0 60%;
 	font-size: .95em;
+}
+
+.rdb-card-tracker {
+	display: inline;
+	color: #888;
 }
 
 .rdb-card-tracker, .rdb-compact-tracker {
@@ -100,22 +120,19 @@
 .rdb-card-version, .rdb-compact-version {
 	background-image: url("img/package.png");
 }
-.rdb-card-title {
-	display: block;
-	overflow: hidden;
-	height: 1.4em;
-	width: 1000px;
-}
+
 .rdb-card-progress,
 .rdb-compact-progress {
 	background-color: #ddd;
 	margin: 0 0;
 }
+
 .rdb-card-progress-bar,
 .rdb-compact-progress-bar {
 	background-color: green;
 	height: 2px;
 }
+
 .rdb-card-progress-percent {
 	float: right;
 	display: block;
@@ -141,17 +158,16 @@
 .rdb-compact-header {
 	padding: 0 2px 0 0;
 	font-size: 1em;
-	overflow: hidden;
 	height: 1.5em;
 }
 
-.rdb-compact-header .rdb-compact-title a {
-	padding: 2px 2px 2px 19px;
-	background-position: 6px 50%;
+.rdb-compact-header .rdb-compact-title a.rdb-menu-link {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 18px;
+	background-position: 4px 50%;
 	display: block;
-}
-.rdb-compact-header .rdb-compact-title a:hover {
-	/*background-color: #eee;*/
+	border-bottom-right-radius: 8px;
 }
 
 .rdb-compact-title {

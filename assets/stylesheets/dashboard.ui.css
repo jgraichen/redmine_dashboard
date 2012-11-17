@@ -14,8 +14,7 @@
 }
 
 .rdb-menu a.rdb-menu-link {
-	padding: 4px 18px 4px 6px;
-	border-radius: 2px;
+	padding-right: 18px;
 }
 
 .rdb-menu h1 a.rdb-menu-link,

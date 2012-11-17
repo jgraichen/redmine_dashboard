@@ -45,7 +45,7 @@ html > body #content {
 */
 
 #rdb-header {
-	padding: 7px;
+	padding: 7px 30px 7px 11px;
 	background-color: #fff;
 	border-bottom: 1px solid #ccc;
 }
@@ -55,6 +55,11 @@ html > body #content {
 #rdb-header .rdb-option {
 	float: left;
 	margin: 0 4px;
+}
+
+#rdb-header .rdb-menu-link {
+	padding: 4px 18px 4px 6px;
+	border-radius: 2px;
 }
 
 #rdb-header .rdb-filter,

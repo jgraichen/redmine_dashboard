@@ -25,11 +25,8 @@
 		el.find(".rdb-issue").each(function() {
 			var issue = $(this);
 
-			issue.draggable('destroy');
-
 			issue.draggable({
 				revert: true,
-				cursorAt: { left: Math.floor(issue.width() / 2) },
 				containment: '#rdb-board',
 				start: function() { $(this).addClass('rdb-issue-dragged'); },
 				stop: function() { $(this).removeClass('rdb-issue-dragged'); }
@@ -81,7 +78,6 @@
 			if(group.hasClass('rdb-collapsed')) {
 				group.rdbStorageRemove('collapsed-groups', group.rdbGroupId());
 				group.removeClass('rdb-collapsed');
-				group.rdbInitDAD();
 			} else {
 				group.rdbStorageAdd('collapsed-groups', group.rdbGroupId());
 				group.addClass('rdb-collapsed');

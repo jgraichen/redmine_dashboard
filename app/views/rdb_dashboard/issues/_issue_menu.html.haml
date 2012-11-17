@@ -1,0 +1,4 @@
+- render_rdb_menu "#{@board.abbreviation}#{issue.id}" do
+  - render_rdb_menu_list do
+    - render_rdb_menu_list_item do
+      = link_to "Edit", issue_path(issue)
