@@ -47,6 +47,10 @@ class Dashboard
     options[:view]
   end
 
+  def issues_for(column)
+    filter column.scope(project.issues)
+  end
+
   def issues
     @issues ||= filter(project.issues)
   end
@@ -100,7 +104,7 @@ class Dashboard
   end
 
   def name
-    I18n.t :"dashboard_#{id}"
+    I18n.t :"rdb_#{id}"
   end
 
   def backlog
@@ -112,12 +116,12 @@ class Dashboard
   end
 
   def filters; @filters ||= {} end
-  def columns; @columns ||= {} end
-  def groups; @groups ||= {} end
+  def columns; @columns ||= [] end
+  def groups; @groups ||= [] end
 
   def add_filter(filter); filters[filter.id.to_sym] = filter end
-  def add_column(column); columns[column.id.to_sym] = column end
-  def add_group(group); groups[group.id.to_sym] = group end
+  def add_column(column); columns << column end
+  def add_group(group); groups << group end
 
   class << self
     def board_type

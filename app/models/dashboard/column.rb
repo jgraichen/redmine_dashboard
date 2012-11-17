@@ -1,16 +1,17 @@
 class Dashboard::Column
-  attr_reader :name, :options, :id
+  attr_reader :name, :options, :id, :board
 
   def initialize(id, name, options = {})
     @id = id.to_s.to_sym
     @name = name
 
     @options = default_options
-    @options[:accept] = options[:accept] if options[:accept].respond_to? :call
+    @options[:scope] = options[:scope] if options[:scope].respond_to? :call
     @options[:hide] = options[:hide] ? true : false
   end
 
   def add_to(board)
+    @board = board
     board.add_column self
   end
 
@@ -18,13 +19,18 @@ class Dashboard::Column
     {}
   end
 
-  def accept?(issue)
-    return true if options[:accept].nil?
-    options[:accept].call(issue)
+  def scope(issue_scope)
+    return issue_scope if options[:scope].nil?
+    options[:scope].call(issue_scope)
   end
 
-  def filter(issues)
-    issues.select {|issue| accept? issue }
+  def issues
+    @issues ||= board.issues_for(self).select {|i| i.children.empty?}
+  end
+
+  def percentage
+    all_issue_count = board.issues.select {|i| i.children.empty?}.count
+    all_issue_count > 0 ? ((issues.count.to_f / all_issue_count) * 100).round(4) : 0
   end
 
   def title

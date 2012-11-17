@@ -1,0 +1,16 @@
+#rdb-footer
+  #rdb-copyright
+    %a(href="https://github.com/jgraichen/redmine_dashboard") Redmine Dashboard
+
+  #rdb-legend
+    %div
+      %p= t :rdb_legend_priorities
+      - IssuePriority.find(:all).each do |priority|
+        %span{:class => "rdb-priority rdb-priority-#{priority.position}" }=h priority
+
+    %div
+      %p= t :rdb_legend_warnings
+      %span.rdb-overdue
+        %span &nbsp;
+      =t :rdb_issue_overdue
+  .rdb-clear

@@ -11,6 +11,7 @@ class Dashboard::VersionFilter < Dashboard::Filter
   def filter(issues)
     case value
     when :all  then issues
+    when :unassigned then issues.select{|i| i.children.any? or i.fixed_version_id == nil}
     else issues.select{|i| i.children.any? or i.fixed_version_id == value }
     end
   end
@@ -34,6 +35,8 @@ class Dashboard::VersionFilter < Dashboard::Filter
 
     if version == 'all'
       self.value = :all
+    elsif version == 'unassigned'
+      self.value = :unassigned
     else
       self.value = version.to_i if board.project.versions.where(:id => version.to_i).any?
     end
@@ -41,17 +44,19 @@ class Dashboard::VersionFilter < Dashboard::Filter
 
   def title
     if value == :all
-      I18n.t(:dashboard_all_versions)
+      I18n.t(:rdb_filter_version_all)
+    elsif value == :unassigned
+      I18n.t(:tdb_filter_version_unassigned)
     else
       values.map {|id| @board.project.versions.find(id) }.map(&:name).join(', ')
     end
   end
 
-  def to_options
-    [
-      [[I18n.t(:dashboard_all_versions), :all]],
-      @board.project.versions.open.map{|version| [version.name, version.id] },
-      @board.project.versions.where('status != ?', 'open').map{|version| [version.name, version.id] }
-    ]
+  def versions
+    @board.project.versions.open
+  end
+
+  def done_versions
+    @board.project.versions.where('status != ?', 'open')
   end
 end

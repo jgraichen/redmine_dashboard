@@ -39,6 +39,10 @@ class Dashboard::Group
     issues.select{|i| accept? i}
   end
 
+  def visible?
+    issues.count > 0
+  end
+
   def parent_issues
     return [] if board.compact?
     accepted_issues.select{|i| (!accepted_issue_ids.include?(i.parent_id) or i.parent_id == nil) and i.children.any?}

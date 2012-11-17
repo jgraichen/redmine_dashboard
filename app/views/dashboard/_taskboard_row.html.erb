@@ -1,8 +1,0 @@
-<% @board.columns.each do |id, column| -%>
-  <td class="dashboard-column dashboard-column-<%= column.id %>" data-dashboard-drop-accept="<%= row_id %>" data-dashboard-column-id="<%= column.id %>">
-  	<% if not column.hide? %>
-	    <%= render :partial => 'taskboard_cell',
-	               :locals => { :issues => column.filter(issues), :row_id => row_id } %>
-	<% end %>
-  </td>
-<% end -%>

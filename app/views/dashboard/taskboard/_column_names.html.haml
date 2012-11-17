@@ -1,0 +1,6 @@
+%ul.rdb-headers
+  - @board.columns.each do |column|
+    %li.rdb-column
+      %h3= column.title
+      - if column.issues.count > 0
+        %span= t :rdb_x_issues, :count => column.issues.count

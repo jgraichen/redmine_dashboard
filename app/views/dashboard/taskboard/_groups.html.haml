@@ -1,0 +1,6 @@
+- if @board.groups.count == 1
+  = render :partial => 'dashboard/taskboard/columns', :locals => { :group => @board.groups.first }
+- else
+  - @board.groups.each do |group|
+    - if group.visible?
+      = render :partial => 'dashboard/taskboard/group', :locals => { :group => group }

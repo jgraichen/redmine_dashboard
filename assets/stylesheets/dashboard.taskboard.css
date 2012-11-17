@@ -1,0 +1,80 @@
+/*
+ *  Redmine Dashboard - Taskboard
+ */
+
+
+/* ========================================================
+ * Taskboard Header
+ */
+
+.rdb-columns, .rdb-headers {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	display: table;
+	table-layout: fixed;
+}
+
+.rdb-columns .rdb-column,
+.rdb-headers .rdb-column {
+	display: table-cell;
+}
+
+.rdb-headers {
+	margin-bottom: 1px;
+}
+
+.rdb-headers .rdb-column {
+	border-bottom: 1px solid #aaa;
+	padding: 0 10px 4px;
+}
+
+.rdb-headers .rdb-column h3 {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.rdb-headers .rdb-column span {
+	font-size: .8em;
+	margin-left: 10px;
+	color: #999;
+}
+
+
+.rdb-columns {
+	margin: 10px 0;
+}
+
+.rdb-columns .rdb-column {
+	border-left: 1px solid #eee;
+	padding: 2px 5px;
+}
+
+/* ========================================================
+** Overall progress
+*/
+
+.rdb-overall-progress {
+	height: 8px;
+	background-color: #ddd;
+	overflow: hidden;
+	*zoom: 1;
+}
+
+.rdb-overall-progress a {
+	height: 8px;
+
+	float: left;
+	display: block;
+	background-color: #F2DA30;
+}
+
+.rdb-overall-progress a:first-child {
+	background-color: #C00;
+}
+
+.rdb-overall-progress a:last-child {
+	background-color: #599917;
+}

@@ -1,45 +1,52 @@
 # English strings go here for Rails i18n
 en:
-  dashboard_taskboard: Dashboard
-  dashboard_planboard: Planning Board
-  dashboard_all_issues: All Issues
-  dashboard_all_versions: All Versions
-  dashboard_all_trackers: All Trackers
-  dashboard_my_issues: My Issues
+  rdb_taskboard: Dashboard
+  rdb_planboard: Planning Board
 
-  dashboard_options: Options
-  dashboard_options_change_assignee: Change assignee
-  dashboard_options_change_assignee_info: Change assignee to current user when issue is moved.
-  dashboard_options_hide_done: Hide closed issues
-  dashboard_options_hide_done_info: Hide closed issues and makes done column smaller.
-  dashboard_options_reset: Reset options
-  dashboard_options_reset_info: Reset all filters and options back to default
+  rdb_filter_version_all: All Versions
+  rdb_filter_version_unassigned: Unassigned
+  rdb_filter_tracker_all: All Trackers
+  rdb_filter_tracker_multiple: Multiple Trackers
+  rdb_filter_assignee_all: All Issues
+  rdb_filter_assignee_me: My Issues
+  rdb_filter_assignee_none: Unassigned Issues
 
-  dashboard_options_view: View
-  dashboard_options_issue_view: Issue View
-  dashboard_options_issue_view_card: Card
-  dashboard_options_issue_view_compact: Compact
-  dashboard_options_group: Issue Grouping
-  dashboard_group_none: No Grouping
-  dashboard_group_category: Category
-  dashboard_group_assignee: Assignee
-  dashboard_group_tracker: Tracker
-  dashboard_group_priority: Priority
-  dashboard_group_version: Version
-  dashboard_options_board_view: Board View
-  dashboard_options_board_view_compact: Compact (Classic)
-  dashboard_options_board_view_outline: Outline
-  dashboard_other_issues: "Other Issues <span>(%{count})</span>"
-  dashboard_legend_priorities: Priorities
-  dashboard_legend_warnings: Warnings
+  rdb_options: Options
+  rdb_options_change_assignee: Change assignee
+  rdb_options_change_assignee_info: Change assignee to current user when issue is moved.
+  rdb_options_hide_done: Hide closed issues
+  rdb_options_hide_done_info: Hide closed issues and makes done column smaller.
+  rdb_options_reset: Reset filter
+  rdb_options_reset_info: Reset all filters and view settings back to default
+  rdb_options_configure: Configure
 
-  dashboard_issue_overdue: Overdue
+  rdb_options_view: View
+  rdb_options_issue_view: Issue View
+  rdb_options_issue_view_card: Card
+  rdb_options_issue_view_compact: Compact
+  rdb_options_group: Issue Grouping
+  rdb_group_none: No Grouping
+  rdb_group_category: Category
+  rdb_group_assignee: Assignee
+  rdb_group_tracker: Tracker
+  rdb_group_priority: Priority
+  rdb_group_version: Version
+  rdb_options_board_view: Board View
+  rdb_options_board_view_compact: Compact (Classic)
+  rdb_options_board_view_outline: Outline
 
+  rdb_legend_priorities: Priorities
+  rdb_legend_warnings: Warnings
+  rdb_issue_overdue: Overdue
 
-  dashboard_label_column_done: Done
-  dashboard_label_x_issues:
+  rdb_column_done: Done
+  rdb_x_issues:
     one: 1 Issue
     other: "%{count} Issues"
+
+
+  rdb_other_issues: "Other Issues <span>(%{count})</span>"
+
   dashboard_unassigned: Unassigned
   dashboard_others: Others
 

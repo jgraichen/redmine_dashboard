@@ -28,10 +28,11 @@ class Taskboard < Dashboard
     IssueStatus.sorted.each do |status|
       next if status.is_closed?
       self << Dashboard::Column.new(status.id, status.name,
-        :accept => Proc.new {|issue| issue.status.id == status.id })
+        :scope => Proc.new {|scope| scope.where(:status_id => status.id)})
     end
-    self << Dashboard::Column.new("done", :dashboard_label_column_done,
-        :accept => Proc.new {|issue| issue.status.is_closed?},
+    ids = IssueStatus.where(:is_closed => true).pluck(:id)
+    self << Dashboard::Column.new("done", :rdb_column_done,
+        :scope => Proc.new {|scope| scope.where(:status_id => ids)},
         :hide => options[:hide_done])
 
     # Init groups

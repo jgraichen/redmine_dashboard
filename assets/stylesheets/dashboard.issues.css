@@ -1,0 +1,28 @@
+/*
+ *  Redmine.rdb-issue - Issues
+ */
+
+
+/* =========================================================
+ * Issue Priorities
+ */
+
+.rdb-priority {
+	border-left: 4px solid black;
+}
+
+.rdb-priority-1 {
+	border-color: #aaa;
+}
+.rdb-priority-2 {
+	border-color: #6b6;
+}
+.rdb-priority-3 {
+	border-color: orange;
+}
+.rdb-priority-4 {
+	border-color: red;
+}
+.rdb-priority-5 {
+	border-color: black;
+}

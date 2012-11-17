@@ -5,8 +5,12 @@ class Dashboard::TrackerFilter < Dashboard::Filter
   end
 
   def filter(issues)
-    return issues if value == :all
+    return issues if all?
     issues.select{|i| i.children.any? or values.include?(i.tracker_id) }
+  end
+
+  def all?
+    values.count == board.project.trackers.count
   end
 
   def apply_to_child_issues?
@@ -14,30 +18,38 @@ class Dashboard::TrackerFilter < Dashboard::Filter
   end
 
   def default_values
-    [ :all ]
+    board.project.trackers.pluck(:id)
   end
 
   def update(params)
     return unless tracker = params[:tracker]
 
     if tracker == 'all'
-      self.value = :all
+      self.values = board.project.trackers.pluck(:id)
     else
-      self.value = tracker.to_i if board.project.trackers.where(:id => tracker.to_i).any?
+      id = tracker.to_i
+      if board.project.trackers.where(:id => id).any?
+        if params[:only]
+          self.value = id
+        else
+          if values.include? id
+            self.values.delete id if values.count > 2
+          else
+            self.values << id
+          end
+        end
+      end
     end
   end
 
   def title
-    case value
-    when :all then I18n.t(:dashboard_all_trackers)
-    else board.project.trackers.find(value).name
-    end
+    return I18n.t(:rdb_filter_tracker_all) if all?
+    return I18n.t(:rdb_filter_tracker_multiple) if values.count > 1
+    board.project.trackers.find(value).name
   end
 
-  def to_options
-    [
-      [[I18n.t(:dashboard_all_trackers), :all]],
-      board.project.trackers.map{|tracker| [tracker.name, tracker.id] }
-    ]
+  def accept_tracker?(id)
+    return true if value == :all
+    values.include? id
   end
 end
