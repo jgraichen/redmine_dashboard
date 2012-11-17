@@ -29,7 +29,7 @@ class RdbDashboardController < ApplicationController
 
 private
   def find_options
-    params[:reset] ? [ {}, {} ] : [ session_options, params ]
+    [ session_options, params ]
   end
 
   def find_project
