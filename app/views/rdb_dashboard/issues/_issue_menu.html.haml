@@ -11,7 +11,7 @@
       - render_rdb_menu_list_item :async => true do
         = link_to t(:rdb_issue_menu_assigne_me), rdb_update_issue_path(@board, issue, :assigne_me => true)
 
-  - if issue.assigned_to_id == User.current.id
+  - if issue.assigned_to_id == User.current.id or User.current.admin?
     - render_rdb_menu_list :title => t(:rdb_issue_menu_progress_title), :async => true, :list_tag => :div do
       %ul.rdb-issue-menu-progress
         - [0, 20, 40].each do |value|
