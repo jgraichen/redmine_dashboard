@@ -2,7 +2,6 @@
 **  Redmine Dashboard
 */
 
-
 /* =========================================================
 ** Dashboard Origin
 */
@@ -22,12 +21,16 @@
 	clear: both;
 
 	margin: 10px;
-	padding: 10px 10px 35px 10px;
+	padding: 8px;
 
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	min-height: 100px;
+}
+
+#rdb-board-container {
+	padding: 2px 2px 30px 2px;
 }
 
 .rdb-clear { clear: both; }
