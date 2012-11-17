@@ -20,6 +20,10 @@ class RdbDashboard::Column
     {}
   end
 
+  def show_issues?
+
+  end
+
   def value
     options[:value]
   end
