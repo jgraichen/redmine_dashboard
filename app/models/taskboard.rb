@@ -47,22 +47,22 @@ class Taskboard < Dashboard
           self << Dashboard::Group.new("priority-#{p.position}", p.name, :accept => Proc.new {|issue| issue.priority_id == p.id })
         end
       when :assignee
-        self << Dashboard::Group.new(:assigne_me, :dashboard_my_issues, :accept => Proc.new {|issue| issue.assigned_to_id == User.current.id })
-        self << Dashboard::Group.new(:assigne_none, :dashboard_unassigned, :accept => Proc.new {|issue| issue.assigned_to_id.nil? })
-        self << Dashboard::Group.new(:assigne_other, :dashboard_others, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id })
+        self << Dashboard::Group.new(:assigne_me, :rdb_filter_assignee_me, :accept => Proc.new {|issue| issue.assigned_to_id == User.current.id })
+        self << Dashboard::Group.new(:assigne_none, :rdb_filter_assignee_none, :accept => Proc.new {|issue| issue.assigned_to_id.nil? })
+        self << Dashboard::Group.new(:assigne_other, :rdb_filter_assignee_others, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id != User.current.id })
       when :category
         project.issue_categories.each do |category|
           self << Dashboard::Group.new("category-#{category.id}", category.name, :accept => Proc.new {|issue| issue.category_id == category.id })
         end
-        self << Dashboard::Group.new(:category_none, :dashboard_unassigned, :accept => Proc.new {|issue| issue.category.nil? })
+        self << Dashboard::Group.new(:category_none, :rdb_unassigned, :accept => Proc.new {|issue| issue.category.nil? })
       when :version
         project.versions.each do |version|
           self << Dashboard::Group.new("version-#{version.id}", version.name, :accept => Proc.new {|issue| issue.fixed_version_id == version.id })
         end
-        self << Dashboard::Group.new(:version_none, :dashboard_unassigned, :accept => Proc.new {|issue| issue.fixed_version.nil? })
+        self << Dashboard::Group.new(:version_none, :rdb_unassigned, :accept => Proc.new {|issue| issue.fixed_version.nil? })
       end
     end
 
-    self << Dashboard::Group.new(:all, :dashboard_all_issues) if groups.empty?
+    self << Dashboard::Group.new(:all, :rdb_all_issues) if groups.empty?
   end
 end
