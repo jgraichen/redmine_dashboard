@@ -2,7 +2,7 @@ class RdbDashboard
   attr_reader :project, :options
 
   VIEW_MODES = [ :card, :compact ]
-  BOARD_MODES = [ :outline, :compact ]
+  BOARD_MODES = [ :compact, :outline ]
 
   class EmptyParentIssueError < Exception; end
 
@@ -29,7 +29,15 @@ class RdbDashboard
     options[:view] = params[:view].to_sym if params[:view] and RdbDashboard::VIEW_MODES.include? params[:view].to_sym
     options[:mode] = params[:mode].to_sym if params[:mode] and RdbDashboard::BOARD_MODES.include? params[:mode].to_sym
 
-    filters.each {|id, filter| filter.update params }
+    if params[:reset]
+      options[:filters] = {}
+    else
+      filters.each do |id, filter|
+        filter.values = options[:filters][filter.id] if options[:filters][filter.id]
+        filter.update params[:filters] if params[:filters]
+        options[:filters][filter.id] = filter.values
+      end
+    end
   end
 
   def update_issue(params)
