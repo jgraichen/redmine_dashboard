@@ -52,7 +52,6 @@
 	background: #FFFFDD;
 	border-radius: 2px;
 
-	overflow: hidden;
 	position: relative;
 }
 
@@ -139,7 +138,7 @@
 	font-size: 0.75em;
 	text-align: right;
 	color: #999;
-	margin-top: -1.2em;
+	margin-top: 7px;
 }
 
 
@@ -192,3 +191,33 @@
 	background-position: 2px 70%;
 }
 .rdb-compact-progress-bar { height: 2px; }
+
+
+/* ========================================================
+** Issue Menu
+*/
+
+.rdb-issue-menu-progress {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	display: table;
+	table-layout: fixed;
+}
+.rdb-issue-menu-progress:last-child {
+	padding-bottom: 3px;
+}
+.rdb-issue-menu-progress li {
+	display: table-cell;
+	text-align: center;
+}
+
+.rdb-issue-menu-progress li a {
+	display: block;
+	padding: 4px 8px;
+}
+
+.rdb-issue-menu-progress li a:hover {
+	background-color: #eee;
+}

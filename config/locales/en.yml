@@ -52,6 +52,14 @@ en:
   rdb_others: Others
   rdb_all_issues: All Issues
 
+  rdb_issue_menu_progress_title: Update progress
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Redmine Issue
+  rdb_issue_menu_show: Show
+  rdb_issue_menu_edit: Edit
+  rdb_issue_menu_assigne_me: Assigne me
+  rdb_issue_menu_unassigne_me: Unassigne me
+
   rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
   rdb_flash_stale_object: "<p>Attempted to update a stale issue: <b>%{issue}</b>. Check changes and try again."

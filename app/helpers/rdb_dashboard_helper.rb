@@ -3,6 +3,7 @@ module RdbDashboardHelper
   def render_rdb_menu(title, options = {}, &container)
     options[:class] ||= ''
     options[:class] += ' rdb-menu-right' if options[:right]
+    options[:class] += ' rdb-small' if options[:small]
 
     haml_tag :div, :class => "rdb-menu #{options[:class]}" do
       if options[:anchor]
@@ -32,9 +33,10 @@ module RdbDashboardHelper
   end
 
   def render_rdb_menu_list(items = nil, options = {}, &block)
-    haml_tag :div, :class => 'rdb-list' do
+    options, items = items, nil if items.is_a?(Hash)
+    haml_tag :div, :class => "rdb-list #{options[:async] ? 'rdb-async' : ''} #{options[:class]}" do
       haml_tag :h3, options[:title] if options[:title]
-      haml_tag :ul do
+      haml_tag options[:list_tag] ? options[:list_tag] : :ul, :class => options[:list_class] do
         if items
           items.each do |item|
             haml_tag :li do
@@ -48,8 +50,8 @@ module RdbDashboardHelper
     end
   end
 
-  def render_rdb_menu_list_item(&block)
-    haml_tag :li do
+  def render_rdb_menu_list_item(options = {}, &block)
+    haml_tag :li, :class => options[:async] ? 'rdb-async' : '' do
       block.call
     end
   end
@@ -68,5 +70,12 @@ module RdbDashboardHelper
     args << options
 
     link_to *args
+  end
+
+  def rdb_update_issue_path(board, issue, options)
+    send(:"rdb_#{board.id}_path", :update => options.reverse_merge({
+      :issue => issue.id,
+      :lock_version => issue.lock_version
+    }))
   end
 end
