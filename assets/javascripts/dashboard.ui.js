@@ -15,30 +15,28 @@
 	/* =====================================================
 	** Dashboard Drop-Down Menus
 	*/
-	$(document).ready(function() {
-		var lastMenu;
+	var lastMenu;
 
-		$(document).click(function(e) {
-			var link = $(e.target).rdbFindUp('a');
-			if(link.rdbAny() && link.parents('.rdb-menu-container').rdbEmpty() ) {
-				var menu = link.parents('.rdb-menu').first();
-				if(menu.rdbAny()) {
-					if(menu.is(lastMenu)) {
-						lastMenu.rdbMenuHide();
-						lastMenu = null;
-					} else {
-						if(lastMenu) lastMenu.rdbMenuHide();
-						lastMenu = menu;
-						lastMenu.rdbMenuShow();
-					}
+	$(document).click(function(e) {
+		var link = $(e.target).rdbFindUp('a');
+		if(link.rdbAny() && link.parents('.rdb-menu-container').rdbEmpty() ) {
+			var menu = link.parents('.rdb-menu').first();
+			if(menu.rdbAny()) {
+				if(menu.is(lastMenu)) {
+					lastMenu.rdbMenuHide();
+					lastMenu = null;
+				} else {
+					if(lastMenu) lastMenu.rdbMenuHide();
+					lastMenu = menu;
+					lastMenu.rdbMenuShow();
 				}
 			}
+		}
 
-			if(lastMenu != null && $(e.target).rdbFindUp('.rdb-menu').length == 0) {
-				lastMenu.rdbMenuHide();
-				lastMenu = null;
-			}
-		});
+		if(lastMenu != null && $(e.target).rdbFindUp('.rdb-menu').length == 0) {
+			lastMenu.rdbMenuHide();
+			lastMenu = null;
+		}
 	});
 
 })(jQuery);

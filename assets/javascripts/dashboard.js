@@ -29,11 +29,15 @@
 
 	$.fn.rdbIssue = function() {
 		return $(this).rdbFindUp('[data-rdb-issue-id]');
-	}
+	};
 
 	$.fn.rdbIssueId = function() {
 		return $(this).rdbIssue().data('rdb-issue-id');
-	}
+	};
+
+	$.fn.rdbIssueLockVersion = function() {
+		return $(this).rdbIssue().data('rdb-lock-version');
+	};
 
 	$.fn.rdbError = function(message) {
 		var box = $('#rdb-errors');
@@ -53,9 +57,20 @@
 				msg.fadeOut(function() {
 					msg.remove();
 				});
-			}, 7000);
+			}, 12000);
 		});
-	}
+	};
+
+	$.fn.rdbVisible = function() {
+		var el = $(this);
+		var docTop = $(window).scrollTop();
+		var docBottom = docTop + $(window).height();
+
+		var top = $(el).offset().top;
+		var bottom = top + $(el).height();
+
+		return ((bottom <= docBottom) && (top >= docTop));
+	};
 
 	$.fn.rdbStorageAdd = function(id, value) {
 		var storage = $.totalStorage('rdb-' + id);
@@ -70,7 +85,7 @@
 		if(!storage) return false;
 		for(var i in storage) {
 			if(storage[i] == value) {
-        		storage.splice(i, 1);
+				storage.splice(i, 1);
 				break;
 			}
 		}
@@ -92,21 +107,26 @@
 	/*
 	 * Ajax Filter / Options
 	 */
-	$(document).ready(function() {
-		$(document).click(function(e) {
-			var link = $(e.target).rdbFindUp('a').first();
-			if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
-				e.preventDefault();
-				$.getScript(link.attr('href'));
-			}
-		});
-	})
+	$(document).click(function(e) {
+		var link = $(e.target).rdbFindUp('a').first();
+		if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
+			e.preventDefault();
+			$.getScript(link.attr('href'));
+		}
+	});
 
 	/* Issue subject text ellipsis */
 	$(document).ready(function () {
 		var resizeActions = function() {
 			$('.rdb-property-subject').ellipsis();
 
+			var box = $('#rdb-errors');
+			var board = $('#rdb-board');
+			if($('#rdb-footer').rdbVisible()) {
+				box.css({ 'position': 'absolute', 'bottom': '30px' });
+			} else {
+				box.css({ 'position': 'fixed', 'bottom': '30px' });
+			}
 		};
 
 		$().rdbInit(resizeActions);

@@ -18,7 +18,7 @@ en:
   rdb_options_hide_done: Hide closed issues
   rdb_options_hide_done_info: Hide closed issues and makes done column smaller.
   rdb_options_reset: Reset filter
-  rdb_options_reset_info: Reset all filters and view settings back to default
+  rdb_options_reset_info: Reset all filters back to default
   rdb_options_configure: Configure
 
   rdb_options_view: View
@@ -33,7 +33,7 @@ en:
   rdb_group_priority: Priority
   rdb_group_version: Version
   rdb_options_board_view: Board View
-  rdb_options_board_view_compact: Compact (Classic)
+  rdb_options_board_view_compact: Classic (Compact)
   rdb_options_board_view_outline: Outline
 
   rdb_legend_priorities: Priorities
@@ -52,16 +52,7 @@ en:
   rdb_others: Others
   rdb_all_issues: All Issues
 
-  old:
-    card_view: Card View
-    list_view: List View
-    open: Open
-    closed: Closed
-    open_without_date: Open (No Date)
-    no_category: Uncategorized
-    select_done_status: Finish isssue
-    update: Update
-    save: Save
-    field_resolution: Resolution
-    options: Options
-    filters_and_view: "Filters & View"
+  rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
+  rdb_flash_stale_object: "<p>Attempted to update a stale issue: <b>%{issue}</b>. Check changes and try again."
+  rdb_flash_invalid_request: "<p>Invalid request.</p>"

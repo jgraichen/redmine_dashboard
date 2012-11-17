@@ -17,13 +17,14 @@ html > body #content {
 
 #rdb {
 	background-color: #eee;
+	position: relative;
 }
 
 #rdb-board {
 	clear: both;
 
-	margin: 10px;
-	padding: 8px;
+	margin: 10px 15px;
+	padding: 8px 2px 2px;
 
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -31,8 +32,9 @@ html > body #content {
 }
 
 #rdb-board-container {
-	padding: 3px;
-	padding-bottom: 3px;
+/*	padding: 1px;
+	padding-bottom: 1px;
+*/
 }
 
 .rdb-clear { clear: both; }
@@ -119,7 +121,7 @@ a#rdb-reset {
 }
 #rdb-errors .rdb-error {
 	margin: 5px 0;
-	padding: 20px 30px;
+	padding: 10px 20px;
 
 	position: relative;
 	overflow: hidden;
@@ -176,7 +178,7 @@ a#rdb-reset {
 }
 
 #rdb-footer {
-	padding: 5px 20px 10px;
+	padding: 5px 30px 10px;
 	margin: 0;
 	font-size: 0.8em;
 }

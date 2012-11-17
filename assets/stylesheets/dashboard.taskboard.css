@@ -84,7 +84,7 @@
 
 	border: 1px solid #ccc;
 	border-radius: 2px;
-	margin: 0 -2px;
+	margin: 0 -5px;
 	background-color: #f9f9f9;
 }
 
@@ -119,9 +119,10 @@
 	content: '';
 }
 .rdb-collapsed .rdb-group-header { margin-bottom: 10px; }
+.rdb-collapsed:last-child .rdb-group-header { margin-bottom: 40px; }
 .rdb-collapsed .rdb-group-header a::before {
 	margin-top: -3px;
-	left: 6px;
+	left: 8px;
 	border-left-color: #888;
 	border-top-color: transparent;
 }
