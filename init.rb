@@ -3,15 +3,15 @@ require 'redmine'
 Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
-  description 'Add a task dashboard to Redmine'
+  description 'Add a task board and a planning board to Redmine'
   version '2.0.dev'
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jg@altimos.de'
 
   project_module :dashboard do
-    permission :rdb_view_dashboards, { :dashboard => [:taskboard, :planboard] }
-    permission :rdb_configure_dashboards, { :dashboard => [:configure] }
+    permission :view_dashboards, { :rdb_dashboard => [:index], :rdb_taskboard => [:index], :rdb_planningboard => [:index] }
+    permission :configure_dashboards, { :rdb_dashboard => [:configure] }
   end
-  menu :project_menu, :dashboard, { :controller => 'dashboard', :action => 'taskboard' }, :after => :new_issue
+  menu :project_menu, :dashboard, { :controller => 'rdb_dashboard', :action => 'index' }, :after => :new_issue
 
 end
