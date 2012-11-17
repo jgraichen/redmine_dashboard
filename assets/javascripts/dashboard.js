@@ -47,4 +47,14 @@
 			}
 		});
 	})
+
+	/* Issue subject text ellipsis */
+	$(document).ready(function () {
+		$(document).rdbInit(function() {
+			$('.rdb-property-subject').ellipsis();
+		});
+
+		$(document).rdbInit();
+	});
+
 })(jQuery);;

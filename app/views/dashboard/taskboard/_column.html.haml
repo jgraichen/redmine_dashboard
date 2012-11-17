@@ -1,2 +1,2 @@
 - issues.each do |issue|
-  %div= issue.subject
+  = render :partial => 'dashboard/issues/issue', :locals => { :issue => issue }

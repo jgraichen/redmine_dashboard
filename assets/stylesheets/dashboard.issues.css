@@ -3,12 +3,12 @@
  */
 
 
-/* =========================================================
+/* ========================================================
  * Issue Priorities
  */
 
 .rdb-priority {
-	border-left: 4px solid black;
+	border-left: 5px solid black;
 }
 
 .rdb-priority-1 {
@@ -25,4 +25,143 @@
 }
 .rdb-priority-5 {
 	border-color: black;
+}
+
+/* ========================================================
+** Issue Card View
+*/
+
+.rdb-card {
+	float: left;
+
+	margin: 0 4px 4px 0;
+	width: 170px;
+
+	border: 1px solid #ccc;
+	background: #FFFFDD;
+	border-radius: 2px;
+
+	overflow: hidden;
+	position: relative;
+}
+.rdb-card .rdb-issue {
+	height: 11.6em;
+}
+.rdb-card-header {
+	padding: 2px 2px 0 4px;
+	font-size: 1em;
+}
+.rdb-card-header a, .rdb-compact-header a {
+	padding-left: 16px;
+	background: transparent url("img/cog.png") no-repeat 2px 50%;
+}
+.rdb-card-content {
+	padding: 2px 4px 2px 5px;
+	font-size: .95em;
+}
+.rdb-card-subject {
+	display: block;
+	margin: 0 0 .25em 0;
+	min-height: 2.3em;
+	max-height: 4.6em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	/*white-space: pre-line;*/
+}
+
+.rdb-card-property, .rdb-compact-property {
+	display: block;
+	padding: 1px 0 0 14px;
+	background: transparent none no-repeat 0 60%;
+	font-size: .95em;
+}
+
+.rdb-card-tracker, .rdb-compact-tracker {
+	background-image: url("img/ticket.png");
+}
+.rdb-card-assignee, .rdb-compact-assignee {
+	background-image: url("img/user.png");
+}
+.rdb-card-category, .rdb-compact-category {
+	background-image: url("img/brick.png");
+}
+.rdb-card-version, .rdb-compact-version {
+	background-image: url("img/package.png");
+}
+.rdb-card-title {
+	display: block;
+	overflow: hidden;
+	height: 1.4em;
+	width: 1000px;
+}
+.rdb-card-progress,
+.rdb-compact-progress {
+	background-color: #ddd;
+	margin: 0 0;
+}
+.rdb-card-progress-bar,
+.rdb-compact-progress-bar {
+	background-color: green;
+	height: 2px;
+}
+.rdb-card-progress-percent {
+	float: right;
+	display: block;
+	font-size: 0.75em;
+	text-align: right;
+	color: #999;
+	margin-top: -1.2em;
+}
+
+
+/* ========================================================
+** Issue Compact View
+*/
+
+.rdb-compact {
+	margin: 0 4px 4px 0;
+
+	border: 1px solid #ccc;
+	background: #FFFFDD;
+	border-radius: 2px;
+
+	position: relative;
+}
+
+.rdb-compact-header {
+	padding: 0 2px 0 0;
+	font-size: 1em;
+	overflow: hidden;
+	height: 1.5em;
+}
+
+.rdb-compact-header .rdb-compact-title a {
+	padding: 2px 2px 2px 19px;
+	background-position: 6px 50%;
+	display: block;
+}
+.rdb-compact-header .rdb-compact-title a:hover {
+	background-color: #eee;
+}
+
+.rdb-compact-title {
+	display: inline-block;
+	min-width: 60px;
+}
+
+.rdb-compact-content {
+	padding: 2px 4px 4px 5px;
+	font-size: .95em;
+}
+.rdb-compact-subject {
+	max-height: 1.3em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.rdb-compact-property {
+	font-size: .8em;
+	color: #999;
+	display: inline;
+	display: inline-block;
+	background-position: 2px 70%;
 }

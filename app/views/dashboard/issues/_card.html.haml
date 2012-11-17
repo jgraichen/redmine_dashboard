@@ -1,0 +1,23 @@
+/ ISSUE CARD
+%div.rdb-card
+  %div{:class => "rdb-issue rdb-priority rdb-priority-#{issue.priority.position}" }
+    %header.rdb-card-header
+      %span.rdb-card-title
+        = link_to "#{@board.abbreviation}#{issue.id}", issue_path(issue)
+
+      - if issue.done_ratio.between?(1,99)
+        %span.rdb-card-progress-percent= issue.done_ratio
+
+    %div.rdb-card-progress
+      %div.rdb-card-progress-bar{:style => "width: #{issue.done_ratio}%;" }
+
+    %div.rdb-card-content
+      %div.rdb-card-subject.rdb-property-subject= issue.subject
+      %div.rdb-card-property.rdb-card-tracker= issue.tracker
+      - if issue.fixed_version
+        %div.rdb-card-property.rdb-card-version= issue.fixed_version.name
+      - if issue.assigned_to
+        %div.rdb-card-property.rdb-card-assignee= issue.assigned_to.name
+      - if issue.category
+        %div.rdb-card-property.rdb-card-category= issue.category.name
+/ ISSUE CARD END
