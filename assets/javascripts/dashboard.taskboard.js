@@ -26,14 +26,17 @@
 			var issue = $(this);
 
 			issue.draggable({
+				scroll: false,
 				revert: true,
-				containment: '#rdb-board',
+				// containment: '#rdb-board',
 				distance: 20,
 				start: function() {
-					$(this).addClass('rdb-issue-dragged');
 					$().rdbMenuClose();
+					issue.addClass('rdb-issue-dragged');
 				},
-				stop: function() { $(this).removeClass('rdb-issue-dragged'); }
+				stop: function() {
+					issue.removeClass('rdb-issue-dragged');
+				}
 			});
 		});
 
@@ -46,6 +49,7 @@
 					accept: '[data-rdb-drop-on="' + accept + '"]',
 					activeClass: "rdb-column-drop-active",
 					hoverClass: "rdb-column-drop-hover",
+					tolerance: "pointer",
 					drop: function(event, ui) {
 						var issue = $(ui.draggable).rdbIssue();
 						var lock  = issue.rdbIssueLockVersion();
