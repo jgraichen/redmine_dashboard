@@ -8,10 +8,18 @@
 		return $(this).rdbColumn().data('rdb-column-id');
 	};
 
+	$.fn.rdbGroup = function() {
+		return $(this).rdbFindUp('[data-rdb-group-id]');
+	};
+
+	$.fn.rdbGroupId = function() {
+		return $(this).rdbGroup().data('rdb-group-id');
+	};
+
 	/* ====================================================
 	** Drag and drop
 	*/
-	(function($) {
+	$(document).ready(function() {
 
 		$.fn.rdbInitDAD = function () {
 			var el = $(this);
@@ -40,13 +48,15 @@
 						hoverClass: "rdb-column-drop-hover",
 						drop: function(event, ui) {
 							var issue = $(ui.draggable).rdbIssue();
-							var id = issue.rdbIssueId();
+							var issueId = issue.rdbIssueId();
+							var groupId = issue.rdbGroupId();
 
-							if(id && issue.rdbColumnId() != coluid) {
+							if(issueId && issue.rdbColumnId() != coluid) {
 								issue.appendTo(column);
 								issue.remove();
 								issue.css({ position: 'static' });
-								$.getScript('?issue=' + id + '&column=' + coluid);
+
+								$.getScript('?update[issue]=' + issueId + '&update[column]=' + coluid + '&update[group]=' + groupId);
 							}
 						}
 					});
@@ -62,6 +72,34 @@
 			$(this).rdbInitDAD();
 		});
 
-	})(jQuery);
+	});
+
+	/* ====================================================
+	** Collapse groups
+	*/
+	$(document).ready(function() {
+
+		$(document).click(function (e) {
+			var link  = $(e.target).rdbFindUp('a').first();
+			var group = link.rdbGroup();
+			if(link.rdbAny() && group.rdbAny() && link.parents().is('.rdb-group-header')) {
+				e.preventDefault();
+				if(group.hasClass('rdb-collapsed')) {
+					group.removeClass('rdb-collapsed');
+					group.rdbStorageRemove('collapsed-groups', group.rdbGroupId());
+				} else {
+					group.addClass('rdb-collapsed');
+					group.rdbStorageAdd('collapsed-groups', group.rdbGroupId());
+				}
+			}
+		});
+
+		$('.rdb-group').each(function() {
+			var group = $(this);
+			if(group.rdbStorageHas('collapsed-groups', group.rdbGroupId())) {
+				group.addClass('rdb-collapsed');
+			}
+		});
+	});
 
 })(jQuery);;
