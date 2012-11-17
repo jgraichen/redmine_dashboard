@@ -1,4 +1,4 @@
 %ul.rdb-columns
   - @board.columns.each do |column|
-    %li.rdb-column
-      = render :partial => 'dashboard/taskboard/column', :locals => { :column => column, :issues => group.filter(column.issues) }
+    %li.rdb-column{:data => {:'rdb-column-id' => column.id, :'rdb-drop-accept' => group.id}}
+      = render :partial => 'dashboard/taskboard/column', :locals => { :column => column, :issues => group.filter(column.issues), :group => group }
