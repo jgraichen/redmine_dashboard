@@ -8,27 +8,27 @@
 .rdb-filter.rdb-async
   - render_rdb_menu @board.filters[:version].title do
     - render_rdb_menu_list [:all, :unassigned] do |val|
-      = link_to t("rdb_filter_version_#{val}"), rdb_taskboard_path(:version => val)
+      = link_to t("rdb_filter_version_#{val}"), rdb_taskboard_path(:filters => {:version => val})
     - render_rdb_menu_list @board.filters[:version].versions do |val|
-      = link_to val.name, rdb_taskboard_path(:version => val.id)
+      = link_to val.name, rdb_taskboard_path(:filters => {:version => val.id})
     - #render_rdb_menu_list @board.filters[:version].done_versions do |val|
-    - #  = link_to val.name, rdb_taskboard_path(:version => val.id)
+    - #  = link_to val.name, rdb_taskboard_path(:filters => {:version => val.id})
 
 .rdb-filter.rdb-evt-tracker-filter.rdb-async
   - render_rdb_menu @board.filters[:tracker].title, :icons => true do
     - render_rdb_menu_list [:all] do |val|
-      = link_to t("rdb_filter_tracker_#{val}"), rdb_taskboard_path(:tracker => val)
+      = link_to t("rdb_filter_tracker_#{val}"), rdb_taskboard_path(:filters => {:tracker => val})
     - render_rdb_menu_list @project.trackers do |val|
       %span.rdb-multicheck{ :'data-rdb-tracker' => val.id }
-        = rdb_checkbox_link_to '', rdb_taskboard_path(:tracker => val.id), :enabled => @board.filters[:tracker].accept_tracker?(val.id), :show_disabled => true
-        = link_to val.name, rdb_taskboard_path(:tracker => val.id, :only => true), :class => 'rdb-evt-tracker-replace'
+        = rdb_checkbox_link_to '', rdb_taskboard_path(:filters => {:tracker => val.id}), :enabled => @board.filters[:tracker].accept_tracker?(val.id), :show_disabled => true
+        = link_to val.name, rdb_taskboard_path(:filters => {:tracker => val.id, :only => true}), :class => 'rdb-evt-tracker-replace'
 
 .rdb-filter.rdb-async
   - render_rdb_menu @board.filters[:assignee].title do
     - render_rdb_menu_list [:all, :me, :none] do |val|
-      = link_to t("rdb_filter_assignee_#{val}"), rdb_taskboard_path(:assignee => val)
+      = link_to t("rdb_filter_assignee_#{val}"), rdb_taskboard_path(:filters => {:assignee => val})
     - render_rdb_menu_list @project.members do |val|
-      = link_to val.name, rdb_taskboard_path(:assignee => val.id)
+      = link_to val.name, rdb_taskboard_path(:filters => {:assignee => val.id})
 
 .rdb-option.rdb-async
   - render_rdb_menu t(:rdb_options), :right => true, :icons => true do
