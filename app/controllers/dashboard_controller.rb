@@ -16,6 +16,10 @@ class DashboardController < ApplicationController
     render 'index'
   end
 
+  def configure
+
+  end
+
 private
   def find_options
     params[:reset] ? [ {}, {} ] : [ session_options, params ]

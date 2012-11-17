@@ -40,7 +40,7 @@
 	 */
 	$(document).ready(function() {
 		$(document).click(function(e) {
-			var link = $(e.target).rdbFindUp('a');
+			var link = $(e.target).rdbFindUp('a').first();
 			if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
 				e.preventDefault();
 				$.getScript(link.attr('href'));

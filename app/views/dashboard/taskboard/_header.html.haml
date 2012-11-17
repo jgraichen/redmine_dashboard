@@ -41,7 +41,7 @@
 
     - render_rdb_menu_list do
       - render_rdb_menu_list_item do
-        = link_to t(:rdb_options_configure), configure_dashboard_path, :id => "rdb-configure", :class => 'rdb-snyc'
+        = link_to t(:rdb_options_configure), configure_dashboard_path, :id => "rdb-configure", :class => 'rdb-sync'
         = link_to t(:rdb_options_reset), taskboard_path(:reset => 1), :id => "rdb-reset", :title => t(:rdb_options_reset_info)
 
 .rdb-option.rdb-async

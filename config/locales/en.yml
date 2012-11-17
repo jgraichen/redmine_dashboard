@@ -1,6 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  rdb_taskboard: Dashboard
+  rdb_taskboard: Task Board
   rdb_planboard: Planning Board
 
   rdb_filter_version_all: All Versions
