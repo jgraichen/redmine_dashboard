@@ -4,12 +4,13 @@ en:
   rdb_planboard: Planning Board
 
   rdb_filter_version_all: All Versions
-  rdb_filter_version_unassigned: Unassigned
+  rdb_filter_version_unassigned: No Version
   rdb_filter_tracker_all: All Trackers
   rdb_filter_tracker_multiple: Multiple Trackers
   rdb_filter_assignee_all: All Issues
   rdb_filter_assignee_me: My Issues
   rdb_filter_assignee_none: Unassigned Issues
+  rdb_filter_assignee_others: Others
 
   rdb_options: Options
   rdb_options_change_assignee: Change assignee
@@ -47,8 +48,9 @@ en:
 
   rdb_other_issues: "Other Issues <span>(%{count})</span>"
 
-  dashboard_unassigned: Unassigned
-  dashboard_others: Others
+  rdb_unassigned: Unassigned
+  rdb_others: Others
+  rdb_all_issues: All Issues
 
   old:
     card_view: Card View
