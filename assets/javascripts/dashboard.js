@@ -22,13 +22,13 @@
 			rdbInits.push(fn);
 		} else {
 			for(var i in rdbInits) {
-				rdbInits[i].call();
+				rdbInits[i].call(this);
 			}
 		}
 	};
 
 	$.fn.rdbIssue = function() {
-		return $(this).rdbFindUp('[rdb-issue-id]');
+		return $(this).rdbFindUp('[data-rdb-issue-id]');
 	}
 
 	$.fn.rdbIssueId = function() {
@@ -50,11 +50,15 @@
 
 	/* Issue subject text ellipsis */
 	$(document).ready(function () {
-		$(document).rdbInit(function() {
+		$().rdbInit(function() {
 			$('.rdb-property-subject').ellipsis();
 		});
 
-		$(document).rdbInit();
+		$(window).resize(function() {
+			$('.rdb-property-subject').ellipsis();
+		});
+
+		$('#rdb').rdbInit();
 	});
 
 })(jQuery);;
