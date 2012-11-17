@@ -1,5 +1,0 @@
-.rdb-group
-  .rdb-group-header
-    %h4= group.title
-    %span= t :rdb_x_issues, :count => group.issues.count
-  = render :partial => 'dashboard/taskboard/columns', :locals => { :group => group }

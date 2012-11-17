@@ -1,0 +1,7 @@
+- if @board.groups.count == 1
+  .rdb-group{:data => {:'rdb-group-id' => @board.groups.first.id}}
+    = render :partial => 'rdb_dashboard/taskboard/columns', :locals => { :group => @board.groups.first }
+- else
+  - @board.groups.each do |group|
+    - if group.visible?
+      = render :partial => 'rdb_dashboard/taskboard/group', :locals => { :group => group }

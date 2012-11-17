@@ -1,0 +1,10 @@
+#rdb-taskboard
+  %header#rdb-header
+    = render :partial => 'rdb_dashboard/taskboard/header'
+    .rdb-clear
+
+  #rdb-board
+    #rdb-board-container
+      = render :partial => 'rdb_dashboard/taskboard/column_names'
+      = render :partial => 'rdb_dashboard/taskboard/overall_progress'
+      = render :partial => 'rdb_dashboard/taskboard/groups'
