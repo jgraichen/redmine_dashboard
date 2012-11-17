@@ -2,7 +2,7 @@
   = link_to '', rdb_taskboard_path, :class => "rdb-async", :id => "rdb-refresh"
 
   - render_rdb_menu @board.name, :header => :h2 do
-    - render_rdb_menu_list [:taskboard, :planningboard] do |board|
+    - render_rdb_menu_list [:taskboard] do |board|
       = link_to t("rdb_#{board}"), send(:"rdb_#{board}_path")
 
 .rdb-filter.rdb-async
@@ -40,8 +40,8 @@
             :enabled => @board.options[:hide_done], :title => t(:rdb_options_hide_done_info)
 
     - render_rdb_menu_list do
-      - render_rdb_menu_list_item do
-        = link_to t(:rdb_options_configure), rdb_configure_path, :id => "rdb-configure", :class => 'rdb-sync'
+      -#- render_rdb_menu_list_item do
+      -#  = link_to t(:rdb_options_configure), rdb_configure_path, :id => "rdb-configure", :class => 'rdb-sync'
       - render_rdb_menu_list_item do
         = link_to t(:rdb_options_reset), rdb_taskboard_path(:reset => 1), :id => "rdb-reset", :title => t(:rdb_options_reset_info)
 

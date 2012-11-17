@@ -33,7 +33,7 @@ en:
   rdb_group_priority: Priority
   rdb_group_version: Version
   rdb_options_board_view: Board View
-  rdb_options_board_view_compact: Classic (Compact)
+  rdb_options_board_view_compact: Classic
   rdb_options_board_view_outline: Outline
 
   rdb_legend_priorities: Priorities

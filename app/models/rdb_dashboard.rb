@@ -2,7 +2,7 @@ class RdbDashboard
   attr_reader :project, :options
 
   VIEW_MODES = [ :card, :compact ]
-  BOARD_MODES = [ :compact, :outline ]
+  BOARD_MODES = [ :compact ]
 
   class EmptyParentIssueError < Exception; end
 
