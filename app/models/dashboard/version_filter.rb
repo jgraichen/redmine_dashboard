@@ -4,10 +4,6 @@ class Dashboard::VersionFilter < Dashboard::Filter
     super(:version)
   end
 
-  def scope(scope)
-    value == :all ? scope : scope.where(:fixed_version_id => value)
-  end
-
   def filter(issues)
     case value
     when :all  then issues
@@ -46,7 +42,7 @@ class Dashboard::VersionFilter < Dashboard::Filter
     if value == :all
       I18n.t(:rdb_filter_version_all)
     elsif value == :unassigned
-      I18n.t(:tdb_filter_version_unassigned)
+      I18n.t(:rdb_filter_version_unassigned)
     else
       values.map {|id| @board.project.versions.find(id) }.map(&:name).join(', ')
     end
