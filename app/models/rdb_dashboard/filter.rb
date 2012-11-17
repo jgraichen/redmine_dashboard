@@ -8,7 +8,6 @@ class RdbDashboard::Filter
   def add_to(board)
     @board = board
     @board.add_filter self
-    @values = @board.options[:filters][id] || default_values
   end
 
   def default_options
@@ -34,7 +33,6 @@ class RdbDashboard::Filter
   def values=(values)
     values = [ values ] unless values.is_a?(Array)
     @values = values.select {|value| accept? value }
-    @board.options[:filters][id] = @values
   end
 
   def accept?(value)
