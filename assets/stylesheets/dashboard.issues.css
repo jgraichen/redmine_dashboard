@@ -151,7 +151,7 @@
 	display: block;
 }
 .rdb-compact-header .rdb-compact-title a:hover {
-	background-color: #eee;
+	/*background-color: #eee;*/
 }
 
 .rdb-compact-title {

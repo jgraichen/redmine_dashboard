@@ -7,14 +7,16 @@
 */
 
 /* override */
-#content {
+body, html { height: 100%; }
+
+/* override */
+html > body #content {
 	padding: 0 !important;
 	background-color: #eee;
 }
 
 #rdb {
 	background-color: #eee;
-	min-height: 600px;
 }
 
 #rdb-board {
@@ -26,11 +28,11 @@
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 8px;
-	min-height: 100px;
 }
 
 #rdb-board-container {
-	padding: 2px 2px 30px 2px;
+	padding: 3px;
+	padding-bottom: 3px;
 }
 
 .rdb-clear { clear: both; }
@@ -106,8 +108,42 @@ a#rdb-reset {
 }
 
 /* =========================================================
-** Dashboard
+** Error message
 */
+
+#rdb-errors {
+	position: fixed;
+	bottom: 10%;
+	left: 35%;
+	right: 35%;
+}
+#rdb-errors .rdb-error {
+	margin: 5px 0;
+	padding: 20px 30px;
+
+	position: relative;
+	overflow: hidden;
+
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border: 1px solid #C58080;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	border-radius: 2px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+#rdb-errors .rdb-error a.close {
+	position: absolute;
+	top: 2px;
+	right: 8px;
+
+	font-size: 25px;
+	color: #aaa;
+}
+#rdb-errors .rdb-error a.close:hover {
+	color: #777;
+	text-decoration: none;
+	cursor: pointer;
+}
 
 /* =========================================================
 ** Legend / Footer
@@ -121,12 +157,11 @@ a#rdb-reset {
 }
 #rdb-legend p {
 	float: left;
-	width: 60px;
+	min-width: 70px;
 	margin: 0;
 	padding: 0;
-	font-size: 0.8em;
 	font-weight: bold;
-	text-align: right;
+	/*text-align: right;*/
 	padding-right: 10px;
 }
 #rdb-legend span {
@@ -138,13 +173,12 @@ a#rdb-reset {
 #rdb-legend .rdb-overdue span {
 	border: 1px solid red;
 	padding: 0;
-	margin-right: 3px;
 }
 
 #rdb-footer {
-	padding: 2px 10px 0;
+	padding: 5px 20px 10px;
 	margin: 0;
-	border-top: 1px solid #ccc;
+	font-size: 0.8em;
 }
 
 #rdb-copyright {
