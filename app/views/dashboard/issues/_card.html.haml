@@ -1,6 +1,6 @@
 / ISSUE CARD
 %div.rdb-card
-  %div{:class => "rdb-issue rdb-priority rdb-priority-#{issue.priority.position}" }
+  %div{:class => "rdb-priority rdb-priority-#{issue.priority.position}" }
     %header.rdb-card-header
       %span.rdb-card-title
         = link_to "#{@board.abbreviation}#{issue.id}", issue_path(issue)

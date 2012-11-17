@@ -1,1 +1,2 @@
-= render :partial => "dashboard/issues/#{@board.issue_view}", :locals => { :issue => issue }
+%div.rdb-issue{:class => "rdb-issue-#{@board.issue_view}", :data => { :'rdb-drop-on' => group.id, :'rdb-issue-id' => issue.id }}
+  = render :partial => "dashboard/issues/#{@board.issue_view}", :locals => { :issue => issue }
