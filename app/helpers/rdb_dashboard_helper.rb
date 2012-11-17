@@ -1,4 +1,4 @@
-module DashboardHelper
+module RdbDashboardHelper
 
   def render_rdb_menu(title, options = {}, &container)
     options[:class] ||= ''

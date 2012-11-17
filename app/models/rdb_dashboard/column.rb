@@ -1,13 +1,14 @@
-class Dashboard::Column
+class RdbDashboard::Column
   attr_reader :name, :options, :id, :board
 
   def initialize(id, name, options = {})
-    @id = id.to_s.to_sym
+    @id = id.to_s
     @name = name
 
     @options = default_options
     @options[:scope] = options[:scope] if options[:scope].respond_to? :call
-    @options[:hide] = options[:hide] ? true : false
+    @options[:hide]  = options[:hide] ? true : false
+    @options[:value] = options[:value] if options[:value]
   end
 
   def add_to(board)
@@ -17,6 +18,10 @@ class Dashboard::Column
 
   def default_options
     {}
+  end
+
+  def value
+    options[:value]
   end
 
   def scope(issue_scope)

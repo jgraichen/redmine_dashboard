@@ -1,4 +1,4 @@
-class Dashboard::AssigneeFilter < Dashboard::Filter
+class RdbDashboard::AssigneeFilter < RdbDashboard::Filter
 
   def initialize
     super(:assignee)

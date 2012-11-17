@@ -1,4 +1,4 @@
-class Dashboard::Filter
+class RdbDashboard::Filter
   attr_reader :id, :board
 
   def initialize(id)

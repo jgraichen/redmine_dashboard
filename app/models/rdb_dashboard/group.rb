@@ -1,8 +1,8 @@
-class Dashboard::Group
+class RdbDashboard::Group
   attr_reader :name, :options, :id, :board
 
   def initialize(id, name, options = {})
-    @id = id.to_sym
+    @id = id.to_s
     @name = name
 
     @options = default_options

@@ -1,4 +1,4 @@
-class Dashboard
+class RdbDashboard
   attr_reader :project, :options
 
   VIEW_MODES = [ :card, :compact ]
@@ -26,10 +26,14 @@ class Dashboard
 
   def update(params)
     # Update issue view mode
-    options[:view] = params[:view].to_sym if params[:view] and Dashboard::VIEW_MODES.include? params[:view].to_sym
-    options[:mode] = params[:mode].to_sym if params[:mode] and Dashboard::BOARD_MODES.include? params[:mode].to_sym
+    options[:view] = params[:view].to_sym if params[:view] and RdbDashboard::VIEW_MODES.include? params[:view].to_sym
+    options[:mode] = params[:mode].to_sym if params[:mode] and RdbDashboard::BOARD_MODES.include? params[:mode].to_sym
 
     filters.each {|id, filter| filter.update params }
+  end
+
+  def update_issue(params)
+
   end
 
   def default_options
@@ -123,9 +127,12 @@ class Dashboard
   def add_column(column); columns << column end
   def add_group(group); groups << group end
 
+  def find_column(id); columns.find{|column| column.id == id.to_s} end
+  def find_group(id); groups.find{|group| group.id == id.to_s} end
+
   class << self
     def board_type
-      @board_type ||= name.downcase.to_sym
+      @board_type ||= name.downcase.to_s.gsub(/^rdb/, '').to_sym
     end
   end
 end

@@ -1,23 +1,30 @@
-class DashboardController < ApplicationController
+class RdbDashboardController < ApplicationController
   unloadable
+  menu_item :dashboard
   before_filter :find_project, :authorize
 
-  def taskboard
-    @board = Taskboard.new @project
+  def index
+    @board = self.board
+
+    return redirect_to(rdb_taskboard_path) if params[:controller] == 'rdb_dashboard'
+    return render_404 unless @board
+
     @board.setup *find_options
+
+    if params[:update]
+      update params[:update]
+    end
+
     self.session_options = @board.session_options
-    render 'index'
   end
 
-  def planboard
-    @board = Planboard.new @project
-    @board.setup *find_options
-    self.session_options = @board.session_options
-    render 'index'
-  end
+  def board; end
 
   def configure
 
+  end
+
+  def update(params)
   end
 
 private
