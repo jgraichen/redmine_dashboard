@@ -121,14 +121,15 @@
 	right: -4px;
 }
 
-.rdb-container h1,
-.rdb-container h2,
-.rdb-container h3,
-.rdb-container h4,
-.rdb-container h5 {
+.rdb-container h3 {
 	margin: 0;
-	padding: 4px 6px 0;
-	font-size: 1.2em;
+	padding: 1px 6px 1px;
+	font-size: .9em;
+	font-weight: normal;
+}
+
+.rdb-container h3 ~ ul {
+	padding-top: 0;
 }
 
 
@@ -144,19 +145,36 @@
 	border-bottom: none;
 }
 
+.rdb-small .rdb-list {
+	font-size: .9em;
+}
+
 .rdb-list > ul {
 	list-style: none;
-	padding: 4px 0;
+	padding: 4px 0 2px;
 	margin: 0;
 }
 
-.rdb-list > ul > li > a {
+.rdb-small .rdb-list > ul {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.rdb-list > ul > li > a,
+.rdb-list .rdb-multicheck a {
 	display: block;
 	padding: 6px 10px 6px 10px;
+	margin: 0 0 1px 0;
+}
+
+.rdb-small .rdb-list > ul > li > a,
+.rdb-small .rdb-multicheck a {
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 .rdb-icons .rdb-list > ul > li > a {
-	padding: 6px 10px 6px 28px;
+	padding-left: 28px;
 }
 
 .rdb-list > ul > li > a:hover,
@@ -166,13 +184,12 @@
 }
 
 .rdb-list .rdb-multicheck a {
-	display: block;
-	padding: 6px 10px 6px 5px;
+	padding-left: 5px;
 }
 
 .rdb-list .rdb-multicheck a.rdb-checkbox-link {
-	display: block;
-	padding: 6px 5px 6px 18px;
+	padding-right: 5px;
+	padding-left: 18px;
 	margin-right: 4px;
 	float: left;
 	height: 1em;
