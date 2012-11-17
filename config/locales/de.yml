@@ -1,35 +1,66 @@
 # German strings go here for Rails i18n
 de:
-  label_column_done: Fertig
-  label_x_issues:
+  rdb_taskboard: Task Board
+  rdb_planningboard: Planning Board
+
+  rdb_filter_version_all: Alle Versionen
+  rdb_filter_version_unassigned: Keine Version
+  rdb_filter_tracker_all: Alle Trackers
+  rdb_filter_tracker_multiple: Mehrere Trackers
+  rdb_filter_assignee_all: Alle Tickets
+  rdb_filter_assignee_me: Meine Tickets
+  rdb_filter_assignee_none: Nicht zugewiesen
+  rdb_filter_assignee_others: Andere
+
+  rdb_options: Optionen
+  rdb_options_change_assignee: Ändere Verantwortlichen
+  rdb_options_change_assignee_info: Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird.
+  rdb_options_hide_done: Verberge fertige Tickets
+  rdb_options_hide_done_info: Verbirgt fertige Tickets und verkleinert Fertig-Spalte.
+  rdb_options_reset: Filter zurücksetzen
+  rdb_options_reset_info: Setzt alle Filter auf Standardeinstellungen zurück.
+  rdb_options_configure: Konfigurieren
+
+  rdb_options_view: Ansicht
+  rdb_options_issue_view: Ticket-Ansicht
+  rdb_options_issue_view_card: Karte
+  rdb_options_issue_view_compact: Kompakt
+  rdb_options_group: Gruppierung
+  rdb_group_none: Keine Gruppierung
+  rdb_group_category: Kategorie
+  rdb_group_assignee: Verantwortlicher
+  rdb_group_tracker: Tracker
+  rdb_group_priority: Priorität
+  rdb_group_version: Version
+  rdb_options_board_view: Board Ansicht
+  rdb_options_board_view_compact: Klassisch (Kompakt)
+  rdb_options_board_view_outline: Outline
+
+  rdb_legend_priorities: Prioritäten
+  rdb_legend_warnings: Warnungen
+  rdb_issue_overdue: Überfällig
+
+  rdb_column_done: Fertig
+  rdb_x_issues:
     one: 1 Ticket
     other: "%{count} Tickets"
-  all_trackers: Alle Tracker
-  all_issues: Alle Tickets
-  my_issues: Meine Tickets
-  all_versions: Alle Versionen
-  unassigned: Nicht zugewiesen
-  card_view: Kartenansicht
-  list_view: Listenansicht
-  others: Andere
-  open: Offen
-  closed: Abgeschlossen
-  open_without_date: Offen (Ohne Datum)
-  no_category: Keine Kategorie
-  groups_no_grouping: Keine Gruppierung
-  groups_category: Kategorie
-  groups_assignee: Verantwortlicher
-  groups_trackers: Tracker
-  groups_priorities: Priorität
-  groups_versions: Versionen
-  select_done_status: Ticket aktualisieren
-  reset: Zurücksetzen
-  update: Aktualisieren
-  save: Speichern
-  field_resolution: Lösung
-  options: Optionen
-  filters_and_view: "Filter & Ansicht"
-  change_assignee: Ändere Verantwortlichen
-  change_assignee_info: Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird.
-  hide_done: Verberge fertige Tickets
-  hide_done_info: Verbirgt fertige Tickets und verkleinert Fertig-Spalte.
+
+
+  rdb_other_issues: "Andere Tickets <span>(%{count})</span>"
+
+  rdb_unassigned: Nicht zugewiesen
+  rdb_others: Andere
+  rdb_all_issues: Alle Tickets
+
+  rdb_issue_menu_progress_title: Fortschritt ändern
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Redmine Ticket
+  rdb_issue_menu_show: Anzeigen
+  rdb_issue_menu_edit: Bearbeiten
+  rdb_issue_menu_assigne_me: Mich zuweisen
+  rdb_issue_menu_unassigne_me: Zuweisung entfernen
+
+  rdb_flash_illegal_workflow_action: "<p>Diese Änderung verstößt gegen den festgelegten Arbeitsfluss:</p><p><b>%{issue}</b> von <b>%{source}</b> nach <b>%{target}</b> ändern.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Lock-Version fehlt</b>: Ticket kann nicht aktualisiert werden. Bitte nochmal probieren."
+  rdb_flash_stale_object: "<p>Ticket wurde verändert: <b>%{issue}</b>. Überprüfe die Änderungen und probiere es erneut."
+  rdb_flash_invalid_request: "<p>Ungültige Anfrage.</p>"
