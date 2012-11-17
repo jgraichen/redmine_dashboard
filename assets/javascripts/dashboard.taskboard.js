@@ -28,7 +28,11 @@
 			issue.draggable({
 				revert: true,
 				containment: '#rdb-board',
-				start: function() { $(this).addClass('rdb-issue-dragged'); },
+				distance: 20,
+				start: function() {
+					$(this).addClass('rdb-issue-dragged');
+					$().rdbMenuClose();
+				},
 				stop: function() { $(this).removeClass('rdb-issue-dragged'); }
 			});
 		});
@@ -49,7 +53,7 @@
 						var groupId = issue.rdbGroupId();
 
 						if(issueId && issue.rdbColumnId() != coluid) {
-							issue.css({ position: 'static', visibility: 'hidden' });
+							issue.css({ position: 'static', visibility: 'hidden', opacity: 0 });
 							$.getScript('?update[issue]=' + issueId + '&update[lock_version]=' + lock + '&update[column]=' + coluid + '&update[group]=' + groupId);
 						}
 					}
