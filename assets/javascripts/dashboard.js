@@ -35,6 +35,60 @@
 		return $(this).rdbIssue().data('rdb-issue-id');
 	}
 
+	$.fn.rdbError = function(message) {
+		var box = $('#rdb-errors');
+		var msg = $('<div class="rdb-error" />').html(message).hide();
+
+		msg.append('<a class="close">❌</a>')
+
+		msg.find('a.close').click(function(e) {
+			e.preventDefault();
+			msg.fadeOut(function() {
+				msg.remove();
+			});
+		});
+
+		msg.appendTo(box).fadeIn(function() {
+			setTimeout(function() {
+				msg.fadeOut(function() {
+					msg.remove();
+				});
+			}, 7000);
+		});
+	}
+
+	$.fn.rdbStorageAdd = function(id, value) {
+		var storage = $.totalStorage('rdb-' + id);
+		if(!storage) storage = new Array;
+		storage.push(value);
+		$.totalStorage('rdb-' + id, storage);
+		return true;
+	};
+
+	$.fn.rdbStorageRemove = function(id, value) {
+		var storage = $.totalStorage('rdb-' + id);
+		if(!storage) return false;
+		for(var i in storage) {
+			if(storage[i] == value) {
+        		storage.splice(i, 1);
+				break;
+			}
+		}
+		$.totalStorage('rdb-' + id, storage);
+		return true;
+	};
+
+	$.fn.rdbStorageHas = function(id, value) {
+		var storage = $.totalStorage('rdb-' + id);
+		if(!storage) return false;
+		for(var i in storage) {
+			if(storage[i] == value) {
+				return true;
+			}
+		}
+		return false;
+	};
+
 	/*
 	 * Ajax Filter / Options
 	 */
@@ -50,13 +104,13 @@
 
 	/* Issue subject text ellipsis */
 	$(document).ready(function () {
-		$().rdbInit(function() {
+		var resizeActions = function() {
 			$('.rdb-property-subject').ellipsis();
-		});
 
-		$(window).resize(function() {
-			$('.rdb-property-subject').ellipsis();
-		});
+		};
+
+		$().rdbInit(resizeActions);
+		$(window).resize(resizeActions);
 
 		$('#rdb').rdbInit();
 	});
