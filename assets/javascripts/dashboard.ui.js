@@ -17,6 +17,13 @@
 	*/
 	var lastMenu;
 
+	$.fn.rdbMenuClose = function() {
+		if(lastMenu != null) {
+			lastMenu.rdbMenuHide();
+			lastMenu = null;
+		}
+	}
+
 	$(document).click(function(e) {
 		var link = $(e.target).rdbFindUp('a.rdb-menu-link');
 		if(link.rdbAny() && link.parents('.rdb-menu-container').rdbEmpty() ) {

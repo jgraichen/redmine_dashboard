@@ -110,6 +110,7 @@
 	$(document).click(function(e) {
 		var link = $(e.target).rdbFindUp('a').first();
 		if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
+			$().rdbMenuClose();
 			e.preventDefault();
 			$.getScript(link.attr('href'));
 		}
