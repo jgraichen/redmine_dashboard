@@ -10,9 +10,10 @@
   = javascript_include_tag 'dashboard.ui.js', :plugin => plugin
   = javascript_include_tag 'dashboard.taskboard.js', :plugin => plugin
 
-#rdb
+#rdb{:data => { :'rdb-base' => rdb_board_path }}
   #rdb-wrapper
     = render :partial => @board.id.to_s
 
   #rdb-errors
+  #rdb-dialogs
   = render :partial => 'footer'
