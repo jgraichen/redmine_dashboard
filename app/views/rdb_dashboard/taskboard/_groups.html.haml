@@ -2,7 +2,7 @@
   .rdb-group{:data => {:'rdb-group-id' => @board.groups.first.id}}
     = render :partial => 'rdb_dashboard/taskboard/columns', :locals => { :group => @board.groups.first }
 - else
-  - show_all = @board.groups.select(&:visible?).any? ? false : true
-  - @board.groups.each do |group|
+  - show_all = @board.groups.values.select(&:visible?).any? ? false : true
+  - @board.groups.each_value do |group|
     - if show_all or group.visible?
       = render :partial => 'rdb_dashboard/taskboard/group', :locals => { :group => group }

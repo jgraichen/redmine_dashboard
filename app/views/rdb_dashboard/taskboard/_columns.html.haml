@@ -1,5 +1,5 @@
 %ul.rdb-columns
-  - @board.columns.each do |column|
+  - @board.columns.each_value do |column|
     %li.rdb-column{:class => column.hide? ? 'rdb-column-hide' : '', :data => {:'rdb-column-id' => column.id, :'rdb-drop-accept' => group.id}}
       - if not column.hide?
         = render :partial => 'rdb_dashboard/taskboard/column', :locals => { :column => column, :issues => group.filter(column.issues), :group => group }
