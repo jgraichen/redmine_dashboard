@@ -1,4 +1,5 @@
 class RdbDashboard::Group
+  extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id
 
@@ -23,28 +24,31 @@ class RdbDashboard::Group
     name.is_a?(Symbol) ? I18n.translate(name) : name.to_s.humanize
   end
 
-  def accepted_issues
-    @issues ||= filter(board.issues)
+  +Memoize
+  def accepted_issues(source = nil)
+    filter((source ? source : board).issues)
   end
 
+  +Memoize
   def accepted_issue_ids
-    @issue_ids ||= accepted_issues.map(&:id)
+    accepted_issues.map(&:id)
   end
 
   def filter(issues)
     issues.select{|i| accept? i}
   end
 
+  +Memoize
   def visible?
-    issues.count > 0
+    board.columns.values.each do |column|
+      next if not column.visible? or column.compact?
+      Rails.logger.warn "ISSUE COUNT OF #{id} IN COLUMN #{column.id} => #{issues(column).count}"
+      return true if issues(column).count > 0
+    end
+    false
   end
 
-  def parent_issues
-    return [] if board.compact?
-    accepted_issues.select{|i| (!accepted_issue_ids.include?(i.parent_id) or i.parent_id == nil) and i.children.any?}
-  end
-
-  def issues
-    accepted_issues.select{|i| i.children.empty?}
+  def issues(column = nil)
+    accepted_issues(column).select{|i| i.children.empty?}
   end
 end

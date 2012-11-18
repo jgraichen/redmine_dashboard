@@ -1,4 +1,5 @@
 class RdbTaskboard::Column
+  extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id, :board, :statuses
 
@@ -13,8 +14,9 @@ class RdbTaskboard::Column
     issue_scope.where :status_id => statuses.map(&:id)
   end
 
+  +Memoize
   def issues
-    @issues ||= board.issues_for(self).select {|i| i.children.empty?}
+    board.issues_for(self).select {|i| i.children.empty?}
   end
 
   def percentage
