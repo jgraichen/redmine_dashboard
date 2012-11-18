@@ -1,8 +1,12 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
-match 'projects/:id/rdb', :controller => 'rdb_dashboard', :action => 'index', :as => :rdb_dashboard
-match 'projects/:id/dashboard', :controller => 'rdb_dashboard', :action => 'index'
-match 'projects/:id/rdb/configure', :controller => 'rdb_dashboard', :action => 'configure', :as => :rdb_configure
-match 'projects/:id/rdb/taskboard', :controller => 'rdb_taskboard', :action => 'index', :as => :rdb_taskboard
-match 'projects/:id/rdb/planningboard', :controller => 'rdb_planningboard', :action => 'index', :as => :rdb_planningboard
+match 'projects/:id/rdb/taskboard'        => 'rdb_taskboard#index',  :as => :rdb_taskboard
+match 'projects/:id/rdb/taskboard/move'   => 'rdb_taskboard#move',   :as => :rdb_taskboard_move
+match 'projects/:id/rdb/taskboard/update' => 'rdb_taskboard#update', :as => :rdb_taskboard_update
+match 'projects/:id/rdb/taskboard/filter' => 'rdb_taskboard#filter', :as => :rdb_taskboard_filter
+
+
+match 'projects/:id/rdb(/:board)'  => 'rdb_dashboard#index', :as => :rdb
+match 'projects/:id/dashboard'     => 'rdb_dashboard#index'
+match 'projects/:id/rdb/configure' => 'rdb_dashboard#configure', :as => :rdb_configure
