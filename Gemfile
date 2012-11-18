@@ -3,6 +3,6 @@ source 'https://rubygems.org'
 
 gem 'haml'
 
-group :development do
+group :development, :test do
   gem 'rspec-rails'
 end
