@@ -9,4 +9,3 @@ match 'projects/:id/rdb/taskboard/filter' => 'rdb_taskboard#filter', :as => :rdb
 
 match 'projects/:id/rdb(/:board)'  => 'rdb_dashboard#index', :as => :rdb
 match 'projects/:id/dashboard'     => 'rdb_dashboard#index'
-match 'projects/:id/rdb/configure' => 'rdb_dashboard#configure', :as => :rdb_configure
