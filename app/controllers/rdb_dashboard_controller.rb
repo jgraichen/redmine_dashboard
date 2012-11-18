@@ -4,6 +4,7 @@ class RdbDashboardController < ApplicationController
   before_filter :find_project, :authorize
   before_filter :setup_board, :except => :index
   before_filter :find_issue, :only => [ :move, :update ]
+  before_filter :authorize_edit, :only => [ :move, :update ]
   after_filter :save_board_options
 
   def index
@@ -41,6 +42,10 @@ private
 
   def save_board_options
     save_options_for(@board.options, self.board_type.name) if @board
+  end
+
+  def authorize_edit
+    raise Unauthorized.new unless User.current.allowed_to?(:edit_issues, @project)
   end
 
   def find_project

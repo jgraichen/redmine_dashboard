@@ -59,6 +59,7 @@
 	height: 11.6em;
 }
 .rdb-card-title { float: left; }
+.rdb-card-header-data { padding-top: 2px; }
 
 .rdb-card-title > a { padding-right: 4px; }
 .rdb-card-title a.rdb-menu-link,

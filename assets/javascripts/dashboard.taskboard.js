@@ -30,7 +30,7 @@
 		var el = $(this);
 		var baseURL = $('#rdb').data('rdb-base');
 
-		el.find(".rdb-issue").each(function() {
+		el.find(".rdb-issue-drag").each(function() {
 			var issue = $(this);
 
 			issue.draggable({
@@ -81,7 +81,7 @@
 	};
 
 	$.fn.rdbDestroyDAD = function () {
-		$(this).find(".rdb-issue").draggable('destroy');
+		$(this).find(".rdb-issue-drag").draggable('destroy');
 	};
 
 	$().rdbInit(function() {

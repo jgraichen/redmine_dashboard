@@ -82,6 +82,11 @@ class RdbDashboard
     groups[group.id.to_s] = group
   end
 
+  def editable?(str = nil)
+    @editable ||= !!User.current.allowed_to?(:edit_issues, project)
+    str ? (@editable ? str : nil) : @editable
+  end
+
   def filters; @filters ||= HashWithIndifferentAccess.new end
   def groups; @groups ||= HashWithIndifferentAccess.new end
 
