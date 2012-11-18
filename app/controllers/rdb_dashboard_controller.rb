@@ -2,50 +2,77 @@ class RdbDashboardController < ApplicationController
   unloadable
   menu_item :dashboard
   before_filter :find_project, :authorize
+  before_filter :setup_board, :except => :index
+  before_filter :find_issue, :only => [ :move, :update ]
+  after_filter :save_board_options
 
   def index
-    @board = self.board
-
-    return redirect_to(rdb_taskboard_path) if params[:controller] == 'rdb_dashboard'
-    return render_404 unless @board
-
-    @board.setup *find_options
-
-    if params[:update]
-      update params[:update]
-    end
-
-    self.session_options = @board.session_options
+    return redirect_to rdb_taskboard_url if params[:controller] == 'rdb_dashboard'
+    setup_board params
   end
 
-  def board; end
-
-  def configure
-
+  def filter
+    @board.update params
+    render :action => 'index'
   end
 
-  def update(params)
+  def update
+    render_404
+  end
+
+  def move
+    render_404
   end
 
 private
-  def find_options
-    [ session_options, params ]
+  def board_type; nil end
+
+  def board
+    clazz = board_type
+    clazz.new(@project, options_for(clazz.name)) if clazz
+  end
+
+  def setup_board(params = nil)
+    return render_404 unless @board = board
+    @board.setup params if params
+    @board.build
+    @board
+  end
+
+  def save_board_options
+    save_options_for(@board.options, self.board_type.name) if @board
   end
 
   def find_project
-    @project = Project.find(params[:id])
+    @project = Project.find params[:id]
   end
 
-  def update_board(board)
-    self.options = board.update(params)
+  def find_issue
+    flash_error :rdb_flash_missing_lock_version and return false unless params[:lock_version]
+
+    @issue = @project.issues.find params[:issue]
+
+    if @issue.lock_version != params[:lock_version].to_i
+      flash_error :rdb_flash_stale_object, :update => true, :issue => @issue.subject
+      return false
+    end
+
+    @issue.lock_version = params[:lock_version].to_i
+    @issue
   end
 
-  def session_options
-    session["dashboard_#{@project.id}_#{User.current.id}_#{@board.id}"] ||= {}
+  def flash_error(sym, options = {})
+    flash.now[:rdb_error] = I18n.t(sym, options).html_safe
+    Rails.logger.info "Render Rdb flash error: #{sym}"
+    options[:update] ? render('index') : render('error')
   end
 
-  def session_options=(options)
-    session["dashboard_#{@project.id}_#{User.current.id}_#{@board.id}"] = options
+  def options_for(board)
+    session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] ||= {}
+  end
+
+  def save_options_for(options, board)
+    session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] = options
   end
 
   def session_id
