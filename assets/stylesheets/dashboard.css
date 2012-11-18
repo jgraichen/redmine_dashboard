@@ -82,6 +82,7 @@ html > body #content {
 #rdb-header .rdb-board h5 {
 	margin: 0;
 	padding: 0;
+	white-space: nowrap;
 }
 
 a#rdb-refresh {
@@ -140,7 +141,7 @@ a#rdb-reset {
 }
 #rdb-errors .rdb-error a.close {
 	position: absolute;
-	top: 2px;
+	top: 0;
 	right: 8px;
 
 	font-size: 25px;
