@@ -47,4 +47,23 @@
 		}
 	});
 
+	/* =====================================================
+	** Dashboard Dialog
+	*/
+
+	$.fn.rdbDialog = function(title, html) {
+		var dialog = $('<div class="rdb-dialog" />').html(html).dialog({
+			title: title,
+			modal: true,
+			draggable: false,
+			resizable: false,
+			dialogClass: 'alert',
+			close: function() { $().rdbDADShowIssue(); }
+		});
+	};
+
+	$.fn.rdbCloseDialog = function() {
+		$('.rdb-dialog').remove();
+	}
+
 })(jQuery);

@@ -172,3 +172,48 @@
 	background-color: #599917;
 }
 
+/* ========================================================
+** Taskboard Column Dialog
+*/
+
+.rdb-card-dialog {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-size: 12px;
+}
+
+.rdb-card-dialog .rdb-card-subject {
+	height: auto;
+	min-height: 4em;
+	max-height: none;
+	margin-top: 2px;
+}
+
+.rdb-card-dialog .rdb-priority {
+	height: auto;
+	padding-bottom: 1px;
+}
+
+.rdb-card-dialog-box {
+	margin: 4px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	padding: 10px;
+}
+
+.rdb-card-dialog-box ul {
+	list-style: none;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.rdb-card-dialog-box ul li a {
+	display: block;
+	padding: 5px 10px;
+	border-radius: 2px
+}
+
+.rdb-card-dialog-box ul li a:hover {
+	background-color: #eee;
+}

@@ -47,6 +47,8 @@ en:
     one: 1 Issue
     other: "%{count} Issues"
 
+  rdb_dialog_update_issue_title: Update Issue
+  rdb_dialog_update_issue_status: Choose new issue status
 
   rdb_other_issues: "Other Issues <span>(%{count})</span>"
 

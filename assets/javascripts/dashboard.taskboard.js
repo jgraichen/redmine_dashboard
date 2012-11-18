@@ -20,6 +20,12 @@
 	** Drag and drop
 	*/
 
+	var currentIssue;
+
+	$.fn.rdbDADShowIssue = function() {
+		if(currentIssue) currentIssue.css({ visibility: 'visible', opacity: 1 });
+	};
+
 	$.fn.rdbInitDAD = function () {
 		var el = $(this);
 		var baseURL = $('#rdb').data('rdb-base');
@@ -59,12 +65,13 @@
 						var groupId = issue.rdbGroupId();
 
 						if(issueId && issue.rdbColumnId() != coluid) {
-							issue.css({ visibility: 'hidden', opacity: 0 });
+							currentIssue = issue;
+							currentIssue.css({ visibility: 'hidden', opacity: 0 });
 							$.getScript(
 								baseURL + '/move?issue=' + issueId + '&lock_version=' + lock + '&column=' + coluid + '&group=' + groupId)
 							.fail(function(jqxhr, settings, exception) {
-								issue.css({ visibility: 'visible', opacity: 1 });
-								issue.rdbError('<b>Ajax Error</b>: ' + exception);
+								$().rdbDADShowIssue();
+								$().rdbError('<b>Ajax Error</b>: ' + exception);
 							});
 						}
 					}

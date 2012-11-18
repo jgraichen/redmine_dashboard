@@ -55,23 +55,26 @@
 
 	position: relative;
 }
-
 .rdb-card .rdb-priority {
 	height: 11.6em;
 }
-
-.rdb-card-title a.rdb-menu-link {
+.rdb-card-title > a { padding-right: 4px; }
+.rdb-card-title a.rdb-menu-link,
+.rdb-card-title > a {
 	display: inline-block;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	font-size: 1em;
 	border-right: 1px solid #ddd;
 }
-.rdb-card-title a.rdb-menu-link:hover {
+.rdb-card-title a.rdb-menu-link:hover,
+.rdb-card-title > a:hover {
 	background-color: #eee;
 }
 
-.rdb-card-header a.rdb-menu-link, .rdb-compact-header a.rdb-menu-link {
+.rdb-card-header a.rdb-menu-link,
+.rdb-compact-header a.rdb-menu-link,
+.rdb-card-title > a {
 	padding-left: 16px;
 	background-image: url("img/cog.png");
 	background-repeat: no-repeat;
