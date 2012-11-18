@@ -5,8 +5,8 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 **Redmine Dashboard 2** is under development for Redmine 2.1. Development version is incomplete and may not be usable for production environment.
 
-Features (planned)
-------------------
+Incomplete Features List
+------------------------
 
 * Quick edit of issues
 * Easy drag-n-drop
@@ -15,12 +15,11 @@ Features (planned)
 
 * Configurable columns
 * Grouping & Filtering
-*
 * Hierarchical parent issue view
 
 [![Preview](http://altimos.de/redmine_dashboard/rdb_2-1_t.png)](http://altimos.de/redmine_dashboard/rdb_2-1.png)
 
-**Planning Board**
+**Planning Board** (planned)
 
 * Assignee issues to versions, categories or project members
 * Easy overview of specific version, category or member
@@ -30,7 +29,7 @@ Install
 
 Clone _master_ branch from git repository to `plugins` and restart redmine. A database migration is not needed.
 
-Redmine Dashboard 2.0 is currently under development for Redmine 2.1 and not compatible with earlier versions.
+Redmine Dashboard 2 is currently under development for Redmine 2.1 and not compatible with earlier versions.
 
 
 Redmine Dashboard 1.4
