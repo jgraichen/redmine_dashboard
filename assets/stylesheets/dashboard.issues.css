@@ -58,6 +58,8 @@
 .rdb-card .rdb-priority {
 	height: 11.6em;
 }
+.rdb-card-title { float: left; }
+
 .rdb-card-title > a { padding-right: 4px; }
 .rdb-card-title a.rdb-menu-link,
 .rdb-card-title > a {
@@ -107,8 +109,8 @@
 }
 
 .rdb-card-tracker {
-	display: inline;
 	color: #888;
+	background-position: 2px 60%;
 }
 
 .rdb-card-tracker, .rdb-compact-tracker {
@@ -128,21 +130,13 @@
 .rdb-compact-progress {
 	background-color: #ddd;
 	margin: 0 0;
+	clear: both;
 }
 
 .rdb-card-progress-bar,
 .rdb-compact-progress-bar {
 	background-color: green;
 	height: 2px;
-}
-
-.rdb-card-progress-percent {
-	float: right;
-	display: block;
-	font-size: 0.75em;
-	text-align: right;
-	color: #999;
-	margin-top: 7px;
 }
 
 
@@ -173,9 +167,17 @@
 	border-bottom-right-radius: 8px;
 }
 
+.rdb-card-header .rdb-card-header-data,
+.rdb-compact-header .rdb-compact-header-data {
+	height: 1.5em;
+	font-size: .8em;
+	overflow: hidden;
+}
+
 .rdb-compact-title {
-	display: inline-block;
+	display: block;
 	min-width: 60px;
+	float: left;
 }
 
 .rdb-compact-content {
@@ -188,7 +190,6 @@
 	overflow: hidden;
 }
 .rdb-compact-property {
-	font-size: .8em;
 	color: #999;
 	display: inline;
 	display: inline-block;
