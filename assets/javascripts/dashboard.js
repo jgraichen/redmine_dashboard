@@ -112,7 +112,11 @@
 		if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
 			$().rdbMenuClose();
 			e.preventDefault();
-			$.getScript(link.attr('href'));
+			$.getScript(
+				link.attr('href')
+			).fail(function(jqxhr, settings, exception) {
+				link.rdbError('<b>Ajax Error</b>: ' + exception);
+			});
 		}
 	});
 
