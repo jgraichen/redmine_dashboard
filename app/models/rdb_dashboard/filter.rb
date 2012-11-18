@@ -1,13 +1,9 @@
 class RdbDashboard::Filter
-  attr_reader :id, :board
+  attr_accessor :board
+  attr_reader :id
 
   def initialize(id)
-    @id = id.to_sym
-  end
-
-  def add_to(board)
-    @board = board
-    @board.add_filter self
+    @id    = id.to_sym
   end
 
   def default_options

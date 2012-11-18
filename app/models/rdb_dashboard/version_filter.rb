@@ -1,7 +1,7 @@
 class RdbDashboard::VersionFilter < RdbDashboard::Filter
 
   def initialize
-    super(:version)
+    super :version
   end
 
   def filter(issues)

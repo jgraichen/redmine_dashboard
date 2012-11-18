@@ -1,7 +1,7 @@
 class RdbDashboard::AssigneeFilter < RdbDashboard::Filter
 
   def initialize
-    super(:assignee)
+    super :assignee
   end
 
   def filter(issues)

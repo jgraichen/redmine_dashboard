@@ -1,7 +1,7 @@
 class RdbDashboard::TrackerFilter < RdbDashboard::Filter
 
   def initialize
-    super(:tracker)
+    super :tracker
   end
 
   def filter(issues)
@@ -48,7 +48,7 @@ class RdbDashboard::TrackerFilter < RdbDashboard::Filter
     board.project.trackers.find(value).name
   end
 
-  def accept_tracker?(id)
+  def enabled?(id)
     return true if value == :all
     values.include? id
   end

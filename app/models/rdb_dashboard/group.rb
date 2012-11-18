@@ -1,17 +1,13 @@
 class RdbDashboard::Group
-  attr_reader :name, :options, :id, :board
+  attr_accessor :board
+  attr_reader :name, :options, :id
 
   def initialize(id, name, options = {})
-    @id = id.to_s
-    @name = name
+    @id    = id.to_s
+    @name  = name
 
     @options = default_options
     @options[:accept] = options[:accept] if options[:accept].respond_to? :call
-  end
-
-  def add_to(board)
-    @board = board
-    board.add_group self
   end
 
   def default_options
@@ -49,10 +45,6 @@ class RdbDashboard::Group
   end
 
   def issues
-    if board.compact?
-      accepted_issues.select{|i| i.children.empty?}
-    else
-      accepted_issues.select{|i| i.parent_id == nil and i.children.empty?}
-    end
+    accepted_issues.select{|i| i.children.empty?}
   end
 end
