@@ -22,16 +22,24 @@ class RdbTaskboard < RdbDashboard
     if params[:change_assignee]
       options[:change_assignee] = (params[:change_assignee] == 'true')
     end
+
+    if id = params[:column]
+      options[:hide_columns] ||= []
+      options[:hide_columns].include?(id) ? options[:hide_columns].delete(id) : (options[:hide_columns] << id)
+    end
   end
 
   def build
     # Init columns
+    options[:hide_columns] ||= []
     done_statuses = IssueStatus.sorted.select do |status|
       next true if status.is_closed?
-      self.add_column RdbTaskboard::Column.new("s#{status.id}", status.name, status)
+      self.add_column RdbTaskboard::Column.new("s#{status.id}", status.name, status,
+        :hide => options[:hide_columns].include?("s#{status.id}"))
       false
     end
-    self.add_column RdbTaskboard::Column.new("sX", :rdb_column_done, done_statuses, :hide => options[:hide_done])
+    self.add_column RdbTaskboard::Column.new("sX", :rdb_column_done, done_statuses,
+      :compact => options[:hide_done], :hide => options[:hide_columns].include?("sX"))
 
     # Init groups
     case options[:group]

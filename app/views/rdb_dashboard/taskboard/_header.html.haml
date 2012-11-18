@@ -63,4 +63,6 @@
     -#- if @board.compact?
     - render_rdb_menu_list [:none, :tracker, :category, :priority, :assignee, :version], :title => t(:rdb_options_group) do |group|
       = rdb_checkbox_link_to t(:"rdb_group_#{group}"), rdb_board_path(:group => group), :enabled => @board.options[:group] == group
+    - render_rdb_menu_list @board.columns.values, :title => t(:rdb_options_columns) do |column|
+      = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
 

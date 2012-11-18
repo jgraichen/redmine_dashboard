@@ -26,7 +26,11 @@ class RdbTaskboard::Column
     name.is_a?(Symbol) ? I18n.translate(name) : name.to_s.humanize
   end
 
-  def hide?
-    options[:hide]
+  def compact?
+    !!options[:compact]
+  end
+
+  def visible?
+    !options[:hide]
   end
 end
