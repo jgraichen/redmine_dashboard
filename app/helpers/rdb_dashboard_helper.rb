@@ -72,10 +72,25 @@ module RdbDashboardHelper
     link_to *args
   end
 
-  def rdb_update_issue_path(board, issue, options)
-    send(:"rdb_#{board.id}_path", :update => options.reverse_merge({
+  def rdb_update_path(issue, options = {})
+    send(:"rdb_#{@board.id}_update_path", {
       :issue => issue.id,
       :lock_version => issue.lock_version
-    }))
+    }.merge(options))
+  end
+
+  def rdb_move_path(issue, options = {})
+    send(:"rdb_#{@board.id}_move_path", {
+      :issue => issue.id,
+      :lock_version => issue.lock_version
+    }.merge(options))
+  end
+
+  def rdb_filter_path(options = {})
+    send(:"rdb_#{@board.id}_filter_path", options)
+  end
+
+  def rdb_board_path(options = {})
+    send(:"rdb_#{@board.id}_path", options)
   end
 end
