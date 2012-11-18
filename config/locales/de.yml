@@ -7,6 +7,8 @@ de:
   rdb_filter_version_unassigned: Keine Version
   rdb_filter_tracker_all: Alle Trackers
   rdb_filter_tracker_multiple: Mehrere Trackers
+  rdb_filter_category_all: Alle Kategorien
+  rdb_filter_category_multiple: Mehrere Kategorien
   rdb_filter_assignee_all: Alle Tickets
   rdb_filter_assignee_me: Meine Tickets
   rdb_filter_assignee_none: Nicht zugewiesen

@@ -7,6 +7,8 @@ en:
   rdb_filter_version_unassigned: No Version
   rdb_filter_tracker_all: All Trackers
   rdb_filter_tracker_multiple: Multiple Trackers
+  rdb_filter_category_all: All Categories
+  rdb_filter_category_multiple: Multiple Categories
   rdb_filter_assignee_all: All Issues
   rdb_filter_assignee_me: My Issues
   rdb_filter_assignee_none: Unassigned Issues
