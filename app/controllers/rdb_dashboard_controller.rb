@@ -64,7 +64,7 @@ private
   def flash_error(sym, options = {})
     flash.now[:rdb_error] = I18n.t(sym, options).html_safe
     Rails.logger.info "Render Rdb flash error: #{sym}"
-    options[:update] ? render('index') : render('error')
+    options[:update] ? render('index.js') : render('error.js')
   end
 
   def options_for(board)
