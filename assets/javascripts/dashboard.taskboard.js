@@ -22,6 +22,8 @@
 
 	$.fn.rdbInitDAD = function () {
 		var el = $(this);
+		var baseURL = $('#rdb').data('rdb-base');
+
 		el.find(".rdb-issue").each(function() {
 			var issue = $(this);
 
@@ -57,8 +59,13 @@
 						var groupId = issue.rdbGroupId();
 
 						if(issueId && issue.rdbColumnId() != coluid) {
-							issue.css({ position: 'static', visibility: 'hidden', opacity: 0 });
-							$.getScript('?update[issue]=' + issueId + '&update[lock_version]=' + lock + '&update[column]=' + coluid + '&update[group]=' + groupId);
+							issue.css({ visibility: 'hidden', opacity: 0 });
+							$.getScript(
+								baseURL + '/move?issue=' + issueId + '&lock_version=' + lock + '&column=' + coluid + '&group=' + groupId)
+							.fail(function(jqxhr, settings, exception) {
+								issue.css({ visibility: 'visible', opacity: 1 });
+								issue.rdbError('<b>Ajax Error</b>: ' + exception);
+							});
 						}
 					}
 				});
