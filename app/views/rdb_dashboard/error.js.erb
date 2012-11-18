@@ -1,0 +1,3 @@
+<% if flash[:rdb_error] %>
+	$('#rdb').rdbError("<%= escape_javascript(flash[:rdb_error]) %>");
+<% end %>
