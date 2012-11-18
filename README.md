@@ -28,7 +28,7 @@ Incomplete Features List
 Install
 -------
 
-Clone _master_ branch from git repository to `plugins` and restart redmine. A database migration is not needed.
+Clone _master_ branch from git repository to `plugins` and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
 
 Redmine Dashboard 2 is currently under development for Redmine 2.1 and not compatible with earlier versions.
 
