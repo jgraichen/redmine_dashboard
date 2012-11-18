@@ -15,6 +15,7 @@ Incomplete Features List
 
 * Configurable columns
 * Grouping & Filtering
+* Group folding
 * Hierarchical parent issue view
 
 [![Preview](http://altimos.de/redmine_dashboard/rdb_2-1_t.png)](http://altimos.de/redmine_dashboard/rdb_2-1.png)
