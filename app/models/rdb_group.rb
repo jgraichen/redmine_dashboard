@@ -44,7 +44,6 @@ class RdbGroup
   def visible?
     board.columns.values.each do |column|
       next if not column.visible? or column.compact?
-      Rails.logger.warn "ISSUE COUNT OF #{id} IN COLUMN #{column.id} => #{issues(column).count}"
       return true if issues(column).count > 0
     end
     false
