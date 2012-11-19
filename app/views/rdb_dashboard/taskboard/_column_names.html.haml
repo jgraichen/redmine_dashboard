@@ -1,5 +1,5 @@
 %ul.rdb-headers
-  - @board.columns.each_value do |column|
+  - @board.column_list.each do |column|
     - if column.visible?
       %li.rdb-column{:class => column.compact? ? 'rdb-column-compact' : ''}
         %h3= column.title

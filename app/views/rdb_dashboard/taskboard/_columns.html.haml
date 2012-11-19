@@ -1,5 +1,5 @@
 %ul.rdb-columns
-  - @board.columns.each_value do |column|
+  - @board.column_list.each do |column|
     - if column.visible?
       %li.rdb-column{:class => column.compact? ? 'rdb-column-compact' : '', :data => {:'rdb-column-id' => column.id, :'rdb-drop-accept' => group.id}}
         - if not column.compact?

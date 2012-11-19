@@ -79,8 +79,10 @@ class RdbTaskboard < RdbDashboard
   end
 
   def columns; @columns ||= HashWithIndifferentAccess.new end
+  def column_list; @colum_list ||= [] end
   def add_column(column)
     column.board = self
+    column_list << column
     columns[column.id.to_s] = column
   end
 end
