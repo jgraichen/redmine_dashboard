@@ -28,11 +28,16 @@ class RdbFilter
 
   def values=(values)
     values = [ values ] unless values.is_a?(Array)
-    @values = values.select {|value| accept? value }
+    @values = values.select {|value| valid_value? value }
+    @values = default_values if @values.empty? and not allow_no_values?
   end
 
-  def accept?(value)
+  def valid_value?(value)
     true
+  end
+
+  def allow_no_values?
+    false
   end
 
   def title

@@ -3,9 +3,9 @@ class RdbTaskboard < RdbDashboard
   def init
     # Init filters
     self.add_filter RdbAssigneeFilter.new
-    self.add_filter RdbVersionFilter.new
+    self.add_filter RdbVersionFilter.new if project.versions.any?
     self.add_filter RdbTrackerFilter.new
-    self.add_filter RdbCategoryFilter.new
+    self.add_filter RdbCategoryFilter.new if project.issue_categories.any?
   end
 
   def setup(params)

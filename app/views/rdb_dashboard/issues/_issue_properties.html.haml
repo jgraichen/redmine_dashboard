@@ -1,15 +1,17 @@
 %div.rdb-property.rdb-property-tracker= issue.tracker
-- if issue.fixed_version
-  %div.rdb-property.rdb-property-version= issue.fixed_version.name
-- else
-  %div.rdb-property.rdb-property-version.rdb-disabled= t(:rdb_filter_version_unassigned)
+- if @project.versions.any?
+  - if issue.fixed_version
+    %div.rdb-property.rdb-property-version= issue.fixed_version.name
+  - else
+    %div.rdb-property.rdb-property-version.rdb-disabled= t(:rdb_filter_version_unassigned)
 - if issue.assigned_to
   %div.rdb-property.rdb-property-assignee= issue.assigned_to.name
 - else
   %div.rdb-property.rdb-property-assignee.rdb-disabled= t(:rdb_unassigned)
-- if issue.category
-  %div.rdb-property.rdb-property-category= issue.category.name
-- else
-  %div.rdb-property.rdb-property-category.rdb-disabled= t(:rdb_unassigned)
+- if @project.issue_categories.any?
+  - if issue.category
+    %div.rdb-property.rdb-property-category= issue.category.name
+  - else
+    %div.rdb-property.rdb-property-category.rdb-disabled= t(:rdb_unassigned)
 %div.rdb-property.rdb-property-time{:class => (issue.estimated_hours.nil? and issue.time_entries.empty?) ? 'rdb-disabled' : ''}
   =t(:rdb_property_time, :estimated => issue.estimated_hours.to_f.round(2), :actual => issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe

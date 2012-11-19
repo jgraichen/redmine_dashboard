@@ -6,14 +6,16 @@ class RdbVersionFilter < RdbFilter
 
   def filter(issues)
     case value
-    when :all  then issues
+    when :all then issues
     when :unassigned then issues.select{|i| i.children.any? or i.fixed_version_id == nil}
     else issues.select{|i| i.children.any? or i.fixed_version_id == value }
     end
   end
 
-  def apply_to_child_issues?
-    true
+  def valid_value?(value)
+    return true if value == :all or value.nil?
+    return false unless value.respond_to?(:to_i)
+    board.project.versions.where(:id => value.to_i).any?
   end
 
   def default_values
@@ -32,16 +34,16 @@ class RdbVersionFilter < RdbFilter
     if version == 'all'
       self.value = :all
     elsif version == 'unassigned'
-      self.value = :unassigned
+      self.values = [ nil ]
     else
-      self.value = version.to_i if board.project.versions.where(:id => version.to_i).any?
+      self.value = version.to_i
     end
   end
 
   def title
     if value == :all
       I18n.t(:rdb_filter_version_all)
-    elsif value == :unassigned
+    elsif value.nil?
       I18n.t(:rdb_filter_version_unassigned)
     else
       values.map {|id| @board.project.versions.find(id) }.map(&:name).join(', ')

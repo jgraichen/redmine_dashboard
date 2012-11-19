@@ -13,12 +13,12 @@ class RdbCategoryFilter < RdbFilter
     values.count >= board.project.issue_categories.count or board.project.issue_categories.empty?
   end
 
-  def apply_to_child_issues?
-    true
-  end
-
   def default_values
     board.project.issue_categories.pluck(:id)
+  end
+
+  def valid_value?(value)
+    default_values.include? value.to_i
   end
 
   def update(params)
@@ -28,15 +28,13 @@ class RdbCategoryFilter < RdbFilter
       self.values = board.project.issue_categories.pluck(:id)
     else
       id = category.to_i
-      if board.project.issue_categories.where(:id => id).any?
-        if params[:only]
-          self.value = id
+      if params[:only]
+        self.value = id
+      else
+        if values.include? id
+          self.values.delete id if values.count > 2
         else
-          if values.include? id
-            self.values.delete id if values.count > 2
-          else
-            self.values << id
-          end
+          self.values << id if valid_value?(id)
         end
       end
     end
@@ -45,7 +43,7 @@ class RdbCategoryFilter < RdbFilter
   def title
     return I18n.t(:rdb_filter_category_all) if all?
     return I18n.t(:rdb_filter_category_multiple) if values.count > 1
-    board.project.issue_categories.find(value).name
+    board.project.issue_categories.find_by_id(value).try(:name)
   end
 
   def enabled?(id)

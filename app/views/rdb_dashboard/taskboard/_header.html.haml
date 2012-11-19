@@ -5,14 +5,15 @@
     - render_rdb_menu_list [:taskboard] do |val|
       = link_to t("rdb_#{val}"), rdb_path(:board => val)
 
-.rdb-filter.rdb-async
-  - render_rdb_menu @board.filters[:version].title do
-    - render_rdb_menu_list [:all, :unassigned] do |val|
-      = link_to t("rdb_filter_version_#{val}"), rdb_filter_path(:version => val)
-    - render_rdb_menu_list @board.filters[:version].versions do |val|
-      = link_to val.name, rdb_filter_path(:version => val.id)
-    - #render_rdb_menu_list @board.filters[:version].done_versions do |val|
-    - #  = link_to val.name, rdb_filter_path(:filters => {:version => val.id})
+- if @project.versions.any?
+  .rdb-filter.rdb-async
+    - render_rdb_menu @board.filters[:version].title do
+      - render_rdb_menu_list [:all, :unassigned] do |val|
+        = link_to t("rdb_filter_version_#{val}"), rdb_filter_path(:version => val)
+      - render_rdb_menu_list @board.filters[:version].versions do |val|
+        = link_to val.name, rdb_filter_path(:version => val.id)
+      - #render_rdb_menu_list @board.filters[:version].done_versions do |val|
+      - #  = link_to val.name, rdb_filter_path(:filters => {:version => val.id})
 
 .rdb-filter.rdb-async
   - render_rdb_menu @board.filters[:tracker].title, :icons => true do
