@@ -23,14 +23,15 @@
         = rdb_checkbox_link_to '', rdb_filter_path(:tracker => val.id), :enabled => @board.filters[:tracker].enabled?(val.id), :show_disabled => true
         = link_to val.name, rdb_filter_path(:tracker => val.id, :only => true)
 
-.rdb-filter.rdb-async
-  - render_rdb_menu @board.filters[:category].title, :icons => true do
-    - render_rdb_menu_list [:all] do |val|
-      = link_to t("rdb_filter_category_#{val}"), rdb_filter_path(:category => val)
-    - render_rdb_menu_list @project.issue_categories do |val|
-      %span.rdb-multicheck
-        = rdb_checkbox_link_to '', rdb_filter_path(:category => val.id), :enabled => @board.filters[:category].enabled?(val.id), :show_disabled => true
-        = link_to val.name, rdb_filter_path(:category => val.id, :only => true)
+- if @project.issue_categories.any?
+  .rdb-filter.rdb-async
+    - render_rdb_menu @board.filters[:category].title, :icons => true do
+      - render_rdb_menu_list [:all] do |val|
+        = link_to t("rdb_filter_category_#{val}"), rdb_filter_path(:category => val)
+      - render_rdb_menu_list @project.issue_categories do |val|
+        %span.rdb-multicheck
+          = rdb_checkbox_link_to '', rdb_filter_path(:category => val.id), :enabled => @board.filters[:category].enabled?(val.id), :show_disabled => true
+          = link_to val.name, rdb_filter_path(:category => val.id, :only => true)
 
 .rdb-filter.rdb-async
   - render_rdb_menu @board.filters[:assignee].title do

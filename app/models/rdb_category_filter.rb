@@ -10,7 +10,7 @@ class RdbCategoryFilter < RdbFilter
   end
 
   def all?
-    values.count == board.project.issue_categories.count
+    values.count >= board.project.issue_categories.count or board.project.issue_categories.empty?
   end
 
   def apply_to_child_issues?
