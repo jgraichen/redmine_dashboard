@@ -47,8 +47,11 @@
             :enabled => @board.options[:change_assignee], :title => t(:rdb_options_change_assignee_info)
         = rdb_checkbox_link_to t(:rdb_options_hide_done), rdb_board_path(:hide_done => !@board.options[:hide_done]),
             :enabled => @board.options[:hide_done], :title => t(:rdb_options_hide_done_info)
-
+    - render_rdb_menu_list @board.columns.values, :title => t(:rdb_options_columns) do |column|
+      = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
     - render_rdb_menu_list do
+      - render_rdb_menu_list_item do
+        = link_to t(:rdb_options_fullscreen), 'javascript:Rdb.rdbToggleFullscreen();', :id => "rdb-option-fullscreen"
       -#- render_rdb_menu_list_item do
       -#  = link_to t(:rdb_options_configure), rdb_configure_path, :id => "rdb-configure", :class => 'rdb-sync'
       - render_rdb_menu_list_item do
@@ -63,6 +66,4 @@
     -#- if @board.compact?
     - render_rdb_menu_list [:none, :tracker, :category, :priority, :assignee, :version], :title => t(:rdb_options_group) do |group|
       = rdb_checkbox_link_to t(:"rdb_group_#{group}"), rdb_board_path(:group => group), :enabled => @board.options[:group] == group
-    - render_rdb_menu_list @board.columns.values, :title => t(:rdb_options_columns) do |column|
-      = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
 

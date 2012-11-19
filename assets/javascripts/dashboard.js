@@ -1,6 +1,12 @@
-(function($) {
+(function(global, $) {
 
+	global.Rdb = {};
 	var rdbInits = [];
+
+	/* extend */
+	String.prototype.startsWith = function (string) {
+	    return(this.indexOf(string) === 0);
+	};
 
 	$.fn.rdbAny = function(selector) {
 		return $(this).length > 0;
@@ -16,6 +22,10 @@
 			return $(this);
 		return el.parents(selector);
 	};
+
+	Rdb.rdbInit = function(fn) {
+		$.fn.rdbInit.call(Rdb.rdbBase(), fn);
+	}
 
 	$.fn.rdbInit = function(fn) {
 		if(fn) {
@@ -39,7 +49,7 @@
 		return $(this).rdbIssue().data('rdb-lock-version');
 	};
 
-	$.fn.rdbError = function(message) {
+	Rdb.rdbError = function(message) {
 		var box = $('#rdb-errors');
 		var msg = $('<div class="rdb-error" />').html(message).hide();
 
@@ -72,7 +82,7 @@
 		return ((bottom <= docBottom) && (top >= docTop));
 	};
 
-	$.fn.rdbStorageAdd = function(id, value) {
+	Rdb.rdbStorageAdd = function(id, value) {
 		var storage = $.totalStorage('rdb-' + id);
 		if(!storage) storage = new Array;
 		storage.push(value);
@@ -80,20 +90,18 @@
 		return true;
 	};
 
-	$.fn.rdbStorageRemove = function(id, value) {
+	Rdb.rdbStorageRemove = function(id, value) {
 		var storage = $.totalStorage('rdb-' + id);
 		if(!storage) return false;
-		for(var i in storage) {
-			if(storage[i] == value) {
-				storage.splice(i, 1);
-				break;
-			}
+		var i = -1;
+		while((i = storage.indexOf(value)) >= 0) {
+			storage.splice(i, 1)
 		}
 		$.totalStorage('rdb-' + id, storage);
 		return true;
 	};
 
-	$.fn.rdbStorageHas = function(id, value) {
+	Rdb.rdbStorageHas = function(id, value) {
 		var storage = $.totalStorage('rdb-' + id);
 		if(!storage) return false;
 		for(var i in storage) {
@@ -104,19 +112,27 @@
 		return false;
 	};
 
+	Rdb.rdbBase = function() {
+		return $('#rdb');
+	};
+
+	Rdb.rdbBaseURL = function() {
+		return Rdb.rdbBase().data('rdb-base');
+	};
+
 	/*
 	 * Ajax Filter / Options
 	 */
 	$(document).click(function(e) {
 		var link = $(e.target).rdbFindUp('a').first();
-		if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync')) {
-			$().rdbMenuClose();
-			$().rdbCloseDialog();
+		if(link.rdbFindUp('.rdb-async').rdbAny() && link.attr('href') != '#' && !link.is('.rdb-sync') && !link.attr('href').startsWith('javascript:')) {
+			Rdb.rdbMenuClose();
+			Rdb.rdbCloseDialog();
 			e.preventDefault();
 			$.getScript(
 				link.attr('href')
 			).fail(function(jqxhr, settings, exception) {
-				link.rdbError('<b>Ajax Error</b>: ' + exception);
+				Rdb.rdbError('<b>Ajax Error</b>: ' + exception);
 			});
 		}
 	});
@@ -135,10 +151,10 @@
 			}
 		};
 
-		$().rdbInit(resizeActions);
+		Rdb.rdbInit(resizeActions);
 		$(window).resize(resizeActions);
 
-		$('#rdb').rdbInit();
+		Rdb.rdbInit();
 	});
 
-})(jQuery);;
+})(window, jQuery);

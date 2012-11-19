@@ -22,13 +22,13 @@
 
 	var currentIssue;
 
-	$.fn.rdbDADShowIssue = function() {
+	Rdb.rdbDADShowIssue = function() {
 		if(currentIssue) currentIssue.css({ visibility: 'visible', opacity: 1 });
 	};
 
-	$.fn.rdbInitDAD = function () {
-		var el = $(this);
-		var baseURL = $('#rdb').data('rdb-base');
+	Rdb.rdbInitDAD = function () {
+		var el = Rdb.rdbBase();
+		var baseURL = Rdb.rdbBaseURL();
 
 		el.find(".rdb-issue-drag").each(function() {
 			var issue = $(this);
@@ -39,7 +39,7 @@
 				// containment: '#rdb-board',
 				distance: 20,
 				start: function() {
-					$().rdbMenuClose();
+					Rdb.rdbMenuClose();
 					issue.addClass('rdb-issue-dragged');
 				},
 				stop: function() {
@@ -80,12 +80,12 @@
 		});
 	};
 
-	$.fn.rdbDestroyDAD = function () {
-		$(this).find(".rdb-issue-drag").draggable('destroy');
+	Rdb.rdbDestroyDAD = function () {
+		Rdb.rdbBase().find(".rdb-issue-drag").draggable('destroy');
 	};
 
-	$().rdbInit(function() {
-		$(this).rdbInitDAD();
+	Rdb.rdbInit(function() {
+		Rdb.rdbInitDAD();
 	});
 
 	/* ====================================================
@@ -98,19 +98,19 @@
 		if(link.rdbAny() && group.rdbAny() && link.parents().is('.rdb-group-header')) {
 			e.preventDefault();
 			if(group.hasClass('rdb-collapsed')) {
-				group.rdbStorageRemove('collapsed-groups', group.rdbGroupId());
+				Rdb.rdbStorageRemove('collapsed-groups', group.rdbGroupId());
 				group.removeClass('rdb-collapsed');
 			} else {
-				group.rdbStorageAdd('collapsed-groups', group.rdbGroupId());
+				Rdb.rdbStorageAdd('collapsed-groups', group.rdbGroupId());
 				group.addClass('rdb-collapsed');
 			}
 		}
 	});
 
-	$().rdbInit(function() {
+	Rdb.rdbInit(function() {
 		$('.rdb-group').each(function() {
 			var group = $(this);
-			if(group.rdbStorageHas('collapsed-groups', group.rdbGroupId())) {
+			if(Rdb.rdbStorageHas('collapsed-groups', group.rdbGroupId())) {
 				group.addClass('rdb-collapsed');
 			}
 		});

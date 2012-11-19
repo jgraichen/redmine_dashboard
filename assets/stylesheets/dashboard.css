@@ -20,6 +20,26 @@ html > body #content {
 	position: relative;
 }
 
+#rdb.rdb-fullscreen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	min-height: 100%;
+}
+
+#rdb.rdb-fullscreen #rdb-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+}
+
+#rdb.rdb-fullscreen {
+	padding-top: 45px;
+}
+
 #rdb-board {
 	clear: both;
 

@@ -38,6 +38,7 @@ de:
   rdb_options_board_view_compact: Klassisch (Kompakt)
   rdb_options_board_view_outline: Outline
   rdb_options_columns: Spalten
+  rdb_options_fullscreen: Vollbildschirm
 
   rdb_legend_priorities: Prioritäten
   rdb_legend_warnings: Warnungen

@@ -17,7 +17,7 @@
 	*/
 	var lastMenu;
 
-	$.fn.rdbMenuClose = function() {
+	Rdb.rdbMenuClose = function() {
 		if(lastMenu != null) {
 			lastMenu.rdbMenuHide();
 			lastMenu = null;
@@ -58,12 +58,49 @@
 			draggable: false,
 			resizable: false,
 			dialogClass: 'alert',
-			close: function() { $().rdbDADShowIssue(); }
+			close: function() { Rdb.rdbDADShowIssue(); }
 		});
 	};
 
-	$.fn.rdbCloseDialog = function() {
+	Rdb.rdbCloseDialog = function() {
 		$('.rdb-dialog').remove();
-	}
+	};
+
+	/* =====================================================
+	** Dashboard Fullscreen
+	*/
+
+	Rdb.rdbIsFullscreen = function() {
+		return Rdb.rdbStorageHas('fullscreen', 'fullscreen');
+	};
+
+	Rdb.rdbLoadFullscreen = function() {
+		if(Rdb.rdbIsFullscreen()) {
+			Rdb.rdbShowFullscreen();
+		} else {
+			Rdb.rdbHideFullscreen();
+		}
+	};
+
+	Rdb.rdbToggleFullscreen = function() {
+		Rdb.rdbMenuClose();
+		if(Rdb.rdbIsFullscreen()) {
+			Rdb.rdbHideFullscreen();
+		} else {
+			Rdb.rdbShowFullscreen();
+		}
+	};
+
+	Rdb.rdbShowFullscreen = function() {
+		Rdb.rdbStorageAdd('fullscreen', 'fullscreen');
+		Rdb.rdbBase().addClass('rdb-fullscreen');
+	};
+
+	Rdb.rdbHideFullscreen = function() {
+		Rdb.rdbStorageRemove('fullscreen', 'fullscreen');
+		Rdb.rdbBase().removeClass('rdb-fullscreen');
+	};
+
+	Rdb.rdbInit(Rdb.rdbLoadFullscreen);
 
 })(jQuery);
