@@ -1,4 +1,4 @@
-class RdbDashboard::Filter
+class RdbFilter
   attr_accessor :board
   attr_reader :id
 

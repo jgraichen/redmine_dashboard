@@ -1,4 +1,4 @@
-class RdbDashboard::TrackerFilter < RdbDashboard::Filter
+class RdbTrackerFilter < RdbFilter
 
   def initialize
     super :tracker

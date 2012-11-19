@@ -1,4 +1,6 @@
-class RdbTaskboard::Column
+require 'method_decorators/decorators/memoize'
+
+class RdbColumn
   extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id, :board, :statuses

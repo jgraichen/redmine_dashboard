@@ -1,4 +1,4 @@
-class RdbDashboard::VersionFilter < RdbDashboard::Filter
+class RdbVersionFilter < RdbFilter
 
   def initialize
     super :version

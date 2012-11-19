@@ -1,4 +1,6 @@
-class RdbDashboard::Group
+require 'method_decorators/decorators/memoize'
+
+class RdbGroup
   extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id

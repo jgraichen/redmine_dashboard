@@ -1,4 +1,4 @@
-class RdbDashboard::CategoryFilter < RdbDashboard::Filter
+class RdbCategoryFilter < RdbFilter
 
   def initialize
     super :category
