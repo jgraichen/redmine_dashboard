@@ -93,6 +93,6 @@ class RdbTaskboard < RdbDashboard
 
     statuses = issue.new_statuses_allowed_to(User.current)
     statuses.delete issue.status
-    column_list.select{|c| (statuses & c.statuses).any?}.map(&:id).uniq.join(' ')
+    column_list.select{|c| (statuses & c.statuses).any?}.reject{|c| c.statuses.include? issue.status}.map(&:id).uniq.join(' ')
   end
 end
