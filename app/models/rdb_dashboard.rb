@@ -79,6 +79,7 @@ class RdbDashboard
 
   def add_group(group)
     group.board = self
+    group_list << group
     groups[group.id.to_s] = group
   end
 
@@ -89,6 +90,7 @@ class RdbDashboard
 
   def filters; @filters ||= HashWithIndifferentAccess.new end
   def groups; @groups ||= HashWithIndifferentAccess.new end
+  def grouplist; @group_list ||= [] end
 
   class << self
     def board_type
