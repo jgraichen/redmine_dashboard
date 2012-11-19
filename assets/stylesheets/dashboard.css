@@ -57,6 +57,12 @@ html > body #content {
 */
 }
 
+#rdb-loading {
+	padding: 40px;
+	text-align: center;
+	min-height: 200px;
+}
+
 .rdb-clear { clear: both; }
 
 

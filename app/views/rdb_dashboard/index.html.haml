@@ -12,7 +12,9 @@
 
 #rdb{:data => { :'rdb-base' => rdb_board_path }}
   #rdb-wrapper
-    = render :partial => @board.id.to_s
+    #rdb-header
+    #rdb-board
+      #rdb-loading
 
   #rdb-errors
   #rdb-dialogs

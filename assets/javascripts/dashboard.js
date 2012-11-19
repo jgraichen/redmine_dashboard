@@ -153,8 +153,11 @@
 
 		Rdb.rdbInit(resizeActions);
 		$(window).resize(resizeActions);
+	});
 
-		Rdb.rdbInit();
+	/* load board on startup */
+	$(document).ready(function () {
+		$.getScript('?');
 	});
 
 })(window, jQuery);
