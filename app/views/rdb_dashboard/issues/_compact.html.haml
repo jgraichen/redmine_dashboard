@@ -8,13 +8,7 @@
       %div.rdb-compact-title
         = render :partial => 'rdb_dashboard/issues/issue_menu', :locals => { :issue => issue }
       %div.rdb-compact-header-data
-        %div.rdb-compact-property.rdb-compact-tracker= issue.tracker
-        - if issue.fixed_version
-          %div.rdb-compact-property.rdb-compact-version= issue.fixed_version.name
-        - if issue.assigned_to
-          %div.rdb-compact-property.rdb-compact-assignee= issue.assigned_to.name
-        - if issue.category
-          %div.rdb-compact-property.rdb-compact-category= issue.category.name
+        = render :partial => 'rdb_dashboard/issues/issue_properties', :locals => { :issue => issue }
 
     %div.rdb-compact-content
       %div.rdb-compact-subject.rdb-property-subject= issue.subject

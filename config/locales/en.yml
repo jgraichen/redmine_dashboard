@@ -38,7 +38,7 @@ en:
   rdb_options_board_view_compact: Classic
   rdb_options_board_view_outline: Outline
   rdb_options_columns: Board Columns
-  rdb_options_fullscreen: Fullscreen
+  rdb_options_fullscreen: Full Screen
 
   rdb_legend_priorities: Priorities
   rdb_legend_warnings: Warnings

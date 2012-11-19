@@ -11,19 +11,5 @@
 
     %div.rdb-card-content
       %div.rdb-card-subject.rdb-property-subject= issue.subject
-      %div.rdb-card-property.rdb-card-tracker= issue.tracker
-      - if issue.fixed_version
-        %div.rdb-card-property.rdb-card-version= issue.fixed_version.name
-      - else
-        %div.rdb-card-property.rdb-card-version.rdb-disabled= t(:rdb_filter_version_unassigned)
-      - if issue.assigned_to
-        %div.rdb-card-property.rdb-card-assignee= issue.assigned_to.name
-      - else
-        %div.rdb-card-property.rdb-card-assignee.rdb-disabled= t(:rdb_unassigned)
-      - if issue.category
-        %div.rdb-card-property.rdb-card-category= issue.category.name
-      - else
-        %div.rdb-card-property.rdb-card-category.rdb-disabled= t(:rdb_unassigned)
-      %div.rdb-card-property.rdb-card-time{:class => (issue.estimated_hours.nil? and issue.time_entries.empty?) ? 'rdb-disabled' : ''}
-        =t(:rdb_property_time, :estimated => issue.estimated_hours.to_f.round(2), :actual => issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe
+      = render :partial => 'rdb_dashboard/issues/issue_properties', :locals => { :issue => issue }
 / ISSUE CARD END

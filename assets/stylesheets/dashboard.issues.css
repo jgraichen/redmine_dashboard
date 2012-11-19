@@ -103,40 +103,6 @@
 	overflow: hidden;
 }
 
-.rdb-card-property, .rdb-compact-property {
-	display: block;
-	padding: 1px 0 0 14px;
-	background: transparent none no-repeat 0 70%;
-	font-size: .95em;
-}
-.rdb-card-property.rdb-disabled {
-	color: #aaa;
-	display: none;
-}
-.rdb-card:hover .rdb-card-property.rdb-disabled {
-	display: block;
-}
-
-.rdb-card-tracker, .rdb-compact-tracker {
-	background-image: url("img/ticket.png");
-}
-.rdb-card-assignee, .rdb-compact-assignee {
-	background-image: url("img/user.png");
-}
-.rdb-card-category, .rdb-compact-category {
-	background-image: url("img/brick.png");
-}
-.rdb-card-version, .rdb-compact-version {
-	background-image: url("img/package.png");
-}
-.rdb-card-time, .rdb-compact-time {
-	background-image: url("img/time.png");
-	font-size: 70%;
-}
-.rdb-card-time span, .rdb-compact-time span {
-	font-size: 140%;
-}
-
 .rdb-card-progress,
 .rdb-compact-progress {
 	background-color: #ddd;
@@ -148,6 +114,45 @@
 .rdb-compact-progress-bar {
 	background-color: green;
 	height: 2px;
+}
+
+
+/* ========================================================
+** Issue Properties
+*/
+
+.rdb-property {
+	display: block;
+	padding: 1px 0 0 14px;
+	background: transparent none no-repeat 0 70%;
+	font-size: .95em;
+}
+.rdb-property.rdb-disabled {
+	color: #aaa;
+	display: none;
+}
+.rdb-issue:hover .rdb-property.rdb-disabled {
+	display: block;
+}
+
+.rdb-property-tracker {
+	background-image: url("img/ticket.png");
+}
+.rdb-property-assignee {
+	background-image: url("img/user.png");
+}
+.rdb-property-category {
+	background-image: url("img/brick.png");
+}
+.rdb-property-version {
+	background-image: url("img/package.png");
+}
+.rdb-property-time {
+	background-image: url("img/time.png");
+	font-size: 70%;
+}
+.rdb-property-time span {
+	font-size: 140%;
 }
 
 
@@ -183,6 +188,14 @@
 	height: 1.5em;
 	font-size: .8em;
 	overflow: hidden;
+}
+.rdb-compact-header .rdb-property {
+	display: inline;
+	color: #888;
+}
+.rdb-compact-header .rdb-property.rdb-disabled,
+.rdb-issue:hover .rdb-compact-header .rdb-property.rdb-disabled {
+	display: none;
 }
 
 .rdb-compact-title {
