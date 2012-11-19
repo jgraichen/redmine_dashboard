@@ -90,7 +90,7 @@ class RdbDashboard
 
   def filters; @filters ||= HashWithIndifferentAccess.new end
   def groups; @groups ||= HashWithIndifferentAccess.new end
-  def grouplist; @group_list ||= [] end
+  def group_list; @group_list ||= [] end
 
   class << self
     def board_type
