@@ -1,6 +1,6 @@
 %ul.rdb-columns
   - @board.column_list.each do |column|
     - if column.visible?
-      %li.rdb-column{:class => column.compact? ? 'rdb-column-compact' : '', :data => {:'rdb-column-id' => column.id, :'rdb-drop-accept' => group.id}}
+      %li.rdb-column{:class => column.compact? ? 'rdb-column-compact' : '', :data => {:'rdb-column-id' => column.id, :'rdb-drop-group' => group.id}}
         - if not column.compact?
           = render :partial => 'rdb_dashboard/taskboard/column', :locals => { :column => column, :issues => group.filter(column.issues), :group => group }

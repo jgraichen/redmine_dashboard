@@ -51,10 +51,14 @@
 		el.find(".rdb-column").each(function() {
 			var column = $(this);
 			var coluid = column.rdbColumnId();
-			var accept = column.data('rdb-drop-accept');
-			if(coluid && accept) {
+			var cgroup = column.data('rdb-drop-group');
+			if(coluid) {
 				column.droppable({
-					accept: '[data-rdb-drop-on="' + accept + '"]',
+					accept: function(draggable) {
+						var issue = draggable.rdbIssue();
+						var dropon = issue.data('rdb-drop-on') || '';
+						return issue.data('rdb-drop-group') == cgroup && dropon.indexOf(coluid) >= 0;
+					}, //'[data-rdb-drop-on*="' + accept + '"]',
 					activeClass: "rdb-column-drop-active",
 					hoverClass: "rdb-column-drop-hover",
 					tolerance: "pointer",

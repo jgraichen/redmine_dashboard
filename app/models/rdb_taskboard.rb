@@ -85,4 +85,14 @@ class RdbTaskboard < RdbDashboard
     column_list << column
     columns[column.id.to_s] = column
   end
+
+  def drop_on(issue)
+    if User.current.admin?
+      return column_list.reject{|c| c.statuses.include? issue.status}.map(&:id).join(' ')
+    end
+
+    statuses = issue.new_statuses_allowed_to(User.current)
+    statuses.delete issue.status
+    column_list.select{|c| (statuses & c.statuses).any?}.map(&:id).uniq.join(' ')
+  end
 end

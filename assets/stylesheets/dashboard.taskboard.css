@@ -46,10 +46,18 @@
 .rdb-columns {
 	margin: 0;
 }
+.rdb-columns:first-child .rdb-column {
+	padding-top: 8px;
+}
 
 .rdb-columns .rdb-column {
-	border-left: 1px solid #f5f5f5;
+	border-left: 2px solid #f5f5f5;
 	padding: 0 3px 25px 1px;
+
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-transition: all 0.3s ease-in-out;
 }
 
 .rdb-column-compact {
@@ -68,10 +76,21 @@
 
 .rdb-column-drop-active {
 	background-color: #F1FFFF;
+	background-color: #E8F7FF;
+
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-transition: all 0.3s ease-in-out;
 }
 
 .rdb-column-drop-hover {
 	background-color: #eee;
+	background-color: #DDFADE;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-transition: all 0.3s ease-in-out;
 }
 
 
@@ -153,7 +172,7 @@
 	overflow: hidden;
 	*zoom: 1;
 
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 }
 
 .rdb-overall-progress a {
