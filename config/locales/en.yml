@@ -11,7 +11,7 @@ en:
   rdb_filter_category_multiple: Multiple Categories
   rdb_filter_assignee_all: All Issues
   rdb_filter_assignee_me: My Issues
-  rdb_filter_assignee_none: Unassigned Issues
+  rdb_filter_assignee_none: Unassigned
   rdb_filter_assignee_others: Others
 
   rdb_options: Options
@@ -42,6 +42,8 @@ en:
   rdb_legend_priorities: Priorities
   rdb_legend_warnings: Warnings
   rdb_issue_overdue: Overdue
+  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_not_available: N/A
 
   rdb_column_done: Done
   rdb_x_issues:

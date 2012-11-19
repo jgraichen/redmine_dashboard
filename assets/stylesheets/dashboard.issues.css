@@ -47,7 +47,7 @@
 */
 
 .rdb-card {
-	width: 170px;
+	width: 180px;
 
 	border: 1px solid #ccc;
 	background: #FFFFDD;
@@ -56,7 +56,7 @@
 	position: relative;
 }
 .rdb-card .rdb-priority {
-	height: 11.6em;
+	height: 12.6em;
 }
 .rdb-card-title { float: left; }
 .rdb-card-header-data { padding-top: 2px; }
@@ -96,6 +96,7 @@
 .rdb-card-subject {
 	display: block;
 	margin: 0 0 .25em 0;
+	height: 4.6em;
 	min-height: 2.3em;
 	max-height: 4.6em;
 	text-overflow: ellipsis;
@@ -105,13 +106,15 @@
 .rdb-card-property, .rdb-compact-property {
 	display: block;
 	padding: 1px 0 0 14px;
-	background: transparent none no-repeat 0 60%;
+	background: transparent none no-repeat 0 70%;
 	font-size: .95em;
 }
-
-.rdb-card-tracker {
-	color: #888;
-	background-position: 2px 60%;
+.rdb-card-property.rdb-disabled {
+	color: #aaa;
+	display: none;
+}
+.rdb-card:hover .rdb-card-property.rdb-disabled {
+	display: block;
 }
 
 .rdb-card-tracker, .rdb-compact-tracker {
@@ -125,6 +128,13 @@
 }
 .rdb-card-version, .rdb-compact-version {
 	background-image: url("img/package.png");
+}
+.rdb-card-time, .rdb-compact-time {
+	background-image: url("img/time.png");
+	font-size: 70%;
+}
+.rdb-card-time span, .rdb-compact-time span {
+	font-size: 140%;
 }
 
 .rdb-card-progress,
