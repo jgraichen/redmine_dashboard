@@ -4,12 +4,12 @@ en:
   rdb_planningboard: Planning Board
 
   rdb_filter_version_all: All Versions
-  rdb_filter_version_unassigned: No Version
+  rdb_filter_version_unassigned: Unassigned
   rdb_filter_tracker_all: All Trackers
   rdb_filter_tracker_multiple: Multiple Trackers
   rdb_filter_category_all: All Categories
   rdb_filter_category_multiple: Multiple Categories
-  rdb_filter_assignee_all: All Issues
+  rdb_filter_assignee_all: All Assignees
   rdb_filter_assignee_me: My Issues
   rdb_filter_assignee_none: Unassigned
   rdb_filter_assignee_others: Others
@@ -65,8 +65,8 @@ en:
   rdb_issue_menu_redmine_issue: Redmine Issue
   rdb_issue_menu_show: Show
   rdb_issue_menu_edit: Edit
-  rdb_issue_menu_assigne_me: Assigne me
-  rdb_issue_menu_unassigne_me: Unassigne me
+  rdb_issue_menu_assigne_me: Assign me
+  rdb_issue_menu_unassigne_me: Unassign me
 
   rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
