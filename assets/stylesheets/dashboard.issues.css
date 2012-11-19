@@ -129,10 +129,6 @@
 }
 .rdb-property.rdb-disabled {
 	color: #aaa;
-	display: none;
-}
-.rdb-issue:hover .rdb-property.rdb-disabled {
-	display: block;
 }
 
 .rdb-property-tracker {
@@ -193,8 +189,7 @@
 	display: inline;
 	color: #888;
 }
-.rdb-compact-header .rdb-property.rdb-disabled,
-.rdb-issue:hover .rdb-compact-header .rdb-property.rdb-disabled {
+.rdb-compact-header .rdb-property.rdb-disabled {
 	display: none;
 }
 
