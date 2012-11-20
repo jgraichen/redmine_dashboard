@@ -111,6 +111,9 @@
 	margin: 0 -5px;
 	background-color: #f9f9f9;
 }
+.rdb-group:first-child .rdb-group-header {
+	margin-top: 10px;
+}
 
 .rdb-group-header h4 {
 	display: inline;
