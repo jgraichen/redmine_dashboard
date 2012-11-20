@@ -69,6 +69,14 @@
 
 	min-width: 160px;
 	max-height: 400px;
+	padding: 0 1px;
+}
+.rdb-container-wrapper::-webkit-scrollbar {
+    width: 5px;
+	background-color: #eee;
+}
+.rdb-container-wrapper::-webkit-scrollbar-thumb {
+	background-color: #bbb;
 }
 
 .rdb-container::before {
@@ -182,16 +190,22 @@
 .rdb-list .rdb-multicheck a.rdb-checkbox-link:hover ~ a {
 	background-color: #eee;
 }
-
+.rdb-list .rdb-multicheck {
+	display: table;
+	width: 100%;
+}
 .rdb-list .rdb-multicheck a {
 	padding-left: 5px;
+	padding-right: 5px;
+	display: table-cell;
 }
 
 .rdb-list .rdb-multicheck a.rdb-checkbox-link {
-	padding-right: 5px;
-	padding-left: 18px;
+	padding-right: 0;
+	padding-left: 24px;
 	margin-right: 4px;
-	float: left;
+	/*float: left;*/
+	width: 1px;
 	height: 1em;
 	background-position: 4px 50%;
 }
