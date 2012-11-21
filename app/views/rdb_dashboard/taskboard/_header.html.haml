@@ -49,7 +49,7 @@
             :enabled => @board.options[:change_assignee], :title => t(:rdb_options_change_assignee_info)
         = rdb_checkbox_link_to t(:rdb_options_hide_done), rdb_board_path(:hide_done => !@board.options[:hide_done]),
             :enabled => @board.options[:hide_done], :title => t(:rdb_options_hide_done_info)
-    - render_rdb_menu_list @board.columns.values, :title => t(:rdb_options_columns) do |column|
+    - render_rdb_menu_list @board.column_list, :title => t(:rdb_options_columns) do |column|
       = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
     - render_rdb_menu_list do
       - render_rdb_menu_list_item do
