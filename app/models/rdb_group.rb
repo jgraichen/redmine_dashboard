@@ -44,12 +44,12 @@ class RdbGroup
   def visible?
     board.columns.values.each do |column|
       next if not column.visible? or column.compact?
-      return true if issues(column).count > 0
+      return true if filter(column.issues).count > 0
     end
     false
   end
 
-  def issues(column = nil)
-    accepted_issues(column).select{|i| i.children.empty?}
+  def issue_count
+    filter(@board.issues).count.to_i
   end
 end

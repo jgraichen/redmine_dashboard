@@ -86,6 +86,8 @@ class RdbTaskboard < RdbDashboard
     columns[column.id.to_s] = column
   end
 
+  def visible_columns; @columns.values.select{|c| c.visible?} end
+
   def drop_on(issue)
     if User.current.admin?
       return column_list.reject{|c| c.statuses.include? issue.status}.map(&:id).join(' ')

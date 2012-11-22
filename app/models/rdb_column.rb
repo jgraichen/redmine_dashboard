@@ -18,7 +18,7 @@ class RdbColumn
 
   +Memoize
   def issues
-    board.issues_for(self).select {|i| i.children.empty?}
+    board.issues_for(self)
   end
 
   def percentage

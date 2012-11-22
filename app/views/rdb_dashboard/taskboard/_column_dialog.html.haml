@@ -5,9 +5,6 @@
         %span.rdb-card-title
           = link_to "#{@board.abbreviation}#{@issue.id}", @issue
 
-        %div.rdb-card-header-data
-          %div.rdb-card-property.rdb-card-tracker= @issue.tracker
-
       %div.rdb-card-progress
         %div.rdb-card-progress-bar{:style => "width: #{@issue.done_ratio}%;" }
 
