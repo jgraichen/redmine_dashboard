@@ -8,6 +8,8 @@ Redmine::Plugin.register :redmine_dashboard do
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jg@altimos.de'
 
+  requires_redmine :version_or_higher => '2.1'
+
   project_module :dashboard do
     permission :view_dashboards, {
       :rdb_dashboard => [:index ],
