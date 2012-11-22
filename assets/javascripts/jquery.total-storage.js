@@ -54,7 +54,7 @@
 		supported = true;
 	}
 	// supported = false;
-	console.log('supported = ' + supported);
+	// console.log('supported = ' + supported);
 	/* Make the methods public */
 
 	$.totalStorage = function(key, value, options){
