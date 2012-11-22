@@ -110,6 +110,7 @@ html > body #content {
 	padding: 0;
 	white-space: nowrap;
 }
+#rdb-header .rdb-board h2 { font-size: 20px; }
 
 a#rdb-refresh {
 	float: left;
