@@ -38,6 +38,7 @@
 				revert: true,
 				// containment: '#rdb-board',
 				distance: 20,
+				cancel: 'a,.rdb-menu',
 				start: function() {
 					Rdb.rdbMenuClose();
 					issue.addClass('rdb-issue-dragged');
