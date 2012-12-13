@@ -1,4 +1,6 @@
 - if issues.any? and @board.groups.count > 1
   %div.rdb-column-head=t :rdb_x_issues, :count => issues.count
-  - issues.sort_by{|i| i.priority.position}.reverse.sort_by(&:id).each do |issue|
+- grouped_issues = issues.group_by{|i| i.priority.position}
+- grouped_issues.keys.sort.reverse.each do |priority|
+  - grouped_issues[priority].sort_by(&:id).each do |issue|
     = render :partial => 'rdb_dashboard/issues/issue', :locals => { :issue => issue, :group => group }
