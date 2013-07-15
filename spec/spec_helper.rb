@@ -1,12 +1,15 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f}
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -36,7 +39,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  require 'factory_girl'
-  require File.dirname(__FILE__) + '/factories.rb'
-  Dir.glob(File.dirname(__FILE__) + '/factories/*').each { |file| require file }
+  # Include request spec helpers
+  config.include RdbRequestHelpers, :type => :feature
+
+  DatabaseCleaner.strategy = :transaction
+
+  Capybara.default_host = 'http://example.org'
+  Capybara.javascript_driver = :poltergeist
+  Capybara.default_wait_time = 15
 end
