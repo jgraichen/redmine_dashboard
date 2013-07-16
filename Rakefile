@@ -66,6 +66,7 @@ namespace :redmine do
   task :download do
     unless File.exists? tar
       puts "Download redmine to '#{tar}'..."
+      exec 'mkdir', '-p', 'tmp'
       Dir.chdir 'tmp' do
         exec 'wget', "https://github.com/edavis10/redmine/archive/#{tarname}"
       end
