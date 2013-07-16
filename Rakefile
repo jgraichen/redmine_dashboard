@@ -101,10 +101,10 @@ namespace :redmine do
   task :setup => [ :install ] do
     unless_done('setup', 1) do
       Dir.chdir path do
-        bxrake 'db:migrate'
-        bxrake 'redmine:load_default_data', 'REDMINE_LANG=en'
         bxrake 'generate_secret_token'
+        bxrake 'db:migrate'
         bxrake 'redmine:plugins:migrate'
+        bxrake 'redmine:load_default_data', 'REDMINE_LANG=en'
       end
       puts
     end
