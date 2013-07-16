@@ -71,7 +71,7 @@ namespace :redmine do
             pool: 5
             timeout: 5000
           DATABASE
-          file.write '  username: postgres' if ENV['TRAVIS']
+          file.write "  username: postgres\n" if ENV['TRAVIS']
           file.write <<-DATABASE
           test:
             <<: *common
