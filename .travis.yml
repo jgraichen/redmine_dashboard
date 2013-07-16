@@ -16,5 +16,7 @@ matrix:
     env: REDMINE_VERSION=2.2.4
   - rvm: 2.0.0
     env: REDMINE_VERSION=2.1.6
-install: rake redmine:setup
+install:
+- unset BUNDLE_GEMFILE
+- rake redmine:setup
 script: rake spec
