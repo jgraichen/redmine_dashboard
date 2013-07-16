@@ -62,12 +62,12 @@ namespace :redmine do
         end
 
         # symlink plugin
-        exec 'rm', "#{path}/plugins/redmine_dashboard" rescue true
+        exec 'rm', "#{path}/plugins/redmine_dashboard" if File.exists? "#{path}/plugins/redmine_dashboard"
         exec 'ln', '-s', BASE, "#{path}/plugins/"
 
         # symlink assets for development mode
         mkpath "#{path}/public/plugin_assets"
-        exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" rescue true
+        exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" if File.exists? "#{path}/public/plugin_assets/redmine_dashboard_linked"
         exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
 
         # install dependencies
