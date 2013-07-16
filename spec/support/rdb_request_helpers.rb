@@ -31,7 +31,7 @@ module RdbRequestHelpers
 
   # Renders an image of current page with poltergeist.
   def render_image(name)
-    page.driver.render("tmp/screenshot-#{name}.png", :full => true)
+    page.driver.render("../../screenshot-#{name}.png", :full => true)
   end
 
   # Wait for finish of ajax request
