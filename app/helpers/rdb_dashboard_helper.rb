@@ -1,11 +1,11 @@
 module RdbDashboardHelper
 
-  def render_rdb_menu(title, options = {}, &container)
+  def render_rdb_menu(id, title, options = {}, &container)
     options[:class] ||= ''
     options[:class] += ' rdb-menu-right' if options[:right]
     options[:class] += ' rdb-small' if options[:small]
 
-    haml_tag :div, :class => "rdb-menu #{options[:class]}" do
+    haml_tag :div, :class => "rdb-menu rdb-menu-#{id} #{options[:class]}" do
       if options[:anchor]
         link = options[:anchor].call.to_s.html_safe
       else

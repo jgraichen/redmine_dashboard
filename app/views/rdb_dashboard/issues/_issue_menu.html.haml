@@ -1,4 +1,4 @@
-- render_rdb_menu "#{@board.abbreviation}#{issue.id}", :small => true do
+- render_rdb_menu :issue, "#{@board.abbreviation}#{issue.id}", :small => true do
   - render_rdb_menu_list :title => t(:rdb_issue_menu_redmine_issue) do
     - render_rdb_menu_list_item do
       = link_to t(:rdb_issue_menu_show), issue_path(issue)
