@@ -66,18 +66,21 @@ namespace :redmine do
         File.open("#{path}/config/database.yml", 'w') do |file|
           file.write <<-DATABASE
           common: &common
-            adapter: sqlite3
+            adapter: postgresql
             pool: 5
             timeout: 5000
+          DATABASE
+          file.write '  username: postgres' if ENV['TRAVIS']
+          file.write <<-DATABASE
           test:
             <<: *common
-            database: #{database_path}/test.sqlite3
+            database: rdb_test_#{version.gsub(/\W+/, '_')}
           production:
             <<: *common
-            database: #{database_path}/production.sqlite3
+            database: rdb_#{version.gsub(/\W+/, '_')}
           development:
             <<: *common
-            database: #{database_path}/development.sqlite3
+            database: rdb_dev_#{version.gsub(/\W+/, '_')}
           DATABASE
         end
 
@@ -102,6 +105,7 @@ namespace :redmine do
     unless_done('setup', 1) do
       Dir.chdir path do
         bxrake 'generate_secret_token'
+        bxrake 'db:create:all'
         bxrake 'db:migrate'
         bxrake 'db:migrate', 'RAILS_ENV=test'
         bxrake 'redmine:plugins:migrate'
