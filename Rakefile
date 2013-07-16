@@ -39,9 +39,9 @@ namespace :redmine do
         exec 'tar', 'xf', tar
         Dir.chdir path do
           exec 'cp', "#{BASE}/spec/support/database.yml", "#{path}/config"
-          exec 'rm', "#{path}/plugins/redmine_dashboard" rescue
+          exec 'rm', "#{path}/plugins/redmine_dashboard" rescue true
           exec 'ln', '-s', BASE, "#{path}/plugins/"
-          exec 'bundle', 'install', '--path', bundle_path\
+          exec 'bundle', 'install', '--path', bundle_path
         end
       end
       puts
@@ -56,7 +56,7 @@ namespace :redmine do
         bxrake 'db:migrate'
         bxrake 'redmine:load_default_data', 'REDMINE_LANG=en'
         bxrake 'generate_secret_token'
-        bxrake 'redmine:plugins:migrate'\
+        bxrake 'redmine:plugins:migrate'
       end
       puts
     end
