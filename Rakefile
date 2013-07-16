@@ -5,9 +5,10 @@
 task :default => :spec
 
 desc 'Run specs.'
-task :spec => [ :setup ] do
+task :spec, [ :opts ] => [ :setup ] do |t, args|
+  args.with_defaults :opts => 'plugins/redmine_dashboard/spec'
   Dir.chdir path do
-    bx 'rspec', '-I', "#{path}/plugins/redmine_dashboard/spec", 'plugins/redmine_dashboard/spec'
+    bx 'rspec', '-I', "#{path}/plugins/redmine_dashboard/spec", args[:opts].to_s
   end
 end
 
