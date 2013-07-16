@@ -48,6 +48,7 @@ def tmpdir; "#{BASE}/tmp" end
 def archives_path; "#{tmpdir}/archives" end
 def redmines_path; "#{tmpdir}/redmines" end
 def databases_path; "#{tmpdir}/databases" end
+def bundle_path; "#{tmpdir}/bundle" end
 def database_path; "#{databases_path}/#{version}" end
 def archive_path; "#{archives_path}/#{archive}" end
 def path; "#{redmines_path}/#{version}" end
@@ -90,7 +91,7 @@ namespace :redmine do
         exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
 
         # install dependencies
-        exec 'bundle', 'install'
+        exec 'bundle', 'install', '--path', bundle_path
       end
       puts
     end
