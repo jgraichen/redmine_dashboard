@@ -11,4 +11,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'capybara', '~> 2.0.0'
+
+  # for redmine on travis CI
+  gem 'test-unit'
 end
