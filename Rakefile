@@ -67,23 +67,23 @@ namespace :redmine do
         mkpath database_path
         File.open("#{path}/config/database.yml", 'w') do |file|
           file.write <<-DATABASE
-          common: &common
-            pool: 5
-            timeout: 5000
-          DATABASE
+common: &common
+  pool: 5
+  timeout: 5000
+DATABASE
           file.write jruby? ? "  adapter: jdbcpostgresql\n" : "  adapter: postgresql\n"
           file.write "  username: postgres\n" if ENV['TRAVIS']
           file.write <<-DATABASE
-          test:
-            <<: *common
-            database: rdb_test_#{version.gsub(/\W+/, '_')}
-          production:
-            <<: *common
-            database: rdb_#{version.gsub(/\W+/, '_')}
-          development:
-            <<: *common
-            database: rdb_dev_#{version.gsub(/\W+/, '_')}
-          DATABASE
+test:
+  <<: *common
+  database: rdb_test_#{version.gsub(/\W+/, '_')}
+production:
+  <<: *common
+  database: rdb_#{version.gsub(/\W+/, '_')}
+development:
+  <<: *common
+  database: rdb_dev_#{version.gsub(/\W+/, '_')}
+DATABASE
         end
 
         exec 'cat', "#{path}/config/database.yml" if ENV['TRAVIS']
