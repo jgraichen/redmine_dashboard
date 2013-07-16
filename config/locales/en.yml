@@ -1,5 +1,7 @@
 # English strings go here for Rails i18n
 en:
+  menu_label_dashboard: Dashboard
+
   rdb_taskboard: Task Board
   rdb_planningboard: Planning Board
 

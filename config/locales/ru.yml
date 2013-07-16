@@ -3,9 +3,9 @@ ru:
   project_module_dashboard: Панель задач
   permission_view_dashboards: Просмотр Панели
   permission_configure_dashboards: Управление панелями
-  
+
   menu_label_dashboard: Панель задач
-  
+
   rdb_taskboard: Панель задач
   rdb_planningboard: Доска планирования
 

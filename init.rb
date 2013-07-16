@@ -16,7 +16,7 @@ Redmine::Plugin.register :redmine_dashboard do
       :rdb_taskboard => [:index, :filter, :move, :update ] }
     permission :configure_dashboards, { :rdb_dashboard => [:configure] }
   end
-  menu :project_menu, :dashboard, { :controller => 'rdb_dashboard', :action => 'index' }, 
-  :caption => :menu_label_dashboard, :after => :new_issue
+  menu :project_menu, :dashboard, { :controller => 'rdb_dashboard', :action => 'index' },
+    :caption => :menu_label_dashboard, :after => :new_issue
 
 end

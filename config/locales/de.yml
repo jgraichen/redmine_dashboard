@@ -1,5 +1,11 @@
 # German strings go here for Rails i18n
 de:
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: Dashboards anschauen
+  permission_configure_dashboards: Dashboards konfigurieren
+
+  menu_label_dashboard: Dashboard
+
   rdb_taskboard: Task Board
   rdb_planningboard: Planning Board
 
