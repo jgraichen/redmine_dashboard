@@ -103,6 +103,7 @@ namespace :redmine do
       Dir.chdir path do
         bxrake 'generate_secret_token'
         bxrake 'db:migrate'
+        bxrake 'db:migrate', 'RAILS_ENV=test'
         bxrake 'redmine:plugins:migrate'
         bxrake 'redmine:load_default_data', 'REDMINE_LANG=en'
       end
