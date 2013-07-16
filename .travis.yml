@@ -4,11 +4,17 @@ rvm:
 - 1.9.3
 - 2.0.0
 env:
+- REDMINE_VERSION=2.1.6
 - REDMINE_VERSION=2.2.4
 - REDMINE_VERSION=2.3.1
+- REDMINE_VERSION=master
 matrix:
+  allow_failures:
+  - env: REDMINE_VERSION=master
   exclude:
   - rvm: 2.0.0
     env: REDMINE_VERSION=2.2.4
+  - rvm: 2.0.0
+    env: REDMINE_VERSION=2.1.6
 install: rake redmine:setup
 script: rake spec
