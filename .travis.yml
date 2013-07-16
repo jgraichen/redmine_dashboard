@@ -9,6 +9,6 @@ env:
 matrix:
   exclude:
   - rvm: 2.0.0
-    env: REDMINE_VER=2.2.4
+    env: REDMINE_VERSION=2.2.4
 install: rake redmine:setup
 script: rake spec
