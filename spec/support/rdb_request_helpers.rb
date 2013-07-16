@@ -34,8 +34,11 @@ module RdbRequestHelpers
     page.driver.render("../../screenshot-#{name}.png", :full => true)
   end
 
-  # Wait for finish of ajax request
-  def wait_for_ajax
-    wait_until { page.evaluate_script('jQuery.active') == 0 }
+  def rdb_menu_item(menu, item)
+    sleep 1
+    within ".rdb-menu-#{menu}" do
+      find('a.rdb-menu-link').click
+      return find('.rdb-container').find(:xpath, ".//a[contains(text(), '#{item}')]")
+    end
   end
 end
