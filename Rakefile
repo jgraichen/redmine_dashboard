@@ -78,6 +78,14 @@ namespace :redmine do
   task :remove do
     exec 'rm', '-rf', path
   end
+
+  desc 'Run local redmine development server'
+  task :server => [ :setup ] do
+    Dir.chdir path do
+      bx 'rails', 'server'
+    end
+    puts
+  end
 end
 
 desc 'Run redmine_dashboard specs.'
