@@ -85,6 +85,8 @@ namespace :redmine do
           DATABASE
         end
 
+        exec 'cat', "#{path}/config/database.yml" if ENV['TRAVIS']
+
         # symlink plugin
         exec 'rm', "#{path}/plugins/redmine_dashboard" if File.exists? "#{path}/plugins/redmine_dashboard"
         exec 'ln', '-s', BASE, "#{path}/plugins/"
