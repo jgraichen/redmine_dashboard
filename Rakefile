@@ -1,4 +1,23 @@
 #
+# Dashboard tasks
+#
+
+task :default => :spec
+
+desc 'Run specs.'
+task :spec => [ :setup ] do
+  Dir.chdir path do
+    bx 'rspec', 'plugins/redmine_dashboard/spec'
+  end
+end
+
+desc 'Setup project environment.'
+task :setup => [ 'redmine:setup' ] do
+  # just for delegation
+end
+
+#
+# Redmine tasks
 #
 
 BASE = Dir.getwd
@@ -118,12 +137,3 @@ namespace :redmine do
     puts
   end
 end
-
-desc 'Run redmine_dashboard specs.'
-task :spec => [ 'redmine:setup' ] do
-  Dir.chdir path do
-    bx 'rspec', 'plugins/redmine_dashboard/spec'
-  end
-end
-
-task :default => :spec
