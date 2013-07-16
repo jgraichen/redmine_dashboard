@@ -33,7 +33,7 @@ end
 namespace :redmine do
   desc 'Install redmine to tmp dir.'
   task :install => [ :download ] do
-    unless_done('install', 1) do
+    unless_done('install', 2) do
       puts "Install redmine to '#{path}'..."
       Dir.chdir 'tmp' do
         exec 'tar', 'xf', tar
@@ -41,6 +41,8 @@ namespace :redmine do
           exec 'cp', "#{BASE}/spec/support/database.yml", "#{path}/config"
           exec 'rm', "#{path}/plugins/redmine_dashboard" rescue true
           exec 'ln', '-s', BASE, "#{path}/plugins/"
+          exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" rescue true
+          exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
           exec 'bundle', 'install', '--path', bundle_path
         end
       end
