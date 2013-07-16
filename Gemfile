@@ -10,7 +10,9 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'guard-rspec'
-  gem 'capybara', '~> 2.0.0'
+
+  # already required by redmine
+  # gem 'capybara'
 
   # for redmine on travis CI
   gem 'test-unit'
