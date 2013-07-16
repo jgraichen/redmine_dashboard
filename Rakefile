@@ -41,6 +41,7 @@ namespace :redmine do
           exec 'cp', "#{BASE}/spec/support/database.yml", "#{path}/config"
           exec 'rm', "#{path}/plugins/redmine_dashboard" rescue true
           exec 'ln', '-s', BASE, "#{path}/plugins/"
+          exec 'mkdir', '-p', "#{path}/public/plugin_assets"
           exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" rescue true
           exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
           exec 'bundle', 'install', '--path', bundle_path
