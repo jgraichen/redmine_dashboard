@@ -56,6 +56,7 @@ def path; "#{redmines_path}/#{version}" end
 def bx(*attrs); exec *(['bundle', 'exec'] + attrs) end
 def bxrake(*attrs); bx *(['rake'] + attrs) end
 def mkpath(*paths); exec *(['mkdir', '-p'] + paths) end
+def jruby? Object.const_defined?(:JRUBY_VERSION) end
 
 namespace :redmine do
   desc 'Install redmine to tmp dir.'
@@ -67,10 +68,10 @@ namespace :redmine do
         File.open("#{path}/config/database.yml", 'w') do |file|
           file.write <<-DATABASE
           common: &common
-            adapter: postgresql
             pool: 5
             timeout: 5000
           DATABASE
+          file.write jruby? ? "  adapter: jdbcpostgresql\n" : "  adapter: postgresql\n"
           file.write "  username: postgres\n" if ENV['TRAVIS']
           file.write <<-DATABASE
           test:
