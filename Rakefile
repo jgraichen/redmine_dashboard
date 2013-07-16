@@ -56,7 +56,7 @@ def path; "#{redmines_path}/#{version}" end
 def bx(*attrs); exec *(['bundle', 'exec'] + attrs) end
 def bxrake(*attrs); bx *(['rake'] + attrs) end
 def mkpath(*paths); exec *(['mkdir', '-p'] + paths) end
-def jruby? Object.const_defined?(:JRUBY_VERSION) end
+def jruby?; Object.const_defined?(:JRUBY_VERSION) end
 
 namespace :redmine do
   desc 'Install redmine to tmp dir.'
