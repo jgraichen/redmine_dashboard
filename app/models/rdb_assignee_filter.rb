@@ -9,7 +9,7 @@ class RdbAssigneeFilter < RdbFilter
     when :me   then issues.select{|i| i.children.any? or i.assigned_to_id == User.current.id }
     when :none then issues.select{|i| i.children.any? or i.assigned_to_id == nil }
     when :all  then issues
-    else issues.select{|i| i.children.any? or i.assigned_to_id == value }
+    else issues.select{|i| i.children.any? or i.assigned_to_id == member_user_id }
     end
   end
 
@@ -33,6 +33,10 @@ class RdbAssigneeFilter < RdbFilter
     end
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee} => #{values.inspect}"
+  end
+
+  def member_user_id
+    board.project.members.find(value).user_id
   end
 
   def title
