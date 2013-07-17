@@ -31,10 +31,10 @@ describe "Taskboard/Filter/Versions", :js => true do
 
   it 'should allow to filter issues for versions' do
     unset_all_filter
-    select_filter :versions, '2.0'
+    select_filter :versions, '1.0'
 
-    page.should have_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()="Dave Lopper"]')
-    page.should have_no_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()!="Dave Lopper"]')
+    page.should have_selector(:xpath, '//*[contains(@class, "rdb-property-version")][text()="1.0"]', :count => 2)
+    page.should have_no_selector(:xpath, '//*[contains(@class, "rdb-property-version")][text()!="1.0"]')
   end
 
   it "should default to most recent not closed verion" do
