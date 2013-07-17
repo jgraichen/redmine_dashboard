@@ -19,10 +19,10 @@ class RdbVersionFilter < RdbFilter
   end
 
   def default_values
-    version = @board.project.versions.open.find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
+    version = @board.project.versions.where(:status => [:open, :locked]).find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
     return [ version.id ] unless version.nil?
 
-    version = @board.project.versions.open.find(:first, :order => 'name ASC')
+    version = @board.project.versions.where(:status => [:open, :locked]).find(:first, :order => 'name ASC')
     return [ version.id ] unless version.nil?
 
     [ :all ]
@@ -51,10 +51,10 @@ class RdbVersionFilter < RdbFilter
   end
 
   def versions
-    @board.project.versions.open
+    @board.project.versions.where(:status => [:open, :locked])
   end
 
   def done_versions
-    @board.project.versions.where('status != ?', 'open')
+    @board.project.versions.where(:status => :closed)
   end
 end
