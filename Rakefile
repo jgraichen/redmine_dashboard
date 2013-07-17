@@ -8,7 +8,7 @@ desc 'Run specs.'
 task :spec, [ :opts ] => [ :setup ] do |t, args|
   args.with_defaults :opts => 'plugins/redmine_dashboard/spec'
   Dir.chdir path do
-    exec 'bash', '-lc', "rspec -I '#{path}/plugins/redmine_dashboard/spec' #{args[:opts].to_s.gsub("'", "\'")}"
+    exec 'bash', '-lc', "bundle exec rspec -I '#{path}/plugins/redmine_dashboard/spec' #{args[:opts].to_s.gsub("'", "\'")}"
   end
 end
 
