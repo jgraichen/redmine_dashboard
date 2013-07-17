@@ -5,8 +5,8 @@
   #rdb-legend
     %div
       %p= t :rdb_legend_priorities
-      - IssuePriority.find(:all).each do |priority|
-        %span{:class => "rdb-priority rdb-priority-#{priority.position}" }=h priority
+      - IssuePriority.all.sort_by{|p| p.position}.each do |priority|
+        %span{:class => "rdb-priority rdb-priority-#{priority.position}" }= priority
 
     %div
       %p= t :rdb_legend_warnings
