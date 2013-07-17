@@ -12,6 +12,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'capybara', '~> 2.1.0'
   gem 'selenium-webdriver'
+  gem 'fuubar'
 
   # for redmine on travis CI
   gem 'test-unit'
