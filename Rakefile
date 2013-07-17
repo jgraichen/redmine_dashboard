@@ -8,7 +8,7 @@ desc 'Run specs.'
 task :spec, [ :opts ] => [ :setup ] do |t, args|
   args.with_defaults :opts => 'plugins/redmine_dashboard/spec'
   Dir.chdir path do
-    bx 'rspec', '-I', "#{path}/plugins/redmine_dashboard/spec", args[:opts].to_s
+    exec 'bash', '-lc', "rspec -I '#{path}/plugins/redmine_dashboard/spec' #{args[:opts].to_s.gsub("'", "\'")}"
   end
 end
 
@@ -97,13 +97,19 @@ DATABASE
         exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" if File.exists? "#{path}/public/plugin_assets/redmine_dashboard_linked"
         exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
 
-        # modify redmine Gemfile
-        exec 'sed', '-i', '-e', "s/.*gem [\"']capybara[\"'].*//g", "#{path}/Gemfile"
-
-        # install dependencies
-        exec 'bundle', 'install', '--path', bundle_path
+        Rake::Task['redmine:update'].invoke
       end
       puts
+    end
+  end
+
+  task :update do
+    Dir.chdir path do
+      # modify redmine Gemfile
+      exec 'sed', '-i', '-e', "s/.*gem [\"']capybara[\"'].*//g", "#{path}/Gemfile"
+
+      # install dependencies
+      exec 'bundle', 'install', '--path', bundle_path
     end
   end
 
