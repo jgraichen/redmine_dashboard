@@ -34,11 +34,30 @@ module RdbRequestHelpers
     page.driver.render("../../screenshot-#{name}.png", :full => true)
   end
 
-  def rdb_menu_item(menu, item)
-    sleep 1
-    within ".rdb-menu-#{menu}" do
-      find('a.rdb-menu-link').click
-      return find('.rdb-container').find(:xpath, ".//a[contains(text(), '#{item}')]")
-    end
+  def select_filter(filter, value)
+    find_menu_link(filter).click
+    find_menu_container(filter).click_link value
+    find_menu_link(filter).should have_content(value)
+  end
+
+  def unset_all_filter
+    select_filter :versions, 'All Versions'
+    select_filter :assignee, 'All Assignees'
+  end
+
+  def find_menu(id)
+    find(:xpath, "//*[contains(@class, \"rdb-menu-#{id}\")]")
+  end
+
+  def find_menu_link(id)
+    find_menu(id).find('.rdb-menu-link')
+  end
+
+  def find_menu_container(id)
+    find_menu(id).find('.rdb-container')
+  end
+
+  def find_menu_item(id, item)
+    find_menu_container(id).find(:xpath, ".//a[contains(text(), '#{item}')]")
   end
 end
