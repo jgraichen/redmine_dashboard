@@ -40,6 +40,8 @@ describe "Taskboard/Filter/Assignee", :js => true do
     unset_all_filter
     select_filter :assignee, 'Dave Lopper'
 
+    sleep 1
+
     page.should have_no_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()!="Dave Lopper"]')
     page.should have_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()="Dave Lopper"]')
   end
