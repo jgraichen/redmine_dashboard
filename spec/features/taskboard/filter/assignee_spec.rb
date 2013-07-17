@@ -17,8 +17,19 @@ describe "Taskboard/Filter/Assignee", :js => true do
     click_on 'Dashboard'
   end
 
-  it 'should show all assignees in menu' do
-    page.should have_selector(:xpath, '//*[contains(@class, "rdb-menu-assignee")]//*[contains(@class, "rdb-list")][2]//a', :count => 2)
+  context 'menu' do
+    let(:menu) { find(:xpath, '//*[contains(@class, "rdb-menu-assignee")]') }
+
+    it 'should have items for all members' do
+      menu.find('.rdb-menu-link').click
+      menu.should have_link('Dave Lopper')
+      menu.should have_link('John Smith')
+    end
+
+    it 'should show all assignees in menu' do
+      menu.find('.rdb-menu-link').click
+      menu.should have_selector(:xpath, './/*[contains(@class, "rdb-list")][2]//a', :count => 2)
+    end
   end
 
   it 'should allow to filter issues for assignee' do
