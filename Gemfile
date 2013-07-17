@@ -10,9 +10,8 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'guard-rspec'
-
-  # already required by redmine
-  # gem 'capybara'
+  gem 'capybara', '~> 2.1.0'
+  gem 'selenium-webdriver'
 
   # for redmine on travis CI
   gem 'test-unit'

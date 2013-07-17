@@ -61,7 +61,7 @@ def jruby?; Object.const_defined?(:JRUBY_VERSION) end
 namespace :redmine do
   desc 'Install redmine to tmp dir.'
   task :install => [ :download ] do
-    unless_done('install', 1) do
+    unless_done('install', 2) do
       Dir.chdir path do
         # database config
         mkpath database_path
@@ -96,6 +96,9 @@ DATABASE
         mkpath "#{path}/public/plugin_assets"
         exec 'rm', "#{path}/public/plugin_assets/redmine_dashboard_linked" if File.exists? "#{path}/public/plugin_assets/redmine_dashboard_linked"
         exec 'ln', '-s', "#{BASE}/assets", "#{path}/public/plugin_assets/redmine_dashboard_linked"
+
+        # modify redmine Gemfile
+        exec 'sed', '-i', '-e', "s/.*gem [\"']capybara[\"'].*//g", "#{path}/Gemfile"
 
         # install dependencies
         exec 'bundle', 'install', '--path', bundle_path
