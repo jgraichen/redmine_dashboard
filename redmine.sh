@@ -166,20 +166,12 @@ spec()
 		exit 1
 	fi
 
-	echo ">>>>" --color --tty $@
-	redmine ./bin/rspec --color --tty $@
-	echo $?
-	echo "<<<<" --color --tty $@
+	redmine rake parallel:spec[$@]
 }
 
 ci()
 {
-	if [ ! -d "$REDMINE" ]; then
-		echo "First install redmine. Abort."
-		exit 1
-	fi
-
-	redmine ./bin/rspec --color --tty spec
+	spec spec
 }
 
 # set -x
