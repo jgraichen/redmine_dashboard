@@ -147,11 +147,14 @@ _update_redmine()
 	redmine bundle exec rake db:migrate RAILS_ENV=test
 	redmine bundle exec rake redmine:plugins:migrate
 	redmine bundle exec rake redmine:plugins:migrate RAILS_ENV=test
+
+	redmine bundle exec rake parallel:create
+	redmine bundle exec rake parallel:prepare
 }
 
 server()
 {
-	redmine_bundle exec rails server $@
+	redmine bundle exec rails server $@
 }
 
 remove()
@@ -165,7 +168,6 @@ spec()
 		echo "First install redmine. Abort."
 		exit 1
 	fi
-
 	redmine rake parallel:spec[$@]
 }
 
