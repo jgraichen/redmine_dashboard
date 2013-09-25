@@ -63,7 +63,7 @@ install()
 	fi
 
 	if [ -n "$TRAVIS" ]; then
-		$DB_USER="username: postgres"
+		DB_USER="username: postgres"
 	fi
 
 	DB_VERSION=${VERSION//\./_}
