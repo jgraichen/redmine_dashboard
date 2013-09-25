@@ -148,8 +148,8 @@ _update_redmine()
 	redmine bundle exec rake redmine:plugins:migrate
 	redmine bundle exec rake redmine:plugins:migrate RAILS_ENV=test
 
-	redmine bundle exec rake parallel:create
-	redmine bundle exec rake parallel:prepare
+	#redmine bundle exec rake parallel:create
+	#redmine bundle exec rake parallel:prepare
 }
 
 server()
@@ -168,7 +168,8 @@ spec()
 		echo "First install redmine. Abort."
 		exit 1
 	fi
-	redmine rake parallel:spec[$@]
+	#redmine rake parallel:spec[$@]
+	redmine rake spec
 }
 
 ci()
