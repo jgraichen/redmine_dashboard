@@ -1,6 +1,5 @@
 ---
 language: ruby
-services: postgresql
 addons:
   sauce_connect:
     username:

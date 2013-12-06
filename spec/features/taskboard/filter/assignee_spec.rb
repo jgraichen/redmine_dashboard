@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Taskboard/Filter/Assignee", :js => true do
+describe "Taskboard/Filter/Assignee", :js => true, :sauce => true do
   fixtures :projects, :projects_trackers, :users, :members,
     :member_roles, :issues, :issue_categories,
     :issue_statuses, :enumerations, :roles, :time_entries,
@@ -37,6 +37,14 @@ describe "Taskboard/Filter/Assignee", :js => true do
   end
 
   it 'should allow to filter issues for assignee' do
+    unset_all_filter
+    select_filter :assignee, 'Dave Lopper'
+
+    page.should have_no_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()!="Dave Lopper"]')
+    page.should have_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()="Dave Lopper"]', :count => 2)
+  end
+
+  it 'should allow to filter issues for groups' do
     unset_all_filter
     select_filter :assignee, 'Dave Lopper'
 

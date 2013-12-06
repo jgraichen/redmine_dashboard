@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require File.expand_path("../../spec_helper", __FILE__)
 
-describe "Rdb", :js => true do
+describe "Rdb", :js => true, :sauce => true do
   fixtures :projects, :projects_trackers, :users, :members,
     :member_roles, :issues, :issue_categories,
     :issue_statuses, :enumerations, :roles, :time_entries,

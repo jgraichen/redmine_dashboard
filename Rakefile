@@ -115,7 +115,13 @@ namespace :redmine do
 
   desc 'Install RM.'
   task :install => :config do
-    RM.exec %w(bundle install --without rmagick)
+    tries = 0
+    begin
+      RM.exec %w(bundle install --without rmagick)
+    rescue => e
+      STDERR.puts 'bundle install failed. Retry...'
+      retry if (tries += 1) < 5
+    end
     RM.bx %w(rake db:create:all)
     RM.bx %w(rake db:migrate)
   end
