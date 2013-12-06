@@ -1,5 +1,7 @@
 require 'yaml'
 require 'fileutils'
+require 'rubygems'
+require 'bundler'
 
 #
 # Dashboard tasks
@@ -29,7 +31,7 @@ class Redmine
 
   def exec(*args)
     Dir.chdir path do
-      Bundler.with_clean_env do
+      ::Bundler.with_clean_env do
         Redmine.exec *args
       end
     end
