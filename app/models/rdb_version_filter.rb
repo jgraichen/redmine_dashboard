@@ -4,11 +4,11 @@ class RdbVersionFilter < RdbFilter
     super :version
   end
 
-  def filter(issues)
+  def scope(issues)
     case value
     when :all then issues
-    when :unassigned then issues.select{|i| i.children.any? or i.fixed_version_id == nil}
-    else issues.select{|i| i.children.any? or i.fixed_version_id == value }
+    when :unassigned then issues.where :fixed_version_id => nil
+    else issues.where :fixed_version_id => value
     end
   end
 
@@ -29,7 +29,7 @@ class RdbVersionFilter < RdbFilter
   end
 
   def update(params)
-    return unless version = params[:version]
+    return unless (version = params[:version])
 
     if version == 'all'
       self.value = :all

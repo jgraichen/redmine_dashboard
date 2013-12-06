@@ -4,9 +4,9 @@ class RdbTrackerFilter < RdbFilter
     super :tracker
   end
 
-  def filter(issues)
-    return issues if all?
-    issues.select{|i| i.children.any? or values.include?(i.tracker_id) }
+  def scope(scope)
+    return scope if all?
+    scope.where :tracker_id => values
   end
 
   def all?
@@ -22,7 +22,7 @@ class RdbTrackerFilter < RdbFilter
   end
 
   def update(params)
-    return unless tracker = params[:tracker]
+    return unless (tracker = params[:tracker])
 
     if tracker == 'all'
       self.values = board.project.trackers.pluck(:id)

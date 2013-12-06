@@ -4,12 +4,12 @@ class RdbAssigneeFilter < RdbFilter
     super :assignee
   end
 
-  def filter(issues)
+  def scope(scope)
     case value
-    when :me   then issues.select{|i| i.children.any? or i.assigned_to_id == User.current.id }
-    when :none then issues.select{|i| i.children.any? or i.assigned_to_id == nil }
-    when :all  then issues
-    else issues.select{|i| i.children.any? or i.assigned_to_id == member_user_id }
+      when :me   then scope.where(:assigned_to_id => User.current.id)
+      when :none then scope.where(:assigned_to_id => nil)
+      when :all  then scope
+      else scope.where(:assigned_to_id => member_user_id)
     end
   end
 
@@ -22,7 +22,7 @@ class RdbAssigneeFilter < RdbFilter
   end
 
   def update(params)
-    return unless assignee = params[:assignee]
+    return unless (assignee = params[:assignee])
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee}"
 

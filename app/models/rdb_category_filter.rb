@@ -4,9 +4,9 @@ class RdbCategoryFilter < RdbFilter
     super :category
   end
 
-  def filter(issues)
-    return issues if all?
-    issues.select{|i| i.children.any? or values.include?(i.category_id) }
+  def scope(scope)
+    return scope if all?
+    scope.where :category_id => values
   end
 
   def all?
