@@ -24,6 +24,10 @@ class Redmine
     {'pool' => 5, 'timeout' => 5000, 'adapter' => 'mysql2', 'database' => "rdb_#{version.gsub('.', '_')}_#{env}"}
   end
 
+  def svn_url
+    "http://svn.redmine.org/redmine/#{version == 'master' ? 'trunk' : "tags/#{version}"}"
+  end
+
   def clean
     FileUtils.rm_rf path if File.exists? path
     FileUtils.mkdir_p path
@@ -47,6 +51,7 @@ class Redmine
 
   class << self
     def exec(*args)
+      STDOUT.puts "+ #{args.flatten.join ' '}"
       unless system(*args.flatten)
         raise RuntimeError, "Command failed: #{args.flatten.join ' '}"
       end
@@ -86,7 +91,7 @@ namespace :redmine do
     end
     if !RM.downloaded? || force?
       RM.clean
-      RM.exec %w(svn export --quiet --force), "http://svn.redmine.org/redmine/tags/#{RM.version}", '.'
+      RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
       RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", "Gemfile"
