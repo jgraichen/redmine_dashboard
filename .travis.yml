@@ -14,7 +14,8 @@ rvm:
 env:
 - REDMINE_VERSION=2.1.6
 - REDMINE_VERSION=2.2.4
-- REDMINE_VERSION=2.3.3
+- REDMINE_VERSION=2.3.4
+- REDMINE_VERSION=2.4.1
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
@@ -26,4 +27,5 @@ matrix:
     env: REDMINE_VERSION=2.1.6
 install:
 - unset BUNDLE_GEMFILE
-script: rake ci
+- bundle exec rake redmine:install
+script: bundle exec rake ci

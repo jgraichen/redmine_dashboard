@@ -1,4 +1,7 @@
-.ruby-version
+/.ruby-version
 *.lock
 /tmp
-.bundle
+/.bundle
+/.rspec
+/.idea
+/*.iml

@@ -11,8 +11,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'capybara', '~> 2.1.0'
-  gem 'selenium-webdriver'
-  gem 'parallel_tests'
   gem 'fuubar'
 
   # for redmine on travis CI
