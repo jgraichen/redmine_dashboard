@@ -6,7 +6,7 @@ require 'bundler'
 #
 # Dashboard tasks
 #
-DEFAULT_REDMINE_VERSION = '2.4.0'
+DEFAULT_REDMINE_VERSION = '2.4.1'
 
 class Redmine
   attr_reader :version, :path
@@ -93,6 +93,8 @@ namespace :redmine do
       RM.clean
       RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
       RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
+      RM.exec %w(mkdir -p), 'public/plugin_assets'
+      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", "Gemfile"
     end
@@ -120,15 +122,22 @@ namespace :redmine do
 
   desc 'Install RM.'
   task :install => :config do
-    tries = 0
-    begin
-      RM.exec %w(bundle install --without rmagick)
-    rescue => e
-      STDERR.puts 'bundle install failed. Retry...'
-      retry if (tries += 1) < 5
+    unless File.exist? File.join(RM.path, '.installed') || force?
+      tries = 0
+      begin
+        RM.exec %w(bundle install --without rmagick)
+      rescue => e
+        STDERR.puts 'bundle install failed. Retry...'
+        retry if (tries += 1) < 5
+      end
+      RM.bx %w(rake generate_secret_token)
+      RM.bx %w(rake db:create:all)
+      RM.bx %w(rake db:migrate)
+
+      FileUtils.touch File.join(RM.path, '.installed')
+    else
+      puts "Redmine #{RM.version} already installed. Use `redmine:clean` to delete redmine and reinstall or FORCE=1 to force install steps."
     end
-    RM.bx %w(rake db:create:all)
-    RM.bx %w(rake db:migrate)
   end
 
   desc 'Clean redmine directory.'
