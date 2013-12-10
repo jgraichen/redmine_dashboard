@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
-gem 'haml'
-gem 'method_decorators'
+gem 'slim'
 
 group :development, :test do
   gem 'rake'

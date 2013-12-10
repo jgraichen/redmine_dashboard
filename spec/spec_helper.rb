@@ -44,7 +44,7 @@ RSpec.configure do |config|
   DatabaseCleaner.strategy = :truncation
 
   Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :poltergeist
+  #Capybara.javascript_driver = :selenium
   Capybara.default_wait_time = 15
 end
 

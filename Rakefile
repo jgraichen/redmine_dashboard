@@ -133,11 +133,26 @@ namespace :redmine do
       RM.bx %w(rake generate_secret_token)
       RM.bx %w(rake db:create:all)
       RM.bx %w(rake db:migrate)
+      RM.bx %w(redmine:plugins:migrate)
 
       FileUtils.touch File.join(RM.path, '.installed')
     else
       puts "Redmine #{RM.version} already installed. Use `redmine:clean` to delete redmine and reinstall or FORCE=1 to force install steps."
     end
+  end
+
+  desc 'Update RM by running bundle install and database migrations.'
+  task :update => :install do
+    tries = 0
+    begin
+      RM.exec %w(bundle install --without rmagick)
+    rescue => e
+      STDERR.puts 'bundle install failed. Retry...'
+      retry if (tries += 1) < 5
+    end
+
+    RM.bx %w(rake db:migrate)
+    RM.bx %w(rake redmine:plugins:migrate)
   end
 
   desc 'Clean redmine directory.'
