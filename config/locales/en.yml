@@ -1,6 +1,23 @@
 # English strings go here for Rails i18n
 en:
-  menu_label_dashboard: Dashboard
+  rdb:
+    taskboard: Task Board
+    planboard: Plan Board
+
+    new:
+      default_board_name: New Board
+
+    menu:
+      dashboards: Dashboards
+      my_dashboards: My Dashboards
+
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: View Dashboards
+  permission_create_dashboards: Create new Dashboards
+
+
+
+
 
   rdb_taskboard: Task Board
   rdb_planningboard: Planning Board

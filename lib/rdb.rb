@@ -1,5 +1,5 @@
 module Rdb
-  require 'rdb/board'
+  require 'rdb/engine'
   require 'rdb/component'
 
   require 'rdb/taskboard'

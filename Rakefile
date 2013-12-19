@@ -78,7 +78,7 @@ task :setup => %w(redmine:install)
 
 desc 'Start local redmine server.'
 task :server => :setup do |t, args|
-  RM.exec %w(rails server), args
+  RM.bx %w(rails server), args
 end
 task :s => %w(server)
 task :clean => %w(redmine:clean)

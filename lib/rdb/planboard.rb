@@ -2,7 +2,7 @@ module Rdb
 
   #
   #
-  class Taskboard < Engine
+  class Planboard < Board
 
     def setup
 
@@ -17,5 +17,5 @@ module Rdb
     end
   end
 
-  Engine.engines << Taskboard
+  Engine.engines << Planboard
 end

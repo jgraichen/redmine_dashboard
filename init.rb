@@ -1,5 +1,11 @@
 require 'redmine'
 
+Rails.configuration.to_prepare do
+  Dir.glob File.expand_path('../lib/rdb/patches/**/*.rb', __FILE__) do |patch|
+    require_dependency patch
+  end
+end
+
 Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
@@ -12,11 +18,17 @@ Redmine::Plugin.register :redmine_dashboard do
 
   project_module :dashboard do
     permission :view_dashboards, {
-      :rdb_dashboard => [:index ],
-      :rdb_taskboard => [:index, :filter, :move, :update ] }
-    permission :configure_dashboards, { :rdb_dashboard => [:configure] }
+      :rdb_boards => [:index, :show, :update],
+      :rdb_user_boards => [:index],
+      :rdb_project_boards => [:index]
+    }
+    permission :create_dashboards, {
+      :rdb_boards => [:create]
+    }
   end
-  menu :project_menu, :dashboard, { :controller => 'rdb/board', :action => 'index' },
-    :caption => :menu_label_dashboard, :after => :new_issue
+  menu :project_menu, :rdb_project_dashboard, { :controller => 'rdb_project_boards', :action => 'index' },
+    :caption => :'rdb.menu.dashboards', :after => :new_issue
+  menu :account_menu, :rdb_my_dashboard, { :controller => 'rdb_user_boards', :action => 'index' },
+    :caption => :'rdb.menu.my_dashboards', :after => :my_account
 
 end

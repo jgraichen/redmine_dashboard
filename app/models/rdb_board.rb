@@ -1,10 +1,19 @@
 class RdbBoard < ActiveRecord::Base
-  # id
-  # name
-  # type
-  # options
-  serialize :options, Hash
+  self.table_name = "#{table_name_prefix}rdb_boards#{table_name_suffix}"
 
-  belongs_to :project
-  belongs_to :creator, :class_name => "User"
+  serialize :preferences, Hash
+
+  belongs_to :context, :polymorphic => true
+
+  def personal?
+    context_type == 'Principal'
+  end
+
+  def engine_class
+    Rdb::Engines.lookup! engine
+  end
+
+  def issues
+    context.issues
+  end
 end
