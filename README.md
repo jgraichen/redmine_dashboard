@@ -5,7 +5,7 @@ Redmine Dashboard 2
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is under development for Redmine 2.1. Development version is incomplete and may not be usable for production environment.
+**Redmine Dashboard 2** is under development for Redmine 2.1 and newer. Development version is incomplete and may not be usable for production environment.
 
 Incomplete Features List
 ------------------------
