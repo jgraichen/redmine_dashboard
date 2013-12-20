@@ -11,7 +11,7 @@ class RdbTaskboard < RdbDashboard
   def setup(params)
     super
 
-    if ['tracker', 'priority', 'assignee', 'category', 'version', 'none'].include? params[:group]
+    if ['tracker', 'priority', 'assignee', 'category', 'version', 'parent', 'none'].include? params[:group]
       options[:group] = params[:group].to_sym
     end
 
@@ -65,6 +65,11 @@ class RdbTaskboard < RdbDashboard
         self.add_group RdbGroup.new("version-#{version.id}", version.name, :accept => Proc.new {|issue| issue.fixed_version_id == version.id })
       end
       self.add_group RdbGroup.new(:version_none, :rdb_unassigned, :accept => Proc.new {|issue| issue.fixed_version.nil? })
+    when :parent
+      project.issues.joins(:children).uniq.all.each do |issue|
+        self.add_group RdbGroup.new("issue-#{issue.id}", issue.subject, :accept => Proc.new { |sub_issue| sub_issue.parent_id == issue.id })
+      end
+      self.add_group RdbGroup.new("issue-others", :rdb_no_parent, :accept => Proc.new { |issue| issue.parent.nil? and issue.children.empty? })
     end
 
     self.add_group RdbGroup.new(:all, :rdb_all_issues) if groups.empty?
