@@ -1,3 +1,0 @@
-class RdbTaskboard < RdbBoard
-
-end
