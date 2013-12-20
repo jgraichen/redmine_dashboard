@@ -40,6 +40,7 @@ de:
   rdb_group_tracker: Tracker
   rdb_group_priority: Priorität
   rdb_group_version: Version
+  rdb_group_parent: Übergeordnete Aufgabe
   rdb_options_board_view: Board Ansicht
   rdb_options_board_view_compact: Klassisch (Kompakt)
   rdb_options_board_view_outline: Outline
@@ -65,6 +66,8 @@ de:
   rdb_unassigned: Nicht zugewiesen
   rdb_others: Andere
   rdb_all_issues: Alle Tickets
+
+  rdb_no_parent: Keine übergeordneten Aufgaben
 
   rdb_issue_menu_progress_title: Fortschritt ändern
   rdb_issue_menu_progress: "%{count}%"
