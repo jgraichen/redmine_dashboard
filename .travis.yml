@@ -20,4 +20,5 @@ matrix:
 install:
 - unset BUNDLE_GEMFILE
 - rake redmine:install
-script: bundle exec rake ci
+script:
+- bundle exec rake ci

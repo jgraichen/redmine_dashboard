@@ -13,6 +13,10 @@ module RdbRequestHelpers
     # puts role.inspect
   end
 
+  def enable_plugin(project)
+    project.enable_module! 'dashboard'
+  end
+
   def login_as(user, password)
     visit url_for(:controller => 'account', :action => 'login', :only_path => true)
     fill_in 'username', :with => user

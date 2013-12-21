@@ -46,7 +46,7 @@ RSpec.configure do |config|
 
   Capybara.default_host = 'http://example.org'
   #Capybara.javascript_driver = :selenium
-  Capybara.default_wait_time = 15
+  # Capybara.default_wait_time = 15
 end
 
 Test::Unit.run = true
