@@ -40,6 +40,9 @@
       = link_to t("rdb_filter_assignee_#{val}"), rdb_filter_path(:assignee => val)
     - render_rdb_menu_list @project.members do |val|
       = link_to val.name, rdb_filter_path(:assignee => val.id)
+    - render_rdb_menu_list @project.member_principals do |val|
+      - next unless Group === val.principal
+      = link_to val.principal.name, rdb_filter_path(:assignee => val.id)
 
 .rdb-option.rdb-async
   - render_rdb_menu :options, t(:rdb_options), :right => true, :icons => true do

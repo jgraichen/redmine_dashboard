@@ -54,9 +54,9 @@ class RdbTaskboard < RdbDashboard
     when :assignee
       self.add_group RdbGroup.new(:assigne_me, :rdb_filter_assignee_me, :accept => Proc.new {|issue| issue.assigned_to_id == User.current.id })
       self.add_group RdbGroup.new(:assigne_none, :rdb_filter_assignee_none, :accept => Proc.new {|issue| issue.assigned_to_id.nil? })
-      project.members.each do |member|
-        next if member.user_id == User.current.id
-        self.add_group RdbGroup.new("assignee-#{member.user_id}", member.user.name, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id == member.user_id })
+      Principal.where(:id => project.issues.pluck(:assigned_to_id)).sort_by(&:name).each do |principal|
+        next if principal.id == User.current.id
+        self.add_group RdbGroup.new("assignee-#{id}", principal.name, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id == principal.id })
       end
     when :category
       project.issue_categories.each do |category|

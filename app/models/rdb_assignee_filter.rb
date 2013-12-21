@@ -29,14 +29,14 @@ class RdbAssigneeFilter < RdbFilter
     if assignee == 'all' or assignee == 'me' or assignee == 'none'
       self.value = assignee.to_sym
     else
-      self.value = assignee.to_i if board.project.members.where(:id => assignee.to_i).any?
+      self.value = assignee.to_i if board.project.memberships.where(:id => assignee.to_i).any?
     end
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee} => #{values.inspect}"
   end
 
   def member_user_id
-    board.project.members.find(value).user_id
+    board.project.memberships.find(value).user_id
   end
 
   def title
@@ -45,7 +45,7 @@ class RdbAssigneeFilter < RdbFilter
     when :me then I18n.t(:rdb_filter_assignee_me)
     when :none then I18n.t(:rdb_filter_assignee_none)
     else
-      values.map {|id| board.project.members.find(id) }.map(&:name).join(', ')
+      values.map {|id| board.project.memberships.find(id) }.map(&:principal).map(&:name).join(', ')
     end
   end
 end
