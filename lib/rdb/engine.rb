@@ -20,7 +20,7 @@ module Rdb
 
       def lookup!(name)
         lookup(name).tap do |engine|
-          raise NameError.new "No rdb board engine '#{name}' found." unless engine
+          raise NameError.new "No rdb board engine '#{name}' found.\nAvailable engines: #{engines.map(&:name).join(', ')}" unless engine
         end
       end
 

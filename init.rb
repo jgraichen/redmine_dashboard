@@ -1,4 +1,5 @@
 require 'redmine'
+require 'rdb'
 
 Rails.configuration.to_prepare do
   Dir.glob File.expand_path('../lib/rdb/patches/**/*.rb', __FILE__) do |patch|

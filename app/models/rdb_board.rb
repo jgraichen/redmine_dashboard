@@ -10,7 +10,15 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def engine_class
-    Rdb::Engines.lookup! engine
+    Rdb::Engine.lookup! read_attribute :engine
+  end
+
+  def engine
+    @engine = engine_class.new self
+  end
+
+  def engine=(engine)
+    write_attribute(:engine, engine.responds_to?(:name) ? engine.name.to_s : engine.to_s)
   end
 
   def issues

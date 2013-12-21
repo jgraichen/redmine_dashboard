@@ -13,8 +13,7 @@ class RdbBoardsController < ::ApplicationController
   end
 
   def show
-    engine_class = Rdb::Engine.lookup! board.engine
-    @engine = engine_class.new self
+    @engine = board.engine
   end
 
   def create
