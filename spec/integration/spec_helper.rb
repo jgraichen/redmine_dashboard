@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -33,6 +36,17 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Include request spec helpers
+  config.include RdbRequestHelpers
+  config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers
+
+  DatabaseCleaner.strategy = :truncation
+
+  Capybara.default_host = 'http://example.org'
+  #Capybara.javascript_driver = :selenium
+  Capybara.default_wait_time = 15
 end
 
 Test::Unit.run = true

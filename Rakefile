@@ -70,7 +70,7 @@ task :default => [:setup, :spec]
 
 namespace :spec do
   desc 'Run unit, plugin and integration specs'
-  task :all => [:unit, :plugin, :integration]
+  task :all => [:unit, :plugin, :browser]
 
   desc 'Run unit specs (Testing isolated dashboard components)'
   RSpec::Core::RakeTask.new(:unit) do |t|
@@ -88,9 +88,14 @@ namespace :spec do
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
   end
 
-  desc 'Run integration specs (Running browser tests)'
-  task :integration do
-    # TODO
+  desc 'Run browser specs'
+  Class.new(RSpec::Core::RakeTask) do
+    def run_task(*args)
+      Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
+    end
+  end.new(:browser) do |t|
+    t.pattern    = "#{RM.path}/spec/integration/**/*_spec.rb"
+    t.ruby_opts  = "-I#{RM.path}/spec/integration"
   end
 end
 task :spec => :'spec:all'
