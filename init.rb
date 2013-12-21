@@ -17,13 +17,13 @@ Redmine::Plugin.register :redmine_dashboard do
 
   requires_redmine :version_or_higher => '2.1'
 
-  project_module :rdb_dashboards do
-    permission :rdb_view_dashboards, {
+  project_module :dashboard do
+    permission :view_dashboards, {
       :rdb_boards => [:index, :show, :update],
       :rdb_user_boards => [:index],
       :rdb_project_boards => [:index]
     }
-    permission :rdb_create_dashboards, {
+    permission :configure_dashboards, {
       :rdb_boards => [:create]
     }
   end

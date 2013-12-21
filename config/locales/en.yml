@@ -11,9 +11,9 @@ en:
       dashboards: Dashboards
       my_dashboards: My Dashboards
 
-  project_module_rdb_dashboards: Dashboard
-  permission_view_rdb_dashboards: View Dashboards
-  permission_create_rdb_dashboards: Create new Dashboards
+  project_module_dashboard: Dashboards
+  permission_view_dashboards: View Dashboards
+  permission_create_dashboards: Create new Dashboards
 
 
 
