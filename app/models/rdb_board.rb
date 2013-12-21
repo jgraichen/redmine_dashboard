@@ -18,7 +18,7 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def engine=(engine)
-    write_attribute(:engine, engine.responds_to?(:name) ? engine.name.to_s : engine.to_s)
+    write_attribute(:engine, engine.respond_to?(:name) ? engine.name.to_s : engine.to_s)
   end
 
   def issues
