@@ -2,6 +2,7 @@ require 'yaml'
 require 'fileutils'
 require 'rubygems'
 require 'bundler'
+require 'rspec/core/rake_task'
 
 #
 # Dashboard tasks
@@ -67,16 +68,38 @@ RM = Redmine.new
 
 task :default => [:setup, :spec]
 
-desc 'Run specs.'
-task :spec do |t, args|
-  RM.bx 'rake', "spec[#{args}]"
-end
-task :ci => :spec
+namespace :spec do
+  desc 'Run unit, plugin and integration specs'
+  task :all => [:unit, :plugin, :integration]
 
-desc 'Setup project environment.'
+  desc 'Run unit specs (Testing isolated dashboard components)'
+  RSpec::Core::RakeTask.new(:unit) do |t|
+    t.pattern   = "spec/unit/**/*_spec.rb"
+    t.ruby_opts = "-Ispec/unit -Ilib"
+  end
+
+  desc 'Run plugin specs (Testing within redmine application)'
+  Class.new(RSpec::Core::RakeTask) do
+    def run_task(*args)
+      Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
+    end
+  end.new(:plugin) do |t|
+    t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
+    t.ruby_opts  = "-I#{RM.path}/spec/plugin"
+  end
+
+  desc 'Run integration specs (Running browser tests)'
+  task :integration do
+    # TODO
+  end
+end
+task :spec => :'spec:all'
+task :ci => :all
+
+desc 'Setup project environment'
 task :setup => %w(redmine:install)
 
-desc 'Start local redmine server.'
+desc 'Start local redmine server'
 task :server => :setup do |t, args|
   RM.bx %w(rails server), args
 end
@@ -84,7 +107,7 @@ task :s => %w(server)
 task :clean => %w(redmine:clean)
 
 namespace :redmine do
-  desc 'Download RM.'
+  desc 'Download RM'
   task :download do
     if RM.downloaded? && !force?
       puts "Redmine #{RM.version} already downloaded. Use `redmine:clean` or FORCE=1 to force redownloaded."
@@ -100,7 +123,7 @@ namespace :redmine do
     end
   end
 
-  desc 'Configure RM.'
+  desc 'Configure RM'
   task :config => :download do
     config = {}
     if File.exists? File.join(RM.path, 'config/database.yml')
@@ -120,7 +143,7 @@ namespace :redmine do
     end
   end
 
-  desc 'Install RM.'
+  desc 'Install RM'
   task :install => :config do
     unless File.exist? File.join(RM.path, '.installed') || force?
       tries = 0
@@ -141,7 +164,7 @@ namespace :redmine do
     end
   end
 
-  desc 'Update RM by running bundle install and database migrations.'
+  desc 'Update RM by running bundle install and database migrations'
   task :update => :install do
     tries = 0
     begin
@@ -155,7 +178,7 @@ namespace :redmine do
     RM.bx %w(rake redmine:plugins:migrate)
   end
 
-  desc 'Clean redmine directory.'
+  desc 'Clean redmine directory'
   task :clean do
     RM.clean
   end

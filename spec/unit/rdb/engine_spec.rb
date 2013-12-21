@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ostruct'
 
 describe Rdb::Engine do
   let(:klass) { Class.new(Rdb::Engine) }
