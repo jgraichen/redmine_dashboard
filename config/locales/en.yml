@@ -36,6 +36,7 @@ en:
   rdb_group_tracker: Tracker
   rdb_group_priority: Priority
   rdb_group_version: Version
+  rdb_group_parent: Parent Task
   rdb_options_board_view: Board View
   rdb_options_board_view_compact: Classic
   rdb_options_board_view_outline: Outline
@@ -61,6 +62,8 @@ en:
   rdb_unassigned: Unassigned
   rdb_others: Others
   rdb_all_issues: All Issues
+
+  rdb_no_parent: No parent tasks
 
   rdb_issue_menu_progress_title: Update progress
   rdb_issue_menu_progress: "%{count}%"
