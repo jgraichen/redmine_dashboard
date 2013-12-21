@@ -37,7 +37,7 @@ class RdbController < ::ApplicationController
 
   private
   def board
-    @board ||= RdbBoard.find(params[:id]).tap do |board|
+    @board ||= RdbBoard.find(params[:board_id]).tap do |board|
       @project = board.context unless board.personal?
     end
   end
