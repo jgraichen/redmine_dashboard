@@ -23,7 +23,7 @@ class RdbGroup
   end
 
   def title
-    name.is_a?(Symbol) ? I18n.translate(name) : name.to_s.humanize
+    name.is_a?(Symbol) ? I18n.translate(name) : name.to_s
   end
 
   +Memoize
