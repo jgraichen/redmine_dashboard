@@ -2,7 +2,12 @@ require 'yaml'
 require 'fileutils'
 require 'rubygems'
 require 'bundler'
+require 'logger'
+
+Bundler.require :default, :development, :assets
+
 require 'rspec/core/rake_task'
+require 'sprockets/standalone'
 
 #
 # Dashboard tasks
@@ -66,7 +71,8 @@ end
 
 RM = Redmine.new
 
-task :default => [:setup, :spec]
+task :default => :spec
+task :spec => [:setup, :update, :'assets:compile', :'spec:all']
 
 namespace :spec do
   desc 'Run unit, plugin and integration specs'
@@ -74,8 +80,9 @@ namespace :spec do
 
   desc 'Run unit specs (Testing isolated dashboard components)'
   RSpec::Core::RakeTask.new(:unit) do |t|
-    t.pattern   = "spec/unit/**/*_spec.rb"
-    t.ruby_opts = "-Ispec/unit -Ilib"
+    t.pattern    = "spec/unit/**/*_spec.rb"
+    t.ruby_opts  = "-Ispec/unit -Ilib"
+    t.rspec_opts = "--color --backtrace"
   end
 
   desc 'Run plugin specs (Testing within redmine application)'
@@ -86,6 +93,7 @@ namespace :spec do
   end.new(:plugin) do |t|
     t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
+    t.rspec_opts = "--color --backtrace"
   end
 
   desc 'Run browser specs'
@@ -96,20 +104,34 @@ namespace :spec do
   end.new(:browser) do |t|
     t.pattern    = "#{RM.path}/spec/integration/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/integration"
+    t.rspec_opts = "--color --backtrace"
   end
 end
-task :spec => :'spec:all'
-task :ci => :all
 
 desc 'Setup project environment'
 task :setup => %w(redmine:install)
+
+desc 'Update project environment'
+task :update => %w(redmine:update)
 
 desc 'Start local redmine server'
 task :server => :setup do |t, args|
   RM.bx %w(rails server), args
 end
 task :s => %w(server)
-task :clean => %w(redmine:clean)
+
+desc 'Compile JS/CSS assets'
+Sprockets::Standalone::RakeTask.new do |t, sprockets|
+  t.assets  = %w(stylesheets/rdb.css javascripts/rdb.js *.png *.jpg *.gif)
+  t.sources = %w(app/assets vendor/assets)
+  t.output  = File.expand_path('../assets', __FILE__)
+
+  require 'stylus/sprockets'
+  Stylus.setup sprockets
+
+  # sprockets.js_compressor  = :uglifier
+  # sprockets.css_compressor = :sass
+end
 
 namespace :redmine do
   desc 'Download RM'
@@ -151,17 +173,13 @@ namespace :redmine do
   desc 'Install RM'
   task :install => :config do
     unless File.exist? File.join(RM.path, '.installed') || force?
-      tries = 0
-      begin
-        RM.exec %w(bundle install --without rmagick)
-      rescue => e
-        STDERR.puts 'bundle install failed. Retry...'
-        retry if (tries += 1) < 5
-      end
+      Rake::Task['redmine:bundle'].invoke
+
       RM.bx %w(rake generate_secret_token)
       RM.bx %w(rake db:create:all)
-      RM.bx %w(rake db:migrate)
-      RM.bx %w(redmine:plugins:migrate)
+
+      Rake::Task['redmine:migrate'].invoke
+      Rake::Task['redmine:prepare'].invoke
 
       FileUtils.touch File.join(RM.path, '.installed')
     else
@@ -170,7 +188,9 @@ namespace :redmine do
   end
 
   desc 'Update RM by running bundle install and database migrations'
-  task :update => :install do
+  task :update => [:install, :bundle, :migrate, :prepare]
+
+  task :bundle do
     tries = 0
     begin
       RM.exec %w(bundle install --without rmagick)
@@ -178,9 +198,15 @@ namespace :redmine do
       STDERR.puts 'bundle install failed. Retry...'
       retry if (tries += 1) < 5
     end
+  end
 
+  task :migrate do
     RM.bx %w(rake db:migrate)
     RM.bx %w(rake redmine:plugins:migrate)
+  end
+
+  task :prepare do
+    RM.bx %w(rake db:test:prepare)
   end
 
   desc 'Clean redmine directory'
