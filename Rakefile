@@ -12,7 +12,7 @@ require 'sprockets/standalone'
 #
 # Dashboard tasks
 #
-DEFAULT_REDMINE_VERSION = '2.4.1'
+DEFAULT_REDMINE_VERSION = '2.4.2'
 
 class Redmine
   attr_reader :version, :path
