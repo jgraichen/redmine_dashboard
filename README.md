@@ -1,41 +1,25 @@
-Redmine Dashboard 2
-===================
+# Redmine Dashboard 3
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard) [![Code Climate](https://codeclimate.com/github/jgraichen/redmine_dashboard.png)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
 
-This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
+This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
 
-**Redmine Dashboard 2** is under development for Redmine 2.1. Development version is incomplete and may not be usable for production environment.
+**Redmine Dashboard** is compatible with Redmine 2.1 and newer.
 
-Incomplete Features List
-------------------------
+## Install
 
-* Quick edit of issues
-* Easy drag-n-drop
+TODO
 
-**Task Board**
+## Update
 
-* Configurable columns
-* Grouping & Filtering
-* Group folding
-* Hierarchical parent issue view
+TODO
 
-[![Preview](http://altimos.de/redmine_dashboard/rdb_2-1_t.png)](http://altimos.de/redmine_dashboard/rdb_2-1.png)
+## License
 
-**Planning Board** (planned)
+Copyright (C) 2013-2014 Jan Graichen <jg@altimos.de>
 
-* Assignee issues to versions, categories or project members
-* Easy overview of specific version, category or member
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Install
--------
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
 
-Clone _master_ branch from git repository to `plugins` and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
-
-Redmine Dashboard 2 is currently under development for Redmine 2.1 and not compatible with earlier versions.
-
-License
--------
-
-Redmine dashboard is licensed under the Apache License, Version 2.0.
-See LICENSE for more information.
+All contributions will be included under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
