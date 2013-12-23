@@ -77,7 +77,7 @@ desc 'Run all specs (alias for spec:all)'
 task :spec => 'spec:all'
 
 namespace :spec do
-  desc 'Run unit, plugin and integration specs'
+  desc 'Run unit, plugin and browser specs'
   task :all => [:unit, :plugin, :browser]
 
   desc 'Run unit specs (Testing isolated dashboard components)'
@@ -104,8 +104,8 @@ namespace :spec do
       Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
     end
   end.new(:browser) do |t|
-    t.pattern    = "#{RM.path}/spec/integration/**/*_spec.rb"
-    t.ruby_opts  = "-I#{RM.path}/spec/integration"
+    t.pattern    = "#{RM.path}/spec/browser/**/*_spec.rb"
+    t.ruby_opts  = "-I#{RM.path}/spec/browser"
     t.rspec_opts = "--color --backtrace"
   end
 end
