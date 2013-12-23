@@ -71,8 +71,10 @@ end
 
 RM = Redmine.new
 
-task :default => :spec
-task :spec => [:setup, :update, :'assets:compile', :'spec:all']
+task :default => [:install, :update, :'assets:compile', :spec]
+
+desc 'Run all specs (alias for spec:all)'
+task :spec => 'spec:all'
 
 namespace :spec do
   desc 'Run unit, plugin and integration specs'
@@ -108,17 +110,21 @@ namespace :spec do
   end
 end
 
-desc 'Setup project environment'
-task :setup => %w(redmine:install)
+desc 'Setup project environment (alias for redmine:install)'
+task :install => %w(redmine:install)
 
-desc 'Update project environment'
+desc 'Update project environment (alias for redmine:update)'
 task :update => %w(redmine:update)
 
 desc 'Start local redmine server'
 task :server => :setup do |t, args|
   RM.bx %w(rails server), args
 end
-task :s => %w(server)
+desc 'Start local redmine server (alias for server)'
+task :s => 'server'
+
+desc 'Compile assets (alias for assets:compile)'
+task :compile => 'assets:compile'
 
 desc 'Compile JS/CSS assets'
 Sprockets::Standalone::RakeTask.new do |t, sprockets|
