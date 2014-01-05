@@ -117,7 +117,7 @@ desc 'Update project environment (alias for redmine:update)'
 task :update => %w(redmine:update)
 
 desc 'Start local redmine server'
-task :server => :setup do |t, args|
+task :server => :install do |t, args|
   RM.bx %w(rails server), args
 end
 desc 'Start local redmine server (alias for server)'

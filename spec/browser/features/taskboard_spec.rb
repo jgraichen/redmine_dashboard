@@ -1,10 +1,7 @@
 require "spec_helper"
 
 describe "Taskboard", :js => true, :sauce => true do
-  fixtures :projects, :projects_trackers, :users, :members,
-    :member_roles, :issues, :issue_categories,
-    :issue_statuses, :enumerations, :roles, :time_entries,
-    :versions, :workflows
+  fixtures
 
   let(:project) { Project.find 'ecookbook' }
 
@@ -16,6 +13,8 @@ describe "Taskboard", :js => true, :sauce => true do
 
   it "should redirect to taskboard" do
     visit '/projects/ecookbook'
+
+    sleep 5
 
     within '#main-menu' do
       click_on 'Dashboards'

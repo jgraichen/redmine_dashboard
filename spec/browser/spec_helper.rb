@@ -41,6 +41,7 @@ RSpec.configure do |config|
   config.include RdbRequestHelpers
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers
+  config.include Rails.application.routes.url_helpers
 
   DatabaseCleaner.strategy = :truncation
 

@@ -14,7 +14,9 @@ module RdbRequestHelpers
   end
 
   def enable_plugin(project)
+    project.enable_module! 'issue_tracking'
     project.enable_module! 'dashboard'
+    project.save!
   end
 
   def login_as(user, password)
