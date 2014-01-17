@@ -3,11 +3,12 @@ language: ruby
 rvm:
 - 1.9.3
 - 2.0.0
+- 2.1.0
 env:
 - REDMINE_VERSION=2.1.6
 - REDMINE_VERSION=2.2.4
 - REDMINE_VERSION=2.3.4
-- REDMINE_VERSION=2.4.1
+- REDMINE_VERSION=2.4.2
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
@@ -16,6 +17,10 @@ matrix:
   - rvm: 2.0.0
     env: REDMINE_VERSION=2.2.4
   - rvm: 2.0.0
+    env: REDMINE_VERSION=2.1.6
+  - rvm: 2.1.0
+    env: REDMINE_VERSION=2.2.4
+  - rvm: 2.1.0
     env: REDMINE_VERSION=2.1.6
 install:
 - unset BUNDLE_GEMFILE
