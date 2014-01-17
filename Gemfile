@@ -12,11 +12,6 @@ group :development do
   gem 'sass',                 :require => false
   gem 'uglifier',             :require => false
   gem 'coffee-script',        :require => false
-
-  platform :rbx do
-    gem 'rubysl'
-    gem 'racc'
-  end
 end
 
 group :test do
