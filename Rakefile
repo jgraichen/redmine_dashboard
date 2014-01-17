@@ -81,7 +81,9 @@ namespace :spec do
   task :all => [:unit, :plugin, :browser]
 
   desc 'Run unit specs (Testing isolated dashboard components)'
-  RSpec::Core::RakeTask.new(:unit) do |t|
+  Class.new(RSpec::Core::RakeTask) do
+    def spec_command; "ruby -S bundle exec #{super}" end
+  end.new(:unit) do |t|
     t.pattern    = "spec/unit/**/*_spec.rb"
     t.ruby_opts  = "-Ispec/unit -Ilib"
     t.rspec_opts = "--color --backtrace"
@@ -92,6 +94,7 @@ namespace :spec do
     def run_task(*args)
       Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
     end
+    def spec_command; "ruby -S bundle exec #{super}" end
   end.new(:plugin) do |t|
     t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
@@ -103,6 +106,7 @@ namespace :spec do
     def run_task(*args)
       Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
     end
+    def spec_command; "ruby -S bundle exec #{super}" end
   end.new(:browser) do |t|
     t.pattern    = "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
@@ -153,6 +157,7 @@ namespace :redmine do
       RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", "Gemfile"
+      RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", "Gemfile"
     end
   end
 
