@@ -1,6 +1,6 @@
 # Redmine Dashboard 3
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard) [![Code Climate](https://codeclimate.com/github/jgraichen/redmine_dashboard.png)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=develop)](https://travis-ci.org/jgraichen/redmine_dashboard)
 
 This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
 
