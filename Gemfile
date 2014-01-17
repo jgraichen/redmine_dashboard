@@ -23,7 +23,9 @@ group :test do
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'guard-rspec'
   gem 'capybara', '~> 2.1.0'
+  gem 'fuubar'
 
   # for redmine on travis CI
   gem 'test-unit'

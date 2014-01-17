@@ -26,6 +26,7 @@ html > body #content {
 	left: 0;
 	right: 0;
 	min-height: 100%;
+	z-index: 9999999995;
 }
 
 #rdb.rdb-fullscreen #rdb-header {
@@ -33,7 +34,7 @@ html > body #content {
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 5;
+	z-index: 9999999999;
 }
 
 #rdb.rdb-fullscreen {

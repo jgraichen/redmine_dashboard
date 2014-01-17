@@ -113,6 +113,7 @@ namespace :spec do
     t.rspec_opts = "--color --backtrace"
   end
 end
+task :ci => :spec
 
 desc 'Setup project environment (alias for redmine:install)'
 task :install => %w(redmine:install)
