@@ -78,7 +78,7 @@ Class.new(RSpec::Core::RakeTask) do
     Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
   end
   def spec_command; "ruby -S bundle exec #{super}" end
-end.new(:plugin) do |t|
+end.new(:spec) do |t|
   t.pattern    = "#{RM.path}/spec/**/*_spec.rb"
   t.ruby_opts  = "-I#{RM.path}/spec"
   t.rspec_opts = "--color --backtrace"

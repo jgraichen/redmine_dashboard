@@ -1,6 +1,9 @@
-
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+
+Test::Unit.run = true
+Test::Unit::AutoRunner.need_auto_run = false if defined?(Test::Unit::AutoRunner)
+
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
@@ -47,5 +50,3 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :poltergeist
   Capybara.default_wait_time = 15
 end
-
-Test::Unit.run = true

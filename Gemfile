@@ -4,12 +4,15 @@ source 'https://rubygems.org'
 gem 'haml'
 gem 'method_decorators'
 
-group :development, :test do
+group :development do
   gem 'rake'
+  gem 'guard-rspec'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'guard-rspec'
   gem 'capybara', '~> 2.1.0'
   gem 'fuubar'
 
