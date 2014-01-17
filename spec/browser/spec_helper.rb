@@ -1,6 +1,5 @@
-
-Test::Unit.run = true
-Test::Unit::AutoRunner.need_auto_run = false if defined?(Test::Unit::AutoRunner)
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../../config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rails'
