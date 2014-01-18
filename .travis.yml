@@ -22,5 +22,5 @@ matrix:
     env: REDMINE_VERSION=2.2.4
   - rvm: 2.1.0
     env: REDMINE_VERSION=2.1.6
-after_install: bundle exec rake install
+before_script: bundle exec rake install
 script: bundle exec rake spec
