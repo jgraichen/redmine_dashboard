@@ -171,7 +171,7 @@
 
 .rdb-overall-progress {
 	height: 8px;
-	background-color: #ddd;
+	background-color: #599917;
 	overflow: hidden;
 	*zoom: 1;
 
@@ -188,10 +188,6 @@
 
 .rdb-overall-progress a:first-child {
 	background-color: #C00;
-}
-
-.rdb-overall-progress a:last-child {
-	background-color: #599917;
 }
 
 /* ========================================================
