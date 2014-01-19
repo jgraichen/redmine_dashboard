@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe "Taskboard", :js => true, :sauce => true do
-  fixtures
-
   let(:project) { Project.find 'ecookbook' }
 
   before do
@@ -21,5 +19,6 @@ describe "Taskboard", :js => true, :sauce => true do
     end
 
     expect(current_path).to eq '/dashboards/1'
+    expect(page).to have_content('Default Taskboard')
   end
 end
