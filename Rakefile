@@ -134,15 +134,31 @@ task :compile => 'assets:compile'
 desc 'Compile JS/CSS assets'
 Sprockets::Standalone::RakeTask.new do |t, sprockets|
   t.assets  = %w(stylesheets/rdb.css javascripts/rdb.js *.png *.jpg *.gif)
-  t.sources = %w(app/assets vendor/assets)
+  t.sources = %w(app/assets)
   t.output  = File.expand_path('../assets', __FILE__)
 
   require 'stylus/sprockets'
   Stylus.setup sprockets
 
-  # sprockets.js_compressor  = :uglifier
-  # sprockets.css_compressor = :sass
+  if ENV['COMPRESS']
+    sprockets.js_compressor  = :uglifier
+    sprockets.css_compressor = :sass
+  end
 end
+
+# namespace :views do
+#   desc 'Compile all application views to ERB'
+#   task :compile do
+#     require 'slim/erb_converter'
+
+#     Dir.glob('app/source/views/**/*.slim').each do |file|
+#       content = Slim::ERBConverter.new(:file => file).call(File.read(file))
+#       target  = ::File.expand_path file.gsub(/^app\/source\//, 'app/').gsub(/.slim$/, '.erb')
+#       FileUtils.mkdir_p ::File.dirname target
+#       File.write(target, content)
+#     end
+#   end
+# end
 
 namespace :redmine do
   desc 'Download RM'
