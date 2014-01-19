@@ -44,7 +44,10 @@ RSpec.configure do |config|
   config.order = "random"
 
   # Include request spec helpers
-  config.include RdbRequestHelpers, :type => :feature
+  config.include RdbRequestHelpers
+  config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers
+  config.include Rails.application.routes.url_helpers
 
   DatabaseCleaner.strategy = :truncation
 
