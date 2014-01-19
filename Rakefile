@@ -57,7 +57,7 @@ class Redmine
 
   class << self
     def exec(*args)
-      STDOUT.puts "+ #{args.flatten.join ' '}"
+      STDOUT.puts "#{Dir.getwd} $ #{args.flatten.join ' '}"
       unless system(*args.flatten)
         raise RuntimeError, "Command failed: #{args.flatten.join ' '}"
       end

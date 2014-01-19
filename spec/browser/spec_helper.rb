@@ -1,5 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../../config/environment", __FILE__)
+require File.expand_path("../../config/environment", __FILE__)
+
+Test::Unit::AutoRunner.need_auto_run = false if defined?(Test::Unit::AutoRunner)
 
 require 'rspec/rails'
 require 'capybara/rails'
@@ -39,10 +41,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   # Include request spec helpers
-  config.include RdbRequestHelpers
-  config.include Capybara::DSL
-  config.include Capybara::RSpecMatchers
-  config.include Rails.application.routes.url_helpers
+  config.include RdbRequestHelpers, :type => :feature
 
   DatabaseCleaner.strategy = :truncation
 
