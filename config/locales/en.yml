@@ -1,5 +1,8 @@
-# English strings go here for Rails i18n
 en:
+  project_module_dashboard: Dashboards
+  permission_view_dashboards: View Dashboards
+  permission_create_dashboards: Create new Dashboards
+
   rdb:
     taskboard: Task Board
     planboard: Plan Board
@@ -10,87 +13,3 @@ en:
     menu:
       dashboards: Dashboards
       my_dashboards: My Dashboards
-
-  project_module_dashboard: Dashboards
-  permission_view_dashboards: View Dashboards
-  permission_create_dashboards: Create new Dashboards
-
-
-
-
-
-  rdb_taskboard: Task Board
-  rdb_planningboard: Planning Board
-
-  rdb_filter_version_all: All Versions
-  rdb_filter_version_unassigned: Unassigned
-  rdb_filter_tracker_all: All Trackers
-  rdb_filter_tracker_multiple: Multiple Trackers
-  rdb_filter_category_all: All Categories
-  rdb_filter_category_multiple: Multiple Categories
-  rdb_filter_assignee_all: All Assignees
-  rdb_filter_assignee_me: My Issues
-  rdb_filter_assignee_none: Unassigned
-  rdb_filter_assignee_others: Others
-
-  rdb_options: Options
-  rdb_options_change_assignee: Change assignee
-  rdb_options_change_assignee_info: Change assignee to current user when issue is moved.
-  rdb_options_hide_done: Hide closed issues
-  rdb_options_hide_done_info: Hide closed issues and makes done column smaller.
-  rdb_options_reset: Reset filter
-  rdb_options_reset_info: Reset all filters back to default
-  rdb_options_configure: Configure
-
-  rdb_options_view: View
-  rdb_options_issue_view: Issue View
-  rdb_options_issue_view_card: Card
-  rdb_options_issue_view_compact: Compact
-  rdb_options_group: Issue Grouping
-  rdb_group_none: No Grouping
-  rdb_group_category: Category
-  rdb_group_assignee: Assignee
-  rdb_group_tracker: Tracker
-  rdb_group_priority: Priority
-  rdb_group_version: Version
-  rdb_group_parent: Parent Task
-  rdb_options_board_view: Board View
-  rdb_options_board_view_compact: Classic
-  rdb_options_board_view_outline: Outline
-  rdb_options_columns: Board Columns
-  rdb_options_fullscreen: Full Screen
-
-  rdb_legend_priorities: Priorities
-  rdb_legend_warnings: Warnings
-  rdb_issue_overdue: Overdue
-  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
-  rdb_not_available: N/A
-
-  rdb_column_done: Done
-  rdb_x_issues:
-    one: 1 Issue
-    other: "%{count} Issues"
-
-  rdb_dialog_update_issue_title: Update Issue
-  rdb_dialog_update_issue_status: Choose new issue status
-
-  rdb_other_issues: "Other Issues <span>(%{count})</span>"
-
-  rdb_unassigned: Unassigned
-  rdb_others: Others
-  rdb_all_issues: All Issues
-
-  rdb_no_parent: No parent tasks
-
-  rdb_issue_menu_progress_title: Update progress
-  rdb_issue_menu_progress: "%{count}%"
-  rdb_issue_menu_redmine_issue: Redmine Issue
-  rdb_issue_menu_show: Show
-  rdb_issue_menu_edit: Edit
-  rdb_issue_menu_assigne_me: Assign me
-  rdb_issue_menu_unassigne_me: Unassign me
-
-  rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
-  rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
-  rdb_flash_stale_object: "<p>Attempted to update a stale issue: <b>%{issue}</b>. Check changes and try again."
-  rdb_flash_invalid_request: "<p>Invalid request.</p>"
