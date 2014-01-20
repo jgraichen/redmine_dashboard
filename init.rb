@@ -29,7 +29,7 @@ Redmine::Plugin.register :redmine_dashboard do
   end
   menu :project_menu, :rdb_project_dashboards, { :controller => 'rdb_project_boards', :action => 'index' },
     :caption => :'rdb.menu.dashboards', :after => :new_issue
-  menu :account_menu, :rdb_my_dashboards, { :controller => 'rdb_user_boards', :action => 'index' },
-    :caption => :'rdb.menu.my_dashboards', :after => :my_account
+  # menu :account_menu, :rdb_my_dashboards, { :controller => 'rdb_user_boards', :action => 'index' },
+  #   :caption => :'rdb.menu.my_dashboards', :after => :my_account
 
 end
