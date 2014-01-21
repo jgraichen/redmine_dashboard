@@ -25,7 +25,11 @@ module Rdb
         if (engine = engines.detect { |klass| klass.name == name })
           engine
         else
-          name.constantize
+          begin
+            name.constantize
+          rescue NameError
+            nil
+          end
         end
       end
 

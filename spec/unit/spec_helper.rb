@@ -1,3 +1,4 @@
+require 'action_view'
 require 'rdb'
 
 # Requires supporting ruby files with custom matchers and macros, etc,

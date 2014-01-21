@@ -9,8 +9,9 @@ module Rdb
 
   module UI
     require 'rdb/ui/node'
-    require 'rdb/ui/section'
     require 'rdb/ui/menu'
-    require 'rdb/ui/list'
+    require 'rdb/ui/menu_section'
+    require 'rdb/ui/menu_list'
+    require 'rdb/ui/menu_item'
   end
 end
