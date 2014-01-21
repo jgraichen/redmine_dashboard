@@ -7,6 +7,9 @@ group :development do
   gem 'rake'
   gem 'rspec'
 
+  gem 'guard'
+  gem 'guard-shell'
+
   gem 'sprockets-standalone', :require => false
   gem 'stylus',               :require => false
   gem 'sass',                 :require => false
@@ -18,7 +21,6 @@ group :test do
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'guard-rspec'
   gem 'capybara', '~> 2.1.0'
   gem 'fuubar'
 
