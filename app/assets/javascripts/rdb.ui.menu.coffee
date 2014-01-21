@@ -1,7 +1,7 @@
 # =========================================================
 # Redmine Dashboard UI - Menu Script
 
-jQuery ->
+Rdb.ready ($) ->
   lastMenu = null
 
   $.fn.rdbMenuOpen = ->
@@ -14,6 +14,12 @@ jQuery ->
         listitem = section.find('ul.rdb-menu-list li a').first()
         if listitem.isAny()
           listitem.focus()
+
+  $.fn.rdbMenuClose = ->
+    menu = $(this).closest('.rdb-menu')
+    if menu.isAny()
+      menu.removeClass 'rdb-menu-active'
+      lastMenu = null
 
   $(document).on 'click', (e) ->
     link = $(e.target).closest 'a.rdb-menu-link'
@@ -30,9 +36,10 @@ jQuery ->
           lastMenu = menu
 
     if lastMenu && $(e.target).closest('.rdb-menu').isEmpty()
-      lastMenu.removeClass 'rdb-menu-active'
-      lastMenu = null
+      lastMenu.rdbMenuClose()
 
+  Mousetrap.bind 'esc', (e) ->
+    lastMenu.rdbMenuClose() if lastMenu
 
-  $(document).on 'hover', '.rdb-menu-list > li > a', (e) ->
-    $(this).focus()
+  $(document).on 'mousemove', '.rdb-menu-list a', (e) ->
+    $(e.target).focus()
