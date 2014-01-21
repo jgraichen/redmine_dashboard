@@ -134,7 +134,7 @@ task :compile => 'assets:compile'
 desc 'Compile JS/CSS assets'
 Sprockets::Standalone::RakeTask.new do |t, sprockets|
   t.assets  = %w(redmine-dashboard.css redmine-dashboard.js *.png *.jpg *.gif)
-  t.sources = %w(app/assets/images app/assets/stylesheets app/assets/javascripts vendor/assets/javascript)
+  t.sources = %w(app/assets/images app/assets/stylesheets app/assets/javascripts vendor/assets/javascripts)
   t.output  = File.expand_path('../assets', __FILE__)
 
   require 'stylus/sprockets'
