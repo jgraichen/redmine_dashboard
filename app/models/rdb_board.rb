@@ -24,4 +24,12 @@ class RdbBoard < ActiveRecord::Base
   def issues
     context.issues
   end
+
+  def categories
+    if Project === context
+      context.issue_categories
+    else
+      []
+    end
+  end
 end

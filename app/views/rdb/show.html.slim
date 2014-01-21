@@ -1,2 +1,7 @@
-rdb data-rdb-base=rdb_path
-  = render partial: "#{@engine.class.name.underscore}/engine", object: @engine
+- content_for :header_tags do
+  - plugin = Rails.env.development? ? 'redmine_dashboard_linked' : 'redmine_dashboard'
+  = stylesheet_link_tag '../redmine-dashboard.css', :plugin => plugin
+  = javascript_include_tag '../redmine-dashboard.js', :plugin => plugin
+
+#redmine-dashboard
+  = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }

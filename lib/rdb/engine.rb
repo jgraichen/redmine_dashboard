@@ -3,6 +3,9 @@ module Rdb
   #
   #
   class Engine
+
+    # Database Board Record.
+    #
     attr_reader :board
 
     def initialize(board)
@@ -13,9 +16,17 @@ module Rdb
       board.context.issues
     end
 
+    def name
+      board.name
+    end
+
     class << self
       def lookup(name)
-        engines.detect { |klass| klass.name == name }
+        if (engine = engines.detect { |klass| klass.name == name })
+          engine
+        else
+          name.constantize
+        end
       end
 
       def lookup!(name)

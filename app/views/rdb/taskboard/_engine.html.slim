@@ -1,0 +1,15 @@
+.rdb-taskboard
+  header.rdb-taskboard-header
+    = Rdb::UI::Menu.render :board, board.name, accesskey: 'b' do |menu|
+      - menu << Rdb::UI::MenuList.new(I18n.t('rdb.header.board.avail_boards')) do |sec|
+        - board.context.rdb_boards.each do |board|
+          - sec << Rdb::UI::MenuItemLink.new(board.name, rdb_url(board))
+      - menu << Rdb::UI::MenuList.new do |sec|
+        - sec << Rdb::UI::MenuItemLink.new("Create New Dashboard", '/dashboards/new')
+
+    = Rdb::UI::Menu.render :'ft-category', 'Category', accesskey: 'c' do |menu|
+      - menu << Rdb::UI::MenuList.new do |sec|
+        - board.categories.each do |cat|
+          - sec << Rdb::UI::MenuItemLink.new(cat.name, "javascript:Rdb.taskboard.applyFilter('category', #{cat.id})")
+
+  section

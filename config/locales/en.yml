@@ -13,3 +13,7 @@ en:
     menu:
       dashboards: Dashboards
       my_dashboards: My Dashboards
+
+    header:
+      board:
+        avail_boards: Available Boards
