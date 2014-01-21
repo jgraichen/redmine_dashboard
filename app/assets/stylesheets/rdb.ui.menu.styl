@@ -1,0 +1,43 @@
+// ========================================================
+// Redmine Dashboard UI - Header Menu
+//
+
+.rdb-menu
+  position: relative
+  display: inline-block
+  margin: 0 0.5em
+
+  a.rdb-menu-link
+    display: inline-block
+    cursor: pointer
+    padding: 1px 18px 1px 4px
+    border-radius: 2px
+    border: 1px solid transparent
+
+    &::before
+      position: absolute
+      top: 50%
+      right: 6px
+      margin-top: -2px
+      display: inline-block
+      border-right: 4px solid transparent
+      border-left: 4px solid transparent
+      border-top: 4px solid #888
+      content: ''
+
+    &:hover
+      background-color: #eee
+
+  &.rdb-menu-active
+    a.rdb-menu-link
+      z-index: 1010
+      background-color: #eee
+      border-color: #ccc
+
+  h1, h2, h3, h4, h5
+    margin: 0
+    padding: 0
+    font-weight: normal
+
+    a.rdb-menu-link
+      padding: 0 18px 2px 4px

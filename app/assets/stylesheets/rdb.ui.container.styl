@@ -1,0 +1,63 @@
+// =========================================================
+// Redmine Dashboard UI - Drop Down Container
+//
+
+.rdb-container
+  position: absolute
+  left: -999999px
+  z-index: 1000
+  display: none
+  visibility: hidden
+
+  margin: -1px 0 0 0
+  padding: 0
+
+  border: 1px solid #ccc
+  background-color: #fff
+  box-shadow: 0 1px 2px rgba(0,0,0,.2)
+  // border-radius: 2px
+
+  > .rdb-container-wrapper
+    overflow: auto
+
+    min-width: 160px
+    max-height: 450px
+    padding: 0
+
+    &::-webkit-scrollbar
+      width: 5px
+      background-color: #eee
+    &::-webkit-scrollbar-thumb
+      background-color: #bbb
+
+  section
+    padding: 0
+    margin: 3px 0
+
+    border-top: 1px solid #ccc
+
+    &:first-child
+      border-top: none
+
+    header
+      font-size: 10px
+      padding: 2px 4px 0 4px
+      margin: 0
+
+  ul.rdb-menu-list
+    padding: 0
+    margin: 3px 0
+
+    li > a
+      display: block
+      padding: 4px 6px
+      cursor: pointer
+
+      &:focus
+        background-color: #eee
+        outline: none
+
+.rdb-menu-active .rdb-container
+  display: block
+  visibility: visible
+  left: auto

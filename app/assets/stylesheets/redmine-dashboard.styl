@@ -1,0 +1,21 @@
+//= require_self
+
+#content
+  padding: 0
+
+#redmine-dashboard
+  *
+    box-sizing border-box
+
+  a
+    &:focus
+      text-decoration: underline
+
+  > header
+    padding: 6px 0 6px 0
+    border-bottom: 1px solid #ccc
+
+  @import 'rdb.ui.menu'
+  @import 'rdb.ui.container'
+
+  @import 'rdb.taskboard'

@@ -1,0 +1,121 @@
+#content {
+  padding: 0;
+}
+#redmine-dashboard * {
+  box-sizing: border-box;
+}
+#redmine-dashboard a:focus {
+  text-decoration: underline;
+}
+#redmine-dashboard > header {
+  padding: 6px 0 6px 0;
+  border-bottom: 1px solid #ccc;
+}
+#redmine-dashboard .rdb-menu {
+  position: relative;
+  display: inline-block;
+  margin: 0 0.5em;
+}
+#redmine-dashboard .rdb-menu a.rdb-menu-link {
+  display: inline-block;
+  cursor: pointer;
+  padding: 1px 18px 1px 4px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+}
+#redmine-dashboard .rdb-menu a.rdb-menu-link::before {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  margin-top: -2px;
+  display: inline-block;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-top: 4px solid #888;
+  content: '';
+}
+#redmine-dashboard .rdb-menu a.rdb-menu-link:hover {
+  background-color: #eee;
+}
+#redmine-dashboard .rdb-menu.rdb-menu-active a.rdb-menu-link {
+  z-index: 1010;
+  background-color: #eee;
+  border-color: #ccc;
+}
+#redmine-dashboard .rdb-menu h1,
+#redmine-dashboard .rdb-menu h2,
+#redmine-dashboard .rdb-menu h3,
+#redmine-dashboard .rdb-menu h4,
+#redmine-dashboard .rdb-menu h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+#redmine-dashboard .rdb-menu h1 a.rdb-menu-link,
+#redmine-dashboard .rdb-menu h2 a.rdb-menu-link,
+#redmine-dashboard .rdb-menu h3 a.rdb-menu-link,
+#redmine-dashboard .rdb-menu h4 a.rdb-menu-link,
+#redmine-dashboard .rdb-menu h5 a.rdb-menu-link {
+  padding: 0 18px 2px 4px;
+}
+#redmine-dashboard .rdb-container {
+  position: absolute;
+  left: -999999px;
+  z-index: 1000;
+  display: none;
+  visibility: hidden;
+  margin: -1px 0 0 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+#redmine-dashboard .rdb-container > .rdb-container-wrapper {
+  overflow: auto;
+  min-width: 160px;
+  max-height: 450px;
+  padding: 0;
+}
+#redmine-dashboard .rdb-container > .rdb-container-wrapper::-webkit-scrollbar {
+  width: 5px;
+  background-color: #eee;
+}
+#redmine-dashboard .rdb-container > .rdb-container-wrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+}
+#redmine-dashboard .rdb-container section {
+  padding: 0;
+  margin: 3px 0;
+  border-top: 1px solid #ccc;
+}
+#redmine-dashboard .rdb-container section:first-child {
+  border-top: none;
+}
+#redmine-dashboard .rdb-container section header {
+  font-size: 10px;
+  padding: 2px 4px 0 4px;
+  margin: 0;
+}
+#redmine-dashboard .rdb-container ul.rdb-menu-list {
+  padding: 0;
+  margin: 3px 0;
+}
+#redmine-dashboard .rdb-container ul.rdb-menu-list li > a {
+  display: block;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+#redmine-dashboard .rdb-container ul.rdb-menu-list li > a:focus {
+  background-color: #eee;
+  outline: none;
+}
+#redmine-dashboard .rdb-menu-active .rdb-container {
+  display: block;
+  visibility: visible;
+  left: auto;
+}
+#redmine-dashboard .rdb-taskboard header.rdb-taskboard-header {
+  margin: 5px 0 0 0;
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid #ccc;
+}
