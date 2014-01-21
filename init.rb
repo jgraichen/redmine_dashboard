@@ -1,10 +1,11 @@
 require 'redmine'
-require 'rdb'
 
 Rails.configuration.to_prepare do
   Dir.glob File.expand_path('../lib/rdb/patches/**/*.rb', __FILE__) do |patch|
     require_dependency patch
   end
+
+  ActiveSupport::Dependencies.autoload_paths << File.expand_path('../', __FILE__)
 end
 
 Redmine::Plugin.register :redmine_dashboard do
