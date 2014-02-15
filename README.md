@@ -20,7 +20,7 @@ Incomplete Features List
 * Group folding
 * Hierarchical parent issue view
 
-[![Preview](http://altimos.de/redmine_dashboard/rdb_2-1_t.png)](http://altimos.de/redmine_dashboard/rdb_2-1.png)
+[![Preview](http://altimos.de/rdb/img/rdb_2-1.png)](http://altimos.de/rdb/img/rdb_2-1.png)
 
 **Planning Board** (planned)
 
