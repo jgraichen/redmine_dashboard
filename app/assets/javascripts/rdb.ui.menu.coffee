@@ -3,6 +3,7 @@
 
 Rdb.ready ($) ->
   lastMenu = null
+  menuIndecies = [1,2,3,4,5,6,7,8,9,0]
 
   $.fn.rdbMenuOpen = ->
     menu = $(this).closest('.rdb-menu')
@@ -15,11 +16,18 @@ Rdb.ready ($) ->
         if listitem.isAny()
           listitem.focus()
 
+      Rdb.key.push 'rdb.ui.menu', menu
+
   $.fn.rdbMenuClose = ->
     menu = $(this).closest('.rdb-menu')
     if menu.isAny()
       menu.removeClass 'rdb-menu-active'
+      lastMenu.closest('.rdb-menu').find('a.rdb-menu-link').focus()
       lastMenu = null
+      Rdb.key.pop()
+
+  $.fn.rdbMenuFocusNext = (e) ->
+    console.log e
 
   $(document).on 'click', (e) ->
     link = $(e.target).closest 'a.rdb-menu-link'
@@ -38,8 +46,27 @@ Rdb.ready ($) ->
     if lastMenu && $(e.target).closest('.rdb-menu').isEmpty()
       lastMenu.rdbMenuClose()
 
-  Mousetrap.bind 'esc', (e) ->
-    lastMenu.rdbMenuClose() if lastMenu
+  Rdb.key.define 'rdb.ui.menu', (bindings, menu) ->
+    bindings.on 'up', ->
+      lastMenu.rdbMenuFocusPrev()
+    bindings.on 'down', ->
+      lastMenu.rdbMenuFocusNext()
+    bindings.on 'esc', ->
+      lastMenu.rdbMenuClose()
+
+    menu?.find('ul.rdb-menu-list li a').each (index) ->
+      if index < menuIndecies.length
+        num = menuIndecies[index]
+        el = $ @
+        if el.find('span.rdb-key').isAny()
+          el.find('span.rdb-key').html("#{num}")
+        else
+          el.append("<span class=\"rdb-key\">#{num}</span>")
+
+        bindings.on num, =>
+          el.focus().click()
+        , =>
+          el.find('span.rdb-key').remove()
 
   $(document).on 'mousemove', '.rdb-menu-list a', (e) ->
     $(e.target).focus()

@@ -6,6 +6,8 @@
 #= require mousetrap
 #
 #= require_self
+#= require rdb.utils
+#= require rdb.key
 #= require rdb.ui.menu
 
 # =========================================================
