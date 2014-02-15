@@ -19,4 +19,6 @@
     .rdb-column-header.rdb-column-group
       - engine.columns.each do |col|
         = render :partial => 'rdb/taskboard/column_header', :locals => {:engine => engine, :column => col}
-    = render :partial => 'rdb/taskboard/overall_progress', :locals => {:engine => engine}
+    .rdb-columns.rdb-column-group
+      - engine.columns.each do |col|
+        = render :partial => 'rdb/taskboard/column', :locals => {:engine => engine, :column => col}

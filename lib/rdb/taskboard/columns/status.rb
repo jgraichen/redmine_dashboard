@@ -8,7 +8,7 @@ module Rdb::Taskboard::Columns
     def initialize(engine, opts = {})
       super
 
-      @statuses = opts.delete(:statuses) { raise ArgumentError.new 'statuses missing.' }
+      @statuses = Array(opts.delete(:statuses)) { raise ArgumentError.new 'statuses missing.' }
     end
 
     def scope(issues)

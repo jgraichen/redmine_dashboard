@@ -1,5 +1,5 @@
-module Rdb
-  module UserPatch
+module Rdb::Patch
+  module User
     def self.included(receiver)
       receiver.class_eval do
         unloadable
@@ -7,6 +7,6 @@ module Rdb
       end
     end
   end
-
-  User.send :include, Rdb::UserPatch unless User.included_modules.include? Rdb::UserPatch
 end
+
+User.send :include, Rdb::Patch::User
