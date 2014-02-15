@@ -7,9 +7,6 @@ group :development do
   gem 'rake'
   gem 'rspec'
 
-  gem 'guard'
-  gem 'guard-shell'
-
   gem 'sprockets-standalone', :require => false
   gem 'stylus',               :require => false
   gem 'sass',                 :require => false

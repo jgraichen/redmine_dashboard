@@ -12,7 +12,7 @@ require 'sprockets/standalone'
 #
 # Dashboard tasks
 #
-DEFAULT_REDMINE_VERSION = '2.4.2'
+DEFAULT_REDMINE_VERSION = '2.4.3'
 
 class Redmine
   attr_reader :version, :path
@@ -27,7 +27,8 @@ class Redmine
   end
 
   def database_config(env)
-    {'pool' => 5, 'timeout' => 5000, 'adapter' => 'mysql2', 'database' => "rdb_#{version.gsub('.', '_')}_#{env}"}
+    table = env == 'development' ? 'rdb_development' : "rdb_#{version.gsub('.', '_')}_#{env}"
+    {'pool' => 5, 'timeout' => 5000, 'adapter' => 'mysql2', 'database' => table}
   end
 
   def svn_url
@@ -84,9 +85,9 @@ namespace :spec do
   Class.new(RSpec::Core::RakeTask) do
     def spec_command; "ruby -S bundle exec #{super}" end
   end.new(:unit) do |t|
-    t.pattern    = "spec/unit/**/*_spec.rb"
-    t.ruby_opts  = "-Ispec/unit -Ilib"
-    t.rspec_opts = "--color --backtrace"
+    t.pattern    = 'spec/unit/**/*_spec.rb'
+    t.ruby_opts  = '-Ispec/unit -Ilib'
+    t.rspec_opts = '--color --backtrace'
   end
 
   desc 'Run plugin specs (Testing within redmine application)'
@@ -98,7 +99,7 @@ namespace :spec do
   end.new(:plugin) do |t|
     t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
-    t.rspec_opts = "--color --backtrace"
+    t.rspec_opts = '--color --backtrace'
   end
 
   desc 'Run browser specs'
@@ -110,7 +111,7 @@ namespace :spec do
   end.new(:browser) do |t|
     t.pattern    = "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
-    t.rspec_opts = "--color --backtrace"
+    t.rspec_opts = '--color --backtrace'
   end
 end
 task :ci => :spec
@@ -140,10 +141,8 @@ Sprockets::Standalone::RakeTask.new do |t, sprockets|
   require 'stylus/sprockets'
   Stylus.setup sprockets
 
-  if ENV['COMPRESS']
-    sprockets.js_compressor  = :uglifier
-    sprockets.css_compressor = :sass
-  end
+  sprockets.js_compressor  = :uglifier
+  sprockets.css_compressor = :sass
 end
 
 # namespace :views do
@@ -173,8 +172,8 @@ namespace :redmine do
       RM.exec %w(mkdir -p), 'public/plugin_assets'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
-      RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", "Gemfile"
-      RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", "Gemfile"
+      RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
+      RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
     end
   end
 
