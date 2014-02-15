@@ -32,4 +32,12 @@ class RdbBoard < ActiveRecord::Base
       []
     end
   end
+
+  def tracker
+    if Project === context
+      context.trackers
+    else
+      []
+    end
+  end
 end

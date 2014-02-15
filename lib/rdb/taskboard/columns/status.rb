@@ -5,7 +5,7 @@ module Rdb::Taskboard::Columns
   class Status < ::Rdb::Taskboard::Column
     attr_reader :statuses
 
-    def initialize(opts = {})
+    def initialize(engine, opts = {})
       super
 
       @statuses = opts.delete(:statuses) { raise ArgumentError.new 'statuses missing.' }

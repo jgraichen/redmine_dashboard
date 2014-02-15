@@ -2,4 +2,37 @@
   header.rdb-taskboard-header
     margin: 5px 0 0 0
     padding: 0 0 5px 0
-    border-bottom: 1px solid #ccc
+    border-bottom: 1px solid frame-color
+
+    .rdb-board-menu .rdb-menu-link
+      font-size: 1.4em
+      font-weight: bold
+
+  section.rdb-taskboard-body
+    padding: 5px
+
+    .rdb-column-header
+      margin-bottom: 2px
+
+      h3
+        border-bottom: 2px solid frame-color
+        padding: .3em .4em .2em
+        margin: 0
+
+    .rdb-overall-progress
+      border: 3px solid frame-color
+
+    .rdb-column-group
+      display: table
+      table-layout: fixed
+      width: 100%
+      overflow: hidden
+
+      .rdb-column
+        display: table-cell
+        padding: 0 .4em
+
+        &:first-child
+          padding-left: 0
+        &:last-child
+          padding-right: 0

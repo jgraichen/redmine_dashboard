@@ -52,9 +52,17 @@
       display: block
       padding: 4px 6px
       cursor: pointer
+      position: relative
+
+      > span.rdb-key
+        position: absolute
+        top: 4px
+        right: 4px
+        color: #999
+        font-size: 9px
 
       &:focus
-        background-color: #eee
+        background-color: #ddd
         outline: none
 
 .rdb-menu-active .rdb-container

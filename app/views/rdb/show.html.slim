@@ -1,7 +1,10 @@
 - content_for :header_tags do
-  - plugin = Rails.env.development? ? 'redmine_dashboard_linked' : 'redmine_dashboard'
-  = stylesheet_link_tag '../redmine-dashboard.css', :plugin => plugin
-  = javascript_include_tag '../redmine-dashboard.js', :plugin => plugin
+  - if Rails.env.development?
+    = stylesheet_link_tag '/rdb/assets/redmine-dashboard.css'
+    = javascript_include_tag '/rdb/assets/redmine-dashboard.js'
+  - else
+    = stylesheet_link_tag '../redmine-dashboard.css', :plugin => 'redmine_dashboard'
+    = javascript_include_tag '../redmine-dashboard.js', :plugin => 'redmine_dashboard'
 
 #redmine-dashboard
   = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }

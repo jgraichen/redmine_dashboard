@@ -8,13 +8,14 @@
     box-sizing border-box
 
   a
-    &:focus
-      text-decoration: underline
+    &:focus, &:hover
+      text-decoration: none
 
   > header
     padding: 6px 0 6px 0
     border-bottom: 1px solid #ccc
 
+  @import 'rdb.variables'
   @import 'rdb.ui.menu'
   @import 'rdb.ui.container'
 

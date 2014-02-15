@@ -3,10 +3,10 @@ module Rdb
   #
   #
   module Component
-    attr_reader :board
+    attr_reader :engine
 
-    def initialize(opts = {})
-      @board = opts.delete(:board) { raise ArgumentError.new 'board missing.' }
+    def initialize(engine, opts = {})
+      @engine = engine
     end
   end
 end

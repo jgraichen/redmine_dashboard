@@ -1,15 +1,22 @@
 .rdb-taskboard
   header.rdb-taskboard-header
-    = Rdb::UI::Menu.render :board, board.name, accesskey: 'b' do |menu|
-      - menu << Rdb::UI::MenuList.new(I18n.t('rdb.header.board.avail_boards')) do |sec|
+    = Rdb::UI::Menu.render :board, board.name, :accesskey => 'b', :class => 'rdb-board-menu' do |menu|
+      - menu << Rdb::UI::MenuList.new(I18n.t('rdb.header.board.available_boards')) do |sec|
         - board.context.rdb_boards.each do |board|
           - sec << Rdb::UI::MenuItemLink.new(board.name, rdb_url(board))
       - menu << Rdb::UI::MenuList.new do |sec|
-        - sec << Rdb::UI::MenuItemLink.new("Create New Dashboard", '/dashboards/new')
-
-    = Rdb::UI::Menu.render :'ft-category', 'Category', accesskey: 'c' do |menu|
+        - sec << Rdb::UI::MenuItemLink.new(I18n.t('rdb.header.board.new_board'), '/dashboards/new')
+    = Rdb::UI::Menu.render :'ft-category', 'Category', :accesskey => 'c' do |menu|
       - menu << Rdb::UI::MenuList.new do |sec|
         - board.categories.each do |cat|
           - sec << Rdb::UI::MenuItemLink.new(cat.name, "javascript:Rdb.taskboard.applyFilter('category', #{cat.id})")
+    = Rdb::UI::Menu.render :'ft-tracker', 'Tracker', :accesskey => 't' do |menu|
+      - menu << Rdb::UI::MenuList.new do |sec|
+        - board.tracker.each do |cat|
+          - sec << Rdb::UI::MenuItemLink.new(cat.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{cat.id})")
 
-  section
+  section.rdb-taskboard-body
+    .rdb-column-header.rdb-column-group
+      - engine.columns.each do |col|
+        = render :partial => 'rdb/taskboard/column_header', :locals => {:engine => engine, :column => col}
+    = render :partial => 'rdb/taskboard/overall_progress', :locals => {:engine => engine}

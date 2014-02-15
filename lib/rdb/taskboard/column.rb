@@ -6,11 +6,11 @@ class Rdb::Taskboard
     include ::Rdb::Component
     attr_reader :name, :color, :options
 
-    def initialize(opts = {})
+    def initialize(engine, opts = {})
       super
 
-      @name     = opts.delete(:name)     { raise ArgumentError.new 'Name missing.' }
-      @color    = opts.delete(:color)    { raise ArgumentError.new 'Color missing.' }
+      @name     = opts.delete(:name)  { raise ArgumentError.new 'Name missing.' }
+      @color    = opts.delete(:color) { nil }
       @options  = opts
     end
 
