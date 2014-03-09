@@ -1,14 +1,19 @@
 .rdb-issue
-  margin 5px
+  margin 1px
   float left
 
   width 190px
+  border-radius 4px
+  border 3px solid transparent
 
-  border 1px solid frame-color
-  background #FFFFDD
-  border-radius 2px
+  &:hover, &:focus, &.focus
+    border-color #d3e9f3
 
   .rdb-issue-inlet
+    border 1px solid frame-color
+    background #FFFFDD
+
+  .rdb-issue-container
     border-left 4px solid frame-color
 
   header
@@ -29,5 +34,4 @@
     .rdb-issue-description
       margin-top 2px
       font-size 80%
-      text-align justify
       color #999
