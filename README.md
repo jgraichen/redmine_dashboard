@@ -5,34 +5,25 @@ Redmine Dashboard 2
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is under development for Redmine 2.1 and newer. Development version is incomplete and may not be usable for production environment.
+**Redmine Dashboard 2** is compatible with Redmine 2.4 and possibly older versions.
 
-Incomplete Features List
-------------------------
+Features List
+-------------
 
-* Quick edit of issues
-* Easy drag-n-drop
-
-**Task Board**
-
+* Drag-n-drop of issues
 * Configurable columns
 * Grouping & Filtering
 * Group folding
 * Hierarchical parent issue view
+* Include subproject issues
+* Quick edit of assignee and progress
 
 [![Preview](http://altimos.de/rdb/img/rdb_2-1.png)](http://altimos.de/rdb/img/rdb_2-1.png)
-
-**Planning Board** (planned)
-
-* Assignee issues to versions, categories or project members
-* Easy overview of specific version, category or member
 
 Install
 -------
 
-Clone _master_ branch from git repository to `plugins` and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
-
-Redmine Dashboard 2 is currently under development for Redmine 2.1 and not compatible with earlier versions.
+Clone git repository to `plugins`, checkout wanted release (`git checkout v2.1.0`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
 
 License
 -------
