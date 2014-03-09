@@ -1,5 +1,9 @@
 
-## 2.1
+## 2.2.0
+
+* Add support for subprojects
+
+## 2.1.0
 
 * Include groups to assignee filter (#9)
 * Add swimlane for each team member instead of "others" (#18)
