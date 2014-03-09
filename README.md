@@ -28,7 +28,9 @@ Clone git repository to `plugins`, checkout wanted release (`git checkout v2.2.0
 Upgrade
 -------
 
-Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout 2.2.0`). Run `bundle install` to install newly required gems. A database migration is not needed.
+Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout v2.2.0`). Run `bundle install` to install newly required gems. A database migration is not needed.
+
+You can list all available version with `git tag -l`.
 
 License
 -------
