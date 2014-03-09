@@ -10,11 +10,11 @@ class RdbCategoryFilter < RdbFilter
   end
 
   def all?
-    values.count >= board.project.issue_categories.count or board.project.issue_categories.empty?
+    values.count >= board.issue_categories.count or board.issue_categories.empty?
   end
 
   def default_values
-    board.project.issue_categories.pluck(:id)
+    board.issue_categories.pluck(:id)
   end
 
   def valid_value?(value)
@@ -25,7 +25,7 @@ class RdbCategoryFilter < RdbFilter
     return unless category = params[:category]
 
     if category == 'all'
-      self.values = board.project.issue_categories.pluck(:id)
+      self.values = board.issue_categories.pluck(:id)
     else
       id = category.to_i
       if params[:only]
@@ -43,7 +43,7 @@ class RdbCategoryFilter < RdbFilter
   def title
     return I18n.t(:rdb_filter_category_all) if all?
     return I18n.t(:rdb_filter_category_multiple) if values.count > 1
-    board.project.issue_categories.find_by_id(value).try(:name)
+    board.issue_categories.find_by_id(value).try(:name)
   end
 
   def enabled?(id)

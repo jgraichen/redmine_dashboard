@@ -12,24 +12,22 @@
         = link_to t("rdb_filter_version_#{val}"), rdb_filter_path(:version => val)
       - render_rdb_menu_list @board.filters[:version].versions do |val|
         = link_to val.name, rdb_filter_path(:version => val.id)
-      - #render_rdb_menu_list @board.filters[:version].done_versions do |val|
-      - #  = link_to val.name, rdb_filter_path(:filters => {:version => val.id})
 
 .rdb-filter.rdb-async
   - render_rdb_menu :tracker, @board.filters[:tracker].title, :icons => true do
     - render_rdb_menu_list [:all] do |val|
       = link_to t("rdb_filter_tracker_#{val}"), rdb_filter_path(:tracker => val)
-    - render_rdb_menu_list @project.trackers do |val|
+    - render_rdb_menu_list @board.trackers do |val|
       %span.rdb-multicheck
         = rdb_checkbox_link_to '', rdb_filter_path(:tracker => val.id), :enabled => @board.filters[:tracker].enabled?(val.id), :show_disabled => true
         = link_to val.name, rdb_filter_path(:tracker => val.id, :only => true)
 
-- if @project.issue_categories.any?
+- if @board.issue_categories.any?
   .rdb-filter.rdb-async
     - render_rdb_menu :categories, @board.filters[:category].title, :icons => true do
       - render_rdb_menu_list [:all] do |val|
         = link_to t("rdb_filter_category_#{val}"), rdb_filter_path(:category => val)
-      - render_rdb_menu_list @project.issue_categories do |val|
+      - render_rdb_menu_list @board.issue_categories do |val|
         %span.rdb-multicheck
           = rdb_checkbox_link_to '', rdb_filter_path(:category => val.id), :enabled => @board.filters[:category].enabled?(val.id), :show_disabled => true
           = link_to val.name, rdb_filter_path(:category => val.id, :only => true)
@@ -38,11 +36,12 @@
   - render_rdb_menu :assignee, @board.filters[:assignee].title do
     - render_rdb_menu_list [:all, :me, :none] do |val|
       = link_to t("rdb_filter_assignee_#{val}"), rdb_filter_path(:assignee => val)
-    - render_rdb_menu_list @project.members do |val|
-      = link_to val.name, rdb_filter_path(:assignee => val.id)
-    - render_rdb_menu_list @project.member_principals do |val|
-      - next unless Group === val.principal
-      = link_to val.principal.name, rdb_filter_path(:assignee => val.id)
+    - render_rdb_menu_list @board.assignees do |val|
+      - if User === val
+        = link_to val.name, rdb_filter_path(:assignee => val.id)
+    - render_rdb_menu_list @board.assignees do |val|
+      - if Group === val
+        = link_to val.name, rdb_filter_path(:assignee => val.id)
 
 .rdb-option.rdb-async
   - render_rdb_menu :options, t(:rdb_options), :right => true, :icons => true do
@@ -52,6 +51,8 @@
             :enabled => @board.options[:change_assignee], :title => t(:rdb_options_change_assignee_info)
         = rdb_checkbox_link_to t(:rdb_options_hide_done), rdb_board_path(:hide_done => !@board.options[:hide_done]),
             :enabled => @board.options[:hide_done], :title => t(:rdb_options_hide_done_info)
+        = rdb_checkbox_link_to t(:rdb_options_include_subprojects), rdb_board_path(:include_subprojects => (@board.project_ids.size > 1) ? 'false' : 'true'),
+            :enabled => (@board.project_ids.size > 1)
     - render_rdb_menu_list @board.column_list, :title => t(:rdb_options_columns) do |column|
       = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
     - render_rdb_menu_list do
@@ -69,6 +70,5 @@
     -#- render_rdb_menu_list RdbDashboard::BOARD_MODES, :title => t(:rdb_options_board_view) do |mode|
     -#  = rdb_checkbox_link_to t(:"rdb_options_board_view_#{mode}"), rdb_board_path(:mode => mode), :enabled => @board.options[:mode] == mode
     -#- if @board.compact?
-    - render_rdb_menu_list [:none, :tracker, :category, :priority, :assignee, :version, :parent], :title => t(:rdb_options_group) do |group|
+    - render_rdb_menu_list [:none, :tracker, :category, :priority, :assignee, :version, :parent, :project], :title => t(:rdb_options_group) do |group|
       = rdb_checkbox_link_to t(:"rdb_group_#{group}"), rdb_board_path(:group => group), :enabled => @board.options[:group] == group
-

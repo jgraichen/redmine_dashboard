@@ -10,7 +10,7 @@ class RdbTrackerFilter < RdbFilter
   end
 
   def all?
-    values.count == board.project.trackers.count
+    values.count == board.trackers.count
   end
 
   def apply_to_child_issues?
@@ -18,17 +18,17 @@ class RdbTrackerFilter < RdbFilter
   end
 
   def default_values
-    board.project.trackers.pluck(:id)
+    board.trackers.pluck(:id)
   end
 
   def update(params)
     return unless (tracker = params[:tracker])
 
     if tracker == 'all'
-      self.values = board.project.trackers.pluck(:id)
+      self.values = board.trackers.pluck(:id)
     else
       id = tracker.to_i
-      if board.project.trackers.where(:id => id).any?
+      if board.trackers.where(:id => id).any?
         if params[:only]
           self.value = id
         else
@@ -45,7 +45,7 @@ class RdbTrackerFilter < RdbFilter
   def title
     return I18n.t(:rdb_filter_tracker_all) if all?
     return I18n.t(:rdb_filter_tracker_multiple) if values.count > 1
-    board.project.trackers.find(value).name
+    board.trackers.find(value).name
   end
 
   def enabled?(id)

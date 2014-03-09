@@ -15,14 +15,14 @@ class RdbVersionFilter < RdbFilter
   def valid_value?(value)
     return true if value == :all or value.nil?
     return false unless value.respond_to?(:to_i)
-    board.project.versions.where(:id => value.to_i).any?
+    board.versions.where(:id => value.to_i).any?
   end
 
   def default_values
-    version = @board.project.versions.where(:status => [:open, :locked]).find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
+    version = board.versions.where(:status => [:open, :locked]).find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
     return [ version.id ] unless version.nil?
 
-    version = @board.project.versions.where(:status => [:open, :locked]).find(:first, :order => 'name ASC')
+    version = board.versions.where(:status => [:open, :locked]).find(:first, :order => 'name ASC')
     return [ version.id ] unless version.nil?
 
     [ :all ]
@@ -46,15 +46,15 @@ class RdbVersionFilter < RdbFilter
     elsif value.nil?
       I18n.t(:rdb_filter_version_unassigned)
     else
-      values.map {|id| @board.project.versions.find(id) }.map(&:name).join(', ')
+      values.map {|id| board.versions.find(id) }.map(&:name).join(', ')
     end
   end
 
   def versions
-    @board.project.versions.where(:status => [:open, :locked])
+    board.versions.where(:status => [:open, :locked])
   end
 
   def done_versions
-    @board.project.versions.where(:status => :closed)
+    board.versions.where(:status => :closed)
   end
 end

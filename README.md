@@ -23,7 +23,12 @@ Features List
 Install
 -------
 
-Clone git repository to `plugins`, checkout wanted release (`git checkout v2.1.0`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
+Clone git repository to `plugins`, checkout wanted release (`git checkout v2.2.0`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
+
+Upgrade
+-------
+
+Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout 2.2.0`). Run `bundle install` to install newly required gems. A database migration is not needed.
 
 License
 -------

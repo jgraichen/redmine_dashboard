@@ -30,7 +30,7 @@ private
 
   def board
     clazz = board_type
-    clazz.new(@project, options_for(clazz.name)) if clazz
+    clazz.new(@project, options_for(clazz.name), params) if clazz
   end
 
   def setup_board(params = nil)
@@ -55,7 +55,7 @@ private
   def find_issue
     flash_error :rdb_flash_missing_lock_version and return false unless params[:lock_version]
 
-    @issue = @project.issues.find params[:issue]
+    @issue = Issue.find params[:issue]
 
     if @issue.lock_version != params[:lock_version].to_i
       flash_error :rdb_flash_stale_object, :update => true, :issue => @issue.subject

@@ -24,6 +24,7 @@ en:
   rdb_options_reset: Reset filter
   rdb_options_reset_info: Reset all filters back to default
   rdb_options_configure: Configure
+  rdb_options_include_subprojects: Include subprojects
 
   rdb_options_view: View
   rdb_options_issue_view: Issue View
@@ -37,6 +38,7 @@ en:
   rdb_group_priority: Priority
   rdb_group_version: Version
   rdb_group_parent: Parent Task
+  rdb_group_project: Project
   rdb_options_board_view: Board View
   rdb_options_board_view_compact: Classic
   rdb_options_board_view_outline: Outline

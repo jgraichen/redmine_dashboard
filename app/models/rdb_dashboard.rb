@@ -1,14 +1,21 @@
 class RdbDashboard
-  attr_reader :project, :options
+  attr_reader :project, :projects, :project_ids, :options
 
   VIEW_MODES = [ :card, :compact ]
 
   def initialize(project, opts, params = nil)
-    @project = project
+    @project     = project
+
     @options = { :filters => {} }
 
     options.merge! default_options
     options.merge! opts
+
+    if params[:include_subprojects]
+      options[:include_subprojects] = (params[:include_subprojects] == 'true')
+    end
+
+    reload_projects!
 
     # Init board in sub class
     init if respond_to? :init
@@ -16,6 +23,21 @@ class RdbDashboard
     filters.each do |id, filter|
       filter.values = options[:filters][filter.id] if options[:filters][filter.id]
     end
+  end
+
+  def reload_projects!
+    if options[:include_subprojects]
+      @project_ids = subproject_ids([project.id])
+    else
+      @project_ids = [project.id]
+    end
+    @projects = Project.where :id => project_ids
+  end
+
+  def subproject_ids(ids)
+    ids.inject(ids.dup) do |ids, id|
+      ids + subproject_ids(Project.where(:parent_id => id).pluck(:id))
+    end.uniq
   end
 
   def setup(params)
@@ -46,7 +68,35 @@ class RdbDashboard
   end
 
   def issues
-    @issues ||= filter(project.issues)
+    filter(Issue.where(:project_id => project_ids))
+  end
+
+  def versions
+    Version.where :project_id => project_ids
+  end
+
+  def issue_categories
+    IssueCategory.where :project_id => project_ids
+  end
+
+  def trackers
+    Tracker.where(:id => projects.map{|p| p.trackers.pluck(:id)}.uniq)
+  end
+
+  def assignees
+    Principal.where :id => Member.where(:id=> projects.map{|p| p.member_principals.map(&:id)}.uniq).pluck(:user_id)
+  end
+
+  def members
+    Member.where(:id => projects.map{|p| p.members.map(&:id)}.uniq)
+  end
+
+  def member_principals
+    Member.where(:id=> projects.map{|p| p.member_principals.map(&:id)}.uniq)
+  end
+
+  def memberships
+    Member.where(:id => projects.map{|p| p.memberships.pluck(:id) }.uniq)
   end
 
   def filter(issues)
@@ -54,14 +104,17 @@ class RdbDashboard
     filters.inject(issues) {|issues, filter| filter[1].filter issues }
   end
 
-  def abbreviation
-    unless @abbreviation
-      @abbreviation = '#'
-      @project.custom_field_values.each do |f|
-        @abbreviation = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+  def abbreviation(project_id)
+    project_id = project.id unless project_id
+
+    @abbreviations ||= []
+    @abbreviations[project_id] ||= begin
+      abbreviation = '#'
+      Project.find(project_id).custom_field_values.each do |f|
+        abbreviation = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
       end
+      abbreviation
     end
-    @abbreviation
   end
 
   def id

@@ -28,6 +28,7 @@ de:
   rdb_options_reset: Filter zurücksetzen
   rdb_options_reset_info: Setzt alle Filter auf Standardeinstellungen zurück.
   rdb_options_configure: Konfigurieren
+  rdb_options_include_subprojects: Unterprojekte einbeziehen
 
   rdb_options_view: Ansicht
   rdb_options_issue_view: Ticket-Ansicht
@@ -41,6 +42,7 @@ de:
   rdb_group_priority: Priorität
   rdb_group_version: Version
   rdb_group_parent: Übergeordnete Aufgabe
+  rdb_group_project: Projekt
   rdb_options_board_view: Board Ansicht
   rdb_options_board_view_compact: Klassisch (Kompakt)
   rdb_options_board_view_outline: Outline
