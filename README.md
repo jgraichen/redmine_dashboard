@@ -32,8 +32,8 @@ Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout v2.
 
 You can list all available version with `git tag -l`.
 
-Contributing
-------------
+Contribute
+----------
 
 I appreciate any help and like Pull Requests. The `master` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `develop` branch. Please try to not add larger new features to current v2.
 
