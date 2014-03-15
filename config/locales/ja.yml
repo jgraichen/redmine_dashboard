@@ -17,17 +17,17 @@ ja:
   rdb_filter_assignee_others: 自分以外
 
   rdb_options: オプション
-  rdb_options_change_assignee: 担当変更
-  rdb_options_change_assignee_info: Change assignee to current user when issue is moved.
+  rdb_options_change_assignee: 担当者を変更する
+  rdb_options_change_assignee_info: ステータスを移動する際に担当者が自分に変更されます
   rdb_options_hide_done: 完了は表示しない
-  rdb_options_hide_done_info: Hide closed issues and makes done column smaller.
+  rdb_options_hide_done_info: ステータスが完了しているチケットは表示しません
   rdb_options_reset: フィルタをリセット
   rdb_options_reset_info: デフォルトのフィルタにリセットします
   rdb_options_configure: 設定
   rdb_options_include_subprojects: 子プロジェクトを含めます
 
   rdb_options_view: 表示
-  rdb_options_issue_view: チケットの表示形式
+  rdb_options_issue_view: ボードの表示形式
   rdb_options_issue_view_card: カード形式
   rdb_options_issue_view_compact: 簡易
   rdb_options_group: グルーピング
@@ -42,7 +42,7 @@ ja:
   rdb_options_board_view: Board View
   rdb_options_board_view_compact: クラシック
   rdb_options_board_view_outline: アウトライン
-  rdb_options_columns: Board Columns
+  rdb_options_columns: ボードに表示するチケットのステータス
   rdb_options_fullscreen: 全画面表示
 
   rdb_legend_priorities: Priorities
