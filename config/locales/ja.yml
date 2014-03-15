@@ -7,9 +7,7 @@
   rdb_filter_version_all: すべてのバージョン
   rdb_filter_version_unassigned: 未割当
   rdb_filter_tracker_all: すべてのトラッカー
-  rdb_filter_tracker_multiple: Multiple Trackers
   rdb_filter_category_all: すべてのカテゴリ
-  rdb_filter_category_multiple: Multiple Categories
   rdb_filter_assignee_all: すべての担当
   rdb_filter_assignee_me: 自分
   rdb_filter_assignee_none: 未割当
@@ -38,33 +36,13 @@
   rdb_group_version: バージョン
   rdb_group_parent: 親チケット
   rdb_group_project: プロジェクト
-  rdb_options_board_view: Board View
   rdb_options_board_view_compact: クラシック
   rdb_options_board_view_outline: アウトライン
   rdb_options_columns: ボードに表示するチケットのステータス
   rdb_options_fullscreen: 全画面表示
 
-  rdb_legend_priorities: Priorities
-  rdb_legend_warnings: Warnings
-  rdb_issue_overdue: Overdue
-  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
-  rdb_not_available: N/A
-
-  rdb_column_done: Done
-  rdb_x_issues:
-    one: 1 Issue
-    other: "%{count} Issues"
-
   rdb_dialog_update_issue_title: チケットの更新
   rdb_dialog_update_issue_status: チケットのステータスを選んでください
-
-  rdb_other_issues: "Other Issues <span>(%{count})</span>"
-
-  rdb_unassigned: Unassigned
-  rdb_others: Others
-  rdb_all_issues: All Issues
-
-  rdb_no_parent: No parent tasks
 
   rdb_issue_menu_progress_title: 進捗率の変更
   rdb_issue_menu_progress: "%{count}%"
@@ -73,8 +51,3 @@
   rdb_issue_menu_edit: チケットの編集
   rdb_issue_menu_assigne_me: 担当を自分にする
   rdb_issue_menu_unassigne_me: 担当を未割当にする
-
-  rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
-  rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
-  rdb_flash_stale_object: "<p>Attempted to update a stale issue: <b>%{issue}</b>. Check changes and try again."
-  rdb_flash_invalid_request: "<p>Invalid request.</p>"
