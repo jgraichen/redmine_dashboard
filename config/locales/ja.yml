@@ -1,5 +1,4 @@
-﻿# English strings go here for Rails i18n
-ja:
+﻿ja:
   menu_label_dashboard: ダッシュボード
 
   rdb_taskboard: タスクボード
@@ -56,8 +55,8 @@ ja:
     one: 1 Issue
     other: "%{count} Issues"
 
-  rdb_dialog_update_issue_title: Update Issue
-  rdb_dialog_update_issue_status: Choose new issue status
+  rdb_dialog_update_issue_title: チケットの更新
+  rdb_dialog_update_issue_status: チケットのステータスを選んでください
 
   rdb_other_issues: "Other Issues <span>(%{count})</span>"
 
@@ -67,13 +66,13 @@ ja:
 
   rdb_no_parent: No parent tasks
 
-  rdb_issue_menu_progress_title: Update progress
+  rdb_issue_menu_progress_title: 進捗率の変更
   rdb_issue_menu_progress: "%{count}%"
-  rdb_issue_menu_redmine_issue: Redmine Issue
-  rdb_issue_menu_show: Show
-  rdb_issue_menu_edit: Edit
-  rdb_issue_menu_assigne_me: Assign me
-  rdb_issue_menu_unassigne_me: Unassign me
+  rdb_issue_menu_redmine_issue: チケット
+  rdb_issue_menu_show: チケットを表示
+  rdb_issue_menu_edit: チケットの編集
+  rdb_issue_menu_assigne_me: 担当を自分にする
+  rdb_issue_menu_unassigne_me: 担当を未割当にする
 
   rdb_flash_illegal_workflow_action: "<p>You are not allowed to perform this workflow action:</p><p>Move <b>%{issue}</b> from <b>%{source}</b> to <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Cannot update issue without lock version. Try again."
