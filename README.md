@@ -32,6 +32,13 @@ Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout v2.
 
 You can list all available version with `git tag -l`.
 
+Contributing
+------------
+
+I appreciate any help and like Pull Requests. The `master` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `develop` branch. Please try to not add larger new features to current v2.
+
+I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [#redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
+
 License
 -------
 
