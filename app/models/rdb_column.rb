@@ -1,7 +1,4 @@
-require 'method_decorators/decorators/memoize'
-
 class RdbColumn
-  extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id, :board, :statuses
 
@@ -16,9 +13,8 @@ class RdbColumn
     issue_scope.where :status_id => statuses.map(&:id)
   end
 
-  +Memoize
   def issues
-    board.issues_for(self)
+    @issues ||= board.issues_for(self)
   end
 
   def percentage

@@ -1,7 +1,4 @@
-require 'method_decorators/decorators/memoize'
-
 class RdbGroup
-  extend MethodDecorators
   attr_accessor :board
   attr_reader :name, :options, :id
 
@@ -26,27 +23,26 @@ class RdbGroup
     name.is_a?(Symbol) ? I18n.translate(name) : name.to_s
   end
 
-  +Memoize
   def accepted_issues(source = nil)
-    filter((source ? source : board).issues)
+    @accepted_issues ||= filter((source ? source : board).issues)
   end
 
-  +Memoize
   def accepted_issue_ids
-    accepted_issues.map(&:id)
+    @accepted_issue_ids ||= accepted_issues.map(&:id)
   end
 
   def filter(issues)
     issues.select{|i| accept? i}
   end
 
-  +Memoize
   def visible?
-    board.columns.values.each do |column|
-      next if not column.visible? or column.compact?
-      return true if filter(column.issues).count > 0
+    @visible ||= catch(:visible) do
+      board.columns.values.each do |column|
+        next if not column.visible? or column.compact?
+        throw :visible, true if filter(column.issues).count > 0
+      end
+      false
     end
-    false
   end
 
   def issue_count
