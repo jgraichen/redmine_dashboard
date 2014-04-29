@@ -1,0 +1,5 @@
+assets/*        /usr/share/redmine/public/plugin_assets/redmine_dashboard
+app             /usr/share/redmine/plugins/redmine_dashboard
+config          /usr/share/redmine/plugins/redmine_dashboard
+lib             /usr/share/redmine/plugins/redmine_dashboard
+debian/init.rb  /usr/share/redmine/plugins/redmine_dashboard
