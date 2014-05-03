@@ -1,5 +1,5 @@
 Source: redmine-plugin-dashboard
-Section: unknown
+Section: web
 Priority: extra
 Maintainer: Jan Graichen <jg@altimos.de>
 Build-Depends: debhelper (>= 8.0.0)
@@ -12,6 +12,5 @@ Package: redmine-plugin-dashboard
 Architecture: any
 Depends: ${misc:Depends}, redmine (>= 2.1), redmine (<< 2.5), ruby-haml
 Description: Dashboard Plugin for Redmine
- .
  This redmine plugin adds an issue dashboard that supports
  drag and drop for issues and support various filters and groups.
