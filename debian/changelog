@@ -1,0 +1,12 @@
+redmine-plugin-dashboard (2.2.2-1) unstable; urgency=low
+
+  * Fix issue with missing haml templates when redmine is
+    loaded without bundler.
+
+ -- Jan Graichen <jg@altimos.de>  Sat, 03 May 2014 16:05:18 +0200
+
+redmine-plugin-dashboard (2.2-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Jan Graichen <jg@altimos.de>  Tue, 29 Apr 2014 21:43:31 +0200
