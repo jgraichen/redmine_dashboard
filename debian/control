@@ -9,8 +9,8 @@ Vcs-Git: git://git@github.com:jgraichen/redmine_dashboard.git
 Vcs-Browser: https://github.com/jgraichen/redmine_dashboard
 
 Package: redmine-plugin-dashboard
-Architecture: any
-Depends: ${misc:Depends}, redmine (>= 2.1), redmine (<< 2.5), ruby-haml
+Architecture: all
+Depends: ${misc:Depends}, redmine (>= 2.1), ruby-haml
 Description: Dashboard Plugin for Redmine
  This redmine plugin adds an issue dashboard that supports
  drag and drop for issues and support various filters and groups.

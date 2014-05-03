@@ -1,3 +1,9 @@
+redmine-plugin-dashboard (2.2.2-2) UNRELEASED; urgency=low
+
+  * Fix Architecture and relax upper redmine version dependency
+
+ -- Jan Graichen <jg@altimos.de>  Sat, 03 May 2014 16:22:10 +0200
+
 redmine-plugin-dashboard (2.2.2-1) unstable; urgency=low
 
   * Fix issue with missing haml templates when redmine is
