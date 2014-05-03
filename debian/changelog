@@ -1,8 +1,8 @@
-redmine-plugin-dashboard (2.2.2-2) UNRELEASED; urgency=low
+redmine-plugin-dashboard (2.2.2-2) unstable; urgency=low
 
   * Fix Architecture and relax upper redmine version dependency
 
- -- Jan Graichen <jg@altimos.de>  Sat, 03 May 2014 16:22:10 +0200
+ -- Jan Graichen <jg@altimos.de>  Sat, 03 May 2014 16:28:19 +0200
 
 redmine-plugin-dashboard (2.2.2-1) unstable; urgency=low
 

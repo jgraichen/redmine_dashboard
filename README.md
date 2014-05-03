@@ -19,6 +19,8 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 [![Preview](http://altimos.de/rdb/img/rdb_2-1.png)](http://altimos.de/rdb/img/rdb_2-1.png)
 
+Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
+
 ## Install
 
 ### Ubuntu / Debian
