@@ -2,6 +2,7 @@ Redmine Dashboard 2
 ===================
 
 [![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 

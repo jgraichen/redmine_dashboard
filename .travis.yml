@@ -3,16 +3,14 @@ language: ruby
 rvm:
 - 1.9.3
 - 2.0.0
-- 2.1.0
+- 2.1
 env:
-- REDMINE_VERSION=2.3.4
-- REDMINE_VERSION=2.4.4
-- REDMINE_VERSION=2.5.0
+- REDMINE_VERSION=2.4.5
+- REDMINE_VERSION=2.5.1
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
-  - env: REDMINE_VERSION=2.3.4
-  - env: REDMINE_VERSION=2.5.0
+  - env: REDMINE_VERSION=2.5.1
   - env: REDMINE_VERSION=master
 before_script: bundle exec rake install
 script: bundle exec rake spec

@@ -1,4 +1,5 @@
 require 'redmine'
+require 'haml'
 
 Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
