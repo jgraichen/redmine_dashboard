@@ -1,7 +1,9 @@
 # Redmine Dashboard 2
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
+[![Flattr this git repo](http://img.shields.io/badge/flattr-this-green.svg)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
@@ -16,8 +18,6 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 * Hierarchical parent issue view
 * Include subproject issues
 * Quick edit of assignee and progress
-
-[![Preview](http://altimos.de/rdb/img/rdb_2-1.png)](http://altimos.de/rdb/img/rdb_2-1.png)
 
 Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
 
