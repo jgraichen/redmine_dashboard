@@ -1,0 +1,53 @@
+﻿ja:
+  menu_label_dashboard: ダッシュボード
+
+  rdb_taskboard: タスクボード
+  rdb_planningboard: 計画ボード
+
+  rdb_filter_version_all: すべてのバージョン
+  rdb_filter_version_unassigned: 未割当
+  rdb_filter_tracker_all: すべてのトラッカー
+  rdb_filter_category_all: すべてのカテゴリ
+  rdb_filter_assignee_all: すべての担当
+  rdb_filter_assignee_me: 自分
+  rdb_filter_assignee_none: 未割当
+  rdb_filter_assignee_others: 自分以外
+
+  rdb_options: オプション
+  rdb_options_change_assignee: 担当者を変更する
+  rdb_options_change_assignee_info: ステータスを移動する際に担当者が自分に変更されます
+  rdb_options_hide_done: 完了は表示しない
+  rdb_options_hide_done_info: ステータスが完了しているチケットは表示しません
+  rdb_options_reset: フィルタをリセット
+  rdb_options_reset_info: デフォルトのフィルタにリセットします
+  rdb_options_configure: 設定
+  rdb_options_include_subprojects: 子プロジェクトを含めます
+
+  rdb_options_view: 表示
+  rdb_options_issue_view: ボードの表示形式
+  rdb_options_issue_view_card: カード形式
+  rdb_options_issue_view_compact: 簡易
+  rdb_options_group: グルーピング
+  rdb_group_none: グルーピングなし
+  rdb_group_category: カテゴリ
+  rdb_group_assignee: 担当
+  rdb_group_tracker: トラッカー
+  rdb_group_priority: 優先度
+  rdb_group_version: バージョン
+  rdb_group_parent: 親チケット
+  rdb_group_project: プロジェクト
+  rdb_options_board_view_compact: クラシック
+  rdb_options_board_view_outline: アウトライン
+  rdb_options_columns: ボードに表示するチケットのステータス
+  rdb_options_fullscreen: 全画面表示
+
+  rdb_dialog_update_issue_title: チケットの更新
+  rdb_dialog_update_issue_status: チケットのステータスを選んでください
+
+  rdb_issue_menu_progress_title: 進捗率の変更
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: チケット
+  rdb_issue_menu_show: チケットを表示
+  rdb_issue_menu_edit: チケットの編集
+  rdb_issue_menu_assigne_me: 担当を自分にする
+  rdb_issue_menu_unassigne_me: 担当を未割当にする

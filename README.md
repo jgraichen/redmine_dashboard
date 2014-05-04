@@ -1,6 +1,8 @@
 # Redmine Dashboard 3
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.png?branch=develop)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=develop)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Flattr this git repo](http://img.shields.io/badge/flattr-this-green.svg)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
 
 This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
 
