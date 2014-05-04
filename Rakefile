@@ -12,7 +12,7 @@ require 'sprockets/standalone'
 #
 # Dashboard tasks
 #
-DEFAULT_REDMINE_VERSION = '2.4.3'
+DEFAULT_REDMINE_VERSION = '2.5.1'
 
 class Redmine
   attr_reader :version, :path
@@ -72,7 +72,7 @@ end
 
 RM = Redmine.new
 
-task :default => [:install, :update, :'assets:compile', :spec]
+task :default => [:install, :update, :compile, :spec]
 
 desc 'Run all specs (alias for spec:all)'
 task :spec => 'spec:all'
@@ -131,6 +131,13 @@ task :s => 'server'
 
 desc 'Compile assets (alias for assets:compile)'
 task :compile => 'assets:compile'
+
+desc 'Cleanup project directory'
+task :clean do
+  %w(tmp assets).each do |dir|
+    FileUtils.rm_rf dir if File.directory?(dir)
+  end
+end
 
 desc 'Compile JS/CSS assets'
 Sprockets::Standalone::RakeTask.new do |t, sprockets|
