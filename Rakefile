@@ -181,6 +181,7 @@ namespace :redmine do
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
       RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
+      RM.exec %w(sed -i -e), "s/.*gem [\"']rake[\"'].*//g", 'Gemfile'
     end
   end
 
