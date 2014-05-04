@@ -1,2 +1,0 @@
-compression = "xz"
-extend-diff-ignore = "(.*\.(iml|lock)$)|(^(tmp|\.idea|\.rspec))"
