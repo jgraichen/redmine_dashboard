@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEBVERS := $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
+VERSION := $(shell echo '$(DEBVERS)' | sed -e 's/^[[:digit:]]*://' -e 's/[~-].*//')
+
+%:
+	dh $@
+
+override_dh_clean:
+	dh_clean debian/init.rb
+
+debian/init.rb:
+	perl -pE "s{(\sversion\s+'\K)[\d.]+'}{$(DEBVERS)'};" $(notdir $@) > $@
+
+override_dh_install: debian/init.rb
+	dh_install
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
