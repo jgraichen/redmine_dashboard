@@ -1,9 +1,10 @@
+#
 class RdbBoard < ActiveRecord::Base
   self.table_name = "#{table_name_prefix}rdb_boards#{table_name_suffix}"
 
   serialize :preferences, Hash
 
-  belongs_to :context, :polymorphic => true
+  belongs_to :context, polymorphic: true
 
   def personal?
     context_type == 'Principal'
@@ -18,7 +19,11 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def engine=(engine)
-    write_attribute(:engine, engine.respond_to?(:name) ? engine.name.to_s : engine.to_s)
+    if engine.respond_to?(:name)
+      write_attribute :engine, engine.name.to_s
+    else
+      write_attribute :engine, engine.to_s
+    end
   end
 
   def issues
@@ -26,7 +31,7 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def categories
-    if Project === context
+    if context.is_a? Project
       context.issue_categories
     else
       []
@@ -34,7 +39,7 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def tracker
-    if Project === context
+    if context.is_a? Project
       context.trackers
     else
       []

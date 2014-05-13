@@ -1,7 +1,7 @@
-
+#
 class RdbController < ::ApplicationController
   unloadable
-  before_filter :board, :only => [:show, :update, :destroy]
+  before_filter :board, only: [:show, :update, :destroy]
   before_filter :init_context
   respond_to :html
 
@@ -18,9 +18,10 @@ class RdbController < ::ApplicationController
   end
 
   def create
-    board = RdbBoard.create! :context => context,
-      :name => I18n.t('rdb.new.default_board_name'),
-      :engine => Rdb::Taskboard
+    board = RdbBoard.create! \
+      context: context,
+      name:   I18n.t('rdb.new.default_board_name'),
+      engine: Rdb::Taskboard
     redirect_to rdb_url board
   end
 
@@ -36,6 +37,7 @@ class RdbController < ::ApplicationController
   end
 
   private
+
   def board
     @board ||= RdbBoard.find(params[:board_id]).tap do |board|
       @project = board.context unless board.personal?
@@ -44,12 +46,12 @@ class RdbController < ::ApplicationController
 
   def init_context
     case context
-    when Project
-      @project = context
-      self.class.menu_item :rdb_project_dashboards
-    when User
-      @user = context
-      self.class.menu_item :rdb_my_dashboards
+      when Project
+        @project = context
+        self.class.menu_item :rdb_project_dashboards
+      when User
+        @user = context
+        self.class.menu_item :rdb_my_dashboards
     end
   end
 
