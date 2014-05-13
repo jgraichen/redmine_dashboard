@@ -122,17 +122,19 @@ task :install => %w(redmine:install)
 desc 'Update project environment (alias for redmine:update)'
 task :update => %w(redmine:update)
 
-desc 'Start local redmine server'
+desc 'Start local redmine server (aliases: `s`)'
 task :server => :install do |t, args|
   RM.bx %w(rails server), args
 end
-desc 'Start local redmine server (alias for server)'
 task :s => 'server'
 
 desc 'Compile assets (alias for assets:compile)'
 task :compile => 'assets:compile'
 
-desc 'Cleanup project directory'
+desc <<-DESC.gsub(/^ {2}/, '')
+  Cleanup project directory. This removes all installed redmines as
+  well as precompiled assets.
+DESC
 task :clean do
   %w(tmp assets).each do |dir|
     FileUtils.rm_rf dir if File.directory?(dir)
@@ -167,25 +169,32 @@ end
 # end
 
 namespace :redmine do
-  desc 'Download RM'
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Download Redmine. That includes exporting SVN tag, linking plugin and
+    plugin specs and do necessary changed to Redmine\'s Gemfile.
+  DESC
   task :download do
-    if RM.downloaded? && !force?
-      puts "Redmine #{RM.version} already downloaded. Use `redmine:clean` or FORCE=1 to force redownloaded."
-    end
-    if !RM.downloaded? || force?
+    unless File.exist? File.join(RM.path, '.downloaded') || force?
       RM.clean
       RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
       RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
-      RM.exec %w(mkdir -p), 'public/plugin_assets'
-      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
       RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
       RM.exec %w(sed -i -e), "s/.*gem [\"']rake[\"'].*//g", 'Gemfile'
+
+      FileUtils.touch File.join(RM.path, '.downloaded')
+    else
+      puts "Redmine #{RM.version} already downloaded. Use `redmine:clean` or FORCE=1 to force redownloaded."
     end
   end
 
-  desc 'Configure RM'
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Configure Redmine. A database config will be generated using mysql2 gem
+    and the `rdb_development` database for the `development` environment.
+    Already existing configuration will be preserved except for the `test`
+    environment.
+  DESC
   task :config => :download do
     config = {}
     if File.exists? File.join(RM.path, 'config/database.yml')
@@ -205,7 +214,12 @@ namespace :redmine do
     end
   end
 
-  desc 'Install RM'
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Install Redmine. This task will run `bundle install`, generate secret
+    token, create databases as well as migrate and prepare them. This task will
+    only run once unless forced. Use `update` for updating after new gems or
+    database migrations.
+  DESC
   task :install => :config do
     unless File.exist? File.join(RM.path, '.installed') || force?
       Rake::Task['redmine:bundle'].invoke
@@ -222,7 +236,9 @@ namespace :redmine do
     end
   end
 
-  desc 'Update RM by running bundle install and database migrations'
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Update Redmine. This runs `bundle install` and migrate and prepare databases.
+  DESC
   task :update => [:install, :bundle, :migrate, :prepare]
 
   task :bundle do
