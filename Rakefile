@@ -178,6 +178,8 @@ namespace :redmine do
       RM.clean
       RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
       RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
+      RM.exec %w(mkdir -p), 'public/plugin_assets'
+      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
       RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
       RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
