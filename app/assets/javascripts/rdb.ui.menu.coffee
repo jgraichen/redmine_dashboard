@@ -27,7 +27,26 @@ Rdb.ready ($) ->
       Rdb.key.pop()
 
   $.fn.rdbMenuFocusNext = (e) ->
-    console.log e
+    e.preventDefault()
+    menu = $(this).closest('.rdb-menu')
+    if menu.isAny()
+      links = menu.find('a')
+      links.each (index, el) ->
+        $el = $ el
+        if $el.is(':focus') && links[index+1]
+          links[index+1].focus()
+          return false
+
+  $.fn.rdbMenuFocusPrev = (e) ->
+    e.preventDefault()
+    menu = $(this).closest('.rdb-menu')
+    if menu.isAny()
+      links = menu.find('a')
+      links.each (index, el) ->
+        $el = $ el
+        if $el.is(':focus') && links[index-1]
+          links[index-1].focus()
+          return false
 
   $(document).on 'click', (e) ->
     link = $(e.target).closest 'a.rdb-menu-link'
@@ -47,12 +66,12 @@ Rdb.ready ($) ->
       lastMenu.rdbMenuClose()
 
   Rdb.key.define 'rdb.ui.menu', (bindings, menu) ->
-    bindings.on 'up', ->
-      lastMenu.rdbMenuFocusPrev()
-    bindings.on 'down', ->
-      lastMenu.rdbMenuFocusNext()
-    bindings.on 'esc', ->
-      lastMenu.rdbMenuClose()
+    bindings.on 'up', (e) ->
+      lastMenu?.rdbMenuFocusPrev e
+    bindings.on 'down', (e) ->
+      lastMenu?.rdbMenuFocusNext e
+    bindings.on 'esc', (e) ->
+      lastMenu?.rdbMenuClose e
 
     menu?.find('ul.rdb-menu-list li a').each (index) ->
       if index < menuIndecies.length
