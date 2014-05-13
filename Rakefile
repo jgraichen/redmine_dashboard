@@ -108,7 +108,7 @@ namespace :spec do
       Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
     end
     def spec_command; "ruby -S bundle exec #{super}" end
-  end.new(:browser) do |t|
+  end.new(:browser => :compile) do |t|
     t.pattern    = "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
     t.rspec_opts = '--color --backtrace'
