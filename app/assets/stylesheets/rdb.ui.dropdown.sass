@@ -1,0 +1,85 @@
+// ========================================================
+// Redmine Dashboard UI - Dropdown button
+
+.rdb-handle:not(.rdb-inv-handle)
+  position: relative
+  padding-right: 25px !important
+
+  &::before
+    position: absolute
+    top: 50%
+    right: 8px
+    margin-top: -2px
+    display: inline-block
+    border-right: 5px solid transparent
+    border-left: 5px solid transparent
+    border-top-width: 5px
+    border-top-style: solid
+    content: ''
+
+    @extend %theme-handle !optional
+
+.rdb-dropdown
+  display: none
+  position: absolute
+  visibility: hidden
+
+  &.rdb-visible
+    display: block
+    visibility: visible
+    left: auto
+
+  z-index: 1000
+
+  margin: -1px 0 0 0
+  padding: 0
+
+  border-width: 1px
+  border-style: solid
+  box-shadow: 0 1px 2px rgba(0,0,0,.2)
+
+  @extend %theme-dropdown
+
+  > .rdb-dropdown-container
+    overflow: auto
+
+    min-width: 180px
+    max-height: 450px
+    padding: 0
+
+    @extend %theme-dropdown-container
+
+  section
+    padding: 0
+    margin: 3px 0
+
+    border-top: 1px solid #ccc
+
+    &:first-child
+      border-top: none
+
+    header
+      font-size: 10px
+      padding: 2px 4px 0 4px
+      margin: 0
+
+      @extend %theme-dropdown-section-header !optional
+
+  ul.rdb-list
+    padding: 0
+    margin: 3px 0
+
+    li > a
+      display: block
+      padding: 5px 6px
+      cursor: pointer
+      position: relative
+
+      > span.rdb-key
+        position: absolute
+        top: 4px
+        right: 4px
+        color: #999
+        font-size: 9px
+
+      @extend %theme-list-link

@@ -1,19 +1,71 @@
 .rdb-taskboard
   header.rdb-taskboard-header
-    = Rdb::UI::Menu.render :board, board.name, :accesskey => 'b', :class => 'rdb-board-menu' do |menu|
-      - menu << Rdb::UI::MenuList.new(I18n.t('rdb.header.board.available_boards')) do |sec|
-        - board.context.rdb_boards.each do |board|
-          - sec << Rdb::UI::MenuItemLink.new(board.name, rdb_url(board))
-      - menu << Rdb::UI::MenuList.new do |sec|
-        - sec << Rdb::UI::MenuItemLink.new(I18n.t('rdb.header.board.new_board'), '/dashboards/new')
-    = Rdb::UI::Menu.render :'ft-category', 'Category', :accesskey => 'c' do |menu|
-      - menu << Rdb::UI::MenuList.new do |sec|
-        - board.categories.each do |cat|
-          - sec << Rdb::UI::MenuItemLink.new(cat.name, "javascript:Rdb.taskboard.applyFilter('category', #{cat.id})")
-    = Rdb::UI::Menu.render :'ft-tracker', 'Tracker', :accesskey => 't' do |menu|
-      - menu << Rdb::UI::MenuList.new do |sec|
-        - board.tracker.each do |cat|
-          - sec << Rdb::UI::MenuItemLink.new(cat.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{cat.id})")
+
+    h1: a.rdb-handle data-rdb-popup="rdb-board-menu" href="#"= board.name
+    .rdb-dropdown#rdb-board-menu
+      .rdb-dropdown-container
+        section
+          header= t :'rdb.header.board.available_boards'
+          ul.rdb-list
+            - board.context.rdb_boards.each do |board|
+              li= link_to board.name, rdb_path(board)
+        section
+          ul.rdb-list
+            li= link_to t(:'rdb.header.board.new_board'), rdb_new_path
+
+    .rdb-btn-group
+      a.rdb-btn.rdb-handle#rdb-qf-category data-rdb-popup="rdb-dd-qf-category" Category
+      a.rdb-btn.rdb-handle#rdb-qf-tracker data-rdb-popup="rdb-dd-qf-tracker" Tracker
+
+    .rdb-dropdown#rdb-dd-qf-category
+      .rdb-dropdown-container
+        section
+          ul.rdb-list
+            - board.categories.each do |cat|
+              li= link_to cat.name, "javascript:Rdb.taskboard.applyFilter('category', #{cat.id})"
+
+    .rdb-dropdown#rdb-dd-qf-tracker
+      .rdb-dropdown-container
+        section
+          ul.rdb-list
+            - board.tracker.each do |tracker|
+              li= link_to tracker.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{tracker.id})"
+
+    .rdb-btn-group
+      a.rdb-btn href="#"
+        i.rdb-icon.rdb-icon-eye
+        ' &nbsp;Group
+      button.rdb-btn-primary href="#" Primary
+      button.rdb-btn-success href="#" Success
+      button.rdb-btn-danger.rdb-handle data-rdb-popup="menu31" href="#" Danger
+      button.rdb-btn.rdb-handle data-rdb-popup="menu32" href="#" Handle
+      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-eye
+      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-list
+      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-grid
+
+    .rdb-dropdown#menu31
+      .rdb-dropdown-container
+        section
+          ul.rdb-list
+            - board.tracker.each do |tracker|
+              li= link_to "javascript:Rdb.taskboard.applyFilter('tracker', #{tracker.id})" do
+                i.rdb-icon.rdb-icon-eye
+                | &nbsp;
+                = tracker.name
+
+    .rdb-dropdown#menu32
+      .rdb-dropdown-container
+        section
+          ul.rdb-list
+            - board.tracker.each do |tracker|
+              li= link_to tracker.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{tracker.id})"
+
+    div style="float: right"
+      button.rdb-btn href="#" Default
+      button.rdb-btn.rdb-small href="#" Small
+      button.rdb-btn-plain href="#" Plain
+      button.rdb-btn-plain.rdb-handle data-rdb-popup="menu32" Plain
+      button.rdb-btn-subtile href="#" Subtile
 
   section.rdb-taskboard-body
     .rdb-column-header.rdb-column-group

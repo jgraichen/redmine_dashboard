@@ -5,7 +5,8 @@ get 'projects/:id/dashboards' => 'rdb_project_boards#index'
 get 'my/dashboards'           => 'rdb_user_boards#index'
 
 get '/dashboards/:board_id'           => 'rdb#show',      as: :rdb
-get '/dashboards/:board_id/configure' => 'rdb#configure', as: :configure_rdb
+get '/dashboards/new'                 => 'rdb#new',       as: :rdb_new
+get '/dashboards/:board_id/configure' => 'rdb#configure', as: :rdb_configure
 post '/dashboards/:board_id'          => 'rdb#create'
 put '/dashboards/:board_id'           => 'rdb#update'
 
@@ -20,7 +21,8 @@ if Rails.env.development?
   %w(app/assets/images
      app/assets/stylesheets
      app/assets/javascripts
-     vendor/assets/javascripts).each do |source|
+     vendor/assets/javascripts
+     vendor/assets/stylesheets).each do |source|
     environment.append_path File.join('plugins', 'redmine_dashboard', source)
   end
 

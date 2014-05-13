@@ -1,0 +1,32 @@
+//= require_self
+//= depend_on rdb.ui.theme
+//= depend_on rdb.ui.icons
+//= depend_on rdb.ui.button
+//= depend_on rdb.ui.dropdown
+//= depend_on rdb.issues
+//= depend_on rdb.taskboard
+
+#content
+  padding: 0
+
+@import 'rdb.ui.icons'
+@import 'rdb.ui.button'
+@import 'rdb.ui.dropdown'
+@import 'rdb.ui.theme'
+
+#redmine-dashboard
+  *
+    box-sizing: border-box
+
+  a
+    cursor: pointer
+
+    &:focus, &:hover
+      text-decoration: none
+
+  > header
+    padding: 6px 0 6px 0
+    border-bottom: 1px solid #ccc
+
+  @import 'rdb.issues'
+  @import 'rdb.taskboard'
