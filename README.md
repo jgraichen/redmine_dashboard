@@ -16,6 +16,18 @@ TODO
 
 TODO
 
+## Contributing
+
+### Translate
+
+You can help even without coding by translating Redmine Dashboard or improving an existing localization. I prefer translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard/redmine-dashboard) but also gladly accept Pull Requests for the YAML files.
+
+### Features
+
+You can also add a new or requested feature by sending a Pull Request. Please add specs so that I do not break your feature in the future.
+
+There are several rake task to setup a working development environment and run all specs. Use `rake -D` to list them all.
+
 ## License
 
 Copyright (C) 2013-2014 Jan Graichen <jg@altimos.de>
