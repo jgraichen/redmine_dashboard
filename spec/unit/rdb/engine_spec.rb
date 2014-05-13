@@ -7,12 +7,14 @@ describe Rdb::Engine do
   describe 'class' do
     describe '^engines' do
       describe '#lookup' do
-        let(:engines) {[
-          OpenStruct.new(:name => 'abc'),
-          OpenStruct.new(:name => 'cde'),
-          OpenStruct.new(:name => 'efg')
-        ]}
-        before { engines.each { |e| klass.engines << e } }
+        let(:engines) do
+          [
+            OpenStruct.new(name: 'abc'),
+            OpenStruct.new(name: 'cde'),
+            OpenStruct.new(name: 'efg')
+          ]
+        end
+        before { engines.each {|e| klass.engines << e } }
         subject { klass.lookup name }
 
         context 'with valid name' do
@@ -27,7 +29,7 @@ describe Rdb::Engine do
       end
 
       describe '#lookup!' do
-        subject { Proc.new { klass.lookup! 'abc' } }
+        subject { proc { klass.lookup! 'abc' } }
 
         it 'should delegate to #lookup' do
           expect(klass).to receive(:lookup).with('abc').and_return(Object.new)

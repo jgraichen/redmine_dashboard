@@ -1,13 +1,12 @@
-
+#
 module RdbRequestHelpers
-
   def set_permissions
-    role = Role.where(:name => 'Manager').first
+    role = Role.where(name: 'Manager').first
     role.permissions << :view_dashboards
     role.permissions << :configure_dashboards
     role.save!
 
-    role = Role.where(:name => 'Developer').first
+    role = Role.where(name: 'Developer').first
     role.permissions << :view_dashboards
     role.save!
     # puts role.inspect
@@ -20,9 +19,9 @@ module RdbRequestHelpers
   end
 
   def login_as(user, password)
-    visit url_for(:controller => 'account', :action => 'login', :only_path => true)
-    fill_in 'username', :with => user
-    fill_in 'password', :with => password
+    visit url_for(controller: 'account', action: 'login', only_path: true)
+    fill_in 'username', with: user
+    fill_in 'password', with: password
     page.find(:xpath, '//input[@name="login"]').click
     @user = User.find_by_login(user)
   end
@@ -37,7 +36,7 @@ module RdbRequestHelpers
 
   # Renders an image of current page with poltergeist.
   def render_image(name)
-    page.driver.render("../../screenshot-#{name}.png", :full => true)
+    page.driver.render("../../screenshot-#{name}.png", full: true)
   end
 
   def select_filter(filter, value)

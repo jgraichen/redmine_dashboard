@@ -1,7 +1,9 @@
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../../config/environment', __FILE__)
 
-Test::Unit::AutoRunner.need_auto_run = false if defined?(Test::Unit::AutoRunner)
+if defined?(Test::Unit::AutoRunner)
+  Test::Unit::AutoRunner.need_auto_run = false
+end
 
 require 'rspec/rails'
 require 'capybara/rails'
@@ -10,7 +12,7 @@ require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f}
+Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f }
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -28,9 +30,10 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = false
-  config.global_fixtures = [:projects, :trackers, :trackers, :users,
-    :versions, :issue_categories, :issue_relations, :enumerations, :issues,
-    :member_roles, :members, :roles, :workflows]
+  config.global_fixtures = [
+    :projects, :trackers, :trackers, :users, :versions, :issue_categories,
+    :issue_relations, :enumerations, :issues, :member_roles, :members,
+    :roles, :workflows]
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -41,7 +44,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   # Include request spec helpers
   config.include RdbRequestHelpers
@@ -52,6 +55,6 @@ RSpec.configure do |config|
   DatabaseCleaner.strategy = :truncation
 
   Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :poltergeist if ENV['CI']
+  Capybara.javascript_driver = :poltergeist if ENV['CI'] || ENV['POLTERGEIST']
   Capybara.default_wait_time = 15
 end

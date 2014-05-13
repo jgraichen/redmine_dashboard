@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'spec_helper'
 
-describe "Dashboard", :js => true, :sauce => true do
+describe 'Dashboard', js: true, sauce: true do
   let(:project) { Project.find 'ecookbook' }
 
   before do
@@ -9,7 +9,7 @@ describe "Dashboard", :js => true, :sauce => true do
     login_as 'dlopper', 'foo'
   end
 
-  it "should redirect to new dashboard" do
+  it 'should redirect to new dashboard' do
     visit '/projects/ecookbook'
 
     within '#main-menu' do
@@ -19,13 +19,13 @@ describe "Dashboard", :js => true, :sauce => true do
     expect(current_path).to eq '/dashboards/1'
   end
 
-  it "should have default dashboard name" do
+  it 'should have default dashboard name' do
     visit '/dashboards/1'
 
     expect(page).to have_content 'New Dashboard'
   end
 
-  it "should create new dashboard" do
+  it 'should create new dashboard' do
     visit '/dashboards/1'
 
     within '#rdb-board-menu' do
