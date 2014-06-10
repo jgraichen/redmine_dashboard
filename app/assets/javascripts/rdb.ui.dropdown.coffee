@@ -39,17 +39,41 @@ Rdb.ready ($) ->
         closeAll()
         link.addClass('rdb-active')
 
+        container
+          .find('.rdb-dropdown-container')
+          .css('max-height', 'inherit')
+
         offset = link.offset()
 
         position =
           left: offset.left
           top: offset.top + link.outerHeight()
 
+        # Check left/right
         if offset.left + container.outerWidth() > $(window).width()
           position.left = offset.left - container.outerWidth() + link.outerWidth()
 
-        if offset.top + container.outerHeight() > $(window).height()
-          position.top = offset.top - container.outerHeight()
+        # Padding that should always be at the top and bottom
+        SPACE_PADDING = 25
+
+        spaceAbove = offset.top - SPACE_PADDING
+        spaceBelow = $(window).height() - offset.top - link.outerHeight() - SPACE_PADDING
+
+        # Check if dialog is longer then screen space bellow button
+        if spaceBelow < container.outerHeight()
+
+          # Check if dialog is longer then screen space above
+          if spaceAbove < container.outerHeight()
+            spaceMissing = container.outerHeight() - spaceBelow - link.outerHeight()
+            position.top = offset.top - Math.min(spaceMissing, spaceAbove)
+
+            container
+              .find('.rdb-dropdown-container')
+              .css('max-height', "#{spaceAbove + spaceBelow + link.outerHeight()}px")
+
+          else
+            # We do have enough space above so move dropdown up
+            position.top = offset.top - container.outerHeight()
 
         container
           .css
