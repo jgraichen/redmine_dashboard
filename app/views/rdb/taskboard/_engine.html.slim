@@ -14,8 +14,8 @@
             li= link_to t(:'rdb.header.board.new_board'), rdb_new_path
 
     .rdb-btn-group
-      a.rdb-btn.rdb-handle#rdb-qf-category data-rdb-popup="rdb-dd-qf-category" Category
-      a.rdb-btn.rdb-handle#rdb-qf-tracker data-rdb-popup="rdb-dd-qf-tracker" Tracker
+      button.rdb-btn.rdb-handle#rdb-qf-category href="#" data-rdb-popup="rdb-dd-qf-category": span Category
+      button.rdb-btn.rdb-handle#rdb-qf-tracker href="#" data-rdb-popup="rdb-dd-qf-tracker": span Tracker
 
     .rdb-dropdown#rdb-dd-qf-category
       .rdb-dropdown-container
@@ -32,16 +32,16 @@
               li= link_to tracker.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{tracker.id})"
 
     .rdb-btn-group
-      a.rdb-btn href="#"
+      button.rdb-btn href="#"
         i.rdb-icon.rdb-icon-eye
-        ' &nbsp;Group
-      button.rdb-btn-primary href="#" Primary
-      button.rdb-btn-success href="#" Success
-      button.rdb-btn-danger.rdb-handle data-rdb-popup="menu31" href="#" Danger
-      button.rdb-btn.rdb-handle data-rdb-popup="menu32" href="#" Handle
-      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-eye
-      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-list
-      button.rdb-btn.rdb-handle.rdb-inv-handle data-rdb-popup="menu32" href="#": i.rdb-icon.rdb-icon-grid
+        span &nbsp;Group
+      button.rdb-btn-primary href="#": span Primary
+      button.rdb-btn-success href="#": span Success
+      button.rdb-btn-danger.rdb-handle href="#" data-rdb-popup="menu31": span Danger
+      button.rdb-btn.rdb-handle href="#" data-rdb-popup="menu32": span Handle
+      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.rdb-icon.rdb-icon-eye
+      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.rdb-icon.rdb-icon-list
+      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.rdb-icon.rdb-icon-grid
 
     .rdb-dropdown#menu31
       .rdb-dropdown-container
@@ -61,10 +61,10 @@
               li= link_to tracker.name, "javascript:Rdb.taskboard.applyFilter('tracker', #{tracker.id})"
 
     div style="float: right"
-      button.rdb-btn href="#" Default
+      button.rdb-btn href="#": span Default
       button.rdb-btn.rdb-small href="#" Small
       button.rdb-btn-plain href="#" Plain
-      button.rdb-btn-plain.rdb-handle data-rdb-popup="menu32" Plain
+      button.rdb-btn-subtile.rdb-handle href="#" data-rdb-popup="menu32" Plain
       button.rdb-btn-subtile href="#" Subtile
 
   section.rdb-taskboard-body

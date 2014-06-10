@@ -6,7 +6,7 @@
   font-weight: 400
 
   margin: 0
-  padding: 5px 10px
+  padding: 4px 10px
 
   border-width: 1px
   border-style: solid
@@ -21,10 +21,10 @@
 
   &.rdb-small
     @extend %theme-btn-small !optional
-    padding: 3px 6px
+    padding: 2px 5px
 
   .rdb-icon
-    margin: 0 .4em
+    margin: -1px .4em
 
     &:first-child
       margin-left: 0
@@ -37,9 +37,6 @@
 .rdb-btn-group ~ .rdb-btn,
 .rdb-btn-group ~ .rdb-btn-group
   margin-left: 4px
-
-a.rdb-btn
-  color: inherit
 
 .rdb-btn-primary
   @extend .rdb-btn
@@ -57,7 +54,7 @@ a.rdb-btn
   @extend .rdb-btn
   @extend %theme-btn-subtile !optional
 
-  &:not(:hover):not(:active):not(:focus),
+  &:not(:hover):not(:active):not(:focus):not(.rdb-active),
     background: none
     border-color: transparent !important
 

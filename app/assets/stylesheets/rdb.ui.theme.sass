@@ -75,11 +75,13 @@ $secondary-emerald: #7bc1a1
 
 %theme-btn
   +theme-btn-color($secondary-silver)
-  color: $primary-dark
   border-color: $frame-color
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
   border-radius: 2px
   text-decoration: none
+
+  > span, &, &:before
+    color: $primary-dark
 
   &:focus, &:hover
     border-color: $secondary-gray
@@ -91,12 +93,14 @@ $secondary-emerald: #7bc1a1
     text-decoration: none
 
   .rdb-icon
-    color: $primary-gray
+    // color: $primary-gray
 
 %theme-btn-primary
   +theme-btn-color(lighten($primary-blue, 5%))
-  color: $primary-white
   font-weight: bold
+
+  > span, &, &:before
+    color: $primary-white
 
   &:focus
     border-color: $primary-dark

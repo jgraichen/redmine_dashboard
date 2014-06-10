@@ -2,15 +2,7 @@
 
 @import 'rdb.icomoon'
 
-.rdb-icon
-	line-height: 0
-	positition: relative
-	vertical-align: text-top
-	display: inline-block
-
-	height: 14px
-	width: 16px
-
+%rdb-icon
 	&:before
 		font-family: 'icomoon'
 		speak: none
@@ -20,14 +12,26 @@
 		text-transform: none
 		line-height: 1
 
-		left: 0
+		// left: 0
 		line-height: 1
-		positition: absolute
+		// position: absolute
 		text-indent: 0
-		top: 50%
+		// top: 50%
 
 		font-size: 16px
+		// margin-top: -7px
 
 		// Better Font Rendering
 		-webkit-font-smoothing: antialiased
 		-moz-osx-font-smoothing: grayscale
+
+.rdb-icon
+	line-height: 0
+	position: relative
+	vertical-align: text-top
+	display: inline-block
+
+	height: 14px
+	width: 16px
+
+	@extend %rdb-icon

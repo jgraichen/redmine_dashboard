@@ -5,19 +5,15 @@
   position: relative
   padding-right: 25px !important
 
-  &::before
-    position: absolute
-    top: 50%
-    right: 8px
-    margin-top: -2px
-    display: inline-block
-    border-right: 5px solid transparent
-    border-left: 5px solid transparent
-    border-top-width: 5px
-    border-top-style: solid
-    content: ''
+  @extend .rdb-icon-handle
+  @extend %rdb-icon
 
-    @extend %theme-handle !optional
+  &:before
+    position: absolute
+    right: 8px
+    top: 7px
+
+    font-size: 12px
 
 .rdb-dropdown
   display: none
