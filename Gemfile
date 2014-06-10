@@ -5,7 +5,7 @@ gem 'slim'
 
 group :development do
   gem 'rake'
-  gem 'rspec'
+  gem 'rspec', '~> 3.0'
 
   gem 'sprockets-standalone', :require => false
   gem 'stylus',               :require => false
@@ -18,7 +18,7 @@ group :test do
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'capybara', '~> 2.1.0'
+  gem 'capybara', '~> 2.3'
   gem 'fuubar'
 
   # for redmine on travis CI
