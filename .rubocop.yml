@@ -129,22 +129,8 @@ CaseIndentation:
   IndentOneStep: true
 
 ClassAndModuleChildren:
-  # Checks the style of children definitions at classes and modules.
-  #
-  # Basically there are two different styles:
-  #
-  # `nested` - have each child on a separat line
-  #   class Foo
-  #     class Bar
-  #     end
-  #   end
-  #
-  # `compact` - combine definitions as much as possible
-  #   class Foo::Bar
-  #   end
-  #
-  # The compact style is only forced, for classes / modules with one child.
-  EnforcedStyle: ignore
+  Enabled: false
+  EnforcedStyle: compact
   SupportedStyles:
     - nested
     - compact
@@ -175,6 +161,9 @@ CommentAnnotation:
 CyclomaticComplexity:
   Max: 6
 
+Documentation:
+  Enabled: false
+
 # Multi-line method chaining should be done with leading dots.
 DotPosition:
   EnforcedStyle: leading
@@ -186,7 +175,7 @@ DotPosition:
 EmptyLineBetweenDefs:
   # If true, this parameter means that single line method definitions don't
   # need an empty line between them.
-  AllowAdjacentOneLineDefs: false
+  AllowAdjacentOneLineDefs: true
 
 # Align ends correctly.
 EndAlignment:
@@ -265,7 +254,7 @@ MethodDefParentheses:
 
 MethodLength:
   CountComments: false  # count full line comments?
-  Max: 10
+  Max: 12
 
 MethodName:
   EnforcedStyle: snake_case
@@ -355,14 +344,14 @@ SpaceAroundEqualsInParameterDefault:
     - no_space
 
 SpaceBeforeBlockBraces:
-  EnforcedStyle:
-    - space
-    - no_space
+  Enabled: false
+  EnforcedStyle: space
   SupportedStyles:
     - space
     - no_space
 
 SpaceInsideBlockBraces:
+  Enabled: false
   EnforcedStyle: space
   SupportedStyles:
     - space
@@ -450,4 +439,3 @@ ScopeArgs:
 Validation:
   Include:
     - app/models/*.rb
-

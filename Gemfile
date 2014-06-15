@@ -7,11 +7,10 @@ group :development do
   gem 'rake'
   gem 'rspec', '~> 3.0'
 
-  gem 'sprockets-standalone', :require => false
-  gem 'stylus',               :require => false
-  gem 'sass',                 :require => false
-  gem 'uglifier',             :require => false
-  gem 'coffee-script',        :require => false
+  gem 'sprockets-standalone', require: false
+  gem 'sass',                 require: false
+  gem 'uglifier',             require: false
+  gem 'coffee-script',        require: false
 end
 
 group :test do

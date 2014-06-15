@@ -15,9 +15,6 @@ if Rails.env.development?
 
   environment = Sprockets::Environment.new Dir.pwd
 
-  require 'stylus/sprockets'
-  Stylus.setup environment
-
   %w(app/assets/images
      app/assets/stylesheets
      app/assets/javascripts
