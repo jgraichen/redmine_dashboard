@@ -1,0 +1,6 @@
+#redmine-dashboard
+  header
+    h1= t(:'rdb.header.configure.header', board_link: link_to(@board.name, rdb_url(@board))).html_safe
+  nav.rdb-nav
+    ul
+      li: a href="#" General
