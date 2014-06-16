@@ -14,3 +14,5 @@
 
 #redmine-dashboard
   = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }
+  javascript:
+    Rdb.init(#{{@board.to_json}});

@@ -4,11 +4,9 @@
 get 'projects/:id/dashboards' => 'rdb_project_boards#index'
 get 'my/dashboards'           => 'rdb_user_boards#index'
 
-get '/dashboards/:board_id'           => 'rdb#show',      as: :rdb
-get '/dashboards/new'                 => 'rdb#new',       as: :rdb_new
-get '/dashboards/:board_id/configure' => 'rdb#configure', as: :rdb_configure
-post '/dashboards/:board_id'          => 'rdb#create'
-put '/dashboards/:board_id'           => 'rdb#update'
+get '/dashboards/:board_id'           => 'rdb#show',  as: :rdb
+get '/dashboards/:board_id/configure' => 'rdb#show',  as: :rdb_configure
+get '/dashboards/new'                 => 'rdb#new',   as: :rdb_new
 
 if Rails.env.development?
   require 'sprockets'

@@ -11,6 +11,7 @@ group :development do
   gem 'sass',                 require: false
   gem 'uglifier',             require: false
   gem 'coffee-script',        require: false
+  gem 'skim'
 end
 
 group :test do

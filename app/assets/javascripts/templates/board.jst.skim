@@ -1,0 +1,3 @@
+#rdb-board
+  header
+    h1 #{@board.get("name")}

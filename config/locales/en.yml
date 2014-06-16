@@ -18,3 +18,5 @@ en:
       board:
         available_boards: Available Boards
         new_board: Create new Board
+      configure:
+        header: "Configure %{board_link}"
