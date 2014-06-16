@@ -1,14 +1,8 @@
-#
 class RdbBoard < ActiveRecord::Base
   self.table_name = "#{table_name_prefix}rdb_boards#{table_name_suffix}"
 
   serialize :preferences, Hash
-
-  belongs_to :context, polymorphic: true
-
-  def personal?
-    context_type == 'Principal'
-  end
+  has_many :sources, class_name: 'RdbSource'
 
   def engine_class
     Rdb::Engine.lookup! read_attribute :engine
@@ -27,22 +21,34 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def issues
-    context.issues
+    if rdb_board_sources.any?
+      rdb_board_sources.first.issues
+    else
+      Issue.where('FALSE')
+    end
   end
 
   def categories
-    if context.is_a? Project
-      context.issue_categories
+    if rdb_board_sources.any?
+      rdb_board_sources.first.categories
     else
-      []
+      Category.where('FALSE')
     end
   end
 
   def tracker
-    if context.is_a? Project
-      context.trackers
+    if rdb_board_sources.any?
+      rdb_board_sources.first.tracker
     else
-      []
+      Tracker.where('FALSE')
     end
+  end
+
+  def as_json(*)
+    {
+      id: id,
+      name: name,
+      engine: engine.class.name,
+    }
   end
 end

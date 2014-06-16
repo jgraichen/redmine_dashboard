@@ -1,6 +1,5 @@
 module Rdb::Patch
   module Issue
-
     def rdb_id
       @rdb_id ||= begin
         title = "#{project.rdb_abbreviation}-" if project.rdb_abbreviation
@@ -18,7 +17,7 @@ module Rdb::Patch
       if user.logged?
         s << ' created-by-me' if author_id == user.id
         s << ' assigned-to-me' if assigned_to_id == user.id
-        s << ' assigned-to-my-group' if user.groups.any? {|g| g.id == assigned_to_id}
+        s << ' assigned-to-my-group' if user.groups.any?{|g| g.id == assigned_to_id}
       end
       s
     end

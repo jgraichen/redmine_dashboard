@@ -1,9 +1,5 @@
 module Rdb
-
-  #
-  #
   class Engine
-
     # Database Board Record.
     #
     attr_reader :board
@@ -13,7 +9,7 @@ module Rdb
     end
 
     def issues
-      board.context.issues
+      board.issues
     end
 
     def name
@@ -21,6 +17,8 @@ module Rdb
     end
 
     class << self
+      attr_accessor :name
+
       def lookup(name)
         if (engine = engines.detect { |klass| klass.name == name })
           engine

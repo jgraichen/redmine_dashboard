@@ -23,7 +23,7 @@ class Rdb::Taskboard
     end
 
     def issues
-      scope engine.board.issues.includes(:priority).order('enumerations.position DESC')
+      scope engine.issues.includes(:priority).order('enumerations.position DESC')
     end
 
     def compact?
