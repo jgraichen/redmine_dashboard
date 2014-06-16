@@ -9,17 +9,6 @@ get '/dashboards/:board_id/configure' => 'rdb#show',  as: :rdb_configure
 get '/dashboards/new'                 => 'rdb#new',   as: :rdb_new
 
 if Rails.env.development?
-  require 'sprockets'
-
-  environment = Sprockets::Environment.new Dir.pwd
-
-  %w(app/assets/images
-     app/assets/stylesheets
-     app/assets/javascripts
-     vendor/assets/javascripts
-     vendor/assets/stylesheets).each do |source|
-    environment.append_path File.join('plugins', 'redmine_dashboard', source)
-  end
-
-  mount environment, at: '/rdb/assets'
+  require 'rdb/assets'
+  mount Rdb::Assets.env, at: '/rdb/assets'
 end

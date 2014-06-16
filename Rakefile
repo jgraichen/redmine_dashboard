@@ -160,15 +160,15 @@ task :clean do
 end
 
 desc 'Compile JS/CSS assets'
-Sprockets::Standalone::RakeTask.new do |t, sprockets|
-  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js
-                 *.png *.jpg *.gif)
-  t.sources = %w(app/assets/images app/assets/stylesheets
-                 app/assets/javascripts vendor/assets/javascripts)
+Sprockets::Standalone::RakeTask.new do |t, _|
+  require File.expand_path('../lib/rdb/assets', __FILE__)
+  t.environment = Rdb::Assets.env
+
+  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js *.png *.jpg *.gif)
   t.output  = File.expand_path('../assets', __FILE__)
 
-  sprockets.js_compressor  = :uglifier
-  sprockets.css_compressor = :sass
+  t.environment.js_compressor  = :uglifier
+  t.environment.css_compressor = :sass
 end
 
 namespace :redmine do
