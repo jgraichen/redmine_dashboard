@@ -1,16 +1,14 @@
 //= require_self
-//= depend_on rdb.icomoon
+//= require font-awesome
 //= depend_on rdb.issues
 //= depend_on rdb.taskboard
 //= depend_on rdb.ui.button
 //= depend_on rdb.ui.dropdown
-//= depend_on rdb.ui.icons
 //= depend_on rdb.ui.theme
 
 #content
   padding: 0
 
-@import 'rdb.ui.icons'
 @import 'rdb.ui.button'
 @import 'rdb.ui.dropdown'
 @import 'rdb.ui.theme'
@@ -25,9 +23,19 @@
     &:focus, &:hover
       text-decoration: none
 
+  .rdb-clear
+    clear: both
+
   > header
-    padding: 6px 0 6px 0
+    padding: 5px
     border-bottom: 1px solid #ccc
+
+    h1, h2
+      margin: 0
+      float: left
+
+    span.options
+      float: right
 
   @import 'rdb.issues'
   @import 'rdb.taskboard'

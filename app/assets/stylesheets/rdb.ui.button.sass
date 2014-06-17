@@ -1,12 +1,9 @@
 .rdb-btn
   display: inline-block
-  font-family: inherit
-  font-size: inherit
-  font-variant: normal
-  font-weight: 400
+  line-height: 110%
 
   margin: 0
-  padding: 4px 10px
+  padding: 5px 10px
 
   border-width: 1px
   border-style: solid
@@ -16,21 +13,27 @@
 
   vertical-align: baseline
   white-space: nowrap
+  height: 27px
 
-  @extend %theme-btn !optional
+  &::-moz-focus-inner
+    padding: 0
+    border: 0
 
-  &.rdb-small
-    @extend %theme-btn-small !optional
-    padding: 2px 5px
-
-  .rdb-icon
-    margin: -1px .4em
-
-    &:first-child
-      margin-left: 0
+  .fa
+    margin: 0 6px
+    font-size: 14px
 
     &:last-child
       margin-right: 0
+    &:first-child
+      margin-left: 0
+
+  &.rdb-large
+    font-size: 18px
+    height: 32px
+
+    .fa
+      font-size: 18px
 
 .rdb-btn ~ .rdb-btn,
 .rdb-btn ~ .rdb-btn-group,
@@ -40,19 +43,15 @@
 
 .rdb-btn-primary
   @extend .rdb-btn
-  @extend %theme-btn-primary !optional
 
 .rdb-btn-success
   @extend .rdb-btn
-  @extend %theme-btn-success !optional
 
 .rdb-btn-danger
   @extend .rdb-btn
-  @extend %theme-btn-danger !optional
 
 .rdb-btn-subtile
   @extend .rdb-btn
-  @extend %theme-btn-subtile !optional
 
   &:not(:hover):not(:active):not(:focus):not(.rdb-active),
     background: none
@@ -60,7 +59,6 @@
 
 .rdb-btn-plain
   @extend .rdb-btn
-  @extend %theme-btn-plain !optional
 
   &, &:hover, &:active, &:focus, &.rdb-active
     background: none !important

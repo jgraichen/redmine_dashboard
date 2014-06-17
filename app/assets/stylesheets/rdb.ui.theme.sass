@@ -1,5 +1,6 @@
 
 $frame-color: #ccc
+$text-color: #333
 
 $primary-red: #ae1c0c
 $primary-blue: #205081
@@ -28,33 +29,10 @@ $secondary-mauve: #ac707a
 $secondary-vialot: #654982
 $secondary-emerald: #7bc1a1
 
-%theme-text
+#redmine-dashboard
   font-size: 14px
-  line-height: 20px
-  font-family: Arial, sans-serif
-
-%theme-h1
-  font-size: 24px
-
-%theme-h2
-  font-size: 20px
-
-%theme-h3
-  font-size: 14px
-  font-weight: bold
-
-%theme-h4
-  font-size: 12px
-  font-weight: bold
-
-%theme-h5
-  font-size: 9px
-  font-seight: bold
-  text-transform: uppercase
-
-%theme-h6
-  font-size: 9px
-  font-seight: bold
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  color: $text-color
 
 @mixin theme-btn-color($color)
   border-color: $color
@@ -73,31 +51,33 @@ $secondary-emerald: #7bc1a1
     // background-image: linear-gradient(to bottom, darken($color, 5%) 0, $color 100%)
     border-color: darken($color, 20%)
 
-%theme-btn
-  // +theme-btn-color($secondary-silver)
+.rdb-btn
   +theme-btn-color($primary-lightgray)
+
+  color: $text-color
   border-color: $frame-color
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
   border-radius: 2px
+  font-size: 14px
+  font-family: inherit
+  font-variant: normal
+  font-weight: 400
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
   text-decoration: none
 
   > span, &, &:before
     color: $primary-dark
 
   &:focus, &:hover
+    color: $text-color
     border-color: $secondary-gray
-    // outline: none
     text-decoration: none
 
   &:active, &.rdb-active
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1)
     text-decoration: none
 
-  // .rdb-icon
-  //   color: $primary-gray
-
-%theme-btn-primary
-  +theme-btn-color(lighten($primary-blue, 5%))
+%theme-rdb-btn-white
+  color: $primary-white
   font-weight: bold
 
   > span, &, &:before
@@ -113,35 +93,41 @@ $secondary-emerald: #7bc1a1
     color: $primary-white
     border-color: $primary-white
 
-%theme-btn-danger
-  @extend %theme-btn-primary
+.rdb-btn.rdb-btn-primary
+  @extend %theme-rdb-btn-white
+  +theme-btn-color(lighten($primary-blue, 5%))
+
+.rdb-btn.rdb-btn-danger
+  @extend %theme-rdb-btn-white
   +theme-btn-color($primary-red)
 
-%theme-btn-success
-  @extend %theme-btn-primary
+.rdb-btn.rdb-btn-success
+  @extend %theme-rdb-btn-white
   +theme-btn-color($primary-green)
 
-%theme-dropdown
+.rdb-dropdown
   border-color: $frame-color
   background-color: #fff
 
-%theme-dropdown-section-header
-  font-size: 9px
-  font-seight: bold
-  text-transform: uppercase
-  color: $primary-gray
+  section header
+    font-size: 10px
+    font-seight: bold
+    text-transform: uppercase
+    color: $primary-gray
 
-%theme-dropdown-container
-  &::-webkit-scrollbar
-    width: 5px
-    background-color: #eee
-  &::-webkit-scrollbar-thumb
-    background-color: #bbb
+  > .rdb-dropdown-container
+    &::-webkit-scrollbar
+      width: 5px
+      background-color: #eee
+    &::-webkit-scrollbar-thumb
+      background-color: #bbb
 
-%theme-list-link
-  color: $primary-dark
+  ul.rdb-list
+    li a
+      color: $primary-dark
+      font-size: 14px
 
-  &:focus, &:hover
-    background-color: $primary-brightblue
-    outline: none
-    color: $primary-white
+      &:focus, &:hover
+        background-color: $primary-brightblue
+        outline: none
+        color: $primary-white
