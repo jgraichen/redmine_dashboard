@@ -17,8 +17,6 @@ module Rdb
     end
 
     class << self
-      attr_accessor :name
-
       def lookup(name)
         if (engine = engines.detect { |klass| klass.name == name })
           engine

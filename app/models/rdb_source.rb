@@ -12,7 +12,7 @@ class RdbSource < ActiveRecord::Base
     context.issue_categories
   end
 
-  def tracker
-    context.tracker
+  def trackers
+    context.trackers
   end
 end

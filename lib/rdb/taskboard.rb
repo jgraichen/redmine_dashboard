@@ -1,7 +1,5 @@
 module Rdb
   class Taskboard < Engine
-    self.name = 'taskboard'.freeze
-
     def setup
 
     end

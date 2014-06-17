@@ -21,24 +21,24 @@ class RdbBoard < ActiveRecord::Base
   end
 
   def issues
-    if rdb_board_sources.any?
-      rdb_board_sources.first.issues
+    if sources.any?
+      sources.first.issues
     else
       Issue.where('FALSE')
     end
   end
 
   def categories
-    if rdb_board_sources.any?
-      rdb_board_sources.first.categories
+    if sources.any?
+      sources.first.categories
     else
       Category.where('FALSE')
     end
   end
 
-  def tracker
-    if rdb_board_sources.any?
-      rdb_board_sources.first.tracker
+  def trackers
+    if sources.any?
+      sources.first.trackers
     else
       Tracker.where('FALSE')
     end
@@ -48,7 +48,7 @@ class RdbBoard < ActiveRecord::Base
     {
       id: id,
       name: name,
-      engine: engine.class.name,
+      engine: engine.class.name.underscore,
     }
   end
 end
