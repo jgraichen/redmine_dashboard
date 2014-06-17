@@ -12,6 +12,9 @@
 # Application files
 #
 #= require_self
+#= require library/rdb.key
+#= require library/rdb.utils
+#= require library/rdb.ui.dropdown
 #= require rdb.application
 
 window.Rdb =

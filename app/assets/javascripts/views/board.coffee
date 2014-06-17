@@ -6,5 +6,5 @@ Rdb.ready ($, _, Backbone) ->
 
     initialize: (board) =>
       @board = board
-      @$el.html @template board: @board
+      # @$el.html @template board: @board
 

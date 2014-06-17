@@ -3,11 +3,11 @@
 
 Rdb.ready ($) ->
   closeAll = ->
-    $('.rdb-handle.rdb-active').removeClass('rdb-active')
+    $('[data-rdb-popup].rdb-active').removeClass('rdb-active')
     $('.rdb-dropdown.rdb-visible').removeClass('rdb-visible')
 
   $(document).on 'click', (e) ->
-    link = $(e.target).closest('.rdb-handle[data-rdb-popup]')
+    link = $(e.target).closest('[data-rdb-popup]')
 
     if link.isAny()
       e.preventDefault()

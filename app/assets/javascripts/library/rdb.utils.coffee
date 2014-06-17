@@ -7,3 +7,10 @@ Array::first ?= (n) ->
 
 Array::last ?= (n) ->
   if n? then @[(Math.max @length - n, 0)...] else @[@length - 1]
+
+Rdb.ready ($) ->
+  $.fn.isAny = ->
+    $(this).length > 0
+
+  $.fn.isEmpty = ->
+    $(this).length == 0
