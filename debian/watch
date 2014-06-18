@@ -1,0 +1,2 @@
+version=3
+https://github.com/jgraichen/redmine_dashboard/tags .*/v?(\d\.\d\S*)\.tar\.gz
