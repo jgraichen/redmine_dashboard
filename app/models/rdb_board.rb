@@ -4,6 +4,8 @@ class RdbBoard < ActiveRecord::Base
   serialize :preferences, Hash
   has_many :sources, class_name: 'RdbSource'
 
+  validates :name, uniqueness: true
+
   def engine_class
     Rdb::Engine.lookup! read_attribute :engine
   end

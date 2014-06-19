@@ -16,9 +16,15 @@ class RdbController < ::ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      board = RdbBoard.create! \
-        name:   I18n.t('rdb.new.default_board_name'),
+      board = RdbBoard.create \
+        name:   I18n.t('rdb.new.default_board_name', count: 0),
         engine: Rdb::Taskboard
+
+      unless board.valid?
+        board.name = I18n.t('rdb.new.default_board_name',
+          count: RdbBoard.last.id + 1)
+        board.save!
+      end
 
       RdbSource.create! context: context, board: board
 
@@ -27,6 +33,10 @@ class RdbController < ::ApplicationController
   end
 
   def show
+  end
+
+  def context
+    board.sources.first.context
   end
 
   private
