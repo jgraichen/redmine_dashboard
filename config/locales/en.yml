@@ -1,22 +1,24 @@
 en:
-  project_module_dashboard: Dashboards
-  permission_view_dashboards: View Dashboards
-  permission_create_dashboards: Create new Dashboards
+  project_module_dashboard: "Dashboards"
+  permission_view_dashboards: "View Dashboards"
+  permission_create_dashboards: "Create new Dashboards"
 
   rdb:
-    taskboard: Task Board
-    planboard: Plan Board
-
     new:
-      default_board_name: New Board
+      default_board_name:
+        zero: "New Board"
+        other: "New Board (%{count})"
 
     menu:
-      dashboards: Dashboards
-      my_dashboards: My Dashboards
+      dashboards: "Dashboards"
+      my_dashboards: "My Dashboards"
 
     header:
       board:
-        available_boards: Available Boards
-        new_board: Create new Board
+        available_boards: "Available Boards"
+        new_board: "Create new Board"
       configure:
         header: "Configure %{board_link}"
+      actions:
+        configure_board: "Configure board"
+        toggle_fullscreen: "Toggle fullscreen"

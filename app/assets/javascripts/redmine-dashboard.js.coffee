@@ -15,6 +15,7 @@
 #= require library/rdb.key
 #= require library/rdb.utils
 #= require library/rdb.ui.dropdown
+#= require library/rdb.ui.fullscreen
 #= require rdb.application
 
 window.Rdb =

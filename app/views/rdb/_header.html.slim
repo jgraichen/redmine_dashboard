@@ -3,10 +3,11 @@ a.rdb-btn-subtile.rdb-large#rdb-js-board-menu data-rdb-popup="rdb-board-menu" hr
   span.fa.fa-caret-down
 
 span.options
-  a.rdb-btn.rdb-large#rdb-js-configure href="#{rdb_configure_url(@board)}"
+  a.rdb-btn.rdb-large#rdb-js-configure href="#{rdb_configure_url(@board)}" title=t(:'rdb.header.actions.configure_board')
     span: i.fa.fa-fw.fa-gear
-  a.rdb-btn.rdb-large#rdb-js-fullscreen href="javascript:Rdb.toggleFullscreen()"
-    span: i.fa.fa-fw.fa-angle-double-up
+  button.rdb-btn.rdb-large#rdb-js-fullscreen title=t(:'rdb.header.actions.toggle_fullscreen')
+    span
+      i.fa.fa-fw.fa-angle-double-up
 
 .rdb-dropdown#rdb-board-menu
   .rdb-dropdown-container
