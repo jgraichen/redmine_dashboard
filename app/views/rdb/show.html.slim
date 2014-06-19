@@ -5,7 +5,7 @@
       = javascript_include_tag '../redmine-dashboard.js', :plugin => 'redmine_dashboard_linked'
     - else
       = stylesheet_link_tag '/rdb/assets/redmine-dashboard.css'
-      - Rdb::Assets.env['redmine-dashboard.js'].to_a.each do |asset|
+      - Rdb.assets['redmine-dashboard.js'].to_a.each do |asset|
         = javascript_include_tag File.join('/rdb/assets', asset.logical_path + '?body=1')
 
   - else

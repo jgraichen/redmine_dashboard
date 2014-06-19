@@ -8,10 +8,13 @@ group :development do
   gem 'rspec', '~> 3.0'
 
   gem 'sprockets-standalone', require: false
-  gem 'sass',                 require: false
   gem 'uglifier',             require: false
-  gem 'coffee-script',        require: false
+  gem 'sass'
+  gem 'coffee-script'
   gem 'skim'
+
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 group :test do

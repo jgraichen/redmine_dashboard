@@ -10,5 +10,8 @@ get '/dashboards/new'                 => 'rdb#new',   as: :rdb_new
 
 if Rails.env.development?
   require 'rdb/assets'
-  mount Rdb::Assets.env, at: '/rdb/assets'
+  Rdb.assets = Sprockets::Environment.new Rails.root
+  Rdb::Assets.setup(Rdb.assets)
+
+  mount Rdb.assets, at: '/rdb/assets'
 end

@@ -160,15 +160,16 @@ task :clean do
 end
 
 desc 'Compile JS/CSS assets'
-Sprockets::Standalone::RakeTask.new do |t, _|
+Sprockets::Standalone::RakeTask.new do |t, env|
   require File.expand_path('../lib/rdb/assets', __FILE__)
-  t.environment = Rdb::Assets.env
+  Rdb::Assets.setup(env)
 
-  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js *.png *.jpg *.gif)
+  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js
+                 *.png *.jpg *.gif *.woff *.svg *.ttf *.eot)
   t.output  = File.expand_path('../assets', __FILE__)
 
-  t.environment.js_compressor  = :uglifier
-  t.environment.css_compressor = :sass
+  env.js_compressor  = :uglifier
+  env.css_compressor = :sass
 end
 
 namespace :redmine do
@@ -261,6 +262,7 @@ namespace :redmine do
   task :bundle do
     tries = 0
     begin
+      RM.exec %w(rm -f Gemfile.lock)
       RM.exec %w(bundle install --without rmagick)
     rescue
       STDERR.puts 'bundle install failed. Retry...'
