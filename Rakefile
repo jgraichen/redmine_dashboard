@@ -4,10 +4,13 @@ require 'rubygems'
 require 'bundler'
 require 'logger'
 
-Bundler.require :default, :development, :assets
-
 require 'rspec/core/rake_task'
 require 'sprockets/standalone'
+
+require 'sass'
+require 'coffee-script'
+require 'skim'
+require 'uglifier'
 
 #
 # Dashboard tasks
