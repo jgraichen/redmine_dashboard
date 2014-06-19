@@ -5,7 +5,6 @@ describe RdbBoard do
 
   let(:board) do
     RdbBoard.create \
-      context: Project.find(1),
       engine: Rdb::Taskboard,
       name: 'Test Board'
   end
