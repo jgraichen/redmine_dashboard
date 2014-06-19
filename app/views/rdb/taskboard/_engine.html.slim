@@ -1,62 +1,62 @@
 .rdb-taskboard
-  header.rdb-taskboard-header
-    .rdb-btn-group
-      button.rdb-btn.rdb-handle#rdb-qf-category href="#" data-rdb-popup="rdb-dd-qf-category"
-        span Category
-        span.fa.fa-caret-down
-      button.rdb-btn.rdb-handle#rdb-qf-tracker href="#" data-rdb-popup="rdb-dd-qf-tracker"
-        span Tracker
-        span.fa.fa-caret-down
+  / header.rdb-taskboard-header
+    / .rdb-btn-group
+    /   button.rdb-btn.rdb-handle#rdb-qf-category href="#" data-rdb-popup="rdb-dd-qf-category"
+    /     span Category
+    /     span.fa.fa-caret-down
+    /   button.rdb-btn.rdb-handle#rdb-qf-tracker href="#" data-rdb-popup="rdb-dd-qf-tracker"
+    /     span Tracker
+    /     span.fa.fa-caret-down
 
-    .rdb-dropdown#rdb-dd-qf-category
-      .rdb-dropdown-container
-        section
-          ul.rdb-list
-            - board.categories.each do |cat|
-              li= link_to cat.name, "javascript:Rdb.board.applyFilter('category', #{cat.id})"
+    / .rdb-dropdown#rdb-dd-qf-category
+    /   .rdb-dropdown-container
+    /     section
+    /       ul.rdb-list
+    /         - board.categories.each do |cat|
+    /           li= link_to cat.name, "javascript:Rdb.board.applyFilter('category', #{cat.id})"
 
-    .rdb-dropdown#rdb-dd-qf-tracker
-      .rdb-dropdown-container
-        section
-          ul.rdb-list
-            - board.trackers.each do |tracker|
-              li= link_to tracker.name, "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})"
+    / .rdb-dropdown#rdb-dd-qf-tracker
+    /   .rdb-dropdown-container
+    /     section
+    /       ul.rdb-list
+    /         - board.trackers.each do |tracker|
+    /           li= link_to tracker.name, "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})"
 
-    .rdb-btn-group
-      button.rdb-btn href="#"
-        i.rdb-icon.rdb-icon-eye
-        span &nbsp;Group
-      button.rdb-btn-primary href="#": span Primary
-      button.rdb-btn-success href="#": span Success
-      button.rdb-btn-danger.rdb-handle href="#" data-rdb-popup="menu31": span Danger
-      button.rdb-btn.rdb-handle href="#" data-rdb-popup="menu32": span Handle
-      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-eye
-      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-list
-      button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-list-alt
+    / .rdb-btn-group
+    /   button.rdb-btn href="#"
+    /     i.rdb-icon.rdb-icon-eye
+    /     span &nbsp;Group
+    /   button.rdb-btn-primary href="#": span Primary
+    /   button.rdb-btn-success href="#": span Success
+    /   button.rdb-btn-danger.rdb-handle href="#" data-rdb-popup="menu31": span Danger
+    /   button.rdb-btn.rdb-handle href="#" data-rdb-popup="menu32": span Handle
+    /   button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-eye
+    /   button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-list
+    /   button.rdb-btn.rdb-handle.rdb-inv-handle href="#" data-rdb-popup="menu32": i.fa.fa-lg.fa-list-alt
 
-    .rdb-dropdown#menu31
-      .rdb-dropdown-container
-        section
-          ul.rdb-list
-            - board.trackers.each do |tracker|
-              li= link_to "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})" do
-                i.rdb-icon.rdb-icon-eye
-                | &nbsp;
-                = tracker.name
+    / .rdb-dropdown#menu31
+    /   .rdb-dropdown-container
+    /     section
+    /       ul.rdb-list
+    /         - board.trackers.each do |tracker|
+    /           li= link_to "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})" do
+    /             i.rdb-icon.rdb-icon-eye
+    /             | &nbsp;
+    /             = tracker.name
 
-    .rdb-dropdown#menu32
-      .rdb-dropdown-container
-        section
-          ul.rdb-list
-            - board.trackers.each do |tracker|
-              li= link_to tracker.name, "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})"
+    / .rdb-dropdown#menu32
+    /   .rdb-dropdown-container
+    /     section
+    /       ul.rdb-list
+    /         - board.trackers.each do |tracker|
+    /           li= link_to tracker.name, "javascript:Rdb.board.applyFilter('tracker', #{tracker.id})"
 
-    div style="float: right"
-      button.rdb-btn href="#": span Default
-      button.rdb-btn.rdb-small href="#" Small
-      button.rdb-btn-plain href="#" Plain
-      button.rdb-btn-subtile.rdb-handle href="#" data-rdb-popup="menu32" Plain
-      button.rdb-btn-subtile href="#" Subtile
+    / div style="float: right"
+    /   button.rdb-btn href="#": span Default
+    /   button.rdb-btn.rdb-small href="#" Small
+    /   button.rdb-btn-plain href="#" Plain
+    /   button.rdb-btn-subtile.rdb-handle href="#" data-rdb-popup="menu32" Plain
+    /   button.rdb-btn-subtile href="#" Subtile
 
   section.rdb-taskboard-body
     .rdb-column-header.rdb-column-group
