@@ -1,5 +1,9 @@
 module Rdb
   module Assets
+    class << self
+      attr_accessor :env
+    end
+
     def self.setup(env)
       %w(app/assets/images
          app/assets/stylesheets

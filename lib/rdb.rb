@@ -6,10 +6,6 @@ module Rdb
   require 'rdb/taskboard/group'
   require 'rdb/taskboard/column'
   require 'rdb/taskboard/columns/status'
-
-  class << self
-    attr_accessor :assets
-  end
 end
 
 require 'sprockets'
