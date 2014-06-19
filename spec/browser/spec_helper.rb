@@ -59,8 +59,13 @@ RSpec.configure do |config|
   Capybara.default_wait_time = 15
 
   config.before(:each) do
-    page.driver.browser.manage.window.resize_to 1280, 1024
-    page.driver.browser.manage.delete_all_cookies
+    if page.driver.respond_to?(:resize)
+      page.driver.resize 1280, 1024
+    else
+      page.driver.browser.manage.window.resize_to 1280, 1024
+    end
+
+    Capybara.reset_sessions!
   end
 
   config.after(:each) do
