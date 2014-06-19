@@ -15,7 +15,7 @@ feature 'Boards', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    expect(current_path).to eq '/dashboards/1'
+    expect(page).to have_content 'New Board'
   end
 
   scenario 'Create new board' do
@@ -23,10 +23,21 @@ feature 'Boards', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('.rdb-js-board-menu').click
+    find('#rdb-js-board-menu').click
     click_on 'Create new Board'
 
-    expect(current_path).to eq '/dashboards/2'
     expect(page).to have_content 'New Board (2)'
+  end
+
+  scenario 'Toggle fullscreen' do
+    within '#main-menu' do
+      click_on 'Dashboards'
+    end
+
+    expect(page).to have_css '#main-menu', visible: true
+
+    find('#rdb-js-fullscreen').click
+
+    expect(page).to have_css '#main-menu', visible: false
   end
 end

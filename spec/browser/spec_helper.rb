@@ -57,4 +57,13 @@ RSpec.configure do |config|
   Capybara.default_host = 'http://example.org'
   Capybara.javascript_driver = :poltergeist if ENV['CI'] || ENV['POLTERGEIST']
   Capybara.default_wait_time = 15
+
+  config.before(:each) do
+    page.driver.browser.manage.window.resize_to 1280, 1024
+    page.driver.browser.manage.delete_all_cookies
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
