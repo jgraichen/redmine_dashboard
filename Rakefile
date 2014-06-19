@@ -46,7 +46,7 @@ namespace :spec do
     t.pattern    = 'spec/unit/**/*_spec.rb'
     t.ruby_opts  = '-Ispec/unit -Ilib'
     t.rspec_opts = '--color --backtrace'
-    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
 
   desc 'Run plugin specs (Testing within redmine application)'
@@ -54,15 +54,15 @@ namespace :spec do
     t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
     t.rspec_opts = '--color --backtrace'
-    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
 
   desc 'Run browser specs'
-  RMRakeTask.new(browser: :compile) do |t, args|
+  RMRakeTask.new(browser: :compile) do |t|
     t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
     t.rspec_opts = '--color --backtrace'
-    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
 end
 task ci: :spec
@@ -74,7 +74,7 @@ desc 'Update project environment (alias for redmine:update)'
 task update: %w(redmine:update)
 
 desc 'Start local redmine server (aliases: `s`)'
-task server: :install do |t, args|
+task server: :install do |_, args|
   RM.bx %w(rails server), args
 end
 task s: 'server'
