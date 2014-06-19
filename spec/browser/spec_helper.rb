@@ -52,8 +52,6 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers
   config.include Rails.application.routes.url_helpers
 
-  DatabaseCleaner.strategy = :truncation
-
   Capybara.default_host = 'http://example.org'
   Capybara.javascript_driver = :poltergeist if ENV['CI'] || ENV['POLTERGEIST']
   Capybara.default_wait_time = 15
@@ -66,6 +64,11 @@ RSpec.configure do |config|
     end
 
     Capybara.reset_sessions!
+  end
+
+  DatabaseCleaner.strategy = :truncation
+  config.before(:each) do
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
