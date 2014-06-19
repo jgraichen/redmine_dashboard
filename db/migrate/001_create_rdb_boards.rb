@@ -1,7 +1,5 @@
 class CreateRdbBoards < ActiveRecord::Migration
   def self.up
-    drop_table :rdb_boards
-
     create_table :rdb_boards do |t|
       t.string  :name,         null: false
       t.string  :engine,       null: false
