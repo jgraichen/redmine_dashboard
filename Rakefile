@@ -46,6 +46,7 @@ namespace :spec do
     t.pattern    = 'spec/unit/**/*_spec.rb'
     t.ruby_opts  = '-Ispec/unit -Ilib'
     t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
   end
 
   desc 'Run plugin specs (Testing within redmine application)'
@@ -53,6 +54,7 @@ namespace :spec do
     t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
     t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
   end
 
   desc 'Run browser specs'
@@ -60,6 +62,7 @@ namespace :spec do
     t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
     t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV["SEED"]}" if ENV['SEED']
   end
 end
 task ci: :spec
