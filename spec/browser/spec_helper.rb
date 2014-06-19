@@ -66,7 +66,11 @@ RSpec.configure do |config|
     Capybara.reset_sessions!
   end
 
-  DatabaseCleaner.strategy = :truncation
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with :truncation
+  end
+
   config.before(:each) do
     DatabaseCleaner.start
   end
