@@ -29,10 +29,36 @@ $secondary-mauve: #ac707a
 $secondary-vialot: #654982
 $secondary-emerald: #7bc1a1
 
+h1, h2, h3, h4, h5
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+h2
+  font-size: 20px
+  font-weight: normal
+  color: $text-color
+
+h3
+  font-size: 14px
+  // text-transform: uppercase
+  font-weight: bold
+  color: $primary-gray
+
+#content
+  background-color: $primary-lightgray
+
 #redmine-dashboard
   font-size: 14px
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   color: $text-color
+  background-color: $primary-lightgray
+
+  > div > header
+    background-color: $primary-lightgray
+    border-bottom: 1px solid $frame-color
+
+  > div > section
+    background-color: $primary-white
+    border-bottom: 1px solid $frame-color
 
 @mixin theme-btn-color($color)
   border-color: $color
@@ -86,7 +112,7 @@ $secondary-emerald: #7bc1a1
   &:focus
     border-color: $primary-dark
 
-  &:hover, &:active, &.rdb-active
+  &:focus, &:hover, &:active, &.rdb-active
     color: $primary-white
 
   .rdb-icon, .rdb-handle::before
@@ -131,3 +157,44 @@ $secondary-emerald: #7bc1a1
         background-color: $primary-brightblue
         outline: none
         color: $primary-white
+
+%help-text
+  font-size: 11px
+  color: $primary-gray
+
+.rdb-nav-boxed
+  > nav
+    border-right: 1px solid $frame-color
+
+    a .help
+      @extend %help-text
+
+    a.rdb-active
+      font-weight: bold
+      background-color: $primary-paleblue
+
+    a:hover
+      background-color: $primary-brightblue
+      color: $primary-white
+
+      .help
+        color: $primary-white
+
+.rdb-form
+  .rdb-label
+    color: $primary-gray
+
+  .rdb-input
+    border-radius: 2px
+    border: 1px solid transparent
+    color: $text-color
+    font-weight: bold
+    font-size: 14px
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+    background-color: $primary-white
+
+    &:hover, &:active, &:focus
+      border-color: $secondary-gray
+
+  .help
+    @extend %help-text

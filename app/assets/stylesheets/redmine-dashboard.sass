@@ -8,10 +8,12 @@ $fa-font-path: 'font-awesome/fonts'
 
 @import 'rdb.ui.button'
 @import 'rdb.ui.dropdown'
+@import 'rdb.ui.form'
+@import 'rdb.ui.nav'
+@import 'rdb.ui.tabs'
 @import 'rdb.ui.theme'
 
 #redmine-dashboard
-  background: #fff
 
   &.rdb-fullscreen
     z-index: 9999999999999999999999
@@ -33,9 +35,8 @@ $fa-font-path: 'font-awesome/fonts'
   .rdb-clear
     clear: both
 
-  > header
-    padding: 5px
-    border-bottom: 1px solid #ccc
+  > div > header
+    padding: 10px 15px
 
     h1, h2
       margin: 0

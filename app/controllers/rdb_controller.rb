@@ -35,6 +35,14 @@ class RdbController < ::ApplicationController
   def show
   end
 
+  def configure
+    if request.xhr?
+      render partial: 'rdb/configure'
+    else
+      render
+    end
+  end
+
   def context
     board.sources.first.context
   end

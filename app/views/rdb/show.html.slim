@@ -9,11 +9,11 @@
     = javascript_include_tag '../redmine-dashboard.js', :plugin => 'redmine_dashboard'
 
 #redmine-dashboard
-  header
-    = render partial: 'rdb/header', locals: { engine: @engine, board: @board }
-    = render partial: "#{@engine.class.name.underscore}/header", locals: { engine: @engine, board: @board }
-  section
-    = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }
+  div
+    header
+      = render partial: 'header', locals: { engine: @engine, board: @board }
+    section
+      = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }
 
-  / javascript:
-  /   Rdb.init(#{{@board.to_json}});
+  javascript:
+    Rdb.init(#{{@board.to_json}});

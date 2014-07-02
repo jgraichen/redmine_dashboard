@@ -16,21 +16,27 @@ Rdb.ready ($, _, Backbone) ->
       'dashboards/:id': 'showBoard'
 
     configureBoard: (id) =>
-      @show new Rdb.Views.BoardConfiguration Rdb.board
+      @show new Rdb.Views.BoardConfiguration board: Rdb.board
 
     showBoard: (id) =>
-      @show new Rdb.Views.Board Rdb.board
+      # @show new Rdb.Views.Board Rdb.board
 
     show: (view) =>
-      @current?.$el.detach()
+      @current?.detach()
       @current = view
 
-      $('#redmine-dashboard').html view.$el
+      Rdb.root.html view.$el
 
     run: (data) =>
       Rdb.board = new Rdb.Board(data)
+      Rdb.root  = $ '#redmine-dashboard'
+
+      Rdb.root.on 'click', '[data-navigate]', (event) ->
+        href = $(event.currentTarget).attr('href')
+
+        if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
+          event.preventDefault()
+          url = href.replace(/^\//,'').replace('\#\!\/','')
+          Rdb.application.navigate url, { trigger: true }
 
       Backbone.history.start pushState: true
-
-      console.log "RUN APPLICATION", data
-
