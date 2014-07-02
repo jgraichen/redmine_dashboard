@@ -11,5 +11,8 @@ env:
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
-before_script: bundle exec rake install
-script: bundle exec rake spec
+before_script:
+- npm install -g bower
+- bundle exec rake install
+script:
+- bundle exec rake spec

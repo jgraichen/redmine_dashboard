@@ -76,8 +76,8 @@ task server: :install do |_, args|
 end
 task s: 'server'
 
-desc 'Compile assets (alias for assets:compile)'
-task compile: 'assets:compile'
+desc 'Compile assets (assets:install, assets:compile)'
+task compile: %w(assets:install assets:compile)
 
 desc <<-DESC.gsub(/^ {2}/, '')
   Cleanup project directory. This removes all installed
@@ -99,6 +99,13 @@ Sprockets::Standalone::RakeTask.new do |t, env|
 
   env.js_compressor  = :uglifier
   env.css_compressor = :sass
+end
+
+namespace :assets do
+  desc 'Install web dependencies using bower'
+  task :install do
+    Redmine.exec %w(bower install)
+  end
 end
 
 namespace :redmine do
