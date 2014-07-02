@@ -15,4 +15,5 @@ before_script:
 - npm install -g bower
 - bundle exec rake install
 script:
+- bundle exec rake compile
 - bundle exec rake spec

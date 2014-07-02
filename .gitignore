@@ -7,4 +7,4 @@
 /*.iml
 /assets
 /node_modules
-/vendor/bower
+/vendor/bower/*/
