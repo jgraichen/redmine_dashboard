@@ -3,11 +3,12 @@
 
 # Library dependencies
 #
-#= require jquery
-#= require jquery.ui
-#= require underscore
-#= require backbone
-#= require mousetrap
+#= require jquery/jquery
+#= require jquery-ui/jquery-ui
+#= require underscore/underscore
+#= require backbone/backbone
+#= require backbone.epoxy/backbone.epoxy
+#= require mousetrap/mousetrap
 
 # Application files
 #

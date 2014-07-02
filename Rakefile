@@ -97,8 +97,8 @@ Sprockets::Standalone::RakeTask.new do |t, env|
   require File.expand_path('../lib/rdb/assets', __FILE__)
   Rdb::Assets.setup(env)
 
-  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js
-                 *.png *.jpg *.gif *.woff *.svg *.ttf *.eot)
+  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js)
+  t.assets += %w(font-awesome/fonts/*-webfont*)
   t.output  = File.expand_path('../assets', __FILE__)
 
   env.js_compressor  = :uglifier
