@@ -5,12 +5,9 @@ require 'bundler'
 require 'logger'
 
 require 'rspec/core/rake_task'
-require 'sprockets/standalone'
 
-require 'sass'
-require 'coffee-script'
-require 'skim'
-require 'uglifier'
+require 'sprockets/standalone'
+require File.expand_path('../lib/rdb/assets', __FILE__)
 
 require_relative './redmine'
 
@@ -94,7 +91,6 @@ end
 
 desc 'Compile JS/CSS assets'
 Sprockets::Standalone::RakeTask.new do |t, env|
-  require File.expand_path('../lib/rdb/assets', __FILE__)
   Rdb::Assets.setup(env)
 
   t.assets  = %w(redmine-dashboard.css redmine-dashboard.js)

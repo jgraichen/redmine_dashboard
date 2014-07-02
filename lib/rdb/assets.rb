@@ -1,4 +1,10 @@
 require 'sprockets'
+require 'sprockets/sass'
+
+require 'sass'
+require 'coffee-script'
+require 'skim'
+require 'uglifier'
 
 if Sprockets::VERSION < '2.2.2'
   # Required for MRI >= 2.0
@@ -25,7 +31,11 @@ module Rdb
          app/assets/javascripts
          vendor/bower).each do |source|
         path = File.expand_path(File.join('../../..', source), __FILE__)
-        env.append_path path
+
+        if File.exist?(path) && File.directory?(path)
+          path = File.realpath(path)
+          env.append_path path
+        end
       end
 
       env.logger.level = Logger::DEBUG
