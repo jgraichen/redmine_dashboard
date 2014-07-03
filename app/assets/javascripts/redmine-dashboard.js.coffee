@@ -3,7 +3,7 @@
 
 # Library dependencies
 #
-#= require jquery/jquery
+#= require jquery/dist/jquery
 #= require jquery-ui/jquery-ui
 #= require underscore/underscore
 #= require backbone/backbone
