@@ -6,9 +6,6 @@ require 'logger'
 
 require 'rspec/core/rake_task'
 
-require 'sprockets/standalone'
-require File.expand_path('../lib/rdb/assets', __FILE__)
-
 require_relative './redmine'
 
 class LocalRakeTask < RSpec::Core::RakeTask
@@ -76,36 +73,21 @@ task server: :install do |_, args|
 end
 task s: 'server'
 
-desc 'Compile assets (assets:install, assets:compile)'
-task compile: %w(assets:install assets:compile)
+desc 'Compile assets'
+task :compile do
+  Redmine.exec %w(make)
+end
 
 desc <<-DESC.gsub(/^ {2}/, '')
   Cleanup project directory. This removes all installed
   redmines as well as precompiled assets.
 DESC
 task :clean do
-  %w(tmp assets).each do |dir|
+  %w(tmp).each do |dir|
     FileUtils.rm_rf dir if File.directory?(dir)
   end
-end
 
-desc 'Compile JS/CSS assets'
-Sprockets::Standalone::RakeTask.new do |t, env|
-  Rdb::Assets.setup(env)
-
-  t.assets  = %w(redmine-dashboard.css redmine-dashboard.js)
-  t.assets += %w(font-awesome/fonts/*-webfont*)
-  t.output  = File.expand_path('../assets', __FILE__)
-
-  env.js_compressor  = :uglifier
-  env.css_compressor = :sass
-end
-
-namespace :assets do
-  desc 'Install web dependencies using bower'
-  task :install do
-    Redmine.exec %w(bower install)
-  end
+  Redmine.exec %w(make clean)
 end
 
 namespace :redmine do

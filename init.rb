@@ -7,14 +7,6 @@ Rails.configuration.to_prepare do
 
   ActiveSupport::Dependencies
     .autoload_paths << File.expand_path('../', __FILE__)
-
-  if Rails.env.development?
-    require 'rdb/assets'
-    RDB_ASSETS = Sprockets::Environment.new(Rails.root)
-    Rdb::Assets.setup(RDB_ASSETS)
-
-    require 'rdb/rails/i18n'
-  end
 end
 
 Redmine::Plugin.register :redmine_dashboard do

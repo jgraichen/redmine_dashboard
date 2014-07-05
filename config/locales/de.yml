@@ -2,11 +2,50 @@ de:
   project_module_dashboard: Dashboards
   permission_view_dashboards: Dashboards anzeigen
   permission_create_dashboards: Neue Dashboards anlegen
+
   rdb:
-    taskboard: Task Board
-    planboard: Plan Board
     new:
-      default_board_name: Neues Board
+      default_board_name:
+        zero: "Neues Dashboard"
+        other: "Neues Dashboard (%{count})"
+
     menu:
-      dashboards: Dashboards
-      my_dashboards: Meine Dashboards
+      dashboards: "Dashboards"
+      my_dashboards: "Meine Dashboards"
+
+    header:
+      board:
+        available_boards: "Verfügbare Dashboards"
+        new_board: "Neues Dashboard anlegen"
+      configure:
+        header: "%{board_link} konfigurieren"
+      actions:
+        configure_board: "Dashboard konfigurieren"
+        toggle_fullscreen: "Vollbild umschalten"
+
+    taskboard:
+      configure:
+        nav:
+          configuration: Konfiguration
+          general: Allgemein
+          sources: Ticket-Quellen
+          columns: Spalten
+          swimlanes: Swimlanes
+        help:
+          general: Dashboard name und Zugriffsrechte
+          sources: Quell-Projekte und Ticket-Filter
+          columns: Spaltenlayout und Ansichtsoptionen
+          swimlanes: Verticale Swimlanes zum Gruppieren von Tickets
+        general:
+          headline: Allgemeine Einstellungen
+          description: Change values below.
+          general: General
+          shared_access: Zugriffsrechte
+          label:
+            name: Dashboard Name
+            owners: Dashboard Administrator
+            share_access: Zugriff für
+          help:
+            name: Required. The board name is shown on top of the board and in the board menu.
+            owners: Appoint additional board owners. They can configure everything of the board including the list of owners.
+            share_access: Configure which users or groups can see this board. They still won't see issues they would not see otherwise.

@@ -1,19 +1,11 @@
 - content_for :header_tags do
   - if Rails.env.development?
-    = stylesheet_link_tag '/rdb/assets/redmine-dashboard.css'
-    - RDB_ASSETS['redmine-dashboard.js'].to_a.each do |asset|
-      = javascript_include_tag File.join('/rdb/assets', asset.logical_path + '?body=1')
-
+    = stylesheet_link_tag '../main.css', :plugin => 'redmine_dashboard_linked'
+    = javascript_include_tag '../main.js', :plugin => 'redmine_dashboard_linked'
   - else
-    = stylesheet_link_tag '../redmine-dashboard.css', :plugin => 'redmine_dashboard'
-    = javascript_include_tag '../redmine-dashboard.js', :plugin => 'redmine_dashboard'
+    = stylesheet_link_tag '../main.min.css', :plugin => 'redmine_dashboard'
+    = javascript_include_tag '../main.min.js', :plugin => 'redmine_dashboard'
 
 #redmine-dashboard
-  div
-    header
-      = render partial: 'header', locals: { engine: @engine, board: @board }
-    section
-      = render partial: "#{@engine.class.name.underscore}/engine", locals: { engine: @engine, board: @board }
-
   javascript:
-    Rdb.init(#{{@board.to_json}});
+    Rdb.init({locale: "#{::I18n.locale}"}, #{{@board.to_json}});

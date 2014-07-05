@@ -1,0 +1,49 @@
+
+#content
+  padding: 0
+  background-color: $primary-lightgray
+
+#redmine-dashboard
+  &.rdb-fullscreen
+    z-index: 9999999999999999999999
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+  *
+    box-sizing: border-box
+
+  a
+    cursor: pointer
+
+    &:focus, &:hover
+      text-decoration: none
+
+  .rdb-clear
+    clear: both
+
+  > header
+    background-color: $primary-lightgray
+    border-bottom: 1px solid $frame-color
+
+    padding: 10px 15px
+    display: table
+    width: 100%
+
+    > div
+      display: table-cell
+      vertical-align: middle
+
+      &:last-child
+        text-align: right
+
+    h2
+      margin: 0
+
+  > section
+    background-color: $primary-white
+    border-bottom: 1px solid $frame-color
+
+    min-height: 200px
