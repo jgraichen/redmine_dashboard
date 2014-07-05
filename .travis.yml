@@ -12,8 +12,8 @@ matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
 before_script:
-- npm install -g bower
+- npm install
 - bundle exec rake install
 script:
-- bundle exec rake compile
+- make min
 - bundle exec rake spec

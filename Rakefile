@@ -52,7 +52,7 @@ namespace :spec do
   end
 
   desc 'Run browser specs'
-  RMRakeTask.new(browser: :compile) do |t|
+  RMRakeTask.new(:browser) do |t|
     t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/browser"
     t.rspec_opts = '--color --backtrace'
@@ -73,11 +73,6 @@ task server: :install do |_, args|
 end
 task s: 'server'
 
-desc 'Compile assets'
-task :compile do
-  Redmine.exec %w(make)
-end
-
 desc <<-DESC.gsub(/^ {2}/, '')
   Cleanup project directory. This removes all installed
   redmines as well as precompiled assets.
@@ -86,8 +81,6 @@ task :clean do
   %w(tmp).each do |dir|
     FileUtils.rm_rf dir if File.directory?(dir)
   end
-
-  Redmine.exec %w(make clean)
 end
 
 namespace :redmine do
