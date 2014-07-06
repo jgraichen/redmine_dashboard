@@ -1,12 +1,13 @@
-core = require('./core')
+# core = require './core'
+# extend = require 'extend'
 
-module.exports =
-  DOM: core.DOM
-  createComponent: core.createComponent
+# UI =
+#   createComponent: core.createComponent
+#   DOM: require './DOM'
+#   Observer: require './Observer'
+#   Button: require('./button')
+#   ButtonGroup: require
+# extend UI, require('./icon')
+# extend UI, require('./navigation')
 
-  Observer: core.Observer
-  Button: require('./button').Button
-  ButtonGroup: require('./button').ButtonGroup
-  Icon: require('./icon').Icon
-  Navigation: require('./navigation').Navigation
-  NavigationPane: require('./navigation').NavigationPane
+module.exports = {}

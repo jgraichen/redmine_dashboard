@@ -1,9 +1,12 @@
-UI = require('../../rdbUI')
+core = require 'rdbUI/core'
+Observer = require 'rdbUI/Observer'
+DropdownButton = require 'rdbUI/DropdownButton'
+Navigation = require 'rdbUI/Navigation'
+Icon = require 'rdbUI/Icon'
 
-{div, section, header, h1, h2, a} = UI.DOM
-{Button, Icon, Navigation, NavigationPane, Observer, Translate, Interpolate} = UI
+{div, section, header, h1, h2, a} = require 'rdbUI/DOM'
 
-module.exports = UI.createComponent 'Rdb.ConfigurationComponent',
+module.exports = core.createComponent 'Rdb.ConfigurationComponent',
   render: ->
     div id: 'redmine-dashboard', [
       header [
@@ -24,28 +27,30 @@ module.exports = UI.createComponent 'Rdb.ConfigurationComponent',
               ]
         ]
         div [
-          Button large: true, [
-            Icon name: 'ellipsis-v', fixedWidth: true
-          ]
+          DropdownButton
+            large: true
+            label: Icon name: 'ellipsis-v', fixedWidth: true
+            [
+              section "Container content X"
+            ]
         ]
       ]
       Navigation name: 'Configuration', component: section, [
-        NavigationPane
+        div
           name: 'General'
           help: 'Board name and shared access'
           h2 'General configuration'
-        NavigationPane
+        div
           name: 'Issue sources'
           help: 'Source projects and issue filters'
           h2 'Sources'
-        NavigationPane
+        div
           name: 'Columns'
           help: 'Column layout and view options'
           h2 'Columns'
-        NavigationPane
+        div
           name: 'Swimlanes'
           help: 'Vertical swimlanes to group issues'
           h2 'Swimlanes'
       ]
     ]
-

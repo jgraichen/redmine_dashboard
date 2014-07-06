@@ -2,17 +2,18 @@
   "name": "redmine_dashboard",
   "version": "3.0.0-dev",
   "description": "A redmine issue dashboard plugin",
-  "main": "src/main/redmine-dashboard.coffee",
+  "main": "app/assets/main.coffee",
   "dependencies": {
-    "counterpart": "~0.14.2",
-    "react": "~0.10.0",
     "backbone": "~1.1.2",
-    "underscore": "~1.6.0",
+    "counterpart": "~0.14.2",
+    "extend": "~1.3.0",
     "font-awesome": "~4.1.0",
-    "extend": "~1.3.0"
+    "react": "~0.10.0",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "browserify": "^4.2.0",
+    "browserify-data": "^0.1.1",
     "coffeeify": "^0.6.0",
     "envify": "^1.2.1",
     "exorcist": "^0.1.6",

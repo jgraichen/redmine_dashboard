@@ -1,3 +1,4 @@
+@import './colors'
 
 // theming
 @mixin theme-btn-color($color)
@@ -141,9 +142,13 @@
 
 .rdbUI-btn-group
   display: inline-block
+  line-height: 110%
   margin: 0 1px
 
-  .rdbUI-btn
+  > .rdbUI-btn-group
+    margin: 0
+
+  > .rdbUI-btn
     margin: 0
 
     &:not(:first-child)
@@ -160,3 +165,11 @@
 
       & + .rdbUI-btn
         border-left-width: 0
+
+.rdbUI-container
+  width: 200px
+  background-color: #fff
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2)
+
+  .rdbUI-container-inlet
+    max-height: 400px

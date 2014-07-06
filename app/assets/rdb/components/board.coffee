@@ -1,10 +1,12 @@
-UI = require('../../rdbUI')
 classSet = require('react/lib/cx')
 
-{div, section, header, span} = UI.DOM
-{Button, Icon, Observer} = UI
+core = require 'rdbUI/core'
+Icon = require 'rdbUI/Icon'
+Button = require 'rdbUI/Button'
+DropdownButton = require 'rdbUI/DropdownButton'
+{h1, div, section, header, span} = require 'rdbUI/DOM'
 
-module.exports = UI.createComponent 'Rdb.BoardComponent',
+module.exports = core.createComponent 'Rdb.BoardComponent',
   getInitialState: ->
     fullscreen: false
 
@@ -18,10 +20,13 @@ module.exports = UI.createComponent 'Rdb.BoardComponent',
     div id: 'redmine-dashboard', className: cs, [
       header [
         div [
-          Button
+          DropdownButton
             large: true
-            style: 'subtile'
-            @props.board.get 'name'
+            btnStyle: 'subtile'
+            label: @props.board.get 'name'
+            [
+              h1 "CONTENT"
+            ]
         ]
         div [
           Button

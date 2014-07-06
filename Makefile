@@ -1,9 +1,10 @@
 RUBY = ruby
 NODE = node
 SASS = $(RUBY) -S sass
-BROWSERIFY = $(NODE) node_modules/.bin/browserify -t coffeeify --extension=".coffee" -t envify -t uglifyify
+BROWSERIFY = $(NODE) node_modules/.bin/browserify -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = $(NODE) node_modules/.bin/exorcist
 UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
+NODE_PATH = .:app/assets:bower_components
 
 SOURCE = app/assets
 BUILD = assets
@@ -30,7 +31,7 @@ fonts: $(BUILD)
 
 .PHONY: $(BUILD)/main.js
 $(BUILD)/main.js: $(BUILD)
-	NODE_ENV=development $(BROWSERIFY) --debug $(SOURCE)/main.coffee | $(EXORCIST) $(BUILD)/main.js.map > $(BUILD)/main.js
+	NODE_PATH=$(NODE_PATH) NODE_ENV=development $(BROWSERIFY) --debug $(SOURCE)/main.coffee -o $(BUILD)/main.js
 
 .PHONY: $(BUILD)/main.css
 $(BUILD)/main.css: $(BUILD)
@@ -38,7 +39,7 @@ $(BUILD)/main.css: $(BUILD)
 
 .PHONY: $(BUILD)/main.min.js
 $(BUILD)/main.min.js: $(BUILD)
-	NODE_ENV=production $(BROWSERIFY) $(SOURCE)/main.coffee | $(UGLIFYJS) -m -c > $(BUILD)/main.min.js 2> /dev/null
+	NODE_PATH=$(NODE_PATH) NODE_ENV=production $(BROWSERIFY) $(SOURCE)/main.coffee | $(UGLIFYJS) -m -c > $(BUILD)/main.min.js 2> /dev/null
 
 .PHONY: $(BUILD)/main.min.css
 $(BUILD)/main.min.css: $(BUILD)

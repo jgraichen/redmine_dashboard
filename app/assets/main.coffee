@@ -1,3 +1,5 @@
 require './shim/phantomjs-bind'
 
-window.Rdb = require('./rdb/index')
+console.log require 'config/locales/de.yml'
+
+window.Rdb = require('rdb/index')
