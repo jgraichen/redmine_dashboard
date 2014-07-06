@@ -9,3 +9,4 @@
 /node_modules
 /vendor/bower/*/
 .sass-cache
+/_old
