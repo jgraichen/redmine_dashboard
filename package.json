@@ -14,9 +14,10 @@
   "devDependencies": {
     "browserify": "^4.2.0",
     "coffeeify": "^0.6.0",
-    "uglify-js": "^2.4.14",
-    "exorcist": "^0.1.6",
     "envify": "^1.2.1",
+    "exorcist": "^0.1.6",
+    "nodemon": "^1.2.1",
+    "uglify-js": "^2.4.14",
     "uglifyify": "^2.4.0"
   },
   "repository": {

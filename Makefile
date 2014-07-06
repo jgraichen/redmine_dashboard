@@ -50,6 +50,10 @@ build: fonts $(BUILD)/main.js $(BUILD)/main.css
 .PHONY: min
 min: fonts $(BUILD)/main.min.js $(BUILD)/main.min.css
 
+.PHONY: watch
+watch:
+	$(NODE) node_modules/.bin/nodemon --exec "make all" --watch $(SOURCE) -e js,coffee,sass
+
 .PHONY: clean
 clean:
 	rm -rf $(BUILD)/*
