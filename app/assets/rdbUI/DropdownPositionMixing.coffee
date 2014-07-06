@@ -1,5 +1,5 @@
 React = require 'react'
-Tether = require 'tether/tether'
+Tether = require 'vendor/tether'
 
 DropdownPositionMixing =
   getDefaultProps: ->
@@ -14,6 +14,6 @@ DropdownPositionMixing =
       targetAttachment: @props.targetAttachment
       constraints: [{to: 'window', pin: true, attachment: "together"}]
       optimizations:
-        moveElement: true
+        moveElement: false
 
 module.exports = DropdownPositionMixing
