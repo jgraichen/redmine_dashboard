@@ -1,0 +1,70 @@
+@import 'rui/theme'
+
+$text-color: black
+$primary-lightgray: #f7f7f7
+$frame-color: #ccc
+$focus-color: yellow
+
+// theming
+@mixin btn($color, $bdColor)
+  border-color: $bdColor
+  background-color: lighten($color, 2%)
+  text-shadow: 0 1px 1px $color
+
+@mixin btn-hover($color, $bdColor)
+  border-color: darken($bdColor, 15%)
+  background-color: darken($color, 3%)
+  text-shadow: 0 1px 1px darken($color, 10%)
+
+@mixin btn-active($color, $bdColor)
+  border-color: darken($bdColor, 20%)
+  background-color: $color
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15)
+
+$tx-color: $text-color
+$bg-color: $primary-lightgray
+$border-color: $frame-color
+
+\:host
+  display: inline-block
+  line-height: 110%
+
+  margin: 0
+  padding: 5px 10px
+
+  border-width: 1px
+  border-style: solid
+
+  text-decoration: none
+  cursor: pointer
+
+  vertical-align: baseline
+  white-space: nowrap
+
+  // theming
+  color: $tx-color
+  font-size: inherit
+  font-family: inherit
+  font-variant: normal
+  font-weight: 400
+  text-shadow: 0 1px 1px rgba($tx-color, 0.1)
+  text-decoration: none
+
+  border-color: $frame-color
+  border-radius: 2px
+
+  background-color: lighten($bg-color, 2%)
+
+\:host(:focus)
+  outline: none
+  border-color: $focus-color
+
+\:host(:hover)
+  border-color: darken($border-color, 20%)
+  background-color: darken($bg-color, 3%)
+
+\:host(:active)
+  border-color: darken($border-color, 20%)
+  background-color: $bg-color
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15)
+

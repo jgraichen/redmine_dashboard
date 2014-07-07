@@ -7,6 +7,17 @@ Rails.configuration.to_prepare do
 
   ActiveSupport::Dependencies
     .autoload_paths << File.expand_path('../', __FILE__)
+
+  require 'rdb/sprockets/helpers'
+  require 'rdb/assets'
+
+  RDB_ASSET_ENVIRONMENT = ::Sprockets::Environment.new(File.dirname(__FILE__))
+  Rdb::Assets.setup(RDB_ASSET_ENVIRONMENT)
+
+  ActiveSupport.on_load(:action_view) do
+    include Rdb::Sprockets::Helpers::TagHelper
+    include Rdb::Sprockets::Helpers::ViewHelper
+  end
 end
 
 Redmine::Plugin.register :redmine_dashboard do

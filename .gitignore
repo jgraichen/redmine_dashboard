@@ -7,6 +7,6 @@
 /*.iml
 /assets
 /node_modules
-/vendor/bower/*/
+/vendor/assets/*
 .sass-cache
 /_old

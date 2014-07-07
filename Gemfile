@@ -7,7 +7,12 @@ group :development do
   gem 'rake'
   gem 'rspec', '~> 3.0'
 
-  gem 'sass'
+  gem 'sprockets-standalone', require: false
+  gem 'sprockets-sass', require: false
+  gem 'uglifier', require: false
+  gem 'sass', require: false
+  gem 'coffee-script', require: false
+  gem 'nokogiri', require: false
 
   gem 'pry'
   gem 'pry-nav'
