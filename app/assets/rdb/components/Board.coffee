@@ -23,24 +23,21 @@ module.exports = core.createComponent 'rdb.BoardComponent',
 
   render: ->
     div [
-      header className: 'rdb-header', do =>
-        if @state.fullscreen
-          [
-            div [ h2 @props.board.get 'name' ]
-            div [ FullscreenButton fullscreen: @state.fullscreen ]
-          ]
-        else
-          [
-            div [
+      header className: 'rdb-header', [
+        div [
+          do =>
+            if !@state.fullscreen
               DropdownButton
                 large: true
                 icon: 'grid-three-up'
                 [
                   h2 "CONTENT"
                 ]
-              h2 @props.board.get 'name'
-            ]
-            div [
+          h2 @props.board.get 'name'
+        ]
+        div [
+          do =>
+            if !@state.fullscreen
               Button
                 large: true
                 icon: 'cog'
@@ -50,9 +47,9 @@ module.exports = core.createComponent 'rdb.BoardComponent',
                 onClick: (e) =>
                   util.handlePrimaryClick e, (e) =>
                     Rdb.events.trigger 'navigate', '/configure'
-              FullscreenButton fullscreen: @state.fullscreen
-            ]
-          ]
+          FullscreenButton fullscreen: @state.fullscreen
+        ]
+      ]
       (section className: 'rdb-main', "X")
     ]
 
