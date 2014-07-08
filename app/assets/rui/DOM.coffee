@@ -1,6 +1,6 @@
 React = require 'react'
-core = require 'rdbUI/core'
 
+core = require './core'
 # Wrap all React.DOM functions into the helper above.
 DOM = do ->
   object = {}

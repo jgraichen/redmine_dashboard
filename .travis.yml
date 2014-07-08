@@ -13,6 +13,7 @@ matrix:
   - env: REDMINE_VERSION=master
 before_script:
 - npm install
+- make install-deps
 - bundle exec rake install
 script:
 - make min

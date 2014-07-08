@@ -7,5 +7,5 @@
 /*.iml
 /assets
 /node_modules
-/vendor/bower/*/
+/bower_components
 .sass-cache

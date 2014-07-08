@@ -10,5 +10,4 @@ class Board extends Model
       base: "/dashboards/#{@get("id")}"
       configure: "/dashboards/#{@get("id")}/configure"
 
-module.exports =
-  Board: Board
+module.exports = Board

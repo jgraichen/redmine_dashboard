@@ -1,6 +1,6 @@
 RUBY = ruby
 NODE = node
-SASS = $(RUBY) -S sass
+SASS = $(RUBY) -S sass -Ibower_components -Inode_modules -I$(SOURCE)
 BROWSERIFY = $(NODE) node_modules/.bin/browserify -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = $(NODE) node_modules/.bin/exorcist
 UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
@@ -27,7 +27,8 @@ $(BUILD):
 .PHONY: fonts
 fonts: $(BUILD)
 	mkdir -p $(BUILD)/fonts
-	cp node_modules/font-awesome/fonts/*-webfont* $(BUILD)/fonts
+	# cp node_modules/font-awesome/fonts/*-webfont* $(BUILD)/fonts
+	cp bower_components/open-iconic/font/fonts/* $(BUILD)/fonts
 
 .PHONY: $(BUILD)/main.js
 $(BUILD)/main.js: $(BUILD)
@@ -35,7 +36,7 @@ $(BUILD)/main.js: $(BUILD)
 
 .PHONY: $(BUILD)/main.css
 $(BUILD)/main.css: $(BUILD)
-	$(SASS) -Inode_modules -I$(SOURCE) --style nested $(SOURCE)/main.sass $(BUILD)/main.css
+	$(SASS) --style nested $(SOURCE)/main.sass $(BUILD)/main.css
 
 .PHONY: $(BUILD)/main.min.js
 $(BUILD)/main.min.js: $(BUILD)
@@ -43,10 +44,10 @@ $(BUILD)/main.min.js: $(BUILD)
 
 .PHONY: $(BUILD)/main.min.css
 $(BUILD)/main.min.css: $(BUILD)
-	$(SASS) -Inode_modules -I$(SOURCE) --style compressed $(SOURCE)/main.sass $(BUILD)/main.min.css
+	$(SASS) --style compressed $(SOURCE)/main.sass $(BUILD)/main.min.css
 
 .PHONY: build
-build: fonts $(BUILD)/main.js $(BUILD)/main.css
+build: fonts $(BUILD)/main.css $(BUILD)/main.js
 
 .PHONY: min
 min: fonts $(BUILD)/main.min.js $(BUILD)/main.min.css
@@ -54,6 +55,11 @@ min: fonts $(BUILD)/main.min.js $(BUILD)/main.min.css
 .PHONY: watch
 watch:
 	$(NODE) node_modules/.bin/nodemon --exec "make all" --watch $(SOURCE) -e js,coffee,sass
+
+.PHONY: install-deps
+install-deps:
+	npm install
+	$(NODE) node_modules/.bin/bower install
 
 .PHONY: clean
 clean:

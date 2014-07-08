@@ -18,7 +18,7 @@ en:
         available_boards: "Available Boards"
         new_board: "Create new Board"
       configure:
-        header: "Configure %{board_link}"
+        header: "Configure %(link)s"
       actions:
         configure_board: "Configure board"
         toggle_fullscreen: "Toggle fullscreen"

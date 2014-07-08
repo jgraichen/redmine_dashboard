@@ -1,9 +1,9 @@
-core = require 'rdbUI/core'
+core = require './core'
 
 # An observer is a wrapping component that updates on
 # an event on given observable object e.g. a Backbone model.
 #
-Observer = core.createComponent 'RdbUI.Observer',
+Observer = core.createComponent 'rui.Observer',
   componentDidMount: ->
     @props.watch.on @props.event, @update
 

@@ -1,0 +1,237 @@
+@import './colors'
+@import 'bourbon/dist/css3/linear-gradient'
+
+.rui-btn, a.rui-btn
+  margin: 0
+  padding: 7px 15px
+  display: inline-block
+  vertical-align: top
+
+  color: $text-color
+  text-align: center
+
+  border: 1px solid $frame-color
+  border-radius: 2px
+  @include linear-gradient(#fff, #f2f2f2, $fallback: #f2f2f2)
+
+  &.rui-plain
+    margin: 0
+    border: none
+    border-radius: 0
+    background-color: transparent
+
+  &:hover, &.hover, &[hovered]
+    cursor: pointer
+    text-decoration: none
+    border-color: $secondary-gray
+    @include linear-gradient(#fff, $primary-lightgray, $fallback: $primary-lightgray)
+
+  &:focus, &.focus, &[focused]
+    outline: none
+    border-color: $focus-color
+    text-decoration: none
+
+  &:active, &.active, &[active]
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .1)
+    border-color: $secondary-gray
+    background-image: none
+    background-color: #f2f2f2
+
+  &::-moz-focus-inner
+    padding: 0
+    border: 0
+
+  .rui-icon
+    margin: 0 14px
+
+    &:last-child
+      margin-right: 0
+    &:first-child
+      margin-left: 0
+
+  & ~ .rui-btn
+    margin-left: .5em
+
+  // &.rui-large
+  //   font-size: 20px
+
+  //   .fa
+  //     font-size: 1.5 * 14px
+
+//   .rui-icon, .rui-handle::before
+//     color: $primary-white
+//     border-color: $primary-white
+
+// // theming
+// @mixin theme-btn-color($color)
+//   border-color: $color
+//   background-color: lighten($color, 2%)
+//   text-shadow: 0 1px 1px $color
+
+//   &:hover
+//     border-color: darken($color, 5%)
+//     background-color: darken($color, 3%)
+//     text-shadow: 0 1px 1px darken($color, 10%)
+
+//   &:active, &.active, &.rui-enabled
+//     background-color: $color
+//     border-color: darken($color, 20%)
+
+// // theming
+// %theme-rui-btn-white
+//   color: $primary-white
+//   font-weight: bold
+
+//   > span, &, &:before
+//     color: $primary-white
+
+//   &:focus
+//     border-color: $primary-dark
+
+//   &:focus, &:hover, &:active, &.active
+//     color: $primary-white
+
+//   .rui-icon, .rui-handle::before
+//     color: $primary-white
+//     border-color: $primary-white
+
+// // Primary btn class
+// .rui-btn
+//   display: inline-block
+//   line-height: 110%
+
+//   margin: 0
+//   padding: 5px 10px
+
+//   border-width: 1px
+//   border-style: solid
+
+//   text-decoration: none
+//   cursor: pointer
+
+//   vertical-align: baseline
+//   white-space: nowrap
+//   height: 27px
+
+//   // theming
+//   +theme-btn-color($primary-lightgray)
+//   color: $text-color
+//   border-color: $frame-color
+//   border-radius: 2px
+//   font-size: 14px
+//   font-family: inherit
+//   font-variant: normal
+//   font-weight: 400
+//   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1)
+//   text-decoration: none
+
+//   // theming
+//   > span, &, &:before
+//     color: $primary-dark
+
+//   // theming
+//   &:focus, &:hover
+//     color: $text-color
+//     border-color: $secondary-gray
+//     text-decoration: none
+
+//   // theming
+//   &:active, &.active, &.rui-enabled
+//     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1)
+//     text-decoration: none
+
+//   &::-moz-focus-inner
+//     padding: 0
+//     border: 0
+
+//   .fa
+//     margin: 0 6px
+//     font-size: 14px
+
+//     &:last-child
+//       margin-right: 0
+//     &:first-child
+//       margin-left: 0
+
+//   &.rui-large
+//     font-size: 18px
+//     height: 32px
+
+//     .fa
+//       font-size: 18px
+
+// .rui-btn ~ .rui-btn,
+// .rui-btn ~ .rui-btn-group,
+// .rui-btn-group ~ .rui-btn,
+// .rui-btn-group ~ .rui-btn-group
+//   margin-left: 4px
+
+// .rui-btn-primary
+//   @extend .rui-btn
+
+//   // theming
+//   @extend %theme-rui-btn-white
+//   +theme-btn-color(lighten($primary-blue, 5%))
+
+// .rui-btn-success
+//   @extend .rui-btn
+
+//   // theming
+//   @extend %theme-rui-btn-white
+//   +theme-btn-color($primary-green)
+
+// .rui-btn-danger
+//   @extend .rui-btn
+
+//   // theming
+//   @extend %theme-rui-btn-white
+//   +theme-btn-color($primary-red)
+
+// .rui-btn-subtile
+//   @extend .rui-btn
+
+//   &:not(:hover):not(:active):not(:focus):not(.active):not(.rui-enabled),
+//     background: none
+//     border-color: transparent !important
+
+// .rui-btn-plain
+//   @extend .rui-btn
+
+//   &, &:hover, &:active, &:focus, &.rui-enabled
+//     background: none !important
+//     border: none !important
+//     box-shadow: none !important
+
+// .rui-btn-group
+//   display: inline-block
+//   line-height: 110%
+//   margin: 0 1px
+
+//   > .rui-btn-group
+//     margin: 0
+
+//   > .rui-btn
+//     margin: 0
+
+//     &:not(:first-child)
+//       border-top-left-radius: 0
+//       border-bottom-left-radius: 0
+
+//     &:not(:last-child)
+//       border-top-right-radius: 0
+//       border-bottom-right-radius: 0
+//       border-right-width: 0
+
+//     &[class^=rui-btn-], &:hover, &:active, &:focus, &.rui-enabled
+//       border-right-width: 1px
+
+//       & + .rui-btn
+//         border-left-width: 0
+
+// .rui-container
+//   width: 200px
+//   background-color: #fff
+//   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2)
+
+//   .rui-container-inlet
+//     max-height: 400px

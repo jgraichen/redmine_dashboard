@@ -5,7 +5,7 @@ map = require('react').Children.map
 
 {div, nav, ul, li, a, span, section, h3} = require './DOM'
 
-Navigation = core.createComponent 'RdbUI.Navigation',
+Navigation = core.createComponent 'rui.Navigation',
   getInitialState: ->
     current: 0
 
@@ -14,7 +14,7 @@ Navigation = core.createComponent 'RdbUI.Navigation',
 
   render: ->
     tag = @props.component || div
-    @transferPropsTo tag className: 'rdbUI-nav', [
+    @transferPropsTo tag className: 'rui-nav', [
       nav [
         h3 @props.name
         ul [
@@ -36,7 +36,7 @@ Navigation = core.createComponent 'RdbUI.Navigation',
       ]
       section [
         map @props.children, (pane, index) =>
-          cs = 'rdbUI-nav-pane'
+          cs = 'rui-nav-pane'
           cs += ' active' if @state.current == index
           div className: cs, [pane]
       ]

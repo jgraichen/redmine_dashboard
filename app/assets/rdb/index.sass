@@ -3,7 +3,12 @@
   padding: 0
   background-color: $primary-lightgray
 
+#main-menu li a.rdb-project-dashboards.selected
+  background-color: $primary-lightgray
+
 #redmine-dashboard
+  background-color: $primary-lightgray
+
   &.rdb-fullscreen
     z-index: 9999999999999999999999
     position: absolute
@@ -24,26 +29,34 @@
   .rdb-clear
     clear: both
 
-  > header
-    background-color: $primary-lightgray
-    border-bottom: 1px solid $frame-color
-
-    padding: 10px 15px
-    display: table
-    width: 100%
-
-    > div
-      display: table-cell
-      vertical-align: middle
-
-      &:last-child
-        text-align: right
-
-    h2
-      margin: 0
-
-  > section
+  > div
     background-color: $primary-white
-    border-bottom: 1px solid $frame-color
 
-    min-height: 200px
+.rdb-header
+  z-index: 2
+  background-color: $primary-lightgray
+  border-bottom: 1px solid $frame-color
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15)
+
+  display: table
+  width: 100%
+  padding: 10px 15px
+
+  > div
+    display: table-cell
+    vertical-align: middle
+
+    &:last-child
+      text-align: right
+
+  h1, h2, h3
+    margin: 3px 15px
+    display: inline-block
+
+.rdb-main
+  z-index: 1
+  border-bottom: 1px solid $frame-color
+  background-color: $primary-white
+
+  // box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15)
+  // min-height: 200px

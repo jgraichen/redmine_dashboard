@@ -1,12 +1,13 @@
 extend = require 'extend'
 
 core = require './core'
+util = require './util'
 {span} = require './DOM'
 Button = require './Button'
 DropdownContainer = require './DropdownContainer'
 LayeredComponentMixin = require './LayeredComponentMixin'
 
-DropdownButton = core.createComponent 'RdbUI.DropdownButton',
+DropdownButton = core.createComponent 'rui.DropdownButton',
   mixins: [LayeredComponentMixin]
 
   getInitialState: ->
@@ -19,15 +20,8 @@ DropdownButton = core.createComponent 'RdbUI.DropdownButton',
         @props.children
 
   render: ->
-    props = extend {}, @props
-    delete props.label
-
-    extend props, onClick: @toggleDropdown
-
-    Button props, @props.label
-
-  toggleDropdown: (e) ->
-    e.preventDefault()
-    @setState open: !@state.open
+    @transferPropsTo Button onClick: (e) =>
+      util.handlePrimaryClick e, (e) =>
+        @setState open: !@state.open
 
 module.exports = DropdownButton

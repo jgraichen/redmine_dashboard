@@ -18,7 +18,7 @@ de:
         available_boards: "Verfügbare Dashboards"
         new_board: "Neues Dashboard anlegen"
       configure:
-        header: "%{board_link} konfigurieren"
+        header: "%(link)s konfigurieren"
       actions:
         configure_board: "Dashboard konfigurieren"
         toggle_fullscreen: "Vollbild umschalten"
