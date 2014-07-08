@@ -8,7 +8,6 @@ module Rdb
     class ScriptProcessor
       def initialize(context)
         @context = context
-        @directory = File.dirname(context.pathname)
       end
 
       def process(data)
@@ -21,15 +20,16 @@ module Rdb
 
       def inline_scripts(doc)
         doc.css('script[src]').each do |node|
-          path = absolute_path(node.attribute("src"))
-          content = @context.evaluate(path)
-          script = create_script(doc, content)
+          begin
+            path = @context.resolve './' + node.attribute("src")
+          rescue
+            path = @context.resolve node.attribute("src")
+          end
+
+          content = @context.environment[path].to_s
+          script  = create_script(doc, content)
           node.replace(script)
         end
-      end
-
-      def absolute_path(path)
-        File.absolute_path(path, @directory)
       end
 
       def create_script(doc, content)

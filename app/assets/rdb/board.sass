@@ -1,0 +1,27 @@
+@import 'rui/theme'
+
+\:host([fullscreen])//, :host
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+\:host
+  background-color: $primary-lightgray
+
+::content > header
+  box-sizing: border-box
+  display: table
+  width: 100%
+
+  // padding: 10px
+  background-color: #fff
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2)
+
+  > section
+    display: table-cell
+    vertical-align: top
+
+    &:last-child
+      text-align: right

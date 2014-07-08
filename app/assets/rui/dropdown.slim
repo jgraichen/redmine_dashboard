@@ -1,0 +1,67 @@
+/!=depend_on ./dropdown.sass
+
+polymer-element name='rui-dropdown'
+  script src='tether/tether.js'
+  template
+    link rel='stylesheet' href='./dropdown.sass'
+    content
+
+  coffee:
+    Polymer 'rui-dropdown',
+      ready: ->
+        @setAttribute 'rui-dropdown', ''
+
+        document.addEventListener 'mousedown', (e) =>
+          return unless @visible
+
+          node = e.target
+          while node != document.body
+            if node == @_target || node == @
+              return
+            node = node.parentNode
+
+          @hide()
+
+      toggle: (target) ->
+        if @visible
+          if @_target && @_target != target
+            @hide()
+            @show(target)
+          else
+            @hide()
+        else
+          @show(target)
+
+      hide: ->
+        @removeAttribute 'visible'
+        @_tether.destroy()
+        # @_target.active = false
+        @_target = null
+        @visible = false
+
+      show: (target) ->
+        @_target = target
+        #@_target.active()
+        @visible = true
+
+        attachment = target.getAttribute('rui-attachment') || 'top left'
+        targetAttachment = target.getAttribute('rui-target-attachment')
+        unless targetAttachment
+          att = attachment.trim().split(' ', 2)
+          if att[0] == 'top'
+            targetAttachment = "bottom #{att[1]}"
+          else
+            targetAttachment = "top #{att[1]}"
+
+        for dd in document.querySelectorAll('[rui-dropdown][visible]')
+          dd.hide()
+
+        @setAttribute 'visible', ''
+
+        @_tether = new Tether
+          element: @
+          target: target
+          attachment: attachment
+          targetAttachment: targetAttachment
+          classPrefix: 'rui'
+          constraints: [{to: 'scrollParent', attachment: 'together', pin: true}]

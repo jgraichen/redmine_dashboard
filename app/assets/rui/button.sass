@@ -1,10 +1,5 @@
 @import 'rui/theme'
 
-$text-color: black
-$primary-lightgray: #f7f7f7
-$frame-color: #ccc
-$focus-color: yellow
-
 // theming
 @mixin btn($color, $bdColor)
   border-color: $bdColor
@@ -26,24 +21,28 @@ $bg-color: $primary-lightgray
 $border-color: $frame-color
 
 \:host
+  box-sizing: border-box
   display: inline-block
   line-height: 110%
+  // height: 38px
 
   margin: 0
-  padding: 5px 10px
+  padding: 10px 12px 8px
 
   border-width: 1px
   border-style: solid
 
+  text-align: center
   text-decoration: none
   cursor: pointer
 
   vertical-align: baseline
   white-space: nowrap
+  overflow: hidden
 
   // theming
   color: $tx-color
-  font-size: inherit
+  font-size: 12px
   font-family: inherit
   font-variant: normal
   font-weight: 400
@@ -55,16 +54,39 @@ $border-color: $frame-color
 
   background-color: lighten($bg-color, 2%)
 
+\:host(.subtile)
+  border-color: transparent
+  background: transparent
+
+\:host(.plain)
+  border-color: transparent
+  background: transparent
+
 \:host(:focus)
+  outline: none
+
+\:host(:hover)
+  // border-color: darken($border-color, 20%)
+  background-color: darken($bg-color, 3%)
+
+\:host(.plain:hover)
+  border-color: transparent
+
+\:host([active]), :host(.rui-enabled)
+  border-color: $frame-color
+  background-color: darken($bg-color, 3%)
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15)
+
+\:host(.plain[active]), :host(.plain.rui-enabled)
+  border-color: transparent
+  box-shadow: none
+
+\:host([focused])
   outline: none
   border-color: $focus-color
 
-\:host(:hover)
-  border-color: darken($border-color, 20%)
-  background-color: darken($bg-color, 3%)
-
-\:host(:active)
-  border-color: darken($border-color, 20%)
-  background-color: $bg-color
-  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.15)
-
+::content
+  h1, h2, h3, h4, h5
+    display: inline-block
+    margin: 0
+    padding: 0

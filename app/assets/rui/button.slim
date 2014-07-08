@@ -1,7 +1,28 @@
-/!=require polymer/polymer
-/!=depend_on rui/button.sass
+/!=require paper-focusable/paper-focusable
+/!=depend_on ./button.sass
 
-polymer-element name="rui-button" noscript="true" tabindex="0"
+polymer-element name="rui-button" role="button" extends="paper-focusable" on-keypress="_keyAction"
   template
-    link rel="stylesheet" href="button.sass"
+    link rel="stylesheet" href="./button.sass"
     content
+
+  coffee:
+    Polymer "rui-button",
+      ready: ->
+        if @getAttribute("aria-owns") && @getAttribute("aria-haspopup") == "true"
+          @ariaPopupSelector = @getAttribute("aria-owns")
+
+      _downAction: (e) ->
+        return unless e.button == 0
+        @super e
+
+      downAction: (e) ->
+        @super e
+
+        if @ariaPopupSelector
+          target = document.querySelector @ariaPopupSelector
+          target?.toggle @
+
+      _keyAction: (e) ->
+        if !@disabled || e.keyCode == 13
+          @downAction(e)

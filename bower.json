@@ -23,6 +23,8 @@
   ],
   "dependencies": {
     "polymer": "~0.3.3",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "tether": "~0.6.5",
+    "paper-focusable": "Polymer/paper-focusable#~0.3.3"
   }
 }

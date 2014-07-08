@@ -8,7 +8,6 @@ module Rdb
     class StylesheetProcessor
       def initialize(context)
         @context = context
-        @directory = File.dirname(context.pathname)
       end
 
       def process(data)
@@ -21,16 +20,11 @@ module Rdb
 
       def inline_styles(doc)
         doc.css("link[rel='stylesheet']").each do |node|
-          path = absolute_path(node.attribute("href"))
-          # content = @context.evaluate(path)
+          path    = @context.resolve node.attribute("href")
           content = @context.environment[path].to_s
-          style = create_style(doc, content)
+          style   = create_style(doc, content)
           node.replace(style)
         end
-      end
-
-      def absolute_path(path)
-        File.absolute_path(path, @directory)
       end
 
       def create_style(doc, content)

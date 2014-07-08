@@ -1,0 +1,15 @@
+@import 'rui/theme'
+
+\:host
+  position: absolute
+  display: none
+  visibility: hidden
+
+  background: #fff
+  // border: 1px solid $frame-color
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2)
+  margin-top: -1px
+
+\:host([visible])
+  display: block
+  visibility: visible

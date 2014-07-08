@@ -1,18 +1,33 @@
 - content_for :header_tags do
   - if Rails.env.development?
     = rdb_stylesheet_link_tag 'main'
-    = rdb_html_import_tag 'main'
     = rdb_javascript_include_tag 'main'
+    = rdb_html_import_tag 'main'
   - else
-    = stylesheet_link_tag '../main.css', :plugin => 'redmine_dashboard'
-    = html_import_tag '../main.html', :plugin => 'redmine_dashboard'
-    = javascript_include_tag '../main.js', :plugin => 'redmine_dashboard'
+    - plugin = Rails.env.development? ? 'redmine_dashboard' : 'redmine_dashboard_linked'
+    = stylesheet_link_tag '../main.css', :plugin => plugin
+    = javascript_include_tag '../main.js', :plugin => plugin
+    = html_import_tag '../main.html', :plugin => plugin
 
-#redmine-dashboard unresolved=true
-  rui-button-group
-    rui-button Click here
-    rui-button Click here
-    rui-button: i.fa.fa-fw.fw-ellipsis-v
+#redmine-dashboard
+  rdb-board locale="#{::I18n.locale}" data=@board.as_json unresolved=true
+    header
+      section
+        rui-button class="plain"
+          i.fa.fa-fw.fa-bars
+          h3 Click here
+      section
+        rui-button class="plain" title="Preferences" aria-label="Preferences": i.fa.fa-fw.fa-cog
+        rui-button class="plain" aria-haspopup="true" aria-owns="#dropdown-eye" rui-attachment="top right": i.fa.fa-fw.fa-ellipsis-v
 
-  javascript:
-    Rdb.init({locale: "#{::I18n.locale}"}, #{{@board.to_json}});
+        rui-dropdown id="dropdown-eye"
+          div style="padding: 10px"
+            h3 Filters
+            ul
+              li: a Customers
+              li: a Presenters
+              li: a Products
+
+        rui-dropdown id="dropdown"
+          div style="padding: 10px"
+            section X section X
