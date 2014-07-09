@@ -27,7 +27,6 @@ $(BUILD):
 .PHONY: fonts
 fonts: $(BUILD)
 	mkdir -p $(BUILD)/fonts
-	# cp node_modules/font-awesome/fonts/*-webfont* $(BUILD)/fonts
 	cp bower_components/open-iconic/font/fonts/* $(BUILD)/fonts
 
 .PHONY: $(BUILD)/main.js
@@ -64,3 +63,7 @@ install-deps:
 .PHONY: clean
 clean:
 	rm -rf $(BUILD)/*
+
+.PHONY: clean-deps
+clean-deps:
+	rm -rf node_modules bower_components
