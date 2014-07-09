@@ -20,7 +20,7 @@ DropdownContainer = core.createComponent 'rui.DropdownContainer',
       attachment: @props.attachment
       targetAttachment: @props.targetAttachment
       classPrefix: 'rui'
-      constraints: [{to: 'window', pin: true, attachment: "together"}]
+      constraints: [{to: '#redmine-dashboard', pin: true, attachment: "together"}]
 
     React.renderComponent @renderComponent(), @node
 
