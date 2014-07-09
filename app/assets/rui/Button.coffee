@@ -12,14 +12,14 @@ Button = core.createComponent 'rui.Button',
     props = extend {}, @props
 
     props.className = classSet
-        'rui-btn': true,
-        'rui-plain': props.plain
-        'rui-large': props.large
+      'rui-btn': true,
+      'rui-plain': props.plain
+      'rui-large': props.large
 
     children = []
     if props.icon
-        children.push Icon glyph: props.icon
-        delete props.icon
+      children.push Icon glyph: props.icon
+      delete props.icon
 
     children.push props.label || props.children
 

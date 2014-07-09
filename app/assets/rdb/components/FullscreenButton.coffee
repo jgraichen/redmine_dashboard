@@ -21,9 +21,11 @@ module.exports = core.createComponent 'rdb.FullscreenButton',
   render: ->
     Button
       large: true
-      icon: if @state.fullscreen then 'fullscreen-exit' else 'fullscreen-enter'
       'title': t('rdb.header.actions.toggle_fullscreen')
       'aria-label': t('rdb.header.actions.toggle_fullscreen')
       onClick: (e) =>
         util.handlePrimaryClick e, (e) =>
           Rdb.events.trigger 'rdb:fullscreen:toggle'
+      Icon
+        glyph: if @state.fullscreen then 'fullscreen-exit' else 'fullscreen-enter'
+        flip: horizontal: true

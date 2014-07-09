@@ -2,7 +2,9 @@ require 'spec_helper'
 require 'ostruct'
 
 describe Rdb::Engine do
-  let(:klass) { Class.new(Rdb::Engine) }
+  let(:board) { double 'board' }
+  let(:klass) { Class.new(described_class) }
+  let(:engine) { described_class.new board }
 
   describe 'class' do
     describe '^engines' do
@@ -42,5 +44,9 @@ describe Rdb::Engine do
         end
       end
     end
+  end
+
+  describe '#as_json' do
+    subject { engine.as_json }
   end
 end

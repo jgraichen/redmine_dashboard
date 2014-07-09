@@ -16,6 +16,18 @@ module Rdb
       board.name
     end
 
+    def as_json(*)
+      {type: self.class.name.split('::').last.downcase}
+    end
+
+    def update(params)
+      board.update_attributes! name: params[:name]
+
+      true
+    rescue ActiveRecord::RecordInvalid => e
+      return e.record.errors
+    end
+
     class << self
       def lookup(name)
         if (engine = engines.detect { |klass| klass.name == name })

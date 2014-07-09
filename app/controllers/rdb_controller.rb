@@ -1,6 +1,6 @@
 class RdbController < ::ApplicationController
   unloadable
-  before_filter :board, only: [:show, :update, :destroy, :configure]
+  before_filter :board, only: [:show, :update, :destroy]
   respond_to :html
 
   def index
@@ -28,6 +28,8 @@ class RdbController < ::ApplicationController
 
       RdbSource.create! context: context, board: board
 
+      Rails.logger.warn board.inspect
+
       redirect_to rdb_url board
     end
   end
@@ -35,11 +37,11 @@ class RdbController < ::ApplicationController
   def show
   end
 
-  def configure
-    if request.xhr?
-      render partial: 'rdb/configure'
+  def update
+    if !(err = @board.engine.update(params)).eql?(true) # Error hash
+      render status: 422, json: {errors: err}
     else
-      render
+      render json: @board
     end
   end
 
@@ -50,7 +52,7 @@ class RdbController < ::ApplicationController
   private
 
   def board
-    @board ||= RdbBoard.find(params[:board_id]).tap do |board|
+    @board ||= RdbBoard.find(params[:id]).tap do |board|
       @engine = board.engine
 
       if board.sources.count == 1 && board.sources.first.context.is_a?(Project)

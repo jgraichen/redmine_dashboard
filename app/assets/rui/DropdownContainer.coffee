@@ -1,5 +1,6 @@
 React = require 'react'
 Tether = require 'vendor/tether'
+classSet = require 'react/lib/cx'
 
 core = require './core'
 {div, span} = require './DOM'
@@ -34,6 +35,11 @@ DropdownContainer = core.createComponent 'rui.DropdownContainer',
     document.body.removeChild @node
 
   renderComponent: ->
+    if @props.visible
+      @node.className = 'rui-container rui-visible'
+    else
+      @node.className = 'rui-container'
+
     div className: 'rui-container-inlet', @props.children
 
   render: ->

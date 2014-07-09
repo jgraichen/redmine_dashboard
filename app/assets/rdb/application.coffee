@@ -8,8 +8,8 @@ GlobalEventBus = require './mixins/GlobalEventBus'
 
 AppRouter = Router.extend
   routes:
-    'configure': 'configure'
-    '': 'show'
+    'dashboards/:id/configure': 'configure'
+    'dashboards/:id': 'show'
 
 AppComponent = core.createComponent 'rdb.AppComponent',
   mixins: [GlobalEventBus],
@@ -28,6 +28,14 @@ AppComponent = core.createComponent 'rdb.AppComponent',
     fullscreen = !@state.fullscreen
     @setState fullscreen: fullscreen
     @trigger 'rdb:fullscreen:changed', fullscreen
+
+  componentDidMount: ->
+    @props.board.on 'change', =>
+      @forceUpdate()
+    , @
+
+  componentWillUnmount: ->
+    @props.board.off null, null, @
 
   render: ->
     component = switch @state.current

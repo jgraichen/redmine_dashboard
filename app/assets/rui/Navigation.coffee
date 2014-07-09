@@ -1,16 +1,18 @@
 # RdbUI Button
-
-core = require('./core')
 map = require('react').Children.map
 
+core = require './core'
+util = require './util'
 {div, nav, ul, li, a, span, section, h3} = require './DOM'
 
 Navigation = core.createComponent 'rui.Navigation',
   getInitialState: ->
     current: 0
 
-  setCurrent: (index) ->
-    @setState current: index
+  setCurrent: (index, e) ->
+    if index >= 0 && index < @props.children.length
+      e?.preventDefault()
+      @setState current: index
 
   render: ->
     tag = @props.component || div
@@ -26,9 +28,10 @@ Navigation = core.createComponent 'rui.Navigation',
                   content.push span className: 'help', pane.props.help
 
                 a
-                  onClick: (e) =>
-                    e.preventDefault()
-                    @setCurrent index
+                  ref: index
+                  tabIndex: 0
+                  onClick: (e) => if util.isPrimaryClick(e) then @setCurrent index, e
+                  onKeyPress: (e) => if e.keyCode == 13 then @setCurrent index, e
                   className: if @state.current == index then 'active'
                   content
             ]

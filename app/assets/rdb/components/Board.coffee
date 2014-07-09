@@ -41,15 +41,22 @@ module.exports = core.createComponent 'rdb.BoardComponent',
               Button
                 large: true
                 icon: 'cog'
-                'href': @props.board.url.configure
+                'href': @props.board.urls.configure
                 'title': t('rdb.header.actions.configure_board')
                 'aria-label': t('rdb.header.actions.configure_board')
                 onClick: (e) =>
                   util.handlePrimaryClick e, (e) =>
-                    Rdb.events.trigger 'navigate', '/configure'
+                    Rdb.events.trigger 'navigate', @props.board.urls.configure
           FullscreenButton fullscreen: @state.fullscreen
         ]
       ]
-      (section className: 'rdb-main', "X")
+      do =>
+        engine = @props.board.get("engine")
+
+        switch engine['type']
+          when 'taskboard'
+            require('./Taskboard')(board: @props.board, engine: engine)
+          else
+            section className: 'rdb-main', 'Unknown board engine!'
     ]
 

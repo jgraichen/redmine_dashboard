@@ -1,10 +1,10 @@
 class RdbBoard < ActiveRecord::Base
   self.table_name = "#{table_name_prefix}rdb_boards#{table_name_suffix}"
 
-  serialize :preferences, Hash
+  serialize :preferences
   has_many :sources, class_name: 'RdbSource'
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
 
   def engine_class
     Rdb::Engine.lookup! read_attribute :engine
@@ -20,6 +20,18 @@ class RdbBoard < ActiveRecord::Base
     else
       write_attribute :engine, engine.to_s
     end
+  end
+
+  def preferences
+    if (pref = read_attribute(:preferences)).is_a?(Hash)
+      pref
+    else
+      self.preferences = {}
+    end
+  end
+
+  def preferences=(prefs)
+    write_attribute :preferences, preferences.merge(prefs)
   end
 
   def issues
@@ -46,11 +58,11 @@ class RdbBoard < ActiveRecord::Base
     end
   end
 
-  def as_json(*)
+  def as_json(*args)
     {
       id: id,
       name: name,
-      engine: engine.class.name.underscore,
+      engine: engine.as_json(*args)
     }
   end
 end

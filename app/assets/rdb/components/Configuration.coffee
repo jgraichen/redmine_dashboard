@@ -1,7 +1,9 @@
+Promise = require 'bluebird'
 
 core = require 'rui/core'
 util = require 'rui/util'
 Icon = require 'rui/Icon'
+Input = require 'rui/Input'
 Button = require 'rui/Button'
 Observer = require 'rui/Observer'
 Translate = require 'rui/Translate'
@@ -14,25 +16,22 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
   render: ->
     backToBoard = (e) =>
       util.handlePrimaryClick e, (e) =>
-        Rdb.events.trigger 'navigate', '/'
+        Rdb.events.trigger 'navigate', @props.board.urls.root
 
     div [
       header className: 'rdb-header', [
         div [
           Button
             icon: 'chevron-left'
+            href: @props.board.urls.root
             onClick: backToBoard
-          Observer
-            watch: @props.board
-            event: 'change:name'
-            render: =>
-              Translate
-                key: 'rdb.header.configure.header'
-                component: h2
-                link: a
-                  href: @props.board.url.base
-                  onClick: backToBoard
-                  @props.board.get 'name'
+          Translate
+            key: 'rdb.header.configure.header'
+            component: h2
+            link: a
+              href: @props.board.urls.root
+              onClick: backToBoard
+              @props.board.get 'name'
         ]
         div []
       ]
@@ -41,7 +40,15 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
           div
             name: 'General'
             help: 'Board name and shared access'
-            h2 'General configuration'
+            [
+              h2 'General configuration'
+              Input
+                value: @props.board.get('name')
+                onSave: (val) =>
+                  @props.board.save({'name': val}, wait: true)
+                    .catch (xhr) =>
+                      throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
+            ]
           div
             name: 'Issue sources'
             help: 'Source projects and issue filters'
