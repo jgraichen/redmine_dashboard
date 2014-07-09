@@ -15,17 +15,21 @@ Input = core.createComponent 'rui.Input',
     value: @props.value
 
   activate: (e) ->
+    return if @state.active
+
     e?.preventDefault()
     @setState active: true, value: @props.value, =>
       @refs['input'].getDOMNode().focus()
 
   deactivate: (e) ->
+    return unless @state.active
+
     e?.preventDefault()
-    @setState active: false, error: false
+    @setState active: false, error: false, value: @props.value
 
   save: (e) ->
     e?.preventDefault()
-    if @props.value != @state.value
+    if @props.value != @state.value && @state.active
       @props.onSave? @state.value
         .then =>
           @deactivate()
@@ -56,31 +60,35 @@ Input = core.createComponent 'rui.Input',
       className: cs,
       onSubmit: (e) => @save(e)
     , [
-      do =>
-        if @state.active || @state.error
-          component
-            ref: 'input'
-            value: @state.value
-            onChange: (e) => @setState value: e.target.value
-            onBlur: (e) => @save(e)
-        else
-          span
-            className: 'rui-input-preview'
-            tabIndex: 0
-            onClick: (e) => if util.isPrimaryClick(e) then @activate(e)
-            onKeyPress: (e) => if e.keyCode == 13 then @activate(e)
-            onFocus: (e) => if @state.keyPressed then @activate(e)
-            @props.value
+      component
+        ref: 'input'
+        value: @state.value
+        className: if !@state.active then 'rui-input-preview'
+        onChange: (e) =>
+          @setState value: e.target.value
+        onBlur: (e) =>
+          e.preventDefault()
+          setTimeout (=> @save()), 100 # Otherwise will be triggered before
+                                       # onClick of cancel button
+        onClick: (e) =>
+          if util.isPrimaryClick(e) then @activate(e)
+        onKeyPress: (e) =>
+          if e.keyCode == 13 then @activate(e)
+        onFocus: (e) =>
+          if @state.keyPressed then @activate(e)
       span className: 'rui-input-action', do =>
         if @state.active || @state.error
           a
             key: 'cancel'
-            onClick: (e) => if util.isPrimaryClick(e) then @deactivate(e)
+            ref: 'cancel'
+            onClick: (e) =>
+              if util.isPrimaryClick(e) then @deactivate(e)
             Icon glyph: 'circle-x'
         else
           a
             key: 'edit'
-            onClick: (e) => if util.isPrimaryClick(e) then @activate(e)
+            onClick: (e) =>
+              if util.isPrimaryClick(e) then @activate(e)
             Icon glyph: 'pencil'
       do =>
         if @state.error then span className: 'rui-input-error', @state.error
