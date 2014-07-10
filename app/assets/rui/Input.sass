@@ -19,14 +19,26 @@
     background-color: $primary-white
     color: $text-color
 
-    &:focus
+    &.focus
       border-color: $focus-color
       outline: 1px solid $focus-color
       border-radius: 0
 
+    &:not(.focus)
+      &:focus
+        outline: 0
+
   input, textarea
     padding-right: 20px
     cursor: text
+
+  textarea
+    min-height: 100px
+    padding-right: 30px
+    overflow-y: scroll
+
+    ~ .rui-input-action
+      padding-right: 15px
 
   .rui-input-preview
     font-weight: bold

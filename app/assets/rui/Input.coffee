@@ -5,11 +5,11 @@ classSet = require 'react/lib/cx'
 core = require './core'
 util = require './util'
 Icon = require './Icon'
-KeyboardSupport = require './KeyboardSupport'
+KeyboardFocus = require './KeyboardFocus'
 {a, span, div, input, textarea, form} = require './DOM'
 
 Input = core.createComponent 'rui.Input',
-  mixins: [KeyboardSupport]
+  mixins: [KeyboardFocus]
 
   getInitialState: ->
     value: @props.value
@@ -52,6 +52,11 @@ Input = core.createComponent 'rui.Input',
       'rui-input': true
       'rui-input-active': @state.active
       'rui-input-inactive': !@state.active
+      'focus': !@state.focus
+
+    ccs = classSet
+      'rui-input-preview': !@state.active
+      'focus': @state.focus
 
     #
     component = if @props.multiline then textarea else input
@@ -63,10 +68,11 @@ Input = core.createComponent 'rui.Input',
       component
         ref: 'input'
         value: @state.value
-        className: if !@state.active then 'rui-input-preview'
+        className: ccs
         onChange: (e) =>
           @setState value: e.target.value
         onBlur: (e) =>
+          @_KeyboardFocus_onBlur(e)
           e.preventDefault()
           setTimeout (=> @save()), 100 # Otherwise will be triggered before
                                        # onClick of cancel button
@@ -75,6 +81,7 @@ Input = core.createComponent 'rui.Input',
         onKeyPress: (e) =>
           if e.keyCode == 13 then @activate(e)
         onFocus: (e) =>
+          @_KeyboardFocus_onFocus(e)
           if @state.keyPressed then @activate(e)
       span className: 'rui-input-action', do =>
         if @state.active || @state.error

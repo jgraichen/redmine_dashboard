@@ -5,13 +5,17 @@ classSet = require 'react/lib/cx'
 
 core = require './core'
 Icon = require './Icon'
+KeyboardFocus = require './KeyboardFocus'
 {a, div, button} = require './DOM'
 
 Button = core.createComponent 'rui.Button',
+  mixins: [KeyboardFocus]
+
   render: ->
     props = extend {}, @props
 
     props.className = classSet
+      'focus': @state.focus
       'rui-btn': true,
       'rui-plain': props.plain
       'rui-large': props.large
