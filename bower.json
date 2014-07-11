@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "open-iconic": "~1.1.1",
-    "bourbon": "~4.0.2",
-    "mousetrap": "~1.4.6"
+    "mousetrap": "~1.4.6",
+    "tether": "~0.6.5"
   }
 }

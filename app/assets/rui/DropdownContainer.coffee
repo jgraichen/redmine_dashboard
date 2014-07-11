@@ -1,5 +1,5 @@
 React = require 'react'
-Tether = require 'vendor/tether'
+Tether = require 'tether/tether'
 classSet = require 'react/lib/cx'
 
 core = require './core'

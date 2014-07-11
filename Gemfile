@@ -8,6 +8,7 @@ group :development do
   gem 'rspec', '~> 3.0'
 
   gem 'sass'
+  gem 'bourbon'
 
   gem 'pry'
   gem 'pry-nav'

@@ -1,6 +1,6 @@
 RUBY = ruby
 NODE = node
-SASS = $(RUBY) -S sass -Ibower_components -Inode_modules -I$(SOURCE)
+SASS = $(RUBY) -S sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
 BROWSERIFY = $(NODE) node_modules/.bin/browserify -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = $(NODE) node_modules/.bin/exorcist
 UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
@@ -58,7 +58,7 @@ watch:
 .PHONY: install-deps
 install-deps:
 	npm install
-	$(NODE) node_modules/.bin/bower install
+	bower install
 
 .PHONY: clean
 clean:

@@ -8,4 +8,5 @@
 /assets
 /node_modules
 /bower_components
+/vendor
 .sass-cache
