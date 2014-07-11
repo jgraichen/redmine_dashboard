@@ -1,0 +1,51 @@
+en:
+  project_module_dashboard: "Dashboards"
+  permission_view_dashboards: "View Dashboards"
+  permission_create_dashboards: "Create new Dashboards"
+
+  rdb:
+    new:
+      default_board_name:
+        zero: "New Board"
+        other: "New Board (%{count})"
+
+    menu:
+      dashboards: "Dashboards"
+      my_dashboards: "My Dashboards"
+
+    header:
+      board:
+        available_boards: "Available Boards"
+        new_board: "Create new Board"
+      configure:
+        header: "Configure %(link)s"
+      actions:
+        configure_board: "Configure board"
+        toggle_fullscreen: "Toggle fullscreen"
+
+    taskboard:
+      configure:
+        nav:
+          configuration: Configuration
+          general: General
+          sources: Issue sources
+          columns: Columns
+          swimlanes: Swimlanes
+        help:
+          general: Board name and shared access
+          sources: Source projects and issue filters
+          columns: Column layout and view options
+          swimlanes: Vertical swimlanes to group issue
+        general:
+          headline: General configuration
+          description: Change values below.
+          general: General
+          shared_access: Shared Access
+          label:
+            name: Board name
+            owners: Board owner(s)
+            share_access: Shared access to
+          help:
+            name: Required. The board name is shown on top of the board and in the board menu.
+            owners: Appoint additional board owners. They can configure everything of the board including the list of owners.
+            share_access: Configure which users or groups can see this board. They still won't see issues they would not see otherwise.

@@ -1,0 +1,66 @@
+
+html>body #content
+  padding: 0
+  min-height: 0
+
+body:not([class*=theme-])
+  #main-menu li a.rdb-project-dashboards.selected
+    background-color: $primary-lightgray
+
+#redmine-dashboard
+  background-color: $primary-white
+
+  border-radius: 7px
+
+  &.rdb-fullscreen
+    z-index: 9999999999999999999999
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+    border-radius: 0
+
+  *
+    box-sizing: border-box
+
+  a
+    cursor: pointer
+
+    &:focus, &:hover
+      text-decoration: none
+
+  .rdb-clear
+    clear: both
+
+  .rdb-header
+    background-color: $primary-lightgray
+    border-bottom: 1px solid $frame-color
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15)
+
+    display: table
+    width: 100%
+    padding: 10px 15px 10px
+
+    border-top-left-radius: 7px
+    border-top-right-radius: 7px
+
+    > div
+      display: table-cell
+      vertical-align: middle
+
+      &:last-child
+        text-align: right
+
+    h1, h2, h3
+      margin: 3px 15px
+      display: inline-block
+
+  .rdb-main
+    margin: 15px
+    background-color: $primary-white
+    // border-bottom: 1px solid $frame-color
+
+    // box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15)
+    // min-height: 200px

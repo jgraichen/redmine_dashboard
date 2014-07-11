@@ -1,5 +1,0 @@
-$('#rdb-wrapper').html("<%= escape_javascript(render :partial => @board.id.to_s) %>");
-Rdb.rdbInit();
-<% if flash[:rdb_error] %>
-	Rdb.rdbError("<%= escape_javascript(flash[:rdb_error]) %>");
-<% end %>

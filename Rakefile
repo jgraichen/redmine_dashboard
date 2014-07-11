@@ -4,63 +4,19 @@ require 'rubygems'
 require 'bundler'
 require 'logger'
 
-Bundler.require :default, :development, :assets
-
 require 'rspec/core/rake_task'
 
-#
-# Dashboard tasks
-#
-DEFAULT_REDMINE_VERSION = '2.5.1'
+require_relative './redmine'
 
-class Redmine
-  attr_reader :version, :path
-
-  def initialize(opts = {})
-    @version = opts.delete(:version) { |_| ENV['REDMINE_VERSION'] || DEFAULT_REDMINE_VERSION }
-    @path    = File.expand_path "./tmp/redmine/#{@version}", Dir.pwd
+class LocalRakeTask < RSpec::Core::RakeTask
+  def spec_command
+    "ruby -S bundle exec #{super}"
   end
+end
 
-  def downloaded?
-    File.exists? File.join(path, 'Gemfile')
-  end
-
-  def database_config(env)
-    {'pool' => 5, 'timeout' => 5000, 'adapter' => 'mysql2', 'database' => "rdb_#{version.gsub('.', '_')}_#{env}"}
-  end
-
-  def svn_url
-    "http://svn.redmine.org/redmine/#{version == 'master' ? 'trunk' : "tags/#{version}"}"
-  end
-
-  def clean
-    FileUtils.rm_rf path if File.exists? path
-    FileUtils.mkdir_p path
-  end
-
-  def exec(*args)
-    Dir.chdir path do
-      ::Bundler.with_clean_env do
-        Redmine.exec *args
-      end
-    end
-  end
-
-  def ruby(*args)
-    exec %w(ruby -S), *args
-  end
-
-  def bx(*args)
-    ruby %w(bundle exec), *args
-  end
-
-  class << self
-    def exec(*args)
-      STDOUT.puts "#{Dir.getwd} $ #{args.flatten.join ' '}"
-      unless system(*args.flatten)
-        raise RuntimeError, "Command failed: #{args.flatten.join ' '}"
-      end
-    end
+class RMRakeTask < LocalRakeTask
+  def run_task(*args)
+    Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
   end
 end
 
@@ -70,58 +26,107 @@ end
 
 RM = Redmine.new
 
-task :default => [:install, :update, :spec]
+task default: [:install, :update, :compile, :spec]
 
-desc 'Run plugin specs'
-Class.new(RSpec::Core::RakeTask) do
-  def run_task(*args)
-    Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
+desc 'Run all specs (alias for spec:all)'
+task spec: 'spec:all'
+
+namespace :spec do
+  desc 'Run unit, plugin and browser specs'
+  task all: [:unit, :plugin, :browser]
+
+  desc 'Run unit specs (Testing isolated dashboard components)'
+  LocalRakeTask.new(:unit) do |t|
+    t.pattern    = 'spec/unit/**/*_spec.rb'
+    t.ruby_opts  = '-Ispec/unit -Ilib'
+    t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
-  def spec_command; "ruby -S bundle exec #{super}" end
-end.new(:spec) do |t|
-  t.pattern    = "#{RM.path}/spec/**/*_spec.rb"
-  t.ruby_opts  = "-I#{RM.path}/spec"
-  t.rspec_opts = "--color --backtrace"
+
+  desc 'Run plugin specs (Testing within redmine application)'
+  RMRakeTask.new(:plugin) do |t|
+    t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
+    t.ruby_opts  = "-I#{RM.path}/spec/plugin"
+    t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
+  end
+
+  desc 'Run browser specs'
+  RMRakeTask.new(:browser) do |t|
+    t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
+    t.ruby_opts  = "-I#{RM.path}/spec/browser"
+    t.rspec_opts = '--color --backtrace'
+    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
+  end
 end
+task ci: :spec
 
 desc 'Setup project environment (alias for redmine:install)'
-task :install => %w(redmine:install)
+task install: %w(redmine:install)
 
 desc 'Update project environment (alias for redmine:update)'
-task :update => %w(redmine:update)
+task update: %w(redmine:update)
 
-desc 'Start local redmine server'
-task :server => :install do |t, args|
+desc 'Start local redmine server (aliases: `s`)'
+task server: :install do |_, args|
   RM.bx %w(rails server), args
 end
-desc 'Start local redmine server (alias for server)'
-task :s => 'server'
+task s: 'server'
+
+desc <<-DESC.gsub(/^ {2}/, '')
+  Cleanup project directory. This removes all installed
+  redmines as well as precompiled assets.
+DESC
+task :clean do
+  %w(tmp).each do |dir|
+    FileUtils.rm_rf dir if File.directory?(dir)
+  end
+end
 
 namespace :redmine do
-  desc 'Download RM'
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Download Redmine. That includes exporting SVN tag,
+    linking plugin and plugin specs and do necessary
+    changed to Redmine\'s Gemfile.
+  DESC
   task :download do
-    if RM.downloaded? && !force?
-      puts "Redmine #{RM.version} already downloaded. Use `redmine:clean` or FORCE=1 to force redownloaded."
-    end
-    if !RM.downloaded? || force?
+    if File.exist?(File.join(RM.path, '.downloaded')) && !force?
+      puts "Redmine #{RM.version} already downloaded. "\
+           'Use `redmine:clean` or FORCE=1 to force redownloaded.'
+    else
       RM.clean
       RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
       RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
       RM.exec %w(mkdir -p), 'public/plugin_assets'
-      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'), 'public/plugin_assets/redmine_dashboard_linked'
+      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'),
+        'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
-      RM.exec %w(sed -i -e), "s/.*gem [\"']capybara[\"'].*//g", "Gemfile"
-      RM.exec %w(sed -i -e), "s/.*gem [\"']database_cleaner[\"'].*//g", "Gemfile"
+
+      RM.exec %w(sed -i -e),
+        "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
+      RM.exec %w(sed -i -e),
+        "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
+      RM.exec %w(sed -i -e),
+        "s/.*gem [\"']rake[\"'].*//g", 'Gemfile'
+
+      FileUtils.touch File.join(RM.path, '.downloaded')
     end
   end
 
-  desc 'Configure RM'
-  task :config => :download do
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Configure Redmine. A database config will be generated
+    using mysql2 gem and the `rdb_development` database for
+    the `development` environment. Already existing
+    configuration will be preserved except for the `test`
+    environment.
+  DESC
+  task config: :download do
     config = {}
-    if File.exists? File.join(RM.path, 'config/database.yml')
+    if File.exist? File.join(RM.path, 'config/database.yml')
       begin
         config = YAML.load_file File.join(RM.path, 'config/database.yml')
       rescue => e
+        warn e
       end
     end
 
@@ -135,9 +140,18 @@ namespace :redmine do
     end
   end
 
-  desc 'Install RM'
-  task :install => :config do
-    unless File.exist? File.join(RM.path, '.installed') || force?
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Install Redmine. This task will run `bundle install`,
+    generate secret token, create databases as well as
+    migrate and prepare them. This task will only run once
+    unless forced. Use `update` for updating after new gems
+    or database migrations.
+  DESC
+  task install: :config do
+    if File.exist?(File.join(RM.path, '.installed')) && !force?
+      puts "Redmine #{RM.version} already installed. Use `redmine:clean` to "\
+           'delete redmine and reinstall or FORCE=1 to force install steps.'
+    else
       Rake::Task['redmine:bundle'].invoke
 
       RM.bx %w(rake generate_secret_token)
@@ -147,19 +161,21 @@ namespace :redmine do
       Rake::Task['redmine:prepare'].invoke
 
       FileUtils.touch File.join(RM.path, '.installed')
-    else
-      puts "Redmine #{RM.version} already installed. Use `redmine:clean` to delete redmine and reinstall or FORCE=1 to force install steps."
     end
   end
 
-  desc 'Update RM by running bundle install and database migrations'
-  task :update => [:install, :bundle, :migrate, :prepare]
+  desc <<-DESC.gsub(/^ {4}/, '')
+    Update Redmine. This runs `bundle install` and migrate
+    and prepare databases.
+  DESC
+  task update: [:install, :bundle, :migrate, :prepare]
 
   task :bundle do
     tries = 0
     begin
+      RM.exec %w(rm -f Gemfile.lock)
       RM.exec %w(bundle install --without rmagick)
-    rescue => e
+    rescue
       STDERR.puts 'bundle install failed. Retry...'
       retry if (tries += 1) < 5
     end

@@ -1,58 +1,49 @@
-# Redmine Dashboard 2
+# Redmine Dashboard 3
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=develop)](https://travis-ci.org/jgraichen/redmine_dashboard)
 [![Flattr this git repo](http://img.shields.io/badge/flattr-this-green.svg)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
 
-This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
+This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
 
-**Redmine Dashboard 2** is compatible with Redmine 2.4 and possibly older versions.
-
-## Features List
-
-* Drag-n-drop of issues
-* Configurable columns
-* Grouping & Filtering
-* Group folding
-* Hierarchical parent issue view
-* Include subproject issues
-* Quick edit of assignee and progress
-
-Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
+**Redmine Dashboard** is compatible with Redmine 2.1 and newer.
 
 ## Install
 
-### Ubuntu / Debian
+TODO
 
-I provide a PPA at [ppa:jgraichen/redmine-dashboard](https://launchpad.net/~jgraichen/+archive/redmine-dashboard) for Ubuntu Trusty that should work with Trusty's Redmine and [ppa:ondrej/redmine](https://launchpad.net/~ondrej/+archive/redmine). Debian Wheezy with wheezy-backports enabled should also work with trusty PPA.
+## Update
 
-### Others
+TODO
 
-Clone git repository to `plugins`, checkout wanted release (`git checkout v2.2.0`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
+## Contributing
 
-#### Upgrade
+### Translate
 
-Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout v2.2.0`). Run `bundle install` to install newly required gems. A database migration is not needed.
+You can help even without coding by translating Redmine Dashboard or improving an existing localization. I prefer translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard/redmine-dashboard) but also gladly accept Pull Requests for the YAML files.
 
-You can list all available version with `git tag -l`.
+### Features
 
-## Contribute
+You can also add a new or requested feature by sending a Pull Request. Please add specs so that I do not break your feature in the future.
 
-I appreciate any help and like Pull Requests. The `master` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `develop` branch. Please try to not add larger new features to current v2.
-
-I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
-
-## Build Debian / Ubuntu package
-
-Checkout `debian` branch. The branch is prepared to be used with `gbp`.
-
-* Build a source only package:
-  `gbp buildpackage --git-builder="debuild -S" --git-ignore-new`
-* Build binary packages with `sbuild`:
-  `gbp buildpackage --git-builder="sbuild -A" --git-ignore-new`
+There are several rake and make tasks to setup a working development environment and run all specs. See [CONTRIBUTING.md](CONTRIBUTING.md) of more information.
 
 ## License
 
-Redmine dashboard is licensed under the Apache License, Version 2.0.
-See LICENSE for more information.
+```
+Copyright (C) 2013-2014 Jan Graichen <jg@altimos.de>
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+details.
+
+All contributions will be included under the terms of the GNU Affero General
+Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version.
+```

@@ -5,3 +5,7 @@
 /.rspec
 /.idea
 /*.iml
+/assets
+/node_modules
+/bower_components
+.sass-cache

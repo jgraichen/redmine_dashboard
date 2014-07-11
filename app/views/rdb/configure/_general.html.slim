@@ -1,0 +1,21 @@
+.rdb-js-configure-general.rdb-form
+  form action=rdb_configure_path(@board, section: :general)
+    h2=t :'rdb.taskboard.configure.general.headline'
+    p =t :'rdb.taskboard.configure.general.description'
+    h3=t :'rdb.taskboard.configure.general.general'
+    p
+      label.rdb-label=t :'rdb.taskboard.configure.general.label.name'
+      input.rdb-input.rdb-js-name type="text" value=@board.name
+      span.help=t :'rdb.taskboard.configure.general.help.name'
+    p
+      label.rdb-label=t :'rdb.taskboard.configure.general.label.owners'
+      input.rdb-input type="text" value="Board owners"
+      span.help=t :'rdb.taskboard.configure.general.help.owners'
+    h3=t :'rdb.taskboard.configure.general.shared_access'
+    p
+      label.rdb-label=t :'rdb.taskboard.configure.general.label.share_access'
+      input.rdb-input type="text" value="Share Access"
+      span.help=t :'rdb.taskboard.configure.general.help.share_access'
+    p.rdb-form-actions
+      input.rdb-btn type="reset" value="Reset"
+      input.rdb-btn-primary type="submit" value="Save"

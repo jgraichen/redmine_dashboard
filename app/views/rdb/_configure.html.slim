@@ -1,0 +1,8 @@
+header
+  h2
+    ' Configure
+    = link_to rdb_url(@board) do
+      span data-bind="text: name"
+  .rdb-clear
+section
+  = render partial: "#{@engine.class.name.underscore}/configure", locals: {board: @board, engine: @engine}

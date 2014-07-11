@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[redmine-dashboard-2.strings]
+[redmine-dashboard.strings]
 file_filter = config/locales/<lang>.yml
 source_file = config/locales/en.yml
 source_lang = en

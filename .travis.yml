@@ -5,12 +5,15 @@ rvm:
 - 2.0.0
 - 2.1
 env:
-- REDMINE_VERSION=2.4.5
-- REDMINE_VERSION=2.5.1
+- REDMINE_VERSION=2.4.6
+- REDMINE_VERSION=2.5.2
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
-  - env: REDMINE_VERSION=2.5.1
   - env: REDMINE_VERSION=master
-before_script: bundle exec rake install
-script: bundle exec rake spec
+before_script:
+- make install-deps
+- bundle exec rake install
+script:
+- make min
+- bundle exec rake spec

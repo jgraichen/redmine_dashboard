@@ -1,0 +1,30 @@
+.rdb-nav-boxed#rdb-js-configure-pane
+  nav
+    h3=t :'rdb.taskboard.configure.nav.configuration'
+    ul
+      li
+        a href="#" data-tab="#rdb-js-configure-general"
+          span=t :'rdb.taskboard.configure.nav.general'
+          span.help=t :'rdb.taskboard.configure.help.general'
+      li: a href="#" data-tab="#rdb-js-configure-sources"
+          span=t :'rdb.taskboard.configure.nav.sources'
+          span.help=t :'rdb.taskboard.configure.help.sources'
+      li: a href="#" data-tab="#rdb-js-configure-columns"
+          span=t :'rdb.taskboard.configure.nav.columns'
+          span.help=t :'rdb.taskboard.configure.help.columns'
+      li: a href="#" data-tab="#rdb-js-configure-swimlanes"
+          span=t :'rdb.taskboard.configure.nav.swimlanes'
+          span.help=t :'rdb.taskboard.configure.help.swimlanes'
+
+  section
+    .rdb-tab#rdb-js-configure-general
+      = render partial: 'rdb/configure/general'
+    .rdb-tab#rdb-js-configure-sources
+      p Sources
+    .rdb-tab#rdb-js-configure-columns
+      p Columns
+    .rdb-tab#rdb-js-configure-swimlanes
+      p Swimlanes
+
+  javascript:
+    Rdb.$('#rdb-js-configure-pane').rdbTab();
