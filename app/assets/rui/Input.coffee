@@ -68,6 +68,7 @@ Input = core.createComponent 'rui.Input',
       component
         ref: 'input'
         value: @state.value
+        readOnly: !@state.active
         className: ccs
         onChange: (e) =>
           @setState value: e.target.value
