@@ -1,7 +1,6 @@
 # Redmine Dashboard 2
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=master)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
+[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=stable-v2)](https://travis-ci.org/jgraichen/redmine_dashboard)
 [![Flattr this git repo](http://img.shields.io/badge/flattr-this-green.svg)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
 
