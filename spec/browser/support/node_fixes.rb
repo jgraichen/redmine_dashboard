@@ -11,7 +11,7 @@ module NodeFixes
 
     send_keys(*keys, value)
 
-    driver.browser.execute_script 'arguments[0].blur()', native
+    Capybara.find('body').click
   end
 end
 
