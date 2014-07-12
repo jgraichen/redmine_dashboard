@@ -1,5 +1,5 @@
 - content_for :header_tags do
-  - if Rails.env.development?
+  - if Rails.env.development? || ENV['NO_MIN']
     = stylesheet_link_tag '../main.css', :plugin => 'redmine_dashboard_linked'
     = javascript_include_tag '../main.js', :plugin => 'redmine_dashboard_linked'
   - else
