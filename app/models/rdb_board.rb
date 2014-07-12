@@ -22,16 +22,10 @@ class RdbBoard < ActiveRecord::Base
     end
   end
 
-  def preferences
-    if (pref = read_attribute(:preferences)).is_a?(Hash)
-      pref
-    else
+  after_initialize do
+    unless preferences.is_a?(Hash)
       self.preferences = {}
     end
-  end
-
-  def preferences=(prefs)
-    write_attribute :preferences, preferences.merge(prefs)
   end
 
   def issues
