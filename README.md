@@ -8,7 +8,7 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 **Redmine Dashboard 2** is compatible with Redmine 2.4 and possibly older versions.
 
-![http://altimos.de/rdb/img/rdb_2-1.png]
+![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)
 
 ## Features List
 
