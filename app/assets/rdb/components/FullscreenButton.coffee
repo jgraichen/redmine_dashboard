@@ -19,7 +19,7 @@ module.exports = core.createComponent 'rdb.FullscreenButton',
     @setState fullscreen: state
 
   render: ->
-    Button
+    @transferPropsTo Button
       large: true
       'title': t('rdb.header.actions.toggle_fullscreen')
       'aria-label': t('rdb.header.actions.toggle_fullscreen')

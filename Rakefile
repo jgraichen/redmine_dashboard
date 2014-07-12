@@ -37,7 +37,7 @@ namespace :spec do
 
   desc 'Run unit specs (Testing isolated dashboard components)'
   LocalRakeTask.new(:unit) do |t|
-    t.pattern    = 'spec/unit/**/*_spec.rb'
+    t.pattern    = ENV['SPEC'] || 'spec/unit/**/*_spec.rb'
     t.ruby_opts  = '-Ispec/unit -Ilib'
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
@@ -45,7 +45,7 @@ namespace :spec do
 
   desc 'Run plugin specs (Testing within redmine application)'
   RMRakeTask.new(:plugin) do |t|
-    t.pattern    = "#{RM.path}/spec/plugin/**/*_spec.rb"
+    t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-I#{RM.path}/spec/plugin"
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']

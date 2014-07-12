@@ -65,7 +65,7 @@ Input = core.createComponent 'rui.Input',
       className: cs,
       onSubmit: (e) => @save(e)
     , [
-      component
+      @transferPropsTo component
         ref: 'input'
         value: @state.value
         readOnly: !@state.active

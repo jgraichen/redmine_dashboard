@@ -10,7 +10,7 @@ Translate = require 'rui/Translate'
 Navigation = require 'rui/Navigation'
 DropdownButton = require 'rui/DropdownButton'
 
-{div, section, header, h1, h2, a} = require 'rui/DOM'
+{div, section, header, h1, h2, a, label} = require 'rui/DOM'
 
 module.exports = core.createComponent 'rdb.ConfigurationComponent',
   render: ->
@@ -22,6 +22,7 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
       header className: 'rdb-header', [
         div [
           Button
+            id: 'rdb-return'
             icon: 'chevron-left'
             href: @props.board.urls.root
             onClick: backToBoard
@@ -42,7 +43,11 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
             help: 'Board name and shared access'
             [
               h2 'General configuration'
+              label
+                htmlFor: 'rdb-dashboard-name'
+                "Dashboard name"
               Input
+                id: 'rdb-dashboard-name'
                 value: @props.board.get('name')
                 onSave: (val) =>
                   @props.board.save({'name': val}, wait: true)

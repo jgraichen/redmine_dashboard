@@ -23,7 +23,7 @@ feature 'Boards', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('#rdb-js-board-menu').click
+    find('#rdb-menu').click
     click_on 'Create new Board'
 
     expect(page).to have_content 'New Board (2)'
@@ -36,8 +36,23 @@ feature 'Boards', js: true, sauce: true do
 
     expect(page).to have_css '#main-menu', visible: true
 
-    find('#rdb-js-fullscreen').click
+    find('#rdb-fullscreen').click
 
     expect(page).to have_css '#main-menu', visible: false
+  end
+
+  scenario 'Rename board' do
+    within '#main-menu' do
+      click_on 'Dashboards'
+    end
+
+    find('#rdb-menu').click
+    find('#rdb-configure').click
+
+    find(:fillable_field, 'Dashboard name').fill 'New dashboard name'
+
+    find('#rdb-return').click
+
+    expect(page).to have_content 'New dashboard name'
   end
 end

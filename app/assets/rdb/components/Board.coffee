@@ -29,6 +29,7 @@ module.exports = core.createComponent 'rdb.BoardComponent',
             if !@state.fullscreen
               DropdownButton
                 large: true
+                id: 'rdb-menu'
                 icon: 'grid-three-up'
                 [
                   h2 "CONTENT"
@@ -39,15 +40,16 @@ module.exports = core.createComponent 'rdb.BoardComponent',
           do =>
             if !@state.fullscreen
               Button
-                large: true
+                id: 'rdb-configure'
                 icon: 'cog'
-                'href': @props.board.urls.configure
-                'title': t('rdb.header.actions.configure_board')
+                href: @props.board.urls.configure
+                large: true
+                title: t('rdb.header.actions.configure_board')
                 'aria-label': t('rdb.header.actions.configure_board')
                 onClick: (e) =>
                   util.handlePrimaryClick e, (e) =>
                     Rdb.events.trigger 'navigate', @props.board.urls.configure
-          FullscreenButton fullscreen: @state.fullscreen
+          FullscreenButton id: 'rdb-fullscreen', fullscreen: @state.fullscreen
         ]
       ]
       do =>
