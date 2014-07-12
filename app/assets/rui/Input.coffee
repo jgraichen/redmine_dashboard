@@ -39,13 +39,14 @@ Input = core.createComponent 'rui.Input',
     if @props.value != @state.value && @state.active
       @props.onSave? @state.value
         .then =>
-          @deactivate()
+          if @isMounted() then @deactivate()
         .catch Input.Error, (err) =>
-          @setState active: true, error: err.message, =>
-            @refs['input'].getDOMNode().focus()
+          if @isMounted()
+            @setState active: true, error: err.message, =>
+              @refs['input'].getDOMNode().focus()
         .catch (err) =>
           console.warn 'Input received unknown error:', err
-          @deactivate()
+          if @isMounted() then @deactivate()
     else
       @deactivate()
 
