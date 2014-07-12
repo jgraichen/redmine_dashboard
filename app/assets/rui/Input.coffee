@@ -6,10 +6,17 @@ core = require './core'
 util = require './util'
 Icon = require './Icon'
 KeyboardFocus = require './KeyboardFocus'
-{a, span, div, input, textarea, form} = require './DOM'
+{a, span, div, input, textarea, form, label} = require './DOM'
+
+genUniq = do ->
+  index = 0
+  -> "rui-input-n#{index++}"
 
 Input = core.createComponent 'rui.Input',
   mixins: [KeyboardFocus]
+
+  getDefaultProps: ->
+    id: genUniq()
 
   getInitialState: ->
     value: @props.value
@@ -43,64 +50,72 @@ Input = core.createComponent 'rui.Input',
       @deactivate()
 
   render: ->
-    props = extend {}, @props
-
-    # Only needed for initial state
-    delete props.value
-
     cs = classSet
       'rui-input': true
       'rui-input-active': @state.active
       'rui-input-inactive': !@state.active
       'focus': !@state.focus
 
-    ccs = classSet
-      'rui-input-preview': !@state.active
-      'focus': @state.focus
-
-    #
-    component = if @props.multiline then textarea else input
-
     form
       className: cs,
       onSubmit: (e) => @save(e)
     , [
-      @transferPropsTo component
-        ref: 'input'
-        value: @state.value
-        readOnly: !@state.active
-        className: ccs
-        onChange: (e) =>
-          @setState value: e.target.value
-        onBlur: (e) =>
-          @_KeyboardFocus_onBlur(e)
-          e.preventDefault()
-          setTimeout (=> @save()), 100 # Otherwise will be triggered before
-                                       # onClick of cancel button
-        onClick: (e) =>
-          if util.isPrimaryClick(e) then @activate(e)
-        onKeyPress: (e) =>
-          if e.keyCode == 13 then @activate(e)
-        onFocus: (e) =>
-          @_KeyboardFocus_onFocus(e)
-          if @state.keyPressed then @activate(e)
-      span className: 'rui-input-action', do =>
-        if @state.active || @state.error
-          a
-            key: 'cancel'
-            ref: 'cancel'
-            onClick: (e) =>
-              if util.isPrimaryClick(e) then @deactivate(e)
-            Icon glyph: 'circle-x'
-        else
-          a
-            key: 'edit'
-            onClick: (e) =>
-              if util.isPrimaryClick(e) then @activate(e)
-            Icon glyph: 'pencil'
-      do =>
-        if @state.error then span className: 'rui-input-error', @state.error
+      @renderLabel()
+      @renderInput()
+      @renderAction()
+      @renderError()
     ]
+
+  renderLabel: ->
+    if @props.label
+      label className: 'rui-input-label', htmlFor: @props.id, @props.label
+
+  renderInput: ->
+    cs = classSet
+      'rui-input-preview': !@state.active
+      'focus': @state.focus
+
+    component = if @props.multiline then textarea else input
+
+    @transferPropsTo component
+      id: @props.id
+      ref: 'input'
+      value: @state.value
+      readOnly: !@state.active
+      className: cs
+      onChange: (e) =>
+        @setState value: e.target.value
+      onBlur: (e) =>
+        @_KeyboardFocus_onBlur(e)
+        e.preventDefault()
+        setTimeout (=> @save()), 100 # Otherwise will be triggered before
+                                     # onClick of cancel button
+      onClick: (e) =>
+        if util.isPrimaryClick(e) then @activate(e)
+      onKeyPress: (e) =>
+        if e.keyCode == 13 then @activate(e)
+      onFocus: (e) =>
+        @_KeyboardFocus_onFocus(e)
+        if @state.keyPressed then @activate(e)
+
+  renderAction: ->
+    span className: 'rui-input-action', do =>
+      if @state.active || @state.error
+        a
+          key: 'cancel'
+          ref: 'cancel'
+          onClick: (e) =>
+            if util.isPrimaryClick(e) then @deactivate(e)
+          Icon glyph: 'circle-x'
+      else
+        a
+          key: 'edit'
+          onClick: (e) =>
+            if util.isPrimaryClick(e) then @activate(e)
+          Icon glyph: 'pencil'
+
+  renderError: ->
+    if @state.error then span className: 'rui-input-error', @state.error
 
 class Input.Error extends Error
   constructor: (@message) ->

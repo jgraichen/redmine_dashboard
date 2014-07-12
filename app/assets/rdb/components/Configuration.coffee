@@ -43,11 +43,8 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
             help: 'Board name and shared access'
             [
               h2 'General configuration'
-              label
-                htmlFor: 'rdb-dashboard-name'
-                "Dashboard name"
               Input
-                id: 'rdb-dashboard-name'
+                label: 'Dashboard name'
                 value: @props.board.get('name')
                 onSave: (val) =>
                   @props.board.save({'name': val}, wait: true)
