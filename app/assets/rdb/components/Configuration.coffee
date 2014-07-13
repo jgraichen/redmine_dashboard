@@ -1,4 +1,3 @@
-t = require 'counterpart'
 Promise = require 'bluebird'
 
 core = require 'rui/core'
@@ -27,31 +26,31 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
             icon: 'chevron-left'
             onClick: backToBoard
             'href': @props.board.urls.root
-            'title': t('rdb.menu.return_to_dashboard')
-            'aria-label': t('rdb.menu.return_to_dashboard')
+            'title': Translate.t('rdb.menu.return_to_dashboard')
+            'aria-label': Translate.t('rdb.menu.return_to_dashboard')
           Translate
             key: 'rdb.configure.title'
             component: h2
             link: a
               onClick: backToBoard
               'href': @props.board.urls.root
-              'title': t('rdb.menu.return_to_dashboard')
-              'aria-label': t('rdb.menu.return_to_dashboard')
+              'title': Translate.t('rdb.menu.return_to_dashboard')
+              'aria-label': Translate.t('rdb.menu.return_to_dashboard')
               @props.board.get 'name'
         ]
         div []
       ]
       section className: 'rdb-main', [
-        Navigation id: 'cfg', name: t('rdb.configure.nav_title'), [
+        Navigation id: 'cfg', name: Translate.t('rdb.configure.nav_title'), [
           div
-            name: t('rdb.configure.general.title')
-            help: t('rdb.configure.general.nav_text')
+            name: Translate.t('rdb.configure.general.title')
+            help: Translate.t('rdb.configure.general.nav_text')
             [
-              h2 t('rdb.configure.general.title')
-              p t('rdb.configure.general.description')
-              h3 t('rdb.configure.general.general')
+              h2 Translate.t('rdb.configure.general.title')
+              p Translate.t('rdb.configure.general.description')
+              h3 Translate.t('rdb.configure.general.general')
               Input
-                label: t('rdb.configure.general.dashboard_name')
+                label: Translate.t('rdb.configure.general.dashboard_name')
                 value: @props.board.get('name')
                 onSave: (val) =>
                   @props.board.save({'name': val}, wait: true)
@@ -59,17 +58,17 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
                       throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
             ]
           div
-            name: t('rdb.configure.sources.title')
-            help: t('rdb.configure.sources.nav_text')
-            h2 t('rdb.configure.sources.title')
+            name: Translate.t('rdb.configure.sources.title')
+            help: Translate.t('rdb.configure.sources.nav_text')
+            h2 Translate.t('rdb.configure.sources.title')
           div
-            name: t('rdb.configure.columns.title')
-            help: t('rdb.configure.columns.nav_text')
-            h2 t('rdb.configure.columns.title')
+            name: Translate.t('rdb.configure.columns.title')
+            help: Translate.t('rdb.configure.columns.nav_text')
+            h2 Translate.t('rdb.configure.columns.title')
           div
-            name: t('rdb.configure.swimlanes.title')
-            help: t('rdb.configure.swimlanes.nav_text')
-            h2 t('rdb.configure.swimlanes.title')
+            name: Translate.t('rdb.configure.swimlanes.title')
+            help: Translate.t('rdb.configure.swimlanes.nav_text')
+            h2 Translate.t('rdb.configure.swimlanes.title')
         ]
       ]
     ]

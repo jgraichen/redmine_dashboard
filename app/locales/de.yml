@@ -1,51 +1,38 @@
 de:
-  project_module_dashboard: Dashboards
-  permission_view_dashboards: Dashboards anzeigen
-  permission_create_dashboards: Neue Dashboards anlegen
+  project_module_dashboard: "Dashboards"
+  permission_view_dashboards: "Dashboards anzeigen"
+  permission_create_dashboards: "Neue Dashboards anlegen"
 
   rdb:
     new:
       default_board_name:
         zero: "Neues Dashboard"
         other: "Neues Dashboard (%{count})"
+      toggle_fullscreen: "Vollbildmodus umschalten"
+      return_to_dashboard: "Zum Dashboard zurückkehren"
+      configure_board: "Dashboard konfigurieren"
 
-    menu:
-      dashboards: "Dashboards"
-      my_dashboards: "Meine Dashboards"
+    configure:
+      title: "%(link)s konfigurieren"
+      nav_title: "Konfiguration"
+      general:
+        title: "Allgemeine Einstellungen"
+        nav_text: "Allgemeines und Zugriffskontrolle"
+        description: "Klicke auf ein Formularfeld um es zu bearbeiten. Es wird automatisch beim Verlassen des Eingabefeldes gespeichern."
+        general: "Allgemeines"
+        dashboard_name: "Dashboard Name"
+        dashboard_name_text: "Notwendig. Der Dashboard Name wird über dem Dashboard und im Dashboard Menü angezeigt."
+      sources:
+        title: "Tickets"
+        nav_text: "Projekte und Filter"
+      columns:
+        title: "Spalten"
+        nav_text: "Spalten Layout und Anzeigeoptionen"
+      swimlanes:
+        title: "Swimlanes"
+        nav_text: "Swimlanes zum Gruppieren von Tickets"
 
-    header:
-      board:
-        available_boards: "Verfügbare Dashboards"
-        new_board: "Neues Dashboard anlegen"
-      configure:
-        header: "%(link)s konfigurieren"
-      actions:
-        configure_board: "Dashboard konfigurieren"
-        toggle_fullscreen: "Vollbild umschalten"
-
-    taskboard:
-      configure:
-        nav:
-          configuration: Konfiguration
-          general: Allgemein
-          sources: Ticket-Quellen
-          columns: Spalten
-          swimlanes: Swimlanes
-        help:
-          general: Dashboard name und Zugriffsrechte
-          sources: Quell-Projekte und Ticket-Filter
-          columns: Spaltenlayout und Ansichtsoptionen
-          swimlanes: Verticale Swimlanes zum Gruppieren von Tickets
-        general:
-          headline: Allgemeine Einstellungen
-          description: Change values below.
-          general: General
-          shared_access: Zugriffsrechte
-          label:
-            name: Dashboard Name
-            owners: Dashboard Administrator
-            share_access: Zugriff für
-          help:
-            name: Required. The board name is shown on top of the board and in the board menu.
-            owners: Appoint additional board owners. They can configure everything of the board including the list of owners.
-            share_access: Configure which users or groups can see this board. They still won't see issues they would not see otherwise.
+  rui:
+    input:
+      edit: "Feld bearbeiten"
+      cancel: "Bearbeiten abbrechen und Feld zurücksetzen"
