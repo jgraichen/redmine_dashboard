@@ -1,4 +1,5 @@
 # RdbUI Input Component
+t = require 'counterpart'
 extend = require 'extend'
 classSet = require 'react/lib/cx'
 
@@ -105,12 +106,16 @@ Input = core.createComponent 'rui.Input',
         a
           key: 'cancel'
           ref: 'cancel'
+          title: t('rui.input.cancel')
+          'aria-label': t('rui.input.cancel')
           onClick: (e) =>
             if util.isPrimaryClick(e) then @deactivate(e)
           Icon glyph: 'circle-x'
       else
         a
           key: 'edit'
+          title: t('rui.input.edit')
+          'aria-label': t('rui.input.edit')
           onClick: (e) =>
             if util.isPrimaryClick(e) then @activate(e)
           Icon glyph: 'pencil'

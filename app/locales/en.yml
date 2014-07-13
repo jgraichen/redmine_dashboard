@@ -12,40 +12,31 @@ en:
     menu:
       dashboards: "Dashboards"
       my_dashboards: "My Dashboards"
+      toggle_fullscreen: "Toggle fullscreen"
+      return_to_dashboard: "Return to Dashboard"
+      configure_board: "Configure Dashboard"
 
-    header:
-      board:
-        available_boards: "Available Boards"
-        new_board: "Create new Board"
-      configure:
-        header: "Configure %(link)s"
-      actions:
-        configure_board: "Configure board"
-        toggle_fullscreen: "Toggle fullscreen"
+    configure:
+      title: "Configure %(link)s"
+      nav_title: "Configuration"
+      general:
+        title: "General preferences"
+        nav_text: "Dashboard name and access control"
+        description: "Click form fields to edit them. They are saved automatically when leaving the form field e.g. when clicking outside."
+        general: "General"
+        dashboard_name: "Dashboard name"
+        dashboard_name_text: "Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu."
+      sources:
+        title: "Issue sources"
+        nav_text: "Source projects and issue filters"
+      columns:
+        title: "Columns"
+        nav_text: "Column layout and view options"
+      swimlanes:
+        title: "Swimlanes"
+        nav_text: "Vertical swimlanes to group issue"
 
-    taskboard:
-      configure:
-        nav:
-          configuration: Configuration
-          general: General
-          sources: Issue sources
-          columns: Columns
-          swimlanes: Swimlanes
-        help:
-          general: Board name and shared access
-          sources: Source projects and issue filters
-          columns: Column layout and view options
-          swimlanes: Vertical swimlanes to group issue
-        general:
-          headline: General configuration
-          description: Change values below.
-          general: General
-          shared_access: Shared Access
-          label:
-            name: Board name
-            owners: Board owner(s)
-            share_access: Shared access to
-          help:
-            name: Required. The board name is shown on top of the board and in the board menu.
-            owners: Appoint additional board owners. They can configure everything of the board including the list of owners.
-            share_access: Configure which users or groups can see this board. They still won't see issues they would not see otherwise.
+  rui:
+    input:
+      edit: "Start editing this field"
+      cancel: "Cancel editing and reset field"

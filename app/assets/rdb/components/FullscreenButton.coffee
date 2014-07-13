@@ -21,8 +21,8 @@ module.exports = core.createComponent 'rdb.FullscreenButton',
   render: ->
     @transferPropsTo Button
       large: true
-      'title': t('rdb.header.actions.toggle_fullscreen')
-      'aria-label': t('rdb.header.actions.toggle_fullscreen')
+      'title': t('rdb.menu.toggle_fullscreen')
+      'aria-label': t('rdb.menu.toggle_fullscreen')
       onClick: (e) =>
         util.handlePrimaryClick e, (e) =>
           Rdb.events.trigger 'rdb:fullscreen:toggle'
