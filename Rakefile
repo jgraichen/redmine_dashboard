@@ -83,6 +83,11 @@ task :clean do
   end
 end
 
+task :compile do
+  Redmine.exec %w(make install-deps)
+  Redmine.exec %w(make min)
+end
+
 namespace :redmine do
   desc <<-DESC.gsub(/^ {4}/, '')
     Download Redmine. That includes exporting SVN tag,
@@ -102,12 +107,10 @@ namespace :redmine do
         'public/plugin_assets/redmine_dashboard_linked'
       RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
 
+      # Adjust capybara version requirements as redmine locks to ~> 2.1.0
+      # but rspec 3 requires >= 2.2
       RM.exec %w(sed -i -e),
-        "s/.*gem [\"']capybara[\"'].*//g", 'Gemfile'
-      RM.exec %w(sed -i -e),
-        "s/.*gem [\"']database_cleaner[\"'].*//g", 'Gemfile'
-      RM.exec %w(sed -i -e),
-        "s/.*gem [\"']rake[\"'].*//g", 'Gemfile'
+        "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g", 'Gemfile'
 
       FileUtils.touch File.join(RM.path, '.downloaded')
     end
