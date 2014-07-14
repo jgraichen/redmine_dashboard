@@ -43,7 +43,7 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
       section className: 'rdb-main', [
         Navigation id: 'cfg', name: Translate.t('rdb.configure.nav_title'), [
           div
-            name: Translate.t('rdb.configure.general.title')
+            name: Translate.t('rdb.configure.general.nav')
             help: Translate.t('rdb.configure.general.nav_text')
             [
               h2 Translate.t('rdb.configure.general.title')
@@ -58,15 +58,15 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
                       throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
             ]
           div
-            name: Translate.t('rdb.configure.sources.title')
+            name: Translate.t('rdb.configure.sources.nav')
             help: Translate.t('rdb.configure.sources.nav_text')
             h2 Translate.t('rdb.configure.sources.title')
           div
-            name: Translate.t('rdb.configure.columns.title')
+            name: Translate.t('rdb.configure.columns.nav')
             help: Translate.t('rdb.configure.columns.nav_text')
             h2 Translate.t('rdb.configure.columns.title')
           div
-            name: Translate.t('rdb.configure.swimlanes.title')
+            name: Translate.t('rdb.configure.swimlanes.nav')
             help: Translate.t('rdb.configure.swimlanes.nav_text')
             h2 Translate.t('rdb.configure.swimlanes.title')
         ]

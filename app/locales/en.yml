@@ -20,6 +20,7 @@ en:
       title: "Configure %(link)s"
       nav_title: "Configuration"
       general:
+        nav: "General"
         title: "General preferences"
         nav_text: "Dashboard name and access control"
         description: "Click form fields to edit them. They are saved automatically when leaving the form field e.g. when clicking outside."
@@ -27,12 +28,15 @@ en:
         dashboard_name: "Dashboard name"
         dashboard_name_text: "Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu."
       sources:
-        title: "Issue sources"
+        nav: "Issue sources"
+        title: "Issue sources and filters"
         nav_text: "Source projects and issue filters"
       columns:
-        title: "Columns"
+        nav: "Columns"
+        title: "Column management"
         nav_text: "Column layout and view options"
       swimlanes:
+        nav: "Swimlanes"
         title: "Swimlanes"
         nav_text: "Vertical swimlanes to group issue"
 
