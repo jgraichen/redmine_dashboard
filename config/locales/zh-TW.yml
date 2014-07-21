@@ -1,5 +1,5 @@
-# zh strings go here for Rails i18n
-zh:
+# zh-TW strings go here for Rails i18n
+"zh-TW":
   menu_label_dashboard: 儀表板
 
   rdb_taskboard: 任務板
