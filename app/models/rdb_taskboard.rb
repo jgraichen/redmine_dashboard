@@ -56,7 +56,7 @@ class RdbTaskboard < RdbDashboard
       self.add_group RdbGroup.new(:assigne_none, :rdb_filter_assignee_none, :accept => Proc.new {|issue| issue.assigned_to_id.nil? })
       assignees.sort_by(&:name).each do |principal|
         next if principal.id == User.current.id
-        self.add_group RdbGroup.new("assignee-#{id}", principal.name, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id == principal.id })
+        self.add_group RdbGroup.new("assignee-#{principal.id}", principal.name, :accept => Proc.new {|issue| !issue.assigned_to_id.nil? and issue.assigned_to_id == principal.id })
       end
     when :category
       issue_categories.each do |category|
