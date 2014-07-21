@@ -1,4 +1,4 @@
-@import './colors'
+@import './style'
 @import 'css3/linear-gradient'
 
 .rui-btn, a.rui-btn
@@ -9,6 +9,7 @@
 
   color: $text-color
   text-align: center
+  @extend %font-conf
 
   border: 1px solid $frame-color
   border-radius: 2px
@@ -51,7 +52,13 @@
       outline: 0
 
   .rui-icon
+    position: relative
     margin: 0 14px
+    font-size: 16px
+    top: 1px
+
+    &, &:before
+      line-height: 12px
 
     &:last-child
       margin-right: 0

@@ -1,19 +1,12 @@
-@import 'rui/colors'
-@import "addons/font-family"
-
-$arial: Arial, sans-serif
+@import 'rui/style'
 
 #redmine-dashboard
   color: $text-color
-  font-size: 14px
-  font-family: $arial
-
-  // font-size: 16px
-  // line-height: normal
+  @extend %font-conf
 
   h1, h2, h3, h4, h5
     color: $text-color
-    font-family: $arial
+    font-family: $font-family
     letter-spacing: 0
 
   h2
@@ -27,5 +20,4 @@ $arial: Arial, sans-serif
     color: $primary-gray
 
   button, select, input, textarea
-    font-size: 14px
-    font-family: $arial
+    @extend %font-conf
