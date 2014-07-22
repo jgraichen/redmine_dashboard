@@ -51,8 +51,7 @@
 
   rdb_column_done: 完成
   rdb_x_issues:
-    one: 1 問題
-    other: "%{count} 問題"
+    other: '%{count} 問題'
 
   rdb_dialog_update_issue_title: 更新問題
   rdb_dialog_update_issue_status: 選擇新問題的狀態
