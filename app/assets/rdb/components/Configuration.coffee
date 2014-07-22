@@ -23,11 +23,11 @@ module.exports = core.createComponent 'rdb.ConfigurationComponent',
         div [
           Button
             id: 'rdb-return'
-            icon: 'chevron-left'
             onClick: backToBoard
             'href': @props.board.urls.root
             'title': Translate.t('rdb.menu.return_to_dashboard')
             'aria-label': Translate.t('rdb.menu.return_to_dashboard')
+            [ Icon glyph: 'chevron-left', large: true ]
           Translate
             key: 'rdb.configure.title'
             component: h2

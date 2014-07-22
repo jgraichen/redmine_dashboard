@@ -27,5 +27,5 @@ module.exports = core.createComponent 'rdb.FullscreenButton',
         util.handlePrimaryClick e, (e) =>
           Rdb.events.trigger 'rdb:fullscreen:toggle'
       Icon
-        glyph: if @state.fullscreen then 'fullscreen-exit' else 'fullscreen-enter'
-        flip: horizontal: true
+        large: true
+        glyph: if @state.fullscreen then 'angle-double-down' else 'angle-double-up'

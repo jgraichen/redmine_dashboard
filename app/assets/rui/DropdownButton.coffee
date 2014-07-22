@@ -14,14 +14,25 @@ DropdownButton = core.createComponent 'rui.DropdownButton',
     open: false
 
   renderLayer: ->
+    if @props.target
+      target = document.querySelector @props.target
+    else
+      target = @getDOMNode()
+
     DropdownContainer
-      target: @getDOMNode(),
+      target: target,
       visible: @state.open
       @props.children
 
   render: ->
-    @transferPropsTo Button onClick: (e) =>
+    props = extend {}, @props
+
+    props.className += ' active' if @state.open
+
+    props.onClick = (e) =>
       util.handlePrimaryClick e, (e) =>
         @setState open: !@state.open
+
+    Button props
 
 module.exports = DropdownButton

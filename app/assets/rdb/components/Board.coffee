@@ -7,7 +7,7 @@ Button = require 'rui/Button'
 DropdownButton = require 'rui/DropdownButton'
 GlobalEventBus = require '../mixins/GlobalEventBus'
 FullscreenButton = require './FullscreenButton'
-{h2, div, section, header, span} = require 'rui/DOM'
+{h2, div, section, header, span, ul, li, a} = require 'rui/DOM'
 
 module.exports = core.createComponent 'rdb.BoardComponent',
   mixins: [GlobalEventBus],
@@ -22,7 +22,7 @@ module.exports = core.createComponent 'rdb.BoardComponent',
     @setState fullscreen: state
 
   render: ->
-    div [
+    div id: 'rdb-board', [
       header className: 'rdb-header', [
         div [
           do =>
@@ -30,25 +30,26 @@ module.exports = core.createComponent 'rdb.BoardComponent',
               DropdownButton
                 large: true
                 id: 'rdb-menu'
-                icon: 'grid-three-up'
-                [
-                  h2 "CONTENT"
-                ]
+                label: [ Icon glyph: 'dot-circle-o', large: true ]
+                target: '#rdb-board > header'
+                ul [
+                    li [
+                      a
+                        href: @props.board.urls.configure
+                        'title': t('rdb.menu.configure_board')
+                        'aria-label': t('rdb.menu.configure_board')
+                        onClick: (e) =>
+                          util.handlePrimaryClick e, (e) =>
+                            Rdb.events.trigger 'navigate', @props.board.urls.configure
+                        [
+                          Icon glyph: 'cog'
+                          t('rdb.menu.configure_board')
+                        ]
+                    ]
+                  ]
           h2 @props.board.get 'name'
         ]
         div [
-          do =>
-            if !@state.fullscreen
-              Button
-                id: 'rdb-configure'
-                icon: 'cog'
-                href: @props.board.urls.configure
-                large: true
-                'title': t('rdb.menu.configure_board')
-                'aria-label': t('rdb.menu.configure_board')
-                onClick: (e) =>
-                  util.handlePrimaryClick e, (e) =>
-                    Rdb.events.trigger 'navigate', @props.board.urls.configure
           FullscreenButton id: 'rdb-fullscreen', fullscreen: @state.fullscreen
         ]
       ]
