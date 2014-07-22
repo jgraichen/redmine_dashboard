@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [redmine-dashboard.strings]
-file_filter = config/locales/<lang>.yml
-source_file = config/locales/en.yml
+file_filter = app/locales/<lang>.yml
+source_file = app/locales/en.yml
 source_lang = en
 type = YAML
