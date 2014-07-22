@@ -30,8 +30,23 @@ class RdbTaskboardController < RdbDashboardController
     @issue.init_journal(User.current, params[:notes] || nil)
 
     @issue.done_ratio = params[:done_ratio].to_i if params[:done_ratio]
-    @issue.assigned_to_id = nil if params[:unassigne_me] && @issue.assigned_to_id == User.current.id
-    @issue.assigned_to_id = User.current.id if params[:assigne_me]
+
+    if params[:assigne]
+      # Assign to the appropriate target, either numeric (target assigne) or named target
+      case params[:assigne].to_s
+      when "none"
+        @issue.assigned_to_id = nil
+      when "me"
+        @issue.assigned_to_id = User.current.id
+      when "same"
+        # FIXME: Refactor proper default         
+      else 
+        @issue.assigned_to_id = params[:assigne].to_i
+      end
+    else
+      @issue.assigned_to_id = nil if params[:unassigne_me] && @issue.assigned_to_id == User.current.id
+      @issue.assigned_to_id = User.current.id if params[:assigne_me]
+    end
 
     if params[:status]
       status = IssueStatus.find params[:status].to_i
