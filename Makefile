@@ -27,7 +27,7 @@ $(BUILD):
 .PHONY: fonts
 fonts: $(BUILD)
 	mkdir -p $(BUILD)/fonts
-	cp bower_components/open-iconic/font/fonts/* $(BUILD)/fonts
+	cp bower_components/font-awesome/fonts/*-webfont* $(BUILD)/fonts
 
 .PHONY: $(BUILD)/main.js
 $(BUILD)/main.js: $(BUILD)

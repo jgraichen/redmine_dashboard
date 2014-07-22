@@ -17,8 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "open-iconic": "~1.1.1",
     "mousetrap": "~1.4.6",
-    "tether": "~0.6.5"
+    "tether": "~0.6.5",
+    "font-awesome": "~4.1.0"
   }
 }

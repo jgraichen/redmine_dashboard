@@ -12,11 +12,15 @@ Icon = core.createComponent 'rui.Icon',
 
   render: ->
     cs = classSet
-      'oi': true
       'rui-icon': true
-      'oi-flip-vertical': !@props.flip.horizontal && @props.flip.vertical
-      'oi-flip-horizontal': @props.flip.horizontal && !@props.flip.vertical
-      'oi-flip-horizontal-vertical': @props.flip.horizontal && @props.flip.vertical
+      'fa': true
+      'fa-flip-vertical': !@props.flip.horizontal && @props.flip.vertical
+      'fa-flip-horizontal': @props.flip.horizontal && !@props.flip.vertical
+      'fa-flip-horizontal-vertical': @props.flip.horizontal && @props.flip.vertical
+      'fa-fw': @props.fixedwidth || @props.fw
+      'fa-lg': @props.large
+
+    cs += " fa-#{@props.glyph}"
 
     @transferPropsTo i className: cs, 'data-glyph': @props.glyph
 
