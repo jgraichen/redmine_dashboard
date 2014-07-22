@@ -1,5 +1,17 @@
 (function($) {
 
+	/* =====================================================
+	** String API
+	*/
+
+	if (typeof String.prototype.startsWith != 'function') {
+	  String.prototype.startsWith = function (str){
+	    return this.slice(0, str.length) == str;
+	  };
+	}
+
+	// Setup
+
 	$.fn.rdbColumn = function() {
 		return $(this).rdbFindUp('[data-rdb-column-id]');
 	};
@@ -58,7 +70,11 @@
 					accept: function(draggable) {
 						var issue = draggable.rdbIssue();
 						var dropon = issue.data('rdb-drop-on') || '';
-						return issue.data('rdb-drop-group') == cgroup && dropon.indexOf(coluid) >= 0;
+						var dropgroup = issue.data('rdb-drop-group');
+						if(dropgroup.startsWith('assigne_'))
+							return dropon.indexOf(coluid) >= 0;
+						else
+							return issue.data('rdb-drop-group') == cgroup && dropon.indexOf(coluid) >= 0;
 					}, //'[data-rdb-drop-on*="' + accept + '"]',
 					activeClass: "rdb-column-drop-active",
 					hoverClass: "rdb-column-drop-hover",
