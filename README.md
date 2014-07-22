@@ -44,6 +44,8 @@ I appreciate any help and like Pull Requests. The `master` branch is the current
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
 
+[![Translation status](https://www.transifex.com/projects/p/redmine-dashboard-2/resource/strings/chart/image_png)](https://www.transifex.com/projects/p/redmine-dashboard-2/)
+
 ## Build Debian / Ubuntu package
 
 Checkout `debian` branch. The branch is prepared to be used with `gbp`.
