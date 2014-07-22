@@ -71,7 +71,8 @@
 						var issue = draggable.rdbIssue();
 						var dropon = issue.data('rdb-drop-on') || '';
 						var dropgroup = issue.data('rdb-drop-group');
-						if(dropgroup.startsWith('assigne_'))
+						// FIXME: Refactor below for constant in outside
+						if(cgroup.startsWith('assigne_'))
 							return dropon.indexOf(coluid) >= 0 || issue.data('rdb-drop-group') != cgroup;
 						else
 							return issue.data('rdb-drop-group') == cgroup && dropon.indexOf(coluid) >= 0;
@@ -81,17 +82,16 @@
 					tolerance: "pointer",
 					drop: function(event, ui) {
 						var issue = $(ui.draggable).rdbIssue();
-						var dropgroup = issue.data('rdb-drop-group');
 						var lock  = issue.rdbIssueLockVersion();
 						var issueId = issue.rdbIssueId();
 						var groupId = issue.rdbGroupId();
 
 						// FIXME: Refactor below as constants; along with slice parameter
 						var assignTarget = 'same';
-						if(dropgroup.startsWith('assigne_'))
-							assignTarget = dropgroup.slice(7);
+						if(cgroup.startsWith('assigne_'))
+							assignTarget = cgroup.slice(8);
 
-						if(issueId && issue.rdbColumnId() != coluid) {
+						if(issueId && (issue.rdbColumnId() != coluid || issue.data('rdb-drop-group') != cgroup)) {
 							currentIssue = issue;
 							currentIssue.css({ visibility: 'hidden', opacity: 0 });
 							$.getScript(
