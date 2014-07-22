@@ -1,3 +1,9 @@
+redmine-plugin-dashboard (2.3.0-2) unstable; urgency=medium
+
+  * Update to upstream v2.3.0
+
+ -- Jan Graichen <jg@altimos.de>  Tue, 22 Jul 2014 10:38:15 +0200
+
 redmine-plugin-dashboard (2.2.4-1) unstable; urgency=medium
 
   * Update to upstream v2.2.4
