@@ -1,10 +1,7 @@
-# Italian strings go here for Rails i18n
 it:
   menu_label_dashboard: Dashboard
-
   rdb_taskboard: Quadro attività
   rdb_planningboard: Quadro pianificazione
-
   rdb_filter_version_all: Tutte le versioni
   rdb_filter_version_unassigned: Non assegnato
   rdb_filter_tracker_all: Tutti i Trackers
@@ -15,7 +12,6 @@ it:
   rdb_filter_assignee_me: Le mie Segnalazioni
   rdb_filter_assignee_none: Non assegnato
   rdb_filter_assignee_others: Altri
-
   rdb_options: Opzioni
   rdb_options_change_assignee: Cambio assegnatario
   rdb_options_change_assignee_info: Cambia assegnatario in utente attuale allo spostamento della segnalazione.
@@ -25,7 +21,6 @@ it:
   rdb_options_reset_info: Reset di tutti i filtri ai valori di default
   rdb_options_configure: Configura
   rdb_options_include_subprojects: Includi i sottoprogetti
-
   rdb_options_view: Vista
   rdb_options_issue_view: Vista delle segnalazioni
   rdb_options_issue_view_card: Card
@@ -35,7 +30,7 @@ it:
   rdb_group_category: Categoria
   rdb_group_assignee: Assegnatario
   rdb_group_tracker: Tracker
-  rdb_group_priority: "Priorita'"
+  rdb_group_priority: Priorita'
   rdb_group_version: Versione
   rdb_group_parent: Task padre
   rdb_group_project: Progetto
@@ -44,29 +39,22 @@ it:
   rdb_options_board_view_outline: Outline
   rdb_options_columns: Board Columns
   rdb_options_fullscreen: Full Screen
-
-  rdb_legend_priorities: "Priorita'"
+  rdb_legend_priorities: Priorita'
   rdb_legend_warnings: Avvisi
   rdb_issue_overdue: Superato
   rdb_property_time: '<span title="Tempo impiegato">%{actual}</span> / <span title="Tempo stimato">%{estimated}</span>'
   rdb_not_available: N/A
-
   rdb_column_done: Fatto
   rdb_x_issues:
     one: 1 segnalazione
-    other: "%{count} segnalazioni"
-
+    other: '%{count} segnalazioni'
   rdb_dialog_update_issue_title: Aggiorna la segnalazione
   rdb_dialog_update_issue_status: Scegli lo stato della nuova segnalazione
-
   rdb_other_issues: "Altre segnalazioni <span>(%{count})</span>"
-
   rdb_unassigned: Non assegnata
   rdb_others: Altri
   rdb_all_issues: Tutte le segnalazioni
-
   rdb_no_parent: Nessun task padre
-
   rdb_issue_menu_progress_title: Aggiorna progress
   rdb_issue_menu_progress: "%{count}%"
   rdb_issue_menu_redmine_issue: Segnalazione Redmine
@@ -74,7 +62,6 @@ it:
   rdb_issue_menu_edit: Edita
   rdb_issue_menu_assigne_me: Assegnalo a me
   rdb_issue_menu_unassigne_me: Rimuovi l'assegnazione
-
   rdb_flash_illegal_workflow_action: "<p>Non sei autorizzato a compiere quest'azione sul workflow:</p><p>Sposta <b>%{issue}</b> da <b>%{source}</b> a <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Impossibile aggiornare la segnalazione senza il lock della versione. Riprova."
   rdb_flash_stale_object: "<p>Tentativo di aggiornare una segnalazione scaduta: <b>%{issue}</b>. Controlla le modifiche e riprova."
