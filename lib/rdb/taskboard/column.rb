@@ -4,11 +4,12 @@ class Rdb::Taskboard
   #
   class Column
     include ::Rdb::Component
-    attr_reader :name, :color, :options
+    attr_reader :id, :name, :color, :options
 
     def initialize(engine, opts = {})
       super
 
+      @id       = opts.delete(:id)    { raise ArgumentError.new 'ID missing.' }
       @name     = opts.delete(:name)  { raise ArgumentError.new 'Name missing.' }
       @color    = opts.delete(:color) { nil }
       @options  = opts
@@ -32,6 +33,10 @@ class Rdb::Taskboard
 
     def visible?
       !options[:hide]
+    end
+
+    def as_json(*)
+      {id: id, name: title, color: color}
     end
   end
 end

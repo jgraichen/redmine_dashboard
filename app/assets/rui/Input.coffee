@@ -110,7 +110,7 @@ Input = core.createComponent 'rui.Input',
           'aria-label': Translate.t('rui.input.cancel')
           onClick: (e) =>
             if util.isPrimaryClick(e) then @deactivate(e)
-          Icon glyph: 'circle-x'
+          Icon glyph: 'times'
       else
         a
           key: 'edit'

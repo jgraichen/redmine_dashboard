@@ -53,13 +53,15 @@ module.exports = core.createComponent 'rdb.BoardComponent',
           FullscreenButton id: 'rdb-fullscreen', fullscreen: @state.fullscreen
         ]
       ]
-      do =>
-        engine = @props.board.get("engine")
+      section className: 'rdb-main', [
+        do =>
+          engine = @props.board.get("engine")
 
-        switch engine['type']
-          when 'taskboard'
-            require('./Taskboard')(board: @props.board, engine: engine)
-          else
-            section className: 'rdb-main', 'Unknown board engine!'
+          switch engine['type']
+            when 'taskboard'
+              require('./Taskboard')(board: @props.board, engine: engine)
+            else
+              'Unknown board engine!'
+      ]
     ]
 

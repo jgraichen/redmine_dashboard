@@ -12,7 +12,7 @@ module Rdb::Taskboard::Columns
     end
 
     def scope(issues)
-      issues.where :status_id => statuses.map(&:id)
+      issues.where status_id: statuses.map(&:id)
     end
   end
 end
