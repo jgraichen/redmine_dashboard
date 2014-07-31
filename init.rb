@@ -22,17 +22,13 @@ Redmine::Plugin.register :redmine_dashboard do
   requires_redmine version_or_higher: '2.1'
 
   project_module :dashboard do
-    permission :view_dashboards,
-      rdb_boards: [:index, :show, :update],
-      rdb_user_boards: [:index],
-      rdb_project_boards: [:index]
-
-    permission :configure_dashboards,
-      rdb_boards: [:create]
+    permission :enable_dashboards,
+      rdb_user_dashboards: [:index],
+      rdb_project_dashboards: [:index]
   end
 
   menu :project_menu, :rdb_project_dashboards,
-    {controller: 'rdb_project_boards', action: 'index'},
+    {controller: 'rdb_project_dashboards', action: 'index'},
     caption: :'rdb.menu.dashboards', after: :new_issue
   # menu :account_menu, :rdb_my_dashboards,
   #   {controller: 'rdb_user_boards', action: 'index'},
