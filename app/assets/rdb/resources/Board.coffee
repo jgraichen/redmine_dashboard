@@ -5,11 +5,11 @@ class Board extends Model
     'name':
       required: true
 
-  urlRoot: '/dashboards'
+  urlRoot: '/rdb/api/dashboards'
 
   initialize: ->
     @urls =
-      root: "/dashboards/#{@get("id")}"
-      configure: "/dashboards/#{@get("id")}/configure"
+      root: "/rdb/dashboards/#{@get("id")}"
+      configure: "/rdb/dashboards/#{@get("id")}/configure"
 
 module.exports = Board

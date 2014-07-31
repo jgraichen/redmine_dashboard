@@ -8,8 +8,8 @@ GlobalEventBus = require './mixins/GlobalEventBus'
 
 AppRouter = Router.extend
   routes:
-    'dashboards/:id/configure': 'configure'
-    'dashboards/:id': 'show'
+    'rdb/dashboards/:id/configure': 'configure'
+    'rdb/dashboards/:id': 'show'
 
 AppComponent = core.createComponent 'rdb.AppComponent',
   mixins: [GlobalEventBus],
