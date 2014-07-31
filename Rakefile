@@ -197,4 +197,8 @@ namespace :redmine do
   task :clean do
     RM.clean
   end
+
+  task :exec, [:cmd] do |t, args|
+    puts RM.bx args.cmd
+  end
 end
