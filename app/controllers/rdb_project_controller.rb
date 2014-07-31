@@ -1,4 +1,4 @@
-class RdbProjectDashboardsController < RdbDashboardsController
+class RdbProjectController < RdbController
   before_filter :find_project, :authorize
 
   def context
