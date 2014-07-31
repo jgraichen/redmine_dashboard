@@ -1,9 +1,0 @@
-.rdb-issue
-  .rdb-issue-inlet
-    .rdb-issue-container class="#{issue.rdb_css_classes}" style="#{issue.priority.rdb_color_css}"
-      header
-        span.rdb-issue-id= link_to issue.rdb_id, issue
-        span.rdb-issue-priority = issue.priority.name
-      section
-        .rdb-issue-subject = issue.subject
-        / .rdb-issue-description = issue.description
