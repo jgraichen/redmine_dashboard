@@ -23,12 +23,12 @@ Redmine::Plugin.register :redmine_dashboard do
 
   project_module :dashboard do
     permission :enable_dashboards,
-      rdb_user_dashboards: [:index],
-      rdb_project_dashboards: [:index]
+      rdb_user: [:index],
+      rdb_project: [:index]
   end
 
   menu :project_menu, :rdb_project_dashboards,
-    {controller: 'rdb_project_dashboards', action: 'index'},
+    {controller: 'rdb_project', action: 'index'},
     caption: :'rdb.menu.dashboards', after: :new_issue
   # menu :account_menu, :rdb_my_dashboards,
   #   {controller: 'rdb_user_boards', action: 'index'},

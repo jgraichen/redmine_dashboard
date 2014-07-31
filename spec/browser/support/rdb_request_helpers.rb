@@ -2,12 +2,11 @@
 module RdbRequestHelpers
   def set_permissions
     role = Role.where(name: 'Manager').first
-    role.permissions << :view_dashboards
-    role.permissions << :configure_dashboards
+    role.permissions << :enable_dashboards
     role.save!
 
     role = Role.where(name: 'Developer').first
-    role.permissions << :view_dashboards
+    role.permissions << :enable_dashboards
     role.save!
     # puts role.inspect
   end

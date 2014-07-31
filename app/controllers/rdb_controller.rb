@@ -1,4 +1,4 @@
-class RdbDashboardsController < ::ApplicationController
+class RdbController < ::ApplicationController
   unloadable
   before_filter :board, only: [:show, :update, :destroy]
   respond_to :html

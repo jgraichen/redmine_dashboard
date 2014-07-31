@@ -47,7 +47,7 @@ feature 'Boards', js: true, sauce: true do
     end
 
     find('#rdb-menu').click
-    find('#rdb-configure').click
+    click_on 'Configure Dashboard'
 
     find(:fillable_field, 'Dashboard name').fill 'New dashboard name'
 
