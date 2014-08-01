@@ -5,7 +5,7 @@ class Board extends Model
     'name':
       required: true
 
-  urlRoot: '/rdb/api/dashboards'
+  urlRoot: '/rdb/api/boards'
 
   initialize: ->
     @urls =
