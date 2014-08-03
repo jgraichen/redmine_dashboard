@@ -1,4 +1,8 @@
 
+## 2.3.1
+
+* Fix version number
+
 ## 2.3.0
 
 * New translations
