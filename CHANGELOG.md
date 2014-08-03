@@ -1,4 +1,12 @@
 
+## 2.3.1
+
+* Fix version number
+
+## 2.3.0
+
+* New translations
+
 ## 2.2.0
 
 * Add support for subprojects

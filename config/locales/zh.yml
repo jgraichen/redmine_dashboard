@@ -20,6 +20,7 @@ zh:
   rdb_options_reset: 重置过滤条件
   rdb_options_reset_info: 重置过滤条件为预设
   rdb_options_configure: 配置
+  rdb_options_include_subprojects: 包含子项目
   rdb_options_view: 视图
   rdb_options_issue_view: 问题视图
   rdb_options_issue_view_card: 卡片
@@ -32,6 +33,7 @@ zh:
   rdb_group_priority: 优先级
   rdb_group_version: 版本
   rdb_group_parent: 父项
+  rdb_group_project: 项目
   rdb_options_board_view: 看板视图
   rdb_options_board_view_compact: 精简
   rdb_options_board_view_outline: 大纲

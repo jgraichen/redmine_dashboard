@@ -1,5 +1,8 @@
-# English strings go here for Rails i18n
 en:
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: View Dashboards
+  permission_configure_dashboards: Configure Dashboards
+
   menu_label_dashboard: Dashboard
 
   rdb_taskboard: Task Board
