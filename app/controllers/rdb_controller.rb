@@ -37,14 +37,6 @@ class RdbController < ::ApplicationController
   def show
   end
 
-  def update
-    if !(err = @board.engine.update(params)).eql?(true) # Error hash
-      render status: 422, json: {errors: err}
-    else
-      render json: @board
-    end
-  end
-
   def context
     board.sources.first.context
   end
