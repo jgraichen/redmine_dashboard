@@ -12,10 +12,9 @@ module.exports = core.createComponent 'rdb.Taskboard',
     div className: 'rdb-main-board rdb-taskboard', @renderColumns()
 
   renderColumns: ->
-    @props.engine['columns'].map (column) =>
+    @props.board.get('columns').map (column) =>
       TaskboardColumn
         key: column['id']
         board: @props.board
-        engine: @props.engine
         name: column['name']
         id: column['id']

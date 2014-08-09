@@ -3,7 +3,7 @@ core = require 'rui/core'
 
 module.exports = core.createComponent 'rdb.IssueList',
   componentDidMount: ->
-    @props.issues.on 'change', @update, this
+    @props.issues.on 'add remove reset', @update, this
     @props.issues.fetch()
 
   componentWillUnmount: ->
@@ -13,5 +13,5 @@ module.exports = core.createComponent 'rdb.IssueList',
     @forceUpdate()
 
   render: ->
-    ul className: 'rdb-column', @props.issues.map (issue) ->
-      li key: issue.get('id'), issue.get('title')
+    @transferPropsTo ul @props.issues.map (issue) ->
+      li key: issue.get('id'), issue.get('subject')

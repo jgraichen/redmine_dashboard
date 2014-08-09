@@ -17,15 +17,16 @@ module Rdb
     end
 
     def as_json(*)
-      {type: self.class.name.split('::').last.downcase}
+      {
+        id: board.id,
+        name: board.name,
+        type: self.class.name.split('::').last.downcase
+      }
     end
 
     def update(params)
       board.update_attributes! name: params[:name]
-
-      true
-    rescue ActiveRecord::RecordInvalid => e
-      return e.record.errors
+      board
     end
 
     class << self

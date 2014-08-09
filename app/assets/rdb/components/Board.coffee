@@ -54,12 +54,10 @@ module.exports = core.createComponent 'rdb.BoardComponent',
       ]
       section className: 'rdb-main', [
         do =>
-          engine = @props.board.get("engine")
-
-          switch engine['type']
+          switch @props.board.get("type")
             when 'taskboard'
-              require('./Taskboard')(board: @props.board, engine: engine)
+              require('./Taskboard')(board: @props.board)
             else
-              'Unknown board engine!'
+              'Unknown board type!'
       ]
     ]
