@@ -31,7 +31,7 @@ module.exports = core.createComponent 'rdb.BoardComponent',
               DropdownButton
                 large: true
                 id: 'rdb-menu'
-                label: [ Icon glyph: 'dot-circle-o', large: true ]
+                label: [ Icon glyph: 'power-off', large: true ]
                 target: '#rdb-board > header'
                 Menu [
                   a
@@ -42,7 +42,7 @@ module.exports = core.createComponent 'rdb.BoardComponent',
                       util.handlePrimaryClick e, (e) =>
                         Rdb.events.trigger 'navigate', @props.board.urls.configure
                     [
-                      Icon glyph: 'cog'
+                      Icon glyph: 'cog', fw: true
                       t('rdb.menu.configure_board')
                     ]
                   ]
@@ -63,4 +63,3 @@ module.exports = core.createComponent 'rdb.BoardComponent',
               'Unknown board engine!'
       ]
     ]
-
