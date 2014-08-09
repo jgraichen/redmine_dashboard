@@ -1,6 +1,8 @@
 core = require 'rui/core'
 {ul, li} = require 'rui/DOM'
 
+IssueCard = require './IssueCard'
+
 module.exports = core.createComponent 'rdb.IssueList',
   componentDidMount: ->
     @props.issues.on 'add remove reset', @update, this
@@ -13,5 +15,5 @@ module.exports = core.createComponent 'rdb.IssueList',
     @forceUpdate()
 
   render: ->
-    @transferPropsTo ul @props.issues.map (issue) ->
-      li key: issue.get('id'), issue.get('subject')
+    @transferPropsTo ul className: "#{@props.className} rdb-issue-list", @props.issues.map (issue) ->
+      li key: issue.get('id'), [ IssueCard issue: issue ]
