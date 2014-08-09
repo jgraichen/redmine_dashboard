@@ -1,21 +1,16 @@
-module Rdb
+class Rdb::Planboard < Board
 
-  #
-  #
-  class Planboard < Board
+  def setup
 
-    def setup
-
-    end
-
-    def columns
-
-    end
-
-    def groups
-
-    end
   end
 
-  Engine.engines << Planboard
+  def columns
+
+  end
+
+  def groups
+
+  end
+
+  Rdb::Engine.engines << self
 end
