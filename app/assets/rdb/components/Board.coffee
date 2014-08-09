@@ -3,6 +3,7 @@ t = require 'counterpart'
 core = require 'rui/core'
 util = require 'rui/util'
 Icon = require 'rui/Icon'
+Menu = require 'rui/Menu'
 Button = require 'rui/Button'
 DropdownButton = require 'rui/DropdownButton'
 GlobalEventBus = require '../mixins/GlobalEventBus'
@@ -32,19 +33,17 @@ module.exports = core.createComponent 'rdb.BoardComponent',
                 id: 'rdb-menu'
                 label: [ Icon glyph: 'dot-circle-o', large: true ]
                 target: '#rdb-board > header'
-                ul [
-                    li [
-                      a
-                        href: @props.board.urls.configure
-                        'title': t('rdb.menu.configure_board')
-                        'aria-label': t('rdb.menu.configure_board')
-                        onClick: (e) =>
-                          util.handlePrimaryClick e, (e) =>
-                            Rdb.events.trigger 'navigate', @props.board.urls.configure
-                        [
-                          Icon glyph: 'cog'
-                          t('rdb.menu.configure_board')
-                        ]
+                Menu [
+                  a
+                    href: @props.board.urls.configure
+                    'title': t('rdb.menu.configure_board')
+                    'aria-label': t('rdb.menu.configure_board')
+                    onClick: (e) =>
+                      util.handlePrimaryClick e, (e) =>
+                        Rdb.events.trigger 'navigate', @props.board.urls.configure
+                    [
+                      Icon glyph: 'cog'
+                      t('rdb.menu.configure_board')
                     ]
                   ]
           h2 @props.board.get 'name'
