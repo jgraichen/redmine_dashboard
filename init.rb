@@ -6,7 +6,7 @@ Rails.configuration.to_prepare do
   end
 
   ActiveSupport::Dependencies
-    .autoload_paths << File.expand_path('../', __FILE__)
+    .autoload_paths << File.expand_path('../lib', __FILE__)
 
   Rails.configuration.i18n.load_path += Dir[File.expand_path('../app/locales/**/*.{rb,yml}', __FILE__)]
 end
