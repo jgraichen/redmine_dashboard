@@ -15,10 +15,10 @@ module.exports = core.createComponent 'rdb.IssueCard',
     div className: 'rdb-issue', [
       div className: 'rdb-issue-inlet', [
         header [
-          a [ @props.issue.get "id" ]
+          a [ @props.issue.get 'name' ]
         ]
         section [
-          p [ @props.issue.get "subject" ]
+          p [ @props.issue.get 'subject' ]
         ]
       ]
     ]

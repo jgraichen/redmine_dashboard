@@ -26,7 +26,15 @@ class Rdb::IssuesController < ::ApplicationController
   #
   class IssueDecorator < SimpleDelegator
     def as_json(*)
-      {id: id, subject: subject, description: description}
+      {id: id, subject: subject, description: description, name: name}
+    end
+
+    def name
+      if project.rdb_abbreviation.present?
+        "#{project.rdb_abbreviation}-#{id}"
+      else
+        "##{id}"
+      end
     end
   end
 end
