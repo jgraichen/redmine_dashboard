@@ -11,6 +11,9 @@ group :development do
 
   gem 'pry'
   gem 'pry-nav'
+
+  gem 'transifex-ruby', github: 'jgraichen/transifex-ruby', require: false
+  gem 'inifile', require: false
 end
 
 group :test do
