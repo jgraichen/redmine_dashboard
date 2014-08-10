@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Boards', js: true, sauce: true do
+feature 'Dashboard', js: true, sauce: true do
   let(:project) { Project.find 'ecookbook' }
 
   before do
@@ -39,20 +39,5 @@ feature 'Boards', js: true, sauce: true do
     find('#rdb-fullscreen').click
 
     expect(page).to have_css '#main-menu', visible: false
-  end
-
-  scenario 'Rename board' do
-    within '#main-menu' do
-      click_on 'Dashboards'
-    end
-
-    find('#rdb-menu').click
-    click_on 'Configure Dashboard'
-
-    find(:fillable_field, 'Dashboard name').fill 'New dashboard name'
-
-    find('#rdb-return').click
-
-    expect(page).to have_content 'New dashboard name'
   end
 end

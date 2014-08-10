@@ -7,6 +7,8 @@ class Rdb::BoardsController < ::ApplicationController
     board.update params
 
     render json: board
+  rescue ActiveRecord::RecordInvalid => e
+    render status: 422, json: {errors: e.record.errors}
   end
 
   private
