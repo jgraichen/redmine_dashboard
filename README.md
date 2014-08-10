@@ -23,6 +23,8 @@ TODO
 
 You can help even without coding by translating Redmine Dashboard or improving an existing localization. I prefer translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard/dashboard/redmine-dashboard) but also gladly accept Pull Requests for the YAML files.
 
+[![Translation status](https://www.transifex.com/projects/p/redmine-dashboard/resource/strings/chart/image_png)](https://www.transifex.com/projects/p/redmine-dashboard/)
+
 ### Features
 
 You can also add a new or requested feature by sending a Pull Request. Please add specs so that I do not break your feature in the future.
