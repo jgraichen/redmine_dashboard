@@ -17,10 +17,10 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'poltergeist'
-  gem 'database_cleaner'
-  gem 'fuubar'
+  gem 'rspec-rails', require: false
+  gem 'database_cleaner', require: false
+  gem 'fuubar', require: false
+  gem 'headless', require: false
 
   # for redmine on travis CI
   gem 'test-unit'

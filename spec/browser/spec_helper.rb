@@ -8,7 +8,7 @@ end
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -46,6 +46,14 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
+  if ENV['CI'] || ENV['HEADLESS']
+    require 'headless'
+    headless = Headless.new
+    headless.start
+
+    at_exit { headless.destroy }
+  end
+
   # Include request spec helpers
   config.include RdbRequestHelpers
   config.include Capybara::DSL
@@ -53,7 +61,6 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 
   Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :poltergeist if ENV['CI'] || ENV['POLTERGEIST']
   Capybara.default_wait_time = 15
 
   config.before(:each) do
