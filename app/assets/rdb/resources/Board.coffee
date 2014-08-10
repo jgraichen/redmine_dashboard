@@ -11,5 +11,6 @@ class Board extends Model
     @urls =
       root: "/rdb/dashboards/#{@get("id")}"
       configure: "/rdb/dashboards/#{@get("id")}/configure"
+      create: "/rdb/dashboards/#{@get("id")}/new"
 
 module.exports = Board

@@ -24,7 +24,7 @@ feature 'Boards', js: true, sauce: true do
     end
 
     find('#rdb-menu').click
-    click_on 'Create new Board'
+    click_on 'Create new Dashboard'
 
     expect(page).to have_content 'New Board (2)'
   end

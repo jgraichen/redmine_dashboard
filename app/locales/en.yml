@@ -15,6 +15,7 @@ en:
       toggle_fullscreen: Toggle fullscreen
       return_to_dashboard: Return to Dashboard
       configure_board: Configure Dashboard
+      create_new_board: Create new Dashboard
 
     configure:
       title: Configure %(link)s
