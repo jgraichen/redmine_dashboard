@@ -18,12 +18,4 @@ describe RdbBoard do
       expect(RdbBoard.find(board.id).preferences).to eq preferences
     end
   end
-
-  describe '#as_json' do
-    subject { board.as_json }
-
-    it { expect(subject.keys).to eq [:id, :name, :engine] }
-    it { expect(subject[:id]).to eq board.id }
-    it { expect(subject[:name]).to eq board.name }
-  end
 end

@@ -13,9 +13,9 @@ describe Rdb::BoardsController, type: :controller do
     describe 'JSON body' do
       subject { JSON.load super().body }
 
-      it { expect(subject.keys).to eq %w(id name engine) }
       it { expect(subject['id']).to eq board.id }
       it { expect(subject['name']).to eq board.name }
+      it { expect(subject['type']).to eq 'taskboard' }
     end
   end
 end

@@ -1,4 +1,4 @@
-class Rdb::Planboard < Board
+class Rdb::Planboard < Rdb::Engine
 
   def setup
 
