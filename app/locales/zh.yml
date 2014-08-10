@@ -1,0 +1,43 @@
+---
+zh:
+  project_module_dashboard: "仪表盘"
+  permission_view_dashboards: "查看仪表盘"
+  permission_create_dashboards: "创建新仪表盘"
+  rdb:
+    new:
+      default_board_name:
+        zero: "新面板"
+        other: "新面板 (%{count})"
+    menu:
+      dashboards: "仪表盘"
+      my_dashboards: "我的仪表盘"
+      toggle_fullscreen: "切换至全屏"
+      return_to_dashboard: "返回仪表盘"
+      configure_board: "配置仪表盘"
+    configure:
+      title: "配置 %(link)s"
+      nav_title: "配置"
+      general:
+        nav: "通用"
+        title: "通用设置"
+        nav_text: "仪表盘名称及访问控制"
+        description: "点击表单字段来进行编辑，当点击表单字段外部时将自动进行保存。"
+        general: "通用"
+        dashboard_name: "仪表盘名称"
+        dashboard_name_text: "必填项。仪表盘名称将显示在仪表盘顶部及仪表盘菜单上"
+      sources:
+        nav: "问题来源"
+        title: "问题来源及过滤器"
+        nav_text: "源项目及问题过滤器"
+      columns:
+        nav: "栏位"
+        title: "栏位管理"
+        nav_text: "栏位布局及视图选项"
+      swimlanes:
+        nav: "泳道"
+        title: "泳道"
+        nav_text: "垂直泳道分组问题"
+  rui:
+    input:
+      edit: "开始编辑字段"
+      cancel: "取消编辑并重置字段"

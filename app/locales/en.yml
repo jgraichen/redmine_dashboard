@@ -1,46 +1,46 @@
 en:
-  project_module_dashboard: "Dashboards"
-  permission_view_dashboards: "View Dashboards"
-  permission_create_dashboards: "Create new Dashboards"
+  project_module_dashboard: Dashboards
+  permission_view_dashboards: View Dashboards
+  permission_create_dashboards: Create new Dashboards
 
   rdb:
     new:
       default_board_name:
-        zero: "New Board"
-        other: "New Board (%{count})"
+        zero: New Board
+        other: New Board (%{count})
 
     menu:
-      dashboards: "Dashboards"
-      my_dashboards: "My Dashboards"
-      toggle_fullscreen: "Toggle fullscreen"
-      return_to_dashboard: "Return to Dashboard"
-      configure_board: "Configure Dashboard"
+      dashboards: Dashboards
+      my_dashboards: My Dashboards
+      toggle_fullscreen: Toggle fullscreen
+      return_to_dashboard: Return to Dashboard
+      configure_board: Configure Dashboard
 
     configure:
-      title: "Configure %(link)s"
-      nav_title: "Configuration"
+      title: Configure %(link)s
+      nav_title: Configuration
       general:
-        nav: "General"
-        title: "General preferences"
-        nav_text: "Dashboard name and access control"
-        description: "Click form fields to edit them. They are saved automatically when leaving the form field e.g. when clicking outside."
-        general: "General"
-        dashboard_name: "Dashboard name"
-        dashboard_name_text: "Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu."
+        nav: General
+        title: General preferences
+        nav_text: Dashboard name and access control
+        description: Click form fields to edit them. They are saved automatically when leaving the form field e.g. when clicking outside.
+        general: General
+        dashboard_name: Dashboard name
+        dashboard_name_text: Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu.
       sources:
-        nav: "Issue sources"
-        title: "Issue sources and filters"
-        nav_text: "Source projects and issue filters"
+        nav: Issue sources
+        title: Issue sources and filters
+        nav_text: Source projects and issue filters
       columns:
-        nav: "Columns"
-        title: "Column management"
-        nav_text: "Column layout and view options"
+        nav: Columns
+        title: Column management
+        nav_text: Column layout and view options
       swimlanes:
-        nav: "Swimlanes"
-        title: "Swimlanes"
-        nav_text: "Vertical swimlanes to group issue"
+        nav: Swimlanes
+        title: Swimlanes
+        nav_text: Vertical swimlanes to group issue
 
   rui:
     input:
-      edit: "Start editing this field"
-      cancel: "Cancel editing and reset field"
+      edit: Start editing this field
+      cancel: Cancel editing and reset field
