@@ -22,6 +22,7 @@ Backbone = require 'backbone'
 counterpart = require 'counterpart'
 counterpart.registerTranslations('en', require('app/locales/en.yml')['en'])
 counterpart.registerTranslations('de', require('app/locales/de.yml')['de'])
+counterpart.registerTranslations('zh', require('app/locales/zh.yml')['zh'])
 
 Rdb =
   init: (config, data) ->
