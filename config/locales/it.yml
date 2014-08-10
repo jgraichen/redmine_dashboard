@@ -1,3 +1,4 @@
+---
 it:
   menu_label_dashboard: Dashboard
   rdb_taskboard: Quadro attività
@@ -42,15 +43,15 @@ it:
   rdb_legend_priorities: Priorita'
   rdb_legend_warnings: Avvisi
   rdb_issue_overdue: Superato
-  rdb_property_time: '<span title="Tempo impiegato">%{actual}</span> / <span title="Tempo stimato">%{estimated}</span>'
+  rdb_property_time: <span title="Tempo impiegato">%{actual}</span> / <span title="Tempo stimato">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Fatto
   rdb_x_issues:
     one: 1 segnalazione
-    other: '%{count} segnalazioni'
+    other: "%{count} segnalazioni"
   rdb_dialog_update_issue_title: Aggiorna la segnalazione
   rdb_dialog_update_issue_status: Scegli lo stato della nuova segnalazione
-  rdb_other_issues: "Altre segnalazioni <span>(%{count})</span>"
+  rdb_other_issues: Altre segnalazioni <span>(%{count})</span>
   rdb_unassigned: Non assegnata
   rdb_others: Altri
   rdb_all_issues: Tutte le segnalazioni
