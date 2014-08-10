@@ -1,5 +1,6 @@
 # Redmine Dashboard 3
 
+[![Releases](http://img.shields.io/github/release/jgraichen/redmine_dashboard.svg?style=flat)](https://github.com/jgraichen/redmine_dashboard/releases)
 [![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
 [![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
