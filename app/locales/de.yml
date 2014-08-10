@@ -26,12 +26,15 @@ de:
         dashboard_name: Dashboard Name
         dashboard_name_text: Notwendig. Der Dashboard Name wird über dem Dashboard und im Dashboard Menü angezeigt.
       sources:
-        title: Tickets
+        nav: Ticket-Quellen
+        title: Ticket-Quellen und Filter
         nav_text: Projekte und Filter
       columns:
-        title: Spalten
+        nav: Spalten
+        title: Spaltenverwaltung
         nav_text: Spalten Layout und Anzeigeoptionen
       swimlanes:
+        nav: Swimlanes
         title: Swimlanes
         nav_text: Swimlanes zum Gruppieren von Tickets
   rui:
