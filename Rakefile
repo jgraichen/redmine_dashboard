@@ -21,7 +21,7 @@ class RMRakeTask < LocalRakeTask
 end
 
 def force?
-  !!ENV['FORCE']
+  ENV.key? 'FORCE'
 end
 
 RM = Redmine.new
@@ -112,14 +112,17 @@ namespace :tx do
       locales.each do |locale|
         code = locale.gsub('_', '-')
         file = cfg['file_filter'].gsub('<lang>', code)
+        done = resource.stats[locale][:completed].to_i
 
-        if !File.exist?(file) && resource.stats[locale][:completed].to_i < 80
-          puts "Skip #{code} [only #{resource.stats[locale][:completed]} completed]"
+        if !File.exist?(file) && done < 80
+          puts "Skip #{code} [only #{done}% completed]"
           next
         end
 
         yaml = YAML.load resource.translation(locale)[:content]
-        data = {code => yaml[locale]} # Translate underscore locale to dashed in YAML root
+
+        # Translate underscore locale to dashed in YAML root
+        data = {code => yaml[locale]}
 
         if File.exist?(file)
           puts "Update #{code} ..."
@@ -243,7 +246,7 @@ namespace :redmine do
     RM.clean
   end
 
-  task :exec, [:cmd] do |t, args|
+  task :exec, [:cmd] do |_, args|
     puts RM.bx args.cmd
   end
 end
