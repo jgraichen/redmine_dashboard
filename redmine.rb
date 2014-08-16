@@ -51,10 +51,10 @@ class RdbRedmine
     path.mkpath
   end
 
-  def exec(*args)
+  def exec(*args, &block)
     Dir.chdir path do
       ::Bundler.with_clean_env do
-        self.class.exec(*args)
+        block ? block.call : self.class.exec(*args)
       end
     end
   end

@@ -14,7 +14,7 @@ matrix:
 before_script:
 - npm install -g bower
 - make install-deps
-- rake install
+- bundle exec rake install
 script:
 - make min
-- rake spec
+- bundle exec rake spec
