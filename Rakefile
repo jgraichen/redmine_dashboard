@@ -210,14 +210,8 @@ namespace :redmine do
   task update: [:install, :bundle, :migrate, :prepare]
 
   task :bundle do
-    tries = 0
-    begin
-      RM.exec %w(rm -f Gemfile.lock)
-      RM.exec %w(bundle install --without rmagick)
-    rescue
-      STDERR.puts 'bundle install failed. Retry...'
-      retry if (tries += 1) < 5
-    end
+    RM.exec %w(rm -f Gemfile.lock)
+    RM.exec %w(bundle install --without rmagick --jobs=3 --retry=3)
   end
 
   task :migrate do
