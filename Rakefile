@@ -8,23 +8,11 @@ require 'rspec/core/rake_task'
 
 require_relative './redmine'
 
-class LocalRakeTask < RSpec::Core::RakeTask
-  def spec_command
-    "ruby -S bundle exec #{super}"
-  end
-end
-
-class RMRakeTask < LocalRakeTask
-  def run_task(*args)
-    Bundler.with_clean_env { Dir.chdir(RM.path) { super }}
-  end
-end
-
 def force?
   ENV.key? 'FORCE'
 end
 
-RM = Redmine.new
+RM = RdbRedmine.new
 
 task default: [:install, :update, :compile, :spec]
 
@@ -36,7 +24,7 @@ namespace :spec do
   task all: [:unit, :plugin, :browser]
 
   desc 'Run unit specs (Testing isolated dashboard components)'
-  LocalRakeTask.new(:unit) do |t|
+  RSpec::Core::RakeTask.new(:unit) do |t|
     t.pattern    = ENV['SPEC'] || 'spec/unit/**/*_spec.rb'
     t.ruby_opts  = '-Ispec/unit -Ilib'
     t.rspec_opts = '--color --backtrace'
@@ -44,17 +32,17 @@ namespace :spec do
   end
 
   desc 'Run plugin specs (Testing within redmine application)'
-  RMRakeTask.new(:plugin) do |t|
+  RSpec::Core::RakeTask.new(:plugin) do |t|
     t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/plugin/**/*_spec.rb"
-    t.ruby_opts  = "-I#{RM.path}/spec/plugin"
+    t.ruby_opts  = "-Ispec/plugin"
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
 
   desc 'Run browser specs'
-  RMRakeTask.new(:browser) do |t|
+  RSpec::Core::RakeTask.new(:browser) do |t|
     t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
-    t.ruby_opts  = "-I#{RM.path}/spec/browser"
+    t.ruby_opts  = "-Ispec/browser"
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
   end
@@ -84,8 +72,8 @@ task :clean do
 end
 
 task :compile do
-  Redmine.exec %w(make install-deps)
-  Redmine.exec %w(make min)
+  RdbRedmine.exec %w(make install-deps)
+  RdbRedmine.exec %w(make min)
 end
 
 namespace :tx do

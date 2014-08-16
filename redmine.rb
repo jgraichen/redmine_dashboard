@@ -1,9 +1,10 @@
+require 'pathname'
 #
 # Dashboard tasks
 #
 DEFAULT_REDMINE_VERSION = '2.5.2'
 
-class Redmine
+class RdbRedmine
   attr_reader :version, :path
 
   def initialize(opts = {})
@@ -11,11 +12,15 @@ class Redmine
       ENV['REDMINE_VERSION'] || DEFAULT_REDMINE_VERSION
     end
 
-    @path = File.expand_path "../tmp/redmine/#{@version}", __FILE__
+    @path = Pathname.new File.expand_path("../tmp/redmine/#{@version}", __FILE__)
+  end
+
+  def join(*path)
+    self.path.join *path.flatten
   end
 
   def downloaded?
-    File.exist? File.join(path, 'Gemfile')
+    self.path.join('Gemfile').exist?
   end
 
   def database_config(env)
@@ -42,8 +47,8 @@ class Redmine
   end
 
   def clean
-    FileUtils.rm_rf path if File.exist? path
-    FileUtils.mkdir_p path
+    path.rmtree if path.exist?
+    path.mkpath
   end
 
   def exec(*args)
@@ -69,6 +74,14 @@ class Redmine
       return if system(*args.flatten)
 
       raise "Command failed: #{args.flatten.join ' '}"
+    end
+
+    def join(*path)
+      instance.join *path.flatten
+    end
+
+    def instance
+      @default ||= new
     end
   end
 end
