@@ -1,4 +1,4 @@
-require 'spec_helper'
+require File.expand_path '../../../spec_helper', __FILE__
 
 feature 'Rename dashboard', js: true, sauce: true do
   let(:project) { Project.find 'ecookbook' }
@@ -18,7 +18,7 @@ feature 'Rename dashboard', js: true, sauce: true do
     find('#rdb-menu').click
     click_on 'Configure Dashboard'
 
-    find(:fillable_field, 'Dashboard name').fill 'New dashboard name'
+    find(:fillable_field, 'Name').fill 'New dashboard name'
 
     find('#rdb-return').click
 
@@ -33,7 +33,7 @@ feature 'Rename dashboard', js: true, sauce: true do
     find('#rdb-menu').click
     click_on 'Configure Dashboard'
 
-    find(:fillable_field, 'Dashboard name').fill ''
+    find(:fillable_field, 'Name').fill ''
     find('body').click
 
     expect(page).to have_content "can't be blank"
@@ -50,7 +50,7 @@ feature 'Rename dashboard', js: true, sauce: true do
     find('#rdb-menu').click
     click_on 'Configure Dashboard'
 
-    find(:fillable_field, 'Dashboard name').fill 'New Board'
+    find(:fillable_field, 'Name').fill 'New Board'
     find('body').click
 
     expect(page).to have_content "already been taken"

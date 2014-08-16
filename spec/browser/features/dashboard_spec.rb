@@ -1,4 +1,4 @@
-require 'spec_helper'
+require File.expand_path '../../spec_helper', __FILE__
 
 feature 'Dashboard', js: true, sauce: true do
   let(:project) { Project.find 'ecookbook' }
@@ -16,17 +16,6 @@ feature 'Dashboard', js: true, sauce: true do
     end
 
     expect(page).to have_content 'New Board'
-  end
-
-  scenario 'Create new board' do
-    within '#main-menu' do
-      click_on 'Dashboards'
-    end
-
-    find('#rdb-menu').click
-    click_on 'Create new Dashboard'
-
-    expect(page).to have_content 'New Board (2)'
   end
 
   scenario 'Toggle fullscreen' do

@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../../config/environment', __FILE__)
+require File.expand_path '../../../redmine.rb', __FILE__
+require RdbRedmine.join %w(config environment)
 
 if defined?(Test::Unit::AutoRunner)
   Test::Unit::AutoRunner.need_auto_run = false
