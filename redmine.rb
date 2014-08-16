@@ -54,7 +54,7 @@ class RdbRedmine
   def exec(*args)
     Dir.chdir path do
       ::Bundler.with_clean_env do
-        Redmine.exec(*args)
+        self.class.exec(*args)
       end
     end
   end
