@@ -1,14 +1,15 @@
 @import './style'
 
 .rui-input
-  display: inline-block
-  position: relative
+  display: block
+
+  $label-size: 160px
 
   label
     display: inline-block
-    width: 200px
+    width: $label-size
     text-align: right
-    padding: 6px 20px 6px 0
+    padding: 6px 20px 6px 20px
 
   input, textarea, .rui-input-preview
     width: 100%
@@ -48,6 +49,10 @@
     ~ .rui-input-action
       padding-right: 15px
 
+  .rui-input-inlet
+    display: inline-block
+    position: relative
+
   .rui-input-preview
     font-weight: bold
     cursor: pointer
@@ -63,9 +68,15 @@
       padding: 5px 5px
       font-size: 16px
 
+  > span
+    display: block
+
+  .rui-input-help
+    margin: 8px $label-size 30px
+
   .rui-input-error
     font-size: 10px
     padding: 2px 6px
     color: red
     display: block
-    margin-left: 200px
+    margin-left: $label-size

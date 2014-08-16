@@ -26,8 +26,9 @@ en:
         nav_text: Dashboard name and access control
         description: Click form fields to edit them. They are saved automatically when leaving the form field e.g. when clicking outside.
         general: General
-        dashboard_name: Dashboard name
+        dashboard_name: Name
         dashboard_name_text: Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu.
+        dashboard_type: Type
       sources:
         nav: Issue sources
         title: Issue sources and filters

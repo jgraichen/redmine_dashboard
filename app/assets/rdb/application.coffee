@@ -4,6 +4,7 @@ counterpart = require 'counterpart'
 
 core = require 'rui/core'
 {div} = require 'rui/DOM'
+
 GlobalEventBus = require './mixins/GlobalEventBus'
 
 AppRouter = Router.extend
@@ -38,21 +39,23 @@ AppComponent = core.createComponent 'rdb.AppComponent',
     @props.board.off null, null, @
 
   render: ->
+    boardComponent = switch @props.board.get("type")
+      when 'taskboard'
+        require('./components/Taskboard')
+      else
+        null
+
     component = switch @state.current
-      when 'show' then require './components/Board'
-      when 'configure' then require './components/Configuration'
-      else div
+      when 'show'
+        boardComponent board: @props.board
+      when 'configure'
+        boardComponent.Configuration board: @props.board
 
     cs = classSet
       'rdb-fullscreen': @state.fullscreen
 
     div id: 'redmine-dashboard', className: cs,
-      @transferPropsTo component()
-
-    # goTo: (event, url) =>
-    #   if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
-    #     event.preventDefault()
-    #     @navigate url, trigger: true
+      @transferPropsTo component
 
 module.exports =
   Router: AppRouter

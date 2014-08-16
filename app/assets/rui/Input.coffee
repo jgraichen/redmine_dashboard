@@ -62,10 +62,13 @@ Input = core.createComponent 'rui.Input',
       className: cs,
       onSubmit: (e) => @save(e)
     , [
-      @renderLabel()
-      @renderInput()
-      @renderAction()
+      div className: 'rui-input-inlet', [
+        @renderLabel()
+        @renderInput()
+        @renderAction()
+      ]
       @renderError()
+      @renderHelp()
     ]
 
   renderLabel: ->
@@ -101,7 +104,7 @@ Input = core.createComponent 'rui.Input',
         if @state.keyPressed then @activate(e)
 
   renderAction: ->
-    span className: 'rui-input-action', do =>
+    span key: 'a', className: 'rui-input-action', do =>
       if @state.active || @state.error
         a
           key: 'cancel'
@@ -121,7 +124,12 @@ Input = core.createComponent 'rui.Input',
           Icon glyph: 'pencil'
 
   renderError: ->
-    if @state.error then span className: 'rui-input-error', @state.error
+    if @state.error
+      span key: 'e', className: 'rui-input-error', @state.error
+
+  renderHelp: ->
+    if @props.help
+      span key: 'h', className: 'rui-input-help', @props.help
 
 class Input.Error extends Error
   constructor: (@message) ->
