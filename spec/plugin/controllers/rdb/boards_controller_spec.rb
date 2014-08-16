@@ -45,13 +45,13 @@ describe Rdb::BoardsController, type: :controller do
     end
   end
 
-  describe 'PUT update' do
-    let(:action) { put :update, req.as_json.merge(id: board.id) }
+  describe 'PATCH update' do
+    let(:action) { patch :update, req.as_json.merge(id: board.id) }
     subject { resp }
 
     describe '#name' do
       context 'empty' do
-        let(:req) { board.as_json.merge(name: '') }
+        let(:req) { {'name' => ''} }
 
         it { expect(subject.status).to eq 422 }
         it { expect(json).to eq 'errors' => {'name' => ["can't be blank"]} }
@@ -59,7 +59,7 @@ describe Rdb::BoardsController, type: :controller do
 
       context 'already taken' do
         before { RdbBoard.create! name: 'Board name', engine: Rdb::Taskboard }
-        let(:req) { board.as_json.merge(name: 'Board name') }
+        let(:req) { {'name' => 'Board name'} }
 
         it { expect(subject.status).to eq 422 }
         it { expect(json).to eq 'errors' => {'name' => ["has already been taken"]} }

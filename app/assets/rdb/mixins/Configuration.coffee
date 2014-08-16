@@ -26,7 +26,7 @@ module.exports =
           help: Translate.t('rdb.configure.general.dashboard_name_text')
           value: @props.board.get('name')
           onSave: (val) =>
-            @props.board.save({'name': val}, wait: true)
+            @props.board.save({'name': val}, wait: true, patch: true)
               .catch (xhr) =>
                 throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
         # Input
