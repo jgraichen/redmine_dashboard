@@ -1,4 +1,5 @@
 require 'pathname'
+require 'bundler'
 #
 # Dashboard tasks
 #
