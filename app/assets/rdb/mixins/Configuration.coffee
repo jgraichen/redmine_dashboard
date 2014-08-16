@@ -29,14 +29,14 @@ module.exports =
             @props.board.save({'name': val}, wait: true)
               .catch (xhr) =>
                 throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
-        Input
-          label: Translate.t('rdb.configure.general.dashboard_type')
-          help: Translate.t('rdb.configure.general.dashboard_type_text')
-          value: @props.board.get('type')
-          onSave: (val) =>
-            @props.board.save({'type': val}, wait: true)
-              .catch (xhr) =>
-                throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['type']
+        # Input
+        #   label: Translate.t('rdb.configure.general.dashboard_type')
+        #   help: Translate.t('rdb.configure.general.dashboard_type_text')
+        #   value: @props.board.get('type')
+        #   onSave: (val) =>
+        #     @props.board.save({'type': val}, wait: true)
+        #       .catch (xhr) =>
+        #         throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['type']
       ]
 
   render: ->
