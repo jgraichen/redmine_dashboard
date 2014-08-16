@@ -51,4 +51,8 @@ class RdbBoard < ActiveRecord::Base
       Tracker.where('FALSE')
     end
   end
+
+  def as_json(*args)
+    engine.as_json(*args)
+  end
 end
