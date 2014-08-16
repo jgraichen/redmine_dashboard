@@ -1,12 +1,12 @@
 ---
 language: ruby
 rvm:
-- 1.9.3
-- 2.0.0
 - 2.1
+- 2.0.0
+- 1.9.3
 env:
-- REDMINE_VERSION=2.4.6
 - REDMINE_VERSION=2.5.2
+- REDMINE_VERSION=2.4.6
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
