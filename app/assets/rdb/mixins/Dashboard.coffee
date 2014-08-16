@@ -1,14 +1,15 @@
 t = require 'counterpart'
 
 core = require 'rui/core'
-util = require 'rui/util'
 Icon = require 'rui/Icon'
 Menu = require 'rui/Menu'
 Button = require 'rui/Button'
 DropdownButton = require 'rui/DropdownButton'
+{h2, div, section, header, span} = require 'rui/DOM'
+
+BoardMenu = require '../components/BoardMenu'
 GlobalEventBus = require './GlobalEventBus'
 FullscreenButton = require '../components/FullscreenButton'
-{h2, div, section, header, span, ul, li, a} = require 'rui/DOM'
 
 module.exports =
   mixins: [GlobalEventBus],
@@ -33,27 +34,7 @@ module.exports =
                 id: 'rdb-menu'
                 label: [ Icon glyph: 'power-off', large: true ]
                 target: '#rdb-board > header'
-                Menu [
-                  a
-                    href: @props.board.urls.configure
-                    'title': t('rdb.menu.configure_board')
-                    'aria-label': t('rdb.menu.configure_board')
-                    onClick: (e) =>
-                      util.handlePrimaryClick e, (e) =>
-                        Rdb.events.trigger 'navigate', @props.board.urls.configure
-                    [
-                      Icon glyph: 'cog'
-                      t('rdb.menu.configure_board')
-                    ]
-                  a
-                    href: @props.board.urls.create
-                    'title': t('rdb.menu.create_new_board')
-                    'aria-label': t('rdb.menu.create_new_board')
-                    [
-                      Icon glyph: 'plus'
-                      t('rdb.menu.create_new_board')
-                    ]
-                ]
+                BoardMenu board: @props.board
           h2 @props.board.get 'name'
         ]
         div [

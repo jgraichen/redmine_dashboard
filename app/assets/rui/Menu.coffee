@@ -1,7 +1,7 @@
 map = require("react/lib/ReactChildren").map
 
 core = require './core'
-{ul, li} = require './DOM'
+{ul, li, hr} = require './DOM'
 
 Menu = core.createComponent 'rui.Menu',
   render: ->
@@ -9,5 +9,9 @@ Menu = core.createComponent 'rui.Menu',
       map @props.children, (child) =>
         li className: 'rui-menu-item', child
     ]
+
+Menu.Separator = core.createComponent 'rui-menu-separator',
+  render: ->
+    @transferPropsTo hr()
 
 module.exports = Menu
