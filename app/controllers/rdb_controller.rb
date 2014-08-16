@@ -4,13 +4,17 @@ class RdbController < ::ApplicationController
   respond_to :html
 
   def index
-    sources = RdbSource.where context_id: context.id,
-                              context_type: context.class
+    if context
+      sources = RdbSource.where context_id: context.id,
+                                context_type: context.class
 
-    if sources.any?
-      redirect_to rdb_url sources.first.board
+      if sources.any?
+        redirect_to rdb_url sources.first.board
+      else
+        create
+      end
     else
-      create
+
     end
   end
 
@@ -38,7 +42,7 @@ class RdbController < ::ApplicationController
   end
 
   def context
-    board.sources.first.context
+    params.key?(:id) ? board.sources.first.context : nil
   end
 
   private

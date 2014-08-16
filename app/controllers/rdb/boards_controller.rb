@@ -18,6 +18,6 @@ class Rdb::BoardsController < ::ApplicationController
   private
 
   def board
-    @board ||= RdbBoard.find(params[:id]).engine
+    @board ||= RdbBoard.find(Integer(params[:id])).engine
   end
 end

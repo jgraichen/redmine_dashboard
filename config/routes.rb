@@ -4,6 +4,7 @@
 get 'projects/:id/rdb' => 'rdb_project#index'
 get 'my/rdb' => 'rdb_user#index'
 
+get '/rdb/dashboards' => 'rdb#index', as: :rdb_index
 get '/rdb/dashboards/:id/new' => 'rdb#create', as: :rdb_new
 get '/rdb/dashboards/:id(/*path)' => 'rdb#show', as: :rdb
 

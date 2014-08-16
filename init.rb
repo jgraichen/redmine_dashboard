@@ -33,8 +33,8 @@ Redmine::Plugin.register :redmine_dashboard do
   menu :project_menu, :rdb_project_dashboards,
     {controller: 'rdb_project', action: 'index'},
     caption: :'rdb.menu.dashboards', after: :new_issue
-  # menu :account_menu, :rdb_my_dashboards,
-  #   {controller: 'rdb_user_boards', action: 'index'},
-  #   caption: :'rdb.menu.my_dashboards', after: :my_account
+  menu :top_menu, :rdb_dashboards,
+    {controller: 'rdb', action: 'index'},
+    caption: :'rdb.menu.dashboards', after: :projects
 
 end

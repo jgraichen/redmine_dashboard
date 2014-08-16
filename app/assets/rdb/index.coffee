@@ -25,6 +25,11 @@ counterpart.registerTranslations('de', require('app/locales/de.yml')['de'])
 counterpart.registerTranslations('zh', require('app/locales/zh.yml')['zh'])
 
 Rdb =
+  navigate: (route, opts = {}) ->
+    opts = extend trigger: true, opts
+
+    Rdb.router.navigate route, opts
+
   init: (config, data) ->
     counterpart.setLocale config['locale']
 
@@ -39,16 +44,10 @@ Rdb =
     Rdb.router.on 'all', ->
       Rdb.events.trigger arguments...
 
-    Rdb.events.on 'navigate', (path, opts = {}) ->
-      opts = extend trigger: true, opts
-      Rdb.router.navigate path, opts
+    if data
+      board = new Board data
 
-    Rdb.board = new Board data
-    Rdb.board.on 'all', (e, args...) ->
-      Rdb.events.trigger "board:#{e}", args...
-
-    component = App.Component
-      board: Rdb.board
+    component = App.Component board: board
 
     React.renderComponent component, Rdb.root
 

@@ -29,7 +29,7 @@ module.exports = core.createComponent 'rdb.BoardMenu',
       'aria-label': t('rdb.menu.configure_board')
       onClick: (e) =>
         util.handlePrimaryClick e, (e) =>
-          Rdb.events.trigger 'navigate', @props.board.urls.configure
+          Rdb.navigate @props.board.urls.configure
       [
         Icon glyph: 'cog'
         t('rdb.menu.configure_board')
