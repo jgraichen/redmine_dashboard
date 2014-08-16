@@ -33,7 +33,7 @@ namespace :spec do
 
   desc 'Run plugin specs (Testing within redmine application)'
   RSpec::Core::RakeTask.new(:plugin) do |t|
-    t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/plugin/**/*_spec.rb"
+    t.pattern    = ENV['SPEC'] || "spec/plugin/**/*_spec.rb"
     t.ruby_opts  = "-Ispec/plugin"
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
@@ -41,7 +41,7 @@ namespace :spec do
 
   desc 'Run browser specs'
   RSpec::Core::RakeTask.new(:browser) do |t|
-    t.pattern    = ENV['SPEC'] || "#{RM.path}/spec/browser/**/*_spec.rb"
+    t.pattern    = ENV['SPEC'] || "spec/browser/**/*_spec.rb"
     t.ruby_opts  = "-Ispec/browser"
     t.rspec_opts = '--color --backtrace'
     t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']

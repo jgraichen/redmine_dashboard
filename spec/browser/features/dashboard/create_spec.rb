@@ -35,6 +35,6 @@ feature 'Create dashboard', js: true, sauce: true do
     click_on 'New Board'
 
     expect(page).to have_content 'New Board'
-    expect(current_url).to =~ /\/dashboards\/1/
+    expect(current_url).to match /\/dashboards\/1/
   end
 end
