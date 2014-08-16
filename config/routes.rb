@@ -9,7 +9,7 @@ get '/rdb/dashboards/:id(/*path)' => 'rdb#show', as: :rdb
 
 defaults format: :json do
   scope '/rdb/api', module: :rdb do
-    resources :boards, only: [:show, :update], as: :rdb_boards do
+    resources :boards, only: [:index, :show, :update], as: :rdb_boards do
       resources :issues, only: [:index, :show, :update]
     end
   end

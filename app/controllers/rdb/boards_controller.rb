@@ -1,4 +1,8 @@
 class Rdb::BoardsController < ::ApplicationController
+  def index
+    render json: RdbBoard.all.map(&:engine)
+  end
+
   def show
     render json: board
   end

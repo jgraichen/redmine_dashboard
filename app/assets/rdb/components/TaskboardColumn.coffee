@@ -1,12 +1,12 @@
 core = require 'rui/core'
 {div, h3} = require 'rui/DOM'
 
-Issues = require '../resources/Issues'
 IssueList = require './IssueList'
+IssueCollection = require '../resources/IssueCollection'
 
 module.exports = core.createComponent 'rdb.TaskboardColumn',
   getInitialState: ->
-    issues: new Issues board: @props.board, params: {column: @props.id}
+    issues: new IssueCollection board: @props.board, params: {column: @props.id}
 
   # componentDidMount: ->
   #   @state.issues.on 'change', @update, @

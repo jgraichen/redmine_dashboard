@@ -3,7 +3,7 @@ _ = require 'underscore'
 
 Issue = require './Issue'
 
-class Issues extends Collection
+class IssueCollection extends Collection
   model: Issue
 
   initialize: (opts) ->
@@ -12,4 +12,4 @@ class Issues extends Collection
 
     @url   = board.url() + '/issues' + query
 
-module.exports = Issues
+module.exports = IssueCollection
