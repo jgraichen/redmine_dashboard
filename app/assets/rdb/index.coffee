@@ -47,9 +47,9 @@ Rdb =
     if data
       board = new Board data
 
-    component = App.Component board: board
+    Rdb.app = App.Component board: board
 
-    React.renderComponent component, Rdb.root
+    React.renderComponent Rdb.app, Rdb.root
 
     Backbone.history.start
       # root: "/dashboards/#{Rdb.board.get("id")}"

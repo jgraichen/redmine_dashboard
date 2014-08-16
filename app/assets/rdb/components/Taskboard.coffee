@@ -8,7 +8,7 @@ Configuration = require '../mixins/Configuration'
 GlobalEventBus = require '../mixins/GlobalEventBus'
 TaskboardColumn = require './TaskboardColumn'
 
-Taskboard = core.createComponent 'rdb.Taskboard',
+Main = core.createComponent 'rdb.Taskboard',
   mixins: [Dashboard],
 
   renderBoard: ->
@@ -22,7 +22,7 @@ Taskboard = core.createComponent 'rdb.Taskboard',
         name: column['name']
         id: column['id']
 
-Taskboard.Configuration = core.createComponent 'rdb.Taskboard.Configuration',
+Configuration = core.createComponent 'rdb.Taskboard.Configuration',
   mixins: [Configuration]
 
   renderConfig: ->
@@ -41,4 +41,6 @@ Taskboard.Configuration = core.createComponent 'rdb.Taskboard.Configuration',
         h2 Translate.t('rdb.configure.swimlanes.title')
     ]
 
-module.exports = Taskboard
+module.exports =
+  Main: Main
+  Configuration: Configuration

@@ -6,6 +6,7 @@ core = require 'rui/core'
 {div} = require 'rui/DOM'
 
 Board = require './resources/Board'
+BoardComponent = require './components/Board'
 GlobalEventBus = require './mixins/GlobalEventBus'
 
 AppRouter = Router.extend
@@ -23,35 +24,24 @@ AppComponent = core.createComponent 'rdb.AppComponent',
 
   getInitialState: ->
     current: 'index'
-    board: @props.board
 
   onRoute: (route, data) ->
     switch route
       when 'index'
         @setState
           component: div ['INDEX']
-      when 'show'
+      when 'show', 'configure'
         @withBoard data[0], (board) =>
-          @setState component: @boardComponent(board) board: board
-      when 'configure'
-        @withBoard data[0], (board) =>
-          @setState component: @boardComponent(board).Configuration board: board
+          @setState component: BoardComponent action: route, board: board
 
   withBoard: (id, cb) ->
-    if !@state.board || @state.board.get('id') != id
+    if !@state.board || @state.board.get('id') != parseInt(id)
       board = new Board id: id
       board.fetch success: -> cb(board)
 
       @setState board: board
     else
       cb @state.board
-
-  boardComponent: (board) ->
-    switch board.get("type")
-      when 'taskboard'
-        require('./components/Taskboard')
-      else
-        undefined
 
   toggleFullscreen: ->
     fullscreen = !@state.fullscreen
