@@ -31,6 +31,7 @@ class RdbController < ::ApplicationController
       end
 
       RdbSource.create! context: context, board: board
+      RdbBoardPermission.create! rdb_board: board, principal: User.current, role: RdbBoardPermission::ADMIN
 
       Rails.logger.warn board.inspect
 
