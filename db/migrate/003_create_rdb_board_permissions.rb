@@ -1,0 +1,15 @@
+class CreateRdbBoardPermissions < ActiveRecord::Migration
+  def self.up
+    create_table :rdb_board_permissions do |t|
+      t.integer :rdb_board_id, null: false
+      t.integer :principal_id, null: false
+      t.string  :principal_type, null: false
+      t.string  :role, null: false
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :rdb_board_permissions
+  end
+end

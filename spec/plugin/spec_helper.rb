@@ -59,6 +59,12 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each) do
+    User.current = nil
+  end
+
+  config.include CurrentUser, type: :controller
 end
 
 Test::Unit.run = true

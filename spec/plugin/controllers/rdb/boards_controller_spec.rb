@@ -1,6 +1,8 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
 describe Rdb::BoardsController, type: :controller do
+  fixtures :users
+
   let(:board) do
     RdbBoard.create! name: 'My Board', engine: Rdb::Taskboard
   end
@@ -34,35 +36,56 @@ describe Rdb::BoardsController, type: :controller do
     let(:action) { get :show, id: board.id }
     subject { resp }
 
-    it { expect(subject.status).to eq 200 }
+    context 'as anonymous' do
+      it { expect(subject.status).to eq 401 }
+      it { expect(resp.body).to be_blank }
+    end
 
-    describe 'JSON body' do
-      subject { json }
+    context 'as authorized principal' do
+      let(:current_user) { User.find 2 }
+      before { RdbBoardPermission.create! rdb_board: board, principal: current_user, role: RdbBoardPermission::ADMIN }
 
-      it { expect(subject['id']).to eq board.id }
-      it { expect(subject['name']).to eq board.name }
-      it { expect(subject['type']).to eq 'taskboard' }
+      it { expect(subject.status).to eq 200 }
+
+      describe 'JSON body' do
+        subject { json }
+
+        it { expect(subject['id']).to eq board.id }
+        it { expect(subject['name']).to eq board.name }
+        it { expect(subject['type']).to eq 'taskboard' }
+      end
     end
   end
 
   describe 'PATCH update' do
-    let(:action) { patch :update, req.as_json.merge(id: board.id) }
+    let(:params) { {} }
+    let(:action) { patch :update, params.as_json.merge(id: board.id) }
     subject { resp }
 
-    describe '#name' do
-      context 'empty' do
-        let(:req) { {'name' => ''} }
+    context 'as anonymous' do
+      it { expect(subject.status).to eq 401 }
+      it { expect(resp.body).to be_blank }
+    end
 
-        it { expect(subject.status).to eq 422 }
-        it { expect(json).to eq 'errors' => {'name' => ["can't be blank"]} }
-      end
+    context 'as authorized principal' do
+      let(:current_user) { User.find 2 }
+      before { RdbBoardPermission.create! rdb_board: board, principal: current_user, role: RdbBoardPermission::ADMIN }
 
-      context 'already taken' do
-        before { RdbBoard.create! name: 'Board name', engine: Rdb::Taskboard }
-        let(:req) { {'name' => 'Board name'} }
+      describe '#name' do
+        context 'empty' do
+          let(:params) { {'name' => ''} }
 
-        it { expect(subject.status).to eq 422 }
-        it { expect(json).to eq 'errors' => {'name' => ["has already been taken"]} }
+          it { expect(subject.status).to eq 422 }
+          it { expect(json).to eq 'errors' => {'name' => ["can't be blank"]} }
+        end
+
+        context 'already taken' do
+          before { RdbBoard.create! name: 'Board name', engine: Rdb::Taskboard }
+          let(:params) { {'name' => 'Board name'} }
+
+          it { expect(subject.status).to eq 422 }
+          it { expect(json).to eq 'errors' => {'name' => ["has already been taken"]} }
+        end
       end
     end
   end

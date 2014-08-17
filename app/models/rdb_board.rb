@@ -5,6 +5,7 @@ class RdbBoard < ActiveRecord::Base
   has_many :sources, class_name: 'RdbSource'
 
   validates :name, uniqueness: true, presence: true
+  has_many :permissions, class_name: 'RdbBoardPermission'
 
   def engine_class
     Rdb::Engine.lookup! read_attribute :engine
@@ -54,5 +55,21 @@ class RdbBoard < ActiveRecord::Base
 
   def as_json(*args)
     engine.as_json(*args)
+  end
+
+  def readable_for?(principal)
+    if principal.respond_to?(:admin?) && principal.admin?
+      true
+    else
+      self.permissions.any?{|permission| permission.read?(principal) }
+    end
+  end
+
+  def writable_for?(principal)
+    if principal.respond_to?(:admin?) && principal.admin?
+      true
+    else
+      self.permissions.any?{|permission| permission.write?(principal) }
+    end
   end
 end

@@ -1,6 +1,9 @@
 class Rdb::BoardsController < ::ApplicationController
+  before_filter :check_read_permission, except: [:index, :update]
+  before_filter :check_write_permission, except: [:show, :index]
+
   def index
-    render json: RdbBoard.all.map(&:engine)
+    render json: RdbBoard.all
   end
 
   def show
@@ -8,7 +11,7 @@ class Rdb::BoardsController < ::ApplicationController
   end
 
   def update
-    board.update params
+    board.engine.update params
 
     render json: board
   rescue ActiveRecord::RecordInvalid => e
@@ -18,6 +21,18 @@ class Rdb::BoardsController < ::ApplicationController
   private
 
   def board
-    @board ||= RdbBoard.find(Integer(params[:id])).engine
+    @board ||= RdbBoard.find Integer params[:id]
+  end
+
+  def check_read_permission
+    unauthorized! unless board.readable_for? User.current
+  end
+
+  def check_write_permission
+    unauthorized! unless board.writable_for? User.current
+  end
+
+  def unauthorized!
+    head :unauthorized
   end
 end
