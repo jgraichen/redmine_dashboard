@@ -33,8 +33,6 @@ class RdbController < ::ApplicationController
       RdbSource.create! context: context, board: board
       RdbBoardPermission.create! rdb_board: board, principal: User.current, role: RdbBoardPermission::ADMIN
 
-      Rails.logger.warn board.inspect
-
       redirect_to rdb_url board
     end
   end
