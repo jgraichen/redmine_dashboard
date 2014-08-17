@@ -1,12 +1,15 @@
+t = require 'counterpart'
+
 core = require 'rui/core'
 util = require 'rui/util'
-Translate = require 'rui/Translate'
 {div, h2} = require 'rui/DOM'
 
-Dashboard = require '../mixins/Dashboard'
-Configuration = require '../mixins/Configuration'
-GlobalEventBus = require '../mixins/GlobalEventBus'
-TaskboardColumn = require './TaskboardColumn'
+Dashboard = require 'rdb/mixins/Dashboard'
+Configuration = require 'rdb/mixins/Configuration'
+GlobalEventBus = require 'rdb/mixins/GlobalEventBus'
+
+Column = require './Taskboard/Column'
+ColumnConfiguration = require './Taskboard/ColumnConfiguration'
 
 Main = core.createComponent 'rdb.Taskboard',
   mixins: [Dashboard],
@@ -16,7 +19,7 @@ Main = core.createComponent 'rdb.Taskboard',
 
   renderColumns: ->
     @props.board.get('columns').map (column) =>
-      TaskboardColumn
+      Column
         key: column['id']
         board: @props.board
         name: column['name']
@@ -27,18 +30,18 @@ Configuration = core.createComponent 'rdb.Taskboard.Configuration',
 
   renderConfig: ->
     [
+      # div
+      #   name: Translate.t('rdb.configure.sources.nav')
+      #   help: Translate.t('rdb.configure.sources.nav_text')
+      #   h2 Translate.t('rdb.configure.sources.title')
       div
-        name: Translate.t('rdb.configure.sources.nav')
-        help: Translate.t('rdb.configure.sources.nav_text')
-        h2 Translate.t('rdb.configure.sources.title')
+        name: t('rdb.configure.columns.nav')
+        help: t('rdb.configure.columns.nav_text')
+        ColumnConfiguration board: @props.board
       div
-        name: Translate.t('rdb.configure.columns.nav')
-        help: Translate.t('rdb.configure.columns.nav_text')
-        h2 Translate.t('rdb.configure.columns.title')
-      div
-        name: Translate.t('rdb.configure.swimlanes.nav')
-        help: Translate.t('rdb.configure.swimlanes.nav_text')
-        h2 Translate.t('rdb.configure.swimlanes.title')
+        name: t('rdb.configure.swimlanes.nav')
+        help: t('rdb.configure.swimlanes.nav_text')
+        h2 t('rdb.configure.swimlanes.title')
     ]
 
 module.exports =
