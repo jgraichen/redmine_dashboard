@@ -1,8 +1,8 @@
 # Redmine Dashboard 2
 
-[![Build Status](https://travis-ci.org/jgraichen/redmine_dashboard.svg?branch=stable-v2)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Flattr this git repo](http://img.shields.io/badge/flattr-this-green.svg)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
-[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard/stable-v2.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
@@ -42,7 +42,7 @@ You can list all available version with `git tag -l`.
 
 I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `master` branch. Please try to not add larger new features to current v2.
 
-I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/organization/redmine_dashboard) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
+I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard-2/) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
 
 [![Translation status](https://www.transifex.com/projects/p/redmine-dashboard-2/resource/strings/chart/image_png)](https://www.transifex.com/projects/p/redmine-dashboard-2/)
 

@@ -1,11 +1,15 @@
 require 'redmine'
 require 'haml'
 
+Rails.configuration.to_prepare do
+  require 'rdb/rails/i18n'
+end
+
 Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
   description 'Add a task board and a planning board to Redmine'
-  version '2.3.1'
+  version '2.3.2'
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jg@altimos.de'
 
