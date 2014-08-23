@@ -37,7 +37,7 @@ describe Rdb::BoardsController, type: :controller do
     subject { resp }
 
     context 'as anonymous' do
-      it { expect(subject.status).to eq 401 }
+      it { expect(subject.status).to eq 404 }
       it { expect(resp.body).to be_blank }
     end
 
@@ -67,7 +67,7 @@ describe Rdb::BoardsController, type: :controller do
     subject { resp }
 
     context 'as anonymous' do
-      it { expect(subject.status).to eq 401 }
+      it { expect(subject.status).to eq 404 }
       it { expect(resp.body).to be_blank }
     end
 

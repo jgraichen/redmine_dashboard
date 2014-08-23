@@ -33,6 +33,6 @@ class Rdb::BoardsController < ::ApplicationController
   end
 
   def unauthorized!
-    head :unauthorized
+    head :not_found # Do not leak if a board exists
   end
 end
