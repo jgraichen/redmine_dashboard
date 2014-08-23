@@ -20,5 +20,5 @@ module.exports = core.createComponent 'rdb.Taskboard.Column',
   render: ->
     div className: "rdb-column rdb-column-#{@props.id}", [
       h3 @props.name
-      div [ IssueList issues: @state.issues, className: 'rdb-column' ]
+      div [ IssueList issues: @state.issues ]
     ]
