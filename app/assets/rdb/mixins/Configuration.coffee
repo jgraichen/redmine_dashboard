@@ -12,32 +12,35 @@ DropdownButton = require 'rui/DropdownButton'
 
 {div, section, header, h1, h2, h3, a, p, label, span} = require 'rui/DOM'
 
+GenericConfiguration = require 'rdb/components/Generic/Configuration'
+
 module.exports =
   renderCommonConfig: ->
     div
       name: Translate.t('rdb.configure.general.nav')
       help: Translate.t('rdb.configure.general.nav_text')
-      [
-        h2 Translate.t('rdb.configure.general.title')
-        p Translate.t('rdb.configure.general.description')
-        h3 Translate.t('rdb.configure.general.general')
-        Input
-          label: Translate.t('rdb.configure.general.dashboard_name')
-          help: Translate.t('rdb.configure.general.dashboard_name_text')
-          value: @props.board.get('name')
-          onSave: (val) =>
-            @props.board.save({'name': val}, wait: true, patch: true  )
-              .catch (xhr) =>
-                throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
-        # Input
-        #   label: Translate.t('rdb.configure.general.dashboard_type')
-        #   help: Translate.t('rdb.configure.general.dashboard_type_text')
-        #   value: @props.board.get('type')
-        #   onSave: (val) =>
-        #     @props.board.save({'type': val}, wait: true)
-        #       .catch (xhr) =>
-        #         throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['type']
-      ]
+      GenericConfiguration board: @props.board
+      # [
+      #   h2 Translate.t('rdb.configure.general.title')
+      #   p Translate.t('rdb.configure.general.description')
+      #   h3 Translate.t('rdb.configure.general.general')
+      #   Input
+      #     label: Translate.t('rdb.configure.general.dashboard_name')
+      #     help: Translate.t('rdb.configure.general.dashboard_name_text')
+      #     value: @props.board.get('name')
+      #     onSave: (val) =>
+      #       @props.board.save({'name': val}, wait: true, patch: true  )
+      #         .catch (xhr) =>
+      #           throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
+      #   # Input
+      #   #   label: Translate.t('rdb.configure.general.dashboard_type')
+      #   #   help: Translate.t('rdb.configure.general.dashboard_type_text')
+      #   #   value: @props.board.get('type')
+      #   #   onSave: (val) =>
+      #   #     @props.board.save({'type': val}, wait: true)
+      #   #       .catch (xhr) =>
+      #   #         throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['type']
+      # ]
 
   render: ->
     backToBoard = (e) =>
