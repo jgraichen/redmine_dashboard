@@ -57,7 +57,7 @@ task update: %w(redmine:update)
 
 desc 'Start local redmine server (aliases: `s`)'
 task server: :install do |_, args|
-  RM.bx %w(rails server), args
+  RM.bx %w(rails server -p 7000), args
 end
 task s: 'server'
 
