@@ -5,8 +5,8 @@ gem 'haml'
 
 group :development do
   gem 'guard-rspec'
-  gem 'transifex-ruby', github: 'jgraichen/transifex-ruby', require: false
-  gem 'inifile', require: false
+  gem 'transifex-ruby', :github => 'jgraichen/transifex-ruby', :require => false
+  gem 'inifile', :require => false
 end
 
 group :test do
