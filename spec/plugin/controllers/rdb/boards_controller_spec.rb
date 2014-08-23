@@ -50,9 +50,13 @@ describe Rdb::BoardsController, type: :controller do
       describe 'JSON body' do
         subject { json }
 
-        it { expect(subject['id']).to eq board.id }
-        it { expect(subject['name']).to eq board.name }
-        it { expect(subject['type']).to eq 'taskboard' }
+        it do
+          is_expected.to eq \
+            'id' => board.id,
+            'name' => board.name,
+            'type' => 'taskboard',
+            'columns' => []
+        end
       end
     end
   end
