@@ -1,7 +1,7 @@
 RUBY = ruby
 NODE = node
 SASS = $(RUBY) -S sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
-BROWSERIFY = $(NODE) node_modules/.bin/browserify --ignore jquery --ignore underscore -t coffeeify --extension=".coffee" -t browserify-data -t envify
+BROWSERIFY = $(NODE) node_modules/.bin/browserify -i jquery -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = $(NODE) node_modules/.bin/exorcist
 UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
 NODE_PATH = .:app/assets:bower_components
