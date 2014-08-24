@@ -1,4 +1,4 @@
-class Rdb::BoardsController < ::ApplicationController
+class Rdb::BoardsController < ::Rdb::BaseController
   before_filter :check_read_permission, except: [:index, :update]
   before_filter :check_write_permission, except: [:show, :index]
 
@@ -22,17 +22,5 @@ class Rdb::BoardsController < ::ApplicationController
 
   def board
     @board ||= RdbBoard.find Integer params[:id]
-  end
-
-  def check_read_permission
-    unauthorized! unless board.readable_for? User.current
-  end
-
-  def check_write_permission
-    unauthorized! unless board.writable_for? User.current
-  end
-
-  def unauthorized!
-    head :not_found # Do not leak if a board exists
   end
 end
