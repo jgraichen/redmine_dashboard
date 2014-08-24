@@ -2,14 +2,35 @@ t = require 'counterpart'
 
 core = require 'rui/core'
 util = require 'rui/util'
-{div, h2} = require 'rui/DOM'
+{div, h3, ul} = require 'rui/DOM'
 
-Dashboard = require 'rdb/mixins/Dashboard'
-Configuration = require 'rdb/mixins/Configuration'
-GlobalEventBus = require 'rdb/mixins/GlobalEventBus'
+Issue = require 'rdb/Issue'
+Dashboard = require 'rdb/Dashboard'
+Configuration = require 'rdb/Configuration'
+GlobalEventBus = require 'rdb/GlobalEventBus'
+IssueComponent = require 'rdb/IssueComponent'
+BackboneMixins = require 'rdb/BackboneMixins'
 
-Column = require './Taskboard/Column'
-ColumnConfiguration = require './Taskboard/ColumnConfiguration'
+Column = core.createComponent 'rdb.Taskboard.Column',
+  mixins: [BackboneMixins.CollectionView]
+
+  getDefaultProps: ->
+    collection: new Issue.Collection board: @props.board, params: {column: @props.id}
+
+  componentDidMount: ->
+    @props.collection.fetch().then => @forceUpdate()
+
+  render: ->
+    div className: "rdb-column rdb-column-#{@props.id}", [
+      h3 @props.name
+
+      ul @renderCollectionItems (item) ->
+        IssueComponent model: item
+    ]
+
+ColumnConfiguration = core.createComponent 'rdb.Taskboard.ColumnConfiguration',
+  render: ->
+    h3 t('rdb.configure.columns.title')
 
 Main = core.createComponent 'rdb.Taskboard',
   mixins: [Dashboard],
@@ -41,7 +62,7 @@ Configuration = core.createComponent 'rdb.Taskboard.Configuration',
       div
         name: t('rdb.configure.swimlanes.nav')
         help: t('rdb.configure.swimlanes.nav_text')
-        h2 t('rdb.configure.swimlanes.title')
+        h3 t('rdb.configure.swimlanes.title')
     ]
 
 module.exports =

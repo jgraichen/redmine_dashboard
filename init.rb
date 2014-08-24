@@ -1,5 +1,8 @@
 require 'redmine'
 
+require 'slim'
+require 'draper'
+
 # require 'rdb/rails/i18n'
 require 'rdb/rails/patch'
 
@@ -10,6 +13,8 @@ Rails.configuration.to_prepare do
 
   ActiveSupport::Dependencies
     .autoload_paths << File.expand_path('../lib', __FILE__)
+  ActiveSupport::Dependencies
+    .autoload_paths << File.expand_path('../app/decorators', __FILE__)
 
   Rails.configuration.i18n.load_path += Dir[File.expand_path('../app/locales/**/*.{rb,yml}', __FILE__)]
 end

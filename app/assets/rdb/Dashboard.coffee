@@ -10,8 +10,8 @@ LayeredComponentMixin = require 'rui/LayeredComponentMixin'
 {h2, div, section, header, span, a} = require 'rui/DOM'
 
 Rdb = require 'rdb/index'
-BoardMenu = require '../components/BoardMenu'
-GlobalEventBus = require './GlobalEventBus'
+BoardMenu = require 'rdb/BoardMenu'
+GlobalEventBus = require 'rdb/GlobalEventBus'
 
 module.exports =
   mixins: [GlobalEventBus, LayeredComponentMixin],

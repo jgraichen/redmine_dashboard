@@ -19,6 +19,7 @@
   "dependencies": {
     "mousetrap": "~1.4.6",
     "tether": "~0.6.5",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "exoskeleton": "~0.7.0"
   }
 }

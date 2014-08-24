@@ -46,8 +46,8 @@ Input = core.createComponent 'rui.Input',
             @setState active: true, error: err.message, =>
               @refs['input'].getDOMNode().focus()
         .catch (err) =>
-          console.warn 'Input received unknown error:', err
           if @isMounted() then @deactivate()
+          throw err
     else
       @deactivate()
 

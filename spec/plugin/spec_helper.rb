@@ -12,6 +12,7 @@ if defined?(Test::Unit::AutoRunner)
   Test::Unit::AutoRunner.need_auto_run = false
 end
 
+require 'rspec'
 require 'rspec/rails'
 require 'database_cleaner'
 

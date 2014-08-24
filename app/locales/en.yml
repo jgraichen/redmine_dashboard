@@ -18,6 +18,12 @@ en:
       configure: Configure
       fullscreen: Fullscreen
       back: Back
+      remove: Remove
+
+    permissions:
+      read: Read
+      edit: Edit
+      admin: Admin
 
     configure:
       title: Configure %(link)s

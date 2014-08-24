@@ -43,7 +43,11 @@ describe Rdb::BoardsController, type: :controller do
 
     context 'as authorized principal' do
       let(:current_user) { User.find 2 }
-      before { RdbBoardPermission.create! rdb_board: board, principal: current_user, role: RdbBoardPermission::ADMIN }
+      let!(:permission) do
+        RdbBoardPermission.create! rdb_board: board,
+          principal: current_user, role: RdbBoardPermission::ADMIN
+      end
+      before { Setting.gravatar_enabled = 1 }
 
       it { expect(subject.status).to eq 200 }
 
@@ -55,7 +59,16 @@ describe Rdb::BoardsController, type: :controller do
             'id' => board.id,
             'name' => board.name,
             'type' => 'taskboard',
-            'columns' => []
+            'columns' => [],
+            'permissions' => [
+              {
+                'id' => permission.id,
+                'type' => 'user',
+                'name' => current_user.name,
+                'role' => 'ADMIN',
+                'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
+              }
+            ]
         end
       end
     end

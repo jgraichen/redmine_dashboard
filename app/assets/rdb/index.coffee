@@ -1,23 +1,65 @@
-# Assign jQuery object to Backbone
-$ = require 'jquery'
-Promise = require 'bluebird'
-require('backbone').$ = $
-
-# Wrap all jQuery XHRs into real promises
-ajax = $.ajax
-$.ajax = -> Promise.resolve ajax arguments...
-
-# CSRF token handling taken from rails/jquery-ujs
-$.ajaxPrefilter (options, originalOptions, xhr) ->
-  if !options.crossDomain
-    token = $('meta[name="csrf-token"]').attr 'content'
-    xhr.setRequestHeader 'X-CSRF-Token', token
-
-App = require './application'
+_ = require 'lodash'
 React = require 'react'
-Board = require './resources/Board'
 extend = require 'extend'
-Backbone = require 'backbone'
+Promise = require 'bluebird'
+Exoskeleton = require 'exoskeleton'
+
+CONTENT_TYPES =
+  json: /json/
+
+Exoskeleton.sync = (method, model, options) ->
+  new Promise (resolve, reject) ->
+    url = _.result model, 'url'
+    url || throw Error 'A "url" property must be defined.'
+
+    type = {
+      'read': 'GET'
+      'patch': 'PATCH'
+      'create': 'POST'
+      'update': 'PUT'
+      'delete': 'DELETE'
+    }[method]
+
+    xhr = new XMLHttpRequest
+    xhr.open type, url, true
+
+    data = ''
+    json = undefined
+
+    if model && (method == 'create' || method == 'update')
+      xhr.setRequestHeader 'Content-Type', 'application/json'
+      json = options.attrs || model.toJSON options
+      data = JSON.stringify json
+
+    xhr.setRequestHeader 'Accept','application/jsonx'
+
+    csrf = document.getElementsByName('csrf-token')
+    if csrf.length > 0
+      xhr.setRequestHeader 'X-CSRF-Token', csrf[0].content
+
+    xhr.onload = ->
+      try
+        ct = xhr.getResponseHeader('Content-Type')
+        if CONTENT_TYPES.json.test(ct)
+          xhr.responseJSON = JSON.parse xhr.response
+
+        if xhr.status == 200
+          options.success xhr.responseJSON
+          resolve xhr
+        else
+          options.error xhr
+          reject xhr
+      catch err
+        reject err
+
+    if process.env.NODE_ENV == 'development'
+      console.log "XHR> #{type} #{url}", json || data
+
+    xhr.onerror = reject
+    xhr.send data
+
+App = require 'rdb/application'
+Board = require 'rdb/Board'
 
 counterpart = require 'counterpart'
 counterpart.registerTranslations('en', require('app/locales/en.yml')['en'])
@@ -41,7 +83,8 @@ Rdb =
     counterpart.setLocale config['locale']
 
     Rdb.root   = document.getElementById 'main'
-    Rdb.events = extend({}, Backbone.Events)
+    Rdb.base   = config['base']
+    Rdb.events = extend({}, Exoskeleton.Events)
 
     if process.env.NODE_ENV == 'development'
       Rdb.events.on 'all', ->
@@ -58,7 +101,7 @@ Rdb =
 
     React.renderComponent Rdb.app, Rdb.root
 
-    Backbone.history.start
+    Exoskeleton.history.start
       # root: "/dashboards/#{Rdb.board.get("id")}"
       pushState: true
 

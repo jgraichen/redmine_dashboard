@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
-gem 'slim'
+gem 'slim', require: false
+gem 'draper', require: false
 
 group :development, :test do
-  gem 'rspec', '~> 3.0'
+  gem 'rspec', '~> 3.0', require: false
   gem 'rspec-rails', require: false
   gem 'database_cleaner', require: false
   gem 'fuubar', require: false

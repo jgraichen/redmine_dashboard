@@ -6,11 +6,11 @@ Icon = require 'rui/Icon'
 Menu = require 'rui/Menu'
 {a} = require 'rui/DOM'
 
-BoardCollection = require '../resources/BoardCollection'
+Board = require 'rdb/Board'
 
 module.exports = core.createComponent 'rdb.BoardMenu',
   getInitialState: ->
-    boards: new BoardCollection()
+    boards: new Board.Collection()
 
   componentDidMount: ->
     @state.boards.on 'change add', @update, @

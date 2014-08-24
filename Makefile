@@ -1,7 +1,7 @@
 RUBY = ruby
 NODE = node
 SASS = $(RUBY) -S sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
-BROWSERIFY = $(NODE) node_modules/.bin/browserify -t coffeeify --extension=".coffee" -t browserify-data -t envify
+BROWSERIFY = $(NODE) node_modules/.bin/browserify --ignore jquery --ignore underscore -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = $(NODE) node_modules/.bin/exorcist
 UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
 NODE_PATH = .:app/assets:bower_components
@@ -31,7 +31,7 @@ fonts: $(BUILD)
 
 .PHONY: $(BUILD)/main.js
 $(BUILD)/main.js: $(BUILD)
-	NODE_PATH=$(NODE_PATH) NODE_ENV=development $(BROWSERIFY) --debug $(SOURCE)/main.coffee -o $(BUILD)/main.js
+	NODE_PATH=$(NODE_PATH) NODE_ENV=development $(BROWSERIFY) --debug $(SOURCE)/main.coffee | $(EXORCIST) $(BUILD)/main.js.map > $(BUILD)/main.js
 
 .PHONY: $(BUILD)/main.css
 $(BUILD)/main.css: $(BUILD)

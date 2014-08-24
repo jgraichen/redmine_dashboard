@@ -13,14 +13,14 @@ DropdownButton = require 'rui/DropdownButton'
 {div, section, header, h1, h2, h3, a, p, label, span} = require 'rui/DOM'
 
 Rdb = require 'rdb/index'
-GenericConfiguration = require 'rdb/components/Generic/Configuration'
+GeneralConfiguration = require 'rdb/GeneralConfiguration'
 
 module.exports =
   renderCommonConfig: ->
     div
       name: t('rdb.configure.general.nav')
       help: t('rdb.configure.general.nav_text')
-      GenericConfiguration board: @props.board
+      GeneralConfiguration board: @props.board
 
   render: ->
     backToBoard = (e) =>

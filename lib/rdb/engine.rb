@@ -15,11 +15,14 @@ class Rdb::Engine
     board.name
   end
 
-  def as_json(*)
+  def as_json(*args)
     {
       id: board.id,
       name: board.name,
-      type: self.class.name.split('::').last.downcase
+      type: self.class.name.split('::').last.downcase,
+      permissions: board.permissions.map do |p|
+        ::Rdb::PermissionDecorator.new(p).as_json(*args)
+      end
     }
   end
 

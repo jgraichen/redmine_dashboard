@@ -4,23 +4,21 @@
   "description": "A redmine issue dashboard plugin",
   "main": "app/assets/main.coffee",
   "dependencies": {
-    "backbone": "~1.1.2",
-    "bluebird": "^2.2.1",
+    "bluebird": "~2.2.1",
     "counterpart": "~0.14.2",
     "extend": "~1.3.0",
-    "jquery": "^2.1.1",
     "react": "~0.10.0",
-    "underscore": "~1.6.0"
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
-    "browserify": "^4.2.0",
-    "browserify-data": "^0.1.1",
-    "coffeeify": "^0.6.0",
-    "envify": "^1.2.1",
-    "exorcist": "^0.1.6",
-    "nodemon": "^1.2.1",
-    "uglify-js": "^2.4.14",
-    "uglifyify": "^2.4.0"
+    "browserify": "~5.10.1",
+    "browserify-data": "~0.1.1",
+    "coffeeify": "~0.6.0",
+    "envify": "~1.2.1",
+    "exorcist": "~0.1.6",
+    "nodemon": "~1.2.1",
+    "uglify-js": "~2.4.14",
+    "uglifyify": "~2.4.0"
   },
   "repository": {
     "type": "git",

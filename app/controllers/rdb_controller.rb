@@ -30,8 +30,14 @@ class RdbController < ::ApplicationController
         board.save!
       end
 
-      RdbSource.create! context: context, board: board
-      RdbBoardPermission.create! rdb_board: board, principal: User.current, role: RdbBoardPermission::ADMIN
+      RdbSource.create! \
+        context: context,
+        board: board
+
+      RdbBoardPermission.create! \
+        rdb_board: board,
+        principal: User.current,
+        role: RdbBoardPermission::ADMIN
 
       redirect_to rdb_url board
     end

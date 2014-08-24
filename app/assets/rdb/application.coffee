@@ -1,13 +1,13 @@
-{Router} = require 'backbone'
+{Router} = require 'exoskeleton'
 classSet = require 'react/lib/cx'
 counterpart = require 'counterpart'
 
 core = require 'rui/core'
 {div} = require 'rui/DOM'
 
-Board = require './resources/Board'
-BoardComponent = require './components/Board'
-GlobalEventBus = require './mixins/GlobalEventBus'
+Board = require 'rdb/Board'
+BoardComponent = require 'rdb/BoardComponent'
+GlobalEventBus = require 'rdb/GlobalEventBus'
 
 AppRouter = Router.extend
   routes:
@@ -24,28 +24,29 @@ AppComponent = core.createComponent 'rdb.AppComponent',
 
   getInitialState: ->
     current: 'index'
-    component: (root) -> root()
+    component: (root) -> root [ 'Loading...' ]
+    board: @props.board
 
   onRoute: (route, data) ->
     switch route
       when 'index'
-        @setState
+        @setState ->
           component: (root) ->
             root [ div ['INDEX'] ]
       when 'show', 'configure'
-        @withBoard data[0], (board) =>
+        @getBoard(data[0]).then (board) =>
           @setState
             component: (root) ->
               BoardComponent action: route, board: board, root: root
 
-  withBoard: (id, cb) ->
+  getBoard: (id) ->
     if !@state.board || @state.board.get('id') != parseInt(id)
       board = new Board id: id
-      board.fetch success: -> cb(board)
-
       @setState board: board
+
+      board.fetch()
     else
-      cb @state.board
+      new Promise (resolve) => resolve @state.board
 
   toggleFullscreen: ->
     fullscreen = !@state.fullscreen

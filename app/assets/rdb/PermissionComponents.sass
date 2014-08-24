@@ -1,0 +1,44 @@
+@import 'rui/style'
+
+.rdb-permissions
+  width: 100%
+  max-width: 60em
+  border-spacing: 0
+  border-collapse: collapse
+
+  td
+    border-top: 1px solid $frame-color
+    padding: 4px 8px
+
+    .rdb-avatar
+      width: 16px
+      height: 16px
+      border-radius: 2px
+      vertical-align: bottom
+      margin-right: .4em
+
+    .rui-icon:first-child
+      margin-right: .4em
+
+  td.rdb-roles
+    width: 15em
+
+    a
+      font-size: 80%
+      display: inline-block
+      border: 1px solid $primary-brightblue
+      padding: 1px 4px
+      border-radius: 3px
+      margin: 1px 2px
+      text-transform: uppercase
+
+      &:hover, &.rdb-active
+        text-decoration: none
+        color: white
+        background-color: $primary-brightblue
+
+  td.rdb-actions
+    width: 8em
+
+  td:last-child
+    width: 1%
