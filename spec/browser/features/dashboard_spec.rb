@@ -25,7 +25,9 @@ feature 'Dashboard', js: true, sauce: true do
 
     expect(page).to have_css '#main-menu', visible: true
 
-    find('#rdb-fullscreen').click
+    within '.contextual' do
+      click_on 'Fullscreen'
+    end
 
     expect(page).to have_css '#main-menu', visible: false
   end

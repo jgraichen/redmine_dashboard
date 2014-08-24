@@ -13,5 +13,6 @@ Util =
     if Util.isPrimaryClick(e)
       e.preventDefault()
       fn(e)
+      false
 
 module.exports = Util

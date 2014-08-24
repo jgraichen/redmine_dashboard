@@ -5,7 +5,8 @@ util = require 'rui/util'
 Icon = require 'rui/Icon'
 Menu = require 'rui/Menu'
 Button = require 'rui/Button'
-DropdownButton = require 'rui/DropdownButton'
+DropdownContainer = require 'rui/DropdownContainer'
+LayeredComponentMixin = require 'rui/LayeredComponentMixin'
 {h2, div, section, header, span, a} = require 'rui/DOM'
 
 Rdb = require 'rdb/index'
@@ -13,28 +14,38 @@ BoardMenu = require '../components/BoardMenu'
 GlobalEventBus = require './GlobalEventBus'
 
 module.exports =
-  mixins: [GlobalEventBus],
+  mixins: [GlobalEventBus, LayeredComponentMixin],
 
   events:
     'rdb:fullscreen:changed': 'setFullscreenState'
 
   getInitialState: ->
     fullscreen: false
+    open: false
 
   setFullscreenState: (state) ->
     @setState fullscreen: state
 
+  renderLayer: ->
+    DropdownContainer
+      target: @refs['menu'].getDOMNode(),
+      visible: @state.open
+      BoardMenu board: @props.board
+
   render: ->
     @props.root [
       div className: 'contextual', [
+        do =>
+          if !@state.fullscreen
+            a
+              href: @props.board.urls.configure,
+              onClick: Rdb.nav(@props.board.urls.configure)
+              [
+                Icon glyph: 'pencil'
+                t 'rdb.contextual.configure'
+              ]
         a
-          href: @props.board.urls.configure,
-          onClick: Rdb.nav(@props.board.urls.configure)
-          [
-            Icon glyph: 'pencil'
-            t 'rdb.contextual.configure'
-          ]
-        a
+          href: '#'
           onClick: (e) =>
             util.handlePrimaryClick e, (e) =>
               Rdb.events.trigger 'rdb:fullscreen:toggle'
@@ -44,26 +55,21 @@ module.exports =
           ]
       ]
       h2 [
-        @props.board.get 'name'
+        do =>
+          if @state.fullscreen
+            @props.board.get 'name'
+          else
+            a
+              id: 'rdb-menu'
+              ref: 'menu'
+              onClick: (e) =>
+                util.handlePrimaryClick e, (e) =>
+                  @setState open: !@state.open
+              [
+                Icon glyph: 'chevron-circle-down'
+                @props.board.get 'name'
+              ]
       ]
+
       section className: 'rdb-main', @renderBoard()
     ]
-    # div id: 'rdb-board', [
-    #   header className: 'rdb-header', [
-    #     div [
-    #       do =>
-    #         if !@state.fullscreen
-    #           DropdownButton
-    #             large: true
-    #             id: 'rdb-menu'
-    #             label: [ Icon glyph: 'power-off', large: true ]
-    #             target: '#rdb-board > header'
-    #             BoardMenu board: @props.board
-    #       h2 @props.board.get 'name'
-    #     ]
-    #     div [
-    #       FullscreenButton id: 'rdb-fullscreen', fullscreen: @state.fullscreen
-    #     ]
-    #   ]
-    #   section className: 'rdb-main', @renderBoard()
-    # ]

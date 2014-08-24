@@ -22,19 +22,6 @@ module.exports = core.createComponent 'rdb.BoardMenu',
   update: ->
     @forceUpdate()
 
-  renderConfigItem: ->
-    a
-      href: @props.board.urls.configure
-      'title': t('rdb.menu.configure_board')
-      'aria-label': t('rdb.menu.configure_board')
-      onClick: (e) =>
-        util.handlePrimaryClick e, (e) =>
-          Rdb.navigate @props.board.urls.configure
-      [
-        Icon glyph: 'cog'
-        t('rdb.menu.configure_board')
-      ]
-
   renderCreateItem: ->
     a
       href: @props.board.urls.create
@@ -46,7 +33,7 @@ module.exports = core.createComponent 'rdb.BoardMenu',
       ]
 
   render: ->
-    items = [@renderConfigItem(), @renderCreateItem(), Menu.Separator()]
+    items = [@renderCreateItem(), Menu.Separator()]
     @state.boards.forEach (board) ->
       items.push a
         href: board.urls.root

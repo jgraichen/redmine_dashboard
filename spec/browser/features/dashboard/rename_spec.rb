@@ -15,12 +15,15 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('#rdb-menu').click
-    click_on 'Configure Dashboard'
+    within '.contextual' do
+      click_on 'Configure'
+    end
 
     find(:fillable_field, 'Name').fill 'New dashboard name'
 
-    find('#rdb-return').click
+    within '.contextual' do
+      click_on 'Back'
+    end
 
     expect(page).to have_content 'New dashboard name'
   end
@@ -30,8 +33,9 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('#rdb-menu').click
-    click_on 'Configure Dashboard'
+    within '.contextual' do
+      click_on 'Configure'
+    end
 
     find(:fillable_field, 'Name').fill ''
     find('body').click
@@ -47,8 +51,9 @@ feature 'Rename dashboard', js: true, sauce: true do
     find('#rdb-menu').click
     click_on 'Create new Dashboard'
 
-    find('#rdb-menu').click
-    click_on 'Configure Dashboard'
+    within '.contextual' do
+      click_on 'Configure'
+    end
 
     find(:fillable_field, 'Name').fill 'New Board'
     find('body').click
