@@ -28,7 +28,7 @@ module.exports =
 
   renderLayer: ->
     DropdownContainer
-      target: @refs['menu'].getDOMNode(),
+      target: @refs['header'].getDOMNode(),
       visible: @state.open
       BoardMenu board: @props.board
 
@@ -54,7 +54,7 @@ module.exports =
             t 'rdb.contextual.fullscreen'
           ]
       ]
-      h2 [
+      h2 ref: 'header', [
         do =>
           if @state.fullscreen
             @props.board.get 'name'
