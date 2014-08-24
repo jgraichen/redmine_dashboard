@@ -1,13 +1,4 @@
-html>body
-  #content
-    padding: 0
-    min-height: 0
-
-body:not([class*=theme-])
-  #main-menu li a.rdb-project-dashboards.selected
-    background-color: $primary-lightgray
-
-#redmine-dashboard
+#content.rdb
   background-color: $primary-white
 
   border-radius: 7px
@@ -18,35 +9,33 @@ body:not([class*=theme-])
     top: 0
     left: 0
     right: 0
-    bottom: 0
+    min-height: 100%
 
-    border-radius: 0
+    border-radius: 0 !important
+    border: 0 !important
 
-  *
-    box-sizing: border-box
+    > h2
+      border-radius: 0 !important
+      border-top: 0 !important
 
   a
     cursor: pointer
 
-    &:focus, &:hover
-      text-decoration: none
+  *
+    box-sizing: border-box
 
   .rdb-clear
     clear: both
+
+  > .contextual a
+    margin-left: 1em
+
+    > i.rui-icon:first-child
+      font-size: 125%
+      padding-right: .3em
 
   @import './components/IssueList'
   @import './components/IssueCard'
 
   @import './mixins/Dashboard'
   @import './components/Taskboard'
-
-body.theme-A1
-  .rdb-header
-    border-bottom-color: #AECCD7
-    border-top: 1px solid #fff
-    background: #EAF2F5 url(../../../themes/a1/images/smooth-gradient-blue.jpg)
-
-  #redmine-dashboard.rdb-fullscreen
-    .rdb-header
-      border-top: none
-      border-radius: 0

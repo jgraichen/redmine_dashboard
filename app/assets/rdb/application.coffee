@@ -24,15 +24,19 @@ AppComponent = core.createComponent 'rdb.AppComponent',
 
   getInitialState: ->
     current: 'index'
+    component: (root) -> root()
 
   onRoute: (route, data) ->
     switch route
       when 'index'
         @setState
-          component: div ['INDEX']
+          component: (root) ->
+            root [ div ['INDEX'] ]
       when 'show', 'configure'
         @withBoard data[0], (board) =>
-          @setState component: BoardComponent action: route, board: board
+          @setState
+            component: (root) ->
+              BoardComponent action: route, board: board, root: root
 
   withBoard: (id, cb) ->
     if !@state.board || @state.board.get('id') != parseInt(id)
@@ -50,9 +54,13 @@ AppComponent = core.createComponent 'rdb.AppComponent',
 
   render: ->
     cs = classSet
+      'rdb': true
       'rdb-fullscreen': @state.fullscreen
 
-    div id: 'redmine-dashboard', className: cs, @state.component
+    root = (children) ->
+      div id: 'content', className: cs, children
+
+    @state.component root
 
 module.exports =
   Router: AppRouter

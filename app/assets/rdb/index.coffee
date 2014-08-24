@@ -24,16 +24,23 @@ counterpart.registerTranslations('en', require('app/locales/en.yml')['en'])
 counterpart.registerTranslations('de', require('app/locales/de.yml')['de'])
 counterpart.registerTranslations('zh', require('app/locales/zh.yml')['zh'])
 
+util = require 'rui/util'
+
 Rdb =
   navigate: (route, opts = {}) ->
     opts = extend trigger: true, opts
 
     Rdb.router.navigate route, opts
 
+  nav: (path, opts = {}) ->
+    (e) ->
+      util.handlePrimaryClick e, (e) =>
+        Rdb.router.navigate path, extend(trigger: true, opts)
+
   init: (config, data) ->
     counterpart.setLocale config['locale']
 
-    Rdb.root   = document.getElementById 'content'
+    Rdb.root   = document.getElementById 'main'
     Rdb.events = extend({}, Backbone.Events)
 
     if process.env.NODE_ENV == 'development'

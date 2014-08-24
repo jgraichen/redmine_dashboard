@@ -5,7 +5,7 @@ classSet = require 'react/lib/cx'
 core = require './core'
 util = require './util'
 KeyboardFocus = require './KeyboardFocus'
-{div, nav, ul, li, a, span, section, h3} = require './DOM'
+{div, nav, ul, li, a, span, section, h4} = require './DOM'
 
 NavigationLink = core.createComponent 'rui.NavigationLink',
   mixins: [KeyboardFocus]
@@ -42,7 +42,7 @@ Navigation = core.createComponent 'rui.Navigation',
     tag = @props.component || div
     @transferPropsTo tag className: 'rui-nav', [
       nav [
-        h3 @props.name
+        h4 @props.name
         ul [
           map @props.children, (pane, index) =>
             li [

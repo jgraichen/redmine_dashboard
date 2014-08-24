@@ -12,10 +12,12 @@ en:
     menu:
       dashboards: Dashboards
       my_dashboards: My Dashboards
-      toggle_fullscreen: Toggle fullscreen
-      return_to_dashboard: Return to Dashboard
-      configure_board: Configure Dashboard
       create_new_board: Create new Dashboard
+
+    contextual:
+      configure: Configure
+      fullscreen: Fullscreen
+      back: Back
 
     configure:
       title: Configure %(link)s
@@ -29,6 +31,7 @@ en:
         dashboard_name: Name
         dashboard_name_text: Required. The Dashboard name is shown on top of the Dashboard and in the Dashboard menu.
         dashboard_type: Type
+        access_control: Access control
       sources:
         nav: Issue sources
         title: Issue sources and filters

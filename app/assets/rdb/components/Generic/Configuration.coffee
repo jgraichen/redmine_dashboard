@@ -4,14 +4,16 @@ core = require 'rui/core'
 util = require 'rui/util'
 Input = require 'rui/Input'
 
-{section, h2, h3, p, label, span} = require 'rui/DOM'
+{section, h3, h4, p, label, span} = require 'rui/DOM'
+
+PermissionEditor = require './PermissionEditor'
 
 module.exports = core.createComponent 'rdb.Generic.Configuration',
   render: ->
     section [
-      h2 t('rdb.configure.general.title')
+      h3 t('rdb.configure.general.title')
       p t('rdb.configure.general.description')
-      h3 t('rdb.configure.general.general')
+      h4 t('rdb.configure.general.general')
       Input
         label: t('rdb.configure.general.dashboard_name')
         help: t('rdb.configure.general.dashboard_name_text')
@@ -20,12 +22,6 @@ module.exports = core.createComponent 'rdb.Generic.Configuration',
           @props.board.save({'name': val}, wait: true, patch: true  )
             .catch (xhr) =>
               throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
-      # Input
-      #   label: t('rdb.configure.general.dashboard_type')
-      #   help: t('rdb.configure.general.dashboard_type_text')
-      #   value: @props.board.get('type')
-      #   onSave: (val) =>
-      #     @props.board.save({'type': val}, wait: true)
-      #       .catch (xhr) =>
-      #         throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['type']
+      h4 t('rdb.configure.general.access_control')
+      PermissionEditor board: @props.board
     ]
