@@ -8,6 +8,6 @@ class Rdb::BaseController < ::ApplicationController
   end
 
   def unauthorized!
-    head :not_found # Do not leak if a board exists
+    render_404 # Do not leak if a board exists
   end
 end
