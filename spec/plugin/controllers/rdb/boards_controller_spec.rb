@@ -63,10 +63,13 @@ describe Rdb::BoardsController, type: :controller do
             'permissions' => [
               {
                 'id' => permission.id,
-                'type' => 'user',
-                'name' => current_user.name,
                 'role' => 'ADMIN',
-                'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
+                'principal' => {
+                  'type' => 'user',
+                  'id' => current_user.id,
+                  'name' => current_user.name,
+                  'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
+                }
               }
             ]
         end
