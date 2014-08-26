@@ -2,11 +2,20 @@ class RdbBoardPermission < ActiveRecord::Base
   belongs_to :rdb_board
   belongs_to :principal, polymorphic: true
 
-  READ = 'read'.freeze
-  EDIT = 'edit'.freeze
-  ADMIN = 'admin'.freeze
+  module Roles
+    READ = 'read'.freeze
+    EDIT = 'edit'.freeze
+    ADMIN = 'admin'.freeze
+  end
+  include Roles
 
-  validates :role, inclusion: {in: [READ, EDIT, ADMIN]}
+  validates :role,
+    inclusion: {in: [READ, EDIT, ADMIN]}
+  validates :principal_id,
+    presence: true,
+    uniqueness: {
+      scope: [:rdb_board_id, :principal_type]
+    }
 
   def read?(principal)
     return false unless [ADMIN, EDIT, READ].include? role

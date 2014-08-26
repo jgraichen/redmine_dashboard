@@ -5,10 +5,13 @@ module Rdb
     def as_json(*)
       {
         id: id,
-        type: type.to_s,
-        name: principal.name,
-        role: role.upcase,
-        avatar_url: avatar_url
+        principal: {
+          type: type.to_s,
+          id: principal.id,
+          name: principal.name,
+          avatar_url: avatar_url
+        },
+        role: role.upcase
       }
     end
 

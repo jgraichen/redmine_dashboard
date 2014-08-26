@@ -3,13 +3,13 @@ extend = require 'extend'
 
 class Permission extends Model
   getAvatarUrl: ->
-    @get 'avatar_url'
+    @get('principal')['avatar_url']
 
   getName: ->
-    @get 'name'
+    @get('principal')['name']
 
   getType: ->
-    @get 'type'
+    @get('principal')['type']
 
   getRole: ->
     @get 'role'

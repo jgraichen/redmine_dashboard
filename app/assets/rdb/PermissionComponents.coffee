@@ -7,7 +7,9 @@ Icon = require 'rui/Icon'
 Input = require 'rui/Input'
 Anchor = require 'rui/Anchor'
 
-{table, thead, tbody, tr, th, td, img} = require 'rui/DOM'
+{table, thead, tbody, tr, th, td, img, input, button} = require 'rui/DOM'
+
+Permission = require 'rdb/Permission'
 
 BackboneMixins = require 'rdb/BackboneMixins'
 ComponentMixins = require 'rdb/ComponentMixins'
@@ -75,11 +77,30 @@ Editor = core.createComponent 'rdb.Permission.Editor',
       tbody @renderCollectionItems (item) -> Row model: item
     ]
 
+  addPermission: ->
+    id   = @refs['id'].getDOMNode().value
+    role = @refs['role'].getDOMNode().value
+
+    @props.collection.create
+      role: role,
+      principal:
+        type: 'user',
+        id: id
+    @props.collection.fetch merge: true
+
   renderPermissionHead: ->
     tr [
-      th()
-      th()
-      th()
+      th [
+        input ref: 'id'
+      ]
+      th [
+        input ref: 'role'
+      ]
+      th [
+        button
+          onClick: (e) => @addPermission()
+          'Add'
+      ]
       th()
     ]
 

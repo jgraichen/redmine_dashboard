@@ -14,8 +14,8 @@ class Rdb::PermissionsController < ::Rdb::BaseController
   end
 
   def update
-    if permission.principal == User.current
-      render status: 422, json: {errors: [I18n.t('rdb.errors.cannot_edit_own_permission')]}
+    if permission.principal == User.current && !User.current.admin?
+      render status: 422, json: {errors: [I18n.t(:'rdb.errors.cannot_edit_own_permission')]}
       return
     end
 
@@ -25,7 +25,29 @@ class Rdb::PermissionsController < ::Rdb::BaseController
     render status: 422, json: {errors: err.record.errors}
   end
 
+  def create
+    permission = RdbBoardPermission.create! \
+      rdb_board_id: params[:rdb_board_id],
+      principal: lookup_principal(params[:principal]),
+      role: params[:role]
+
+    render json: decorator.decorate(permission)
+  rescue ActiveRecord::RecordInvalid => err
+    render status: 422, json: {errors: err.record.errors}
+  rescue ActiveRecord::RecordNotFound => err
+    render status: 422, json: {errors: {principal_id: [I18n.t(:'rdb.errors.principal_not_found')]}}
+  end
+
   private
+
+  def lookup_principal(principal)
+    case principal[:type].to_s.downcase
+      when 'user'
+        User.find principal[:id]
+      else
+        nil
+    end
+  end
 
   def permission
     board.permissions.find params[:id]

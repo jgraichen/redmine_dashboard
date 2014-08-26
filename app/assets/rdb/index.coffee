@@ -9,7 +9,8 @@ CONTENT_TYPES =
 Exoskeleton.sync = (method, model, options) ->
   new Promise (resolve, reject) ->
     url = _.result model, 'url'
-    url || throw Error 'A "url" property must be defined.'
+    if !url?
+      return reject new Error 'A "url" property must be defined.'
 
     type = {
       'read': 'GET'
