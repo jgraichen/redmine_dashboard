@@ -1,7 +1,6 @@
 _ = require 'lodash'
 React = require 'react'
 extend = require 'extend'
-Promise = require 'bluebird'
 Exoskeleton = require 'exoskeleton'
 
 CONTENT_TYPES =

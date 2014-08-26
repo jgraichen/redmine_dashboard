@@ -1,4 +1,3 @@
-Promise = require 'bluebird'
 {Router} = require 'exoskeleton'
 classSet = require 'react/lib/cx'
 counterpart = require 'counterpart'
