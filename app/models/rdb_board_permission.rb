@@ -6,6 +6,8 @@ class RdbBoardPermission < ActiveRecord::Base
   EDIT = 'edit'.freeze
   ADMIN = 'admin'.freeze
 
+  validates :role, inclusion: {in: [READ, EDIT, ADMIN]}
+
   def read?(principal)
     return false unless [ADMIN, EDIT, READ].include? role
     return false unless principal.active?
@@ -15,6 +17,13 @@ class RdbBoardPermission < ActiveRecord::Base
 
   def write?(principal)
     return false unless [ADMIN, EDIT].include? role
+    return false unless principal.active?
+
+    matching_principal? principal
+  end
+
+  def admin?(principal)
+    return false unless [ADMIN].include? role
     return false unless principal.active?
 
     matching_principal? principal

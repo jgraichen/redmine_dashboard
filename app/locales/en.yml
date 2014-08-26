@@ -51,6 +51,9 @@ en:
         title: Swimlanes
         nav_text: Vertical swimlanes to group issue
 
+    errors:
+      cannot_edit_own_permission: cannot edit own permission
+
   rui:
     input:
       edit: Start editing this field

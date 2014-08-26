@@ -61,7 +61,7 @@ class RdbBoard < ActiveRecord::Base
     if principal.respond_to?(:admin?) && principal.admin?
       true
     else
-      self.permissions.any?{|permission| permission.read?(principal) }
+      permissions.any?{|permission| permission.read?(principal) }
     end
   end
 
@@ -69,7 +69,15 @@ class RdbBoard < ActiveRecord::Base
     if principal.respond_to?(:admin?) && principal.admin?
       true
     else
-      self.permissions.any?{|permission| permission.write?(principal) }
+      permissions.any?{|permission| permission.write?(principal) }
+    end
+  end
+
+  def administrable_for?(principal)
+    if principal.respond_to?(:admin?) && principal.admin?
+      true
+    else
+      permissions.any?{|permission| permission.admin?(principal) }
     end
   end
 end
