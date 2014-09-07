@@ -7,7 +7,7 @@
 
 ***NOTE***: This README is for the **current development version** of Redmine Dashboard 3.
 
-## ***[Click here for current stable Redmine Dashboard 2.](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme)***
+## ***[Click here for current stable Redmine Dashboard 2](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme)***
 
 [![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme)
 
