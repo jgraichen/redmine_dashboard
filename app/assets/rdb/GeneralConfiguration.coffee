@@ -3,6 +3,7 @@ t = require 'counterpart'
 core = require 'rui/core'
 util = require 'rui/util'
 Icon = require 'rui/Icon'
+Form = require 'rui/Form'
 Input = require 'rui/Input'
 Anchor = require 'rui/Anchor'
 
@@ -13,7 +14,7 @@ PermissionComponents = require 'rdb/PermissionComponents'
 
 module.exports = core.createComponent 'rdb.GeneralConfiguration',
   render: ->
-    section [
+    section className: 'rdb-configuration', [
       h3 t('rdb.configure.general.title')
       p t('rdb.configure.general.description')
       @renderGeneral()
@@ -23,11 +24,11 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
   renderGeneral: ->
     section [
       h4 t('rdb.configure.general.general')
-      Input
+      Form.Input
         label: t('rdb.configure.general.dashboard_name')
         help: t('rdb.configure.general.dashboard_name_text')
         value: @props.board.getName()
-        onSave: (val) =>
+        onSubmit: (val) =>
           @props.board
             .save {'name': val}, wait: true
             .catch (xhr) =>
