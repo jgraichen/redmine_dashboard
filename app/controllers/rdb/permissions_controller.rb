@@ -38,6 +38,12 @@ class Rdb::PermissionsController < ::Rdb::BaseController
     render status: 422, json: {errors: {principal_id: [I18n.t(:'rdb.errors.principal_not_found')]}}
   end
 
+  def destroy
+    permission.destroy
+
+    head status: :no_content
+  end
+
   private
 
   def lookup_principal(principal)

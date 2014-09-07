@@ -194,4 +194,28 @@ describe Rdb::PermissionsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:action) { delete :destroy, rdb_board_id: board.id, id: permission.id }
+    subject { resp }
+
+    context 'as anonymous' do
+      it { expect(subject.status).to eq 404 }
+      it { expect(resp.body).to be_blank }
+    end
+
+    context 'as non-administrative user' do
+      let(:current_user) { another_user }
+
+      it { expect(subject.status).to eq 404 }
+      it { expect(subject.body).to be_blank }
+    end
+
+    context 'as authorized principal' do
+      let(:current_user) { User.find 2 }
+
+      it { expect(subject.status).to eq 204 }
+      it { expect{ subject }.to change{ RdbBoardPermission.where(id: permission.id).count }.from(1).to(0) }
+    end
+  end
 end
