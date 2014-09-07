@@ -32,6 +32,7 @@ Install redmine plugin like any redmine plugin
 	$ bundler install
 	$ rake redmine:plugins:migrate
 
+<!--
 ## Contributing
 
 ### Translate
@@ -45,6 +46,7 @@ You can help even without coding by translating Redmine Dashboard or improving a
 You can also add a new or requested feature by sending a Pull Request. Please add specs so that I do not break your feature in the future.
 
 There are several rake and make tasks to setup a working development environment and run all specs. See [CONTRIBUTING.md](CONTRIBUTING.md) of more information.
+-->
 
 ## License
 
