@@ -25,7 +25,7 @@ class Permission extends Model
 
   saveRole: (role) ->
     currentRole = @getRole()
-    @save(role: role).catch (err) =>
+    @save({role: role}, patch: true).catch (err) =>
       @set role: currentRole
       throw err
 

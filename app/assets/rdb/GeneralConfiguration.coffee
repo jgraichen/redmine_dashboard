@@ -32,7 +32,7 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
         tick: true
         onSubmit: (val) =>
           @props.board
-            .save {'name': val}, wait: true
+            .save {'name': val}, wait: true, patch: true
             .catch (xhr) =>
               throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
     ]
