@@ -26,12 +26,12 @@ Exoskeleton.sync = (method, model, options) ->
     data = ''
     json = undefined
 
-    if model && (method == 'create' || method == 'update')
+    if model && (method == 'create' || method == 'update' || method == 'patch')
       xhr.setRequestHeader 'Content-Type', 'application/json'
       json = options.attrs || model.toJSON options
       data = JSON.stringify json
 
-    xhr.setRequestHeader 'Accept','application/jsonx'
+    xhr.setRequestHeader 'Accept','application/json'
 
     csrf = document.getElementsByName('csrf-token')
     if csrf.length > 0
@@ -43,7 +43,7 @@ Exoskeleton.sync = (method, model, options) ->
         if CONTENT_TYPES.json.test(ct)
           xhr.responseJSON = JSON.parse xhr.response
 
-        if xhr.status == 200
+        if xhr.status >= 200 && xhr.status < 300
           options.success xhr.responseJSON
           resolve xhr
         else
