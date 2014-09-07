@@ -13,11 +13,15 @@ ActivityIndicator = core.createComponent 'rui.ActivityIndicator',
     tick: true
 
   add: ->
+    return unless @isMounted()
+
     @spinner ||= 0
     @spinner += 1
     @setState spinner: @spinner
 
   remove: (error = false) ->
+    return unless @isMounted()
+
     @spinner -= 1 if @spinner > 0
     @setState spinner: @spinner, error: error
 

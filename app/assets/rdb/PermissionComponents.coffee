@@ -43,7 +43,7 @@ Row = core.createComponent 'rdb.Permission.Row',
       td className: 'rdb-actions', [
         Anchor
           icon: 'trash-o',
-          onPrimary: => @props.model.destroy()
+          onPrimary: => @refs['indicator'].track @props.model.destroy()
           t('rdb.contextual.remove')
       ]
       td [
