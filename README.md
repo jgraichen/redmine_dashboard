@@ -5,7 +5,9 @@
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
-***NOTE***: This README is for the **current development version** of Redmine Dashboard 3. <br /> ***[Click here for current stable Redmine Dashboard 2.](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme)***
+***NOTE***: This README is for the **current development version** of Redmine Dashboard 3.
+
+<center><strong><em><a href="https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme">Click here for current stable Redmine Dashboard 2.</a></em></strong></center>
 
 [![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2#readme)
 
