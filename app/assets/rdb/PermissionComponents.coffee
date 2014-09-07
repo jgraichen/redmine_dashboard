@@ -8,6 +8,7 @@ Input = require 'rui/Input'
 Anchor = require 'rui/Anchor'
 Button = require 'rui/Button'
 Select = require 'rui/Select'
+ActivityIndicator = require 'rui/ActivityIndicator'
 
 {table, thead, tbody, tr, th, td, img} = require 'rui/DOM'
 
@@ -17,10 +18,7 @@ BackboneMixins = require 'rdb/BackboneMixins'
 ComponentMixins = require 'rdb/ComponentMixins'
 
 Row = core.createComponent 'rdb.Permission.Row',
-  mixins: [
-    BackboneMixins.ModelView
-    ComponentMixins.Spinner
-  ]
+  mixins: [BackboneMixins.ModelView]
 
   render: ->
     tr [
@@ -31,15 +29,15 @@ Row = core.createComponent 'rdb.Permission.Row',
       td className: 'rdb-roles', [
         Anchor
           className: if @props.model.isRead() then 'rdb-active'
-          onPrimary: => @showSpinner @props.model.setRead()
+          onPrimary: => @refs['indicator'].track @props.model.setRead()
           t 'rdb.permissions.read'
         Anchor
           className: if @props.model.isEdit() then 'rdb-active'
-          onPrimary: => @showSpinner @props.model.setEdit()
+          onPrimary: => @refs['indicator'].track @props.model.setEdit()
           t 'rdb.permissions.edit'
         Anchor
           className: if @props.model.isAdmin() then 'rdb-active'
-          onPrimary: => @showSpinner @props.model.setAdmin()
+          onPrimary: => @refs['indicator'].track @props.model.setAdmin()
           t 'rdb.permissions.admin'
       ]
       td className: 'rdb-actions', [
@@ -49,7 +47,7 @@ Row = core.createComponent 'rdb.Permission.Row',
           t('rdb.contextual.remove')
       ]
       td [
-        @renderSpinner()
+        ActivityIndicator ref: 'indicator'
       ]
     ]
 

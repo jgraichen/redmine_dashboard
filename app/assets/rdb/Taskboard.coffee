@@ -2,6 +2,7 @@ t = require 'counterpart'
 
 core = require 'rui/core'
 util = require 'rui/util'
+ActivityIndicator = require 'rui/ActivityIndicator'
 {div, h3, ul} = require 'rui/DOM'
 
 Issue = require 'rdb/Issue'
@@ -18,11 +19,14 @@ Column = core.createComponent 'rdb.Taskboard.Column',
     collection: new Issue.Collection board: @props.board, params: {column: @props.id}
 
   componentDidMount: ->
-    @props.collection.fetch().then => @forceUpdate()
+    @refs['indicator'].track @props.collection.fetch().then => @forceUpdate()
 
   render: ->
     div className: "rdb-column rdb-column-#{@props.id}", [
-      h3 @props.name
+      h3 [
+        @props.name
+        ActivityIndicator ref: 'indicator', tick: false
+      ]
 
       ul @renderCollectionItems (item) ->
         IssueComponent model: item

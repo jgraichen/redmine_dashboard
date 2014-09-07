@@ -28,6 +28,8 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
         label: t('rdb.configure.general.dashboard_name')
         help: t('rdb.configure.general.dashboard_name_text')
         value: @props.board.getName()
+        autosubmit: 1000
+        tick: true
         onSubmit: (val) =>
           @props.board
             .save {'name': val}, wait: true

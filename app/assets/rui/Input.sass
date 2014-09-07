@@ -1,13 +1,29 @@
 .rui-input
-  @extend %rui-form-component
-
   width: 100%
   display: block
-  box-shadow: inset 1px 1px 4px rgba($secondary-silver, .5)
+  position: relative
 
-  &:hover, &.hover, &:focus
-    text-decoration: none
-    border-color: $frame-hover-color
+  .rui-input-element
+    @extend %rui-form-component
 
-  &:focus
-    box-shadow: inset 1px 1px 4px rgba($frame-hover-color, .5)
+    width: 100%
+    display: block
+    box-shadow: inset 1px 1px 4px rgba($secondary-silver, .5)
+
+    padding-right: 26px
+
+    &:hover, &.hover, &:focus
+      text-decoration: none
+      border-color: $frame-hover-color
+
+    &:focus
+      box-shadow: inset 1px 1px 4px rgba($frame-hover-color, .5)
+
+    &.rui-input-error
+      border-color: $primary-red
+      box-shadow: inset 1px 1px 4px rgba($primary-red, .2)
+
+  > span
+    position: absolute
+    top: 6px
+    right: 6px
