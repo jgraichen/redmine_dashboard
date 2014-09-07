@@ -52,9 +52,8 @@ en:
         nav_text: Vertical swimlanes to group issue
 
     errors:
-      cannot_edit_own_permission: cannot edit own permission
+      required: can't be blank
+      already_taken: already been taken
 
-  rui:
-    input:
-      edit: Start editing this field
-      cancel: Cancel editing and reset field
+      board_name:
+        already_taken: The Dashboard name must be unique.

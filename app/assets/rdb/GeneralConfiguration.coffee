@@ -33,8 +33,10 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
         onSubmit: (val) =>
           @props.board
             .save {'name': val}, wait: true, patch: true
-            .catch (xhr) =>
-              throw new Input.Error JSON.parse(xhr.responseText)?['errors']?['name']
+            .catch (err) =>
+              if err.xhr.status == 422
+                throw new Input.Error err.xhr.responseJSON['errors']['name'], 'board_name'
+              throw err
     ]
 
   renderPermissions: ->

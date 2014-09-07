@@ -10,12 +10,11 @@ class RdbBoardPermission < ActiveRecord::Base
   include Roles
 
   validates :role,
-    inclusion: {in: [READ, EDIT, ADMIN]}
+    inclusion: {in: [READ, EDIT, ADMIN], message: 'invalid_role'}
+
   validates :principal_id,
-    presence: true,
-    uniqueness: {
-      scope: [:rdb_board_id, :principal_type]
-    }
+    presence: {message: 'required'},
+    uniqueness: {scope: [:rdb_board_id, :principal_type], message: 'already_taken'}
 
   def read?(principal)
     return false unless [ADMIN, EDIT, READ].include? role

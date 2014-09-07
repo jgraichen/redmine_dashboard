@@ -96,7 +96,7 @@ describe Rdb::BoardsController, type: :controller do
           let(:params) { {'name' => ''} }
 
           it { expect(subject.status).to eq 422 }
-          it { expect(json).to eq 'errors' => {'name' => ["can't be blank"]} }
+          it { expect(json).to eq 'errors' => {'name' => ["required"]} }
         end
 
         context 'already taken' do
@@ -104,7 +104,7 @@ describe Rdb::BoardsController, type: :controller do
           let(:params) { {'name' => 'Board name'} }
 
           it { expect(subject.status).to eq 422 }
-          it { expect(json).to eq 'errors' => {'name' => ["has already been taken"]} }
+          it { expect(json).to eq 'errors' => {'name' => ["already_taken"]} }
         end
       end
     end

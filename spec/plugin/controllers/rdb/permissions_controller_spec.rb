@@ -135,14 +135,14 @@ describe Rdb::PermissionsController, type: :controller do
         before { RdbBoardPermission.create! principal: principal, rdb_board: board, role: Roles::EDIT }
 
         it { expect(subject.status).to eq 422 }
-        it { expect(json).to eq errors: {principal_id: ['has already been taken']} }
+        it { expect(json).to eq errors: {principal_id: ['already_taken']} }
       end
 
       context 'with invalid principal' do
         let(:params) { super().merge principal: {type: 'project', id: '57664'} }
 
         it { expect(subject.status).to eq 422 }
-        it { expect(json).to eq errors: {principal_id: ["can't be blank"]} }
+        it { expect(json).to eq errors: {principal_id: ['required']} }
       end
     end
   end
@@ -174,7 +174,7 @@ describe Rdb::PermissionsController, type: :controller do
           let(:params) { {'role' => 'MASTER_OF_DESASTER'} }
 
           it { expect(subject.status).to eq 422 }
-          it { expect(json).to eq errors: {role: ['is not included in the list']} }
+          it { expect(json).to eq errors: {role: ['invalid_role']} }
         end
 
         context 'valid' do
@@ -189,7 +189,7 @@ describe Rdb::PermissionsController, type: :controller do
           let(:params) { {'role' => 'read'} }
 
           it { expect(subject.status).to eq 422 }
-          it { expect(json).to eq errors:['cannot edit own permission'] }
+          it { expect(json).to eq errors:['cannot_edit_own_permission'] }
         end
       end
     end
@@ -197,6 +197,7 @@ describe Rdb::PermissionsController, type: :controller do
 
   describe 'DELETE destroy' do
     let(:action) { delete :destroy, rdb_board_id: board.id, id: permission.id }
+    let(:permission) { permissions[1] }
     subject { resp }
 
     context 'as anonymous' do
@@ -216,6 +217,14 @@ describe Rdb::PermissionsController, type: :controller do
 
       it { expect(subject.status).to eq 204 }
       it { expect{ subject }.to change{ RdbBoardPermission.where(id: permission.id).count }.from(1).to(0) }
+    end
+
+    context 'self permission' do
+      let(:current_user) { User.find 2 }
+      let(:permission) { permissions[0] }
+
+      it { expect(subject.status).to eq 422 }
+      it { expect(json).to eq errors: ['cannot_delete_own_permission'] }
     end
   end
 end

@@ -1,4 +1,5 @@
 # RdbUI Input Component
+t = require 'counterpart'
 extend = require 'extend'
 classSet = require 'react/lib/cx'
 
@@ -64,7 +65,8 @@ Input = core.createComponent 'rui.Input',
     ]
 
 class Input.Error extends Error
-  constructor: (@message) ->
+  constructor: (@code, @field) ->
     @name = 'Input.Error'
+    @message = t("rdb.errors.#{@field}.#{@code}", fallback: t("rdb.errors.#{@code}"))
 
 module.exports = Input

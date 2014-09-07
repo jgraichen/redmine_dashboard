@@ -58,6 +58,6 @@ feature 'Rename dashboard', js: true, sauce: true do
     find(:fillable_field, 'Name').fill 'New Board'
     find('body').click
 
-    expect(page).to have_content 'already been taken'
+    expect(page).to have_content 'The Dashboard name must be unique.'
   end
 end

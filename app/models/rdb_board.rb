@@ -3,9 +3,11 @@ class RdbBoard < ActiveRecord::Base
 
   serialize :preferences
   has_many :sources, class_name: 'RdbSource'
-
-  validates :name, uniqueness: true, presence: true
   has_many :permissions, class_name: 'RdbBoardPermission'
+
+  validates :name,
+    uniqueness: {message: 'already_taken'},
+    presence: {message: 'required'}
 
   def engine_class
     Rdb::Engine.lookup! read_attribute :engine

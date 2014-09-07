@@ -6,6 +6,10 @@ Exoskeleton = require 'exoskeleton'
 CONTENT_TYPES =
   json: /json/
 
+class window.XHRError extends Error
+  constructor: (@xhr) ->
+    super "Erroneous XHR response: #{xhr.status}"
+
 Exoskeleton.sync = (method, model, options) ->
   new Promise (resolve, reject) ->
     url = _.result model, 'url'
@@ -48,7 +52,7 @@ Exoskeleton.sync = (method, model, options) ->
           resolve xhr
         else
           options.error xhr
-          reject xhr
+          throw new XHRError xhr
       catch err
         reject err
 

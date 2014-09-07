@@ -15,7 +15,7 @@ class Rdb::PermissionsController < ::Rdb::BaseController
 
   def update
     if permission.principal == User.current && !User.current.admin?
-      render status: 422, json: {errors: [I18n.t(:'rdb.errors.cannot_edit_own_permission')]}
+      render status: 422, json: {errors: ['cannot_edit_own_permission']}
       return
     end
 
@@ -35,10 +35,15 @@ class Rdb::PermissionsController < ::Rdb::BaseController
   rescue ActiveRecord::RecordInvalid => err
     render status: 422, json: {errors: err.record.errors}
   rescue ActiveRecord::RecordNotFound => err
-    render status: 422, json: {errors: {principal_id: [I18n.t(:'rdb.errors.principal_not_found')]}}
+    render status: 422, json: {errors: {principal_id: ['principal_not_found']}}
   end
 
   def destroy
+    if permission.principal == User.current && !User.current.admin?
+      render status: 422, json: {errors: ['cannot_delete_own_permission']}
+      return
+    end
+
     permission.destroy
 
     head status: :no_content
