@@ -1,5 +1,9 @@
 .rui-select
-  @extend .rui-btn
+  @include rdb-btn
 
-  padding-top: 5px
-  padding-bottom: 4px
+  padding: 5px 4px 4px
+  text-align: left
+
+  &::-moz-focus-inner
+    padding: 0
+    border: 0

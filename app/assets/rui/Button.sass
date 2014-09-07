@@ -1,6 +1,6 @@
 @import 'css3/linear-gradient'
 
-.rui-btn, a.rui-btn
+@mixin rdb-btn
   @extend %font-conf
   @extend %rui-form-component
 
@@ -22,6 +22,9 @@
     border-color: $secondary-gray
     background-image: none
     background-color: #f2f2f2
+
+.rui-btn, a.rui-btn
+  @include rdb-btn
 
   .rui-icon
     margin: 0 7px
