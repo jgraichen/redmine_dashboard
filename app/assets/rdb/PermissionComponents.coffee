@@ -106,6 +106,7 @@ Editor = core.createComponent 'rdb.Permission.Editor',
       th [
         Button
           onClick: (e) => @addPermission()
+          icon: 'plus'
           'Add'
       ]
       th [
