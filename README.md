@@ -1,4 +1,4 @@
-# Redmine Dashboard 3
+# Redmine Dashboard
 
 [![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
 [![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
