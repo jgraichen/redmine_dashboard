@@ -11,9 +11,7 @@ de:
     menu:
       dashboards: Dashboards
       my_dashboards: Meine Dashboards
-      toggle_fullscreen: Vollbild umschalten
-      return_to_dashboard: Zum Dashboard zurück
-      configure_board: Dashboard konfigurieren
+      create_new_board: Neues Dashboard erstellen
     configure:
       title: "%(link)s konfigurieren"
       nav_title: Konfiguration
@@ -23,7 +21,6 @@ de:
         nav_text: Allgemeines und Zugriffskontrolle
         description: Klicke auf ein Formularfeld um es zu bearbeiten. Es wird automatisch beim Verlassen des Eingabefeldes gespeichern.
         general: Allgemeines
-        dashboard_name: Dashboard Name
         dashboard_name_text: Notwendig. Der Dashboard Name wird über dem Dashboard und im Dashboard Menü angezeigt.
       sources:
         nav: Ticket-Quellen

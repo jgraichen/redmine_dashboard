@@ -1,0 +1,21 @@
+---
+fr:
+  project_module_dashboard: Tableaux de bord
+  rdb:
+    menu:
+      dashboards: Tableaux de bord
+      create_new_board: Créer un nouveau tableau de bord
+    configure:
+      nav_title: Configuration
+      general:
+        nav: Général
+        title: Préférences générales
+        general: Général
+      columns:
+        nav: Colonnes
+        title: Gestion des colonnes
+        nav_text: 'Disposition et options des colonnes '
+  rui:
+    input:
+      edit: Editer ce champ
+      cancel: Annuler l'édition et réinitialiser le champ
