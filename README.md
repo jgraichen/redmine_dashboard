@@ -5,21 +5,28 @@
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
-This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
+*NOTE*: This README is for the current development version of Redmine Dashboard 3. [Click here for current stable Redmine Dashboard 2.](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2)
 
-**Redmine Dashboard** is compatible with Redmine 2.4 and newer.
+Redmine Dashboard 3 is a full rewrite of the [stable Redmine Dashboard 2](https://github.com/jgraichen/redmine_dashboard/tree/stable-v2). Redmine Dashboard 3 is pre-alpha. As of now you cannot even drag issues.
 
-<div style="background-color: red; color: white;">
-Click here for <b>stable</b> version Redmine Dashboard 2.
-</div>
+## Install v3 pre-alpha
 
-## Install
+As Redmine Dashboard 3 is still pre-alpha it can only build from source. You need Ruby, NodeJS with NPM, bower and make.
 
-TODO
+Clone repository and install NPM and bower dependencies:
 
-## Update
+	$ git clone git@github.com:jgraichen/redmine_dashboard.git -b master
+	$ make install-deps
 
-TODO
+Compile development or production (minified) client-side components:
+
+	$ make css js # development
+	$ make min # production
+
+Install redmine plugin like any redmine plugin
+
+	$ bundler install
+	$ rake redmine:plugins:migrate
 
 ## Contributing
 
