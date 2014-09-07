@@ -43,7 +43,7 @@ Row = core.createComponent 'rdb.Permission.Row',
       td className: 'rdb-actions', [
         Anchor
           icon: 'trash-o',
-          onPrimary: => @refs['indicator'].track @props.model.destroy()
+          onPrimary: => @props.onDelete @props.model.destroy()
           t('rdb.contextual.remove')
       ]
       td [
@@ -74,12 +74,15 @@ Editor = core.createComponent 'rdb.Permission.Editor',
   render: ->
     table className: 'rdb-permissions', [
       thead [ @renderPermissionHead() ]
-      tbody @renderCollectionItems (item) -> Row model: item
+      tbody @renderCollectionItems (item) =>
+        Row
+          model: item
+          onDelete: (promise) => @refs['indicator'].track promise
     ]
 
   addPermission: ->
-    id   = @refs['id'].getDOMNode().value
-    role = @refs['role'].getDOMNode().value
+    id   = @refs['id'].value()
+    role = @refs['role'].value()
 
     @props.collection.create
       role: role,
@@ -105,7 +108,9 @@ Editor = core.createComponent 'rdb.Permission.Editor',
           onClick: (e) => @addPermission()
           'Add'
       ]
-      th()
+      th [
+        ActivityIndicator ref: 'indicator'
+      ]
     ]
 
 module.exports =

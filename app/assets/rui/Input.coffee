@@ -19,6 +19,8 @@ Input = core.createComponent 'rui.Input',
     error: false
 
   submit: ->
+    return unless @props.onSubmit
+
     if @props.value != @state.value
       clearTimeout @timeout if @timeout?
 

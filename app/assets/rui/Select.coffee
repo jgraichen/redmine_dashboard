@@ -10,8 +10,19 @@ DropdownButton = require './DropdownButton'
 Select = core.createComponent 'rui.Select',
   mixins: [KeyboardFocus]
 
+  getInitialState: ->
+    value: @props.children[0]?.props.value
+
+  value: ->
+    @state.value
+
   render: ->
-    select className: 'rui-select', @props.children
+    select
+      className: 'rui-select'
+      value: @state.value
+      onChange: (e) =>
+        @setState value: e.target.value
+      @props.children
 
 Select.Option = core.createComponent 'rui.Option',
   render: ->
