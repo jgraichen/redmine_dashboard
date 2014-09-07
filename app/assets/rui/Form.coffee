@@ -14,6 +14,7 @@ Form =
         label htmlFor: @state.uniqueId, @props.label if @props.label?
         span [
           @transferPropsTo Input
+            id: @state.uniqueId
             onError: (err) =>
               @setState error: err
           span className: 'rui-form-error', @state.error if @state.error?
