@@ -11,13 +11,13 @@ Form =
 
     render: ->
       p className: 'rui-form-p', [
-        label htmlFor: @state.uniqueId, @props.label if @props.label?
+        label htmlFor: @state.uniqueId, @props.label
         span [
           @transferPropsTo Input
             id: @state.uniqueId
             onError: (err) =>
               @setState error: err
-          span className: 'rui-form-error', @state.error if @state.error?
+          span className: 'rui-form-error', @state.error
           span className: 'rui-form-help', @props.help
         ]
       ]
