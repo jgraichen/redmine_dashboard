@@ -7,7 +7,11 @@
 
 This [Redmine](http://redmine.org) plugin adds customizable issue dashboard providing flexible filter and grouping options.
 
-**Redmine Dashboard** is compatible with Redmine 2.1 and newer.
+**Redmine Dashboard** is compatible with Redmine 2.4 and newer.
+
+<div style="background-color: red; color: white;">
+Click here for <b>stable</b> version Redmine Dashboard 2.
+</div>
 
 ## Install
 
