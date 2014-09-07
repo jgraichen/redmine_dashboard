@@ -19,6 +19,8 @@ Anchor = core.createComponent 'rui.Anchor',
         util.handlePrimaryClick e, (e) ->
           props.onPrimary(e)
 
+    props.href = '#' unless props.href?
+
     props.className ?= ''
     props.className += ' ' + classSet
       'focus': @state.focus

@@ -1,82 +1,13 @@
-@import './style'
-
 .rui-input
+  @extend %rui-form-component
+
+  width: 100%
   display: block
+  box-shadow: inset 1px 1px 4px rgba($secondary-silver, .5)
 
-  $label-size: 160px
+  &:hover, &.hover, &:focus
+    text-decoration: none
+    border-color: $frame-hover-color
 
-  label
-    display: inline-block
-    width: $label-size
-    text-align: right
-    padding: 6px 20px 6px 20px
-
-  input, textarea, .rui-input-preview
-    width: 100%
-    display: inline-block
-    width: 300px
-    box-sizing: border-box
-    vertical-align: top
-
-    margin: 0
-    padding: 5px 20px 5px 8px
-
-    border: 1px solid $frame-color
-    border-radius: 2px
-    background-color: $primary-white
-    color: $text-color
-
-    font-size: inherit
-
-    &.focus
-      border-color: $focus-color
-      outline: 1px solid $focus-color
-      border-radius: 0
-
-    &:not(.focus)
-      &:focus
-        outline: 0
-
-  input, textarea
-    padding-right: 20px
-    cursor: text
-
-  textarea
-    min-height: 100px
-    padding-right: 30px
-    overflow-y: scroll
-
-    ~ .rui-input-action
-      padding-right: 15px
-
-  .rui-input-inlet
-    display: inline-block
-    position: relative
-
-  .rui-input-preview
-    font-weight: bold
-    cursor: pointer
-
-  .rui-input-action
-    top: 0
-    right: 0
-    bottom: 0
-    padding: 3px 0 0 0
-    position: absolute
-
-    a
-      padding: 5px 5px
-      font-size: 16px
-
-  > span
-    display: block
-
-  .rui-input-help
-    margin: 8px $label-size 30px
-
-  .rui-input-error
-    font-size: 10px
-    padding: 2px 6px
-    color: red
-    display: block
-    margin-left: $label-size
+  &:focus
+    box-shadow: inset 1px 1px 4px rgba($frame-hover-color, .5)

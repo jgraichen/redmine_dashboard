@@ -22,6 +22,11 @@ createComponent = (name, spec) ->
   fn    = wrapComponentConstructor React.createClass nspec
   fn
 
+idCounter = 0
+uniqueId = ->
+  "rui-uid-#{idCounter++}"
+
 module.exports =
   wrapComponentConstructor: wrapComponentConstructor
   createComponent: createComponent
+  uniqueId: uniqueId

@@ -6,8 +6,10 @@ util = require 'rui/util'
 Icon = require 'rui/Icon'
 Input = require 'rui/Input'
 Anchor = require 'rui/Anchor'
+Button = require 'rui/Button'
+Select = require 'rui/Select'
 
-{table, thead, tbody, tr, th, td, img, input, button} = require 'rui/DOM'
+{table, thead, tbody, tr, th, td, img} = require 'rui/DOM'
 
 Permission = require 'rdb/Permission'
 
@@ -22,7 +24,7 @@ Row = core.createComponent 'rdb.Permission.Row',
 
   render: ->
     tr [
-      td className: "rdb-name", [
+      td className: 'rdb-name', [
         @renderPermissionSymbol()
         @props.model.getName()
       ]
@@ -39,7 +41,7 @@ Row = core.createComponent 'rdb.Permission.Row',
           className: if @props.model.isAdmin() then 'rdb-active'
           onPrimary: => @showSpinner @props.model.setAdmin()
           t 'rdb.permissions.admin'
-      ],
+      ]
       td className: 'rdb-actions', [
         Anchor
           icon: 'trash-o',
@@ -91,13 +93,17 @@ Editor = core.createComponent 'rdb.Permission.Editor',
   renderPermissionHead: ->
     tr [
       th [
-        input ref: 'id'
+        Input ref: 'id'
       ]
       th [
-        input ref: 'role'
+        Select ref: 'role', [
+          Select.Option value: 'read', t 'rdb.permissions.read'
+          Select.Option value: 'edit', t 'rdb.permissions.edit'
+          Select.Option value: 'admin', t 'rdb.permissions.admin'
+        ]
       ]
       th [
-        button
+        Button
           onClick: (e) => @addPermission()
           'Add'
       ]

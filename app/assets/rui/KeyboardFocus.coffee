@@ -6,13 +6,20 @@ module.exports =
   getInitialState: ->
     focus: false
 
-  getDefaultProps: ->
-    onFocus: => @_KeyboardFocus_onFocus()
-    onBlur: => @_KeyboardFocus_onBlur()
+  componentDidMount: ->
+    @_KeyboardFocus_focus = =>
+      if @state.keyPressed
+        @setState focus: true
+        if @getDOMNode().classList?
+          @getDOMNode().classList.add 'focus' unless @getDOMNode().classList.contains 'focus'
+    @_KeyboardFocus_blur = =>
+      @setState focus: false
+      if @getDOMNode().classList?
+        @getDOMNode().classList.remove 'focus'
 
-  _KeyboardFocus_onFocus: (e) ->
-    if @state.keyPressed
-      @setState focus: true
+    @getDOMNode().addEventListener 'focus', @_KeyboardFocus_focus
+    @getDOMNode().addEventListener 'blur', @_KeyboardFocus_blur
 
-  _KeyboardFocus_onBlur: (e) ->
-    @setState focus: false
+  componentWillUnmount: ->
+    @getDOMNode().removeEventListener 'focus', @_KeyboardFocus_focus
+    @getDOMNode().removeEventListener 'blur', @_KeyboardFocus_blur

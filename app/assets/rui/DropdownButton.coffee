@@ -2,9 +2,10 @@ extend = require 'extend'
 
 core = require './core'
 util = require './util'
+Icon = require './Icon'
 {span} = require './DOM'
 Button = require './Button'
-DropdownContainer = require './DropdownContainer'
+Dropdown = require './Dropdown'
 LayeredComponentMixin = require './LayeredComponentMixin'
 
 DropdownButton = core.createComponent 'rui.DropdownButton',
@@ -19,7 +20,7 @@ DropdownButton = core.createComponent 'rui.DropdownButton',
     else
       target = @getDOMNode()
 
-    DropdownContainer
+    Dropdown
       target: target,
       visible: @state.open
       @props.children
@@ -28,11 +29,12 @@ DropdownButton = core.createComponent 'rui.DropdownButton',
     props = extend {}, @props
 
     props.className += ' active' if @state.open
+    delete props.label
 
     props.onClick = (e) =>
       util.handlePrimaryClick e, (e) =>
         @setState open: !@state.open
 
-    Button props
+    Button props, [ @props.label, Icon glyph: 'caret-down' ]
 
 module.exports = DropdownButton

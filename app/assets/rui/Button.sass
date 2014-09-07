@@ -1,37 +1,21 @@
-@import './style'
 @import 'css3/linear-gradient'
 
 .rui-btn, a.rui-btn
-  margin: 0
-  padding: 4px 10px 3px
-  display: inline-block
-  vertical-align: baseline
-
-  color: $text-color
-  text-align: center
   @extend %font-conf
+  @extend %rui-form-component
 
-  border: 1px solid $frame-color
-  border-radius: 2px
+  display: inline-block
+  text-align: center
+  padding-left: 11px
+  padding-right: 11px
+
   @include linear-gradient(#fff, #f2f2f2, $fallback: #f2f2f2)
-
-  &.rui-plain
-    margin: 0
-    border: none
-    border-radius: 0
-    background-color: transparent
 
   &:hover, &.hover
     cursor: pointer
     text-decoration: none
-    border-color: $secondary-gray
+    border-color: $frame-hover-color
     @include linear-gradient(#fff, $primary-lightgray, $fallback: $primary-lightgray)
-
-  &.focus
-    outline: 1px solid $focus-color
-    border-color: $focus-color
-    border-radius: 0
-    text-decoration: none
 
   &:active, &.active
     box-shadow: inset 0 3px 6px rgba(0, 0, 0, .1)
@@ -39,20 +23,13 @@
     background-image: none
     background-color: #f2f2f2
 
-  &:not(.focus)
-    &::-moz-focus-inner
-      padding: 0
-      border: 0
-
-    &:focus
-      outline: 0
-
   .rui-icon
     margin: 0 7px
     line-height: 14px
 
     &:last-child
       margin-right: 0
+      float: right
     &:first-child
       margin-left: 0
 

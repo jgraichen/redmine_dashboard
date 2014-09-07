@@ -5,7 +5,7 @@ classSet = require 'react/lib/cx'
 core = require './core'
 {div, span} = require './DOM'
 
-DropdownContainer = core.createComponent 'rui.DropdownContainer',
+Dropdown = core.createComponent 'rui.Dropdown',
   getDefaultProps: ->
     attachment: 'top left'
     targetAttachment: 'bottom left'
@@ -45,4 +45,4 @@ DropdownContainer = core.createComponent 'rui.DropdownContainer',
   render: ->
     span()
 
-module.exports = DropdownContainer
+module.exports = Dropdown

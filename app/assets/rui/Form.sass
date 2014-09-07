@@ -1,0 +1,26 @@
+%rui-form-component
+  @extend %font-conf
+
+  color: $text-color
+  vertical-align: baseline
+
+  margin: 0
+  padding: 6px 8px 5px
+
+  border: 1px solid $frame-color
+  border-radius: 2px
+  background-color: #fff
+
+  &:not(.focus)
+    &::-moz-focus-inner
+      padding: 0
+      border: 0
+
+    &:focus
+      outline: 0
+
+  &.focus
+    outline: 0
+    box-shadow: inset 1px 1px 0 $focus-color, inset -1px -1px 0 $focus-color
+    border-color: $focus-color
+    text-decoration: none

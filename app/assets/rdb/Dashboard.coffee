@@ -5,7 +5,7 @@ util = require 'rui/util'
 Icon = require 'rui/Icon'
 Menu = require 'rui/Menu'
 Button = require 'rui/Button'
-DropdownContainer = require 'rui/DropdownContainer'
+Dropdown = require 'rui/Dropdown'
 LayeredComponentMixin = require 'rui/LayeredComponentMixin'
 {h2, div, section, header, span, a} = require 'rui/DOM'
 
@@ -27,7 +27,7 @@ module.exports =
     @setState fullscreen: state
 
   renderLayer: ->
-    DropdownContainer
+    Dropdown
       target: @refs['header'].getDOMNode(),
       visible: @state.open
       BoardMenu board: @props.board

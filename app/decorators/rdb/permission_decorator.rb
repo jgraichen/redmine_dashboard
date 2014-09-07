@@ -16,7 +16,7 @@ module Rdb
     end
 
     def avatar_url
-      if Setting.gravatar_enabled? && type == :user
+      if Setting.gravatar_enabled? && type == :user && principal.mail.present?
         h.gravatar_url principal.mail,
           size: 128, ssl: true, default: Setting.gravatar_default
       else

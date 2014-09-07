@@ -7,46 +7,24 @@ util = require './util'
 Icon = require './Icon'
 Translate = require './Translate'
 KeyboardFocus = require './KeyboardFocus'
-{a, span, div, input, textarea, form, label} = require './DOM'
-
-genUniq = do ->
-  index = 0
-  -> "rui-input-n#{index++}"
+{input, textarea} = require './DOM'
 
 Input = core.createComponent 'rui.Input',
   mixins: [KeyboardFocus]
 
-  getDefaultProps: ->
-    id: genUniq()
-
   getInitialState: ->
     value: @props.value
-
-  activate: (e) ->
-    return if @state.active
-
-    e?.preventDefault()
-    @setState active: true, value: @props.value, =>
-      @refs['input'].getDOMNode().focus()
-
-  deactivate: (e) ->
-    return unless @state.active
-
-    e?.preventDefault()
-    @setState active: false, error: false, value: @props.value
 
   save: (e) ->
     e?.preventDefault()
     if @props.value != @state.value && @state.active
       @props.onSave? @state.value
-        .then =>
-          if @isMounted() then @deactivate()
         .catch Input.Error, (err) =>
           if @isMounted()
-            @setState active: true, error: err.message, =>
+            @setState error: err.message, =>
               @refs['input'].getDOMNode().focus()
         .catch (err) =>
-          if @isMounted() then @deactivate()
+          if @isMounted() then @setState value: @props.value
           throw err
     else
       @deactivate()
@@ -54,22 +32,16 @@ Input = core.createComponent 'rui.Input',
   render: ->
     cs = classSet
       'rui-input': true
-      'rui-input-active': @state.active
-      'rui-input-inactive': !@state.active
-      'focus': !@state.focus
+      'rui-multiline': @props.multiline
 
-    form
-      className: cs,
-      onSubmit: (e) => @save(e)
-    , [
-      div className: 'rui-input-inlet', [
-        @renderLabel()
-        @renderInput()
-        @renderAction()
-      ]
-      @renderError()
-      @renderHelp()
-    ]
+    component = if @props.multiline then textarea else input
+    @transferPropsTo component
+      ref: 'input'
+      value: @state.value
+      className: cs
+      onChange: (e) =>
+        @setState value: e.target.value
+
 
   renderLabel: ->
     if @props.label
