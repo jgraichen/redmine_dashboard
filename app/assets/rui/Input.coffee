@@ -19,6 +19,9 @@ Input = core.createComponent 'rui.Input',
     value: @props.value
     error: false
 
+  getDefaultProps: ->
+    type: 'text'
+
   submit: ->
     return unless @props.onSubmit
 

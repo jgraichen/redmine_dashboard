@@ -94,7 +94,7 @@ Editor = core.createComponent 'rdb.Permission.Editor',
   renderPermissionHead: ->
     tr [
       th [
-        Input ref: 'id'
+        Input ref: 'id', placeholder: 'Search principal...'
       ]
       th [
         Select ref: 'role', [
