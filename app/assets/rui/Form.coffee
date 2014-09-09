@@ -1,6 +1,6 @@
 core = require './core'
 Input = require './Input'
-{p, span, label} = require './DOM'
+{p, div, span, label} = require './DOM'
 
 ActivityIndicator = require './ActivityIndicator'
 
@@ -10,9 +10,9 @@ Form =
       uniqueId: core.uniqueId()
 
     render: ->
-      p className: 'rui-form-p', [
+      div className: 'rui-form-container', [
         label htmlFor: @state.uniqueId, @props.label
-        span [
+        div [
           @transferPropsTo Input
             id: @state.uniqueId
             onError: (err) =>
