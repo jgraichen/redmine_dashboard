@@ -6,61 +6,35 @@ Exoskeleton = require 'exoskeleton'
 CONTENT_TYPES =
   json: /json/
 
-class window.XHRError extends Error
+class window.ErroneousResponse extends Error
   constructor: (@xhr) ->
-    super "Erroneous XHR response: #{xhr.status}"
+    super "Erroneous XHR response: #{@xhr.status}"
 
 Exoskeleton.sync = (method, model, options) ->
-  new Promise (resolve, reject) ->
-    url = _.result model, 'url'
-    if !url?
-      return reject new Error 'A "url" property must be defined.'
+  url = _.result model, 'url'
+  if !url?
+    return reject new Error 'A "url" property must be defined.'
 
-    type = {
-      'read': 'GET'
-      'patch': 'PATCH'
-      'create': 'POST'
-      'update': 'PUT'
-      'delete': 'DELETE'
-    }[method]
+  url = Rdb.url url
 
-    xhr = new XMLHttpRequest
-    xhr.open type, url, true
+  type = {
+    'read': 'GET'
+    'patch': 'PATCH'
+    'create': 'POST'
+    'update': 'PUT'
+    'delete': 'DELETE'
+  }[method]
 
-    data = ''
-    json = undefined
+  options.json = if model && (method == 'create' || method == 'update' || method == 'patch')
+    options.attrs || model.toJSON options
 
-    if model && (method == 'create' || method == 'update' || method == 'patch')
-      xhr.setRequestHeader 'Content-Type', 'application/json'
-      json = options.attrs || model.toJSON options
-      data = JSON.stringify json
-
-    xhr.setRequestHeader 'Accept','application/json'
-
-    csrf = document.getElementsByName('csrf-token')
-    if csrf.length > 0
-      xhr.setRequestHeader 'X-CSRF-Token', csrf[0].content
-
-    xhr.onload = ->
-      try
-        ct = xhr.getResponseHeader('Content-Type')
-        if CONTENT_TYPES.json.test(ct)
-          xhr.responseJSON = JSON.parse xhr.response
-
-        if xhr.status >= 200 && xhr.status < 300
-          options.success xhr.responseJSON
-          resolve xhr
-        else
-          options.error xhr
-          throw new XHRError xhr
-      catch err
-        reject err
-
-    if process.env.NODE_ENV == 'development'
-      console.log "XHR> #{type} #{url}", json || data
-
-    xhr.onerror = reject
-    xhr.send data
+  Rdb.curl(type, url, options)
+    .then (xhr) ->
+      options.success xhr.responseJSON
+      xhr
+    .catch (err) ->
+      options.error err.xhr
+      throw err
 
 App = require 'rdb/application'
 Board = require 'rdb/Board'
@@ -73,6 +47,43 @@ counterpart.registerTranslations('zh', require('app/locales/zh.yml')['zh'])
 util = require 'rui/util'
 
 Rdb =
+  curl: (method, url, options = {}) ->
+    new Promise (resolve, reject) ->
+      xhr = new XMLHttpRequest
+      xhr.open method, url, true
+
+      data = options.data
+
+      if options.json?
+        xhr.setRequestHeader 'Content-Type', 'application/json'
+        data = JSON.stringify options.json
+
+      xhr.setRequestHeader 'Accept','application/json'
+
+      csrf = document.getElementsByName('csrf-token')
+      if csrf.length > 0
+        xhr.setRequestHeader 'X-CSRF-Token', csrf[0].content
+
+      xhr.onload = ->
+        try
+          ct = xhr.getResponseHeader('Content-Type')
+          if CONTENT_TYPES.json.test(ct)
+            xhr.responseJSON = JSON.parse xhr.response
+
+          if xhr.status >= 200 && xhr.status < 300
+            resolve xhr
+          else
+            throw new ErroneousResponse xhr
+        catch err
+          err.xhr = xhr
+          reject err
+
+      xhr.onerror = (err) ->
+        err.xhr = xhr
+        reject err
+
+      xhr.send data
+
   navigate: (route, opts = {}) ->
     opts = extend trigger: true, opts
 
@@ -82,6 +93,16 @@ Rdb =
     (e) ->
       util.handlePrimaryClick e, (e) =>
         Rdb.router.navigate path, extend(trigger: true, opts)
+
+  url: (path, params = {}) ->
+    query = ''
+    for key, value of params
+      query += "&#{encodeURIComponent(key)}=#{encodeURIComponent(value)}"
+
+    if query.length > 0
+      query = "?#{query.substring(1)}"
+
+    "#{Rdb.base}/rdb/#{path}#{query}"
 
   init: (config, data) ->
     counterpart.setLocale config['locale']

@@ -3,7 +3,7 @@
 Permission = require 'rdb/Permission'
 
 class Board extends Model
-  urlRoot: '/rdb/api/boards'
+  urlRoot: 'api/boards'
 
   initialize: ->
     @urls =
@@ -19,6 +19,6 @@ class Board extends Model
 
 class Board.Collection extends Collection
   model: Board
-  url: '/rdb/api/boards'
+  url: 'api/boards'
 
 module.exports = Board
