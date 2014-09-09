@@ -1,10 +1,11 @@
 RUBY = ruby
 NODE = node
 SASS = $(RUBY) -S sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
-BROWSERIFY = $(NODE) node_modules/.bin/browserify -i jquery -t coffeeify --extension=".coffee" -t browserify-data -t envify
-EXORCIST = $(NODE) node_modules/.bin/exorcist
-UGLIFYJS = $(NODE) node_modules/.bin/uglifyjs
+BROWSERIFY = browserify -i jquery -t coffeeify --extension=".coffee" -t browserify-data -t envify
+EXORCIST = exorcist
+UGLIFYJS = uglifyjs
 NODE_PATH = .:app/assets:bower_components
+PATH := node_modules/.bin:${PATH}
 
 SOURCE = app/assets
 BUILD = assets
