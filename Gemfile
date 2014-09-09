@@ -17,7 +17,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
 
-  gem 'transifex-ruby', github: 'jgraichen/transifex-ruby', require: false
+  gem 'transifex-ruby-fork-jg', '0.1.0', require: false
   gem 'inifile', require: false
 
   # for redmine on travis CI
