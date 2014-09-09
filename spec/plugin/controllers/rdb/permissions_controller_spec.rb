@@ -95,6 +95,42 @@ describe Rdb::PermissionsController, type: :controller do
     end
   end
 
+  describe 'GET search' do
+    let(:q) { '' }
+    let(:action) { get :search, {q: q}.as_json.merge(rdb_board_id: board.id) }
+    subject { resp }
+
+    context 'as anonymous' do
+      it { expect(subject.status).to eq 404 }
+      it { expect(subject.body).to be_blank }
+    end
+
+    context 'as non-administrative user' do
+      let(:current_user) { another_user }
+
+      it { expect(subject.status).to eq 404 }
+      it { expect(subject.body).to be_blank }
+    end
+
+    context 'as authorized principal' do
+      let(:current_user) { a_user }
+      let(:principal) { User.find 1 }
+      let(:params) { {principal: {type: 'user', id: principal.id}, role: Roles::READ} }
+
+      it { expect(subject.status).to eq 200 }
+      it { expect(json.size).to eq 5 }
+      it { expect(json.map{|r| r[:name]}).to match_array ['Redmine Admin', 'John Smith', 'Dave Lopper', 'Robert Hill', 'Dave2 Lopper2'] }
+
+      context 'with query param' do
+        let(:q) { 'lop' }
+
+        it { expect(subject.status).to eq 200 }
+        it { expect(json.size).to eq 2 }
+        it { expect(json.map{|r| r[:name]}).to match_array ['Dave Lopper', 'Dave2 Lopper2'] }
+      end
+    end
+  end
+
   describe 'POST create' do
     let(:params) { {} }
     let(:action) { post :create, params.as_json.merge(rdb_board_id: board.id) }

@@ -13,11 +13,15 @@ class Rdb::PermissionsController < ::Rdb::BaseController
     Rdb::PermissionDecorator
   end
 
+  def search
+    principals = Rdb::PrincipalDecorator.decorate_collection \
+      Principal.like(params[:q]).limit(5)
+
+    render json: principals
+  end
+
   def update
-    if permission.principal == User.current && !User.current.admin?
-      render status: 422, json: {errors: ['cannot_edit_own_permission']}
-      return
-    end
+    check_own_permission 'cannot_edit_own_permission' and return
 
     permission.update_attributes! role: params[:role].to_s.downcase
     render json: decorator.decorate(permission)
@@ -39,10 +43,7 @@ class Rdb::PermissionsController < ::Rdb::BaseController
   end
 
   def destroy
-    if permission.principal == User.current && !User.current.admin?
-      render status: 422, json: {errors: ['cannot_delete_own_permission']}
-      return
-    end
+    check_own_permission 'cannot_delete_own_permission' and return
 
     permission.destroy
 
@@ -50,6 +51,15 @@ class Rdb::PermissionsController < ::Rdb::BaseController
   end
 
   private
+
+  def check_own_permission(error)
+    if permission.principal == User.current && !User.current.admin?
+      render status: 422, json: {errors: [error]}
+      true
+    else
+      false
+    end
+  end
 
   def lookup_principal(principal)
     case principal[:type].to_s.downcase

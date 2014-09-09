@@ -12,6 +12,8 @@ defaults format: :json do
   scope '/rdb/api', module: :rdb do
     resources :boards, only: [:index, :show, :update], as: :rdb_boards do
       resources :issues, only: [:index, :show, :update]
+
+      get 'permissions/search' => 'permissions#search'
       resources :permissions
     end
   end
