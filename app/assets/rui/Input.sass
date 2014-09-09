@@ -40,7 +40,32 @@
         color: white
         color: transparent
 
-  > span
+  > span.rui-activity-indicator
     position: absolute
     top: 6px
     right: 6px
+
+.rui-input-autocomplete
+  position: absolute
+  background: $primary-white
+
+  border: 1px solid $frame-hover-color
+  border-top: none
+  margin-top: -2px
+  width: 100%
+
+  display: none
+  visibility: hidden
+
+  border-bottom-left-radius: 2px
+  border-bottom-right-radius: 2px
+
+  &.rui-visible
+    display: block
+    visibility: visible
+
+  > ul
+    margin: 0
+    padding: 0
+    list-style: none
+    border-top: 1px solid $frame-color

@@ -10,7 +10,7 @@ Translate = require './Translate'
 KeyboardFocus = require './KeyboardFocus'
 ActivityIndicator = require './ActivityIndicator'
 
-{span, input, textarea} = require './DOM'
+{div, span, input, textarea, ul, li} = require './DOM'
 
 Input = core.createComponent 'rui.Input',
   mixins: [KeyboardFocus]
@@ -29,16 +29,18 @@ Input = core.createComponent 'rui.Input',
       clearTimeout @timeout if @timeout?
 
       promise = @props.onSubmit @state.value
-        .catch (err) =>
-          if err.name? && err.name == 'Input.Error'
-            @setState error: true, =>
-              @refs['input'].getDOMNode().focus()
-              @props.onError?(err.message)
-          throw err
-        .then =>
-          @setState error: false, => @props.onError?(false)
+      if promise?
+        promise
+          .catch (err) =>
+            if err.name? && err.name == 'Input.Error'
+              @setState error: true, =>
+                @refs['input'].getDOMNode().focus()
+                @props.onError?(err.message)
+          .then =>
+            @setState error: false, => @props.onError?(false)
 
-      @refs['indicator'].track promise
+        @refs['indicator'].track promise
+
     else
       @setState error: false, => @props.onError?(false)
 
@@ -51,27 +53,78 @@ Input = core.createComponent 'rui.Input',
   value: ->
     @state.value
 
+  setValue: (value) ->
+    @setState value: value
+
   render: ->
     cs = classSet
       'rui-input-element': true
       'rui-input-error': @state.error
 
-    span className: 'rui-input', [
-      @transferPropsTo input
-        ref: 'input'
-        value: @state.value
-        className: cs
-        onChange: (e) =>
-          @change e.target.value
-          @props.onChange?(e)
-        onBlur: (e) => @submit()
+    components = []
+    components.push @transferPropsTo input
+      ref: 'input'
+      value: @state.value
+      className: cs
+      onChange: (e) =>
+        @change e.target.value
+        @props.onChange?(e)
 
-      ActivityIndicator ref: 'indicator', tick: @props.tick
-    ]
+        if @props.extensions?
+          ex.onChange?(e.target.value, @) for ex in @props.extensions
+
+      onBlur: (e) =>
+        @submit()
+        @props.onBlur?(e)
+
+        if @props.extensions?
+          ex.onBlur?(e, @) for ex in @props.extensions
+
+      onFocus: (e) =>
+        @props.onFocus?(e)
+
+        if @props.extensions?
+          ex.onFocus?(e, @) for ex in @props.extensions
+
+    if @props.extensions?
+      components.push ex for ex in @props.extensions
+
+    components.push ActivityIndicator ref: 'indicator', tick: @props.tick
+
+    div className: 'rui-input', components
 
 class Input.Error extends Error
   constructor: (@code, @field) ->
     @name = 'Input.Error'
     @message = t("rdb.errors.#{@field}.#{@code}", fallback: t("rdb.errors.#{@code}"))
+
+Input.Autocomplete = core.createComponent 'rui.Input.Autocomplete',
+  getInitialState: ->
+    visible: false, enabled: false, items: []
+
+  onChange: (value) ->
+    promise = @props.onChange value
+
+    if promise
+      promise.then (items) =>
+        @setState items: items, visible: true
+    else
+      @setState visible: false
+
+  onFocus: (e) ->
+    @setState enabled: true
+
+  onBlur: (e, input) ->
+    @setState enabled: false, visible: false, items: []
+    input.setValue ''
+
+  render: ->
+    cs = classSet
+      'rui-input-autocomplete': true
+      'rui-visible': @state.visible
+
+    div className: cs, [
+      ul @state.items.map (item) => li [ @props.onRender(item) ]
+    ]
 
 module.exports = Input
