@@ -31,13 +31,13 @@ Input = core.createComponent 'rui.Input',
       promise = @props.onSubmit @state.value
       if promise?
         promise
+          .then =>
+            @setState error: false, => @props.onError?(false)
           .catch (err) =>
             if err.name? && err.name == 'Input.Error'
               @setState error: true, =>
                 @refs['input'].getDOMNode().focus()
                 @props.onError?(err.message)
-          .then =>
-            @setState error: false, => @props.onError?(false)
 
         @refs['indicator'].track promise
 

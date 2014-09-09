@@ -34,7 +34,7 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
           @props.board
             .save {'name': val}, wait: true, patch: true
             .catch (err) =>
-              if err.xhr?.status == 422
+              if err.xhr.status == 422
                 throw new Input.Error err.xhr.responseJSON['errors']['name'], 'board_name'
               throw err
     ]
