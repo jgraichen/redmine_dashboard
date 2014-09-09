@@ -61,7 +61,9 @@ Input = core.createComponent 'rui.Input',
         ref: 'input'
         value: @state.value
         className: cs
-        onChange: (e) => @change e.target.value
+        onChange: (e) =>
+          @change e.target.value
+          @props.onChange?(e)
         onBlur: (e) => @submit()
 
       ActivityIndicator ref: 'indicator', tick: @props.tick
