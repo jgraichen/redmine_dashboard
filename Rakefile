@@ -211,7 +211,7 @@ namespace :redmine do
 
   task :bundle do
     RM.exec %w(rm -f Gemfile.lock)
-    RM.exec %w(bundle install --without rmagick --jobs=3 --retry=3)
+    RM.exec %w(bundle install --without rmagick --retry=3)
   end
 
   task :migrate do
