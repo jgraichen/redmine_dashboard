@@ -4,18 +4,16 @@ module.exports =
   mixins: [KeyboardSupport]
 
   getInitialState: ->
-    focus: false
+    __focused: false
+
+  isFocused: ->
+    @state.__focused
 
   componentDidMount: ->
     @_KeyboardFocus_focus = =>
-      if @state.keyPressed
-        @setState focus: true
-        if @getDOMNode().classList?
-          @getDOMNode().classList.add 'focus' unless @getDOMNode().classList.contains 'focus'
+      @setState __focused: true if @state.keyPressed
     @_KeyboardFocus_blur = =>
-      @setState focus: false
-      if @getDOMNode().classList?
-        @getDOMNode().classList.remove 'focus'
+      @setState __focused: false
 
     @getDOMNode().addEventListener 'focus', @_KeyboardFocus_focus
     @getDOMNode().addEventListener 'blur', @_KeyboardFocus_blur

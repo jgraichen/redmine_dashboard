@@ -16,7 +16,7 @@ Button = core.createComponent 'rui.Button',
     props = extend {}, @props
 
     props.className += ' ' + classSet
-      'focus': @state.focus
+      'focus': @isFocused()
       'rui-btn': true,
       'rui-plain': props.plain
       'rui-large': props.large

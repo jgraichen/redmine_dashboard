@@ -51,6 +51,7 @@ Select = core.createComponent 'rui.Select',
     cs = cx
       'rui-select': true
       'active': @state.visible
+      'focus': @isFocused()
 
     div
       tabIndex: 0
