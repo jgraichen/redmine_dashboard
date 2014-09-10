@@ -15,9 +15,7 @@ Anchor = core.createComponent 'rui.Anchor',
     props = extend {}, @props
 
     props.onClick = (e) ->
-      if props.onPrimary?
-        util.handlePrimaryClick e, (e) ->
-          props.onPrimary(e)
+      props.onPrimary?(e) if util.isPrimary(e)
 
     props.href = '#' unless props.href?
 

@@ -35,7 +35,7 @@ ActivityIndicator = core.createComponent 'rui.ActivityIndicator',
     cs = classSet
       'rui-activity-indicator': true
       'rui-visible': @state.spinner > 0
-      'rui-hidden': @state.spinner <= 0 && @props.tick && !@state.error
+      'rui-activity-indicator-fade': @state.spinner <= 0 && @props.tick && !@state.error
 
     image = if @state.spinner <= 0 && @props.tick && !@state.error
       "#{Rdb.base}images/true.png"

@@ -1,19 +1,33 @@
 React = require 'react'
 Tether = require 'tether/tether'
-classSet = require 'react/lib/cx'
 
 core = require './core'
-{div, span} = require './DOM'
+{span} = require './DOM'
 
-Dropdown = core.createComponent 'rui.Dropdown',
+Attachment = core.createComponent 'rui.Attachment',
   getDefaultProps: ->
     attachment: 'top left'
     targetAttachment: 'bottom left'
 
   componentDidMount: ->
     @node = document.createElement 'div'
-    @node.className = 'rui-container'
+    @node.className = 'rui-attachment'
     document.body.appendChild @node
+
+    @handleCloseRequest = (e) =>
+      node = e.target
+      while node != null
+        if node == @node || node == @props.source
+          return true
+
+        node = node.parentNode
+
+      if node == null
+        @props.onCloseRequest?()
+
+      true
+
+    document.addEventListener 'mousedown', @handleCloseRequest
 
     @tether = new Tether
       element: @node
@@ -34,15 +48,12 @@ Dropdown = core.createComponent 'rui.Dropdown',
     @tether.destroy()
     document.body.removeChild @node
 
-  renderComponent: ->
-    if @props.visible
-      @node.className = 'rui-container rui-visible'
-    else
-      @node.className = 'rui-container'
+    document.removeEventListener 'mousedown', @handleCloseRequest
 
-    div className: 'rui-container-inlet', @props.children
+  renderComponent: ->
+    @props.children
 
   render: ->
     span()
 
-module.exports = Dropdown
+module.exports = Attachment

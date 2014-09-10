@@ -8,7 +8,6 @@ Button = require 'rui/Button'
 Observer = require 'rui/Observer'
 Translate = require 'rui/Translate'
 Navigation = require 'rui/Navigation'
-DropdownButton = require 'rui/DropdownButton'
 
 {div, section, header, h1, h2, h3, a, p, label, span} = require 'rui/DOM'
 

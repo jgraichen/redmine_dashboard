@@ -39,4 +39,4 @@ module.exports = core.createComponent 'rdb.BoardMenu',
         href: board.urls.root
         board.get 'name'
 
-    Menu items
+    @transferPropsTo Menu items

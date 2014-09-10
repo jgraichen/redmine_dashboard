@@ -42,5 +42,7 @@ module.exports = core.createComponent 'rdb.GeneralConfiguration',
   renderPermissions: ->
     section [
       h4 t('rdb.configure.general.access_control')
-      PermissionComponents.Editor board: @props.board
+      PermissionComponents.Editor
+        board: @props.board
+        collection: @props.board.getPermissions()
     ]

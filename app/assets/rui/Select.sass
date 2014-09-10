@@ -1,17 +1,54 @@
 .rui-select
   @include rdb-btn
 
-  -webkit-appearance: menulist
-  -moz-appearance: menulist
-  -ms-appearance: menulist
-  -o-appearance: menulist
-  appearance: menulist
+  position: relative
+
   height: auto
   background-size: auto
 
-  padding: 5px 4px 4px
+  padding: 6px 10px 5px
   text-align: left
+  font-weight: normal
 
   &::-moz-focus-inner
     padding: 0
     border: 0
+
+  > .rui-select-label
+    display: block
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+
+    display: block
+    margin-right: 14px
+
+  > .rui-icon
+    position: absolute
+    right: 10px
+    top: 6px
+
+.rui-select-options
+  @extend %rui-container
+
+  margin-top: -1px
+  background-color: white
+
+  border: 1px solid $frame-color
+  border-bottom-left-radius: 2px
+  border-bottom-right-radius: 2px
+
+  box-shadow: 1px 1px 5px solid rgba(0, 0, 0, .4)
+
+  ul
+    list-style: none
+    padding: 2px 0
+    margin: 0
+
+  li
+    padding: 4px 10px
+    cursor: pointer
+
+    &.rui-select-current
+      color: white
+      background-color: $primary-brightblue

@@ -23,6 +23,12 @@
     background-image: none
     background-color: #f2f2f2
 
+  &.focus
+    outline: 0
+    box-shadow: inset 1px 1px 0 $focus-color, inset -1px -1px 0 $focus-color
+    border-color: $focus-color
+    text-decoration: none
+
 .rui-btn, a.rui-btn
   @include rdb-btn
 

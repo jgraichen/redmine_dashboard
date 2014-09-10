@@ -8,4 +8,9 @@ DOM = do ->
     object[name] = core.wrapComponentConstructor fn
   object
 
+DOM.searchUp = (node, fn) ->
+  while !fn node && node != null
+    node = node.parentNode
+  node
+
 module.exports = DOM

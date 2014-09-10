@@ -10,16 +10,13 @@ Dashboard = require 'rdb/Dashboard'
 Configuration = require 'rdb/Configuration'
 GlobalEventBus = require 'rdb/GlobalEventBus'
 IssueComponent = require 'rdb/IssueComponent'
-BackboneMixins = require 'rdb/BackboneMixins'
 
 Column = core.createComponent 'rdb.Taskboard.Column',
-  mixins: [BackboneMixins.CollectionView]
-
-  getDefaultProps: ->
+  getInitialState: ->
     collection: new Issue.Collection board: @props.board, params: {column: @props.id}
 
   componentDidMount: ->
-    @refs['indicator'].track @props.collection.fetch().then => @forceUpdate()
+    @refs['indicator'].track @state.collection.fetch().then => @forceUpdate()
 
   render: ->
     div className: "rdb-column rdb-column-#{@props.id}", [
@@ -28,7 +25,7 @@ Column = core.createComponent 'rdb.Taskboard.Column',
         ActivityIndicator ref: 'indicator', tick: false
       ]
 
-      ul @renderCollectionItems (item) ->
+      ul @state.collection.map (item) ->
         IssueComponent model: item
     ]
 

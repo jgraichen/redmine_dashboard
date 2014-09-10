@@ -6,13 +6,16 @@ Util =
   isPrimaryButton: (e) ->
     e.button == 0
 
-  isPrimaryClick: (e) ->
+  isPrimary: (e) ->
     Util.isUnmodifiedEvent(e) && Util.isPrimaryButton(e)
 
-  handlePrimaryClick: (e, fn) ->
-    if Util.isPrimaryClick(e)
+  handlePrimary: (e, fn) ->
+    if Util.isPrimary(e)
       e.preventDefault()
       fn(e)
       false
+
+  onPrimary: (fn) ->
+    (e) -> fn(e) if Util.isPrimaryClick(e)
 
 module.exports = Util

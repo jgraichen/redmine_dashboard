@@ -1,6 +1,6 @@
 React = require 'react'
 
-LayeredComponentMixin =
+LayeredComponent =
   componentDidMount: ->
     @_target = document.createElement 'div'
     document.body.appendChild @_target
@@ -27,4 +27,4 @@ LayeredComponentMixin =
   _getLayerNode: ->
     @_target.getDOMNode()
 
-module.exports = LayeredComponentMixin
+module.exports = LayeredComponent

@@ -1,12 +1,13 @@
 t = require 'counterpart'
+cx = require 'react/lib/cx'
 
 core = require 'rui/core'
 util = require 'rui/util'
 Icon = require 'rui/Icon'
 Menu = require 'rui/Menu'
 Button = require 'rui/Button'
-Dropdown = require 'rui/Dropdown'
-LayeredComponentMixin = require 'rui/LayeredComponentMixin'
+Attachment = require 'rui/Attachment'
+LayeredComponent = require 'rui/LayeredComponent'
 {h2, div, section, header, span, a} = require 'rui/DOM'
 
 Rdb = require 'rdb/index'
@@ -14,7 +15,7 @@ BoardMenu = require 'rdb/BoardMenu'
 GlobalEventBus = require 'rdb/GlobalEventBus'
 
 module.exports =
-  mixins: [GlobalEventBus, LayeredComponentMixin],
+  mixins: [GlobalEventBus, LayeredComponent],
 
   events:
     'rdb:fullscreen:changed': 'setFullscreenState'
@@ -27,10 +28,14 @@ module.exports =
     @setState fullscreen: state
 
   renderLayer: ->
-    Dropdown
+    cs = cx
+      'rui-hidden': !@state.open
+
+    Attachment
       target: @refs['header'].getDOMNode(),
-      visible: @state.open
-      BoardMenu board: @props.board
+      BoardMenu
+        board: @props.board
+        className: cs
 
   render: ->
     @props.root [
@@ -47,8 +52,9 @@ module.exports =
         a
           href: '#'
           onClick: (e) =>
-            util.handlePrimaryClick e, (e) =>
+            if util.isPrimary e
               Rdb.events.trigger 'rdb:fullscreen:toggle'
+              false
           [
             Icon glyph: 'arrows-alt'
             t 'rdb.contextual.fullscreen'
@@ -63,8 +69,9 @@ module.exports =
               id: 'rdb-menu'
               ref: 'menu'
               onClick: (e) =>
-                util.handlePrimaryClick e, (e) =>
+                if util.isPrimary e
                   @setState open: !@state.open
+                  false
               [
                 Icon glyph: 'chevron-circle-down'
                 @props.board.get 'name'

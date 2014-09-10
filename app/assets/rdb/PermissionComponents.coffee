@@ -65,12 +65,6 @@ Row = core.createComponent 'rdb.Permission.Row',
 Editor = core.createComponent 'rdb.Permission.Editor',
   mixins: [BackboneMixins.CollectionView]
 
-  getDefaultProps: ->
-    collection: @props.board.getPermissions()
-
-  componentDidMount: ->
-    # @props.collection.fetch()
-
   render: ->
     table className: 'rdb-permissions', [
       thead [ @renderPermissionHead() ]
@@ -82,7 +76,7 @@ Editor = core.createComponent 'rdb.Permission.Editor',
 
   addPermission: ->
     id   = @refs['id'].value()
-    role = @refs['role'].value()
+    role = @refs['role'].value().value
 
     @props.collection.create
       role: role,
@@ -97,11 +91,17 @@ Editor = core.createComponent 'rdb.Permission.Editor',
         Input ref: 'id', placeholder: 'Search principal...'
       ]
       th [
-        Select ref: 'role', [
-          Select.Option value: 'read', t 'rdb.permissions.read'
-          Select.Option value: 'edit', t 'rdb.permissions.edit'
-          Select.Option value: 'admin', t 'rdb.permissions.admin'
-        ]
+        Select
+          ref: 'role'
+          items: [
+            {value: 'read', text: t('rdb.permissions.read')}
+            {value: 'edit', text: t('rdb.permissions.edit')}
+            {value: 'admin', text: t('rdb.permissions.admin')}
+          ]
+          renderItem: (item) ->
+            item['text']
+          renderValue: (item) ->
+            item['text']
       ]
       th [
         Button
