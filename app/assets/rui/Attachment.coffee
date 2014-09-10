@@ -28,6 +28,7 @@ Attachment = core.createComponent 'rui.Attachment',
       true
 
     document.addEventListener 'mousedown', @handleCloseRequest
+    document.addEventListener 'focus', @handleCloseRequest, true
 
     @tether = new Tether
       element: @node
@@ -49,11 +50,15 @@ Attachment = core.createComponent 'rui.Attachment',
     document.body.removeChild @node
 
     document.removeEventListener 'mousedown', @handleCloseRequest
+    document.removeEventListener 'focus', @handleCloseRequest
 
   renderComponent: ->
     @props.children
 
   render: ->
     span()
+
+Attachment.update = ->
+  Tether.position()
 
 module.exports = Attachment
