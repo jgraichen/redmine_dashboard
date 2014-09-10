@@ -82,10 +82,15 @@ Editor = core.createComponent 'rdb.Permission.Editor',
     principal = @refs['principal'].value()
     role      = @refs['role'].value().value
 
-    @props.collection.create
-      role: role,
-      principal: principal
-    @props.collection.fetch merge: true
+    p = new Promise (resolve, reject) =>
+      @props.collection.create {role: role, principal: principal},
+        success: resolve
+        error: reject
+
+    p = p.then =>
+      @props.collection.fetch merge: true
+
+    @refs['indicator'].track p
 
     @refs['principal'].clear()
     @refs['principal'].focus()
