@@ -1,18 +1,8 @@
 .rui-select
-  @include rdb-btn
+  @extend .rui-btn
 
   position: relative
-
-  height: auto
-  background-size: auto
-
-  padding: 6px 10px 5px
   text-align: left
-  font-weight: normal
-
-  &::-moz-focus-inner
-    padding: 0
-    border: 0
 
   > .rui-select-label
     display: block
@@ -46,9 +36,13 @@
     margin: 0
 
   li
-    padding: 4px 10px
-    cursor: pointer
+    > a
+      display: block
+      padding: 4px 10px
+      cursor: pointer
+      color: inherit
+      text-decoration: none
 
-    &.rui-select-current
-      color: white
-      background-color: $primary-brightblue
+      &.rui-select-current
+        color: white
+        background-color: $primary-brightblue

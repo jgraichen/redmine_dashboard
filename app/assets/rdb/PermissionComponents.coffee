@@ -1,3 +1,4 @@
+_ = require 'underscore'
 t = require 'counterpart'
 extend = require 'extend'
 
@@ -12,7 +13,7 @@ Search = require 'rui/Search'
 Select = require 'rui/Select'
 ActivityIndicator = require 'rui/ActivityIndicator'
 
-{table, thead, tbody, tr, th, td, img, span} = require 'rui/DOM'
+{table, thead, tbody, tr, th, td, img, span, label} = require 'rui/DOM'
 
 Permission = require 'rdb/Permission'
 
@@ -75,6 +76,10 @@ Row = core.createComponent 'rdb.Permission.Row',
 Editor = core.createComponent 'rdb.Permission.Editor',
   mixins: [BackboneMixins.CollectionView]
 
+  getInitialState: ->
+    searchId: _.uniqueId()
+    accessLevelId: _.uniqueId()
+
   render: ->
     table className: 'rdb-permissions', [
       thead [ @renderPermissionHead() ]
@@ -118,7 +123,10 @@ Editor = core.createComponent 'rdb.Permission.Editor',
   renderPermissionHead: ->
     tr [
       th [
+        label htmlFor: @state.searchId, className: 'rui-assistive',
+          t('rdb.configure.general.access_control_search_label')
         Search
+          id: @state.searchId
           ref: 'principal'
           placeholder: t('rdb.configure.general.access_control_placeholder')
           query: (q) =>
@@ -129,7 +137,10 @@ Editor = core.createComponent 'rdb.Permission.Editor',
           onSubmit: => @addPermission()
       ]
       th [
+        label htmlFor: @state.accessLevelId, className: 'rui-assistive',
+          t('rdb.configure.general.access_control_levels_label')
         Select
+          id: @state.accessLevelId
           ref: 'role'
           items: [
             {value: 'read', text: t('rdb.permissions.read')}

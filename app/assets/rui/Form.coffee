@@ -1,3 +1,5 @@
+_ = require 'underscore'
+
 core = require './core'
 Input = require './Input'
 {p, div, span, label} = require './DOM'
@@ -7,7 +9,7 @@ ActivityIndicator = require './ActivityIndicator'
 Form =
   Input: core.createComponent 'rui.Form.Input',
     getInitialState: ->
-      uniqueId: core.uniqueId()
+      uniqueId: _.uniqueId()
 
     render: ->
       div className: 'rui-form-container', [

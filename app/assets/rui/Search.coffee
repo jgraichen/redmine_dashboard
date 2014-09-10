@@ -33,12 +33,15 @@ Search = core.createComponent 'rui.Search',
       onCloseRequest: => @setState items: []
       div className: cs, style: style, ul [
         @state.items.map (item, index) =>
-          li
-            key: item['id']
-            className: cx 'rui-search-current': @state.current == index
-            onClick: (e) => @onSelect(index) if util.isPrimary(e)
-            onMouseOver: => @setState current: index
-            @props.renderItem item
+          li [
+            a
+              key: item['id']
+              href: '#'
+              className: cx 'rui-search-current': @state.current == index
+              onClick: (e) => @onSelect(index) if util.isPrimary(e)
+              onMouseOver: => @setState current: index
+              @props.renderItem item
+          ]
       ]
 
   onSelect: (index) ->
@@ -86,6 +89,7 @@ Search = core.createComponent 'rui.Search',
         do => if @state.value?
           span ref: 'result', className: 'rui-search-value', @props.renderValue @state.value
         input
+          id: @props.id
           ref: 'input'
           placeholder: if !@state.value? then @props.placeholder
           onKeyDown: @onKeyDown

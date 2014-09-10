@@ -12,12 +12,14 @@
   @include linear-gradient(#fff, #f2f2f2, $fallback: #f2f2f2)
 
   &:hover, &.hover
+    color: $text-color
     cursor: pointer
     text-decoration: none
     border-color: $frame-hover-color
     @include linear-gradient(#fff, $primary-lightgray, $fallback: $primary-lightgray)
 
   &:active, &.active
+    color: $text-color
     box-shadow: inset 0 3px 6px rgba(0, 0, 0, .1)
     border-color: $secondary-gray
     background-image: none

@@ -74,9 +74,13 @@
     margin: 0
 
   li
-    padding: 4px 10px
-    cursor: pointer
+    > a
+      display: block
+      padding: 4px 10px
+      cursor: pointer
+      color: inherit
+      text-decoration: none
 
-    &.rui-search-current
-      color: white
-      background-color: $primary-brightblue
+      &.rui-search-current
+        color: white
+        background-color: $primary-brightblue

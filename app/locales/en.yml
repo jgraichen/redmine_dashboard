@@ -40,6 +40,8 @@ en:
         access_control: Access control
         access_control_placeholder: Search user or group to add...
         access_control_add: Add
+        access_control_search_label: Search user or group
+        access_control_levels_label: Access level
       sources:
         nav: Issue sources
         title: Issue sources and filters

@@ -9,7 +9,7 @@ Attachment = require './Attachment'
 KeyboardFocus = require './KeyboardFocus'
 LayeredComponent = require './LayeredComponent'
 GlobalEventListener = require './GlobalEventListener'
-{div, span, a, ul, li, input} = require './DOM'
+{div, span, a, ul, li, input, button} = require './DOM'
 
 Select = core.createComponent 'rui.Select',
   mixins: [KeyboardFocus, LayeredComponent, GlobalEventListener]
@@ -39,15 +39,19 @@ Select = core.createComponent 'rui.Select',
       onCloseRequest: => @setState visible: false, active: false
       div className: cs, style: style, ul [
         @props.items.map (item, index) =>
-          li
-            className: cx 'rui-select-current': @state.current == index
-            onClick: (e) =>
-              if util.isPrimary e
-                @onSelect index
-                false
-            onMouseOver: => @setState current: index
-            onMouseUp: => @onSelect(index) if @state.active
-            @props.renderItem item
+          li [
+            a
+              key: index
+              href: '#'
+              className: cx 'rui-select-current': @state.current == index
+              onClick: (e) =>
+                if util.isPrimary e
+                  @onSelect index
+                  false
+              onMouseOver: => @setState current: index
+              onMouseUp: => @onSelect(index) if @state.active
+              @props.renderItem item
+          ]
       ]
 
   render: ->
@@ -56,9 +60,11 @@ Select = core.createComponent 'rui.Select',
       'active': @state.visible
       'focus': @isFocused()
 
-    div
+    button
+      id: @props.id
       tabIndex: 0
       className: cs
+      onClick: (e) => false if util.isPrimary(e)
       onMouseDown: (e) =>
         if util.isPrimary e
           @setState visible: !@state.visible, active: !@state.visible
