@@ -43,7 +43,9 @@ Row = core.createComponent 'rdb.Permission.Row',
       td className: 'rdb-actions', [
         Anchor
           icon: 'trash-o',
-          onPrimary: => @props.onDelete @props.model.destroy()
+          onPrimary: =>
+            @props.onDelete @props.model.destroy()
+            false
           t('rdb.contextual.remove')
       ]
       td [
@@ -88,7 +90,13 @@ Editor = core.createComponent 'rdb.Permission.Editor',
   renderPermissionHead: ->
     tr [
       th [
-        Input ref: 'id', placeholder: 'Search principal...'
+        Input
+          ref: 'id'
+          placeholder: 'Search principal...'
+          onKeyDown: (e) =>
+            if e.keyCode == 13
+              @addPermission()
+              false
       ]
       th [
         Select
@@ -105,7 +113,9 @@ Editor = core.createComponent 'rdb.Permission.Editor',
       ]
       th [
         Button
-          onClick: (e) => @addPermission()
+          onClick: (e) =>
+            @addPermission()
+            false
           icon: 'plus'
           'Add'
       ]

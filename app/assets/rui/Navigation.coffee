@@ -19,13 +19,13 @@ NavigationLink = core.createComponent 'rui.NavigationLink',
       tabIndex: 0
       className: cs
       onClick: (e) =>
-        if util.isPrimaryClick(e)
-          e.preventDefault()
-          @props.onActivation(@props.index)
+        if util.isPrimary(e)
+          @props.onActivation @props.index
+          false
       onKeyPress: (e) =>
         if e.keyCode == 13
-          e.preventDefault()
-          @props.onActivation(@props.index)
+          @props.onActivation @props.index
+          false
       @props.children
 
 
