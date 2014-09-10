@@ -114,7 +114,7 @@ Editor = core.createComponent 'rdb.Permission.Editor',
       th [
         Search
           ref: 'principal'
-          placeholder: 'Search principal...'
+          placeholder: t('rdb.configure.general.access_control_placeholder')
           query: (q) =>
             Rdb.curl('GET', Rdb.url(@props.collection.url + '/search', q: q))
               .then (xhr) => xhr.responseJSON
@@ -141,7 +141,7 @@ Editor = core.createComponent 'rdb.Permission.Editor',
             @addPermission()
             false
           icon: 'plus'
-          'Add'
+          t('rdb.configure.general.access_control_add')
       ]
       th [
         ActivityIndicator ref: 'indicator'
