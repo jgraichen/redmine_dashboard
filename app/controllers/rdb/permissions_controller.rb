@@ -65,6 +65,8 @@ class Rdb::PermissionsController < ::Rdb::BaseController
     case principal[:type].to_s.downcase
       when 'user'
         User.find principal[:id]
+      when 'group'
+        Group.find principal[:id]
       else
         nil
     end
