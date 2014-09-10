@@ -79,18 +79,20 @@ Select = core.createComponent 'rui.Select',
   onKeyDown: (e) ->
     return unless e.target == @getDOMNode()
 
-    if e.keyCode in [13, 32]
-      if @state.visible && e.keyCode == 13
-        @onSelect @state.current
-      else
-        @setState visible: !@state.visible, active: !@state.visible
-      return false
-
-    if e.keyCode in [27]
-      @setState visible: false, active: false
-      return false
+    if !@state.visible
+      if e.keyCode in [13, 32, 40]
+        @setState visible: true, active: false
+        return true
 
     if @state.visible
+      if e.keyCode in [13]
+        @onSelect @state.current
+        return false
+
+      if e.keyCode in [27]
+        @setState visible: false, active: false
+        return false
+
       if e.keyCode in [38]
         @setState current: @state.current - 1 if @state.current > 0
         return false
