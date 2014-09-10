@@ -31,15 +31,21 @@ Row = core.createComponent 'rdb.Permission.Row',
       td className: 'rdb-roles', [
         Anchor
           className: if @props.model.isRead() then 'rdb-active'
-          onPrimary: => @refs['indicator'].track @props.model.setRead()
+          onPrimary: =>
+            @refs['indicator'].track @props.model.setRead()
+            false
           t 'rdb.permissions.read'
         Anchor
           className: if @props.model.isEdit() then 'rdb-active'
-          onPrimary: => @refs['indicator'].track @props.model.setEdit()
+          onPrimary: =>
+            @refs['indicator'].track @props.model.setEdit()
+            false
           t 'rdb.permissions.edit'
         Anchor
           className: if @props.model.isAdmin() then 'rdb-active'
-          onPrimary: => @refs['indicator'].track @props.model.setAdmin()
+          onPrimary: =>
+            @refs['indicator'].track @props.model.setAdmin()
+            false
           t 'rdb.permissions.admin'
       ]
       td className: 'rdb-actions', [
