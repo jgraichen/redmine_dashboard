@@ -15,7 +15,10 @@ class Rdb::PermissionsController < ::Rdb::BaseController
 
   def search
     principals = Rdb::PrincipalDecorator.decorate_collection \
-      Principal.like(params[:q]).limit(5)
+      Principal
+        .where(Principal.arel_table[:id].not_in board.permissions.pluck(:principal_id))
+        .like(params[:q])
+        .limit(5)
 
     render json: principals
   end

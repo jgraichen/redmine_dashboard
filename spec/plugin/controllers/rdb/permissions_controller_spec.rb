@@ -119,14 +119,18 @@ describe Rdb::PermissionsController, type: :controller do
 
       it { expect(subject.status).to eq 200 }
       it { expect(json.size).to eq 5 }
-      it { expect(json.map{|r| r[:name]}).to match_array ['Redmine Admin', 'John Smith', 'Dave Lopper', 'Robert Hill', 'Dave2 Lopper2'] }
+      it { expect(json.map{|r| r[:name]}).to match_array ['Redmine Admin', 'Robert Hill', 'Dave2 Lopper2', 'Anonymous', 'Some One'] }
+      it 'should not include users already having permission' do
+        expect(json.map{|r| r[:id]}).to_not include 2
+        expect(json.map{|r| r[:id]}).to_not include 3
+      end
 
       context 'with query param' do
         let(:q) { 'lop' }
 
         it { expect(subject.status).to eq 200 }
-        it { expect(json.size).to eq 2 }
-        it { expect(json.map{|r| r[:name]}).to match_array ['Dave Lopper', 'Dave2 Lopper2'] }
+        it { expect(json.size).to eq 1 }
+        it { expect(json.map{|r| r[:name]}).to match_array ['Dave2 Lopper2'] }
       end
     end
   end
