@@ -41,9 +41,12 @@ Select = core.createComponent 'rui.Select',
         @props.items.map (item, index) =>
           li
             className: cx 'rui-select-current': @state.current == index
+            onClick: (e) =>
+              if util.isPrimary e
+                @onSelect index
+                false
             onMouseOver: => @setState current: index
-            onMouseUp: => @onSelect index if @state.active
-            onClick: (e) => @onSelect(index) && false if util.isPrimary e
+            onMouseUp: => @onSelect(index) if @state.active
             @props.renderItem item
       ]
 
@@ -70,8 +73,8 @@ Select = core.createComponent 'rui.Select',
     @setState value: @props.items[index], visible: false, active: false
     @getDOMNode().focus()
 
-  onMouseUp: ->
-    @setState active: false
+  componentDidUpdate: ->
+    Attachment.update()
 
   onKeyDown: (e) ->
     return unless e.target == @getDOMNode()
@@ -97,7 +100,6 @@ Select = core.createComponent 'rui.Select',
         return false
 
   componentDidMount: ->
-    @addGlobalEventListener 'mouseup', @onMouseUp
     @addGlobalEventListener 'keydown', @onKeyDown
 
 module.exports = Select
