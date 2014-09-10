@@ -1,0 +1,82 @@
+.rui-search
+  @extend %font-conf
+
+  color: $text-color
+  vertical-align: baseline
+
+  margin: 0
+  padding: 0
+
+  height: auto
+
+  border: 1px solid $frame-color
+  border-radius: 2px
+  background-color: #fff
+
+  width: 100%
+  display: block
+  position: relative
+
+  cursor: text
+  box-shadow: inset 1px 1px 4px rgba($secondary-silver, .5)
+
+  &:hover, &.hover, &.focus
+    text-decoration: none
+    border-color: $frame-hover-color
+
+  &.focus
+    box-shadow: inset 1px 1px 4px rgba($frame-hover-color, .5)
+
+  div
+    display: table
+    width: 100%
+
+    > input
+      @extend %font-conf
+
+      border: 0
+      margin: 0
+      padding: 6px 8px 5px
+      background: transparent
+      display: table-cell
+      width: 100%
+      vertical-align: baseline
+
+      &::-moz-focus-inner
+        padding: 0
+        border: 0
+
+      &:focus
+        outline: 0
+
+    .rui-search-value
+      display: table-cell
+      padding: 6px 0 5px 8px
+      width: 1%
+      white-space: nowrap
+      vertical-align: baseline
+
+.rui-search-results
+  @extend %rui-container
+
+  margin-top: -1px
+  background-color: white
+
+  border: 1px solid $frame-color
+  border-bottom-left-radius: 2px
+  border-bottom-right-radius: 2px
+
+  box-shadow: 1px 1px 5px solid rgba(0, 0, 0, .4)
+
+  ul
+    list-style: none
+    padding: 2px 0
+    margin: 0
+
+  li
+    padding: 4px 10px
+    cursor: pointer
+
+    &.rui-search-current
+      color: white
+      background-color: $primary-brightblue

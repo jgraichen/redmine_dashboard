@@ -6,11 +6,13 @@ util = require 'rui/util'
 Icon = require 'rui/Icon'
 Input = require 'rui/Input'
 Anchor = require 'rui/Anchor'
+Avatar = require 'rui/Avatar'
 Button = require 'rui/Button'
+Search = require 'rui/Search'
 Select = require 'rui/Select'
 ActivityIndicator = require 'rui/ActivityIndicator'
 
-{table, thead, tbody, tr, th, td, img} = require 'rui/DOM'
+{table, thead, tbody, tr, th, td, img, span} = require 'rui/DOM'
 
 Permission = require 'rdb/Permission'
 
@@ -55,13 +57,13 @@ Row = core.createComponent 'rdb.Permission.Row',
 
   renderPermissionSymbol: ->
     if @props.model.getAvatarUrl()?
-      img src: @props.model.getAvatarUrl(), className: 'rdb-avatar'
+      Avatar src: @props.model.getAvatarUrl()
     else
       switch @props.model.getType()
         when 'user'
-          Icon glyph: 'user'
+          Icon glyph: 'user', className: 'rui-avatar'
         else
-          Icon glyph: 'users'
+          Icon glyph: 'users', className: 'rui-avatar'
 
 
 Editor = core.createComponent 'rdb.Permission.Editor',
@@ -77,26 +79,43 @@ Editor = core.createComponent 'rdb.Permission.Editor',
     ]
 
   addPermission: ->
-    id   = @refs['id'].value()
-    role = @refs['role'].value().value
+    principal = @refs['principal'].value()
+    role      = @refs['role'].value().value
 
     @props.collection.create
       role: role,
-      principal:
-        type: 'user',
-        id: id
+      principal: principal
     @props.collection.fetch merge: true
+
+    @refs['principal'].clear()
+    @refs['principal'].focus()
+
+  renderPrincipal: (principal) ->
+    components = []
+    if principal['avatar_url']?.length > 0
+      components.push Avatar src: principal['avatar_url']
+    else
+      switch principal['type']
+        when 'user'
+          components.push Icon glyph: 'user', className: 'rui-avatar'
+        else
+          components.push Icon glyph: 'users', className: 'rui-avatar'
+
+    components.push principal['name']
+    span components
 
   renderPermissionHead: ->
     tr [
       th [
-        Input
-          ref: 'id'
+        Search
+          ref: 'principal'
           placeholder: 'Search principal...'
-          onKeyDown: (e) =>
-            if e.keyCode == 13
-              @addPermission()
-              false
+          query: (q) =>
+            Rdb.curl('GET', Rdb.url(@props.collection.url + '/search', q: q))
+              .then (xhr) => xhr.responseJSON
+          renderItem: @renderPrincipal
+          renderValue: @renderPrincipal
+          onSubmit: => @addPermission()
       ]
       th [
         Select

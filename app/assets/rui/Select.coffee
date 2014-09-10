@@ -9,7 +9,7 @@ Attachment = require './Attachment'
 KeyboardFocus = require './KeyboardFocus'
 LayeredComponent = require './LayeredComponent'
 GlobalEventListener = require './GlobalEventListener'
-{div, span, a, ul, li} = require './DOM'
+{div, span, a, ul, li, input} = require './DOM'
 
 Select = core.createComponent 'rui.Select',
   mixins: [KeyboardFocus, LayeredComponent, GlobalEventListener]
