@@ -89,8 +89,13 @@ Search = core.createComponent 'rui.Search',
           ref: 'input'
           placeholder: if !@state.value? then @props.placeholder
           onKeyDown: @onKeyDown
-          onFocus: (e) => @setState focused: true
           onBlur: (e) => @setState focused: false
+          onFocus: (e) =>
+            @setState focused: true
+            if e.target.value.length > 0
+              @setState value: null
+              @props.query(e.target.value).then (items) =>
+                @setState items: items, current: 0
           onChange: (e) =>
             if e.target.value.length == 0
               @setState items: [], current: 0
