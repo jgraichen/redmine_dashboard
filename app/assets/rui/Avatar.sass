@@ -1,14 +1,23 @@
 .rui-avatar
+  text-align: center
+  display: inline-block
+  vertical-align: text-bottom
+
+  &.rui-icon
+    vertical-align: baseline
+
   width: 1.3em
   height: 1.3em
-  border-radius: 2px
-  text-align: center
-
-  vertical-align: baseline
-  margin: -0.3em .4em -0.2em
+  margin: 0 .4em
 
   &:first-child
     margin-left: 0
 
   &:last-child
     margin-right: 0
+
+  > img
+    display: block
+    height: 100%
+    width: 100%
+    border-radius: 2px
