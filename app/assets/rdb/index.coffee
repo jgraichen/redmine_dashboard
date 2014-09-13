@@ -91,7 +91,7 @@ Rdb =
 
   nav: (path, opts = {}) ->
     (e) ->
-      util.handlePrimaryClick e, (e) =>
+      util.handlePrimary e, (e) =>
         Rdb.router.navigate path, extend(trigger: true, opts)
 
   url: (path, params = {}) ->

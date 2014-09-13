@@ -22,10 +22,6 @@ module.exports =
       GeneralConfiguration board: @props.board
 
   render: ->
-    backToBoard = (e) =>
-      util.handlePrimaryClick e, (e) =>
-        Rdb.navigate @props.board.urls.root
-
     @props.root [
       div className: 'contextual', [
         a
@@ -44,7 +40,7 @@ module.exports =
         component: h2
         link: a
           href: @props.board.urls.root
-          onClick: backToBoard
+          onClick: Rdb.nav @props.board.urls.root
           @props.board.get 'name'
 
       section className: 'rdb-main', [
