@@ -6,6 +6,7 @@ core = require './core'
 util = require './util'
 Attachment = require './Attachment'
 LayeredComponent = require './LayeredComponent'
+ActivityIndicator = require './ActivityIndicator'
 {div, span, a, ul, li, input} = require './DOM'
 
 Search = core.createComponent 'rui.Search',
@@ -78,6 +79,14 @@ Search = core.createComponent 'rui.Search',
         @props.onSubmit @state.value
         return true
 
+  query: (value) ->
+    @setState value: null
+
+    promise = @props.query(value).then (items) =>
+      @setState items: items, current: 0
+
+    @refs['indicator'].track promise
+
   render: ->
     cs = cx
       'rui-search': true
@@ -97,16 +106,13 @@ Search = core.createComponent 'rui.Search',
           onFocus: (e) =>
             @setState focused: true
             if e.target.value.length > 0
-              @setState value: null
-              @props.query(e.target.value).then (items) =>
-                @setState items: items, current: 0
+              @query e.target.value
           onChange: (e) =>
             if e.target.value.length == 0
               @setState items: [], current: 0
             else
-              @setState value: null
-              @props.query(e.target.value).then (items) =>
-                @setState items: items, current: 0
+              @query e.target.value
+        ActivityIndicator ref: 'indicator', tick: false
       ]
 
   componentDidUpdate: ->
