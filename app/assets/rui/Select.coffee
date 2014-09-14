@@ -88,7 +88,7 @@ Select = core.createComponent 'rui.Select',
     if !@state.visible
       if e.keyCode in [13, 32, 40]
         @setState visible: true, active: false
-        return true
+        return false
 
     if @state.visible
       if e.keyCode in [13]
