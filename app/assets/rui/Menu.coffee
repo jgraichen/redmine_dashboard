@@ -1,3 +1,4 @@
+cx = require 'react/lib/cx'
 map = require("react/lib/ReactChildren").map
 
 core = require './core'
@@ -5,11 +6,17 @@ core = require './core'
 
 Menu = core.createComponent 'RUI.Menu',
   render: ->
-    @transferPropsTo div className: 'rui-menu', @props.children
+    cs = 'rui-menu'
+    cs += " #{@props.className}" if @props.className?
+
+    @transferPropsTo div className: cs, @props.children
 
 Menu.List = core.createComponent 'RUI.Menu.List',
   render: ->
-    @transferPropsTo ul className: 'rui-menu-list', @props.children
+    cs = 'rui-menu-list'
+    cs += " #{@props.className}" if @props.className?
+
+    @transferPropsTo ul className: cs, @props.children
 
 Menu.Item = core.createComponent 'RUI.Menu.Item',
   render: ->
@@ -17,12 +24,14 @@ Menu.Item = core.createComponent 'RUI.Menu.Item',
       'rui-menu-item': true
       'rui-menu-item-active': @props.active
 
+    cs += " #{@props.className}" if @props.className?
+
     @transferPropsTo li
       className: cs
       @props.children
 
 Menu.Separator = core.createComponent 'rui-menu-separator',
   render: ->
-    @transferPropsTo hr()
+    @transferPropsTo li [ hr() ]
 
 module.exports = Menu

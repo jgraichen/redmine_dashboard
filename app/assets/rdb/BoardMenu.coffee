@@ -23,20 +23,24 @@ module.exports = core.createComponent 'rdb.BoardMenu',
     @forceUpdate()
 
   renderCreateItem: ->
-    a
-      href: @props.board.urls.create
-      'title': t('rdb.menu.create_new_board')
-      'aria-label': t('rdb.menu.create_new_board')
-      [
-        Icon glyph: 'plus'
-        t('rdb.menu.create_new_board')
-      ]
+    Menu.Item [
+      a
+        href: @props.board.urls.create
+        'title': t('rdb.menu.create_new_board')
+        'aria-label': t('rdb.menu.create_new_board')
+        [
+          Icon glyph: 'plus'
+          t('rdb.menu.create_new_board')
+        ]
+    ]
 
   render: ->
     items = [@renderCreateItem(), Menu.Separator()]
     @state.boards.forEach (board) ->
-      items.push a
-        href: board.urls.root
-        board.get 'name'
+      items.push Menu.Item [
+        a
+          href: board.urls.root
+          board.get 'name'
+      ]
 
-    @transferPropsTo Menu items
+    @transferPropsTo Menu className: 'rdb-board-menu', [ Menu.List className: 'rui-link-list', items ]

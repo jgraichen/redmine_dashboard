@@ -32,7 +32,9 @@ module.exports =
       'rui-hidden': !@state.open
 
     Attachment
+      source: @refs['menu'].getDOMNode()
       target: @refs['header'].getDOMNode(),
+      onCloseRequest: => @setState open: false
       BoardMenu
         board: @props.board
         className: cs
