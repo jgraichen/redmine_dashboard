@@ -29,7 +29,7 @@ Compile development or production (minified) client-side components:
 
 Install redmine plugin like any redmine plugin
 
-	$ bundler install
+	$ bundle install
 	$ rake redmine:plugins:migrate
 
 <!--
