@@ -56,8 +56,8 @@ min: fonts $(BUILD)/main.min.js $(BUILD)/main.min.css
 watch:
 	$(NODE) node_modules/.bin/nodemon --exec "make all" --watch $(SOURCE) -e js,coffee,sass
 
-.PHONY: install-deps
-install-deps:
+.PHONY: install
+install:
 	npm install
 	bower install
 
@@ -65,6 +65,6 @@ install-deps:
 clean:
 	rm -rf $(BUILD)/*
 
-.PHONY: clean-deps
-clean-deps:
+.PHONY: clean-all
+clean-all:
 	rm -rf node_modules bower_components
