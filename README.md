@@ -20,7 +20,7 @@ As Redmine Dashboard 3 is still pre-alpha it can only build from source. You nee
 Clone repository and install NPM and bower dependencies:
 
 	$ git clone git@github.com:jgraichen/redmine_dashboard.git -b master
-	$ make install-deps
+	$ make install
 
 Compile development or production (minified) client-side components:
 
