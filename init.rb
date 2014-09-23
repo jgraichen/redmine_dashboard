@@ -1,7 +1,6 @@
 require 'redmine'
 
 require 'slim'
-require 'draper'
 
 require 'rdb/rails/i18n'
 require 'rdb/rails/patch'

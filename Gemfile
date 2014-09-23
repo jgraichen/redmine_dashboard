@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
 gem 'slim', require: false
-gem 'draper', require: false
 
 group :development, :test do
   gem 'rspec', '~> 3.0', require: false
