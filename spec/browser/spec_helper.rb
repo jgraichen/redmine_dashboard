@@ -63,6 +63,7 @@ RSpec.configure do |config|
   end
 
   # Include request spec helpers
+  config.include Unreliable
   config.include RdbRequestHelpers
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers

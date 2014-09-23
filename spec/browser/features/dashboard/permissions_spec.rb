@@ -35,10 +35,12 @@ feature 'Dashboard Permissions', js: true, sauce: true do
       click_on 'Configure'
     end
 
-    find(:fillable_field, 'Search user or group', match: :prefer_exact)
-      .fill 'Lo'
+    unreliable do # CI only
+      find(:fillable_field, 'Search user or group', match: :prefer_exact)
+        .fill 'Lo'
 
-    click_on 'Dave2 Lopper2'
+      click_on 'Dave2 Lopper2'
+    end
 
     rui_select 'Read' do
       click_on 'Edit'
