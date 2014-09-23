@@ -1,3 +1,9 @@
+## 2.3.3
+
+* Fix error with pluralization patch (#53)
+* Update locales
+* Bundle transfiex utility as gem instead of git repo
+
 ## 2.3.2
 
 * Fix error with missing pluralization keys (#50):
