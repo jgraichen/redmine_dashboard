@@ -64,7 +64,7 @@ task :clean do
 end
 
 task :compile do
-  RdbRedmine.exec %w(make install-deps)
+  RdbRedmine.exec %w(make install)
   RdbRedmine.exec %w(make min)
 end
 
