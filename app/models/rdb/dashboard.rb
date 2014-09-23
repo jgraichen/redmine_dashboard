@@ -16,6 +16,11 @@ module Rdb
       end
     end
 
+    before_validation :strip_name_whitespace
+    def strip_name_whitespace
+      self.name = name.gsub(/\s+/, ' ').strip
+    end
+
     def issues
       if sources.any?
         sources.first.issues

@@ -15,6 +15,19 @@ describe Rdb::Dashboard do
     end
   end
 
+  describe '#name' do
+    context 'uniqueness' do
+      before { board }
+
+      it { expect(Rdb::Taskboard.new(name: 'Test Board')).to_not be_valid }
+      it { expect(Rdb::Taskboard.new(name: 'Test Board  ')).to_not be_valid }
+      it { expect(Rdb::Taskboard.new(name: 'Test   Board')).to_not be_valid }
+      it { expect(Rdb::Taskboard.new(name: ' Test  Board')).to_not be_valid }
+
+      it { expect(Rdb::Taskboard.new(name: 'Test Board 2')).to be_valid }
+    end
+  end
+
   describe '#readable_for?' do
     subject { board.readable_for?(principal) }
 
