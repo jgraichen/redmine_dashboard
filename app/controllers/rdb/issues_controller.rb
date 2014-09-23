@@ -1,14 +1,16 @@
-class Rdb::IssuesController < ::Rdb::BaseController
-  before_filter :check_read_permission
+module Rdb
+  class IssuesController < BaseController
+    before_filter :check_read_permission
 
-  def index
-    issues = board.engine.issues params
-    render json: Rdb::CollectionDecorator.new(issues, Rdb::IssueDecorator)
-  end
+    def index
+      issues = board.issues params
+      render json: IssueDecorator.new(issues)
+    end
 
-  private
+    private
 
-  def board
-    @board ||= RdbBoard.find Integer params[:rdb_board_id]
+    def board
+      @board ||= Dashboard.find Integer params[:rdb_board_id]
+    end
   end
 end

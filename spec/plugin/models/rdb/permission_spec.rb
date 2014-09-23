@@ -1,10 +1,10 @@
-require File.expand_path '../../spec_helper', __FILE__
+require File.expand_path '../../../spec_helper', __FILE__
 
-describe RdbBoardPermission do
+describe Rdb::Permission do
   fixtures :projects, :users
 
-  let(:board) { RdbBoard.create! engine: Rdb::Taskboard, name: 'Test Board' }
-  let(:permission) { RdbBoardPermission.create! rdb_board: board, principal: principal, role: role }
+  let(:board) { Rdb::Taskboard.create! name: 'Test Board' }
+  let(:permission) { Rdb::Permission.create! dashboard: board, principal: principal, role: role }
 
   describe '#read?' do
     subject { permission.read? requester }
@@ -13,7 +13,7 @@ describe RdbBoardPermission do
       let(:principal) { User.find 2 }
 
       context 'with ADMIN role' do
-        let(:role) { RdbBoardPermission::ADMIN }
+        let(:role) { Rdb::Permission::ADMIN }
 
         context 'as active principal' do
           let(:requester) { User.find 2 }
@@ -41,7 +41,7 @@ describe RdbBoardPermission do
       end
 
       context 'with READ role' do
-        let(:role) { RdbBoardPermission::READ }
+        let(:role) { Rdb::Permission::READ }
 
         context 'as active principal' do
           let(:requester) { User.find 2 }
@@ -74,7 +74,7 @@ describe RdbBoardPermission do
       before { principal.users << User.find(2) }
 
       context 'with ADMIN role' do
-        let(:role) { RdbBoardPermission::ADMIN }
+        let(:role) { Rdb::Permission::ADMIN }
 
         context 'as active group member' do
           let(:requester) { User.find 2 }
@@ -88,7 +88,7 @@ describe RdbBoardPermission do
       end
 
       context 'with READ role' do
-        let(:role) { RdbBoardPermission::READ }
+        let(:role) { Rdb::Permission::READ }
 
         context 'as active group member' do
           let(:requester) { User.find 2 }
@@ -110,7 +110,7 @@ describe RdbBoardPermission do
       let(:principal) { User.find 2 }
 
       context 'with ADMIN role' do
-        let(:role) { RdbBoardPermission::ADMIN }
+        let(:role) { Rdb::Permission::ADMIN }
 
         context 'as active principal' do
           let(:requester) { User.find 2 }
@@ -138,7 +138,7 @@ describe RdbBoardPermission do
       end
 
       context 'with READ role' do
-        let(:role) { RdbBoardPermission::READ }
+        let(:role) { Rdb::Permission::READ }
 
         context 'as active principal' do
           let(:requester) { User.find 2 }
@@ -171,7 +171,7 @@ describe RdbBoardPermission do
       before { principal.users << User.find(2) }
 
       context 'with ADMIN role' do
-        let(:role) { RdbBoardPermission::ADMIN }
+        let(:role) { Rdb::Permission::ADMIN }
 
         context 'as active group member' do
           let(:requester) { User.find 2 }
@@ -185,7 +185,7 @@ describe RdbBoardPermission do
       end
 
       context 'with READ role' do
-        let(:role) { RdbBoardPermission::READ }
+        let(:role) { Rdb::Permission::READ }
 
         context 'as active group member' do
           let(:requester) { User.find 2 }

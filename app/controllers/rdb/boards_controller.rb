@@ -1,26 +1,28 @@
-class Rdb::BoardsController < ::Rdb::BaseController
-  before_filter :check_read_permission, except: [:index, :update]
-  before_filter :check_write_permission, except: [:show, :index]
+module Rdb
+  class BoardsController < BaseController
+    before_filter :check_read_permission, except: [:index, :update]
+    before_filter :check_write_permission, except: [:show, :index]
 
-  def index
-    render json: RdbBoard.all
-  end
+    def index
+      render json: Dashboard.scoped
+    end
 
-  def show
-    render json: board
-  end
+    def show
+      render json: board
+    end
 
-  def update
-    board.engine.update params
+    def update
+      board.update_board! params
 
-    render json: board
-  rescue ActiveRecord::RecordInvalid => e
-    render status: 422, json: {errors: e.record.errors}
-  end
+      render json: board
+    rescue ActiveRecord::RecordInvalid => e
+      render status: 422, json: {errors: e.record.errors}
+    end
 
-  private
+    private
 
-  def board
-    @board ||= RdbBoard.find Integer params[:id]
+    def board
+      @board ||= Dashboard.find Integer params[:id]
+    end
   end
 end

@@ -6,11 +6,11 @@ class RdbController < ::Rdb::BaseController
 
   def index
     if context
-      sources = RdbSource.where context_id: context.id,
-                                context_type: context.class
+      sources = Rdb::Source.where context_id: context.id,
+                                  context_type: context.class
 
       if sources.any?
-        redirect_to rdb_url sources.first.board
+        redirect_to rdb_url sources.first.dashboard
       else
         create
       end
@@ -21,24 +21,22 @@ class RdbController < ::Rdb::BaseController
 
   def create
     ActiveRecord::Base.transaction do
-      board = RdbBoard.create \
-        name:   I18n.t('rdb.new.default_board_name', count: 0),
-        engine: Rdb::Taskboard
+      board = Rdb::Taskboard.create name: I18n.t('rdb.new.default_board_name', count: 0)
 
-      unless board.valid?
-        board.name = I18n.t('rdb.new.default_board_name',
-          count: RdbBoard.last.id + 1)
-        board.save!
+      index = 2
+      while !board.valid?
+        board.name = I18n.t('rdb.new.default_board_name', count: index)
+        index += 1
       end
 
-      RdbSource.create! \
-        context: context,
-        board: board
+      board.save!
 
-      RdbBoardPermission.create! \
-        rdb_board: board,
+      Rdb::Source.create! context: context, dashboard: board
+
+      Rdb::Permission.create! \
+        dashboard: board,
         principal: User.current,
-        role: RdbBoardPermission::ADMIN
+        role: Rdb::Permission::ADMIN
 
       redirect_to rdb_url board
     end
@@ -54,9 +52,7 @@ class RdbController < ::Rdb::BaseController
   private
 
   def board
-    @board ||= RdbBoard.find(params[:id]).tap do |board|
-      @engine = board.engine
-
+    @board ||= Rdb::Dashboard.find(params[:id]).tap do |board|
       if board.sources.count == 1 && board.sources.first.context.is_a?(Project)
         @project = board.sources.first.context
         self.class.menu_item :rdb_project_dashboards

@@ -3,9 +3,7 @@ require File.expand_path '../../../spec_helper', __FILE__
 describe Rdb::IssuesController, type: :controller do
   fixtures :users
 
-  let(:board) do
-    RdbBoard.create! name: 'My Board', engine: Rdb::Taskboard
-  end
+  let(:board) { Rdb::Taskboard.create! name: 'My Board' }
 
   before { request.accept = 'application/json' }
   let(:resp) { action; response }
@@ -22,7 +20,7 @@ describe Rdb::IssuesController, type: :controller do
 
     context 'as authorized principal' do
       let(:current_user) { User.find 2 }
-      before { RdbBoardPermission.create! rdb_board: board, principal: current_user, role: RdbBoardPermission::READ }
+      before { Rdb::Permission.create! dashboard: board, principal: current_user, role: Rdb::Permission::READ }
 
       it { expect(subject.status).to eq 200 }
     end

@@ -1,13 +1,11 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
-Roles = RdbBoardPermission::Roles
+Roles = Rdb::Permission::Roles
 
 describe Rdb::PermissionsController, type: :controller do
   fixtures :users
 
-  let(:board) do
-    RdbBoard.create! name: 'My Board', engine: Rdb::Taskboard
-  end
+  let(:board) { Rdb::Taskboard.create! name: 'My Board' }
 
   before { request.accept = 'application/json' }
   let(:resp) { action; response }
@@ -18,8 +16,8 @@ describe Rdb::PermissionsController, type: :controller do
 
   let!(:permissions) do
     [
-      RdbBoardPermission.create!(rdb_board: board, principal: a_user, role: Roles::ADMIN),
-      RdbBoardPermission.create!(rdb_board: board, principal: another_user, role: Roles::EDIT)
+      Rdb::Permission.create!(dashboard: board, principal: a_user, role: Roles::ADMIN),
+      Rdb::Permission.create!(dashboard: board, principal: another_user, role: Roles::EDIT)
     ]
   end
 
@@ -50,7 +48,7 @@ describe Rdb::PermissionsController, type: :controller do
         subject { json }
 
         it { expect(subject.size).to eq 2 }
-        it { expect(json[0]).to eq Rdb::PermissionDecorator.new(permissions[0]).as_json({}) }
+        it { expect(json[0]).to eq permissions[0].as_json }
       end
     end
   end
@@ -158,21 +156,21 @@ describe Rdb::PermissionsController, type: :controller do
       let(:params) { {principal: {type: 'user', id: principal.id}, role: Roles::READ} }
 
       it { expect(subject.status).to eq 200 }
-      it { expect{ subject }.to change{ RdbBoardPermission.count }.by(1) }
+      it { expect{ subject }.to change{ Rdb::Permission.count }.by(1) }
 
       it 'should create permission record' do
         subject
-        perm = RdbBoardPermission.last
+        perm = Rdb::Permission.last
         expect(perm.principal).to eq principal
         expect(perm.role).to eq Roles::READ
       end
 
       it 'should return JSON response' do
-        expect(json).to eq Rdb::PermissionDecorator.new(RdbBoardPermission.last).as_json({})
+        expect(json).to eq Rdb::Permission.last.as_json
       end
 
       context 'duplicate' do
-        before { RdbBoardPermission.create! principal: principal, rdb_board: board, role: Roles::EDIT }
+        before { Rdb::Permission.create! principal: principal, dashboard: board, role: Roles::EDIT }
 
         it { expect(subject.status).to eq 422 }
         it { expect(json).to eq errors: {principal_id: ['already_taken']} }
@@ -256,7 +254,7 @@ describe Rdb::PermissionsController, type: :controller do
       let(:current_user) { User.find 2 }
 
       it { expect(subject.status).to eq 204 }
-      it { expect{ subject }.to change{ RdbBoardPermission.where(id: permission.id).count }.from(1).to(0) }
+      it { expect{ subject }.to change{ Rdb::Permission.where(id: permission.id).count }.from(1).to(0) }
     end
 
     context 'self permission' do

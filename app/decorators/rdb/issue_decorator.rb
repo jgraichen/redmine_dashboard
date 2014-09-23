@@ -2,23 +2,21 @@ module Rdb
   # The IssueDecorator decorates redmines Issue database model and
   # adds an as_json method as we need it.
   #
-  class IssueDecorator < Draper::Decorator
-    delegate_all
-
+  class IssueDecorator < Decorator
     def as_json(*)
       {
-        id: id,
-        subject: subject,
-        description: description,
+        id: object.id,
+        subject: object.subject,
+        description: object.description,
         name: name
       }
     end
 
     def name
-      if project.rdb_abbreviation.present?
-        "#{project.rdb_abbreviation}-#{id}"
+      if object.project.rdb_abbreviation.present?
+        "#{object.project.rdb_abbreviation}-#{object.id}"
       else
-        "##{id}"
+        "##{object.id}"
       end
     end
   end

@@ -1,5 +1,8 @@
 module Rdb
-  class PrincipalDecorator < Draper::Decorator
+  class PrincipalDecorator < Decorator
+    include ERB::Util
+    include GravatarHelper::PublicMethods
+
     def as_json(*)
       {
         type: type.to_s,
@@ -11,7 +14,7 @@ module Rdb
 
     def avatar_url
       if Setting.gravatar_enabled? && type == :user && object.mail.present?
-        h.gravatar_url object.mail,
+        gravatar_url object.mail,
           size: 128, ssl: true, default: Setting.gravatar_default
       else
         nil

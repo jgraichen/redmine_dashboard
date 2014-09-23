@@ -20,16 +20,8 @@ desc 'Run all specs (alias for spec:all)'
 task spec: 'spec:all'
 
 namespace :spec do
-  desc 'Run unit, plugin and browser specs'
-  task all: [:unit, :plugin, :browser]
-
-  desc 'Run unit specs (Testing isolated dashboard components)'
-  RSpec::Core::RakeTask.new(:unit) do |t|
-    t.pattern    = ENV['SPEC'] || 'spec/unit/**/*_spec.rb'
-    t.ruby_opts  = '-Ispec/unit -Ilib'
-    t.rspec_opts = '--color --backtrace'
-    t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
-  end
+  desc 'Run plugin and browser specs'
+  task all: [:plugin, :browser]
 
   desc 'Run plugin specs (Testing within redmine application)'
   RSpec::Core::RakeTask.new(:plugin) do |t|

@@ -1,17 +1,12 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
 describe Rdb::BoardsController, type: :controller do
-  fixtures :users
+  fixtures :users, :issue_statuses
 
-  let(:board) do
-    RdbBoard.create! name: 'My Board', engine: Rdb::Taskboard
-  end
+  let(:board) { Rdb::Taskboard.create! name: 'My Board' }
 
   let(:boards) do
-    [
-      board,
-      RdbBoard.create!(name: 'Another board', engine: Rdb::Taskboard)
-    ]
+    [board, Rdb::Taskboard.create!(name: 'Another board')]
   end
 
   before { request.accept = 'application/json' }
@@ -44,8 +39,8 @@ describe Rdb::BoardsController, type: :controller do
     context 'as authorized principal' do
       let(:current_user) { User.find 2 }
       let!(:permission) do
-        RdbBoardPermission.create! rdb_board: board,
-          principal: current_user, role: RdbBoardPermission::ADMIN
+        Rdb::Permission.create! dashboard: board,
+          principal: current_user, role: Rdb::Permission::ADMIN
       end
       before { Setting.gravatar_enabled = 1 }
 
@@ -54,14 +49,23 @@ describe Rdb::BoardsController, type: :controller do
       describe 'JSON body' do
         subject { json }
 
-        it do
-          is_expected.to eq \
-            'id' => board.id,
-            'name' => board.name,
-            'type' => 'taskboard',
-            'columns' => [],
-            'permissions' => [
-              {
+        it { expect(subject['id']).to eq board.id }
+        it { expect(subject['name']).to eq board.name }
+        it { expect(subject['type']).to eq 'taskboard' }
+
+        describe 'columns' do
+          subject { json['columns'] }
+
+          it { expect(subject.size).to eq 5 }
+          it { expect(subject.map{|row| row['name']}).to eq %w(New Assigned Resolved Feedback Done) }
+        end
+
+        describe 'permissions' do
+          subject { json['permissions'] }
+
+          it do
+            is_expected.to eq \
+              [{
                 'id' => permission.id,
                 'role' => 'ADMIN',
                 'principal' => {
@@ -70,8 +74,8 @@ describe Rdb::BoardsController, type: :controller do
                   'name' => current_user.name,
                   'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
                 }
-              }
-            ]
+              }]
+          end
         end
       end
     end
@@ -89,7 +93,7 @@ describe Rdb::BoardsController, type: :controller do
 
     context 'as authorized principal' do
       let(:current_user) { User.find 2 }
-      before { RdbBoardPermission.create! rdb_board: board, principal: current_user, role: RdbBoardPermission::ADMIN }
+      before { Rdb::Permission.create! dashboard: board, principal: current_user, role: Rdb::Permission::ADMIN }
 
       describe '#name' do
         context 'empty' do
@@ -100,7 +104,7 @@ describe Rdb::BoardsController, type: :controller do
         end
 
         context 'already taken' do
-          before { RdbBoard.create! name: 'Board name', engine: Rdb::Taskboard }
+          before { Rdb::Taskboard.create! name: 'Board name' }
           let(:params) { {'name' => 'Board name'} }
 
           it { expect(subject.status).to eq 422 }
