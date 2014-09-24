@@ -32,6 +32,6 @@ Menu.Item = core.createComponent 'RUI.Menu.Item',
 
 Menu.Separator = core.createComponent 'rui-menu-separator',
   render: ->
-    @transferPropsTo li [ hr() ]
+    @transferPropsTo li className: 'rui-menu-separator', hr()
 
 module.exports = Menu
