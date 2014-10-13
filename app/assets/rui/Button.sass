@@ -1,21 +1,24 @@
 @import 'css3/linear-gradient'
+@import './Form'
 
 @mixin rdb-btn
   @extend %font-conf
-  @extend %rui-form-component
+  @include rui-form-element
 
   display: inline-block
   text-align: center
   padding-left: 11px
   padding-right: 11px
 
+  border-color: $frame-color
+
   @include linear-gradient(#fff, #f2f2f2, $fallback: #f2f2f2)
 
-  &:hover, &.hover
+  &:hover
     color: $text-color
     cursor: pointer
-    text-decoration: none
     border-color: $frame-hover-color
+    text-decoration: none
     @include linear-gradient(#fff, $primary-lightgray, $fallback: $primary-lightgray)
 
   &:active, &.active
@@ -25,11 +28,9 @@
     background-image: none
     background-color: #f2f2f2
 
-  &.focus
-    outline: 0
-    box-shadow: inset 1px 1px 0 $focus-color, inset -1px -1px 0 $focus-color
-    border-color: $focus-color
+  &:focus, .focus
     text-decoration: none
+    border-color: $focus-color
 
 .rui-btn, a.rui-btn
   @include rdb-btn

@@ -71,8 +71,8 @@ Select = core.createComponent 'rui.Select',
           @getDOMNode().focus()
           false
       [
-        span className: 'rui-select-label', @props.renderValue @state.value
         Icon glyph: 'caret-down'
+        span className: 'rui-select-label', @props.renderValue @state.value
       ]
 
   onSelect: (index) ->
