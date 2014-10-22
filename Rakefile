@@ -11,7 +11,7 @@ require 'rspec/core/rake_task'
 #
 # Dashboard tasks
 #
-DEFAULT_REDMINE_VERSION = '2.5.2'
+DEFAULT_REDMINE_VERSION = '2.6.0'
 
 class Redmine
   attr_reader :version, :path
