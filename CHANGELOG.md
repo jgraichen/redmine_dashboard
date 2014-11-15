@@ -1,3 +1,8 @@
+## Next release
+
+* Integration with ISSUE-ID plugin (#64)
+* Update locales (new: Polish)
+
 ## 2.3.3
 
 * Fix error with pluralization patch (#53)
