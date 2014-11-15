@@ -117,6 +117,14 @@ class RdbDashboard
     end
   end
 
+  def issue_id(issue)
+    if issue.respond_to?(:issue_id)
+      issue.issue_id
+    else
+      abbreviation(issue.project_id) + issue.id.to_s
+    end
+  end
+
   def id
     self.class.board_type
   end
