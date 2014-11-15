@@ -1,7 +1,16 @@
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
 
-Test::Unit::AutoRunner.need_auto_run = false if defined?(Test::Unit::AutoRunner)
+env = File.expand_path('../../config/environment.rb', __FILE__)
+if File.exist? env
+  require env
+else
+  require File.expand_path('../../redmine.rb', __FILE__)
+  RdbRedmine.new.exec { Kernel.exec "ruby -S bundle exec rspec #{ARGV.map(&:inspect).join(' ')}" }
+end
+
+if defined?(Test::Unit::AutoRunner)
+  Test::Unit::AutoRunner.need_auto_run = false
+end
 
 require 'rspec/rails'
 require 'capybara/rails'
