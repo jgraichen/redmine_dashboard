@@ -30,7 +30,7 @@ AppComponent = core.createComponent 'rdb.AppComponent',
   onRoute: (route, data) ->
     switch route
       when 'index'
-        @setState ->
+        @setState
           component: (root) ->
             root [ div ['INDEX'] ]
       when 'show', 'configure'
