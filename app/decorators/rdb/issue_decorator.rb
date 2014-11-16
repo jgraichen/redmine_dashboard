@@ -8,16 +8,8 @@ module Rdb
         id: object.id,
         subject: object.subject,
         description: object.description,
-        name: name
+        name: object.rdb_id
       }
-    end
-
-    def name
-      if object.project.rdb_abbreviation.present?
-        "#{object.project.rdb_abbreviation}-#{object.id}"
-      else
-        "##{object.id}"
-      end
     end
   end
 end

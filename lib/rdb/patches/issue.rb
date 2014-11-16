@@ -2,8 +2,13 @@ module Rdb::Patch
   module Issue
     def rdb_id
       @rdb_id ||= begin
-        title = "#{project.rdb_abbreviation}-" if project.rdb_abbreviation
-        "#{title}#{id}"
+        if respond_to?(:issue_id)
+          issue_id.to_s
+        elsif project.rdb_abbreviation.present?
+          "#{project.rdb_abbreviation}-#{id}"
+        else
+          "##{id}"
+        end
       end
     end
 
