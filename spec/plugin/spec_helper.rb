@@ -67,5 +67,3 @@ RSpec.configure do |config|
 
   config.include CurrentUser, type: :controller
 end
-
-Test::Unit.run = true
