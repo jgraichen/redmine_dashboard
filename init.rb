@@ -3,7 +3,7 @@ require 'redmine'
 require 'slim'
 
 require 'rdb/rails/i18n'
-require 'rdb/rails/patch'
+require 'rdb/rails/patch' if Rails::VERSION::MAJOR < 4
 
 Rails.configuration.to_prepare do
   Dir.glob File.expand_path('../lib/rdb/patches/**/*.rb', __FILE__) do |patch|
