@@ -1,0 +1,63 @@
+bg:
+  project_module_dashboard: Табло
+  permission_view_dashboards: Преглед на табла
+  permission_create_dashboards: Създаване на табла
+
+  rdb:
+    new:
+      default_board_name:
+        zero: Ново табло
+        other: Ново табло (%{count})
+
+    menu:
+      dashboards: Табла
+      my_dashboards: Моите табла
+      create_new_board: Създаване на ново табло
+
+    contextual:
+      configure: Настройки
+      fullscreen: Цял екран
+      back: Назад
+      remove: Изтриване
+
+    permissions:
+      read: Четене
+      edit: Редакция
+      admin: Администрация
+
+    configure:
+      title: Настройки %(link)s
+      nav_title: Настройки
+      general:
+        nav: Главни
+        title: Главни настройки
+        nav_text: Име на таблата и контрол на достъпа
+        description: Кликнете върху полетата, за да ги редактирате. Запазват се автоматично, когато кликнете извън тях.
+        general: Главни
+        dashboard_name: Име
+        dashboard_name_text: Задължително. Името на таблото се показва в началото и е менюто с таблата.
+        dashboard_type: Вид
+        access_control: Контрол на достъпа
+        access_control_placeholder: Добавяне на потребител или група...
+        access_control_add: ДОбавяне
+        access_control_search_label: Търсене на потребител или група
+        access_control_levels_label: Ново на достъп
+      sources:
+        nav: Източници на задачи
+        title: Източници на задачи и филтри
+        nav_text: Източници напроектите и филтри на задачите
+      columns:
+        nav: Колони
+        title: Управление на колони
+        nav_text: Оформление на колоните и визуални настройки
+      swimlanes:
+        nav: Swimlanes
+        title: Swimlanes
+        nav_text: Vertical swimlanes to group issue
+
+    errors:
+      required: Полето не може да е празно
+      already_taken: Името вече е използвано
+
+      board_name:
+        already_taken: Името на таблото трябва да е уникално.
