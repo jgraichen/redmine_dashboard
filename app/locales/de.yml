@@ -12,6 +12,15 @@ de:
       dashboards: Dashboards
       my_dashboards: Meine Dashboards
       create_new_board: Neues Dashboard erstellen
+    contextual:
+      configure: Konfigurieren
+      fullscreen: Vollbild
+      back: Zurück
+      remove: Entfernen
+    permissions:
+      read: Lesen
+      edit: Bearbeiten
+      admin: Admin
     configure:
       title: "%(link)s konfigurieren"
       nav_title: Konfiguration
@@ -21,7 +30,10 @@ de:
         nav_text: Allgemeines und Zugriffskontrolle
         description: Klicke auf ein Formularfeld um es zu bearbeiten. Es wird automatisch beim Verlassen des Eingabefeldes gespeichern.
         general: Allgemeines
+        dashboard_name: Name
         dashboard_name_text: Notwendig. Der Dashboard Name wird über dem Dashboard und im Dashboard Menü angezeigt.
+        dashboard_type: Typ
+        access_control: Zugriffsberechtigungen
       sources:
         nav: Ticket-Quellen
         title: Ticket-Quellen und Filter
@@ -34,7 +46,3 @@ de:
         nav: Swimlanes
         title: Swimlanes
         nav_text: Swimlanes zum Gruppieren von Tickets
-  rui:
-    input:
-      edit: Feld bearbeiten
-      cancel: Bearbeiten abbrechen und Feld zurücksetzen

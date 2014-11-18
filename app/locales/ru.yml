@@ -15,8 +15,3 @@ ru:
         title: "Основные настройки"
         dashboard_name: "Имя"
         dashboard_type: "Тип"
-    errors:
-      cannot_edit_own_permission: "Вы не можете редактировать свои права"
-  rui:
-    input:
-      edit: "Начать редактирование ячейки"

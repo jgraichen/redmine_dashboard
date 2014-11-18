@@ -33,7 +33,3 @@ zh:
         nav: "泳道"
         title: "泳道"
         nav_text: "垂直泳道分组问题"
-  rui:
-    input:
-      edit: "开始编辑字段"
-      cancel: "取消编辑并重置字段"

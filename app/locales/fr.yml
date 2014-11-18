@@ -15,7 +15,3 @@ fr:
         nav: Colonnes
         title: Gestion des colonnes
         nav_text: 'Disposition et options des colonnes '
-  rui:
-    input:
-      edit: Editer ce champ
-      cancel: Annuler l'édition et réinitialiser le champ

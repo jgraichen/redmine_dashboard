@@ -1,0 +1,57 @@
+---
+pl:
+  project_module_dashboard: Tablice
+  permission_view_dashboards: Przeglądanie tablic
+  permission_create_dashboards: Tworzenie nowych tablic
+  rdb:
+    new:
+      default_board_name:
+        zero: Nowa tablica
+        other: Nowe tablice (%{count})
+    menu:
+      dashboards: Tablice
+      my_dashboards: Moje tablice
+      create_new_board: Utwórz nową tablicę
+    contextual:
+      configure: Konfiguruj
+      fullscreen: Pełny ekran
+      back: Wstecz
+      remove: Usuń
+    permissions:
+      read: Czytaj
+      edit: Edytuj
+      admin: Admin
+    configure:
+      title: Konfiguruj %(link)s
+      nav_title: Konfiguracja
+      general:
+        nav: Ogólne
+        title: Ustawienia ogólne
+        nav_text: Nazwa tablicy i kontrola dostępu
+        description: Kliknij pola formy by je edytować. Są one zapisywane automatycznie podczas opuszczania pola formy np. gdy klikamy poza polem.
+        general: Ogólne
+        dashboard_name: Nazwa
+        dashboard_name_text: Wymagane. Nazwa tablicy jest pokazywana na górze tablicy i w menu tablicy.
+        dashboard_type: Typ
+        access_control: Kontrola dostępu
+        access_control_placeholder: Wyszukaj użytkownika lub grupę by dodać...
+        access_control_add: Dodaj
+        access_control_search_label: Wyszukaj użytkownika lub grupę
+        access_control_levels_label: Poziom dostępu
+      sources:
+        nav: "Źródła zagadnień"
+        title: "Źródła zagadnień i filtry"
+        nav_text: Projekty źródłowe i filtry zagadnień
+      columns:
+        nav: Kolumny
+        title: Zarządzanie kolumnami
+        nav_text: Układ kolumn i opcje widoku
+      swimlanes:
+        nav: Tory
+        title: Tory
+        nav_text: Pionowe tory do grupowania zagadnień
+    errors:
+      required: nie może być puste
+      already_taken: jest już zajęte
+      board_name:
+        already_taken: Nazwa tablicy musi być unikalna
