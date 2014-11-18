@@ -5,11 +5,14 @@ fr:
   permission_configure_dashboards: Configurer les tableaux de bord
   menu_label_dashboard: Tableau de bord
   rdb_taskboard: Tableau des tâches
+  rdb_planningboard: Tableau du planning
   rdb_filter_version_all: Toutes les versions
   rdb_filter_version_unassigned: Non assigné
   rdb_filter_tracker_all: Tous les trackers
+  rdb_filter_tracker_multiple: Trackers multiples
   rdb_filter_category_all: Toutes les catégories
   rdb_filter_category_multiple: Catégories multiples
+  rdb_filter_assignee_all: Tous les membres assignés
   rdb_filter_assignee_me: Mes demandes
   rdb_filter_assignee_none: Non assigné
   rdb_filter_assignee_others: Autres
@@ -23,6 +26,7 @@ fr:
   rdb_options_configure: Configurer
   rdb_options_include_subprojects: Inclure les sous-projets
   rdb_options_view: Affichage
+  rdb_options_issue_view: Affichage des demandes
   rdb_options_issue_view_card: Carte
   rdb_options_issue_view_compact: Compact
   rdb_options_group: Regrouper par demande
@@ -34,8 +38,10 @@ fr:
   rdb_group_version: Version
   rdb_group_parent: Tâche parente
   rdb_group_project: Projet
+  rdb_options_board_view: Affichage du tableau
   rdb_options_board_view_compact: Classique
   rdb_options_board_view_outline: Contour
+  rdb_options_columns: Colonnes du tableau
   rdb_options_fullscreen: Plein écran
   rdb_legend_priorities: Priorités
   rdb_legend_warnings: Avertissements
@@ -54,10 +60,13 @@ fr:
   rdb_all_issues: Toutes les demandes
   rdb_no_parent: Pas de tâche parente
   rdb_issue_menu_progress_title: Mettre à jour la progression
+  rdb_issue_menu_progress: "%{count}%"
   rdb_issue_menu_redmine_issue: Demande Redmine
   rdb_issue_menu_show: Voir
   rdb_issue_menu_edit: Editer
   rdb_issue_menu_assigne_me: Assigner à moi
+  rdb_issue_menu_unassigne_me: Ne plus assigner à moi
   rdb_flash_illegal_workflow_action: "<p>Vous n'êtes pas autorisé à effectuer cette action du workflow :</p><p>Déplacer <b>%{issue}</b> de <b>%{source}</b> à <b>%{target}</b>.</p>"
-  rdb_flash_stale_object: "<p>Tentative de mise à jour d'une demande dépassée : <b>%{issue}</b>. Vérifiez les changement puis réessayez."
+  rdb_flash_missing_lock_version: "<p><b>Version de verrou manquante</b> : impossible de mettre à jour la demande sans version de verrou. Veuillez réessayer."
+  rdb_flash_stale_object: "<p>Tentative de mise à jour d'une demande dépassée : <b>%{issue}</b>. Vérifiez les changements puis réessayez."
   rdb_flash_invalid_request: "<p>Requête non valide.</p>"

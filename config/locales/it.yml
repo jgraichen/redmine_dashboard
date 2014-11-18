@@ -1,5 +1,8 @@
 ---
 it:
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: Visualizza Dashboards
+  permission_configure_dashboards: Configura Dashboards
   menu_label_dashboard: Dashboard
   rdb_taskboard: Quadro attività
   rdb_planningboard: Quadro pianificazione
@@ -56,7 +59,7 @@ it:
   rdb_others: Altri
   rdb_all_issues: Tutte le segnalazioni
   rdb_no_parent: Nessun task padre
-  rdb_issue_menu_progress_title: Aggiorna progress
+  rdb_issue_menu_progress_title: Aggiorna avanzamento
   rdb_issue_menu_progress: "%{count}%"
   rdb_issue_menu_redmine_issue: Segnalazione Redmine
   rdb_issue_menu_show: Mostra
@@ -64,6 +67,6 @@ it:
   rdb_issue_menu_assigne_me: Assegnalo a me
   rdb_issue_menu_unassigne_me: Rimuovi l'assegnazione
   rdb_flash_illegal_workflow_action: "<p>Non sei autorizzato a compiere quest'azione sul workflow:</p><p>Sposta <b>%{issue}</b> da <b>%{source}</b> a <b>%{target}</b>.</p>"
-  rdb_flash_missing_lock_version: "<p><b>Missing lock version</b>: Impossibile aggiornare la segnalazione senza il lock della versione. Riprova."
+  rdb_flash_missing_lock_version: "<p><b>Versione lock mancante</b>: Impossibile aggiornare la segnalazione senza il lock della versione. Riprova."
   rdb_flash_stale_object: "<p>Tentativo di aggiornare una segnalazione scaduta: <b>%{issue}</b>. Controlla le modifiche e riprova."
   rdb_flash_invalid_request: "<p>Richiesta non valida.</p>"

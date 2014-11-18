@@ -12,9 +12,9 @@ pt-BR:
   rdb_filter_tracker_multiple: Múltiplos Observadores
   rdb_filter_category_all: Todas Categorias
   rdb_filter_category_multiple: Múltiplas Categorias
-  rdb_filter_assignee_all: Todos atribuídos
+  rdb_filter_assignee_all: Todas Atribuições
   rdb_filter_assignee_me: Minhas tarefas
-  rdb_filter_assignee_none: Não atribuido
+  rdb_filter_assignee_none: Não atribuído
   rdb_filter_assignee_others: Outros
   rdb_options: Opções
   rdb_options_change_assignee: Mudar atribuição
@@ -25,10 +25,10 @@ pt-BR:
   rdb_options_reset_info: Resetar todos filtros para o padrão
   rdb_options_configure: Configurar
   rdb_options_include_subprojects: Incluir sub-projetos
-  rdb_options_view: Ver
+  rdb_options_view: Visualização
   rdb_options_issue_view: Visualização de tarefa
   rdb_options_issue_view_card: Cartão
-  rdb_options_issue_view_compact: Compactado
+  rdb_options_issue_view_compact: Compactar
   rdb_options_group: Agrupamento de tarefas
   rdb_group_none: Sem agrupamento
   rdb_group_category: Categoria
@@ -40,6 +40,7 @@ pt-BR:
   rdb_group_project: Projeto
   rdb_options_board_view: Modo de visualização
   rdb_options_board_view_compact: Classico
+  rdb_options_board_view_outline: Contorno
   rdb_options_columns: Colunas
   rdb_options_fullscreen: Tela cheia
   rdb_legend_priorities: Prioridades

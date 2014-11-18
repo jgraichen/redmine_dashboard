@@ -1,5 +1,8 @@
 ---
 es:
+  project_module_dashboard: Tablero
+  permission_view_dashboards: Ver tableros
+  permission_configure_dashboards: Configurar tableros
   menu_label_dashboard: Tablero
   rdb_taskboard: Tareas
   rdb_planningboard: Planificación
