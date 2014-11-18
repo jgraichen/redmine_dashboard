@@ -45,6 +45,13 @@ task :clean do
   end
 end
 
+desc 'Build archive from source'
+task :dist do
+  tag = ENV['TAG'] || `git tag`.split("\n").sort.last.strip
+  FileUtils.mkdir_p 'dist'
+  RdbRedmine.exec %w(git archive --prefix redmine_dashboard/ --output) + ["dist/redmine_dashboard-#{tag}.tar.gz", "#{tag}"]
+end
+
 namespace :tx do
   desc 'Fetch translations from Transifex.'
   task :pull do
