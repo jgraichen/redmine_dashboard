@@ -1,25 +1,7 @@
 {
   "name": "redmine_dashboard",
-  "version": "3.0.0-dev",
-  "homepage": "https://github.com/jgraichen/redmine_dashboard",
-  "authors": [
-    "Jan Graichen <jg@altimos.de>"
-  ],
-  "description": "A redmine issue dashboard plugin",
-  "main": "app/assets/main.coffee",
-  "license": "AGPLv3",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "mousetrap": "~1.4.6",
-    "tether": "~0.6.5",
-    "font-awesome": "~4.1.0",
-    "exoskeleton": "~0.7.0"
+    "font-awesome": "~4.1.0"
   }
 }
