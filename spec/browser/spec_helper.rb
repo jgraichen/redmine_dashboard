@@ -6,7 +6,7 @@ if File.exist? env
 else
   require 'bundler'
   ::Bundler.with_clean_env do
-    Kernel.exec "./redmine exec ruby -S bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+    Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
   end
 end
 
