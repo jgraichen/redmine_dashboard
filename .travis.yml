@@ -5,15 +5,15 @@ cache:
 - directories:
   - vendor
   - node_modules
+rvm:
+- 2.1
+- 2.0.0
+- 1.9.3
 env:
 - REDMINE_VERSION=2.6.0
 - REDMINE_VERSION=2.5.3
 - REDMINE_VERSION=2.4.7
 - REDMINE_VERSION=master
-rvm:
-- 2.1
-- 2.0.0
-- 1.9.3
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
