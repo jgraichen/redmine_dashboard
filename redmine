@@ -33,10 +33,6 @@ function install
 	ln -s  "${PWD}/spec" "${DIR}/spec"
 	ln -s  "${PWD}/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
 
-	rm -rf "${DIR}/log" "${DIR}/tmp"
-	ln -s "${PWD}/log" "${DIR}/log"
-	ln -s "${PWD}/tmp" "${DIR}/tmp"
-
 	# Adjust capybara version requirements as redmine locks to ~> 2.1.0
     # but rspec 3 requires >= 2.2
 	sed -i -e "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g" "${DIR}/Gemfile"
@@ -122,12 +118,19 @@ function cleanup
 	popd
 }
 
+function testlog
+{
+	cat "${DIR}/log/test.log"
+	echo
+}
+
 case "$1" in
 	install) shift; install $@; exit 0;;
 	update) shift; update $@; exit 0;;
 	remove) shift; remove $@; exit 0;;
 	server) shift; server $@; exit 0;;
 	cleanup) shift; cleanup $@; exit 0;;
+	testlog) shift; testlog $@; exit 0;;
 	exec) shift; do_exec $@; exit 0;;
 	*)
 		echo "Unknown action: $@"
