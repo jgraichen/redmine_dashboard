@@ -2,7 +2,7 @@
 
 REDMINE_VERSION=${REDMINE_VERSION:-2.6.0}
 PWD=$(pwd)
-DIR="tmp/redmine/${REDMINE_VERSION}"
+DIR="vendor/redmine/${REDMINE_VERSION}"
 
 if [ "$BUNDLE_PATH" ]; then
 	BUNDLE_OPTS="--path ${BUNDLE_PATH}"
@@ -24,13 +24,18 @@ function install
 	set -x
 
 	mkdir -p "${DIR}"
+	mkdir -p tmp log
 	svn export --quiet --force "${REDMINE_SOURCE}" "${DIR}"
 
 	mkdir -p ${DIR}/public/plugin_assets
 
-	ln -s "$(pwd)" "${DIR}/plugins/redmine_dashboard"
-	ln -s  "$(pwd)/spec" "${DIR}/spec"
-	ln -s  "$(pwd)/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
+	ln -s "${PWD}" "${DIR}/plugins/redmine_dashboard"
+	ln -s  "${PWD}/spec" "${DIR}/spec"
+	ln -s  "${PWD}/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
+
+	rm -rf "${DIR}/log" "${DIR}/tmp"
+	ln -s "${PWD}/log" "${DIR}/log"
+	ln -s "${PWD}/tmp" "${DIR}/tmp"
 
 	# Adjust capybara version requirements as redmine locks to ~> 2.1.0
     # but rspec 3 requires >= 2.2
@@ -111,7 +116,7 @@ function cleanup
 	set -x
 
 	rm -rf tmp/*
-	rm -rd log/*
+	rm -rf log/*
 
 	set +x
 	popd

@@ -3,8 +3,7 @@ sudo: false
 language: ruby
 cache:
 - directories:
-  - vendor/bundle
-  - tmp/redmine
+  - vendor
   - node_modules
 rvm:
 - 2.1
@@ -21,11 +20,9 @@ matrix:
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
-- "bundle install --jobs=3 --retry=3 --path ${BUNDLE_PATH}"
 - npm update
 - ./redmine update
+- bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
 script:
 - make min
 - bundle exec rake spec
-after_script:
-- ./redmine cleanup
