@@ -1,5 +1,14 @@
 ---
+sudo: false
 language: ruby
+cache:
+- bundler
+- npm
+- bower
+- directories:
+  - tmp/redmine/2.6.0
+  - tmp/redmine/2.5.3
+  - tmp/redmine/2.4.7
 rvm:
 - 2.1
 - 2.0.0
