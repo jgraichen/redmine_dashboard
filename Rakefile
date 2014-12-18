@@ -203,7 +203,13 @@ namespace :redmine do
 
   task :bundle do
     RM.exec %w(rm -f Gemfile.lock)
-    RM.exec %w(bundle install --without rmagick --retry=3)
+    cmd = %w(bundle install --without rmagick --retry=3)
+
+    if ENV['TRAVIS_CI']
+      cmd << '--path' << File.expand_path('./vendor/bundle')
+    end
+
+    RM.exec cmd
   end
 
   task :migrate do
