@@ -26,5 +26,4 @@ install:
 script:
 - make all
 - bundle exec rake spec
-- ./redmine testlog
 - ./redmine cleanup
