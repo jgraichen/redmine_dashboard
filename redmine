@@ -43,8 +43,7 @@ function install
 
 	set -x
 	bundle install --without rmagick --jobs=3 --retry=3 ${BUNDLE_OPTS}
-	rake generate_secret_token
-	bundle exec rake db:create:all db:migrate redmine:plugins:migrate db:test:prepare
+	bundle exec rake generate_secret_token db:create:all db:migrate redmine:plugins:migrate db:test:prepare
 	set +x
 
 	popd
