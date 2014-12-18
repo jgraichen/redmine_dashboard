@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'pathname'
+
+$root = Pathname.new ARGV[0]
+$version = ARGV[1]
+
+def gen_dbconf(env)
+  {
+    'pool' => 5,
+    'timeout' => 5000,
+    'adapter' => 'mysql2',
+    'database' => (env == 'development') ? 'rdb_development' : "rdb_#{$version.gsub('.', '_')}_#{env}"
+  }
+end
+
+config = {}
+%w(development test production).each do |env|
+  config[env] = gen_dbconf env
+end
+
+dbconf = $root.join('config', 'database.yml')
+if dbconf.exist?
+  if (cfg = YAML.load_file(dbconf)).is_a?(Hash)
+    cfg.each_pair do |env, conf|
+      config[env] = conf
+    end
+  end
+end
+
+puts YAML.dump config

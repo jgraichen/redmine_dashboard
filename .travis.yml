@@ -4,7 +4,8 @@ language: ruby
 cache:
 - bundler
 - npm
-- bower
+- directories:
+  - tmp/redmine
 rvm:
 - 2.1
 - 2.0.0
@@ -18,9 +19,8 @@ matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
 before_script:
-- npm install -g bower
-- make install
-- bundle exec rake install
+- npm update
+- ./redmine update
 script:
-- make min
+- make
 - bundle exec rake spec
