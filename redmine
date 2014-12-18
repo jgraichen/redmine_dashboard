@@ -4,6 +4,9 @@ REDMINE_VERSION=${REDMINE_VERSION:-2.6.0}
 PWD=$(pwd)
 DIR="tmp/redmine/${REDMINE_VERSION}"
 
+# Override env setted by travis CI
+export BUNDLE_GEMFILE=""
+
 if [ "$TRAVIS_CI" ]; then
 	BUNDLE_OPTS="--path ${BUNDLE_PATH:-${PWD}/vendor/bundle}"
 fi
