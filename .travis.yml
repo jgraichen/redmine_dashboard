@@ -24,5 +24,5 @@ install:
 - ./redmine update
 - bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
 script:
-- make min
+- make all
 - bundle exec rake spec
