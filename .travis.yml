@@ -24,5 +24,7 @@ install:
 - npm update
 - ./redmine update
 script:
-- make
+- make min
 - bundle exec rake spec
+after_script:
+- ./redmine cleanup

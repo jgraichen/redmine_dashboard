@@ -103,11 +103,26 @@ function do_exec
 	$*
 }
 
+function cleanup
+{
+	set -e
+
+	pushd "${DIR}"
+	set -x
+
+	rm -rf tmp/*
+	rm -rd log/*
+
+	set +x
+	popd
+}
+
 case "$1" in
 	install) shift; install $@; exit 0;;
 	update) shift; update $@; exit 0;;
 	remove) shift; remove $@; exit 0;;
 	server) shift; server $@; exit 0;;
+	cleanup) shift; cleanup $@; exit 0;;
 	exec) shift; do_exec $@; exit 0;;
 	*)
 		echo "Unknown action: $@"
