@@ -1,6 +1,6 @@
 RUBY = ruby
 NODE = node
-SASS = $(RUBY) -S sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
+SASS = $(RUBY) -S bundle exec sass -rbourbon -Ibower_components -Inode_modules -I$(SOURCE)
 BROWSERIFY = browserify -i jquery -t coffeeify --extension=".coffee" -t browserify-data -t envify
 EXORCIST = exorcist
 UGLIFYJS = uglifyjs
