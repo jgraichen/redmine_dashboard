@@ -3,7 +3,7 @@ sudo: false
 language: ruby
 cache:
 - directories:
-  - vendor
+  - vendor/bundle
   - node_modules
 rvm:
 - 2.1
@@ -26,4 +26,3 @@ install:
 script:
 - make all
 - bundle exec rake spec
-- ./redmine cleanup
