@@ -8,7 +8,7 @@ class RdbDashboard
 
     @options = { :filters => {} }
 
-    options.merge! default_options
+    options.merge! self.class.defaults
     options.merge! opts
 
     if params[:include_subprojects]
@@ -57,10 +57,6 @@ class RdbDashboard
         options[:filters][filter.id] = filter.values
       end
     end
-  end
-
-  def default_options
-    { :view => :card }
   end
 
   def issue_view
@@ -156,6 +152,32 @@ class RdbDashboard
   class << self
     def board_type
       @board_type ||= name.downcase.to_s.gsub(/^rdb/, '').to_sym
+    end
+
+    def defaults
+      @defaults ||= load_defaults
+    end
+
+    def load_defaults
+      config = YAML.load_file File.expand_path('../../../config/default.yml', __FILE__)
+
+      {
+        view: check_opts(config, 'view', :card, :compact),
+        include_subprojects: check_opts(config, 'include_subprojects', false, true),
+        assignee: check_opts(config, 'assignee', :me, :all),
+        version: check_opts(config, 'version', :latest, :all),
+        hide_done: check_opts(config, 'hide_done', false, true),
+        change_assignee: check_opts(config, 'change_assignee', false, true)
+      }
+    end
+
+    def check_opts(options, name, *values)
+      value = options.fetch(name) { return values.first }
+      values.each do |val|
+        return val if val == value || val.to_s == value
+      end
+
+      values.first
     end
   end
 end
