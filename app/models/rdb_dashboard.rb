@@ -84,7 +84,7 @@ class RdbDashboard
   end
 
   def assignees
-    Principal.where :id => Member.where(:id=> projects.map{|p| p.member_principals.map(&:id)}.uniq).pluck(:user_id)
+    Principal.where :id => member_principals.pluck(:user_id)
   end
 
   def members
