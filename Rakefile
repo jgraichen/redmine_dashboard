@@ -50,6 +50,7 @@ task :dist do
   tag = ENV['TAG'] || `git tag`.split("\n").sort.last.strip
   FileUtils.mkdir_p 'dist'
   RdbRedmine.exec %w(git archive --prefix redmine_dashboard/ --output) + ["dist/redmine_dashboard-#{tag}.tar.gz", "#{tag}"]
+  RdbRedmine.exec %w(git archive --prefix redmine_dashboard/ --output) + ["dist/redmine_dashboard-#{tag}.zip", "#{tag}"]
 end
 
 namespace :tx do
