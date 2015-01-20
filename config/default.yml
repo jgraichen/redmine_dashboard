@@ -1,0 +1,30 @@
+# Configure default settings for dashboards here. They
+# apply to every dashboard on all projects.
+#
+# Remember to restart redmine to apply changed settings.
+# Also logout and login again as dashboard options are
+# also stored in the user session (cookie).
+
+# Default view mode.
+# Allowed values are: `card` or `compact`.
+view: card
+
+# Should subproject be included by default.
+# Allowed values are: `false` or `true`.
+include_subprojects: false
+
+# Default setting for assignee filter.
+# Allowed values are: `me` or `all`.
+assignee: me
+
+# Default setting for version filter.
+# Allowed values are: `latest` or `all`.
+version: latest
+
+# Should done issues be hidden by default
+# Allowed values are: `false` or `true`.
+hide_done: false
+
+# Should "Change assignee" option be enabled by default
+# Allowed values are: `false` or `true`
+change_assignee: false

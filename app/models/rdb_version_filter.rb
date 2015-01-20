@@ -19,11 +19,13 @@ class RdbVersionFilter < RdbFilter
   end
 
   def default_values
-    version = board.versions.where(:status => [:open, :locked]).find(:first, :order => 'effective_date ASC', :conditions => 'effective_date IS NOT NULL')
-    return [ version.id ] unless version.nil?
+    if RdbDashboard.defaults[:version] == :latest
+      version = board.versions.where(:status => [:open, :locked]).where('effective_date IS NOT NULL').order('effective_date ASC').first
+      return [ version.id ] unless version.nil?
 
-    version = board.versions.where(:status => [:open, :locked]).find(:first, :order => 'name ASC')
-    return [ version.id ] unless version.nil?
+      version = board.versions.where(:status => [:open, :locked]).order('name ASC').first
+      return [ version.id ] unless version.nil?
+    end
 
     [ :all ]
   end
