@@ -1,0 +1,73 @@
+---
+cs:
+  project_module_dashboard: Nástěnka
+  permission_view_dashboards: Zobrazit nástěnky
+  permission_configure_dashboards: Nastavit nástěnky
+  menu_label_dashboard: Nástěnka
+  rdb_taskboard: Nástěnka úkolů
+  rdb_planningboard: Plánovací nástěnka
+  rdb_filter_version_all: Všechny verze
+  rdb_filter_version_unassigned: Nepřiřazené
+  rdb_filter_tracker_all: Všechny fronty
+  rdb_filter_tracker_multiple: Více front
+  rdb_filter_category_all: Všechny kategorie
+  rdb_filter_category_multiple: Více kategorií
+  rdb_filter_assignee_all: Přiřazené všem
+  rdb_filter_assignee_me: Mé úkoly
+  rdb_filter_assignee_none: Nepřiřazené
+  rdb_filter_assignee_others: Ostatní
+  rdb_options: Možnosti
+  rdb_options_change_assignee: Změnit přiřazeného uživatele
+  rdb_options_change_assignee_info: Při přesunu úkolu jej přiřadit aktuálně přihlášenému uživateli.
+  rdb_options_hide_done: Skrýt uzavřené úkoly
+  rdb_options_hide_done_info: Skrýt uzavřené úkoly a zmenšit sloupec hotových úkolů.
+  rdb_options_reset: Zrušit filtry
+  rdb_options_reset_info: Obnoví všechny filtry do výchozího nastavení.
+  rdb_options_configure: Konfigurovat
+  rdb_options_include_subprojects: Zahrnout podprojekty
+  rdb_options_view: Zobrazení
+  rdb_options_issue_view: Zobrazení úkolů
+  rdb_options_issue_view_card: Karty
+  rdb_options_issue_view_compact: Kompaktní
+  rdb_options_group: Seskupit úkoly podle
+  rdb_group_none: Neseskupovat
+  rdb_group_category: Kategorie
+  rdb_group_assignee: Přiřazeno
+  rdb_group_tracker: Fronty
+  rdb_group_priority: Priority
+  rdb_group_version: Verze
+  rdb_group_parent: Rodičovského úkolu
+  rdb_group_project: Projektu
+  rdb_options_board_view: Zobrazení nástěnky
+  rdb_options_board_view_compact: Klasické
+  rdb_options_board_view_outline: Hrubý přehled
+  rdb_options_columns: Sloupce nástěnky
+  rdb_options_fullscreen: Celá obrazovka
+  rdb_legend_priorities: Priority
+  rdb_legend_warnings: Varování
+  rdb_issue_overdue: Zpožděné
+  rdb_property_time: <span title="Strávený čas">%{actual}</span> / <span title="Odhadovaný čas">%{estimated}</span>
+  rdb_not_available: Nedostupné
+  rdb_column_done: Hotové
+  rdb_x_issues:
+    one: 1 úkol
+    few: "%{count} úkoly"
+    other: "%{count} úkolů"
+  rdb_dialog_update_issue_title: Upravit úkol
+  rdb_dialog_update_issue_status: Zvolte nový stav úkolu
+  rdb_other_issues: Ostatní úkoly <span>(%{count})</span>
+  rdb_unassigned: Nepřiřazeno
+  rdb_others: Ostatní
+  rdb_all_issues: Všechny úkoly
+  rdb_no_parent: Bez nadřazeného úkolu
+  rdb_issue_menu_progress_title: Aktualizovat % hotovo
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: "Úkol"
+  rdb_issue_menu_show: Zobrazit
+  rdb_issue_menu_edit: Upravit
+  rdb_issue_menu_assigne_me: Přiřadit mně
+  rdb_issue_menu_unassigne_me: Zrušit přiřazení mně
+  rdb_flash_illegal_workflow_action: "<p>Nemáte oprávnění provést následující akci v průběhu prací:</p><p>Přesunout <b>%{issue}</b> z <b>%{source}</b> na <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Chybějící uzamčená verze</b>: Nelze aktualizovat úkol bez uzamčené verze. Opakujte akci."
+  rdb_flash_stale_object: "<p>Pokus o odeslání starých změn úkolu <b>%{issue}</b>. Úkol byl nejspíše upraven jiným uživatelem. Zkontrolujte změny a opakujte akci."
+  rdb_flash_invalid_request: "<p>Neplatný požadavek.</p>"
