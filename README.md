@@ -18,17 +18,20 @@ Redmine Dashboard 3 is a full rewrite of the [stable Redmine Dashboard 2](https:
 
 As Redmine Dashboard 3 is still pre-alpha it can only build from source. You need Ruby, NodeJS with NPM, bower and make.
 
-Clone repository and install NPM and bower dependencies:
+Clone repository and install NPM dependencies:
 
 	$ git clone git@github.com:jgraichen/redmine_dashboard.git -b master
-	$ make install
+	$ bundle install
+	$ npm install
 
 Compile development or production (minified) client-side components:
 
 	$ make css js # development
 	$ make min # production
 
-Install redmine plugin like any redmine plugin
+The default target compiles for development.
+
+Install plugin like any Redmine plugin and run:
 
 	$ bundle install
 	$ rake redmine:plugins:migrate
