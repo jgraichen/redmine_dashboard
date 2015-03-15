@@ -1,6 +1,7 @@
 module Rdb
   class Source < ActiveRecord::Base
     self.table_name = "#{table_name_prefix}rdb_sources#{table_name_suffix}"
+    attr_protected
 
     belongs_to :context, polymorphic: true
     belongs_to :dashboard, class_name: 'Rdb::Dashboard'

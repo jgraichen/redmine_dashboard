@@ -1,7 +1,7 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
 describe Rdb::Permission do
-  fixtures :projects, :users
+  fixtures :projects, :users, :email_addresses
 
   let(:board) { Rdb::Taskboard.create! name: 'Test Board' }
   let(:permission) { Rdb::Permission.create! dashboard: board, principal: principal, role: role }

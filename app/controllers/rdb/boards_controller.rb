@@ -4,7 +4,7 @@ module Rdb
     before_filter :check_write_permission, except: [:show, :index]
 
     def index
-      render json: Dashboard.scoped
+      render json: Dashboard.all
     end
 
     def show

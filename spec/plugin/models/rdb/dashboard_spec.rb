@@ -1,7 +1,7 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
 describe Rdb::Dashboard do
-  fixtures :projects, :users
+  fixtures :projects, :users, :email_addresses
 
   let(:board) { Rdb::Taskboard.create name: 'Test Board' }
 

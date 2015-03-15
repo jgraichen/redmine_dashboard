@@ -1,6 +1,7 @@
 module Rdb
   class Permission < ActiveRecord::Base
     self.table_name = "#{table_name_prefix}rdb_permissions#{table_name_suffix}"
+    attr_protected
 
     belongs_to :dashboard, class_name: 'Rdb::Dashboard'
     belongs_to :principal, polymorphic: true

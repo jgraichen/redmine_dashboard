@@ -1,7 +1,7 @@
 require File.expand_path '../../../spec_helper', __FILE__
 
 describe Rdb::BoardsController, type: :controller do
-  fixtures :users, :issue_statuses
+  fixtures :users, :issue_statuses, :email_addresses
 
   let(:board) { Rdb::Taskboard.create! name: 'My Board' }
 

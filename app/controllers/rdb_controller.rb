@@ -2,7 +2,6 @@ class RdbController < ::Rdb::BaseController
   unloadable
   before_filter :board, only: [:show, :update, :destroy]
   before_filter :check_read_permission, except: [:index]
-  respond_to :html
 
   def index
     if context

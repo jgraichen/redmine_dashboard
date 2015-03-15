@@ -3,7 +3,7 @@ require File.expand_path '../../../spec_helper', __FILE__
 Roles = Rdb::Permission::Roles
 
 describe Rdb::PermissionsController, type: :controller do
-  fixtures :users
+  fixtures :users, :email_addresses
 
   let(:board) { Rdb::Taskboard.create! name: 'My Board' }
 

@@ -1,6 +1,7 @@
 module Rdb
   class Dashboard < ActiveRecord::Base
     self.table_name = "#{table_name_prefix}rdb_dashboards#{table_name_suffix}"
+    attr_protected
 
     serialize :preferences
     has_many :sources, class_name: 'Rdb::Source'
