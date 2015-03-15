@@ -1,0 +1,73 @@
+---
+pl:
+  project_module_dashboard: Tablica
+  permission_view_dashboards: Przeglądanie tablic
+  permission_configure_dashboards: Konfigurowanie tablic
+  menu_label_dashboard: Tablica
+  rdb_taskboard: Tablica zadań
+  rdb_planningboard: Tablica planowania
+  rdb_filter_version_all: Wszystkie wersje
+  rdb_filter_version_unassigned: Nieprzypisane
+  rdb_filter_tracker_all: Wszystkie typy zagadnień
+  rdb_filter_tracker_multiple: Wiele typów zagadnień
+  rdb_filter_category_all: Wszystkie kategorie
+  rdb_filter_category_multiple: Wiele kategorii
+  rdb_filter_assignee_all: Wszyscy użytkownicy przypisani do zagadnień
+  rdb_filter_assignee_me: Moje zagadnienia
+  rdb_filter_assignee_none: Nieprzypisane
+  rdb_filter_assignee_others: Inni
+  rdb_options: Opcje
+  rdb_options_change_assignee: Zmień przypisaną osobę
+  rdb_options_change_assignee_info: Zmienia przypisaną do zagadnienia osobę na aktualnego użytkownika gdy zagadnienie jest przesuwane
+  rdb_options_hide_done: Ukryj zamknięte zagadnienia
+  rdb_options_hide_done_info: Ukrywa zamknięte zagadnienia i zmniejsza kolumnę wykonane
+  rdb_options_reset: Resetuj filtr
+  rdb_options_reset_info: Resetuje wszystkie filtry do ustawień domyślnych
+  rdb_options_configure: Konfiguruj
+  rdb_options_include_subprojects: Uwzględnij podprojekty
+  rdb_options_view: Widok
+  rdb_options_issue_view: Widok zagadnień
+  rdb_options_issue_view_card: Karty
+  rdb_options_issue_view_compact: Kompaktowy
+  rdb_options_group: Grupowanie zagadnień
+  rdb_group_none: Bez grupowania
+  rdb_group_category: Kategoria
+  rdb_group_assignee: Osoba przypisana do zagadnienia
+  rdb_group_tracker: Typ zagadnienia
+  rdb_group_priority: Priorytet
+  rdb_group_version: Wersja
+  rdb_group_parent: Zagadnienie nadrzędne
+  rdb_group_project: Projekt
+  rdb_options_board_view: Widok tablicy
+  rdb_options_board_view_compact: Klasyczny
+  rdb_options_board_view_outline: Zarys
+  rdb_options_columns: Kolumny tablicy
+  rdb_options_fullscreen: Pełny ekran
+  rdb_legend_priorities: Priorytety
+  rdb_legend_warnings: Ostrzeżenia
+  rdb_issue_overdue: Opóźnienie
+  rdb_property_time: '''<span title="Spędzony czas">%{actual}</span> / <span title="Szacowany czas">%{estimated}</span>'''
+  rdb_not_available: N/A
+  rdb_column_done: Zrobione
+  rdb_x_issues:
+    one: 1 zagadnienie
+    few: "%{count} zagadnień"
+    other: "%{count} zagadnień"
+  rdb_dialog_update_issue_title: Aktualizacja zagadnienia
+  rdb_dialog_update_issue_status: Wybierz nowy status zagadnienia
+  rdb_other_issues: Inne zagadnienia <span>(%{count})</span>
+  rdb_unassigned: Nieprzypisane
+  rdb_others: Inni
+  rdb_all_issues: Wszystkie zagadnienia
+  rdb_no_parent: Brak zagadnień nadrzędnych
+  rdb_issue_menu_progress_title: Postęp aktualizacji
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Zagadnienie Redmine
+  rdb_issue_menu_show: Pokaż
+  rdb_issue_menu_edit: Edycja
+  rdb_issue_menu_assigne_me: Przypisz do mnie
+  rdb_issue_menu_unassigne_me: Cofnij przypisanie do mnie
+  rdb_flash_illegal_workflow_action: "<p>Nie masz uprawnień do wykonania tej akcji przepływu pracy:</p><p>Przesuń <b>%{issue}</b> z <b>%{source}</b> do <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Brak wersji docelowej</b>: Nie można zaktualizować zagadnienia bez wersji docelowej. Spróbuj ponownie."
+  rdb_flash_stale_object: "<p>Próba aktualizacji przestarzałego zagadnienia: <b>%{issue}</b>. Sprawdź zmiany i spróbuj ponownie."
+  rdb_flash_invalid_request: "<p>Niepoprawne żądanie.</p>"

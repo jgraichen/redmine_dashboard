@@ -5,6 +5,7 @@
 /.rspec
 /.idea
 /*.iml
+/dist
 /assets
 /node_modules
 /bower_components

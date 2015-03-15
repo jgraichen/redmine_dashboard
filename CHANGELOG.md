@@ -1,8 +1,13 @@
+## 2.4.0
+
+* Integration with ISSUE-ID plugin (#64)
+* Update locales (including new Polish translation)
+
 ## 2.3.3
 
 * Fix error with pluralization patch (#53)
 * Update locales
-* Bundle transfiex utility as gem instead of git repo
+* Bundle transifex utility as gem instead of git repo
 
 ## 2.3.2
 
