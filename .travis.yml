@@ -32,8 +32,10 @@ branches:
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
-- ./redmine update
 - bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
+- npm install
+- ./redmine update
 script:
+- make all
 - bundle exec rake spec
 
