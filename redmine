@@ -124,6 +124,16 @@ function testlog
 	echo
 }
 
+function dist
+{
+	TAG=$1
+	[ -z "${TAG}" ] && TAG=`git tag | tail -n1`
+	mkdir -p dist
+	set -x
+	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.tar.gz" "${TAG}"
+	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.zip" "${TAG}"
+}
+
 case "$1" in
 	install) shift; install $@; exit 0;;
 	update) shift; update $@; exit 0;;
@@ -132,6 +142,7 @@ case "$1" in
 	cleanup) shift; cleanup $@; exit 0;;
 	testlog) shift; testlog $@; exit 0;;
 	exec) shift; do_exec $@; exit 0;;
+	dist) shift; dist $@; exit 0;;
 	*)
 		echo "Unknown action: $@"
 		exit 1
