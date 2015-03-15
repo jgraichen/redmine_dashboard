@@ -20,11 +20,11 @@ matrix:
     - env: REDMINE_VERSION=master
   exclude:
     - env: REDMINE_VERSION=2.6.2
-      ruby: '2.2'
+      rvm: '2.2'
     - env: REDMINE_VERSION=2.5.3
-      ruby: '2.2'
+      rvm: '2.2'
     - env: REDMINE_VERSION=2.4.7
-      ruby: '2.2'
+      rvm: '2.2'
 branches:
   except:
     - debian
