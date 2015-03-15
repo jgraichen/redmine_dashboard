@@ -2,7 +2,7 @@
 sudo: false
 language: ruby
 cache:
-- directories:
+  directories:
   - vendor/bundle
 rvm:
 - '2.2'
@@ -17,14 +17,17 @@ env:
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
-  - env: REDMINE_VERSION=master
+    - env: REDMINE_VERSION=master
   exclude:
-  - env: REDMINE_VERSION=2.6.2
-    ruby: '2.2'
-  - REDMINE_VERSION=2.5.3
-    ruby: '2.2'
-  - REDMINE_VERSION=2.4.7
-    ruby: '2.2'
+    - env: REDMINE_VERSION=2.6.2
+      ruby: '2.2'
+    - env: REDMINE_VERSION=2.5.3
+      ruby: '2.2'
+    - env: REDMINE_VERSION=2.4.7
+      ruby: '2.2'
+branches:
+  except:
+    - debian
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
