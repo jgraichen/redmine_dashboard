@@ -18,7 +18,6 @@ env:
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
-  - rvm: '2.2'
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
