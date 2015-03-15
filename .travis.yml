@@ -34,16 +34,3 @@ install:
 - bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
 script:
 - bundle exec rake spec
-before_deploy:
-- ./redmine dist
-deploy:
-  provider: releases
-  api_key:
-    secure: YFt/c/LIANdzODnozIHNj3JXFxho+6adndlyWwKe5JwynrMmYO8+i5d3aFtNFeafxwktoOqYQHoZ66w1XZTay2cG5uYaL1b4n5BsWfuhJpa0CE1SwJxyzh4v50L3ZBcv1Udh+Bl07a15AM1qP60Rq5PHtSorC6ZNFGchS6YuNIQ=
-    file_glob: true
-  file:
-  - "dist/*.zip"
-  - "dist/*.tar.gz"
-  on:
-    repo: jgraichen/redmine_dashboard
-    branch: stable-v2
