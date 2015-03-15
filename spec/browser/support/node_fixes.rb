@@ -11,7 +11,7 @@ module NodeFixes
 
     send_keys(*keys, value)
 
-    # Capybara.find('body').click
+    Capybara.find('body').click
   end
 end
 
