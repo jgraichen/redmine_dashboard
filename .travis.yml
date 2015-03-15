@@ -21,10 +21,8 @@ matrix:
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
-- npm update
 - ./redmine update
 - bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
 script:
-- make all
 - bundle exec rake spec
 
