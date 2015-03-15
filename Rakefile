@@ -6,51 +6,14 @@ require 'logger'
 
 require 'rspec/core/rake_task'
 
-require_relative './redmine'
 
-def force?
-  ENV.key? 'FORCE'
-end
+task default: [:spec]
 
-RM = RdbRedmine.new
-
-task default: [:install, :update, :spec]
-
-desc 'Run plugin specs'
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern    = ENV['SPEC'] || "spec/**/*_spec.rb"
   t.ruby_opts  = "-Ispec"
   t.rspec_opts = '--color --backtrace'
   t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
-end
-
-task ci: :spec
-
-desc 'Setup project environment (alias for redmine:install)'
-task install: %w(redmine:install)
-
-desc 'Update project environment (alias for redmine:update)'
-task update: %w(redmine:update)
-
-desc 'Start local redmine server (aliases: `s`)'
-task server: :install do |_, args|
-  RM.bx %w(rails server -p 7000), args
-end
-task s: 'server'
-
-desc 'Cleanup project directory. This removes all installed redmines.'
-task :clean do
-  %w(tmp).each do |dir|
-    FileUtils.rm_rf dir if File.directory?(dir)
-  end
-end
-
-desc 'Build archive from source'
-task :dist do
-  tag = ENV['TAG'] || `git tag`.split("\n").sort.last.strip
-  FileUtils.mkdir_p 'dist'
-  RdbRedmine.exec %w(git archive --prefix redmine_dashboard/ --output) + ["dist/redmine_dashboard-#{tag}.tar.gz", "#{tag}"]
-  RdbRedmine.exec %w(git archive --prefix redmine_dashboard/ --output) + ["dist/redmine_dashboard-#{tag}.zip", "#{tag}"]
 end
 
 namespace :tx do
@@ -98,114 +61,5 @@ namespace :tx do
         IO.write file, YAML.dump(data, line_width: -1)
       end
     end
-  end
-end
-
-namespace :redmine do
-  desc <<-DESC.gsub(/^ {4}/, '')
-    Download Redmine. That includes exporting SVN tag,
-    linking plugin and plugin specs and do necessary
-    changed to Redmine\'s Gemfile.
-  DESC
-  task :download do
-    if File.exist?(File.join(RM.path, '.downloaded')) && !force?
-      puts "Redmine #{RM.version} already downloaded. "\
-           'Use `redmine:clean` or FORCE=1 to force redownloaded.'
-    else
-      RM.clean
-      RM.exec %w(svn export --quiet --force), RM.svn_url, '.'
-      RM.exec %w(ln -s), Dir.pwd, 'plugins/redmine_dashboard'
-      RM.exec %w(mkdir -p), 'public/plugin_assets'
-      RM.exec %w(ln -s), File.join(Dir.pwd, 'assets'),
-        'public/plugin_assets/redmine_dashboard_linked'
-      RM.exec %w(ln -s), File.join(Dir.pwd, 'spec'), '.'
-
-      # Adjust capybara version requirements as redmine locks to ~> 2.1.0
-      # but rspec 3 requires >= 2.2
-      RM.exec %w(sed -i -e),
-        "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g", 'Gemfile'
-
-      FileUtils.touch File.join(RM.path, '.downloaded')
-    end
-  end
-
-  desc <<-DESC.gsub(/^ {4}/, '')
-    Configure Redmine. A database config will be generated
-    using mysql2 gem and the `rdb_development` database for
-    the `development` environment. Already existing
-    configuration will be preserved except for the `test`
-    environment.
-  DESC
-  task config: :download do
-    config = {}
-    if File.exist? File.join(RM.path, 'config/database.yml')
-      begin
-        config = YAML.load_file File.join(RM.path, 'config/database.yml')
-      rescue => e
-        warn e
-      end
-    end
-
-    config['test'] = RM.database_config(:test)
-    %w(production development).each do |env|
-      config[env] = RM.database_config(env) unless config[env]
-    end
-
-    File.open(File.join(RM.path, 'config/database.yml'), 'w') do |f|
-      f.write YAML.dump config
-    end
-  end
-
-  desc <<-DESC.gsub(/^ {4}/, '')
-    Install Redmine. This task will run `bundle install`,
-    generate secret token, create databases as well as
-    migrate and prepare them. This task will only run once
-    unless forced. Use `update` for updating after new gems
-    or database migrations.
-  DESC
-  task install: :config do
-    if File.exist?(File.join(RM.path, '.installed')) && !force?
-      puts "Redmine #{RM.version} already installed. Use `redmine:clean` to "\
-           'delete redmine and reinstall or FORCE=1 to force install steps.'
-    else
-      Rake::Task['redmine:bundle'].invoke
-
-      RM.bx %w(rake generate_secret_token)
-      RM.bx %w(rake db:create:all)
-
-      Rake::Task['redmine:migrate'].invoke
-      Rake::Task['redmine:prepare'].invoke
-
-      FileUtils.touch File.join(RM.path, '.installed')
-    end
-  end
-
-  desc <<-DESC.gsub(/^ {4}/, '')
-    Update Redmine. This runs `bundle install` and migrate
-    and prepare databases.
-  DESC
-  task update: [:install, :bundle, :migrate, :prepare]
-
-  task :bundle do
-    RM.exec %w(rm -f Gemfile.lock)
-    RM.exec %w(bundle install --without rmagick --retry=3)
-  end
-
-  task :migrate do
-    RM.bx %w(rake db:migrate)
-    RM.bx %w(rake redmine:plugins:migrate)
-  end
-
-  task :prepare do
-    RM.bx %w(rake db:test:prepare)
-  end
-
-  desc 'Clean redmine directory'
-  task :clean do
-    RM.clean
-  end
-
-  task :exec, [:cmd] do |_, args|
-    puts RM.bx args.cmd
   end
 end
