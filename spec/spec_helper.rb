@@ -4,8 +4,10 @@ env = File.expand_path('../../config/environment.rb', __FILE__)
 if File.exist? env
   require env
 else
-  require File.expand_path('../../redmine.rb', __FILE__)
-  RdbRedmine.new.exec { Kernel.exec "ruby -S bundle exec rspec #{ARGV.map(&:inspect).join(' ')}" }
+  require 'bundler'
+  ::Bundler.with_clean_env do
+    Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+  end
 end
 
 if defined?(Test::Unit::AutoRunner)

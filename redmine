@@ -1,0 +1,150 @@
+#!/bin/bash
+
+REDMINE_VERSION=${REDMINE_VERSION:-3.0.0}
+PWD=$(pwd)
+DIR="vendor/redmine/${REDMINE_VERSION}"
+
+if [ "$BUNDLE_PATH" ]; then
+	BUNDLE_OPTS="--path ${BUNDLE_PATH}"
+fi
+
+case ${REDMINE_VERSION} in
+	master)
+		REDMINE_SOURCE="http://svn.redmine.org/redmine/trunk"
+		;;
+
+	*)
+		REDMINE_SOURCE="http://svn.redmine.org/redmine/tags/${REDMINE_VERSION}"
+		;;
+esac
+
+function install
+{
+	set -e
+	set -x
+
+	mkdir -p "${DIR}"
+	mkdir -p tmp log
+	svn export --quiet --force "${REDMINE_SOURCE}" "${DIR}"
+
+	mkdir -p ${DIR}/public/plugin_assets
+
+	ln -s "${PWD}" "${DIR}/plugins/redmine_dashboard"
+	ln -s  "${PWD}/spec" "${DIR}/spec"
+	ln -s  "${PWD}/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
+
+	# Adjust capybara version requirements as redmine locks to ~> 2.1.0
+    # but rspec 3 requires >= 2.2
+	sed -i -e "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g" "${DIR}/Gemfile"
+
+	./redmine-genconf "${DIR}" "${REDMINE_VERSION}" > "${DIR}/config/database.yml"
+	set +x
+
+	pushd "${DIR}"
+
+	set -x
+	bundle install --without rmagick --jobs=3 --retry=3 ${BUNDLE_OPTS}
+	bundle exec rake generate_secret_token db:create:all db:migrate redmine:plugins:migrate db:test:prepare
+	set +x
+
+	popd
+}
+
+function update
+{
+	set -e
+
+	[ ! -d "${DIR}" ] && install && return
+
+	if [ "${REDMINE_VERSION}" == "master" ]; then
+		set -x
+		svn export --quiet --force "${REDMINE_SOURCE}" "${DIR}"
+		sed -i -e "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g" "${DIR}/Gemfile"
+		set +x
+	fi
+
+	pushd "${DIR}"
+
+	set -x
+	bundle update --jobs=3 --retry=3
+	bundle exec rake db:create:all db:migrate redmine:plugins:migrate db:test:prepare
+	set +x
+
+	popd
+}
+
+function remove
+{
+	set -e
+
+	set -x
+	rm -r "${DIR}"
+	set +x
+}
+
+function server
+{
+	set -e
+
+	pushd "${DIR}"
+
+	set -x
+	bundle exec rails server --port 7000
+	set +x
+
+	popd
+}
+
+function do_exec
+{
+	set -e
+	pushd "${DIR}"
+
+	set -x
+	$*
+}
+
+function cleanup
+{
+	set -e
+
+	pushd "${DIR}"
+	set -x
+
+	rm -rf tmp/*
+	rm -rf log/*
+
+	set +x
+	popd
+}
+
+function testlog
+{
+	cat "${DIR}/log/test.log"
+	echo
+}
+
+function dist
+{
+	TAG=$1
+	[ -z "${TAG}" ] && TAG=`git tag | tail -n1`
+	mkdir -p dist
+	set -x
+	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.tar.gz" "${TAG}"
+	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.zip" "${TAG}"
+}
+
+case "$1" in
+	install) shift; install $@; exit 0;;
+	update) shift; update $@; exit 0;;
+	remove) shift; remove $@; exit 0;;
+	server) shift; server $@; exit 0;;
+	cleanup) shift; cleanup $@; exit 0;;
+	testlog) shift; testlog $@; exit 0;;
+	exec) shift; do_exec $@; exit 0;;
+	dist) shift; dist $@; exit 0;;
+	*)
+		echo "Unknown action: $@"
+		exit 1
+		;;
+esac
