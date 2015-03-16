@@ -9,20 +9,14 @@ rvm:
 - 2.0.0
 - 1.9.3
 env:
-- REDMINE_VERSION=3.0.0
-- REDMINE_VERSION=2.6.2
-- REDMINE_VERSION=2.5.3
-- REDMINE_VERSION=2.4.7
+- REDMINE_VERSION=3.0.1
+- REDMINE_VERSION=2.6.3
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
   exclude:
-  - env: REDMINE_VERSION=2.6.2
-    rvm: '2.2'
-  - env: REDMINE_VERSION=2.5.3
-    rvm: '2.2'
-  - env: REDMINE_VERSION=2.4.7
+  - env: REDMINE_VERSION=2.6.3
     rvm: '2.2'
 branches:
   except:
