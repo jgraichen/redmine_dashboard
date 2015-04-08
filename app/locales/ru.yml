@@ -1,5 +1,6 @@
 ---
 ru:
+  project_module_dashboard: "Панель задач"
   rdb:
     contextual:
       configure: "Настройки"
@@ -11,7 +12,9 @@ ru:
       admin: "Администратор"
     configure:
       title: Configure %(link)s
+      nav_title: "Настройки"
       general:
         title: "Основные настройки"
         dashboard_name: "Имя"
         dashboard_type: "Тип"
+        access_control_add: "Добавить"

@@ -54,4 +54,4 @@ bg:
       required: "Полето не може да е празно"
       already_taken: "Името вече е използвано"
       board_name:
-        already_taken: "Името вече съществува."
+        already_taken: "Името на таблото трябва да е уникално."
