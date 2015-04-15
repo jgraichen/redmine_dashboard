@@ -64,7 +64,7 @@ class RdbDashboard
   end
 
   def issues
-    filter(Issue.where(:project_id => project_ids))
+    filter(Issue.where(:project_id => project_ids).includes([:assigned_to, :time_entries, :tracker, :status, :priority]))
   end
 
   def versions
