@@ -31,7 +31,7 @@ I provide a PPA at [ppa:jgraichen/redmine-dashboard](https://launchpad.net/~jgra
 
 ### Others
 
-Clone git repository to `plugins`, checkout wanted release (`git checkout v2.2.0`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
+Clone git repository to `plugins`, checkout wanted release (`git checkout v2.6.1`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
 
 #### Upgrade
 
