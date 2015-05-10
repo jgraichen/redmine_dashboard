@@ -10,9 +10,19 @@ class window.ErroneousResponse extends Error
   constructor: (@xhr) ->
     super "Erroneous XHR response: #{@xhr.status}"
 
-    if @xhr.responseJSON
-      for field, code of @xhr.responseJSON['errors']
-        @message = t "rdb.errors.#{field}.#{code}", fallback: t "rdb.errors.#{code}"
+    if @xhr.responseJSON['errors']
+      @errors = @xhr.responseJSON['errors']
+
+    @messages = {}
+    for field, errors of @errors
+      @messages[field] = errors.map (o) -> o
+
+  setResource: (name) ->
+    for field, errors of @errors
+      @messages[field] = for error in errors
+        t "rdb.errors.#{name}.#{field}.#{error}",
+          fallback: t "rdb.errors.#{name}.#{error}",
+            fallback: t "rdb.errors.#{error}"
 
 Exoskeleton.sync = (method, model, options) ->
   if typeof model.url == 'function'
@@ -42,6 +52,7 @@ Exoskeleton.sync = (method, model, options) ->
       xhr
     .catch (err) ->
       options.error err.xhr
+      err.setResource? model.constructor.name.toLowerCase()
       throw err
 
 Board = require './resources/board'

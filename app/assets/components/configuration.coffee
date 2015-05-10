@@ -105,8 +105,11 @@ class Configuration.Common extends Component
               submitOnBlur: true
               onSubmit: (value) =>
                 @props.board.save {'name': value}, wait: true, patch: true
-              onError: (msg) =>
-                @setState error: msg
+              onError: (msg, err) =>
+                if err
+                  @setState error: err.messages['name']
+                else
+                  @setState error: null
               mixins: [ ActivityIndicator() ]
             $ 'span', className: 'rdb-form-error',
               @state.error

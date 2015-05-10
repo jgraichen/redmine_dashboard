@@ -59,5 +59,7 @@ en:
       required: can't be blank
       already_taken: already been taken
 
-      board_name:
-        already_taken: The Dashboard name must be unique.
+      board:
+        name:
+          required: The Dashboard name cannot be blank.
+          already_taken: The Dashboard name must be unique.
