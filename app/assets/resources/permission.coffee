@@ -3,6 +3,8 @@
 util = require '../util'
 
 class Permission extends Model
+  modelKey: 'permission'
+
   getAvatarUrl: ->
     @get('principal')['avatar_url']
 
@@ -49,8 +51,7 @@ class Permission.Collection extends Collection
   model: Permission
 
   initialize: (models, props) ->
-    @url        = "#{props.board.url()}/permissions"
-
+    @url = "#{props.board.url()}/permissions"
     @rel =
       search: "#{props.board.url()}/permissions/search"
 

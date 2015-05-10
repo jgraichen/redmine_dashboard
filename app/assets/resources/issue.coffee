@@ -1,6 +1,8 @@
 {Model, Collection} = require 'exoskeleton'
 
 class Issue extends Model
+  modelKey: 'issue'
+
   # initialize: (opts) ->
     # @board   = opts.board
     # @urlRoot = @collection.url() + '/issues'

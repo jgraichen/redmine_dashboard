@@ -5,6 +5,7 @@ util = require '../util'
 
 class Board extends Model
   urlRoot: 'rdb/api/boards'
+  modelKey: 'board'
 
   initialize: ->
     @rel =

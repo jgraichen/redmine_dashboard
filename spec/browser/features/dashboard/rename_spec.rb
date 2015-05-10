@@ -40,7 +40,7 @@ feature 'Rename dashboard', js: true, sauce: true do
     fill_in 'Name', with: ''
     find('body').click
 
-    expect(page).to have_content "can't be blank"
+    expect(page).to have_content "The Dashboard name cannot be blank"
   end
 
   scenario 'Rename dashboard failed if already taken' do

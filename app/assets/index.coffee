@@ -6,6 +6,13 @@ util = require './util'
 t = require 'counterpart'
 $ = React.createElement
 
+_trErr = (name, field, error) ->
+  for key in ["#{name}.#{field}.#{error}", "#{name}.#{error}", error]
+    message = t key, scope: 'rdb.errors', fallback: 1
+
+    return message if message != 1
+  error
+
 class window.ErroneousResponse extends Error
   constructor: (@xhr) ->
     super "Erroneous XHR response: #{@xhr.status}"
@@ -19,10 +26,7 @@ class window.ErroneousResponse extends Error
 
   setResource: (name) ->
     for field, errors of @errors
-      @messages[field] = for error in errors
-        t "rdb.errors.#{name}.#{field}.#{error}",
-          fallback: t "rdb.errors.#{name}.#{error}",
-            fallback: t "rdb.errors.#{error}"
+      @messages[field] = _trErr(name, field, error) for error in errors
 
 Exoskeleton.sync = (method, model, options) ->
   if typeof model.url == 'function'
@@ -52,7 +56,7 @@ Exoskeleton.sync = (method, model, options) ->
       xhr
     .catch (err) ->
       options.error err.xhr
-      err.setResource? model.constructor.name.toLowerCase()
+      err.setResource? model.modelKey
       throw err
 
 Board = require './resources/board'
