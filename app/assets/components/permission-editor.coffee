@@ -30,7 +30,6 @@ class PermissionEditor extends Component
           ref: 'principal'
           size: 'fluid'
           placeholder: t 'rdb.configure.general.access_control_placeholder'
-          assistiveLabel: t 'rdb.configure.general.access_control_search_label'
           onSubmit: @addPermission
           mixins: [
             AutoComplete
@@ -42,7 +41,6 @@ class PermissionEditor extends Component
         $ Select,
           ref: 'role',
           size: 'fluid',
-          assistiveLabel: t 'rdb.configure.general.access_control_levels_label'
           items: [
             {value: 'read', text: t 'rdb.permissions.read'}
             {value: 'edit', text: t 'rdb.permissions.edit'}
