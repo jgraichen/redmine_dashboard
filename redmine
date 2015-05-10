@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REDMINE_VERSION=${REDMINE_VERSION:-3.0.2}
+REDMINE_VERSION=${REDMINE_VERSION:-3.0.3}
 PWD=$(pwd)
 DIR="vendor/redmine/${REDMINE_VERSION}"
 
