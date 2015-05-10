@@ -5,7 +5,7 @@
     "counterpart": "~0.14.2",
     "exoskeleton": "^0.7.0",
     "font-awesome": "~4.2.0",
-    "molecule": "git://github.com/jgraichen/molecule.git#d4f0f96024017218cce6b23991ee689134cab808",
+    "molecule": "git://github.com/jgraichen/molecule.git#8cf3bb71b120af986e2cde5e2fc8816aafa88419",
     "mousetrap": "^1.4.6",
     "object-assign": "^2.0.0",
     "react": "~0.13.1",
