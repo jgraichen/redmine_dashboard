@@ -65,8 +65,8 @@ module RdbRequestHelpers
     find_menu_container(id).find(:xpath, ".//a[contains(text(), '#{item}')]")
   end
 
-  def rui_select(name, &block)
-    find(:xpath, "//*[contains(concat(' ', @class, ' '), ' rui-select ')][contains(., '#{name}')]").click
-    within('.rui-select-options', &block)
+  def m_select(name, &block)
+    find(:xpath, "//*[contains(concat(' ', @class, ' '), ' m-select ')][contains(., '#{name}')]").click
+    within('.m-menu-list', &block)
   end
 end

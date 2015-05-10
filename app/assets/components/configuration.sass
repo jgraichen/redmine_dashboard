@@ -1,0 +1,52 @@
+.rdb-configuration
+  display: table
+  width: 100%
+
+  > section
+    display: table-cell
+    vertical-align: top
+    padding: 5px 0 5px 20px
+
+  > nav
+    display: table-cell
+    vertical-align: top
+    width: 260px
+    padding: 5px 15px 5px 0
+
+    // theming
+    border-right: 1px solid $frame-color
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 0
+
+    a
+      cursor: pointer
+      display: block
+      padding: 7px 10px
+
+      .rdb-help
+        display: block
+        font-weight: 300
+        margin-top: 0.3em
+
+        // theming
+        font-size: 11px
+        color: $primary-gray
+
+      // theming
+      &.active
+        font-weight: bold
+        background-color: $primary-paleblue
+
+      // theming
+      &:hover
+        text-decoration: none
+        background-color: $primary-brightblue
+        outline: none
+        color: $primary-white
+
+        // theming
+        .rdb-help
+          color: $primary-white

@@ -1,0 +1,59 @@
+.rdb-permission-editor
+  width: 100%
+  max-width: 60em
+  border-spacing: 0
+  border-collapse: collapse
+
+  td
+    padding: 4px 8px
+    border-top: 1px solid $frame-color
+    white-space: nowrap
+
+    &:last-child
+      width: 1%
+      border: none
+
+    &.rdb-roles
+      width: 1%
+
+      a
+        font-size: 80%
+        display: inline-block
+        border: 1px solid $primary-brightblue
+        padding: 1px 4px
+        border-radius: 1px
+        margin: 1px 2px
+        text-transform: uppercase
+
+        &:hover, &.active
+          color: white
+          text-decoration: none
+          background-color: $primary-brightblue
+
+        &.active
+          cursor: default
+
+    &.rdb-actions
+      width: 1%
+
+      .rui-icon
+        margin-right: .4em
+
+  th
+    text-align: center
+    padding: 0px 6px 2px
+    font-weight: normal
+
+    .rui-input, .rui-select
+      width: 100%
+
+.rdb-avatar
+  width: 1.2em
+  height: 1.2em
+  margin-bottom: -0.2em
+  margin-right: 0.4em
+  text-align: center
+
+.rdb-permission-complete
+  strong
+    margin-right: 0.4em

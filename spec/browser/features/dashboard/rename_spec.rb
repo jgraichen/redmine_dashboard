@@ -19,7 +19,7 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Configure'
     end
 
-    find(:fillable_field, 'Name').fill 'New dashboard name'
+    fill_in 'Name', with: 'New dashboard name'
 
     within '.contextual' do
       click_on 'Back'
@@ -37,7 +37,7 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Configure'
     end
 
-    find(:fillable_field, 'Name').fill ''
+    fill_in 'Name', with: ''
     find('body').click
 
     expect(page).to have_content "can't be blank"
@@ -55,7 +55,7 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Configure'
     end
 
-    find(:fillable_field, 'Name').fill 'New Board'
+    fill_in 'Name', with: 'New Board'
     find('body').click
 
     expect(page).to have_content 'The Dashboard name must be unique.'

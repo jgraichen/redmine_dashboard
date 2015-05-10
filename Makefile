@@ -3,10 +3,11 @@ SHELL := /bin/bash
 RUBY := ruby
 NODE := node
 
-SASS       := bundle exec sass
-BROWSERIFY := $(NODE) node_modules/.bin/browserify
-EXORCIST   := $(NODE) node_modules/.bin/exorcist
-UGLIFYJS   := $(NODE) node_modules/.bin/uglifyjs
+SASS         := bundle exec sass
+BROWSERIFY   := $(NODE) node_modules/.bin/browserify
+EXORCIST     := $(NODE) node_modules/.bin/exorcist
+UGLIFYJS     := $(NODE) node_modules/.bin/uglifyjs
+AUTOPREFIXER := $(NODE) node_modules/.bin/autoprefixer
 
 SOURCE := app/assets
 BUILD  := assets
@@ -45,7 +46,7 @@ $(BUILD)/main.js: $(BUILD)
 
 .PHONY: $(BUILD)/main.css
 $(BUILD)/main.css: $(BUILD)
-	$(SASS_CMD) --style nested $(SOURCE)/main.sass $(BUILD)/main.css
+	$(SASS_CMD) --style nested $(SOURCE)/main.sass | $(AUTOPREFIXER) > $(BUILD)/main.css
 
 .PHONY: $(BUILD)/main.min.js
 $(BUILD)/main.min.js: $(BUILD)
@@ -53,7 +54,7 @@ $(BUILD)/main.min.js: $(BUILD)
 
 .PHONY: $(BUILD)/main.min.css
 $(BUILD)/main.min.css: $(BUILD)
-	$(SASS_CMD) --style compressed $(SOURCE)/main.sass $(BUILD)/main.min.css
+	$(SASS_CMD) --style compressed $(SOURCE)/main.sass | $(AUTOPREFIXER) > $(BUILD)/main.min.css
 
 .PHONY: build
 build: fonts $(BUILD)/main.css $(BUILD)/main.js

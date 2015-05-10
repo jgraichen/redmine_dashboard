@@ -14,6 +14,7 @@ module Rdb
       principals = PrincipalDecorator.new \
         Principal
           .where(Principal.arel_table[:id].not_in board.permissions.pluck(:principal_id))
+          .where(Principal.arel_table[:login].not_eq(''))
           .like(params[:q])
           .limit(5)
 
@@ -62,14 +63,7 @@ module Rdb
     end
 
     def lookup_principal(principal)
-      case principal[:type].to_s.downcase
-        when 'user'
-          User.find principal[:id]
-        when 'group'
-          Group.find principal[:id]
-        else
-          nil
-      end
+      Principal.find_by! login: principal.to_s
     end
 
     def permission

@@ -4,14 +4,16 @@
     "bluebird": "~2.2.1",
     "counterpart": "~0.14.2",
     "exoskeleton": "^0.7.0",
-    "extend": "~1.2.0",
     "font-awesome": "~4.2.0",
-    "lodash": "~2.4.1",
+    "molecule": "git://github.com/jgraichen/molecule.git#d4f0f96024017218cce6b23991ee689134cab808",
     "mousetrap": "^1.4.6",
-    "react": "~0.11.1",
-    "tether": "^0.6.5"
+    "object-assign": "^2.0.0",
+    "react": "~0.13.1",
+    "tether": "^0.6.5",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "autoprefixer": "^5.1.1",
     "browserify": "~5.10.1",
     "browserify-data": "~0.1.1",
     "coffeeify": "~0.6.0",

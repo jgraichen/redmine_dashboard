@@ -72,6 +72,7 @@ describe Rdb::BoardsController, type: :controller do
                   'type' => 'user',
                   'id' => current_user.id,
                   'name' => current_user.name,
+                  'value' => current_user.login,
                   'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
                 }
               }]

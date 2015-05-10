@@ -1,0 +1,31 @@
+#content.rdb
+  background-color: $primary-white
+
+  border-radius: 7px
+
+  &.rdb-fullscreen
+    z-index: 9999999999999999999999
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    min-height: 100%
+
+    border-radius: 0 !important
+    border: 0 !important
+
+    > h2
+      border-radius: 0 !important
+      border-top: 0 !important
+
+  > .contextual a
+    cursor: pointer
+    margin-left: 1em
+
+    > i.m-icon:first-child
+      font-size: 125%
+      padding-right: .3em
+
+.m-menu-item > a
+  &, &:hover, &:active,
+    color: #333

@@ -8,6 +8,7 @@ module Rdb
         type: type.to_s,
         id: object.id,
         name: object.name,
+        value: object.login,
         avatar_url: avatar_url
       }
     end

@@ -22,7 +22,7 @@ feature 'Dashboard Permissions', js: true, sauce: true do
     expect(page).to have_content 'Access control'
 
     within :xpath, "//td[contains(., 'Dave Lopper')]/.." do
-      expect(page.find('.rdb-active')).to have_content 'ADMIN'
+      expect(page.find('.active')).to have_content 'ADMIN'
     end
   end
 
@@ -42,14 +42,14 @@ feature 'Dashboard Permissions', js: true, sauce: true do
       click_on 'Dave2 Lopper2'
     end
 
-    rui_select 'Read' do
+    m_select 'Read' do
       click_on 'Edit'
     end
 
     click_on 'Add'
 
     within :xpath, "//td[contains(., 'Dave2 Lopper2')]/.." do
-      expect(page.find('.rdb-active')).to have_content 'EDIT'
+      expect(page.find('.active')).to have_content 'EDIT'
     end
   end
 end

@@ -83,9 +83,10 @@ describe Rdb::PermissionsController, type: :controller do
             id: permission.id,
             role: 'ADMIN',
             principal: {
-              type: 'user',
-              name: current_user.name,
               id: current_user.id,
+              name: current_user.name,
+              type: 'user',
+              value: current_user.login,
               avatar_url: 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
             }
         end
@@ -112,12 +113,11 @@ describe Rdb::PermissionsController, type: :controller do
 
     context 'as authorized principal' do
       let(:current_user) { a_user }
-      let(:principal) { User.find 1 }
-      let(:params) { {principal: {type: 'user', id: principal.id}, role: Roles::READ} }
 
       it { expect(subject.status).to eq 200 }
       it { expect(json.size).to eq 5 }
-      it { expect(json.map{|r| r[:name]}).to match_array ['Redmine Admin', 'Robert Hill', 'Dave2 Lopper2', 'Anonymous', 'Some One'] }
+      it { expect(json.map{|r| r[:name]}).to match_array ['Redmine Admin', 'Robert Hill', 'Dave2 Lopper2', 'Some One', 'User Misc'] }
+
       it 'should not include users already having permission' do
         expect(json.map{|r| r[:id]}).to_not include 2
         expect(json.map{|r| r[:id]}).to_not include 3
@@ -153,7 +153,7 @@ describe Rdb::PermissionsController, type: :controller do
     context 'as authorized principal' do
       let(:current_user) { a_user }
       let(:principal) { User.find 1 }
-      let(:params) { {principal: {type: 'user', id: principal.id}, role: Roles::READ} }
+      let(:params) { {principal: principal.login, role: Roles::READ} }
 
       it { expect(subject.status).to eq 200 }
       it { expect{ subject }.to change{ Rdb::Permission.count }.by(1) }
@@ -177,10 +177,10 @@ describe Rdb::PermissionsController, type: :controller do
       end
 
       context 'with invalid principal' do
-        let(:params) { super().merge principal: {type: 'project', id: '57664'} }
+        let(:params) { super().merge principal: 'abcderfgth' }
 
         it { expect(subject.status).to eq 422 }
-        it { expect(json).to eq errors: {principal_id: ['required']} }
+        it { expect(json).to eq errors: {principal_id: ['principal_not_found']} }
       end
     end
   end
