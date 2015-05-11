@@ -16,7 +16,7 @@ matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
   exclude:
-  - env: REDMINE_VERSION=2.6.3
+  - env: REDMINE_VERSION=2.6.5
     rvm: '2.2'
 branches:
   except:
