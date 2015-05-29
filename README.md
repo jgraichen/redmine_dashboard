@@ -1,10 +1,10 @@
 # Redmine Dashboard
 
-[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Code Climate](http://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
-[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
-[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
+[![Build Status](https://img.shields.io/travis/jgraichen/redmine_dashboard.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
+[![Code Climate](https://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
+[![Rate at redmine.org](https://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Follow at Twitter](https://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
+[![Flattr this git repo](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
 ***NOTE***: This README is for the **development version** of Redmine Dashboard 3.
 
