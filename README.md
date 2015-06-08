@@ -29,15 +29,19 @@ Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
 
 I provide a PPA at [ppa:jgraichen/redmine-dashboard](https://launchpad.net/~jgraichen/+archive/redmine-dashboard) for Ubuntu Trusty that should work with Trusty's Redmine and [ppa:ondrej/redmine](https://launchpad.net/~ondrej/+archive/redmine). Debian Wheezy with wheezy-backports enabled should also work with trusty PPA.
 
-### Others
+### Manual
 
-Clone git repository to `plugins`, checkout wanted release (`git checkout v2.6.1`) and restart redmine. A database migration is not needed. Run `bundle install` to install required gems.
+1. Download [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
+2. Extract archive to `<redmine>/plugins`. Make **sure** the plugin directory is called `<redmine>/plugins/redmine_dashboard/` (#11).
+3. Install required dependencies by running `bundle install --without development test` in your redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` (#58).
+4. A database migration is not needed. Restart redmine.
 
 #### Upgrade
 
-Fetch updates (`git fetch --tags`) and checkout newer release (`git checkout $(git tag | tail -n1)`). Run `bundle install` to install newly required gems. A database migration is not needed.
+1. Remove old plugin directory.
+2. Follow installation steps for new release.
 
-You can list all available version with `git tag -l`.
+As of v2 you can also use git by cloning the repository and checkout the release tag.
 
 ## Contribute
 
