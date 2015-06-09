@@ -72,7 +72,7 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 
   Capybara.default_host = 'http://example.org'
-  Capybara.default_wait_time = 15
+  Capybara.default_wait_time = 5
 
   config.before(:each) do
     if page.driver.respond_to?(:resize)
