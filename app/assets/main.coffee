@@ -1,8 +1,6 @@
-require './shim/phantomjs-bind'
-
-window.Promise = require 'bluebird'
+window.Promise ?= require 'bluebird'
 
 if process.env.NODE_ENV == 'development'
-  Promise.longStackTraces()
+  Promise.longStackTraces?()
 
-window.Rdb = require 'index'
+window.Rdb = require './index'
