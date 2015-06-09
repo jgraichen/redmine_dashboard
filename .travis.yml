@@ -26,5 +26,4 @@ install:
 - BUNDLE_OPTS="--without development" ./redmine update
 script:
 - make production
-- tree
 - bundle exec rake spec
