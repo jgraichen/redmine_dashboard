@@ -4,10 +4,6 @@ REDMINE_VERSION=${REDMINE_VERSION:-3.0.3}
 PWD=$(pwd)
 DIR="vendor/redmine/${REDMINE_VERSION}"
 
-if [ "$BUNDLE_PATH" ]; then
-	BUNDLE_OPTS="--path ${BUNDLE_PATH}"
-fi
-
 case ${REDMINE_VERSION} in
 	master)
 		REDMINE_SOURCE="http://svn.redmine.org/redmine/trunk"
@@ -54,7 +50,7 @@ function update
 {
 	set -e
 
-	[ ! -d "${DIR}" ] && install && return
+	[ ! -d "${DIR}" ] && install
 
 	if [ "${REDMINE_VERSION}" == "master" ]; then
 		set -x
