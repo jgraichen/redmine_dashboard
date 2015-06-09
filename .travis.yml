@@ -22,7 +22,6 @@ install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
 - bundle install --jobs=3 --retry=3 --without development
-- bundle update --jobs=3 --retry=3
 - npm update
 - BUNDLE_OPTS="--without development" ./redmine update
 script:

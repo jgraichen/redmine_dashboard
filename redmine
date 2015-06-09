@@ -50,7 +50,7 @@ function update
 {
 	set -e
 
-	[ ! -d "${DIR}" ] && install
+	[ ! -d "${DIR}" ] && install && return
 
 	if [ "${REDMINE_VERSION}" == "master" ]; then
 		set -x
