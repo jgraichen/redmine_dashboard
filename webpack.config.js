@@ -17,10 +17,6 @@ var plugins = [
   new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
 ]
 
-if(process.env.NODE_ENV === 'development') {
-  plugins.push(new webpack.SourceMapDevToolPlugin());
-}
-
 module.exports = {
   target: 'web',
   entry: [
