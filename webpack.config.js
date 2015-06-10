@@ -29,7 +29,15 @@ module.exports = {
     chunkFilename: "[name].[id].[chunkhash].js"
   },
   resolve: {
-    extensions: ['', '.js', '.coffee', '.sass']
+    fallback: path.join(__dirname, "node_modules"),
+    extensions: ['', '.js', '.coffee', '.sass'],
+    alias: {
+      // Use single global react
+      'react': path.dirname(require.resolve('react'))
+    }
+  },
+  resolveLoader: {
+    fallback: path.join(__dirname, "node_modules")
   },
   module: {
     loaders: [
