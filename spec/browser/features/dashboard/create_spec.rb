@@ -26,18 +26,14 @@ feature 'Create dashboard', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    current = current_url
-
     find('#rdb-menu').click
     click_on 'Create new Dashboard'
 
-    expect(page).to have_content 'New Board (2)'
-    expect(current_url).to_not eq current
+    expect(current_board).to eq 'New Board (2)'
 
     find('#rdb-menu').click
     click_on 'New Board'
 
-    expect(page).to have_content 'New Board'
-    expect(current_url).to eq current
+    expect(current_board).to eq 'New Board'
   end
 end

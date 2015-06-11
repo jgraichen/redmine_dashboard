@@ -69,4 +69,8 @@ module RdbRequestHelpers
     find(:xpath, "//*[contains(concat(' ', @class, ' '), ' m-select ')][contains(., '#{name}')]").click
     within('.m-menu-list', &block)
   end
+
+  def current_board
+    find(:xpath, "//*[@id = 'rdb-menu']/span").text
+  end
 end
