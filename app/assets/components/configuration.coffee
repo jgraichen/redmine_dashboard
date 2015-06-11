@@ -62,7 +62,9 @@ class Configuration extends Component
 
     $ 'li', null, [
       $ Link,
-        active: @state.currentIndex == index
+        classList: [
+          'active' if @state.currentIndex == index
+        ]
         onAction: (e) =>
           e.preventDefault()
           @setState currentIndex: index
