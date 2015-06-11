@@ -116,15 +116,21 @@ class PermissionEditor.Row extends Component
       ]
       $ 'td', key: 1, className: 'rdb-roles', [
         $ Link,
-          active: @props.model.isRead()
+          classList: [
+            'active' if @props.model.isRead()
+          ]
           onAction: => @props.model.setRead()
           t 'rdb.permissions.read'
         $ Link,
-          active: @props.model.isEdit()
+          classList: [
+            'active' if @props.model.isEdit()
+          ]
           onAction: => @props.model.setEdit()
           t 'rdb.permissions.edit'
         $ Link,
-          active: @props.model.isAdmin()
+          classList: [
+            'active' if @props.model.isAdmin()
+          ]
           onAction: => @props.model.setAdmin()
           t 'rdb.permissions.admin'
       ]
