@@ -50,4 +50,27 @@ feature 'Dashboard Permissions', js: true, sauce: true do
       expect(page.find('.active')).to have_content 'EDIT'
     end
   end
+
+  scenario 'Change permission' do
+    within '#main-menu' do
+      click_on 'Dashboards'
+    end
+
+    within '.contextual' do
+      click_on 'Configure'
+    end
+
+    unreliable do
+      fill_in 'Search user', with: 'Lo'
+      click_on 'Dave2 Lopper2'
+    end
+
+    click_on 'Add'
+
+    within :xpath, "//td[contains(., 'Dave2 Lopper2')]/.." do
+      click_on 'Edit'
+
+      expect(page.find('.active')).to have_content 'EDIT'
+    end
+  end
 end

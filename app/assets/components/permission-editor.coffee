@@ -117,12 +117,15 @@ class PermissionEditor.Row extends Component
       $ 'td', key: 1, className: 'rdb-roles', [
         $ Link,
           active: @props.model.isRead()
+          onAction: => @props.model.setRead()
           t 'rdb.permissions.read'
         $ Link,
           active: @props.model.isEdit()
+          onAction: => @props.model.setEdit()
           t 'rdb.permissions.edit'
         $ Link,
           active: @props.model.isAdmin()
+          onAction: => @props.model.setAdmin()
           t 'rdb.permissions.admin'
       ]
       $ 'td', key: 2, className: 'rdb-actions', [
@@ -147,149 +150,3 @@ class PermissionEditor.Row extends Component
         $ Icon, glyph: 'users', className: 'rdb-avatar'
 
 module.exports = PermissionEditor
-
-# Row = core.createComponent 'rdb.Permission.Row',
-#   mixins: [BackboneMixins.ModelView]
-
-#   render: ->
-#     tr [
-#       td className: 'rdb-name', [
-#         @renderPermissionSymbol()
-#         @props.model.getName()
-#       ]
-#       td className: 'rdb-roles', [
-#         Anchor
-#           className: if @props.model.isRead() then 'rdb-active'
-#           onPrimary: =>
-#             @refs['indicator'].track @props.model.setRead()
-#             false
-#           t 'rdb.permissions.read'
-#         Anchor
-#           className: if @props.model.isEdit() then 'rdb-active'
-#           onPrimary: =>
-#             @refs['indicator'].track @props.model.setEdit()
-#             false
-#           t 'rdb.permissions.edit'
-#         Anchor
-#           className: if @props.model.isAdmin() then 'rdb-active'
-#           onPrimary: =>
-#             @refs['indicator'].track @props.model.setAdmin()
-#             false
-#           t 'rdb.permissions.admin'
-#       ]
-#       td className: 'rdb-actions', [
-#         Anchor
-#           icon: 'trash-o',
-#           onPrimary: =>
-#             @props.onDelete @props.model.destroy()
-#             false
-#           t('rdb.contextual.remove')
-#       ]
-#       td [
-#         ActivityIndicator ref: 'indicator'
-#       ]
-#     ]
-
-#   renderPermissionSymbol: ->
-#     if @props.model.getAvatarUrl()?
-#       Avatar src: @props.model.getAvatarUrl()
-#     else
-#       switch @props.model.getType()
-#         when 'user'
-#           Icon glyph: 'user', className: 'rui-avatar'
-#         else
-#           Icon glyph: 'users', className: 'rui-avatar'
-
-
-# Editor = core.createComponent 'rdb.Permission.Editor',
-#   mixins: [BackboneMixins.CollectionView]
-
-#   getInitialState: ->
-#     searchId: _.uniqueId()
-#     accessLevelId: _.uniqueId()
-
-#   render: ->
-#     table className: 'rdb-permissions', [
-#       thead [ @renderPermissionHead() ]
-#       tbody @renderCollectionItems (item) =>
-#         Row
-#           model: item
-#           onDelete: (promise) => @refs['indicator'].track promise
-#     ]
-
-#   addPermission: ->
-#     principal = @refs['principal'].value()
-#     role      = @refs['role'].value().value
-
-#     if principal
-#       p = new Promise (resolve, reject) =>
-#         @props.collection.create {role: role, principal: principal},
-#           success: resolve
-#           error: reject
-
-#       p = p.then =>
-#         @props.collection.fetch merge: true
-
-#       @refs['indicator'].track p
-
-#       @refs['principal'].clear()
-#       @refs['principal'].focus()
-
-#   renderPrincipal: (principal) ->
-#     components = []
-#     if principal['avatar_url']?.length > 0
-#       components.push Avatar src: principal['avatar_url']
-#     else
-#       switch principal['type']
-#         when 'user'
-#           components.push Icon glyph: 'user', className: 'rui-avatar'
-#         else
-#           components.push Icon glyph: 'users', className: 'rui-avatar'
-
-#     components.push principal['name']
-#     span components
-
-#   renderPermissionHead: ->
-#     tr [
-#       th [
-#         label htmlFor: @state.searchId, className: 'rui-assistive',
-#           t('rdb.configure.general.access_control_search_label')
-#         Search
-#           id: @state.searchId
-#           ref: 'principal'
-#           placeholder: t('rdb.configure.general.access_control_placeholder')
-#           query: (q) =>
-#             Rdb.curl('GET', Rdb.url(@props.collection.url + '/search', q: q))
-#               .then (xhr) => xhr.responseJSON
-#           renderItem: @renderPrincipal
-#           renderValue: @renderPrincipal
-#           onSubmit: => @addPermission()
-#       ]
-#       th [
-#         label htmlFor: @state.accessLevelId, className: 'rui-assistive',
-#           t('rdb.configure.general.access_control_levels_label')
-#         Select
-#           id: @state.accessLevelId
-#           ref: 'role'
-#           items: [
-#             {value: 'read', text: t('rdb.permissions.read')}
-#             {value: 'edit', text: t('rdb.permissions.edit')}
-#             {value: 'admin', text: t('rdb.permissions.admin')}
-#           ]
-#           renderItem: (item) ->
-#             item['text']
-#           renderValue: (item) ->
-#             item['text']
-#       ]
-#       th [
-#         Button
-#           onClick: (e) =>
-#             @addPermission()
-#             false
-#           icon: 'plus'
-#           t('rdb.configure.general.access_control_add')
-#       ]
-#       th [
-#         ActivityIndicator ref: 'indicator'
-#       ]
-#     ]
