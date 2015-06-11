@@ -15,8 +15,9 @@ feature 'Create dashboard', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('#rdb-menu').click
-    click_on 'Create new Dashboard'
+    open '#rdb-menu' do
+      click_on 'Create new Dashboard'
+    end
 
     expect(page).to have_content 'New Board (2)'
   end
@@ -26,14 +27,16 @@ feature 'Create dashboard', js: true, sauce: true do
       click_on 'Dashboards'
     end
 
-    find('#rdb-menu').click
-    click_on 'Create new Dashboard'
+    open '#rdb-menu' do
+      click_on 'Create new Dashboard'
+    end
 
-    expect(current_board).to eq 'New Board (2)'
+    expect(board_title).to have_text 'New Board (2)'
 
-    find('#rdb-menu').click
-    click_on 'New Board'
+    open '#rdb-menu' do
+      click_on 'New Board'
+    end
 
-    expect(current_board).to eq 'New Board'
+    expect(board_title).to have_text 'New Board'
   end
 end

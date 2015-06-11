@@ -70,7 +70,24 @@ module RdbRequestHelpers
     within('.m-menu-list', &block)
   end
 
-  def current_board
-    find(:xpath, "//*[@id = 'rdb-menu']/span").text
+  def board_title
+    find :xpath, "//*[@id = 'rdb-menu']/span"
+  end
+
+  def open(*selector)
+    link = find *selector
+
+    controls = link[:'aria-controls']
+    haspopup = link[:'aria-haspopup'] == 'true'
+    expanded = link[:'aria-expanded'] == 'true'
+
+    if !haspopup
+      raise "Cannot open '#{selector}': Missing aria-haspopup."
+    elsif controls.empty?
+      raise "Cannot open '#{selector}': Empty or missing aria-controls."
+    end
+
+    link.click if !expanded
+    within("##{controls}") { yield }
   end
 end

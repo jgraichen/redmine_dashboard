@@ -26,7 +26,7 @@ class Dashboard extends Component
     setFullscreenState: 'fullscreen:toggled'
 
   constructor: (props) ->
-    @state = fullscreen: false, open: false
+    @state = fullscreen: false, open: false, id: util.uniqueId()
 
   setFullscreenState: (state) ->
     @setState fullscreen: state
@@ -58,8 +58,11 @@ class Dashboard extends Component
             @props.board.get 'name'
           else
             $ Link,
-              id: 'rdb-menu',
+              id: 'rdb-menu'
               ref: 'menu'
+              'aria-haspopup': true
+              'aria-controls': @state.id
+              'aria-expanded': @state.open
               onAction: (e) =>
                 e.preventDefault()
                 @setState open: !@state.open
@@ -82,8 +85,9 @@ class Dashboard extends Component
       onCloseRequest: =>
         @setState open: false
       $ Dashboard.BoardMenu,
-        collection: new Board.Collection()
+        id: @state.id
         board: @props.board
+        collection: new Board.Collection()
 
 
 class Dashboard.BoardMenu extends Component
@@ -94,7 +98,7 @@ class Dashboard.BoardMenu extends Component
     @props.collection.fetch()
 
   renderComponent: (props) =>
-    $ Panel, null, [
+    $ Panel, props, [
       $ Menu, null, [
         $ Menu.List, null, [
           $ Menu.Item,
