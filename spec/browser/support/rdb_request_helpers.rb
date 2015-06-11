@@ -57,6 +57,8 @@ module RdbRequestHelpers
     end
 
     link.click if !expanded
+    page.assert_selector "##{controls}"
+
     within("##{controls}") { yield }
   end
 end
