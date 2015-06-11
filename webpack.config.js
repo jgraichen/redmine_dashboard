@@ -12,9 +12,7 @@ var sass = 'sass' +
 var plugins = [
   new ExtractTextPlugin("[name].css", { allChunks: true }),
   new webpack.EnvironmentPlugin(['NODE_ENV']),
-  new webpack.IgnorePlugin(new RegExp("^(jquery)$")),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+  new webpack.IgnorePlugin(new RegExp("^(jquery)$"))
 ]
 
 module.exports = {
