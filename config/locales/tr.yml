@@ -1,0 +1,84 @@
+tr:
+  project_module_dashboard: Pano
+  permission_view_dashboards: Panoları Gösterme
+  permission_configure_dashboards: Panoları Ayarlama
+
+  menu_label_dashboard: Pano
+
+  rdb_taskboard: İş Panosu
+  rdb_planningboard: Planlama Panosu
+
+  rdb_filter_version_all: Tüm Sürümler  
+  rdb_filter_version_unassigned: Atanmamış
+  rdb_filter_tracker_all: Tüm İş Tipleri
+  rdb_filter_tracker_multiple: Birden fazla iş tipi
+  rdb_filter_category_all: Tüm Kategoriler
+  rdb_filter_category_multiple: Birden fazla kategori
+  rdb_filter_assignee_all: Tüm Atananlar
+  rdb_filter_assignee_me: Kendi İşlerim
+  rdb_filter_assignee_none: Atanmamışlar
+  rdb_filter_assignee_others: Diğerleri
+
+  rdb_options: Seçenekler
+  rdb_options_change_assignee: Atananı Değiştir
+  rdb_options_change_assignee_info: İş taşınırsa, atananı kullanan kişi olarak değiştir
+  rdb_options_hide_done: Kapalı işleri gizle
+  rdb_options_hide_done_info: Kapalı işler gizlenince, tamam kolonu ufalır
+  rdb_options_reset: Süzgeçi sıfırla
+  rdb_options_reset_info: Süzgeçleri öntanımlı haline getir
+  rdb_options_configure: Ayarla
+  rdb_options_include_subprojects: Altbirimleri dahil et
+
+  rdb_options_view: Göster
+  rdb_options_issue_view: İş Görüntüsü
+  rdb_options_issue_view_card: Kart
+  rdb_options_issue_view_compact: Ufak
+  rdb_options_group: İş Gruplama
+  rdb_group_none: Gruplama Yok
+  rdb_group_category: Kategori
+  rdb_group_assignee: Atanan
+  rdb_group_tracker: İş Tipi
+  rdb_group_priority: Öncelik
+  rdb_group_version: Sürüm
+  rdb_group_parent: Üst İş
+  rdb_group_project: Birim
+  rdb_options_board_view: Pano Görünüü
+  rdb_options_board_view_compact: Klasik
+  rdb_options_board_view_outline: İçindekiler
+  rdb_options_columns: Pano Kolonları
+  rdb_options_fullscreen: Tam Ekran
+
+  rdb_legend_priorities: Öncelikler
+  rdb_legend_warnings: Uyarılar
+  rdb_issue_overdue: Zamanı Geçmiş
+  rdb_property_time: '<span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>'
+  rdb_not_available: N/A
+
+  rdb_column_done: Tamam
+  rdb_x_issues:
+    one: 1 İş
+    other: "%{count} İş"
+
+  rdb_dialog_update_issue_title: İşi güncelle
+  rdb_dialog_update_issue_status: Yeni iş durumu seç
+
+  rdb_other_issues: "Diğer İşler <span>(%{count})</span>"
+
+  rdb_unassigned: Atanmamış
+  rdb_others: Diğerleri
+  rdb_all_issues: Tüm İşler
+
+  rdb_no_parent: Üst iş yok
+
+  rdb_issue_menu_progress_title: Tamamlanma Oranını güncelle
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: İş
+  rdb_issue_menu_show: Show
+  rdb_issue_menu_edit: Edit
+  rdb_issue_menu_assigne_me: Bana Ata
+  rdb_issue_menu_unassigne_me: Atamamı kaldır
+  rdb_flash_illegal_workflow_action: "<p>İş akışında bu işlemi yapma yetkiniz yok:</p><p>İş <b>%{issue}</b> için <b>%{source}</b> durumundan <b>%{target}</b> durumuna.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Kilit sürümü eksik</b>: Kilit sürümü olmadan iş güncellenemez. Tekrar deneyin."
+  rdb_flash_stale_object: "<p>Pörsümüş bir işi güncelleyemezsiniz: <b>%{issue}</b>. Değişiklikler kontrol edin ve tekrar deneyin."
+  rdb_flash_invalid_request: "<p>Geçersiz istek.</p>"
+
