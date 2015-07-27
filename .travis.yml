@@ -3,7 +3,6 @@ language: ruby
 cache:
   directories:
   - vendor/bundle
-  - node_modules
 rvm:
 - '2.2'
 - '2.1'
@@ -22,7 +21,7 @@ install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
 - bundle install --jobs=3 --retry=3 --without development
-- npm update
+- npm install
 - BUNDLE_OPTS="--without development" ./redmine update
 script:
 - make production
