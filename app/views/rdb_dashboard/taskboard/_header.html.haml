@@ -5,7 +5,7 @@
     - render_rdb_menu_list [:taskboard] do |val|
       = link_to t("rdb_#{val}"), rdb_path(:board => val)
 
-- if @project.versions.any?
+- if @board.versions.any?
   .rdb-filter.rdb-async
     - render_rdb_menu :versions, @board.filters[:version].title do
       - render_rdb_menu_list [:all, :unassigned] do |val|
