@@ -9,7 +9,7 @@ Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
   description 'Add a task board and a planning board to Redmine'
-  version '2.6.1'
+  version '2.7.0'
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jg@altimos.de'
 
