@@ -55,6 +55,11 @@
 
 	position: relative;
 }
+
+.rdb-overdue .rdb-card {
+	border-color: red;
+}
+
 .rdb-card .rdb-priority {
 	height: 12.6em;
 }
@@ -162,6 +167,10 @@
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	border-radius: 2px;
+}
+
+.rdb-overdue .rdb-compact {
+	border-color: red;
 }
 
 .rdb-compact-header {
