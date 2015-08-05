@@ -9,20 +9,15 @@ rvm:
 - 2.0.0
 - 1.9.3
 env:
-- REDMINE_VERSION=3.0.0
-- REDMINE_VERSION=2.6.2
-- REDMINE_VERSION=2.5.3
-- REDMINE_VERSION=2.4.7
+- REDMINE_VERSION=3.1.0
+- REDMINE_VERSION=3.0.4
+- REDMINE_VERSION=2.6.6
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
   exclude:
-  - env: REDMINE_VERSION=2.6.2
-    rvm: '2.2'
-  - env: REDMINE_VERSION=2.5.3
-    rvm: '2.2'
-  - env: REDMINE_VERSION=2.4.7
+  - env: REDMINE_VERSION=2.6.5
     rvm: '2.2'
 branches:
   except:
@@ -34,16 +29,3 @@ install:
 - bundle install --jobs=3 --retry=3 --path $BUNDLE_PATH
 script:
 - bundle exec rake spec
-before_deploy:
-- ./redmine dist
-deploy:
-  provider: releases
-  api_key:
-    secure: YFt/c/LIANdzODnozIHNj3JXFxho+6adndlyWwKe5JwynrMmYO8+i5d3aFtNFeafxwktoOqYQHoZ66w1XZTay2cG5uYaL1b4n5BsWfuhJpa0CE1SwJxyzh4v50L3ZBcv1Udh+Bl07a15AM1qP60Rq5PHtSorC6ZNFGchS6YuNIQ=
-    file_glob: true
-  file:
-  - "dist/*.zip"
-  - "dist/*.tar.gz"
-  on:
-    repo: jgraichen/redmine_dashboard
-    branch: stable-v2

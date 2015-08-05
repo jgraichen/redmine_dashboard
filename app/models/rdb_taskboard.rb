@@ -73,7 +73,7 @@ class RdbTaskboard < RdbDashboard
         self.add_group RdbGroup.new("project-#{project.id}", project.name, :accept => Proc.new {|issue| issue.project_id == project.id })
       end
     when :parent
-      issues.joins(:children).uniq.all.each do |issue|
+      issues.where(id: issues.pluck(:parent_id).uniq).uniq.all.each do |issue|
         self.add_group RdbGroup.new("issue-#{issue.id}", issue.subject, :accept => Proc.new { |sub_issue| sub_issue.parent_id == issue.id })
       end
       self.add_group RdbGroup.new("issue-others", :rdb_no_parent, :accept => Proc.new { |issue| issue.parent.nil? and issue.children.empty? })

@@ -15,7 +15,4 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'fuubar'
-
-  # for redmine on travis CI
-  gem 'test-unit'
 end
