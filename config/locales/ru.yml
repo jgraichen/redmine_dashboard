@@ -52,6 +52,7 @@ ru:
   rdb_x_issues:
     one: 1 задача
     few: "%{count} задачи"
+    many: "%{count} задач"
     other: "%{count} задач"
   rdb_dialog_update_issue_title: "Обновить задачу"
   rdb_dialog_update_issue_status: "Выбрать новый статус задачи"
