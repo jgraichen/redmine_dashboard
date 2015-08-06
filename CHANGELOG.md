@@ -1,3 +1,12 @@
+## 2.7.0
+
+* Add Mongolian locale
+* Update Russian locale
+* Add Turkish locale (#102)
+* Fix issue with version filter on parent projects (#103, #96)
+* Fix/Add overdue handling and styling (#104)
+* Small fix for group by parent issue
+
 ## 2.6.0
 
 * Update for Redmine 3.0

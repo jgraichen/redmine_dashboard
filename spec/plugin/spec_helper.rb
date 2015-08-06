@@ -23,6 +23,8 @@ require 'database_cleaner'
 Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f }
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
