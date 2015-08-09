@@ -29,10 +29,6 @@ function install
 	ln -s  "${PWD}/spec" "${DIR}/spec"
 	ln -s  "${PWD}/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
 
-	# Adjust capybara version requirements as redmine locks to ~> 2.1.0
-    # but rspec 3 requires >= 2.2
-	sed -i -e "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g" "${DIR}/Gemfile"
-
 	./redmine-genconf "${DIR}" "${REDMINE_VERSION}" > "${DIR}/config/database.yml"
 	set +x
 
