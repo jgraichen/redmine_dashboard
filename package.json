@@ -5,6 +5,7 @@
     "counterpart": "~0.14.2",
     "exoskeleton": "^0.7.0",
     "font-awesome": "~4.2.0",
+    "lodash": "^3.10.1",
     "molecule": "git://github.com/jgraichen/molecule.git",
     "mousetrap": "^1.4.6",
     "object-assign": "^2.0.0",
