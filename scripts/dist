@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ -z "${PLUGIN_PATH}" ] && exit 1
+
+pushd "${PLUGIN_PATH}"
+
+TAG=$1
+[ -z "${TAG}" ] && TAG=`git tag | tail -n1`
+
+mkdir -p dist
+
+(set -x; git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.tar.gz" "${TAG}")
+(set -x; git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.zip" "${TAG}")

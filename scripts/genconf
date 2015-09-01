@@ -3,15 +3,15 @@
 require 'yaml'
 require 'pathname'
 
-$root = Pathname.new ARGV[0]
-$version = ARGV[1]
+REDMINE_VERSION = ENV['REDMINE_VERSION'] || Kernel.exit(1)
+REDMINE_PATH    = ENV['REDMINE_PATH']    || Kernel.exit(1)
 
 def gen_dbconf(env)
   {
     'pool' => 5,
     'timeout' => 5000,
     'adapter' => 'mysql2',
-    'database' => (env == 'development') ? 'rdb_development' : "rdb_#{$version.gsub('.', '_')}_#{env}"
+    'database' => (env == 'development') ? 'rdb_development' : "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
   }
 end
 
@@ -20,7 +20,7 @@ config = {}
   config[env] = gen_dbconf env
 end
 
-dbconf = $root.join('config', 'database.yml')
+dbconf = Pathname.new(REDMINE_PATH).join('config', 'database.yml')
 if dbconf.exist?
   if (cfg = YAML.load_file(dbconf)).is_a?(Hash)
     cfg.each_pair do |env, conf|
