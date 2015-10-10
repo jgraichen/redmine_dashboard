@@ -2,6 +2,7 @@
 Exoskeleton = require 'exoskeleton'
 assign = require 'object-assign'
 React = require 'react'
+ReactDOM = require 'react-dom'
 util = require './util'
 t = require 'counterpart'
 $ = React.createElement
@@ -82,7 +83,7 @@ Rdb =
       Events.on 'all', -> console.log 'DEBUG>', arguments
 
     app = $ Application, board: board
-    React.render app, root
+    ReactDOM.render app, root
 
     Exoskeleton.history.start base: Rdb.base, pushState: true
 

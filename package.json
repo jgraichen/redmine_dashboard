@@ -2,6 +2,7 @@
   "private": true,
   "dependencies": {
     "bluebird": "^2.2.1",
+    "classnames": "^2.1.5",
     "counterpart": "^0.14.2",
     "exoskeleton": "^0.7.0",
     "font-awesome": "^4.2.0",
@@ -9,7 +10,8 @@
     "molecule": "git://github.com/jgraichen/molecule.git",
     "mousetrap": "^1.4.6",
     "object-assign": "^4.0.0",
-    "react": "^0.13.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "tether": "^1.1.0",
     "underscore": "^1.8.3"
   },
