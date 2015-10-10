@@ -1,7 +1,0 @@
-{
-  "name": "redmine_dashboard",
-  "private": true,
-  "dependencies": {
-    "font-awesome": "~4.1.0"
-  }
-}
