@@ -7,8 +7,6 @@ rvm:
 - '2.2'
 - '2.1'
 - 2.0.0
-node_js:
-- '4.1'
 env:
 - REDMINE_VERSION=3.1.1
 - REDMINE_VERSION=master
@@ -18,6 +16,10 @@ matrix:
 branches:
   except:
   - debian
+before_install:
+- nvm install 4
+- node --version
+- npm --version
 install:
 - npm config set spin=false
 - export BUNDLE_GEMFILE=""
