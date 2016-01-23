@@ -6,7 +6,15 @@ if File.exist? env
 else
   require 'bundler'
   ::Bundler.with_clean_env do
-    Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+    args = [
+      File.expand_path('../../../redmine', __FILE__),
+      %w(exec bundle exec rspec),
+      ARGV
+    ].flatten
+
+    puts args.inspect
+
+    Kernel.exec *args
   end
 end
 
