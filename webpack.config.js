@@ -18,7 +18,7 @@ var plugins = [
 module.exports = {
   target: 'web',
   entry: [
-    './app/assets/main.coffee',
+    './app/assets/main',
     './app/assets/main.sass'
   ],
   output: {
