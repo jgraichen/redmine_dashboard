@@ -7,8 +7,7 @@ rvm:
 - '2.3.0'
 - '2.2'
 - '2.1'
-- 2.0.0
-- 1.9.3
+- '2.0.0'
 env:
 - REDMINE_VERSION=3.2.0
 - REDMINE_VERSION=3.1.3
