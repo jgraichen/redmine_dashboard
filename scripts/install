@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 [ -z "$PLUGIN_PATH" ] && exit 1
 [ -z "$REDMINE_EXEC" ] && exit 1
 [ -z "$REDMINE_PATH" ] && exit 1
@@ -24,9 +26,17 @@ echo "Symlink plugin, assets and specs..."
 
 mkdir -p ${REDMINE_PATH}/public/plugin_assets
 
-ln -s "${PLUGIN_PATH}" "${REDMINE_PATH}/plugins/redmine_dashboard"
-ln -s  "${PLUGIN_PATH}/spec" "${REDMINE_PATH}/spec"
-ln -s  "${PLUGIN_PATH}/assets" "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked"
+if [ ! -L "${REDMINE_PATH}/plugins/redmine_dashboard" ]; then
+    ln -s "${PLUGIN_PATH}" "${REDMINE_PATH}/plugins/redmine_dashboard"
+fi
+
+if [ ! -L "${REDMINE_PATH}/spec" ]; then
+    ln -s  "${PLUGIN_PATH}/spec" "${REDMINE_PATH}/spec"
+fi
+
+if [ ! -L "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked" ]; then
+    ln -s  "${PLUGIN_PATH}/assets" "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked"
+fi
 
 echo "Generate database configuration..."
 
