@@ -6,12 +6,12 @@
     "counterpart": "^0.14.2",
     "exoskeleton": "^0.7.0",
     "font-awesome": "^4.2.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.9.0",
     "molecule": "git://github.com/jgraichen/molecule.git",
     "mousetrap": "^1.4.6",
     "object-assign": "^4.0.0",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "tether": "^1.1.0",
     "underscore": "^1.8.3"
   },
@@ -28,7 +28,7 @@
     "postcss-loader": "^0.6.0",
     "sass-loader": "^3.0.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.9.10",
+    "webpack": "^1.12.15",
     "yaml-loader": "^0.1.0"
   }
 }
