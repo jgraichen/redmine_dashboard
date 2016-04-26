@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
+ruby RUBY_VERSION if ENV['TRAVIS_CI']
+
 gem 'haml'
 
 group :development do
