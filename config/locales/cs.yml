@@ -62,7 +62,7 @@ cs:
   rdb_no_parent: Bez nadřazeného úkolu
   rdb_issue_menu_progress_title: Aktualizovat % hotovo
   rdb_issue_menu_progress: "%{count}%"
-  rdb_issue_menu_redmine_issue: "Úkol"
+  rdb_issue_menu_redmine_issue: Úkol
   rdb_issue_menu_show: Zobrazit
   rdb_issue_menu_edit: Upravit
   rdb_issue_menu_assigne_me: Přiřadit mně
