@@ -18,6 +18,8 @@ matrix:
 branches:
   except:
   - debian
+before_install:
+- gem install bundler --pre
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
