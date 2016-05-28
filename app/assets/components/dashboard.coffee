@@ -1,4 +1,5 @@
 React = require 'react'
+ReactDOM = require 'react-dom'
 cx = require 'classnames'
 t = require 'counterpart'
 $ = React.createElement
@@ -78,7 +79,7 @@ class Dashboard extends Component
   renderLayer: =>
     return unless @state.open
 
-    target = React.findDOMNode @refs['header']
+    target = ReactDOM.findDOMNode @refs['header']
 
     $ Attachment,
       target: target

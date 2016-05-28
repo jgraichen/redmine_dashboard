@@ -40,7 +40,7 @@ module RdbRequestHelpers
   end
 
   def board_title
-    find :xpath, "//*[@id = 'rdb-menu']/span"
+    find :xpath, "//*[@id = 'rdb-menu']"
   end
 
   def open(*selector)
