@@ -79,7 +79,7 @@ describe Rdb::PermissionsController, type: :controller do
         subject { json }
 
         it do
-          is_expected.to eq \
+          is_expected.to match \
             id: permission.id,
             role: 'ADMIN',
             principal: {
@@ -87,7 +87,7 @@ describe Rdb::PermissionsController, type: :controller do
               name: current_user.name,
               type: 'user',
               value: current_user.login,
-              avatar_url: 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
+              avatar_url: a_string_matching(%r{gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce})
             }
         end
       end

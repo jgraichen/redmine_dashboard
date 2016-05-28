@@ -57,14 +57,14 @@ describe Rdb::BoardsController, type: :controller do
           subject { json['columns'] }
 
           it { expect(subject.size).to eq 5 }
-          it { expect(subject.map{|row| row['name']}).to eq %w(New Assigned Resolved Feedback Done) }
+          it { expect(subject.map{|row| row['name']}).to match_array %w(New Assigned Resolved Feedback Done) }
         end
 
         describe 'permissions' do
           subject { json['permissions'] }
 
           it do
-            is_expected.to eq \
+            is_expected.to match \
               [{
                 'id' => permission.id,
                 'role' => 'ADMIN',
@@ -73,7 +73,7 @@ describe Rdb::BoardsController, type: :controller do
                   'id' => current_user.id,
                   'name' => current_user.name,
                   'value' => current_user.login,
-                  'avatar_url' => 'https://secure.gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce?rating=PG&size=128&default='
+                  'avatar_url' => a_string_matching(%r{gravatar.com/avatar/8238a5d4cfa7147f05f31b63a8a320ce})
                 }
               }]
           end
