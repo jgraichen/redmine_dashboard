@@ -78,6 +78,27 @@ RSpec.configure do |config|
   Capybara.default_host = 'http://example.org'
   Capybara.default_wait_time = 5
 
+  Capybara.register_driver :chrome do |app|
+    if File.executable?('/usr/lib/chromium/chromedriver')
+      Selenium::WebDriver::Chrome.driver_path = '/usr/lib/chromium/chromedriver'
+    end
+
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.register_driver :firefox do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  case ENV.fetch('BROWSER', 'firefox')
+    when /^chrom(e|ium)$/i
+      Capybara.javascript_driver = :chrome
+    when /^f(irefox|f)$/i
+      Capybara.javascript_driver = :firefox
+    else
+      throw RuntimerError.new "Unknown browser engine: #{ENV['BROWSER']}"
+  end
+
   config.before(:each) do
     if page.driver.respond_to?(:resize)
       page.driver.resize 1280, 1024
