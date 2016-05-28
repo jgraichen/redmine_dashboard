@@ -1,0 +1,68 @@
+---
+ko:
+  project_module_dashboard: 현황판
+  permission_view_dashboards: 현황판 보기
+  permission_configure_dashboards: 현황판 설정
+  menu_label_dashboard: 현황판
+  rdb_taskboard: 작업판
+  rdb_planningboard: 계획판
+  rdb_filter_version_all: 모든 버전
+  rdb_filter_version_unassigned: 버전 없음
+  rdb_filter_tracker_all: 모든 유형
+  rdb_filter_tracker_multiple: 여러 유형
+  rdb_filter_category_all: 모든 범주
+  rdb_filter_category_multiple: 여러 범주
+  rdb_filter_assignee_all: 모든 담당자
+  rdb_filter_assignee_me: 내 일감
+  rdb_filter_assignee_none: 담당자 없음
+  rdb_filter_assignee_others: 다른 사람
+  rdb_options: 옵션
+  rdb_options_change_assignee: 담당자 변경
+  rdb_options_change_assignee_info: 일감을 옮기면서 담당자를 자신으로 변경
+  rdb_options_hide_done: 닫힌 일감 숨기기
+  rdb_options_hide_done_info: 닫힌 일감을 숨기고 종료됨 영역을 작게 표시
+  rdb_options_reset: 필터 재설정
+  rdb_options_reset_info: 모든 필터를 재설정하여 기본상대로 돌가감
+  rdb_options_configure: 설정
+  rdb_options_include_subprojects: 하위 프로젝트 포함
+  rdb_options_view: 보기
+  rdb_options_issue_view: 이슈 보기
+  rdb_options_issue_view_card: 카드
+  rdb_options_issue_view_compact: 작게 보기
+  rdb_options_group: 이슈 묶기
+  rdb_group_none: 묶음 없음
+  rdb_group_category: 범주
+  rdb_group_assignee: 담당자
+  rdb_group_tracker: 유형
+  rdb_group_priority: 우선순위
+  rdb_group_version: 버전
+  rdb_group_parent: 상위 일감
+  rdb_group_project: 프로젝트
+  rdb_options_board_view: 현황판 보기
+  rdb_options_board_view_compact: 클래식
+  rdb_options_board_view_outline: 개괄
+  rdb_options_columns: 현황판 열
+  rdb_options_fullscreen: 전체화면
+  rdb_legend_priorities: 우선순위
+  rdb_legend_warnings: 경고
+  rdb_issue_overdue: 기한 지남
+  rdb_not_available: N/A
+  rdb_column_done: 완료
+  rdb_x_issues:
+    other: "%{count} 일감"
+  rdb_dialog_update_issue_title: 일감 갱신
+  rdb_dialog_update_issue_status: 일감의 새 상태 선택
+  rdb_other_issues: 다른 일감들 <span>(%{count})</span>
+  rdb_unassigned: 지정되지 않음
+  rdb_others: 기타
+  rdb_all_issues: 모든 일감
+  rdb_no_parent: 상위 일감 없음
+  rdb_issue_menu_progress_title: 진척률 조정
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: 일감
+  rdb_issue_menu_show: 보기
+  rdb_issue_menu_edit: 편집
+  rdb_issue_menu_assigne_me: 내가 맡기
+  rdb_issue_menu_unassigne_me: 일감 놓기
+  rdb_flash_illegal_workflow_action: "<p>이 업무흐름이 허용되지 않습니다:</p><p><b>%{source}</b>에서 <b>%{target}</b>로 <b>%{issue}</b> 이동</p>"
+  rdb_flash_invalid_request: "<p>잘못된 요청.</p>"

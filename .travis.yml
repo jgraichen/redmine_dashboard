@@ -4,21 +4,17 @@ cache:
   directories:
   - vendor/bundle
 rvm:
+- '2.3.0'
 - '2.2'
 - '2.1'
-- 2.0.0
-- 1.9.3
 env:
-- REDMINE_VERSION=3.1.0
-- REDMINE_VERSION=3.0.4
-- REDMINE_VERSION=2.6.6
+- REDMINE_VERSION=3.2.1
+- REDMINE_VERSION=3.1.4
+- REDMINE_VERSION=2.6.10
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
-  exclude:
-  - env: REDMINE_VERSION=2.6.5
-    rvm: '2.2'
 branches:
   except:
   - debian

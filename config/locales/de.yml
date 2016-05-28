@@ -17,8 +17,8 @@ de:
   rdb_filter_assignee_none: Nicht zugewiesen
   rdb_filter_assignee_others: Andere
   rdb_options: Optionen
-  rdb_options_change_assignee: "Ändere Verantwortlichen"
-  rdb_options_change_assignee_info: "Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird."
+  rdb_options_change_assignee: Ändere Verantwortlichen
+  rdb_options_change_assignee_info: Ändere Verantwortlichen auf aktuellen Benutzer wenn ein Ticket verschoben wird.
   rdb_options_hide_done: Verberge fertige Tickets
   rdb_options_hide_done_info: Verbirgt fertige Tickets und verkleinert Fertig-Spalte.
   rdb_options_reset: Filter zurücksetzen
@@ -36,7 +36,7 @@ de:
   rdb_group_tracker: Tracker
   rdb_group_priority: Priorität
   rdb_group_version: Version
-  rdb_group_parent: "Übergeordnete Aufgabe"
+  rdb_group_parent: Übergeordnete Aufgabe
   rdb_group_project: Projekt
   rdb_options_board_view: Board Ansicht
   rdb_options_board_view_compact: Klassisch (Kompakt)
@@ -45,7 +45,7 @@ de:
   rdb_options_fullscreen: Vollbildschirm
   rdb_legend_priorities: Prioritäten
   rdb_legend_warnings: Warnungen
-  rdb_issue_overdue: "Überfällig"
+  rdb_issue_overdue: Überfällig
   rdb_property_time: <span title="Verbrauchte Zeit">%{actual}</span> / <span title="Geschätzte Zeit">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Fertig
