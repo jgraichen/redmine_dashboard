@@ -87,7 +87,7 @@ RSpec.configure do |config|
   end
 
   Capybara.register_driver :firefox do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+    Capybara::Selenium::Driver.new(app, :browser => :firefox)
   end
 
   case ENV.fetch('BROWSER', 'firefox')
