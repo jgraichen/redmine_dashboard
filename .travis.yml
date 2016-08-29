@@ -4,10 +4,11 @@ cache:
   directories:
   - vendor/bundle
 rvm:
-- '2.3.0'
-- '2.2'
-- '2.1'
+- '2.3.1'
+- '2.2.5'
+- '2.1.10'
 env:
+- REDMINE_VERSION=3.3.0
 - REDMINE_VERSION=3.2.3
 - REDMINE_VERSION=3.1.6
 - REDMINE_VERSION=2.6.10
@@ -19,6 +20,7 @@ branches:
   except:
   - debian
 before_install:
+- gem update --system
 - gem install bundler --pre
 install:
 - export BUNDLE_GEMFILE=""
