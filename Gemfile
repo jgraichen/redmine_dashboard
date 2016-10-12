@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
+send :ruby, RUBY_VERSION if ENV['TRAVIS_CI']
+
 gem 'slim', require: false
 
 group :development, :test do
