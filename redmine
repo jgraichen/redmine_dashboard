@@ -1,146 +1,52 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
-REDMINE_VERSION=${REDMINE_VERSION:-3.2.3}
-PWD=$(pwd)
-DIR="vendor/redmine/${REDMINE_VERSION}"
+REDMINE_VERSION = ENV['REDMINE_VERSION'] = ENV['REDMINE_VERSION'] || ENV['VERSION'] || '3.3.1'
+REDMINE_PATH    = ENV['REDMINE_PATH']    = File.expand_path("../vendor/redmine/#{REDMINE_VERSION}/", __FILE__)
+REDMINE_EXEC    = ENV['REDMINE_EXEC']    = File.expand_path(__FILE__)
+PLUGIN_PATH     = ENV['PLUGIN_PATH']     = File.expand_path("..", __FILE__)
 
-if [ "$BUNDLE_PATH" ]; then
-	BUNDLE_OPTS="--path ${BUNDLE_PATH}"
-fi
+require 'pathname'
 
-case ${REDMINE_VERSION} in
-	master)
-		REDMINE_SOURCE="http://svn.redmine.org/redmine/trunk"
-		;;
+SCRIPT_PATH = Pathname.new(__FILE__).expand_path.parent.join('scripts')
 
-	*)
-		REDMINE_SOURCE="http://svn.redmine.org/redmine/tags/${REDMINE_VERSION}"
-		;;
-esac
+def help
+  <<-HELP.gsub(/^\s{4}/, '')
+    Available commands:
+      #{available_commands.join("\n  ")}
+  HELP
+end
 
-function install
-{
-	set -e
-	set -x
+def available_commands
+  SCRIPT_PATH.children
+    .select(&:file?)
+    .select(&:executable?)
+    .map(&:basename)
+    .map(&:to_s)
+end
 
-	mkdir -p "${DIR}"
-	mkdir -p tmp log
-	svn export --quiet --force "${REDMINE_SOURCE}" "${DIR}"
+def handle_command(cmd, argv)
+  unless ARGV[0] =~ /\A(\w+)\z/
+    STDERR.puts "Invalid command: #{ARGV[0]}"
+    STDERR.puts help
+    Kernel.exit 1
+  end
 
-	mkdir -p ${DIR}/public/plugin_assets
+  command = SCRIPT_PATH.join(cmd.to_s)
 
-	ln -s "${PWD}" "${DIR}/plugins/redmine_dashboard"
-	ln -s  "${PWD}/spec" "${DIR}/spec"
-	ln -s  "${PWD}/assets" "${DIR}/public/plugin_assets/redmine_dashboard_linked"
+  if command.file? && command.executable?
+    Kernel.exec command.to_s, *ARGV[1..-1]
+  else
+    STDERR.puts "Unknown command: #{ARGV[0]}"
+    STDERR.puts help
+    Kernel.exit 1
+  end
+end
 
-	./redmine-genconf "${DIR}" "${REDMINE_VERSION}" > "${DIR}/config/database.yml"
-	set +x
-
-	pushd "${DIR}"
-
-	set -x
-	bundle install --without rmagick --jobs=3 --retry=3 ${BUNDLE_OPTS}
-	bundle exec rake generate_secret_token db:create:all db:migrate redmine:plugins:migrate db:test:prepare
-	set +x
-
-	popd
-}
-
-function update
-{
-	set -e
-
-	[ ! -d "${DIR}" ] && install && return
-
-	if [ "${REDMINE_VERSION}" == "master" ]; then
-		set -x
-		svn export --quiet --force "${REDMINE_SOURCE}" "${DIR}"
-		sed -i -e "s/.*gem [\"']capybara[\"'].*/gem 'capybara', '~> 2.3'/g" "${DIR}/Gemfile"
-		set +x
-	fi
-
-	pushd "${DIR}"
-
-	set -x
-	bundle update --jobs=3 --retry=3
-	bundle exec rake db:create:all db:migrate redmine:plugins:migrate db:test:prepare
-	set +x
-
-	popd
-}
-
-function remove
-{
-	set -e
-
-	set -x
-	rm -r "${DIR}"
-	set +x
-}
-
-function server
-{
-	set -e
-
-	pushd "${DIR}"
-
-	set -x
-	bundle exec rails server --port 7000
-	set +x
-
-	popd
-}
-
-function do_exec
-{
-	set -e
-	pushd "${DIR}"
-
-	set -x
-	$*
-}
-
-function cleanup
-{
-	set -e
-
-	pushd "${DIR}"
-	set -x
-
-	rm -rf tmp/*
-	rm -rf log/*
-
-	set +x
-	popd
-}
-
-function testlog
-{
-	cat "${DIR}/log/test.log"
-	echo
-}
-
-function dist
-{
-	TAG=$1
-	[ -z "${TAG}" ] && TAG=`git tag | tail -n1`
-	mkdir -p dist
-	set -x
-	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.tar.gz" "${TAG}"
-	git archive --prefix redmine_dashboard/ --output "dist/redmine_dashboard-${TAG}.zip" "${TAG}"
-}
-
-case "$1" in
-	install) shift; install $@; exit 0;;
-	update) shift; update $@; exit 0;;
-	remove) shift; remove $@; exit 0;;
-	server) shift; server $@; exit 0;;
-	cleanup) shift; cleanup $@; exit 0;;
-	testlog) shift; testlog $@; exit 0;;
-	exec) shift; do_exec $@; exit 0;;
-	dist) shift; dist $@; exit 0;;
-	*)
-		echo "Unknown action: $@"
-		exit 1
-		;;
-esac
+case ARGV[0]
+  when '-h', '--help', nil
+    STDOUT.puts help
+  when 'exec'
+    Dir.chdir(REDMINE_PATH) { Kernel.exec *ARGV[1..-1] }
+  else
+    handle_command ARGV[0], ARGV[1..-1]
+end
