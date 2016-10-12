@@ -7,7 +7,6 @@ rvm:
 - '2.3.1'
 - '2.2.5'
 - '2.1.10'
-- '2.0.0'
 env:
 - REDMINE_VERSION=3.3.1
 - REDMINE_VERSION=3.2.4
@@ -24,7 +23,8 @@ before_install:
 - node --version
 - npm --version
 - gem update --system
-- gem install bundler --pre
+- gem install bundler
+- bundle --version
 install:
 - npm config set spin=false
 - export BUNDLE_GEMFILE=""
