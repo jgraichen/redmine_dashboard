@@ -76,21 +76,24 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 
   Capybara.default_host = 'http://example.org'
-  Capybara.default_wait_time = 5
+  Capybara.default_max_wait_time = 5
 
   Capybara.register_driver :chrome do |app|
-    if File.executable?('/usr/lib/chromium/chromedriver')
-      Selenium::WebDriver::Chrome.driver_path = '/usr/lib/chromium/chromedriver'
-    end
+    path =  %w(
+              /usr/lib/chromium/chromedriver
+              /usr/lib/chromium-browser/chromedriver
+            ).find {|file| File.executable?(file) }
 
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+    Capybara::Selenium::Driver.new app, \
+      browser: :chrome,
+      driver_path: path
   end
 
   Capybara.register_driver :firefox do |app|
     Capybara::Selenium::Driver.new(app, :browser => :firefox)
   end
 
-  case ENV.fetch('BROWSER', 'firefox')
+  case ENV.fetch('BROWSER', 'chromium')
     when /^chrom(e|ium)$/i
       Capybara.javascript_driver = :chrome
     when /^f(irefox|f)$/i
