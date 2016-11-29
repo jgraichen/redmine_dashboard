@@ -79,14 +79,16 @@ RSpec.configure do |config|
   Capybara.default_max_wait_time = 5
 
   Capybara.register_driver :chrome do |app|
-    path =  %w(
-              /usr/lib/chromium/chromedriver
-              /usr/lib/chromium-browser/chromedriver
-            ).find {|file| File.executable?(file) }
+    %w(
+      /usr/lib/chromium/chromedriver
+      /usr/lib/chromium-browser/chromedriver
+    ).find do |file|
+      if File.executable?(file)
+        Selenium::WebDriver::Chrome.driver_path = file
+      end
+    end
 
-    Capybara::Selenium::Driver.new app, \
-      browser: :chrome,
-      driver_path: path
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
 
   Capybara.register_driver :firefox do |app|

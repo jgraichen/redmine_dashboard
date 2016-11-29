@@ -8,10 +8,13 @@ rvm:
 - '2.2.6'
 - '2.1.10'
 env:
-- REDMINE_VERSION=3.3.1
-- REDMINE_VERSION=3.2.4
-- REDMINE_VERSION=3.1.7
-- REDMINE_VERSION=master
+  global:
+  - BROWSER=firefox
+  matrix:
+  - REDMINE_VERSION=3.3.1
+  - REDMINE_VERSION=3.2.4
+  - REDMINE_VERSION=3.1.7
+  - REDMINE_VERSION=master
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
