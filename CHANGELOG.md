@@ -1,3 +1,7 @@
+## 2.7.1
+
+* Update locale files (new: ko)
+
 ## 2.7.0
 
 * Add Mongolian locale
