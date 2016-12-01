@@ -7,7 +7,7 @@
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is compatible with Redmine 3.1, 3.0, 2.6 and possibly older versions.
+**Redmine Dashboard 2** is compatible and tested with Redmine 3.3, 3.2, 3.1, 2.6. It may be compatible with older versions too.
 
 ![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)
 
@@ -36,7 +36,12 @@ I provide a PPA at [ppa:jgraichen/redmine-dashboard](https://launchpad.net/~jgra
 3. Install required dependencies by running `bundle install --without development test` in your redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` ([#58](https://github.com/jgraichen/redmine_dashboard/issues/58)).
 4. A database migration is not needed. Restart redmine.
 
-#### Upgrade
+### Configure Redmine
+
+1. Add the dashboard module to your project (`Settings > Modules`).
+2. Configure dashboard permissions to your user roles (`Administration > Roles and permissions`). Users won't see a Dashboard tab without having the `View Dashboard` permission.
+
+### Upgrade
 
 1. Remove old plugin directory.
 2. Follow installation steps for new release.
