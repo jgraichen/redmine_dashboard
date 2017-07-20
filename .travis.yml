@@ -1,19 +1,21 @@
 sudo: false
 language: ruby
+dist: trusty
 cache:
   directories:
   - vendor/bundle
 rvm:
-- '2.3.3'
-- '2.2.6'
+- '2.4.1'
+- '2.3.4'
+- '2.2.7'
 - '2.1.10'
 env:
   global:
   - BROWSER=firefox
   matrix:
-  - REDMINE_VERSION=3.3.1
-  - REDMINE_VERSION=3.2.4
-  - REDMINE_VERSION=3.1.7
+  - REDMINE_VERSION=3.4.2
+  - REDMINE_VERSION=3.3.4
+  - REDMINE_VERSION=3.2.7
   - REDMINE_VERSION=master
 matrix:
   allow_failures:
@@ -22,7 +24,7 @@ branches:
   except:
   - debian
 before_install:
-- nvm install 4
+- nvm install 8
 - node --version
 - npm --version
 - gem update --system
