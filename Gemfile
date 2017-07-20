@@ -32,5 +32,5 @@ group :development, :test do
 
   # for redmine on travis CI
   gem 'test-unit'
-  gem 'selenium-webdriver', '< 3'
+  gem 'selenium-webdriver'
 end
