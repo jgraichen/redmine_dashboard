@@ -20,6 +20,12 @@ env:
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
+  exclude:
+  - rvm: 2.4.1
+    env: REDMINE_VERSION=3.3.4
+  - rvm: 2.4.1
+    env: REDMINE_VERSION=3.2.7
+  - rvm: 2.4.1
 branches:
   except:
   - debian
