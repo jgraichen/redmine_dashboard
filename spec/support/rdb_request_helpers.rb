@@ -37,7 +37,7 @@ module RdbRequestHelpers
   def select_filter(filter, value)
     find_menu_link(filter).click
     find_menu_container(filter).click_link value
-    find_menu_link(filter).should have_content(value)
+    expect(find_menu_link(filter)).to have_content(value)
   end
 
   def unset_all_filter

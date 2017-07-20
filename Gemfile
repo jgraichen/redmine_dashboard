@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 send :ruby, RUBY_VERSION if ENV['CI']
 
 gem 'haml'
-gem 'rake', '< 11.0'
+gem 'rake'
 
 group :development do
   gem 'transifex-ruby-fork-jg', require: false
@@ -12,7 +12,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 2.0'
+  gem 'rspec', '~> 3.6'
   gem 'rspec-rails'
   gem 'poltergeist'
   gem 'database_cleaner'
