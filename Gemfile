@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 send :ruby, RUBY_VERSION if ENV['CI']
 
 gem 'haml'
+gem 'rake', '< 11.0'
 
 group :development do
   gem 'transifex-ruby-fork-jg', require: false
