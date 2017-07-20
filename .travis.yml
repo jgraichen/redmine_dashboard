@@ -4,6 +4,8 @@ dist: trusty
 cache:
   directories:
   - vendor/bundle
+addons:
+  chrome: stable
 rvm:
 - '2.4.1'
 - '2.3.4'
