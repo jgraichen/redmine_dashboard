@@ -37,6 +37,7 @@ feature 'Dashboard Permissions', js: true, sauce: true do
 
     unreliable do
       fill_in 'Search user', with: 'Lo'
+      sleep 0.1
       click_on 'Dave2 Lopper2'
     end
 
