@@ -52,6 +52,7 @@ pl:
   rdb_x_issues:
     one: 1 zagadnienie
     few: "%{count} zagadnień"
+    many: "%{count} zagadnień"
     other: "%{count} zagadnień"
   rdb_dialog_update_issue_title: Aktualizacja zagadnienia
   rdb_dialog_update_issue_status: Wybierz nowy status zagadnienia
