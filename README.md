@@ -4,7 +4,6 @@
 [![Code Climate](https://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
 [![Rate at redmine.org](https://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Follow at Twitter](https://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
-[![Flattr this git repo](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
 
 ***NOTE***: This README is for the **development version** of Redmine Dashboard 3.
 
