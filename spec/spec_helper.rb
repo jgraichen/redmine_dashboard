@@ -7,7 +7,13 @@ if File.exist? env
 else
   require 'bundler'
   ::Bundler.with_original_env do
-    Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+    # Unset BUNDLE_GEMFILE to force using Redmines Gemfile
+    ENV['BUNDLE_GEMFILE'] = nil
+
+    cmd = "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+    puts "+ #{cmd}"
+
+    Kernel.exec(cmd)
   end
 end
 
