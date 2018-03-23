@@ -11,6 +11,7 @@ def gen_dbconf(env)
     'pool' => 5,
     'timeout' => 5000,
     'adapter' => 'postgresql',
+    'port'    => ENV.fetch('DATABASE_PORT', 5432),
     'database' => (env == 'development') ? 'rdb_development' : "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
   }
 end

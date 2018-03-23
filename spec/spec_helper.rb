@@ -1,11 +1,12 @@
 ENV["RAILS_ENV"] ||= 'test'
 
-env = File.expand_path('../../config/environment.rb', __FILE__)
+env = File.expand_path('config/environment.rb', Dir.pwd)
+
 if File.exist? env
   require env
 else
   require 'bundler'
-  ::Bundler.with_clean_env do
+  ::Bundler.with_original_env do
     Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
   end
 end
