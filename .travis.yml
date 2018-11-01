@@ -5,13 +5,13 @@ cache:
   directories:
   - vendor/bundle
 rvm:
-- 2.5.0
-- 2.4.3
-- 2.3.6
-- 2.2.9
+- 2.5.3
+- 2.4.5
+- 2.3.8
+- 2.2.10
 env:
-- REDMINE_VERSION=3.4.4
-- REDMINE_VERSION=3.3.6
+- REDMINE_VERSION=3.4.6
+- REDMINE_VERSION=3.3.8
 - REDMINE_VERSION=3.2.9
 - REDMINE_VERSION=3.1.7
 - REDMINE_VERSION=2.6.10
@@ -20,21 +20,21 @@ matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
   exclude:
-  - rvm: 2.5.0
-    env: REDMINE_VERSION=3.3.6
-  - rvm: 2.5.0
+  - rvm: 2.5.3
+    env: REDMINE_VERSION=3.3.8
+  - rvm: 2.5.3
     env: REDMINE_VERSION=3.2.9
-  - rvm: 2.5.0
+  - rvm: 2.5.3
     env: REDMINE_VERSION=3.1.7
-  - rvm: 2.5.0
+  - rvm: 2.5.3
     env: REDMINE_VERSION=2.6.10
   - rvm: 2.4.3
     env: REDMINE_VERSION=3.3.6
-  - rvm: 2.4.3
+  - rvm: 2.4.5
     env: REDMINE_VERSION=3.2.9
-  - rvm: 2.4.3
+  - rvm: 2.4.5
     env: REDMINE_VERSION=3.1.7
-  - rvm: 2.4.3
+  - rvm: 2.4.5
     env: REDMINE_VERSION=2.6.10
 branches:
   except:
