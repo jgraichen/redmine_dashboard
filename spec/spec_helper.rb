@@ -69,6 +69,7 @@ RSpec.configure do |config|
   Capybara.default_host = 'http://example.org'
   Capybara.javascript_driver = :selenium_chrome
   Capybara.default_max_wait_time = 15
+  Capybara.server = :webrick
 
   config.before(:each, js: true) do
     page.driver.browser.manage.window.resize_to(1280, 1024)

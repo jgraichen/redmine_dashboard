@@ -22,6 +22,7 @@ branches:
   - debian
 before_install:
 - gem update --system
+- gem uninstall bundler --all --executables
 - gem install bundler -v '~> 1.0'
 - bundle --version
 - sudo apt-get install -yq chromium-browser chromium-chromedriver
