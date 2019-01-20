@@ -1,3 +1,8 @@
+## Unreleased
+
+* Add support for Redmine 4.0 (experimental)
+* Drop old Ruby (< 2.3) and Redmine (< 3.4) versions from automated testing
+
 ## 2.7.1
 
 * Update locale files (new: ko)
