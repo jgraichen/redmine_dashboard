@@ -1,5 +1,4 @@
----
-zh-TW:
+zh_TW:
   project_module_dashboard: 儀表板
   permission_view_dashboards: 檢視儀表板
   permission_configure_dashboards: 設定儀表板
@@ -46,14 +45,14 @@ zh-TW:
   rdb_legend_priorities: 優先權
   rdb_legend_warnings: 警告
   rdb_issue_overdue: 過期
-  rdb_property_time: <span title="花費時間">%{actual}</span> / <span title="預計時間">%{estimated}</span>
+  rdb_property_time: '<span title="花費時間">%{actual}</span> / <span title="預計時間">%{estimated}</span>'
   rdb_not_available: N/A
   rdb_column_done: 完成
   rdb_x_issues:
     other: "%{count} 問題"
   rdb_dialog_update_issue_title: 更新問題
   rdb_dialog_update_issue_status: 選擇新問題的狀態
-  rdb_other_issues: 其他問題 <span>(%{count})</span>
+  rdb_other_issues: "其他問題 <span>(%{count})</span>"
   rdb_unassigned: 未指派
   rdb_others: 其他
   rdb_all_issues: 所有問題
