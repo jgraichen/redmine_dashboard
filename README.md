@@ -1,8 +1,8 @@
 # Redmine Dashboard 2
 
-[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard/stable-v2.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
-[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
+[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard/stable-v2.svg?style=for-the-badge)](https://travis-ci.org/jgraichen/redmine_dashboard/branches)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=for-the-badge)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=for-the-badge)](https://twitter.com/RmDashboard)
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
