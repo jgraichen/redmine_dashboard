@@ -7,42 +7,29 @@ cache:
 addons:
   chrome: stable
 rvm:
-- '2.5.0'
-- '2.4.3'
-- '2.3.6'
-- '2.2.9'
+- 2.6.0
+- 2.5.3
+- 2.4.5
 env:
   global:
   - BROWSER=chromium
   matrix:
-  - REDMINE_VERSION=3.4.3
-  - REDMINE_VERSION=3.3.5
-  - REDMINE_VERSION=3.2.8
+  - REDMINE_VERSION=4.0.1
   - REDMINE_VERSION=master
 matrix:
   allow_failures:
   - env: REDMINE_VERSION=master
-  exclude:
-  - rvm: 2.5.0
-    env: REDMINE_VERSION=3.3.5
-  - rvm: 2.5.0
-    env: REDMINE_VERSION=3.2.8
-  - rvm: 2.4.3
-    env: REDMINE_VERSION=3.3.5
-  - rvm: 2.4.3
-    env: REDMINE_VERSION=3.2.8
 branches:
   except:
   - debian
 before_install:
-- nvm install 8
+- nvm install 10
 - node --version
 - npm --version
 - gem update --system
 - gem install bundler
 - bundle --version
-- wget https://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip -O /tmp/chromedriver.zip
-- unzip /tmp/chromedriver.zip -d ~/.local/bin
+- sudo apt-get -qy install chromium-chromedriver
 install:
 - npm config set spin=false
 - export BUNDLE_GEMFILE=""
