@@ -14,7 +14,5 @@ end
 group :test do
   gem 'rspec', '~> 3.6'
   gem 'rspec-rails'
-  gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'fuubar'
 end
