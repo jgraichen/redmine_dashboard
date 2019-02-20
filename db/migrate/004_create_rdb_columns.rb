@@ -1,4 +1,4 @@
-class CreateRdbColumns < ActiveRecord::Migration
+class CreateRdbColumns < ActiveRecord::Migration[4.2]
   def self.up
     create_table :rdb_columns do |t|
       t.integer :dashboard_id, null: false

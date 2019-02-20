@@ -1,4 +1,4 @@
-class CreateRdbPermissions < ActiveRecord::Migration
+class CreateRdbPermissions < ActiveRecord::Migration[4.2]
   def self.up
     create_table :rdb_permissions do |t|
       t.integer :dashboard_id,   null: false
