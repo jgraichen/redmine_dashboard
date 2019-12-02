@@ -1,18 +1,20 @@
-dist: xenial
+dist: bionic
 language: ruby
 cache:
   directories:
   - vendor/bundle
 services:
   - postgresql
+addons:
+  postgresql: 10
 rvm:
-- 2.6.0
-- 2.5.3
-- 2.4.5
+- 2.6.5
+- 2.5.7
+- 2.4.9
 - 2.3.8
 env:
-- REDMINE_VERSION=4.0.1
-- REDMINE_VERSION=3.4.8
+- REDMINE_VERSION=4.0.5
+- REDMINE_VERSION=3.4.12
 - REDMINE_VERSION=master
 matrix:
   allow_failures:
@@ -22,12 +24,12 @@ branches:
   - debian
 before_install:
 - gem update --system
-- echo yes | rvm gemset delete global
-- gem uninstall bundler --all --executables
 - gem install bundler -v '~> 1.0'
 - bundle --version
 - sudo apt-get install -yq chromium-browser chromium-chromedriver
 - export PATH=$PATH:/usr/lib/chromium-browser/
+- which chromedriver
+- chromedriver --version
 install:
 - export BUNDLE_GEMFILE=""
 - export BUNDLE_PATH="$(pwd)/vendor/bundle"
