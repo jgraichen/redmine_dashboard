@@ -1,0 +1,75 @@
+name: Test
+on:
+  push:
+    branches-ignore: [debian]
+
+jobs:
+  test:
+    name: Ruby ${{ matrix.ruby }} / Redmine ${{ matrix.redmine }}
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        ruby: ['2.6', '2.5', '2.4']
+        redmine: ['4.0.5', '3.4.12']
+      fail-fast: false
+
+    services:
+      postgres:
+        image: postgres:9.6
+        env:
+          POSTGRES_USER: p
+          POSTGRES_PASSWORD: p
+          POSTGRES_DB: db
+        ports: [5432/tcp]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Update package archives
+        run: sudo apt-get update --yes --quiet
+
+      - name: Setup Chromium
+        run: |
+          sudo apt-get install --yes --quiet chromium-browser chromium-chromedriver
+          export PATH=$PATH:/usr/lib/chromium-browser/
+
+      - name: Install package dependencies
+        run: >
+          sudo apt-get install --yes --quiet
+          libpq-dev
+          subversion
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          architecture: 'x64'
+
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: vendor
+          key: v1-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+
+      - name: Setup Bundler
+        run: |
+          gem install bundler -v '~> 1.0'
+          bundle config path "$(pwd)/vendor/bundle"
+
+      - name: Install Ruby dependencies
+        run: |
+          bundle install --jobs=4 --retry=3 --without development
+
+      - name: Setup local redmine
+        env:
+          REDMINE_VERSION: ${{ matrix.redmine }}
+          BUNDLE_OPTS: --without development
+          DATABASE_URL: postgresql://p:p@localhost:${{ job.services.postgres.ports[5432] }}/db
+        run: ./redmine update
+
+      - name: Run tests
+        env:
+          REDMINE_VERSION: ${{ matrix.redmine }}
+        run: bundle exec rspec --color

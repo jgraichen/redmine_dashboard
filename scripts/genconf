@@ -6,24 +6,35 @@ require 'pathname'
 REDMINE_VERSION = ENV['REDMINE_VERSION'] || Kernel.exit(1)
 REDMINE_PATH    = ENV['REDMINE_PATH']    || Kernel.exit(1)
 
-def gen_dbconf(env)
+def generate(env)
+  if env == 'development'
+    database = 'rdb_development'
+  else
+    database = "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
+  end
+
+  uri = URI.parse \
+    ENV.fetch('DATABASE_URL', "postgresql:/#{database}")
+
   {
     'pool' => 5,
     'timeout' => 5000,
-    'adapter' => 'postgresql',
-    'port'    => ENV.fetch('DATABASE_PORT', 5432),
-    'database' => (env == 'development') ? 'rdb_development' : "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
-  }
+    'adapter' => uri.scheme.gsub(':', ''),
+    'port' => uri.port || ENV['DATABASE_PORT'],
+    'url' => ENV['DATABASE_URL'],
+    'database' => uri.path[1..-1]
+  }.compact
 end
 
 config = {}
-%w(development test production).each do |env|
-  config[env] = gen_dbconf env
+
+%w[development test production].each do |env|
+  config[env] = generate(env)
 end
 
-dbconf = Pathname.new(REDMINE_PATH).join('config', 'database.yml')
-if dbconf.exist?
-  if (cfg = YAML.load_file(dbconf)).is_a?(Hash)
+path = Pathname.new(REDMINE_PATH).join('config', 'database.yml')
+if path.exist?
+  if (cfg = YAML.load_file(path)).is_a?(Hash)
     cfg.each_pair do |env, conf|
       config[env] = conf
     end

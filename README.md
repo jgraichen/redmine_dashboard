@@ -1,6 +1,6 @@
 # Redmine Dashboard 2
 
-[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard/stable-v2.svg?style=for-the-badge)](https://travis-ci.org/jgraichen/redmine_dashboard/branches)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/redmine_dashboard/Test?label=CI&style=for-the-badge)](https://github.com/jgraichen/redmine_dashboard/actions)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=for-the-badge)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=for-the-badge)](https://twitter.com/RmDashboard)
 
