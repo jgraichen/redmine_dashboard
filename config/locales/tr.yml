@@ -1,4 +1,3 @@
----
 tr:
   project_module_dashboard: Pano
   permission_view_dashboards: Panoları Gösterme
@@ -46,15 +45,15 @@ tr:
   rdb_legend_priorities: Öncelikler
   rdb_legend_warnings: Uyarılar
   rdb_issue_overdue: Zamanı Geçmiş
-  rdb_property_time: <span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>
+  rdb_property_time: '<span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>'
   rdb_not_available: N/A
   rdb_column_done: Tamam
   rdb_x_issues:
-    one: 1 İş
+    one: "1 İş"
     other: "%{count} İş"
   rdb_dialog_update_issue_title: İşi güncelle
   rdb_dialog_update_issue_status: Yeni iş durumu seç
-  rdb_other_issues: Diğer İşler <span>(%{count})</span>
+  rdb_other_issues: "Diğer İşler <span>(%{count})</span>"
   rdb_unassigned: Atanmamış
   rdb_others: Diğerleri
   rdb_all_issues: Tüm İşler

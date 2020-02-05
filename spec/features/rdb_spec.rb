@@ -18,6 +18,6 @@ describe "Rdb", :js => true, :sauce => true do
   it "should redirect to taskboard" do
     visit '/projects/ecookbook/rdb'
 
-    current_path.should eq('/projects/ecookbook/rdb/taskboard')
+    expect(current_path).to eq('/projects/ecookbook/rdb/taskboard')
   end
 end

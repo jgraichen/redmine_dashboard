@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+
+[ -z "$PLUGIN_PATH" ] && exit 1
+[ -z "$REDMINE_EXEC" ] && exit 1
+[ -z "$REDMINE_PATH" ] && exit 1
+[ -z "$REDMINE_VERSION" ] && exit 1
+
+mkdir -p "${REDMINE_PATH}"
+mkdir -p tmp log
+
+case ${REDMINE_VERSION} in
+    master)
+        REDMINE_SOURCE="http://svn.redmine.org/redmine/trunk"
+        ;;
+
+    *)
+        REDMINE_SOURCE="http://svn.redmine.org/redmine/tags/${REDMINE_VERSION}"
+        ;;
+esac
+
+(set -x; svn export --quiet --force "${REDMINE_SOURCE}" "${REDMINE_PATH}")
+
+echo "Symlink plugin, assets and specs..."
+
+mkdir -p ${REDMINE_PATH}/public/plugin_assets
+
+if [ ! -L "${REDMINE_PATH}/plugins/redmine_dashboard" ]; then
+    ln -s "${PLUGIN_PATH}" "${REDMINE_PATH}/plugins/redmine_dashboard"
+fi
+
+if [ ! -L "${REDMINE_PATH}/spec" ]; then
+    ln -s  "${PLUGIN_PATH}/spec" "${REDMINE_PATH}/spec"
+fi
+
+if [ ! -L "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked" ]; then
+    ln -s  "${PLUGIN_PATH}/assets" "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked"
+fi
+
+echo "Generate database configuration..."
+
+${REDMINE_EXEC} genconf > "${REDMINE_PATH}/config/database.yml"
+
+pushd "${REDMINE_PATH}"
+
+sed -i -E '/selenium-webdriver|capybara/d' Gemfile
+cat << EOF >> Gemfile
+group :test do
+  gem 'capybara', '~> 3.12'
+  gem 'selenium-webdriver', '~> 3.141'
+end
+EOF
+
+(set -x; bundle install --without rmagick --jobs=3 --retry=3 ${BUNDLE_OPTS})
+(set -x; bundle exec rake generate_secret_token db:create:all db:migrate redmine:plugins:migrate db:test:prepare)
+
+popd

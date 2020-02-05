@@ -1,18 +1,13 @@
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
-gem 'haml'
+send :ruby, RUBY_VERSION if ENV['CI']
 
-group :development do
-  gem 'guard-rspec'
-  gem 'transifex-ruby-fork-jg', require: false
-  gem 'inifile', require: false
-end
+gem 'haml'
+gem 'rake'
 
 group :test do
-  gem 'rspec', '~> 2.0'
+  gem 'rspec', '~> 3.6'
   gem 'rspec-rails'
-  gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'fuubar'
 end

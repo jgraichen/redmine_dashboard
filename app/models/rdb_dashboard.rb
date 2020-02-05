@@ -80,7 +80,7 @@ class RdbDashboard
   end
 
   def assignees
-    Principal.where :id => member_principals.pluck(:user_id)
+    Principal.where :id => memberships.active.pluck(:user_id)
   end
 
   def members
@@ -88,7 +88,7 @@ class RdbDashboard
   end
 
   def member_principals
-    Member.where(:id=> projects.map{|p| p.member_principals.map(&:id)}.uniq.flatten)
+    Member.where(:id=> projects.map{|p| p.memberships.active.map(&:id)}.uniq.flatten)
   end
 
   def memberships

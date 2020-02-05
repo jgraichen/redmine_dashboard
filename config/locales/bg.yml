@@ -1,0 +1,29 @@
+bg:
+  project_module_dashboard: Табло
+  permission_view_dashboards: Преглед на таблата
+  permission_configure_dashboards: Конфигурация на таблата
+  menu_label_dashboard: Табло
+  rdb_filter_version_all: Всички версии
+  rdb_filter_assignee_none: Неназначен
+  rdb_filter_assignee_others: Други
+  rdb_options: Настройки
+  rdb_options_hide_done: Скрий завършените задачи
+  rdb_options_reset: Премахни филтър
+  rdb_options_configure: Настройки
+  rdb_options_group: Групиране на задачи
+  rdb_group_category: Категория
+  rdb_group_assignee: Назначен на
+  rdb_group_tracker: Тракер
+  rdb_group_priority: Приоритет
+  rdb_group_version: Версия
+  rdb_group_parent: Родителска задача
+  rdb_group_project: Проект
+  rdb_options_fullscreen: Цял екран
+  rdb_legend_priorities: Приоритети
+  rdb_column_done: Готово
+  rdb_others: Други
+  rdb_all_issues: Всички задачи
+  rdb_no_parent: Без родителски задачи
+  rdb_issue_menu_redmine_issue: Redmine задача
+  rdb_issue_menu_edit: Редакция
+  rdb_flash_invalid_request: "<p>Невалидна заявка.</p>"

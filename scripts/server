@@ -1,0 +1,9 @@
+#!/bin/bash
+
+[ -z "$REDMINE_PATH" ] && exit 1
+
+pushd "${REDMINE_PATH}"
+
+(set -x; bundle exec rails server --port 7000)
+
+popd

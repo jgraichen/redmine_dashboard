@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'pathname'
+
+REDMINE_VERSION = ENV['REDMINE_VERSION'] || Kernel.exit(1)
+REDMINE_PATH    = ENV['REDMINE_PATH']    || Kernel.exit(1)
+
+def generate(env)
+  if env == 'development'
+    database = 'rdb_development'
+  else
+    database = "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
+  end
+
+  uri = URI.parse \
+    ENV.fetch('DATABASE_URL', "postgresql:/#{database}")
+
+  {
+    'pool' => 5,
+    'timeout' => 5000,
+    'adapter' => uri.scheme.gsub(':', ''),
+    'port' => uri.port || ENV['DATABASE_PORT'],
+    'url' => ENV['DATABASE_URL'],
+    'database' => uri.path[1..-1]
+  }.compact
+end
+
+config = {}
+
+%w[development test production].each do |env|
+  config[env] = generate(env)
+end
+
+path = Pathname.new(REDMINE_PATH).join('config', 'database.yml')
+if path.exist?
+  if (cfg = YAML.load_file(path)).is_a?(Hash)
+    cfg.each_pair do |env, conf|
+      config[env] = conf
+    end
+  end
+end
+
+puts YAML.dump config

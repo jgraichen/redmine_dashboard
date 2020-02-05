@@ -1,11 +1,11 @@
 class RdbDashboardController < ApplicationController
   unloadable
   menu_item :dashboard
-  before_filter :find_project, :authorize
-  before_filter :setup_board, :except => :index
-  before_filter :find_issue, :only => [ :move, :update ]
-  before_filter :authorize_edit, :only => [ :move, :update ]
-  after_filter :save_board_options
+  before_action :find_project, :authorize
+  before_action :setup_board, :except => :index
+  before_action :find_issue, :only => [ :move, :update ]
+  before_action :authorize_edit, :only => [ :move, :update ]
+  after_action :save_board_options
 
   def index
     return redirect_to rdb_taskboard_url if params[:controller] == 'rdb_dashboard'

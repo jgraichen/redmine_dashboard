@@ -1,12 +1,19 @@
 ENV["RAILS_ENV"] ||= 'test'
 
-env = File.expand_path('../../config/environment.rb', __FILE__)
+env = File.expand_path('config/environment.rb', Dir.pwd)
+
 if File.exist? env
   require env
 else
   require 'bundler'
-  ::Bundler.with_clean_env do
-    Kernel.exec "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+  ::Bundler.with_original_env do
+    # Unset BUNDLE_GEMFILE to force using Redmines Gemfile
+    ENV['BUNDLE_GEMFILE'] = nil
+
+    cmd = "./redmine exec bundle exec rspec #{ARGV.map(&:inspect).join(' ')}"
+    puts "+ #{cmd}"
+
+    Kernel.exec(cmd)
   end
 end
 
@@ -17,7 +24,6 @@ end
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
 
 require 'database_cleaner'
 
@@ -61,6 +67,17 @@ RSpec.configure do |config|
   DatabaseCleaner.strategy = :truncation
 
   Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :poltergeist
-  Capybara.default_wait_time = 15
+  Capybara.javascript_driver = :selenium_chrome
+  Capybara.default_max_wait_time = 15
+  Capybara.server = :webrick
+
+  config.before(:each, js: true) do
+    page.driver.browser.manage.window.resize_to(1280, 1024)
+  end
+
+  if %w[0 no off false].include?(ENV['HEADLESS'])
+    Capybara.javascript_driver = :selenium_chrome
+  else
+    Capybara.javascript_driver = :selenium_chrome_headless
+  end
 end

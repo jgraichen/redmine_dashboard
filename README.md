@@ -1,13 +1,12 @@
 # Redmine Dashboard 2
 
-[![Build Status](http://img.shields.io/travis/jgraichen/redmine_dashboard/stable-v2.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
-[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jgraichen&url=https://github.com/jgraichen/redmine_dashboard&tags=github&category=software)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/redmine_dashboard/Test?label=CI&style=for-the-badge)](https://github.com/jgraichen/redmine_dashboard/actions)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=for-the-badge)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=for-the-badge)](https://twitter.com/RmDashboard)
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is compatible with Redmine 3.1, 3.0, 2.6 and possibly older versions.
+**Redmine Dashboard 2** is compatible and tested with Redmine 4.1, 4.0 and 3.4. It may be compatible with older versions too.
 
 ![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)
 
@@ -36,7 +35,12 @@ I provide a PPA at [ppa:jgraichen/redmine-dashboard](https://launchpad.net/~jgra
 3. Install required dependencies by running `bundle install --without development test` in your redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` ([#58](https://github.com/jgraichen/redmine_dashboard/issues/58)).
 4. A database migration is not needed. Restart redmine.
 
-#### Upgrade
+### Configure Redmine
+
+1. Add the dashboard module to your project (`Settings > Modules`).
+2. Configure dashboard permissions to your user roles (`Administration > Roles and permissions`). Users won't see a Dashboard tab without having the `View Dashboard` permission.
+
+### Upgrade
 
 1. Remove old plugin directory.
 2. Follow installation steps for new release.
@@ -45,11 +49,9 @@ As of v2 you can also use git by cloning the repository and checkout the release
 
 ## Contribute
 
-I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `master` branch. Please try to not add larger new features to current v2.
+I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `master` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard-2/) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
-
-[![Translation status](https://www.transifex.com/projects/p/redmine-dashboard-2/resource/strings/chart/image_png)](https://www.transifex.com/projects/p/redmine-dashboard-2/)
 
 ## Build Debian / Ubuntu package
 

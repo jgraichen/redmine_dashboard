@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+[ -z "$PLUGIN_PATH" ] && exit 1
+[ -z "$REDMINE_EXEC" ] && exit 1
+[ -z "$REDMINE_PATH" ] && exit 1
+[ -z "$REDMINE_VERSION" ] && exit 1
+
+if [ ! -d "${REDMINE_PATH}" ]; then
+    exec $REDMINE_EXEC install
+fi
+
+pushd "${REDMINE_PATH}"
+
+if [ "${REDMINE_VERSION}" == "master" ]; then
+    (set -x; svn export --quiet --force "${REDMINE_SOURCE}" .)
+fi
+
+(set -x; bundle update --jobs=3 --retry=3)
+(set -x; bundle exec rake db:create:all db:migrate redmine:plugins:migrate db:test:prepare)
