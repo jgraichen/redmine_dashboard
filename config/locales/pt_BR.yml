@@ -1,0 +1,71 @@
+pt_BR:
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: Ver Dashboard
+  permission_configure_dashboards: Configurar Dashboards
+  menu_label_dashboard: Dashboard
+  rdb_taskboard: Tarefas
+  rdb_planningboard: Planejamento
+  rdb_filter_version_all: Todas Versões
+  rdb_filter_version_unassigned: Não atribuído
+  rdb_filter_tracker_all: Todos Observadores
+  rdb_filter_tracker_multiple: Múltiplos Observadores
+  rdb_filter_category_all: Todas Categorias
+  rdb_filter_category_multiple: Múltiplas Categorias
+  rdb_filter_assignee_all: Todas Atribuições
+  rdb_filter_assignee_me: Minhas tarefas
+  rdb_filter_assignee_none: Não atribuído
+  rdb_filter_assignee_others: Outros
+  rdb_options: Opções
+  rdb_options_change_assignee: Mudar atribuição
+  rdb_options_change_assignee_info: Mudar atribuição para o usuário atual quando a tarefa for alterada
+  rdb_options_hide_done: Esconder tarefas fechadas
+  rdb_options_hide_done_info: Esconder tarefas fechadas e diminuir a coluna "feito"
+  rdb_options_reset: Resetar filtro
+  rdb_options_reset_info: Resetar todos filtros para o padrão
+  rdb_options_configure: Configurar
+  rdb_options_include_subprojects: Incluir sub-projetos
+  rdb_options_view: Visualização
+  rdb_options_issue_view: Visualização de tarefa
+  rdb_options_issue_view_card: Cartão
+  rdb_options_issue_view_compact: Compactar
+  rdb_options_group: Agrupamento de tarefas
+  rdb_group_none: Sem agrupamento
+  rdb_group_category: Categoria
+  rdb_group_assignee: Atribuído para
+  rdb_group_tracker: Observador
+  rdb_group_priority: Prioridade
+  rdb_group_version: Versão
+  rdb_group_parent: Tarefa pai
+  rdb_group_project: Projeto
+  rdb_options_board_view: Modo de visualização
+  rdb_options_board_view_compact: Classico
+  rdb_options_board_view_outline: Contorno
+  rdb_options_columns: Colunas
+  rdb_options_fullscreen: Tela cheia
+  rdb_legend_priorities: Prioridades
+  rdb_legend_warnings: Alertas
+  rdb_issue_overdue: Atrasado
+  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_not_available: N/A
+  rdb_column_done: Feito
+  rdb_x_issues:
+    one: "1 Tarefa"
+    other: "%[count] Tarefas"
+  rdb_dialog_update_issue_title: Atualizar Tarefa
+  rdb_dialog_update_issue_status: Escolher status da tarefa
+  rdb_other_issues: "Outras tarefas <span>(%{count})</span>"
+  rdb_unassigned: Não atribuidas
+  rdb_others: Outras
+  rdb_all_issues: Todas Tarefas
+  rdb_no_parent: Sem tarefas pai
+  rdb_issue_menu_progress_title: Progresso de atualização
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Tarefa Redmine
+  rdb_issue_menu_show: Mostrar
+  rdb_issue_menu_edit: Editar
+  rdb_issue_menu_assigne_me: Atribuir para mim
+  rdb_issue_menu_unassigne_me: Retirar atribuição
+  rdb_flash_illegal_workflow_action: "<p>Você não tem autorização para altera o fluxo:</p><p>Mover <b>%{issue}</b> de <b>%{source}</b> para <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Falta versão bloqueada</b>: Não é possível atualizar uma tarefa sem uma versão bloqueada. Tente novamente."
+  rdb_flash_stale_object: "<p>Tentando atualizar uma tarefa antiga: <b>%{issue}</b>. Verifique as mudanças e tente novamente."
+  rdb_flash_invalid_request: "<p>Requisição inválida.</p>"
