@@ -6,7 +6,7 @@
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is compatible and tested with Redmine 4.0 (experimental) and 3.4. It may be compatible with older versions too.
+**Redmine Dashboard 2** is compatible and tested with Redmine 4.1, 4.0 and 3.4. It may be compatible with older versions too.
 
 ![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)
 
@@ -49,7 +49,7 @@ As of v2 you can also use git by cloning the repository and checkout the release
 
 ## Contribute
 
-I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite is under development on the `master` branch. Please try to not add larger new features to current v2.
+I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `master` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard-2/) but you can also send a Pull Request. If you want to maintain a translation contact me via IRC (jgraichen at [irc://irc.freenode.net/redmine_dashboard](irc://irc.freenode.net/redmine_dashboard)) or email.
 
