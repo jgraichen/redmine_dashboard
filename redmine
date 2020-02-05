@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-REDMINE_VERSION = ENV['REDMINE_VERSION'] = ENV['REDMINE_VERSION'] || ENV['VERSION'] || '4.0.5'
+REDMINE_VERSION = ENV['REDMINE_VERSION'] = ENV['REDMINE_VERSION'] || ENV['VERSION'] || '4.0.6'
 REDMINE_PATH    = ENV['REDMINE_PATH']    = File.expand_path("../vendor/redmine/#{REDMINE_VERSION}/", __FILE__)
 REDMINE_EXEC    = ENV['REDMINE_EXEC']    = File.expand_path(__FILE__)
 PLUGIN_PATH     = ENV['PLUGIN_PATH']     = File.expand_path("..", __FILE__)
