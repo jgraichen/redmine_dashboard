@@ -1,6 +1,6 @@
 # Redmine Dashboard
 
-[![GitHub Workflow Status](https://github.com/jgraichen/redmine_dashboard/workflows/Test/badge.svg?branch=master)](https://github.com/jgraichen/redmine_dashboard/actions?query=branch%3Amaster)
+[![GitHub Workflow Status](https://github.com/jgraichen/redmine_dashboard/workflows/Build/badge.svg?branch=master)](https://github.com/jgraichen/redmine_dashboard/actions?query=branch%3Amaster+workflow%3ABuild)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg)](https://twitter.com/RmDashboard)
 
