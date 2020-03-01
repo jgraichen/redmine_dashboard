@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update --yes --quiet
-          sudo apt-get install --yes --quiet chromium-browser chromium-chromedriver postgresql libpq-dev subversion
+          sudo apt-get install --yes --quiet postgresql libpq-dev subversion
 
       - name: Setup PostgreSQL database
         run: |
