@@ -1,20 +1,19 @@
----
 ru:
-  project_module_dashboard: "Панель задач"
+  project_module_dashboard: Панель задач
   rdb:
     contextual:
-      configure: "Настройки"
-      fullscreen: "Полный экран"
-      back: "Назад"
-      remove: "Удалить"
+      configure: Настройки
+      fullscreen: Полный экран
+      back: Назад
+      remove: Удалить
     permissions:
-      edit: "Редактировать"
-      admin: "Администратор"
+      edit: Редактировать
+      admin: Администратор
     configure:
       title: Configure %(link)s
-      nav_title: "Настройки"
+      nav_title: Настройки
       general:
-        title: "Основные настройки"
-        dashboard_name: "Имя"
-        dashboard_type: "Тип"
-        access_control_add: "Добавить"
+        title: Основные настройки
+        dashboard_name: Имя
+        dashboard_type: Тип
+        access_control_add: Добавить

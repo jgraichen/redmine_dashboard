@@ -1,4 +1,3 @@
----
 de:
   project_module_dashboard: Dashboards
   permission_view_dashboards: Dashboards anzeigen
@@ -22,7 +21,7 @@ de:
       edit: Bearbeiten
       admin: Admin
     configure:
-      title: "%(link)s konfigurieren"
+      title: '%(link)s konfigurieren'
       nav_title: Konfiguration
       general:
         nav: Allgemeines
@@ -34,6 +33,8 @@ de:
         dashboard_name_text: Notwendig. Der Dashboard Name wird über dem Dashboard und im Dashboard Menü angezeigt.
         dashboard_type: Typ
         access_control: Zugriffsberechtigungen
+        access_control_placeholder: Nutzer suchen
+        access_control_add: hinzufügen
       sources:
         nav: Ticket-Quellen
         title: Ticket-Quellen und Filter
@@ -46,3 +47,10 @@ de:
         nav: Swimlanes
         title: Swimlanes
         nav_text: Swimlanes zum Gruppieren von Tickets
+    errors:
+      required: darf nicht leer sein
+      already_taken: bereits vergeben
+      board:
+        name:
+          required: Dashboard Name kann nicht leer sein.
+          already_taken: Dashboard Name muss einzigartig sein.

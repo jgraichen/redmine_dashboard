@@ -1,4 +1,3 @@
----
 pl:
   project_module_dashboard: Tablice
   permission_view_dashboards: Przeglądanie tablic
@@ -28,19 +27,17 @@ pl:
         nav: Ogólne
         title: Ustawienia ogólne
         nav_text: Nazwa tablicy i kontrola dostępu
-        description: Kliknij pola formy by je edytować. Są one zapisywane automatycznie podczas opuszczania pola formy np. gdy klikamy poza polem.
+        description: Kliknij pola formulaża by je edytować. Są one zapisywane automatycznie podczas opuszczania pola formulaża np. gdy klikamy poza polem.
         general: Ogólne
         dashboard_name: Nazwa
         dashboard_name_text: Wymagane. Nazwa tablicy jest pokazywana na górze tablicy i w menu tablicy.
         dashboard_type: Typ
         access_control: Kontrola dostępu
-        access_control_placeholder: Wyszukaj użytkownika lub grupę by dodać...
+        access_control_placeholder: Wyszukaj użytkownika
         access_control_add: Dodaj
-        access_control_search_label: Wyszukaj użytkownika lub grupę
-        access_control_levels_label: Poziom dostępu
       sources:
-        nav: "Źródła zagadnień"
-        title: "Źródła zagadnień i filtry"
+        nav: Źródła zagadnień
+        title: Źródła zagadnień i filtry
         nav_text: Projekty źródłowe i filtry zagadnień
       columns:
         nav: Kolumny
@@ -53,5 +50,7 @@ pl:
     errors:
       required: nie może być puste
       already_taken: jest już zajęte
-      board_name:
-        already_taken: Nazwa tablicy musi być unikalna
+      board:
+        name:
+          required: Nazwa tablicy nie może być pusta.
+          already_taken: Nazwa tablicy musi być unikatowa.

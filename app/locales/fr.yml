@@ -1,17 +1,56 @@
----
 fr:
   project_module_dashboard: Tableaux de bord
+  permission_view_dashboards: Visualiser les tableaux de bords
+  permission_create_dashboards: Créer de nouveaux tableaux de bord
   rdb:
+    new:
+      default_board_name:
+        zero: Nouveau tableau
+        other: Nouveau tableau (%{count})
     menu:
       dashboards: Tableaux de bord
+      my_dashboards: Mes tableaux de bord
       create_new_board: Créer un nouveau tableau de bord
+    contextual:
+      configure: Configurer
+      fullscreen: Plein écran
+      back: Retour
+      remove: Retirer
+    permissions:
+      read: Lire
+      edit: Éditer
+      admin: Administration
     configure:
+      title: Configurer %(link)s
       nav_title: Configuration
       general:
         nav: Général
         title: Préférences générales
+        nav_text: Nom du tableau de bord et contrôle d'accès
+        description: Cliquer dans les champs du formulaire pour les éditer. Ils sont automatiquement sauvegardés lorsque vous quittez le champ du formulaire.
         general: Général
+        dashboard_name: Nom
+        dashboard_name_text: Obligatoire. Le nom du tableau de bord est affiché en haut du tableau de bord et dans le menu des tableaux de bord.
+        dashboard_type: Type
+        access_control: Contrôle d'accès
+        access_control_placeholder: Rechercher utilisateur
+        access_control_add: Ajouter
+      sources:
+        nav: Sources des demandes
+        title: Sources de demandes et filtres
+        nav_text: Sources des projets et filtres des demandes
       columns:
         nav: Colonnes
         title: Gestion des colonnes
         nav_text: 'Disposition et options des colonnes '
+      swimlanes:
+        nav: Séparations horizontales
+        title: Séparations horizontales
+        nav_text: Séparations verticales pour regrouper les demandes
+    errors:
+      required: ne peut être vide
+      already_taken: déjà pris
+      board:
+        name:
+          required: Le champs "Nom du tableau de bord" ne peut être vide
+          already_taken: Le nom du tableau de bord doit être unique
