@@ -1,12 +1,11 @@
-dist: xenial
+dist: bionic
 language: ruby
 cache:
-  directories:
-  - vendor/bundle
+  directories: [.cache, vendor]
 services:
-- postgresql
+  - postgresql
 rvm:
-- 2.6.5
+  - 2.6.5
 env:
   global:
   - BROWSER=chromium
@@ -15,24 +14,24 @@ env:
   - REDMINE_VERSION=master
 matrix:
   allow_failures:
-  - env: REDMINE_VERSION=master
+    - env: REDMINE_VERSION=master
 branches:
   except:
-  - debian
+    - debian
 before_install:
-- nvm install 10
-- sudo apt-get -qy install chromium-browser chromium-chromedriver
-- export PATH=$PATH:/usr/lib/chromium-browser/
-- node --version
-- npm --version
-- bundle --version
-- chromedriver --version
+  - nvm install 10
+  - sudo apt-get -qy install chromium-browser chromium-chromedriver
+  - node --version
+  - npm --version
+  - bundle --version
+  - chromedriver --version
 install:
-- export BUNDLE_GEMFILE=""
-- export BUNDLE_PATH="$(pwd)/vendor/bundle"
-- bundle install --jobs=3 --retry=3
-- npm install
-- ./redmine update
+  - export BUNDLE_GEMFILE=""
+  - export BUNDLE_PATH="$(pwd)/vendor/bundle"
+  - gem install bundler -v '~> 2.0'
+  - bundle install --jobs=3 --retry=3
+  - npm ci --cache .cache/npm
+  - BUNDLE_OPTS="--without development" ./redmine update
 script:
-- make production
-- bundle exec rake spec
+  - npm run build
+  - bundle exec rake spec

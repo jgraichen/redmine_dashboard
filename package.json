@@ -31,5 +31,8 @@
     "url-loader": "^0.5.9",
     "webpack": "^1.15.0",
     "yaml-loader": "^0.2.0"
+  },
+  "scripts": {
+    "build": "webpack --production --devtool source-map"
   }
 }
