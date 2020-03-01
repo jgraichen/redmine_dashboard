@@ -98,6 +98,10 @@ RSpec.configure do |config|
       throw RuntimerError.new "Unknown browser engine: #{ENV['BROWSER']}"
   end
 
+  if ENV['CI'] || ENV['HEADLESS']
+    Capybara.javascript_driver = :'#{Capybara.javascript_driver}_headless'
+  end
+
   config.before(:each) do
     if page.driver.respond_to?(:resize)
       page.driver.resize 1280, 1024
