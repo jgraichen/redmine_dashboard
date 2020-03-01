@@ -18,13 +18,13 @@ group :development, :test do
   gem 'rspec', '~> 3.0', require: false
   gem 'rspec-rails', require: false
   gem 'database_cleaner', require: false
-  gem 'fuubar', require: false
-  gem 'headless', require: false
-
-  gem 'pry'
-  gem 'pry-nav'
 
   # for redmine on travis CI
   gem 'test-unit'
   gem 'selenium-webdriver'
+end
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
 end

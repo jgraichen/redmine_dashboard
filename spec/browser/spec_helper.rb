@@ -60,14 +60,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  if ENV['CI'] || ENV['HEADLESS']
-    require 'headless'
-    headless = Headless.new
-    headless.start
-
-    at_exit { headless.destroy }
-  end
-
   # Include request spec helpers
   config.include Unreliable
   config.include RdbRequestHelpers
