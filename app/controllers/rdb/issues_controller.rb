@@ -1,6 +1,6 @@
 module Rdb
   class IssuesController < BaseController
-    before_filter :check_read_permission
+    before_action :check_read_permission
 
     def index
       issues = board.issues params

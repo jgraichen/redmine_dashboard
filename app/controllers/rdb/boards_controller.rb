@@ -1,7 +1,7 @@
 module Rdb
   class BoardsController < BaseController
-    before_filter :check_read_permission, except: [:index, :update]
-    before_filter :check_write_permission, except: [:show, :index]
+    before_action :check_read_permission, except: [:index, :update]
+    before_action :check_write_permission, except: [:show, :index]
 
     def index
       render json: Dashboard.all

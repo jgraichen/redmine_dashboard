@@ -1,5 +1,5 @@
 class RdbProjectController < RdbController
-  before_filter :find_project, :authorize
+  before_action :find_project, :authorize
 
   def context
     @project

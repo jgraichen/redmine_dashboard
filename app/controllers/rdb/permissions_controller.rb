@@ -1,6 +1,6 @@
 module Rdb
   class PermissionsController < BaseController
-    before_filter :check_admin_permission
+    before_action :check_admin_permission
 
     def index
       render json: board.permissions
@@ -48,7 +48,7 @@ module Rdb
 
       permission.destroy
 
-      head status: :no_content
+      head :no_content
     end
 
     private

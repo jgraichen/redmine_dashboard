@@ -10,7 +10,7 @@ describe Rdb::IssuesController, type: :controller do
   let(:json) { JSON.load(resp.body) }
 
   describe 'GET index' do
-    let(:action) { get :index, rdb_board_id: board.id }
+    let(:action) { get :index, params: {rdb_board_id: board.id} }
     subject { resp }
 
     context 'as anonymous' do

@@ -1,11 +1,11 @@
 class RdbController < ::Rdb::BaseController
-  before_filter :board, only: [:show, :update, :destroy]
-  before_filter :check_read_permission, except: [:index]
+  before_action :board, only: [:show, :update, :destroy]
+  before_action :check_read_permission, except: [:index]
 
   def index
     if context
       sources = Rdb::Source.where context_id: context.id,
-                                  context_type: context.class
+                                  context_type: context.class.name
 
       if sources.any?
         redirect_to rdb_url sources.first.dashboard

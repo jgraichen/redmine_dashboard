@@ -28,7 +28,7 @@ describe Rdb::BoardsController, type: :controller do
   end
 
   describe 'GET show' do
-    let(:action) { get :show, id: board.id }
+    let(:action) { get :show, params: {id: board.id} }
     subject { resp }
 
     context 'as anonymous' do
@@ -84,7 +84,7 @@ describe Rdb::BoardsController, type: :controller do
 
   describe 'PATCH update' do
     let(:params) { {} }
-    let(:action) { patch :update, params.as_json.merge(id: board.id) }
+    let(:action) { patch :update, params: {**params, id: board.id} }
     subject { resp }
 
     context 'as anonymous' do

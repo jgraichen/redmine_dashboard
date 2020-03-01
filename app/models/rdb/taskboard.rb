@@ -1,7 +1,5 @@
 module Rdb
   class Taskboard < Dashboard
-    attr_protected
-
     has_many :columns, class_name: 'Rdb::Column', foreign_key: 'dashboard_id'
 
     after_create do

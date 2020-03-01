@@ -24,7 +24,7 @@ describe Rdb::PermissionsController, type: :controller do
   let(:permission) { permissions[0] }
 
   describe 'GET index' do
-    let(:action) { get :index, rdb_board_id: board.id }
+    let(:action) { get :index, params: {rdb_board_id: board.id} }
     subject { resp }
 
     context 'as anonymous' do
@@ -54,7 +54,10 @@ describe Rdb::PermissionsController, type: :controller do
   end
 
   describe 'GET show' do
-    let(:action) { get :show, rdb_board_id: board.id, id: permission.id }
+    let(:action) do
+      get :show, params: {rdb_board_id: board.id, id: permission.id}
+    end
+
     subject { resp }
 
     context 'as anonymous' do
@@ -96,7 +99,9 @@ describe Rdb::PermissionsController, type: :controller do
 
   describe 'GET search' do
     let(:q) { '' }
-    let(:action) { get :search, {q: q}.as_json.merge(rdb_board_id: board.id) }
+    let(:action) do
+      get :search, params: {q: q, rdb_board_id: board.id}
+    end
     subject { resp }
 
     context 'as anonymous' do
@@ -135,7 +140,9 @@ describe Rdb::PermissionsController, type: :controller do
 
   describe 'POST create' do
     let(:params) { {} }
-    let(:action) { post :create, params.as_json.merge(rdb_board_id: board.id) }
+    let(:action) do
+      post :create, params: {**params, rdb_board_id: board.id}
+    end
     subject { resp }
 
     context 'as anonymous' do
@@ -187,7 +194,9 @@ describe Rdb::PermissionsController, type: :controller do
 
   describe 'PATCH update' do
     let(:params) { {} }
-    let(:action) { patch :update, params.as_json.merge(rdb_board_id: board.id, id: permission.id) }
+    let(:action) do
+      patch :update, params: {**params, rdb_board_id: board.id, id: permission.id}
+    end
     subject { resp }
 
     context 'as anonymous' do
@@ -234,7 +243,9 @@ describe Rdb::PermissionsController, type: :controller do
   end
 
   describe 'DELETE destroy' do
-    let(:action) { delete :destroy, rdb_board_id: board.id, id: permission.id }
+    let(:action) do
+      delete :destroy, params: {rdb_board_id: board.id, id: permission.id}
+    end
     let(:permission) { permissions[1] }
     subject { resp }
 

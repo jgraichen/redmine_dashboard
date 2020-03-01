@@ -1,7 +1,6 @@
 module Rdb
   class Column < ActiveRecord::Base
     self.table_name = "#{table_name_prefix}rdb_columns#{table_name_suffix}"
-    attr_protected
 
     serialize :opts
     belongs_to :dashboard, class_name: 'Rdb::Dashboard'
@@ -35,8 +34,6 @@ module Rdb
   end
 
   class Column::Status < Column
-    attr_protected
-
     def scope(issues)
       issues.where(status_id: statuses)
     end

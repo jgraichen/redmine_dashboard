@@ -1,26 +1,26 @@
 module CurrentUser
-  def get(action, params = {}, session = {}, flash = nil)
+  def get(action, session: {}, **kwargs)
     session.merge! user_id: current_user.try(:id) if respond_to?(:current_user)
-    super
+    super(action, session: session, **kwargs)
   end
 
-  def patch(action, params = {}, session = {}, flash = nil)
+  def patch(action, session: {}, **kwargs)
     session.merge! user_id: current_user.try(:id) if respond_to?(:current_user)
-    super
+    super(action, session: session, **kwargs)
   end
 
-  def post(action, params = {}, session = {}, flash = nil)
+  def post(action, session: {}, **kwargs)
     session.merge! user_id: current_user.try(:id) if respond_to?(:current_user)
-    super
+    super(action, session: session, **kwargs)
   end
 
-  def put(action, params = {}, session = {}, flash = nil)
+  def put(action, session: {}, **kwargs)
     session.merge! user_id: current_user.try(:id) if respond_to?(:current_user)
-    super
+    super(action, session: session, **kwargs)
   end
 
-  def delete(action, params = {}, session = {}, flash = nil)
+  def delete(action, session: {}, **kwargs)
     session.merge! user_id: current_user.try(:id) if respond_to?(:current_user)
-    super
+    super(action, session: session, **kwargs)
   end
 end
