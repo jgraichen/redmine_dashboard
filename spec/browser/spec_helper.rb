@@ -76,9 +76,9 @@ RSpec.configure do |config|
     /usr/lib/chromium/chromedriver
     /usr/lib/chromium-browser/chromedriver
   ).find do |file|
-    if File.executable?(file)
-      Selenium::WebDriver::Chrome.driver_path = file
-    end
+    next unless File.executable?(file)
+    STDOUT.puts("Use detected chromedriver binary: #{file}")
+    Selenium::WebDriver::Chrome::Service.driver_path = file
   end
 
   case ENV.fetch('BROWSER', 'chromium')
@@ -91,8 +91,10 @@ RSpec.configure do |config|
   end
 
   if ENV['CI'] || ENV['HEADLESS']
-    Capybara.javascript_driver = :'#{Capybara.javascript_driver}_headless'
+    Capybara.javascript_driver = :"#{Capybara.javascript_driver}_headless"
   end
+
+  STDOUT.puts("INFO: Using driver: #{Capybara.javascript_driver}")
 
   config.before(:each) do
     if page.driver.respond_to?(:resize)
