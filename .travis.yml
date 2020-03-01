@@ -34,4 +34,5 @@ install:
   - BUNDLE_OPTS="--without development" ./redmine update
 script:
   - npm run build
-  - bundle exec rake spec
+  - bundle exec rspec spec/plugin
+  - bundle exec rspec spec/browser
