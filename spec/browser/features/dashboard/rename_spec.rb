@@ -37,7 +37,7 @@ feature 'Rename dashboard', js: true, sauce: true do
       click_on 'Configure'
     end
 
-    fill_in 'Name', with: ''
+    fill_in 'Name', with: '', fill_options: {clear: :backspace}
     find('body').click
 
     expect(page).to have_content "The Dashboard name cannot be blank"
