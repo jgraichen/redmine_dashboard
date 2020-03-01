@@ -1,4 +1,4 @@
-name: Test
+name: Plugin Tests
 on:
   push:
     branches-ignore: [debian]
@@ -14,14 +14,14 @@ jobs:
         redmine: ["4.1.0"]
       fail-fast: false
 
+    env:
+      REDMINE_VERSION: ${{ matrix.redmine }}
+
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - uses: actions/setup-node@v1
-        with:
-          ruby-version: 12
       - uses: actions/cache@v1
         with:
           path: vendor
@@ -31,9 +31,6 @@ jobs:
         run: |
           sudo apt-get update --yes --quiet
           sudo apt-get install --yes --quiet postgresql libpq-dev subversion
-
-      - name: Setup PostgreSQL database
-        run: |
           sudo -u postgres createuser -s runner
 
       - name: Install bundler
@@ -42,26 +39,10 @@ jobs:
           bundle config path "$(pwd)/vendor/bundle"
 
       - name: Install Ruby dependencies
-        run: |
-          bundle install --jobs=4 --retry=3 --without development
+        run: bundle install --jobs=4 --retry=3 --without development
 
-      - name: Setup Redmine
-        env:
-          REDMINE_VERSION: ${{ matrix.redmine }}
-          BUNDLE_OPTS: --without development
+      - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
 
       - name: Run plugin specs
-        env:
-          REDMINE_VERSION: ${{ matrix.redmine }}
         run: bundle exec rspec spec/plugin --color
-
-      - name: Build Frontend Assets
-        run: |
-          npm ci --cache vendor/node
-          npm run build
-
-      - name: Run browser specs
-        env:
-          REDMINE_VERSION: ${{ matrix.redmine }}
-        run: bundle exec rspec spec/browser --color
