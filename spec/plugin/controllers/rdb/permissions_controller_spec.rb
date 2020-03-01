@@ -184,7 +184,7 @@ describe Rdb::PermissionsController, type: :controller do
       end
 
       context 'with invalid principal' do
-        let(:params) { super().merge principal: 'abcderfgth' }
+        let(:params) { {**super(), principal: 'abcderfgth'} }
 
         it { expect(subject.status).to eq 422 }
         it { expect(json).to eq errors: {principal_id: ['principal_not_found']} }
@@ -218,14 +218,14 @@ describe Rdb::PermissionsController, type: :controller do
         let(:permission) { permissions[1] }
 
         context 'invalid' do
-          let(:params) { {'role' => 'MASTER_OF_DESASTER'} }
+          let(:params) { {role: 'MASTER_OF_DESASTER'} }
 
           it { expect(subject.status).to eq 422 }
           it { expect(json).to eq errors: {role: ['invalid_role']} }
         end
 
         context 'valid' do
-          let(:params) { {'role' => 'read'} }
+          let(:params) { {role: 'read'} }
 
           it { expect(subject.status).to eq 200 }
           it { expect{ subject }.to change{ permission.reload.role }.to('read') }
@@ -233,7 +233,7 @@ describe Rdb::PermissionsController, type: :controller do
 
         context 'self permission' do
           let(:permission) { permissions[0] }
-          let(:params) { {'role' => 'read'} }
+          let(:params) { {role: 'read'} }
 
           it { expect(subject.status).to eq 422 }
           it { expect(json).to eq errors:['cannot_edit_own_permission'] }
