@@ -1,4 +1,4 @@
-name: Plugin Tests
+name: Test
 on:
   push:
     branches-ignore: [debian]
@@ -22,6 +22,9 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - uses: actions/cache@v1
         with:
           path: vendor
@@ -38,11 +41,20 @@ jobs:
           gem install bundler -v '~> 2.0'
           bundle config path "$(pwd)/vendor/bundle"
 
-      - name: Install Ruby dependencies
+      - name: Install ruby dependencies
         run: bundle install --jobs=4 --retry=3 --without development
 
-      - name: Setup Redmine ${{ matrix.redmine }}
+      - name: Install node dependencies
+        run: npm ci --cache vendor/npm
+
+      - name: Install redmine ${{ matrix.redmine }}
         run: ./redmine update
 
-      - name: Run plugin specs
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Run rspec spec/plugin
         run: bundle exec rspec spec/plugin --color
+
+      - name: Run rspec spec/browser
+        run: bundle exec rspec spec/browser --color
