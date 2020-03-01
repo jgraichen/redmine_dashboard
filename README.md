@@ -1,9 +1,8 @@
 # Redmine Dashboard
 
-[![Build Status](https://img.shields.io/travis/jgraichen/redmine_dashboard.svg?style=flat)](https://travis-ci.org/jgraichen/redmine_dashboard)
-[![Code Climate](https://img.shields.io/codeclimate/github/jgraichen/redmine_dashboard.svg?style=flat)](https://codeclimate.com/github/jgraichen/redmine_dashboard)
-[![Rate at redmine.org](https://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine-dashboard)
-[![Follow at Twitter](https://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat)](https://twitter.com/RmDashboard)
+[![GitHub Workflow Status](https://github.com/jgraichen/redmine_dashboard/workflows/Test/badge.svg?branch=master)](https://github.com/jgraichen/redmine_dashboard/actions?query=branch%3Amaster)
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=for-the-badge)](http://www.redmine.org/plugins/redmine-dashboard)
+[![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=for-the-badge)](https://twitter.com/RmDashboard)
 
 ***NOTE***: This README is for the **development version** of Redmine Dashboard 3.
 
