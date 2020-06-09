@@ -16,11 +16,10 @@ jobs:
 
     services:
       postgres:
-        image: postgres:9.6
+        image: postgres:12-alpine
         env:
-          POSTGRES_USER: p
-          POSTGRES_PASSWORD: p
           POSTGRES_DB: db
+          POSTGRES_HOST_AUTH_METHOD: trust
         ports: [5432/tcp]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
@@ -66,7 +65,7 @@ jobs:
         env:
           REDMINE_VERSION: ${{ matrix.redmine }}
           BUNDLE_OPTS: --without development
-          DATABASE_URL: postgresql://p:p@localhost:${{ job.services.postgres.ports[5432] }}/db
+          DATABASE_URL: postgresql://localhost:${{ job.services.postgres.ports[5432] }}/db
         run: ./redmine update
 
       - name: Run tests
