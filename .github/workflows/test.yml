@@ -10,8 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        ruby: ['2.6', '2.5', '2.4']
-        redmine: ['4.1.1', '4.0.7', '3.4.13']
+        ruby: ['2.6', '2.5']
+        redmine: ['4.1.1', '4.0.7']
       fail-fast: false
 
     services:
