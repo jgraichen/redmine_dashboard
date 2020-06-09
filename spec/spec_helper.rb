@@ -22,9 +22,6 @@ if defined?(Test::Unit::AutoRunner)
 end
 
 require 'rspec/rails'
-require 'capybara/rails'
-require 'capybara/rspec'
-
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -65,27 +62,4 @@ RSpec.configure do |config|
   config.include RdbRequestHelpers, :type => :feature
 
   DatabaseCleaner.strategy = :truncation
-
-  Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :selenium_chrome
-  Capybara.default_max_wait_time = 15
-  Capybara.server = :webrick
-
-  config.before(:each, js: true) do
-    page.driver.browser.manage.window.resize_to(1280, 1024)
-  end
-
-  # The test setup expects a linux system with `chromium` and
-  # `chromium-chromedriver` installed. `chromedriver` must be available in PATH,
-  # and is configured here to default to using `/usr/bin/chromium`. As both are
-  # provided by the distribution their version should always match, even if
-  # `google-chrome` is installed too.
-  #
-  Selenium::WebDriver::Chrome.path = ENV.fetch('CHROME_PATH', '/usr/bin/chromium')
-
-  if %w[0 no off false].include?(ENV['HEADLESS'])
-    Capybara.javascript_driver = :selenium_chrome
-  else
-    Capybara.javascript_driver = :selenium_chrome_headless
-  end
 end
