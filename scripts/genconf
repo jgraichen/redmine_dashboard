@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'pathname'
+require 'uri'
 
 REDMINE_VERSION = ENV['REDMINE_VERSION'] || Kernel.exit(1)
 REDMINE_PATH    = ENV['REDMINE_PATH']    || Kernel.exit(1)
