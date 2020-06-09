@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 2.9.0
+
+* New catalan and dutch locale
+* Updated turkish locale
+* Dropped old Redmine (< 4.0) and Ruby (< 2.5) versions from automated testing
+
 ## 2.8.0
 
 * Test with Redmine 4.0 and 4.1

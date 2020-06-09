@@ -1,0 +1,71 @@
+nl:
+  project_module_dashboard: Dashboard
+  permission_view_dashboards: Dashboards bekijken
+  permission_configure_dashboards: Dashboards instellen
+  menu_label_dashboard: Dashboard
+  rdb_taskboard: Takenlijst
+  rdb_planningboard: Planningschema
+  rdb_filter_version_all: Alle versies
+  rdb_filter_version_unassigned: Niet toegekend
+  rdb_filter_tracker_all: Alle trackers
+  rdb_filter_tracker_multiple: Meerdere trackers
+  rdb_filter_category_all: Alle Categorieën
+  rdb_filter_category_multiple: Meerdere Categorieën
+  rdb_filter_assignee_all: Alle toegewezen personen
+  rdb_filter_assignee_me: Mijn Issues
+  rdb_filter_assignee_none: Niet toegewezen
+  rdb_filter_assignee_others: Andere
+  rdb_options: Opties
+  rdb_options_change_assignee: Verander de aangewezen persoon
+  rdb_options_change_assignee_info: Verander de aangewezen persoon wanneer het issue verplaatst wordt.
+  rdb_options_hide_done: Verberg afgesloten issues
+  rdb_options_hide_done_info: Verberg afgesloten issues en maak de klaar kolom smaller
+  rdb_options_reset: Herstel filter
+  rdb_options_reset_info: Herstel alle filters naar hun standaardwaarde
+  rdb_options_configure: Instellen
+  rdb_options_include_subprojects: Neem ondergeschikte projecten mee
+  rdb_options_view: Bekijk
+  rdb_options_issue_view: Issue beeld
+  rdb_options_issue_view_card: Kaart
+  rdb_options_issue_view_compact: Bondig
+  rdb_options_group: Issue groepering
+  rdb_group_none: Gene groepering
+  rdb_group_category: Categorie
+  rdb_group_assignee: Toegewezen persoon
+  rdb_group_tracker: Tracker
+  rdb_group_priority: Prioriteit
+  rdb_group_version: Versie
+  rdb_group_parent: Bovenliggende taak
+  rdb_group_project: Project
+  rdb_options_board_view: Overzichtsbeeld
+  rdb_options_board_view_compact: Klassiek
+  rdb_options_board_view_outline: Overzicht
+  rdb_options_columns: Kolommen in het overzicht
+  rdb_options_fullscreen: Schermvullend
+  rdb_legend_priorities: Prioriteiten
+  rdb_legend_warnings: Waarschuwingen
+  rdb_issue_overdue: Te laat
+  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_not_available: Niet toepasbaar
+  rdb_column_done: Klaar
+  rdb_x_issues:
+    one: "1 Issue"
+    other: "%{count} Issues"
+  rdb_dialog_update_issue_title: Issue bijwerken
+  rdb_dialog_update_issue_status: Kies een nieuwe Issue status
+  rdb_other_issues: "Andere Issues <span>(%{count})</span>"
+  rdb_unassigned: Niet toegewezen
+  rdb_others: Andere
+  rdb_all_issues: Alle Issues
+  rdb_no_parent: Geen bovenliggende taak
+  rdb_issue_menu_progress_title: De voortgang bewerken
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Redmine Issue
+  rdb_issue_menu_show: Toon
+  rdb_issue_menu_edit: Bewerken
+  rdb_issue_menu_assigne_me: Aan mezelf toewijzen
+  rdb_issue_menu_unassigne_me: Niet meer aan mezelf toewijzen
+  rdb_flash_illegal_workflow_action: "<p>U hebt geen toegang om deze werkproces actie uit te voeren :</p><p>Verplaats <b>%{issue}</b> van <b>%{source}</b> naar <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Ontbrekende lock versie</b>: Kan het issue niet bijwerken zonder lock versie. Probeer het opnieuw."
+  rdb_flash_stale_object: "<p>Geprobeerd om een vastgelopen issue bij te werken : <b>%{issue}</b>. Controleer de wijzigingen en probeer opnieuw."
+  rdb_flash_invalid_request: "<p>Ongeldige vraag.</p>"

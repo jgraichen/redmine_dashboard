@@ -22,9 +22,6 @@ if defined?(Test::Unit::AutoRunner)
 end
 
 require 'rspec/rails'
-require 'capybara/rails'
-require 'capybara/rspec'
-
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -65,19 +62,4 @@ RSpec.configure do |config|
   config.include RdbRequestHelpers, :type => :feature
 
   DatabaseCleaner.strategy = :truncation
-
-  Capybara.default_host = 'http://example.org'
-  Capybara.javascript_driver = :selenium_chrome
-  Capybara.default_max_wait_time = 15
-  Capybara.server = :webrick
-
-  config.before(:each, js: true) do
-    page.driver.browser.manage.window.resize_to(1280, 1024)
-  end
-
-  if %w[0 no off false].include?(ENV['HEADLESS'])
-    Capybara.javascript_driver = :selenium_chrome
-  else
-    Capybara.javascript_driver = :selenium_chrome_headless
-  end
 end

@@ -1,0 +1,71 @@
+ca:
+  project_module_dashboard: Taulers
+  permission_view_dashboards: Mostra els taulers
+  permission_configure_dashboards: Configura els taulers
+  menu_label_dashboard: Tauler
+  rdb_taskboard: Assumptes
+  rdb_planningboard: 'Planificació '
+  rdb_filter_version_all: Totes les versions
+  rdb_filter_version_unassigned: Sense assignar
+  rdb_filter_tracker_all: Tots els rastrejadors
+  rdb_filter_tracker_multiple: Diversos rastrejadors
+  rdb_filter_category_all: Totes les categories
+  rdb_filter_category_multiple: Diverses categories
+  rdb_filter_assignee_all: Tots els assignats
+  rdb_filter_assignee_me: Els meus assumptes
+  rdb_filter_assignee_none: Sense assignar
+  rdb_filter_assignee_others: Altres
+  rdb_options: Opcions
+  rdb_options_change_assignee: 'Canvia l''assignació '
+  rdb_options_change_assignee_info: Canvia l'assignació a l'usuari actual quan l'assumpte es mou
+  rdb_options_hide_done: Amaga els assumptes tancats
+  rdb_options_hide_done_info: Amaga assumptes tancats i redueix la columna "fet"
+  rdb_options_reset: Restableix filtre
+  rdb_options_reset_info: Restableix tots els filtres
+  rdb_options_configure: Configura
+  rdb_options_include_subprojects: Inclou subprojects
+  rdb_options_view: Veure
+  rdb_options_issue_view: Vista d'assumpte
+  rdb_options_issue_view_card: Targeta
+  rdb_options_issue_view_compact: Compacte
+  rdb_options_group: Agrupació d'assumptes
+  rdb_group_none: Sense agrupar
+  rdb_group_category: Categoria
+  rdb_group_assignee: Assignat
+  rdb_group_tracker: Rastrejador
+  rdb_group_priority: Prioritat
+  rdb_group_version: 'Versió '
+  rdb_group_parent: Assumpte pare
+  rdb_group_project: Projecte
+  rdb_options_board_view: Vista del tauler
+  rdb_options_board_view_compact: 'Clàssic '
+  rdb_options_board_view_outline: Esquema
+  rdb_options_columns: Columnes del tauler
+  rdb_options_fullscreen: Pantalla sencera
+  rdb_legend_priorities: Prioritats
+  rdb_legend_warnings: Avisos
+  rdb_issue_overdue: Endarrerit
+  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_not_available: N/D
+  rdb_column_done: Fet
+  rdb_x_issues:
+    one: "1 Assumpte"
+    other: "%{count} Assumptes"
+  rdb_dialog_update_issue_title: Actualitza l'assumpte
+  rdb_dialog_update_issue_status: 'Escull un nou estat per l''assumpte '
+  rdb_other_issues: "Altres assumptes <span>(%{count})</span>"
+  rdb_unassigned: Sense assignar
+  rdb_others: Altres
+  rdb_all_issues: Tots els assumptes
+  rdb_no_parent: Sense assumpte pare
+  rdb_issue_menu_progress_title: 'Posa al dia l''actualització '
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Assumpte de Redmine
+  rdb_issue_menu_show: Veure
+  rdb_issue_menu_edit: Edita
+  rdb_issue_menu_assigne_me: Assigna-m'ho
+  rdb_issue_menu_unassigne_me: Desassigna-m'ho
+  rdb_flash_illegal_workflow_action: "<p>No tens permís per realitzar l'acció següent:</p><p>Moure<b>%{issue}</b> des de <b>%{source}</b> a <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>No s'ha trobat el bloqueig de la versió </b>:No es pot actualitzar l'assumpte sense el bloqueig de la versió. Torna-ho a provar"
+  rdb_flash_stale_object: "<p>S'ha intentat actualitzar un assumpte antic: <b>%{issue}</b>. Comprova el canvis i torna-ho a intentar."
+  rdb_flash_invalid_request: "<p> Sol·licitud no vàlida.</p>"
