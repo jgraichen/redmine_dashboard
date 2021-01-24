@@ -18,5 +18,4 @@ if [ "${REDMINE_VERSION}" == "master" ]; then
 fi
 
 (set -x; bundle update --jobs=3 --retry=3)
-(set -x; ${REDMINE_EXEC} genconf > "${REDMINE_PATH}/config/database.yml")
 (set -x; bundle exec rake db:create:all db:migrate redmine:plugins:migrate db:test:prepare)

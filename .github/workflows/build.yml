@@ -15,12 +15,16 @@ jobs:
       fail-fast: false
 
     env:
+      BUNDLE_JOBS: 4
+      BUNDLE_PATH: ${{ github.workspace }}/vendor/bundle
+      BUNDLE_RETRY: 3
+      BUNDLE_WITHOUT: development
       REDMINE_VERSION: ${{ matrix.redmine }}
 
     steps:
       - uses: actions/checkout@master
 
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
 
@@ -31,33 +35,27 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: vendor
-          key: v1-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+          key: v2-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
-      - name: Setup PostgreSQL
+      - name: setup postgres
         run: |
           sudo systemctl start postgresql
           sudo -u postgres createuser -s ${USER}
 
-      - name: Install bundler
-        run: |
-          gem install bundler -v '~> 2.0'
-          bundle config path "$(pwd)/vendor/bundle"
-          bundle config without development
+      - name: install ruby dependencies
+        run: bundle install
 
-      - name: Install ruby dependencies
-        run: bundle install --jobs=4 --retry=3
-
-      - name: Install node dependencies
+      - name: install node dependencies
         run: npm ci --cache vendor/npm
 
-      - name: Install redmine ${{ matrix.redmine }}
+      - name: setup redmine ${{ matrix.redmine }}
         run: ./redmine update
 
-      - name: Build frontend assets
+      - name: build frontend assets
         run: npm run build
 
-      - name: Run rspec spec/plugin
-        run: bundle exec rspec spec/plugin --color
+      - name: run rspec spec/plugin
+        run: ./redmine exec bundle exec rspec spec/plugin --color
 
-      - name: Run rspec spec/browser
-        run: bundle exec rspec spec/browser --color
+      - name: run rspec spec/browser
+        run: ./redmine exec bundle exec rspec spec/browser --color
