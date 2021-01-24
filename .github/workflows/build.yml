@@ -33,11 +33,10 @@ jobs:
           path: vendor
           key: v1-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
-      - name: Install dependencies
+      - name: Setup PostgreSQL
         run: |
-          sudo apt-get update --yes --quiet
-          sudo apt-get install --yes --quiet postgresql libpq-dev subversion
-          sudo -u postgres createuser -s runner
+          sudo systemctl start postgresql
+          sudo -u postgres createuser -s ${USER}
 
       - name: Install bundler
         run: |
