@@ -1,7 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "bluebird": "^3.7.2",
     "classnames": "^2.2.6",
     "counterpart": "^0.17.9",
     "exoskeleton": "^0.7.0",
