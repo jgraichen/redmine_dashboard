@@ -8,17 +8,29 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ---
 
 ### New
-* Sort groups similar to nested project when grouping by projects (#122)
 
 ### Changes
-* Diverse performance improvements when quering issues and rendering the dashboard
+
+### Fixes
+
+### Breaks
+
+## 2.10.0 — (2021-07-10)
+
+---
+
+### New
+
+- Sort groups similar to nested project when grouping by projects (#122)
+
+### Changes
+
+- Diverse performance improvements when querying issues and rendering the dashboard
 
 ### Fixes
 
 - Internal server error when grouping by priority (#133)
 - Ajax Error: Internal Server Error when grouping by parent issue (#142)
-
-### Breaks
 
 ## 2.9.0
 
