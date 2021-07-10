@@ -35,12 +35,11 @@ class RdbDashboardController < ApplicationController
   end
 
   def board
-    clazz = board_type
-    clazz.new(@project, options_for(clazz.name), params) if clazz
+    board_type.new(@project, options_for(board_type.name), params)
   end
 
   def setup_board(params = nil)
-    return render_404 unless @board = board
+    return render_404 unless (@board = board)
 
     @board.setup params if params
     @board.build
@@ -48,11 +47,11 @@ class RdbDashboardController < ApplicationController
   end
 
   def save_board_options
-    save_options_for(@board.options, self.board_type.name) if @board
+    save_options_for(@board.options, board_type.name) if @board
   end
 
   def authorize_edit
-    raise Unauthorized.new unless User.current.allowed_to?(:edit_issues, @project)
+    raise Unauthorized unless User.current.allowed_to?(:edit_issues, @project)
   end
 
   def find_project

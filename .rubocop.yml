@@ -29,10 +29,24 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Metrics/AbcSize:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
     - spec/**/*_spec.rb
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 
 Style/ClassAndModuleChildren:
@@ -45,6 +59,9 @@ Style/Documentation:
   Enabled: false
 
 Style/IfUnlessModifier:
+  Enabled: false
+
+Style/NumericPredicate:
   Enabled: false
 
 Style/TrailingCommaInArguments:

@@ -5,7 +5,7 @@ class RdbFilter
   attr_reader :id
 
   def initialize(id)
-    @id    = id.to_sym
+    @id = id.to_sym
   end
 
   def default_options
@@ -31,10 +31,10 @@ class RdbFilter
   def values=(values)
     values = [values] unless values.is_a?(Array)
     @values = values.select {|value| valid_value? value }
-    @values = default_values if @values.empty? and not allow_no_values?
+    @values = default_values if @values.empty? && !allow_no_values?
   end
 
-  def valid_value?(value)
+  def valid_value?(_value)
     true
   end
 
@@ -62,7 +62,5 @@ class RdbFilter
     false
   end
 
-  def update(params)
-
-  end
+  def update(params); end
 end

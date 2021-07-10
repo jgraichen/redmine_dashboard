@@ -26,5 +26,4 @@ Redmine::Plugin.register :redmine_dashboard do
   end
   menu :project_menu, :dashboard, {controller: 'rdb_dashboard', action: 'index'},
     caption: :menu_label_dashboard, after: :new_issue
-
 end

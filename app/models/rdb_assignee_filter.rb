@@ -27,10 +27,10 @@ class RdbAssigneeFilter < RdbFilter
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee}"
 
-    if assignee == 'all' or assignee == 'me' or assignee == 'none'
+    if (assignee == 'all') || (assignee == 'me') || (assignee == 'none')
       self.value = assignee.to_sym
-    else
-      self.value = assignee.to_i if board.assignees.where(id: assignee.to_i).any?
+    elsif board.assignees.where(id: assignee.to_i).any?
+      self.value = assignee.to_i
     end
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee} => #{values.inspect}"
@@ -41,8 +41,8 @@ class RdbAssigneeFilter < RdbFilter
       when :all then I18n.t(:rdb_filter_assignee_all)
       when :me then I18n.t(:rdb_filter_assignee_me)
       when :none then I18n.t(:rdb_filter_assignee_none)
-    else
-      values.map {|id| board.assignees.find(id) }.map(&:name).join(', ')
+      else
+        values.map {|id| board.assignees.find(id) }.map(&:name).join(', ')
     end
   end
 end

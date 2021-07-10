@@ -13,7 +13,7 @@ module RdbDashboardHelper
         link = link_to(title, '#', class: 'rdb-menu-link')
       end
 
-      if options[:header] and %i[h1 h2 h3 h4 h5].include? options[:header].to_sym
+      if options[:header] && %i[h1 h2 h3 h4 h5].include?(options[:header].to_sym)
         haml_concat content_tag(options[:header], link)
       else
         haml_concat link
@@ -34,10 +34,13 @@ module RdbDashboardHelper
   end
 
   def render_rdb_menu_list(items = nil, options = {}, &block)
-    options, items = items, nil if items.is_a?(Hash)
+    if items.is_a?(Hash)
+      options = items
+      items = nil
+    end
     haml_tag :div, class: "rdb-list #{options[:async] ? 'rdb-async' : ''} #{options[:class]}" do
       haml_tag :h3, options[:title] if options[:title]
-      haml_tag options[:list_tag] ? options[:list_tag] : :ul, class: options[:list_class] do
+      haml_tag options[:list_tag] || :ul, class: options[:list_class] do
         if items
           items.each do |item|
             haml_tag :li do

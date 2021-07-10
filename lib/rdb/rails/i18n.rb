@@ -119,7 +119,7 @@ RDB_PLURALIZERS = {
 
 module RdbI18nPatch
   def pluralize(locale, entry, count)
-    return entry unless entry.is_a?(Hash) and count
+    return entry unless entry.is_a?(Hash) && count
 
     pluralizer = nil
     [locale, locale.to_s.split('-', 2).first].each do |lo|
@@ -127,13 +127,13 @@ module RdbI18nPatch
     end
 
     if pluralizer.respond_to?(:call)
-      key = count == 0 && entry.has_key?(:zero) ? :zero : pluralizer.call(count)
+      key = count == 0 && entry.key?(:zero) ? :zero : pluralizer.call(count)
 
-      return entry[key] if entry.has_key?(key)
+      return entry[key] if entry.key?(key)
     end
 
     super
   end
 end
 
-Redmine::I18n::Backend.send :include, RdbI18nPatch
+Redmine::I18n::Backend.include RdbI18nPatch

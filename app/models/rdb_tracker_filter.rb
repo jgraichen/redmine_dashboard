@@ -28,19 +28,18 @@ class RdbTrackerFilter < RdbFilter
 
     if tracker == 'all'
       self.values = board.trackers.pluck(:id)
+      return
+    end
+
+    id = tracker.to_i
+    return if board.trackers.where(id: id).empty?
+
+    if params[:only]
+      self.value = id
+    elsif values.include? id
+      values.delete id if values.count > 2
     else
-      id = tracker.to_i
-      if board.trackers.where(id: id).any?
-        if params[:only]
-          self.value = id
-        else
-          if values.include? id
-            self.values.delete id if values.count > 2
-          else
-            self.values << id
-          end
-        end
-      end
+      values << id
     end
   end
 

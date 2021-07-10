@@ -27,7 +27,7 @@ class RdbGroup
   end
 
   def accepted_issues(source = nil)
-    @accepted_issues ||= filter((source ? source : board).issues)
+    @accepted_issues ||= filter((source || board).issues)
   end
 
   def accepted_issue_ids
@@ -41,7 +41,7 @@ class RdbGroup
   def visible?
     @visible ||= catch(:visible) do
       board.columns.values.each do |column|
-        next if not column.visible? or column.compact?
+        next if !column.visible? || column.compact?
 
         throw :visible, true if filter(column.issues).count > 0
       end

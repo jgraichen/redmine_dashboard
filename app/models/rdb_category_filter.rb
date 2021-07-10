@@ -24,20 +24,19 @@ class RdbCategoryFilter < RdbFilter
   end
 
   def update(params)
-    return unless category = params[:category]
+    return unless (category = params[:category])
 
     if category == 'all'
       self.values = board.issue_categories.pluck(:id)
     else
       id = category.to_i
+
       if params[:only]
         self.value = id
-      else
-        if values.include? id
-          self.values.delete id if values.count > 2
-        else
-          self.values << id if valid_value?(id)
-        end
+      elsif values.include?(id) && values.count > 2
+        values.delete id
+      elsif valid_value?(id)
+        values << id
       end
     end
   end

@@ -2,7 +2,7 @@
 
 class RdbColumn
   attr_accessor :board
-  attr_reader :name, :options, :id, :board, :statuses
+  attr_reader :name, :options, :id, :statuses
 
   def initialize(id, name, statuses, options = {})
     @id       = id.to_s

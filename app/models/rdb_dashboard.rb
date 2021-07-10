@@ -3,10 +3,10 @@
 class RdbDashboard
   attr_reader :project, :projects, :project_ids, :options
 
-  VIEW_MODES = %i[card compact]
+  VIEW_MODES = %i[card compact].freeze
 
   def initialize(project, opts, params = nil)
-    @project     = project
+    @project = project
 
     @options = {filters: {}}
 
@@ -22,7 +22,7 @@ class RdbDashboard
     # Init board in sub class
     init if respond_to? :init
 
-    filters.each do |id, filter|
+    filters.each do |_id, filter|
       filter.values = options[:filters][filter.id] if options[:filters][filter.id]
     end
   end
@@ -44,17 +44,17 @@ class RdbDashboard
 
   def setup(params)
     # Update issue view mode
-    options[:view] = params[:view].to_sym if params[:view] and RdbDashboard::VIEW_MODES.include? params[:view].to_sym
+    options[:view] = params[:view].to_sym if params[:view] && RdbDashboard::VIEW_MODES.include?(params[:view].to_sym)
   end
 
   def update(params)
     if params[:reset]
-      filters.each do |id, filter|
+      filters.each do |_id, filter|
         filter.values = filter.default_values
       end
       options[:filters] = {}
     else
-      filters.each do |id, filter|
+      filters.each do |_id, filter|
         filter.update params if params
         options[:filters][filter.id] = filter.values
       end
@@ -103,13 +103,15 @@ class RdbDashboard
   end
 
   def abbreviation(project_id)
-    project_id = project.id unless project_id
+    project_id ||= project.id
 
     @abbreviations ||= []
     @abbreviations[project_id] ||= begin
       abbreviation = '#'
       Project.find(project_id).custom_field_values.each do |f|
-        abbreviation = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+        if f.to_s.blank? && f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+          abbreviation = "#{f}-"
+        end
       end
       abbreviation
     end
@@ -144,12 +146,24 @@ class RdbDashboard
 
   def editable?(str = nil)
     @editable ||= !!User.current.allowed_to?(:edit_issues, project)
-    str ? (@editable ? str : nil) : @editable
+    if str
+      @editable ? str : nil
+    else
+      @editable
+    end
   end
 
-  def filters; @filters ||= HashWithIndifferentAccess.new end
-  def groups; @groups ||= HashWithIndifferentAccess.new end
-  def group_list; @group_list ||= [] end
+  def filters
+    @filters ||= HashWithIndifferentAccess.new
+  end
+
+  def groups
+    @groups ||= HashWithIndifferentAccess.new
+  end
+
+  def group_list
+    @group_list ||= []
+  end
 
   class << self
     def board_type

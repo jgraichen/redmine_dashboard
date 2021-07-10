@@ -3,10 +3,12 @@
 class RdbTaskboardController < RdbDashboardController
   menu_item :dashboard
 
-  def board_type; RdbTaskboard end
+  def board_type
+    RdbTaskboard
+  end
 
   def move
-    return flash_error(:rdb_flash_invalid_request) unless column = @board.columns[params[:column].to_s]
+    return flash_error(:rdb_flash_invalid_request) unless (column = @board.columns[params[:column].to_s])
 
     # Ignore workflow if user is admin
     if User.current.admin?
@@ -37,7 +39,7 @@ class RdbTaskboardController < RdbDashboardController
 
     if params[:status]
       status = IssueStatus.find params[:status].to_i
-      if @issue.new_statuses_allowed_to(User.current).include?(status) or User.current.admin?
+      if @issue.new_statuses_allowed_to(User.current).include?(status) || User.current.admin?
         @issue.status         = status
         @issue.assigned_to_id = User.current.id if @board.options[:change_assignee]
       else
