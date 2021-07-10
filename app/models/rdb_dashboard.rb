@@ -66,35 +66,25 @@ class RdbDashboard
   end
 
   def issues
-    filter(Issue.where(project_id: project_ids))
+    filter Issue
+      .where(project_id: project_ids)
+      .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
   end
 
   def versions
-    Version.where project_id: project_ids
+    @versions ||= Version.where(project_id: project_ids)
   end
 
   def issue_categories
-    IssueCategory.where project_id: project_ids
+    @issue_categories ||= IssueCategory.where(project_id: project_ids)
   end
 
   def trackers
-    Tracker.where(id: projects.map {|p| p.trackers.pluck(:id) }.uniq.flatten)
+    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids})
   end
 
   def assignees
-    Principal.where id: memberships.active.pluck(:user_id)
-  end
-
-  def members
-    Member.where(id: projects.map {|p| p.members.map(&:id) }.uniq.flatten)
-  end
-
-  def member_principals
-    Member.where(id: projects.map {|p| p.memberships.active.map(&:id) }.uniq.flatten)
-  end
-
-  def memberships
-    Member.where(id: projects.map {|p| p.memberships.pluck(:id) }.uniq.flatten)
+    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids})
   end
 
   def filter(issues)
