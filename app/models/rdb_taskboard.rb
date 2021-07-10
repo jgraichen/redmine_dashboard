@@ -134,7 +134,7 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :parent
-        issues.where(id: issues.pluck(:parent_id).uniq).uniq.all.each do |issue|
+        issues.where(id: issues.pluck(:parent_id).uniq).uniq.each do |issue|
           add_group RdbGroup.new(
             "issue-#{issue.id}",
             issue.subject,

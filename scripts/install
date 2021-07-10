@@ -34,6 +34,10 @@ if [ ! -L "${REDMINE_PATH}/spec" ]; then
     ln -s  "${PLUGIN_PATH}/spec" "${REDMINE_PATH}/spec"
 fi
 
+if [ ! -L "${REDMINE_PATH}/test/fixtures/rdb" ]; then
+    ln -s  "${PLUGIN_PATH}/spec/fixtures" "${REDMINE_PATH}/test/fixtures/rdb"
+fi
+
 if [ ! -L "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked" ]; then
     ln -s  "${PLUGIN_PATH}/assets" "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked"
 fi

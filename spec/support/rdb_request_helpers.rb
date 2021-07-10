@@ -45,6 +45,11 @@ module RdbRequestHelpers
     select_filter :assignee, 'All Assignees'
   end
 
+  def open_menu(id, &block)
+    find_menu_link(id).click
+    within(find_menu_container(id), &block)
+  end
+
   def find_menu(id)
     find(:xpath, "//*[contains(@class, \"rdb-menu-#{id}\")]")
   end
