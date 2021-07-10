@@ -18,6 +18,9 @@ Layout/LineLength:
   Exclude:
     - spec/**/*_spec.rb
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Layout/SpaceInsideBlockBraces:
   EnforcedStyle: space
   EnforcedStyleForEmptyBraces: no_space
