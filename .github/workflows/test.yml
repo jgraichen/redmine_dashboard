@@ -42,7 +42,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: vendor
-          key: v2-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+          key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
       - name: install ruby dependencies
         run: bundle install
