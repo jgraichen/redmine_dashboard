@@ -35,11 +35,9 @@ config = {}
 end
 
 path = Pathname.new(REDMINE_PATH).join('config', 'database.yml')
-if path.exist?
-  if (cfg = YAML.load_file(path)).is_a?(Hash)
-    cfg.each_pair do |env, conf|
-      config[env] = conf
-    end
+if path.exist? && (cfg = YAML.load_file(path)).is_a?(Hash)
+  cfg.each_pair do |env, conf|
+    config[env] = conf
   end
 end
 
