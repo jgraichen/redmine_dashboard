@@ -13,7 +13,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
-- Ajax Error: Internal Server Error when grouping by parent issue
+- Internal server error when grouping by priority (#133)
+- Ajax Error: Internal Server Error when grouping by parent issue (#142)
 
 ### Breaks
 

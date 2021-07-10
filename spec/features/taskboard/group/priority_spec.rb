@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Taskboard: Group issues by Parent Task', js: true do
+describe 'Taskboard: Group issues by Priority', js: true do
   fixtures %i[
     enumerations
     issue_categories
@@ -17,7 +17,6 @@ describe 'Taskboard: Group issues by Parent Task', js: true do
     users
     versions
     workflows
-    rdb/parent_issues
   ]
 
   let(:project) { Project.find 'ecookbook' }
@@ -35,12 +34,15 @@ describe 'Taskboard: Group issues by Parent Task', js: true do
 
   it 'should group by project' do
     open_menu(:view) do
-      click_on 'Parent Task'
+      click_on 'Priority'
     end
 
-    within("[data-rdb-group-id=issue-100]") do
-      expect(page).to have_content 'Child #1'
-      expect(page).to have_content 'Child #2'
+    within("[data-rdb-group-id=priority-2]") do
+      expect(page).to have_content 'Issue due today'
+    end
+
+    within("[data-rdb-group-id=priority-1]") do
+      expect(page).to have_content 'Cannot print recipes'
     end
   end
 end

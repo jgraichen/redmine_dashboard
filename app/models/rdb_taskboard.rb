@@ -67,7 +67,7 @@ class RdbTaskboard < RdbDashboard
         end
 
       when :priority
-        IssuePriority.find(:all).reverse.each do |p|
+        IssuePriority.reorder(position: :desc).each do |p|
           add_group RdbGroup.new(
             "priority-#{p.position}",
             p.name,
