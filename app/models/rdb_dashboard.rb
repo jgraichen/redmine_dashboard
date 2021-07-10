@@ -3,7 +3,7 @@
 class RdbDashboard
   attr_reader :project, :projects, :project_ids, :options
 
-  VIEW_MODES = [:card, :compact]
+  VIEW_MODES = %i[card compact]
 
   def initialize(project, opts, params = nil)
     @project     = project

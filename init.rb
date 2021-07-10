@@ -20,7 +20,7 @@ Redmine::Plugin.register :redmine_dashboard do
   project_module :dashboard do
     permission :view_dashboards, {
       rdb_dashboard: [:index],
-      rdb_taskboard: [:index, :filter, :move, :update]
+      rdb_taskboard: %i[index filter move update]
     }
     permission :configure_dashboards, {rdb_dashboard: [:configure]}
   end

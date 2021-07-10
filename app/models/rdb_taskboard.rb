@@ -12,7 +12,7 @@ class RdbTaskboard < RdbDashboard
   def setup(params)
     super
 
-    if ['tracker', 'priority', 'assignee', 'category', 'version', 'parent', 'none', 'project'].include? params[:group]
+    if %w[tracker priority assignee category version parent none project].include? params[:group]
       options[:group] = params[:group].to_sym
     end
 

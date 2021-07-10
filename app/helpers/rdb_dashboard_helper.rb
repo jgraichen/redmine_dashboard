@@ -13,7 +13,7 @@ module RdbDashboardHelper
         link = link_to(title, '#', class: 'rdb-menu-link')
       end
 
-      if options[:header] and [:h1, :h2, :h3, :h4, :h5].include? options[:header].to_sym
+      if options[:header] and %i[h1 h2 h3 h4 h5].include? options[:header].to_sym
         haml_concat content_tag(options[:header], link)
       else
         haml_concat link
