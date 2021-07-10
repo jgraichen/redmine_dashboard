@@ -5,8 +5,6 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ## Unreleased
 
----
-
 ### New
 
 ### Changes
@@ -16,8 +14,6 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Breaks
 
 ## 2.10.0 — (2021-07-10)
-
----
 
 ### New
 
