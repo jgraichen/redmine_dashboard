@@ -33,7 +33,7 @@ class RdbDashboard
     else
       @project_ids = [project.id]
     end
-    @projects = Project.where id: project_ids
+    @projects = Project.where(id: project_ids).sorted
   end
 
   def subproject_ids(ids)

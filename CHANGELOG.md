@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ---
 
 ### New
+* Sort groups similar to nested project when grouping by projects (#122)
 
 ### Changes
 * Diverse performance improvements when quering issues and rendering the dashboard
