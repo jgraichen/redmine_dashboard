@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RdbGroup
   attr_accessor :board
   attr_reader :name, :options, :id
@@ -16,6 +18,7 @@ class RdbGroup
 
   def accept?(issue)
     return true if options[:accept].nil?
+
     options[:accept].call(issue)
   end
 
@@ -24,7 +27,7 @@ class RdbGroup
   end
 
   def accepted_issues(source = nil)
-    @accepted_issues ||= filter((source ? source : board).issues)
+    @accepted_issues ||= filter((source || board).issues)
   end
 
   def accepted_issue_ids
@@ -32,13 +35,14 @@ class RdbGroup
   end
 
   def filter(issues)
-    issues.select{|i| accept? i}
+    issues.select {|i| accept? i }
   end
 
   def visible?
     @visible ||= catch(:visible) do
       board.columns.values.each do |column|
-        next if not column.visible? or column.compact?
+        next if !column.visible? || column.compact?
+
         throw :visible, true if filter(column.issues).count > 0
       end
       false

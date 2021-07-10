@@ -1,15 +1,16 @@
-class RdbAssigneeFilter < RdbFilter
+# frozen_string_literal: true
 
+class RdbAssigneeFilter < RdbFilter
   def initialize
     super :assignee
   end
 
   def scope(scope)
     case value
-      when :me   then scope.where(:assigned_to_id => User.current.id)
-      when :none then scope.where(:assigned_to_id => nil)
+      when :me   then scope.where(assigned_to_id: User.current.id)
+      when :none then scope.where(assigned_to_id: nil)
       when :all  then scope
-      else scope.where(:assigned_to_id => value)
+      else scope.where(assigned_to_id: value)
     end
   end
 
@@ -18,7 +19,7 @@ class RdbAssigneeFilter < RdbFilter
   end
 
   def default_values
-    [ RdbDashboard.defaults[:assignee] || :me ]
+    [RdbDashboard.defaults[:assignee] || :me]
   end
 
   def update(params)
@@ -26,10 +27,10 @@ class RdbAssigneeFilter < RdbFilter
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee}"
 
-    if assignee == 'all' or assignee == 'me' or assignee == 'none'
+    if (assignee == 'all') || (assignee == 'me') || (assignee == 'none')
       self.value = assignee.to_sym
-    else
-      self.value = assignee.to_i if board.assignees.where(:id => assignee.to_i).any?
+    elsif board.assignees.where(id: assignee.to_i).any?
+      self.value = assignee.to_i
     end
 
     Rails.logger.warn "CHANGE ASSIGNE: #{assignee} => #{values.inspect}"
@@ -37,11 +38,11 @@ class RdbAssigneeFilter < RdbFilter
 
   def title
     case value
-    when :all then I18n.t(:rdb_filter_assignee_all)
-    when :me then I18n.t(:rdb_filter_assignee_me)
-    when :none then I18n.t(:rdb_filter_assignee_none)
-    else
-      values.map {|id| board.assignees.find(id) }.map(&:name).join(', ')
+      when :all then I18n.t(:rdb_filter_assignee_all)
+      when :me then I18n.t(:rdb_filter_assignee_me)
+      when :none then I18n.t(:rdb_filter_assignee_none)
+      else
+        values.map {|id| board.assignees.find(id) }.map(&:name).join(', ')
     end
   end
 end

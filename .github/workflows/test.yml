@@ -5,71 +5,50 @@ on:
 
 jobs:
   test:
-    name: Ruby ${{ matrix.ruby }} / Redmine ${{ matrix.redmine }}
-    runs-on: ubuntu-18.04
+    name: ${{ matrix.redmine }} on ${{ matrix.ruby }}
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
-        ruby: ['2.6', '2.5']
-        redmine: ['4.1.1', '4.0.7']
+        include:
+          - ruby: "2.7"
+            redmine: "4.2.1"
+          - ruby: "2.6"
+            redmine: "4.1.3"
+          - ruby: "2.5"
+            redmine: "4.0.9"
       fail-fast: false
 
-    services:
-      postgres:
-        image: postgres:12-alpine
-        env:
-          POSTGRES_DB: db
-          POSTGRES_HOST_AUTH_METHOD: trust
-          POSTGRES_USER: runner
-        ports: [5432/tcp]
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_PATH: ${{ github.workspace }}/vendor/bundle
+      BUNDLE_RETRY: 3
+      BUNDLE_WITHOUT: development
+      REDMINE_VERSION: ${{ matrix.redmine }}
 
     steps:
       - uses: actions/checkout@master
 
-      - name: Update package archives
-        run: sudo apt-get update --yes --quiet
-
-      - name: Setup Chromium
+      - name: setup postgres
         run: |
-          sudo apt-get install --yes --quiet chromium-browser chromium-chromedriver
-          export PATH=$PATH:/usr/lib/chromium-browser/
+          sudo systemctl start postgresql
+          sudo -u postgres createuser -s ${USER}
 
-      - name: Install package dependencies
-        run: >
-          sudo apt-get install --yes --quiet
-          libpq-dev
-          subversion
-
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          architecture: 'x64'
 
-      - name: Setup Cache
+      - name: setup cache
         uses: actions/cache@v1
         with:
           path: vendor
-          key: v1-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+          key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
-      - name: Setup Bundler
-        run: |
-          gem install bundler -v '~> 1.0'
-          bundle config path "$(pwd)/vendor/bundle"
+      - name: install ruby dependencies
+        run: bundle install
 
-      - name: Install Ruby dependencies
-        run: |
-          bundle install --jobs=4 --retry=3 --without development
-
-      - name: Setup local redmine
-        env:
-          REDMINE_VERSION: ${{ matrix.redmine }}
-          BUNDLE_OPTS: --without development
-          DATABASE_URL: postgresql://localhost:${{ job.services.postgres.ports[5432] }}/db
+      - name: setup redmine ${{ matrix.redmine }}
         run: ./redmine update
 
-      - name: Run tests
-        env:
-          REDMINE_VERSION: ${{ matrix.redmine }}
-        run: bundle exec rspec --color
+      - name: run tests
+        run: ./redmine exec bundle exec rspec --color

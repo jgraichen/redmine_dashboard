@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class RdbDashboard
   attr_reader :project, :projects, :project_ids, :options
 
-  VIEW_MODES = [ :card, :compact ]
+  VIEW_MODES = %i[card compact].freeze
 
   def initialize(project, opts, params = nil)
-    @project     = project
+    @project = project
 
-    @options = { :filters => {} }
+    @options = {filters: {}}
 
     options.merge! self.class.defaults
     options.merge! opts
@@ -20,7 +22,7 @@ class RdbDashboard
     # Init board in sub class
     init if respond_to? :init
 
-    filters.each do |id, filter|
+    filters.each do |_id, filter|
       filter.values = options[:filters][filter.id] if options[:filters][filter.id]
     end
   end
@@ -31,28 +33,28 @@ class RdbDashboard
     else
       @project_ids = [project.id]
     end
-    @projects = Project.where :id => project_ids
+    @projects = Project.where(id: project_ids).sorted
   end
 
   def subproject_ids(ids)
     ids.inject(ids.dup) do |ids, id|
-      ids + subproject_ids(Project.where(:parent_id => id).pluck(:id))
+      ids + subproject_ids(Project.where(parent_id: id).pluck(:id))
     end.uniq
   end
 
   def setup(params)
     # Update issue view mode
-    options[:view] = params[:view].to_sym if params[:view] and RdbDashboard::VIEW_MODES.include? params[:view].to_sym
+    options[:view] = params[:view].to_sym if params[:view] && RdbDashboard::VIEW_MODES.include?(params[:view].to_sym)
   end
 
   def update(params)
     if params[:reset]
-      filters.each do |id, filter|
+      filters.each do |_id, filter|
         filter.values = filter.default_values
       end
       options[:filters] = {}
     else
-      filters.each do |id, filter|
+      filters.each do |_id, filter|
         filter.update params if params
         options[:filters][filter.id] = filter.values
       end
@@ -64,35 +66,25 @@ class RdbDashboard
   end
 
   def issues
-    filter(Issue.where(:project_id => project_ids))
+    filter Issue
+      .where(project_id: project_ids)
+      .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
   end
 
   def versions
-    Version.where :project_id => project_ids
+    @versions ||= Version.where(project_id: project_ids)
   end
 
   def issue_categories
-    IssueCategory.where :project_id => project_ids
+    @issue_categories ||= IssueCategory.where(project_id: project_ids)
   end
 
   def trackers
-    Tracker.where(:id => projects.map{|p| p.trackers.pluck(:id)}.uniq.flatten)
+    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids})
   end
 
   def assignees
-    Principal.where :id => memberships.active.pluck(:user_id)
-  end
-
-  def members
-    Member.where(:id => projects.map{|p| p.members.map(&:id)}.uniq.flatten)
-  end
-
-  def member_principals
-    Member.where(:id=> projects.map{|p| p.memberships.active.map(&:id)}.uniq.flatten)
-  end
-
-  def memberships
-    Member.where(:id => projects.map{|p| p.memberships.pluck(:id) }.uniq.flatten)
+    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids})
   end
 
   def filter(issues)
@@ -101,13 +93,15 @@ class RdbDashboard
   end
 
   def abbreviation(project_id)
-    project_id = project.id unless project_id
+    project_id ||= project.id
 
     @abbreviations ||= []
     @abbreviations[project_id] ||= begin
       abbreviation = '#'
       Project.find(project_id).custom_field_values.each do |f|
-        abbreviation = f.to_s + '-' if f.to_s.length > 0 and f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+        if f.to_s.blank? && f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+          abbreviation = "#{f}-"
+        end
       end
       abbreviation
     end
@@ -142,12 +136,24 @@ class RdbDashboard
 
   def editable?(str = nil)
     @editable ||= !!User.current.allowed_to?(:edit_issues, project)
-    str ? (@editable ? str : nil) : @editable
+    if str
+      @editable ? str : nil
+    else
+      @editable
+    end
   end
 
-  def filters; @filters ||= HashWithIndifferentAccess.new end
-  def groups; @groups ||= HashWithIndifferentAccess.new end
-  def group_list; @group_list ||= [] end
+  def filters
+    @filters ||= HashWithIndifferentAccess.new
+  end
+
+  def groups
+    @groups ||= HashWithIndifferentAccess.new
+  end
+
+  def group_list
+    @group_list ||= []
+  end
 
   class << self
     def board_type
@@ -159,7 +165,7 @@ class RdbDashboard
     end
 
     def load_defaults
-      config = YAML.load_file File.expand_path('../../../config/default.yml', __FILE__)
+      config = YAML.load_file File.expand_path('../../config/default.yml', __dir__)
 
       {
         view: check_opts(config, 'view', :card, :compact),

@@ -1,8 +1,10 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 # data from: https://github.com/svenfuchs/i18n/blob/master/test/test_data/locales/plurals.rb
 
 require 'redmine/i18n'
 
+# rubocop:disable all
 RDB_PLURALIZERS = {
   :af => lambda { |n| n == 1 ? :one : :other },
   :am => lambda { |n| [0, 1].include?(n) ? :one : :other },
@@ -113,10 +115,11 @@ RDB_PLURALIZERS = {
   :zh => lambda { |n| :other },
   :zu => lambda { |n| n == 1 ? :one : :other }
 }
+# rubocop:enable all
 
 module RdbI18nPatch
   def pluralize(locale, entry, count)
-    return entry unless entry.is_a?(Hash) and count
+    return entry unless entry.is_a?(Hash) && count
 
     pluralizer = nil
     [locale, locale.to_s.split('-', 2).first].each do |lo|
@@ -124,13 +127,13 @@ module RdbI18nPatch
     end
 
     if pluralizer.respond_to?(:call)
-      key = count == 0 && entry.has_key?(:zero) ? :zero : pluralizer.call(count)
+      key = count == 0 && entry.key?(:zero) ? :zero : pluralizer.call(count)
 
-      return entry[key] if entry.has_key?(key)
+      return entry[key] if entry.key?(key)
     end
 
     super
   end
 end
 
-Redmine::I18n::Backend.send :include, RdbI18nPatch
+Redmine::I18n::Backend.include RdbI18nPatch

@@ -1,12 +1,14 @@
-class RdbTrackerFilter < RdbFilter
+# frozen_string_literal: true
 
+class RdbTrackerFilter < RdbFilter
   def initialize
     super :tracker
   end
 
   def scope(scope)
     return scope if all?
-    scope.where :tracker_id => values
+
+    scope.where tracker_id: values
   end
 
   def all?
@@ -26,30 +28,31 @@ class RdbTrackerFilter < RdbFilter
 
     if tracker == 'all'
       self.values = board.trackers.pluck(:id)
+      return
+    end
+
+    id = tracker.to_i
+    return if board.trackers.where(id: id).empty?
+
+    if params[:only]
+      self.value = id
+    elsif values.include? id
+      values.delete id if values.count > 2
     else
-      id = tracker.to_i
-      if board.trackers.where(:id => id).any?
-        if params[:only]
-          self.value = id
-        else
-          if values.include? id
-            self.values.delete id if values.count > 2
-          else
-            self.values << id
-          end
-        end
-      end
+      values << id
     end
   end
 
   def title
     return I18n.t(:rdb_filter_tracker_all) if all?
     return I18n.t(:rdb_filter_tracker_multiple) if values.count > 1
+
     board.trackers.find(value).name
   end
 
   def enabled?(id)
     return true if value == :all
+
     values.include? id
   end
 end

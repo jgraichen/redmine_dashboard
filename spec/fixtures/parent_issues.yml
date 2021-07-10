@@ -1,0 +1,23 @@
+_fixture:
+  model_class: Issue
+  default: &default
+    project_id: 1
+    tracker_id: 1
+    status_id: 1
+    priority_id: 4
+    author_id: 2
+
+parent:
+  <<: *default
+  id: 100
+  subject: "Parent #1"
+
+child_001:
+  <<: *default
+  subject: "Child #1"
+  parent_id: 100
+
+child_002:
+  <<: *default
+  subject: "Child #2"
+  parent_id: 100

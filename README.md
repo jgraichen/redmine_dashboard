@@ -6,9 +6,9 @@
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is compatible and tested with Redmine 4.1 and 4.0. It may be compatible with older versions too.
+**Redmine Dashboard 2** is compatible and tested with Redmine 4.2, 4.1, 4.0, and Ruby 2.7, 2.6, and 2.5.
 
-![Redmine Dashboard v2.x Screenshot](http://altimos.de/rdb/img/rdb_2-1.png)
+![Redmine Dashboard v2.x Screenshot](docs/rdb_2-1.png)
 
 ## Features List
 
@@ -24,10 +24,10 @@ Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
 
 ## Install
 
-1. Download [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
+1. Download the [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
 2. Extract archive to `<redmine>/plugins`. Make **sure** the plugin directory is called `<redmine>/plugins/redmine_dashboard/` ([#11](https://github.com/jgraichen/redmine_dashboard/issues/11)).
-3. Install required dependencies by running `bundle install --without development test` in your redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` ([#58](https://github.com/jgraichen/redmine_dashboard/issues/58)).
-4. A database migration is not needed. Restart redmine.
+3. Install required dependencies by running `bundle install --without development test` in your Redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` ([#58](https://github.com/jgraichen/redmine_dashboard/issues/58)).
+4. A database migration is not needed. Restart Redmine.
 
 ### Configure Redmine
 

@@ -1,4 +1,6 @@
-ENV["RAILS_ENV"] ||= 'test'
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
 
 env = File.expand_path('config/environment.rb', Dir.pwd)
 
@@ -26,7 +28,7 @@ require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f}
+Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each {|f| require f }
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
@@ -56,10 +58,10 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   # Include request spec helpers
-  config.include RdbRequestHelpers, :type => :feature
+  config.include RdbRequestHelpers, type: :feature
 
   DatabaseCleaner.strategy = :truncation
 end

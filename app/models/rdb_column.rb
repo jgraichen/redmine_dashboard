@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class RdbColumn
   attr_accessor :board
-  attr_reader :name, :options, :id, :board, :statuses
+  attr_reader :name, :options, :id, :statuses
 
   def initialize(id, name, statuses, options = {})
     @id       = id.to_s
@@ -10,7 +12,7 @@ class RdbColumn
   end
 
   def scope(issue_scope)
-    issue_scope.where :status_id => statuses.map(&:id)
+    issue_scope.where status_id: statuses.map(&:id)
   end
 
   def issues
@@ -18,7 +20,7 @@ class RdbColumn
   end
 
   def percentage
-    all_issue_count = board.issues.select {|i| i.children.empty?}.count
+    all_issue_count = board.issues.count
     all_issue_count > 0 ? ((issues.count.to_f / all_issue_count) * 100).round(4) : 0
   end
 
