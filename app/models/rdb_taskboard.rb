@@ -144,7 +144,7 @@ class RdbTaskboard < RdbDashboard
         add_group RdbGroup.new(
           'issue-others',
           :rdb_no_parent,
-          accept: proc {|issue| issue.parent.nil? && issue.children.empty? },
+          accept: proc {|issue| issue.parent.nil? },
         )
     end
 

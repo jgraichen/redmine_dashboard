@@ -20,7 +20,7 @@ class RdbColumn
   end
 
   def percentage
-    all_issue_count = board.issues.select {|i| i.children.empty? }.count
+    all_issue_count = board.issues.count
     all_issue_count > 0 ? ((issues.count.to_f / all_issue_count) * 100).round(4) : 0
   end
 
