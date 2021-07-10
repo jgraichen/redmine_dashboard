@@ -18,7 +18,7 @@ module RdbRequestHelpers
     fill_in 'username', with: user
     fill_in 'password', with: password
     page.find(:xpath, '//input[@name="login"]').click
-    @user = User.find_by_login(user)
+    @user = User.find_by(login: user)
   end
 
   def login_as_user
