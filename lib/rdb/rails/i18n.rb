@@ -3,6 +3,7 @@
 
 require 'redmine/i18n'
 
+# rubocop:disable all
 RDB_PLURALIZERS = {
   :af => lambda { |n| n == 1 ? :one : :other },
   :am => lambda { |n| [0, 1].include?(n) ? :one : :other },
@@ -113,6 +114,7 @@ RDB_PLURALIZERS = {
   :zh => lambda { |n| :other },
   :zu => lambda { |n| n == 1 ? :one : :other }
 }
+# rubocop:enable all
 
 module RdbI18nPatch
   def pluralize(locale, entry, count)
