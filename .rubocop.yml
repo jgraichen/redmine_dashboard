@@ -38,7 +38,13 @@ Metrics/BlockLength:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/ConditionalAssignment:
+  Enabled: false
+
 Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
   Enabled: false
 
 Style/TrailingCommaInArguments:
