@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 # Gems required by redmine_dashboard
 
@@ -16,9 +18,9 @@ gem 'haml'
 gem 'rake'
 
 group :test do
+  gem 'database_cleaner'
   gem 'rspec', '~> 3.6'
   gem 'rspec-rails'
-  gem 'database_cleaner'
 end
 
 group :development, :test do

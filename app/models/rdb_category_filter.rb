@@ -1,12 +1,14 @@
-class RdbCategoryFilter < RdbFilter
+# frozen_string_literal: true
 
+class RdbCategoryFilter < RdbFilter
   def initialize
     super :category
   end
 
   def scope(scope)
     return scope if all?
-    scope.where :category_id => values
+
+    scope.where category_id: values
   end
 
   def all?
@@ -43,11 +45,13 @@ class RdbCategoryFilter < RdbFilter
   def title
     return I18n.t(:rdb_filter_category_all) if all?
     return I18n.t(:rdb_filter_category_multiple) if values.count > 1
+
     board.issue_categories.find_by_id(value).try(:name)
   end
 
   def enabled?(id)
     return true if value == :all
+
     values.include? id
   end
 end

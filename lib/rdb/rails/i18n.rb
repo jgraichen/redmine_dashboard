@@ -1,4 +1,5 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 # data from: https://github.com/svenfuchs/i18n/blob/master/test/test_data/locales/plurals.rb
 
 require 'redmine/i18n'

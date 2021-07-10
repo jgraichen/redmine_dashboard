@@ -37,7 +37,6 @@ else
   Capybara.javascript_driver = :selenium_chrome_headless
 end
 
-
 RSpec.configure do |config|
   config.before(:each, js: true) do
     page.driver.browser.manage.window.resize_to(1280, 1024)

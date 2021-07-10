@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RdbFilter
   attr_accessor :board
   attr_reader :id
@@ -15,7 +17,7 @@ class RdbFilter
   end
 
   def default_values
-    [ ]
+    []
   end
 
   def value
@@ -23,11 +25,11 @@ class RdbFilter
   end
 
   def value=(value)
-    self.values = value ? [ value ] : []
+    self.values = value ? [value] : []
   end
 
   def values=(values)
-    values = [ values ] unless values.is_a?(Array)
+    values = [values] unless values.is_a?(Array)
     @values = values.select {|value| valid_value? value }
     @values = default_values if @values.empty? and not allow_no_values?
   end
@@ -45,7 +47,7 @@ class RdbFilter
   end
 
   def to_options
-    [ ]
+    []
   end
 
   def scope(scope)

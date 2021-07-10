@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RdbTaskboardController < RdbDashboardController
   menu_item :dashboard
 
@@ -16,7 +18,7 @@ class RdbTaskboardController < RdbDashboardController
 
     if @statuses.empty?
       return flash_error :rdb_flash_illegal_workflow_action,
-        :issue => @issue.subject, :source => @issue.status.name, :target => column.title
+        issue: @issue.subject, source: @issue.status.name, target: column.title
     end
 
     # Show dialog if more than one status are available
@@ -40,7 +42,7 @@ class RdbTaskboardController < RdbDashboardController
         @issue.assigned_to_id = User.current.id if @board.options[:change_assignee]
       else
         return flash_error :rdb_flash_illegal_workflow_action,
-          :issue => @issue.subject, :source => @issue.status.name, :target => @status.name
+          issue: @issue.subject, source: @issue.status.name, target: @status.name
       end
     end
 

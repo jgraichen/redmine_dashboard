@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class RdbDashboard
   attr_reader :project, :projects, :project_ids, :options
 
-  VIEW_MODES = [ :card, :compact ]
+  VIEW_MODES = [:card, :compact]
 
   def initialize(project, opts, params = nil)
     @project     = project
 
-    @options = { :filters => {} }
+    @options = {filters: {}}
 
     options.merge! self.class.defaults
     options.merge! opts
@@ -31,12 +33,12 @@ class RdbDashboard
     else
       @project_ids = [project.id]
     end
-    @projects = Project.where :id => project_ids
+    @projects = Project.where id: project_ids
   end
 
   def subproject_ids(ids)
     ids.inject(ids.dup) do |ids, id|
-      ids + subproject_ids(Project.where(:parent_id => id).pluck(:id))
+      ids + subproject_ids(Project.where(parent_id: id).pluck(:id))
     end.uniq
   end
 
@@ -64,35 +66,35 @@ class RdbDashboard
   end
 
   def issues
-    filter(Issue.where(:project_id => project_ids))
+    filter(Issue.where(project_id: project_ids))
   end
 
   def versions
-    Version.where :project_id => project_ids
+    Version.where project_id: project_ids
   end
 
   def issue_categories
-    IssueCategory.where :project_id => project_ids
+    IssueCategory.where project_id: project_ids
   end
 
   def trackers
-    Tracker.where(:id => projects.map{|p| p.trackers.pluck(:id)}.uniq.flatten)
+    Tracker.where(id: projects.map {|p| p.trackers.pluck(:id) }.uniq.flatten)
   end
 
   def assignees
-    Principal.where :id => memberships.active.pluck(:user_id)
+    Principal.where id: memberships.active.pluck(:user_id)
   end
 
   def members
-    Member.where(:id => projects.map{|p| p.members.map(&:id)}.uniq.flatten)
+    Member.where(id: projects.map {|p| p.members.map(&:id) }.uniq.flatten)
   end
 
   def member_principals
-    Member.where(:id=> projects.map{|p| p.memberships.active.map(&:id)}.uniq.flatten)
+    Member.where(id: projects.map {|p| p.memberships.active.map(&:id) }.uniq.flatten)
   end
 
   def memberships
-    Member.where(:id => projects.map{|p| p.memberships.pluck(:id) }.uniq.flatten)
+    Member.where(id: projects.map {|p| p.memberships.pluck(:id) }.uniq.flatten)
   end
 
   def filter(issues)
@@ -159,7 +161,7 @@ class RdbDashboard
     end
 
     def load_defaults
-      config = YAML.load_file File.expand_path('../../../config/default.yml', __FILE__)
+      config = YAML.load_file File.expand_path('../../config/default.yml', __dir__)
 
       {
         view: check_opts(config, 'view', :card, :compact),

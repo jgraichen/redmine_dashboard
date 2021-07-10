@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 REDMINE_VERSION = ENV['REDMINE_VERSION'] = ENV['REDMINE_VERSION'] || ENV['VERSION'] || '4.2.1'
 REDMINE_PATH    = ENV['REDMINE_PATH']    = File.expand_path("../vendor/redmine/#{REDMINE_VERSION}/", __FILE__)
 REDMINE_EXEC    = ENV['REDMINE_EXEC']    = File.expand_path(__FILE__)
-PLUGIN_PATH     = ENV['PLUGIN_PATH']     = File.expand_path("..", __FILE__)
+PLUGIN_PATH     = ENV['PLUGIN_PATH']     = File.expand_path('..', __FILE__)
 
 require 'pathname'
 
@@ -46,7 +47,7 @@ case ARGV[0]
   when '-h', '--help', nil
     STDOUT.puts help
   when 'exec'
-    Dir.chdir(REDMINE_PATH) { Kernel.exec *ARGV[1..-1] }
+    Dir.chdir(REDMINE_PATH) { Kernel.exec(*ARGV[1..-1]) }
   else
     handle_command ARGV[0], ARGV[1..-1]
 end
