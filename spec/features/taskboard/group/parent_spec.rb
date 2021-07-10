@@ -33,12 +33,12 @@ describe 'Taskboard: Group issues by Parent Task', js: true do
     unset_all_filter
   end
 
-  it 'should group by project' do
+  it 'should group issues' do
     open_menu(:view) do
       click_on 'Parent Task'
     end
 
-    within("[data-rdb-group-id=issue-100]") do
+    within('[data-rdb-group-id=issue-100]') do
       expect(page).to have_content 'Child #1'
       expect(page).to have_content 'Child #2'
     end

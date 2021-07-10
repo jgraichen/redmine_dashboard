@@ -32,16 +32,16 @@ describe 'Taskboard: Group issues by Priority', js: true do
     unset_all_filter
   end
 
-  it 'should group by project' do
+  it 'should group issues' do
     open_menu(:view) do
       click_on 'Priority'
     end
 
-    within("[data-rdb-group-id=priority-2]") do
+    within('[data-rdb-group-id=priority-2]') do
       expect(page).to have_content 'Issue due today'
     end
 
-    within("[data-rdb-group-id=priority-1]") do
+    within('[data-rdb-group-id=priority-1]') do
       expect(page).to have_content 'Cannot print recipes'
     end
   end
