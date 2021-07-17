@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RdbDashboardController < ApplicationController
-  unloadable
   menu_item :dashboard
   before_action :find_project, :authorize
   before_action :setup_board, except: :index
