@@ -79,14 +79,12 @@ class RdbDashboardController < ApplicationController
   end
 
   def options_for(board)
-    session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] ||= {}
+    User.current.pref["rdb_#{@project.id}_#{board}"] ||
+      session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] || {}
   end
 
   def save_options_for(options, board)
-    session["dashboard_#{@project.id}_#{User.current.id}_#{board}"] = options
-  end
-
-  def session_id
-    "dashboard_#{@project.id}_#{User.current.id}"
+    User.current.pref["rdb_#{@project.id}_#{board}"] = options
+    User.current.pref.save
   end
 end

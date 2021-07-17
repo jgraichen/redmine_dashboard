@@ -63,5 +63,11 @@ RSpec.configure do |config|
   # Include request spec helpers
   config.include RdbRequestHelpers, type: :feature
 
+  config.before do
+    # Delete dashboard preferences between each test run. Otherwise changed
+    # filters and options will leak into the next spec.
+    UserPreference.delete_all
+  end
+
   DatabaseCleaner.strategy = :truncation
 end

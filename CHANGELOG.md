@@ -7,9 +7,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+- Store dashboard settings in user preferences (#39)
+
 ### Changes
 
 ### Fixes
+
+- Fix possible session cookie overflow as dashboard settings are no longer store in the session (#144)
 
 ### Breaks
 
@@ -32,8 +36,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Changes
 
-- New catalan and dutch locale
-- Updated turkish locale
+- New Catalan and Dutch locale
+- Updated Turkish locale
 - Dropped old Redmine (< 4.0) and Ruby (< 2.5) versions from automated testing
 
 ## 2.8.0
