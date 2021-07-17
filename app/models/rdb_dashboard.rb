@@ -48,11 +48,9 @@ class RdbDashboard
   end
 
   def projects
-    @projects ||= begin
-      Project.where(
-        project.project_condition(options[:include_subprojects])
+    @projects ||= Project.where(
+        project.project_condition(options[:include_subprojects]),
       )
-    end
   end
 
   def project_ids
