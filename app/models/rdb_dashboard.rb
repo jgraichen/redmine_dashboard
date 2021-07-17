@@ -72,15 +72,15 @@ class RdbDashboard
   end
 
   def versions
-    @versions ||= Version.where(project_id: project_ids)
+    @versions ||= Version.where(project_id: project_ids).distinct
   end
 
   def issue_categories
-    @issue_categories ||= IssueCategory.where(project_id: project_ids)
+    @issue_categories ||= IssueCategory.where(project_id: project_ids).distinct
   end
 
   def trackers
-    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids})
+    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids}).distinct
   end
 
   def assignees
