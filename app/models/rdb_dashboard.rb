@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class RdbDashboard
-  attr_reader :project, :projects, :project_ids, :options
+  attr_reader :project, :options
 
   VIEW_MODES = %i[card compact].freeze
 
   def initialize(project, opts, params = nil)
     @project = project
-
     @options = {filters: {}}
 
     options.merge! self.class.defaults
@@ -17,29 +16,12 @@ class RdbDashboard
       options[:include_subprojects] = (params[:include_subprojects] == 'true')
     end
 
-    reload_projects!
-
     # Init board in sub class
     init if respond_to? :init
 
     filters.each do |_id, filter|
       filter.values = options[:filters][filter.id] if options[:filters][filter.id]
     end
-  end
-
-  def reload_projects!
-    if options[:include_subprojects]
-      @project_ids = subproject_ids([project.id])
-    else
-      @project_ids = [project.id]
-    end
-    @projects = Project.where(id: project_ids).sorted
-  end
-
-  def subproject_ids(ids)
-    ids.inject(ids.dup) do |ids, id|
-      ids + subproject_ids(Project.where(parent_id: id).pluck(:id))
-    end.uniq
   end
 
   def setup(params)
@@ -63,6 +45,18 @@ class RdbDashboard
 
   def issue_view
     options[:view]
+  end
+
+  def projects
+    @projects ||= begin
+      Project.where(
+        project.project_condition(options[:include_subprojects])
+      )
+    end
+  end
+
+  def project_ids
+    @project_ids ||= projects.pluck(:id)
   end
 
   def issues
