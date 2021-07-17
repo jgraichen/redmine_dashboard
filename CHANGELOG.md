@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ## Unreleased
 
 ### New
+* Show status name as done column title if only a single closed status is shown
 * Include shared versions into filter (#79)
 * Only show issue statuses for trackers selected in filter (#108)
 * Limit shown statuses to the one available in the project (#121, #127, #130)

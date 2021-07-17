@@ -58,13 +58,24 @@ class RdbTaskboard < RdbDashboard
       false
     end
 
-    add_column RdbColumn.new(
-      'sX',
-      :rdb_column_done,
-      done_statuses,
-      compact: options[:hide_done],
-      hide: options[:hide_columns].include?('sX'),
-    )
+    if done_statuses.count == 1
+      status = done_statuses.first
+      add_column RdbColumn.new(
+        "s#{status.id}",
+        status.name,
+        status,
+        compact: options[:hide_done],
+        hide: options[:hide_columns].include?("s#{status.id}"),
+      )
+    elsif done_statuses.count > 0
+      add_column RdbColumn.new(
+        'sX',
+        :rdb_column_done,
+        done_statuses,
+        compact: options[:hide_done],
+        hide: options[:hide_columns].include?('sX'),
+      )
+    end
 
     # Init groups
     case options[:group]
