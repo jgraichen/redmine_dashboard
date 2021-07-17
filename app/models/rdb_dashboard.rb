@@ -71,7 +71,7 @@ class RdbDashboard
         version_ids += project.rolled_up_versions.pluck(:id)
       end
 
-      Version.where(id: version_ids.uniq)
+      Version.where(id: version_ids.uniq).sorted
     end
   end
 

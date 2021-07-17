@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 * Store dashboard settings in user preferences (#39)
 
 ### Changes
+* Sort versions in filter (#78)
 
 ### Fixes
 
