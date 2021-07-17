@@ -18,8 +18,8 @@ gem 'haml'
 gem 'rake'
 
 group :test do
-  gem 'database_cleaner'
-  gem 'rspec', '~> 3.6'
+  gem 'database_cleaner-active_record', '~> 2.0'
+  gem 'rspec', '~> 3.10'
   gem 'rspec-rails'
 end
 
