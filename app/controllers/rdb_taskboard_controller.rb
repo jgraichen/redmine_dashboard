@@ -10,13 +10,8 @@ class RdbTaskboardController < RdbDashboardController
   def move
     return flash_error(:rdb_flash_invalid_request) unless (column = @board.columns[params[:column].to_s])
 
-    # Ignore workflow if user is admin
-    if User.current.admin?
-      @statuses = column.statuses
-    else
-      # Get all status the user is allowed to assign and that are in the target column
-      @statuses = @issue.new_statuses_allowed_to(User.current) & column.statuses
-    end
+    # Get all status the user is allowed to assign and that are in the target column
+    @statuses = @issue.new_statuses_allowed_to(User.current) & column.statuses
 
     if @statuses.empty?
       return flash_error :rdb_flash_illegal_workflow_action,
@@ -39,7 +34,7 @@ class RdbTaskboardController < RdbDashboardController
 
     if params[:status]
       status = IssueStatus.find params[:status].to_i
-      if @issue.new_statuses_allowed_to(User.current).include?(status) || User.current.admin?
+      if @issue.new_statuses_allowed_to(User.current).include?(status)
         @issue.status         = status
         @issue.assigned_to_id = User.current.id if @board.options[:change_assignee]
       else
