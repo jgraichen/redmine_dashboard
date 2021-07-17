@@ -34,7 +34,7 @@ class RdbTaskboard < RdbDashboard
     # Init columns
     options[:hide_columns] ||= []
 
-    done_statuses = IssueStatus.sorted.select do |status|
+    done_statuses = statuses.select do |status|
       next true if status.is_closed?
 
       add_column RdbColumn.new(

@@ -63,6 +63,17 @@ class RdbDashboard
       .includes(:assigned_to, :time_entries, :tracker, :status, :priority, :fixed_version)
   end
 
+  def statuses
+    ids = WorkflowTransition
+      .where(tracker: trackers)
+      .distinct
+      .pluck(:old_status_id, :new_status_id)
+      .flatten
+      .uniq
+
+    IssueStatus.where(id: ids).sorted
+  end
+
   def versions
     @versions ||= Version.where(project_id: project_ids).distinct
   end

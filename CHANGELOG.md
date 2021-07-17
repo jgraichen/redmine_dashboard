@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+- Limit shown statuses to the one available in the project (#121, #127, #130)
 - Store dashboard settings in user preferences (#39)
 
 ### Changes
