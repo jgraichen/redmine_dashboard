@@ -2,7 +2,7 @@
 
 require File.expand_path('../../spec_helper', __dir__)
 
-describe RdbDashboard do
+describe RdbTaskboard do
   fixtures %i[
     enabled_modules
     issue_statuses
@@ -12,7 +12,7 @@ describe RdbDashboard do
     workflows
   ]
 
-  subject(:dashboard) { RdbDashboard.new(project, options, params) }
+  subject(:dashboard) { RdbTaskboard.new(project, options, params) }
 
   let(:project) { Project.find(1) }
   let(:options) { {} }
