@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
+- Duplicated assignees in filter when some are members of subprojects
 - Fix possible session cookie overflow as dashboard settings are no longer store in the session (#144)
 
 ### Breaks

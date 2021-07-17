@@ -84,7 +84,7 @@ class RdbDashboard
   end
 
   def assignees
-    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids})
+    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids}).distinct
   end
 
   def filter(issues)
