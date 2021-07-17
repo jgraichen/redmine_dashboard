@@ -64,7 +64,15 @@ class RdbDashboard
   end
 
   def versions
-    @versions ||= Version.where(project_id: project_ids).distinct
+    @versions ||= begin
+      version_ids = project.shared_versions.pluck(:id)
+
+      if options[:include_subprojects]
+        version_ids += project.rolled_up_versions.pluck(:id)
+      end
+
+      Version.where(id: version_ids.uniq)
+    end
   end
 
   def issue_categories

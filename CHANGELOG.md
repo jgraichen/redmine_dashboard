@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ## Unreleased
 
 ### New
-
+* Include shared versions into filter (#79)
 * Only show issue statuses for trackers selected in filter (#108)
 * Limit shown statuses to the one available in the project (#121, #127, #130)
 * Store dashboard settings in user preferences (#39)
