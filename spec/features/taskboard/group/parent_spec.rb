@@ -4,20 +4,22 @@ require 'spec_helper'
 
 describe 'Taskboard: Group issues by Parent Task', js: true do
   fixtures %i[
+    enabled_modules
     enumerations
     issue_categories
     issue_statuses
     issues
     member_roles
     members
-    projects_trackers
     projects
+    projects_trackers
+    rdb/parent_issues
     roles
     time_entries
+    trackers
     users
     versions
     workflows
-    rdb/parent_issues
   ]
 
   let(:project) { Project.find 'ecookbook' }

@@ -3,10 +3,23 @@
 require 'spec_helper'
 
 describe 'Taskboard/Filter/Assignee', js: true, sauce: true do
-  fixtures :projects, :projects_trackers, :users, :members,
-    :member_roles, :issues, :issue_categories,
-    :issue_statuses, :enumerations, :roles, :time_entries,
-    :versions, :workflows
+  fixtures %i[
+    enabled_modules
+    enumerations
+    issue_categories
+    issue_statuses
+    issues
+    member_roles
+    members
+    projects
+    projects_trackers
+    roles
+    time_entries
+    trackers
+    users
+    versions
+    workflows
+  ]
 
   let(:project) { Project.find 'ecookbook' }
 
