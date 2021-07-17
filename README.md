@@ -22,6 +22,10 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
 
+## Questions? Stories?
+
+Please ask your questions, or tell us your stories or experience on [GitHub Discussions](https://github.com/jgraichen/redmine_dashboard/discussions).
+
 ## Install
 
 1. Download the [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
