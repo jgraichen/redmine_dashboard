@@ -80,11 +80,11 @@ class RdbDashboard
   end
 
   def trackers
-    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids}).distinct
+    @trackers ||= Tracker.joins(:projects).where(projects: {id: project_ids}).distinct.sorted
   end
 
   def assignees
-    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids}).distinct
+    @assignees ||= Principal.active.joins(:memberships).where(members: {project_id: project_ids}).distinct.sorted
   end
 
   def filter(issues)
