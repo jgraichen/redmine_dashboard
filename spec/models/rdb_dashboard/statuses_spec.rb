@@ -27,7 +27,7 @@ describe RdbDashboard do
       WorkflowTransition.where('new_status_id = :id OR old_status_id = :id', id: 6).delete_all
     end
 
-    it 'returns the project' do
+    it 'returns only issues statuses available in the project' do
       expect(statuses.map(&:id)).to eq [1, 2, 3, 4, 5]
     end
   end

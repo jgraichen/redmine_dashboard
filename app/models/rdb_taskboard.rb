@@ -30,6 +30,17 @@ class RdbTaskboard < RdbDashboard
     end
   end
 
+  def statuses
+    ids = WorkflowTransition
+      .where(tracker_id: filters[:tracker].values)
+      .distinct
+      .pluck(:old_status_id, :new_status_id)
+      .flatten
+      .uniq
+
+    IssueStatus.where(id: ids).sorted
+  end
+
   def build
     # Init columns
     options[:hide_columns] ||= []

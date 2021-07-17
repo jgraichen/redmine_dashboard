@@ -11,11 +11,10 @@ class RdbDashboardController < ApplicationController
   def index
     return redirect_to rdb_taskboard_url if params[:controller] == 'rdb_dashboard'
 
-    setup_board params
+    setup_board
   end
 
   def filter
-    @board.update params
     render action: 'index'
   end
 
@@ -37,10 +36,11 @@ class RdbDashboardController < ApplicationController
     board_type.new(@project, options_for(board_type.name), params)
   end
 
-  def setup_board(params = nil)
+  def setup_board
     return render_404 unless (@board = board)
 
-    @board.setup params if params
+    @board.setup(params)
+    @board.update(params)
     @board.build
     @board
   end
