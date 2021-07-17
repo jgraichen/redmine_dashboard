@@ -54,7 +54,7 @@
         = rdb_checkbox_link_to t(:rdb_options_include_subprojects), rdb_board_path(:include_subprojects => (@board.project_ids.size > 1) ? 'false' : 'true'),
             :enabled => (@board.project_ids.size > 1)
     - render_rdb_menu_list @board.column_list, :title => t(:rdb_options_columns) do |column|
-      = rdb_checkbox_link_to column.title, rdb_board_path(:column => column.id), :enabled => @board.columns[column.id].visible?
+      = rdb_checkbox_link_to column.title, rdb_board_path(:hide_column => column.id), :enabled => @board.columns[column.id].visible?
     - render_rdb_menu_list do
       - render_rdb_menu_list_item do
         = link_to t(:rdb_options_fullscreen), 'javascript:Rdb.rdbToggleFullscreen();', :id => "rdb-option-fullscreen"
