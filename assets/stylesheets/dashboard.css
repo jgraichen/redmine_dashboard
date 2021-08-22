@@ -214,11 +214,10 @@ a#rdb-reset {
 #rdb-footer {
 	padding: 5px 30px 10px;
 	margin: 0;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 #rdb-copyright {
 	float: right;
-	font-size: 0.8em;
 	color: #999;
 }
