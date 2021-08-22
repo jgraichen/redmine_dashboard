@@ -11,9 +11,9 @@
 }
 
 .rdb-issue-dragged {
-	z-index: 10;
-	opacity: 0.9;
-	cursor: move;
+  z-index: 10;
+  opacity: 0.9;
+  cursor: move;
 }
 
 /* ========================================================
@@ -21,23 +21,23 @@
 */
 
 .rdb-priority {
-	border-left: 5px solid black;
+  border-left: 5px solid black;
 }
 
 .rdb-priority-1 {
-	border-color: #aaa;
+  border-color: #aaa;
 }
 .rdb-priority-2 {
-	border-color: #6b6;
+  border-color: #6b6;
 }
 .rdb-priority-3 {
-	border-color: orange;
+  border-color: orange;
 }
 .rdb-priority-4 {
-	border-color: red;
+  border-color: red;
 }
 .rdb-priority-5 {
-	border-color: black;
+  border-color: black;
 }
 
 /* ========================================================
@@ -45,206 +45,212 @@
 */
 
 .rdb-card {
-	border: 1px solid #ccc;
-	background: #FFFFDD;
-	border-radius: 2px;
+  border: 1px solid #ccc;
+  background: #ffffdd;
+  border-radius: 2px;
 
-	position: relative;
+  position: relative;
 }
 
 .rdb-overdue .rdb-card {
-	border-color: red;
+  border-color: red;
 }
 
-.rdb-card-title { float: left; }
-.rdb-card-header-data { padding-top: 2px; }
+.rdb-card-title {
+  float: left;
+}
+.rdb-card-header-data {
+  padding-top: 2px;
+}
 
-.rdb-card-title > a { padding-right: 4px; }
+.rdb-card-title > a {
+  padding-right: 4px;
+}
 .rdb-card-title a.rdb-menu-link,
 .rdb-card-title > a {
-	display: inline-block;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	font-size: 1em;
-	border-right: 1px solid #ddd;
+  display: inline-block;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 1em;
+  border-right: 1px solid #ddd;
 }
 .rdb-card-title a.rdb-menu-link:hover,
 .rdb-card-title > a:hover {
-	background-color: #eee;
+  background-color: #eee;
 }
 
 .rdb-card-header a.rdb-menu-link,
 .rdb-compact-header a.rdb-menu-link,
 .rdb-card-title > a {
-	padding-left: 16px;
-	background-image: url("img/cog.png");
-	background-repeat: no-repeat;
-	background-position: 4px 50%;
+  padding-left: 16px;
+  background-image: url("img/cog.png");
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
 }
 
-.rdb-card-header .rdb-container, .rdb-compact-header .rdb-container {
-	margin-top: 4px;
+.rdb-card-header .rdb-container,
+.rdb-compact-header .rdb-container {
+  margin-top: 4px;
 }
 
 .rdb-card-content {
-	padding: 2px 4px 2px 5px;
+  padding: 2px 4px 2px 5px;
 }
 
 .rdb-card-subject {
-	display: block;
-	margin: 0 0 .25em 0;
-	height: 4.6em;
+  display: block;
+  margin: 0 0 0.25em 0;
+  height: 4.6em;
 
-	text-overflow: ellipsis;
-	overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .rdb-card-progress,
 .rdb-compact-progress {
-	background-color: #ddd;
-	margin: 0 0;
-	clear: both;
+  background-color: #ddd;
+  margin: 0 0;
+  clear: both;
 }
 
 .rdb-card-progress-bar,
 .rdb-compact-progress-bar {
-	background-color: green;
-	height: 2px;
+  background-color: green;
+  height: 2px;
 }
-
 
 /* ========================================================
 ** Issue Properties
 */
 
 .rdb-property {
-	display: block;
-	padding: 1px 0 0 14px;
-	background: transparent none no-repeat 0 70%;
-	font-size: .95em;
+  display: block;
+  padding: 1px 0 0 14px;
+  background: transparent none no-repeat 0 70%;
+  font-size: 0.95em;
 }
 .rdb-property.rdb-disabled {
-	color: #aaa;
+  color: #aaa;
 }
 
 .rdb-property-tracker {
-	background-image: url("img/ticket.png");
+  background-image: url("img/ticket.png");
 }
 .rdb-property-assignee {
-	background-image: url("img/user.png");
+  background-image: url("img/user.png");
 }
 .rdb-property-category {
-	background-image: url("img/brick.png");
+  background-image: url("img/brick.png");
 }
 .rdb-property-version {
-	background-image: url("img/package.png");
+  background-image: url("img/package.png");
 }
 .rdb-property-time {
-	background-image: url("img/time.png");
-	font-size: 70%;
+  background-image: url("img/time.png");
+  font-size: 70%;
 }
 .rdb-property-time span {
-	font-size: 140%;
+  font-size: 140%;
 }
-
 
 /* ========================================================
 ** Issue Compact View
 */
 
 .rdb-compact {
-	position: relative;
+  position: relative;
 
-	border: 1px solid #ccc;
-	background: #FFFFDD;
-	border-radius: 2px;
+  border: 1px solid #ccc;
+  background: #ffffdd;
+  border-radius: 2px;
 }
 
 .rdb-overdue .rdb-compact {
-	border-color: red;
+  border-color: red;
 }
 
 .rdb-compact-header {
-	padding: 0 2px 0 0;
-	font-size: 1em;
-	height: 1.5em;
+  padding: 0 2px 0 0;
+  font-size: 1em;
+  height: 1.5em;
 }
 
 .rdb-compact-header .rdb-compact-title a.rdb-menu-link {
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 18px;
-	background-position: 4px 50%;
-	display: block;
-	border-bottom-right-radius: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 18px;
+  background-position: 4px 50%;
+  display: block;
+  border-bottom-right-radius: 8px;
 }
 
 .rdb-card-header .rdb-card-header-data,
 .rdb-compact-header .rdb-compact-header-data {
-	height: 1.5em;
-	font-size: .8em;
-	overflow: hidden;
+  height: 1.5em;
+  font-size: 0.8em;
+  overflow: hidden;
 }
 .rdb-compact-header .rdb-property {
-	display: inline;
-	color: #888;
+  display: inline;
+  color: #888;
 }
 .rdb-compact-header .rdb-property.rdb-disabled {
-	display: none;
+  display: none;
 }
 
 .rdb-compact-title {
-	display: block;
-	min-width: 60px;
-	float: left;
+  display: block;
+  min-width: 60px;
+  float: left;
 }
 
 .rdb-compact-content {
-	padding: 2px 4px 4px 5px;
-	font-size: .95em;
+  padding: 2px 4px 4px 5px;
+  font-size: 0.95em;
 }
 .rdb-compact-subject {
-	overflow: hidden;
-	text-overflow: ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 .rdb-compact-property {
-	color: #999;
-	display: inline;
-	display: inline-block;
-	background-position: 2px 70%;
+  color: #999;
+  display: inline;
+  display: inline-block;
+  background-position: 2px 70%;
 }
-.rdb-compact-progress-bar { height: 2px; }
-
+.rdb-compact-progress-bar {
+  height: 2px;
+}
 
 /* ========================================================
 ** Issue Menu
 */
 
 .rdb-issue-menu-progress {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	list-style: none;
-	display: table;
-	table-layout: fixed;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  display: table;
+  table-layout: fixed;
 }
 .rdb-issue-menu-progress:last-child {
-	padding-bottom: 3px;
+  padding-bottom: 3px;
 }
 .rdb-issue-menu-progress li {
-	display: table-cell;
-	text-align: center;
+  display: table-cell;
+  text-align: center;
 }
 
 .rdb-issue-menu-progress li a {
-	display: block;
-	padding: 4px 8px;
+  display: block;
+  padding: 4px 8px;
 }
 
 .rdb-issue-menu-progress li a:hover {
-	background-color: #eee;
+  background-color: #eee;
 }
