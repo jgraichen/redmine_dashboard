@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ## Unreleased
 
 ### New
+* Use CSS native grid for dynamic columns and card width
 * Show status name as done column title if only a single closed status is shown
 * Include shared versions into filter (#79)
 * Only show issue statuses for trackers selected in filter (#108)

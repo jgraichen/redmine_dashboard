@@ -2,14 +2,12 @@
 ** Redmine.rdb-issue - Issues
 */
 
-.rdb-issue {
-	margin: 3px;
-	font-size: 12px;
-}
-.rdb-issue-card {
-	float: left;
-	margin-bottom: 0;
-	margin-right: 0;
+.rdb-grid-card {
+  margin: 3px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 3px;
 }
 
 .rdb-issue-dragged {
@@ -47,8 +45,6 @@
 */
 
 .rdb-card {
-	width: 180px;
-
 	border: 1px solid #ccc;
 	background: #FFFFDD;
 	border-radius: 2px;
