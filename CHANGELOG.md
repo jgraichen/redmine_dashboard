@@ -3,7 +3,20 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Changelog](http://keepachangelog.com/).
 
+
 ## Unreleased
+---
+
+### New
+
+### Changes
+
+### Fixes
+
+### Breaks
+
+
+## 2.11.0 - (2021-08-22)
 
 ### New
 * Use CSS native grid for dynamic columns and card width
@@ -21,7 +34,6 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 * Duplicated filter items when including subprojects
 * Fix possible session cookie overflow as dashboard settings are no longer store in the session (#144)
 
-### Breaks
 
 ## 2.10.0 — (2021-07-10)
 
