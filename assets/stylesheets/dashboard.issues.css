@@ -213,9 +213,12 @@
 	font-size: .95em;
 }
 .rdb-compact-subject {
-	max-height: 1.3em;
-	text-overflow: ellipsis;
 	overflow: hidden;
+	text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .rdb-compact-property {
 	color: #999;
