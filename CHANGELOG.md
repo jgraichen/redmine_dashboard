@@ -16,7 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 * Sort versions in filter (#78)
 
 ### Fixes
-
+* Fixed invisible subject in compact card layout
 * Duplicated filter items when including subprojects
 * Fix possible session cookie overflow as dashboard settings are no longer store in the session (#144)
 
