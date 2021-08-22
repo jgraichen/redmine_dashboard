@@ -60,9 +60,6 @@
 	border-color: red;
 }
 
-.rdb-card .rdb-priority {
-	height: 12.6em;
-}
 .rdb-card-title { float: left; }
 .rdb-card-header-data { padding-top: 2px; }
 
@@ -95,15 +92,13 @@
 
 .rdb-card-content {
 	padding: 2px 4px 2px 5px;
-	font-size: .95em;
 }
 
 .rdb-card-subject {
 	display: block;
 	margin: 0 0 .25em 0;
 	height: 4.6em;
-	min-height: 2.3em;
-	max-height: 4.6em;
+
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
