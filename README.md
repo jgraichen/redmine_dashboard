@@ -49,7 +49,9 @@ As of v2 you can also use git by cloning the repository and checkout the release
 
 I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `master` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
 
-I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard-2/) but you can also send a Pull Request. Feel free to request new languages or to join the team directly on Transfiex.
+I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard/) but you can also send a Pull Request. Feel free to request new languages or to join the team directly on Transifex.
+
+![Transifex Translation Status Image](https://transifex.com/projects/p/redmine-dashboard/resource/strings/chart/image_png)
 
 ## License
 
