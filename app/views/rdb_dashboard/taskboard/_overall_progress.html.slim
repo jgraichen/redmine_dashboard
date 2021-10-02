@@ -1,0 +1,3 @@
+div.rdb-overall-progress
+  - @board.column_list[0..-2].each do |column|
+    a.rdb-overall-progress class="rdb-column-#{column.id}" style="width: #{column.percentage}%"

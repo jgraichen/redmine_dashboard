@@ -1,0 +1,7 @@
+ul.rdb-headers
+  - @board.column_list.each do |column|
+    - if column.visible?
+      li.rdb-column class=(column.compact? ? 'rdb-column-compact' : '')
+        h3 = column.title
+        - if column.issues.count > 0
+          span = t :rdb_x_issues, count: column.issues.count

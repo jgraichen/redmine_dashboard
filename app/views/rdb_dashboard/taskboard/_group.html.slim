@@ -1,0 +1,6 @@
+.rdb-group data-rdb-group-id=group.id
+  .rdb-group-header
+    a.rdb-evt-group-toggle
+      h4 = group.title
+      span = t(:rdb_x_issues, count: group.issue_count)
+  = render partial: 'rdb_dashboard/taskboard/columns', locals: {group: group}

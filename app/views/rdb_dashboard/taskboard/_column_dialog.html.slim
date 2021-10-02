@@ -1,0 +1,18 @@
+div
+  .rdb-card.rdb-card-dialog
+    .rdb-priority class="rdb-priority-#{@issue.priority.position}"
+      header.rdb-card-header
+        span.rdb-card-title
+          = link_to "#{@board.abbreviation(@issue.project_id)}#{@issue.id}", @issue
+
+      .rdb-card-progress
+        .rdb-card-progress-bar style="width: #{@issue.done_ratio}%"
+
+      .rdb-card-content
+        .rdb-card-subject.rdb-property-subject = @issue.subject
+
+      .rdb-card-dialog-box.rdb-async
+        label = t(:rdb_dialog_update_issue_status)
+        ul
+          - @statuses.each do |status|
+            li = link_to status.name, rdb_update_path(@issue, status: status.id)

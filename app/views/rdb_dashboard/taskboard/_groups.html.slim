@@ -1,0 +1,9 @@
+.rdb-groups
+  - if @board.groups.count == 1
+    .rdb-group data-rdb-group-id=@board.group_list.first.id
+      = render partial: 'rdb_dashboard/taskboard/columns', locals: {group: @board.group_list.first}
+  - else
+    - show_all = @board.group_list.select(&:visible?).none?
+    - @board.group_list.each do |group|
+      - if show_all || group.visible?
+        = render partial: 'rdb_dashboard/taskboard/group', locals: {group: group}

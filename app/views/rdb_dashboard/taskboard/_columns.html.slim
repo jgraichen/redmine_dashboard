@@ -1,0 +1,5 @@
+ul.rdb-columns
+  - @board.visible_columns.each do |column|
+    li.rdb-column class=(column.compact? ? 'rdb-column-compact' : '') data={'rdb-column-id': column.id, 'rdb-drop-group': group.id}
+      - unless column.compact?
+        = render partial: 'rdb_dashboard/taskboard/column', locals: {column: column, issues: group.filter(column.issues), group: group}

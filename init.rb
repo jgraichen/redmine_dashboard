@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'redmine'
-require 'haml'
 
 Rails.configuration.to_prepare do
   require 'rdb/rails/i18n'

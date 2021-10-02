@@ -6,7 +6,7 @@ module RdbDashboardHelper
     options[:class] += ' rdb-menu-right' if options[:right]
     options[:class] += ' rdb-small' if options[:small]
 
-    haml_tag :div, class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
+    slim_tag :div, class: "rdb-menu rdb-menu-#{id} #{options[:class]}" do
       if options[:anchor]
         link = options[:anchor].call.to_s.html_safe
       else
@@ -14,50 +14,47 @@ module RdbDashboardHelper
       end
 
       if options[:header] && %i[h1 h2 h3 h4 h5].include?(options[:header].to_sym)
-        haml_concat content_tag(options[:header], link)
+        slim_tag(options[:header], link)
       else
-        haml_concat link
+        concat link
       end
 
-      haml_tag :div, class: "rdb-container #{options[:right] ? 'rdb-container-right' : ''}" do
-        haml_tag :div, class: "rdb-container-wrapper #{options[:icons] ? 'rdb-icons' : ''}" do
+      slim_tag :div, class: "rdb-container #{options[:right] ? 'rdb-container-right' : ''}" do
+        slim_tag :div, class: "rdb-container-wrapper #{options[:icons] ? 'rdb-icons' : ''}" do
           if options[:inlet]
-            haml_tag :div, class: 'rdb-container-inlet' do
-              container.call
-            end
+            slim_tag(:div, class: 'rdb-container-inlet', &container)
           else
-            container.call
+            yield
           end
         end
       end
     end
   end
 
-  def render_rdb_menu_list(items = nil, options = {}, &block)
+  def render_rdb_menu_list(items = nil, options = {})
     if items.is_a?(Hash)
       options = items
       items = nil
     end
-    haml_tag :div, class: "rdb-list #{options[:async] ? 'rdb-async' : ''} #{options[:class]}" do
-      haml_tag :h3, options[:title] if options[:title]
-      haml_tag options[:list_tag] || :ul, class: options[:list_class] do
+
+    slim_tag :div, class: "rdb-list #{options[:async] ? 'rdb-async' : ''} #{options[:class]}" do
+      slim_tag :h3, options[:title] if options[:title]
+      slim_tag options[:list_tag] || :ul, class: options[:list_class] do
         if items
           items.each do |item|
-            haml_tag :li do
-              block.call item
+            slim_tag :li do
+              yield item
             end
           end
         else
-          block.call
+          yield
         end
       end
     end
   end
 
   def render_rdb_menu_list_item(options = {}, &block)
-    haml_tag :li, class: options[:async] ? 'rdb-async' : '' do
-      block.call
-    end
+    slim_tag(:li, class: options[:async] ? 'rdb-async' : '', &block)
   end
 
   def rdb_checkbox_link_to(*args)
@@ -96,5 +93,14 @@ module RdbDashboardHelper
 
   def rdb_board_path(options = {})
     send(:"rdb_#{@board.id}_path", options)
+  end
+
+  private
+
+  def slim_tag(name, content = nil, **attrs)
+    concat tag(name, attrs, true, true)
+    concat(content) if content.present?
+    yield if block_given?
+    concat "</#{name}>".html_safe
   end
 end

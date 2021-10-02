@@ -14,8 +14,9 @@ def gem?(name, *args)
   gem(name, *args)
 end
 
-gem 'haml'
 gem 'rake'
+gem 'slim', '~> 4.1'
+gem 'slim-rails', '~> 3.3'
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
@@ -25,4 +26,5 @@ end
 
 group :development, :test do
   gem? 'rubocop', '~> 1.18.0'
+  gem? 'slim_lint', '~> 0.22.1'
 end

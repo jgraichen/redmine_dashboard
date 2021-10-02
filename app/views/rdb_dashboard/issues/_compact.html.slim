@@ -1,0 +1,15 @@
+/ ISSUE COMPACT
+.rdb-compact
+  .rdb-priority class="rdb-priority-#{issue.priority.position}"
+
+    .rdb-compact-progress
+      .rdb-compact-progress-bar style="width: #{issue.done_ratio}%"
+    header.rdb-compact-header
+      .rdb-compact-title
+        = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
+      .rdb-compact-header-data
+        = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
+
+    .rdb-compact-content
+      .rdb-compact-subject.rdb-property-subject = issue.subject
+/ ISSUE COMPACT END

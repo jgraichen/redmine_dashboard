@@ -1,0 +1,14 @@
+- if issues.any? && @board.groups.count > 1
+  .rdb-column-head = t(:rdb_x_issues, count: issues.count)
+div class="rdb-grid-#{@board.issue_view}"
+  - grouped_issues = issues.group_by {|i| i.priority.position }
+  - grouped_issues.keys.sort.reverse.each do |priority|
+    - grouped_issues[priority].sort_by(&:id).each do |issue|
+      = render partial: 'rdb_dashboard/issues/issue', locals: {issue: issue, group: group}
+
+  / Render multple empty diff to fill-up the "grid" if
+  / very few issues are present in a column. Otherwise
+  / the column will not add CSS grid columns in the group
+  / if the overall column gets wide enought.
+  - 5.times do
+    div

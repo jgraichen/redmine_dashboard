@@ -1,0 +1,15 @@
+/ ISSUE CARD
+.rdb-card
+  div class="rdb-priority rdb-priority-#{issue.priority.position}"
+    header.rdb-card-header
+      .rdb-card-title
+        = render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue}
+      div
+
+    .rdb-card-progress
+      .rdb-card-progress-bar style="width: #{issue.done_ratio}%"
+
+    .rdb-card-content
+      .rdb-card-subject.rdb-property-subject = issue.subject
+      = render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue}
+/ ISSUE CARD END
