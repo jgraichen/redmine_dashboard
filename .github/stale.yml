@@ -1,0 +1,9 @@
+---
+daysUntilStale: 60
+daysUntilClose: 30
+
+# Only check issues waiting for feedback
+onlyLabels:
+  - feedback needed
+
+staleLabel: stale
