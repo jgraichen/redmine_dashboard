@@ -51,8 +51,6 @@ I appreciate any help and like Pull Requests. The `stable-v2` branch is the curr
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard/) but you can also send a Pull Request. Feel free to request new languages or to join the team directly on Transifex.
 
-![Transifex Translation Status Image](https://transifex.com/projects/p/redmine-dashboard/resource/strings/chart/image_png)
-
 ## License
 
 Redmine dashboard is licensed under the Apache License, Version 2.0.
