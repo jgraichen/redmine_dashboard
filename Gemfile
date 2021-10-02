@@ -5,15 +5,6 @@ source 'https://rubygems.org'
 
 send :ruby, RUBY_VERSION if ENV['CI']
 
-# Skip if gem is already defined. This happens when the Gemfile is evalauated
-# within Redmines Gemfile. Development tools such as rubocop are only needed in
-# our specific version when installed outside of Redmine.
-def gem?(name, *args)
-  return if @dependencies.any? {|d| d.name == name }
-
-  gem(name, *args)
-end
-
 gem 'rake'
 gem 'slim', '~> 4.1'
 gem 'slim-rails', '~> 3.3'
@@ -24,7 +15,12 @@ group :test do
   gem 'rspec-rails'
 end
 
-group :development, :test do
-  gem? 'rubocop', '~> 1.18.0'
-  gem? 'slim_lint', '~> 0.22.1'
+# If rubocop is already defined, the Gemfile is loaded through Redmins own
+# Gemfile as a plugin Gemfile. In that case our local development gems are not
+# needed (and actually conflicting), therefore we skip them.
+if @dependencies.none? {|d| d.name == 'rubocop' }
+  group :development, :test do
+    gem 'rubocop', '~> 1.22.0'
+    gem 'slim_lint', '~> 0.22.1'
+  end
 end
