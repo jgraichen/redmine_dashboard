@@ -12,9 +12,9 @@ jobs:
       matrix:
         include:
           - ruby: "2.7"
-            redmine: "4.2.1"
+            redmine: "4.2.2"
           - ruby: "2.6"
-            redmine: "4.1.3"
+            redmine: "4.1.4"
           - ruby: "2.5"
             redmine: "4.0.9"
       fail-fast: false
