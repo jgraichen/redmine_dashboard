@@ -159,6 +159,7 @@
 
 .rdb-compact {
   position: relative;
+  margin-bottom: 2px;
 
   border: 1px solid #ccc;
   background: #ffffdd;
@@ -193,6 +194,10 @@
 .rdb-compact-header .rdb-property {
   display: inline;
   color: #888;
+  margin: 0 6px 0 0;
+}
+.rdb-compact-header .rdb-property:last-child {
+  margin: 0;
 }
 .rdb-compact-header .rdb-property.rdb-disabled {
   display: none;
