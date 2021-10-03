@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ---
 
 ### New
+* Show or hide spend time and estimation based on the viewers permissions (#90)
 
 ### Changes
 
