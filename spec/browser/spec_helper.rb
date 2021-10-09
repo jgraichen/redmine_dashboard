@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# Setup regular Rails testing environment
-ENV['RAILS_ENV'] ||= 'test'
-
 # Check and setup test environment
 require_relative '../reexec'
 

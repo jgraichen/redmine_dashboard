@@ -18,5 +18,6 @@ unless File.exist?(env)
   end
 end
 
-# Load application environment
+# Load Rails application test environment
+ENV['RAILS_ENV'] ||= 'test'
 require env
