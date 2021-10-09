@@ -31,21 +31,19 @@ class Rdb::Dashboard < ActiveRecord::Base
     @columns ||= statuses.each_with_index.map do |status, index|
       Column.new(self, index, status.name, [status])
     end
+  end
 
-      closed = statuses.select(&:is_closed?)
-      if closed.count == 1
-        status = closed.first
-        columns << Column.new(self, column_id += 1, status.name, [status])
-      elsif closed.count > 1
-        columns << Column.new(self, column_id += 1, 'DONE', closed)
-      end
+  def projects
+    @projects ||= Project.where(project.project_condition(false))
+  end
 
-      columns
-    end
+  def trackers
+    @trackers ||= Tracker.joins(:projects).where(projects: {id: projects.select(:id)}).distinct.sorted
   end
 
   def statuses
     ids = WorkflowTransition
+      .where(tracker: trackers.unscope(:order))
       .distinct
       .pluck(:old_status_id, :new_status_id)
       .flatten
