@@ -1,7 +1,7 @@
-name: Test
 on:
   push:
     branches-ignore: [debian]
+  pull_request:
 
 jobs:
   test:
@@ -31,7 +31,7 @@ jobs:
           sudo -u postgres createuser -s ${USER}
 
       - name: Install Ruby ${{ matrix.ruby }}
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
 
