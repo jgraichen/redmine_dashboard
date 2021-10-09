@@ -31,15 +31,16 @@ jobs:
           sudo systemctl start postgresql
           sudo -u postgres createuser -s ${USER}
 
-      - name: Install Ruby ${{ matrix.ruby }}
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-
       - name: Install Node 16
         uses: actions/setup-node@v2
         with:
           node-version: 16
+          cache: npm
+
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
 
       - name: Setup ruby cache
         uses: actions/cache@v2
@@ -57,7 +58,9 @@ jobs:
         run: ./redmine update
 
       - name: Compile assets
-        run: npm run build -- --mode production
+        run: |
+          npm install
+          npm run build -- --mode production
 
       - name: Run plugin tests
         run: ./redmine exec bundle exec rspec spec/plugin --color
