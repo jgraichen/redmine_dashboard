@@ -1,0 +1,71 @@
+
+.rdb-column {
+  flex: 1;
+  overflow-x: hidden;
+
+  min-width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.rdb-column-header {
+  display: flex;
+  align-items: baseline;
+
+  padding: 0.5em calc(var(--rdb-card-ring-size) + 3px);
+
+  h3 {
+    margin: 0 0.3em;
+    flex-grow: 1;
+    color: currentColor;
+    font-size: 120%;
+  }
+
+  span {
+    padding: 0.2em 0.7em;
+    font-size: 90%;
+
+    background-color: var(--rdb-column-count-bg-color);
+    border-radius: var(--rdb-column-count-border-radius);
+    color: var(--rdb-column-count-fg-color);
+
+    .rdb-column-wip & {
+      background-color: var(--rdb-column-count-wip-bg-color);
+      color: var(--rdb-column-count-wip-fg-color);
+    }
+  }
+
+  .rdb-column-wip & {
+    color: var(--rdb-column-header-wip-fg-color);
+    background-color: var(--rdb-column-header-wip-bg-color);
+  }
+}
+
+.rdb-column-body {
+  flex: 1;
+
+  border-right: 1px solid var(--rdb-board-border-color);
+
+  .rdb-column:last-child & {
+    border-right: none;
+  }
+
+  .rdb-column-wip & {
+    color: var(--rdb-column-wip-fg-color);
+    background-color: var(--rdb-column-wip-bg-color);
+  }
+
+  .rdb-drop-active & {
+    background-color: var(--rdb-column-bg-drop-active);
+  }
+
+  .rdb-drop-over & {
+    background-color: var(--rdb-column-bg-drop-over);
+  }
+
+  .rdb-drop-invalid & {
+    background-color: var(--rdb-column-bg-drop-invalid);
+  }
+}

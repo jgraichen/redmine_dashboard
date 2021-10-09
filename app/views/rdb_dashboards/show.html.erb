@@ -1,0 +1,15 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag '../main.css', plugin: 'redmine_dashboard' %>
+  <%= javascript_include_tag '../main.js', plugin: 'redmine_dashboard' %>
+<% end %>
+
+<div id="rdb" class="rdb-board">
+  <%= content_tag :script, type: "text/json", data: {'rdb-board' => @board.id} do %>
+    <%= raw json_escape @board.to_json(view: self) %>
+  <% end %>
+  <footer>
+    <a href="https://github.com/jgraichen/redmine_dashboard">
+      Redmine Dashboard <%= Redmine::Plugin.find(:redmine_dashboard).version %>
+    </a>
+  </footer>
+</div>

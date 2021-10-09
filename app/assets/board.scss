@@ -1,0 +1,35 @@
+.rdb-board {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  > header {
+    padding: 0.5em calc(var(--rdb-card-ring-size) + 7px);
+
+    border-bottom: 1px solid var(--rdb-board-border-color);
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  > section {
+    display: flex;
+    flex: 1 0 0;
+
+    overflow-x: auto;
+    padding: 0 5px;
+
+    background-color: var(--rdb-board-bg-color);
+  }
+
+  > footer {
+    padding: 2px 1em;
+
+    font-size: 80%;
+    text-align: right;
+
+    background-color: var(--rdb-board-bg-color);
+  }
+}

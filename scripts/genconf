@@ -24,7 +24,7 @@ def generate(env)
     'adapter' => uri.scheme.gsub(':', ''),
     'port' => uri.port || ENV['DATABASE_PORT'],
     'url' => ENV['DATABASE_URL'],
-    'database' => uri.path[1..-1]
+    'database' => uri.path[1..-1],
   }.compact
 end
 

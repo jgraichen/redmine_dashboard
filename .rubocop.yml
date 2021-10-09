@@ -61,11 +61,21 @@ Style/Documentation:
 Style/GuardClause:
   Enabled: false
 
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
 Style/IfUnlessModifier:
   Enabled: false
 
 Style/NumericPredicate:
   Enabled: false
+
+Style/Semicolon:
+  Exclude:
+    - spec/**/*_spec.rb
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma

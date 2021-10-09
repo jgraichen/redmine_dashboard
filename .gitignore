@@ -1,9 +1,11 @@
-/.ruby-version
-*.lock
-/tmp
+#
 /.bundle
 /.rspec
-/.idea
-/*.iml
+/.ruby-version
+/assets
 /dist
+/node_modules
+/tmp
 /vendor
+
+*.lock

@@ -1,0 +1,43 @@
+//
+
+@use "sass:color";
+
+:root {
+  --rdb-board-bg-color: #f7f9fa;
+  --rdb-board-border-color: #dfe5eb;
+
+  --rdb-column-wip-fg-color: #c22020;
+  --rdb-column-wip-bg-color: #ffdddd; // none; // #ffdddd;
+  --rdb-column-bg-drop-active: #f2ffec; // #f1f9ff;
+  --rdb-column-bg-drop-over: #ceeaff;
+  --rdb-column-bg-drop-invalid: none; // #ffe8e8;
+
+  --rdb-column-header-wip-fg-color: var(--rdb-column-wip-fg-color);
+  --rdb-column-header-wip-bg-color: var(--rdb-column-wip-bg-color);
+  --rdb-column-count-fg-color: currentColor;
+  --rdb-column-count-bg-color: #ddd;
+  --rdb-column-count-border-radius: 3px;
+  --rdb-column-count-wip-fg-color: #fff;
+  --rdb-column-count-wip-bg-color: #ec2626;
+
+  --rdb-card-bg-color: #ffffff; // #ffffdd;
+  --rdb-card-bg-color: #ffffe6;
+  --rdb-card-border: none;
+  --rdb-card-border-radius: 3px;
+  --rdb-card-box-shadow: 0 0 2px #979797;
+  --rdb-card-line-height: 1.4em;
+  --rdb-card-ring-color: #8dceff;
+  --rdb-card-ring-size: 3px;
+  --rdb-card-subject-line-clamp: 2;
+
+  --rdb-scheme-current-bg: none;
+  --rdb-scheme-current-fg: none;
+}
+
+#content {
+  padding: 0;
+}
+
+@import "./board";
+@import "./column";
+@import "./card";

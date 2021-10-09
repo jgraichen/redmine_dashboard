@@ -13,10 +13,6 @@ jobs:
         include:
           - ruby: "2.7"
             redmine: "4.2.2"
-          - ruby: "2.6"
-            redmine: "4.1.4"
-          - ruby: "2.5"
-            redmine: "4.0.9"
       fail-fast: false
 
     env:
@@ -29,26 +25,27 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: setup postgres
+      - name: Setup database
         run: |
           sudo systemctl start postgresql
           sudo -u postgres createuser -s ${USER}
 
-      - uses: ruby/setup-ruby@v1
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
 
-      - name: setup cache
+      - name: Setup cache
         uses: actions/cache@v1
         with:
           path: vendor
           key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
-      - name: install ruby dependencies
-        run: bundle install
-
-      - name: setup redmine ${{ matrix.redmine }}
+      - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
 
-      - name: run tests
-        run: ./redmine exec bundle exec rspec --color
+      - name: Run plugin tests
+        run: ./redmine exec bundle exec rspec spec/plugin --color
+
+      - name: Run browser tests
+        run: ./redmine exec bundle exec rspec spec/browser --color

@@ -6,8 +6,6 @@ source 'https://rubygems.org'
 send :ruby, RUBY_VERSION if ENV['CI']
 
 gem 'rake'
-gem 'slim', '~> 4.1'
-gem 'slim-rails', '~> 3.3'
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
@@ -21,6 +19,5 @@ end
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development, :test do
     gem 'rubocop', '~> 1.22.0'
-    gem 'slim_lint', '~> 0.22.1'
   end
 end
