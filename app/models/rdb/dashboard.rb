@@ -28,12 +28,9 @@ class Rdb::Dashboard < ActiveRecord::Base
   end
 
   def columns
-    @columns ||= begin
-      column_id = 0
-
-      columns = statuses.reject(&:is_closed?).map do |status|
-        Column.new(self, column_id += 1, status.name, [status])
-      end
+    @columns ||= statuses.each_with_index.map do |status, index|
+      Column.new(self, index, status.name, [status])
+    end
 
       closed = statuses.select(&:is_closed?)
       if closed.count == 1
