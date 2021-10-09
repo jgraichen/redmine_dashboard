@@ -23,7 +23,7 @@ export function Board(props) {
       body: JSON.stringify({ issue: card.id, column: newColumn.id }),
     });
 
-    if(!response.ok) {
+    if (!response.ok) {
       return;
     }
 

@@ -36,14 +36,28 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
 
-      - name: Setup cache
-        uses: actions/cache@v1
+      - name: Install Node 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Setup ruby cache
+        uses: actions/cache@v2
         with:
           path: vendor
           key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
+      - name: Setup node cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: v3-node-16-${{ hashFiles('**/package-lock.json') }}
+
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
+
+      - name: Compile assets
+        run: npm run build -- --mode production
 
       - name: Run plugin tests
         run: ./redmine exec bundle exec rspec spec/plugin --color

@@ -27,8 +27,8 @@ export function Card(props: CardProps) {
   const box = createRef();
   const isSelected = useSelectionManager(box, {
     onChange: (value) => {
-      if(value) issueLink.current?.focus()
-    }
+      if (value) issueLink.current?.focus();
+    },
   });
 
   const [{ isDragging }, drag] = useDrag(

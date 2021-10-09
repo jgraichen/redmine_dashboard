@@ -3,6 +3,6 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "jsxImportSource": "preact",
+    "jsxImportSource": "preact"
   }
 }
