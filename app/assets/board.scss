@@ -4,13 +4,17 @@
 
   height: 100%;
 
+  color: var(--rdb-board-fg-color);
+
   > header {
-    padding: 0.5em calc(var(--rdb-card-ring-size) + 7px);
+    padding: 1.1em 1em 0.9em;
 
     border-bottom: 1px solid var(--rdb-board-border-color);
+    background-color: var(--rdb-board-header-bg-color);
 
     h2 {
       margin: 0;
+      color: var(--rdb-board-header-fg-color);
     }
   }
 

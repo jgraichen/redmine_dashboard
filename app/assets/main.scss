@@ -3,8 +3,11 @@
 @use "sass:color";
 
 :root {
+  --rdb-board-fg-color: currentColor;
   --rdb-board-bg-color: #f7f9fa;
-  --rdb-board-border-color: #dfe5eb;
+  --rdb-board-border-color: #d4dae0;
+  --rdb-board-header-fg-color: #555;
+  --rdb-board-header-bg-color: #fff;
 
   --rdb-column-wip-fg-color: #c22020;
   --rdb-column-wip-bg-color: #ffdddd; // none; // #ffdddd;
@@ -19,10 +22,10 @@
   --rdb-column-count-border-radius: 3px;
   --rdb-column-count-wip-fg-color: #fff;
   --rdb-column-count-wip-bg-color: #ec2626;
+  --rdb-column-content-padding: 3px;
 
-  --rdb-card-bg-color: #ffffff; // #ffffdd;
-  --rdb-card-bg-color: #ffffe6;
-  --rdb-card-border: none;
+  --rdb-card-bg-color: #ffffdd;
+  --rdb-card-border-color: transparent;
   --rdb-card-border-radius: 3px;
   --rdb-card-box-shadow: 0 0 2px #979797;
   --rdb-card-line-height: 1.4em;
@@ -32,6 +35,26 @@
 
   --rdb-scheme-current-bg: none;
   --rdb-scheme-current-fg: none;
+
+  @media (prefers-color-scheme: dark) {
+    [data-rdb-prefers-color-scheme=true] {
+      --rdb-board-fg-color: #cac5be;
+      --rdb-board-bg-color: #172024;
+      --rdb-board-border-color: #3a3f42;
+      --rdb-board-header-fg-color: var(--rdb-board-fg-color);
+      --rdb-board-header-bg-color: #181a1b;
+
+      --rdb-column-count-fg-color: currentColor;
+      --rdb-column-count-bg-color: #3f3f3f;
+      --rdb-column-content-padding: 3px;
+
+      --rdb-card-bg-color: #1a1d1e;
+      --rdb-card-border-color: var(--rdb-board-border-color);
+      --rdb-card-ring-size: 2px;
+      --rdb-card-ring-color: #004e88;
+      --rdb-card-box-shadow: none;
+    }
+  }
 }
 
 #content {

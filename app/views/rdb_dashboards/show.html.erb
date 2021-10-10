@@ -3,7 +3,7 @@
   <%= javascript_include_tag '../main.js', plugin: 'redmine_dashboard' %>
 <% end %>
 
-<div id="rdb" class="rdb-board">
+<div id="rdb" class="rdb-board" data-rdb-prefers-color-scheme="false">
   <%= content_tag :script, type: "text/json", data: {'rdb-board' => @board.id} do %>
     <%= raw json_escape @board.to_json(view: self) %>
   <% end %>

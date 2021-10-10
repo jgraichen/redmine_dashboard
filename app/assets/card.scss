@@ -5,7 +5,7 @@
   line-height: var(--rdb-card-line-height);
   overflow: hidden;
 
-  border: var(--rdb-card-border);
+  border: 1px solid var(--rdb-card-border-color);
   background: var(--rdb-card-bg-color);
   box-shadow: var(--rdb-card-box-shadow);
   border-radius: var(--rdb-card-border-radius);
@@ -48,8 +48,9 @@
     -webkit-line-clamp: none;
   }
 
-  a {
+  #rdb & a {
     margin-right: 0.5em;
+    font-weight: normal;
 
     &:focus,
     &:hover,
@@ -79,8 +80,9 @@
     margin: 2px 6px;
   }
 
-  a {
+  #rdb & a {
     color: #666;
+    font-weight: normal;
 
     &:hover,
     &:focus,
