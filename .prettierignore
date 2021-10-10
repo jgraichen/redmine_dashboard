@@ -1,6 +1,6 @@
 #
-assets
-vendor
+/assets
+/vendor
 
 # Ignore (partially) generated files and manually
 # formatted configuration files.
