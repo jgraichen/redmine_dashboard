@@ -30,7 +30,7 @@
   --rdb-card-box-shadow: 0 0 2px #979797;
   --rdb-card-line-height: 1.4em;
   --rdb-card-ring-color: #8dceff;
-  --rdb-card-ring-size: 3px;
+  --rdb-card-ring-size: 2px;
   --rdb-card-subject-line-clamp: 2;
 
   --rdb-scheme-current-bg: none;
@@ -50,7 +50,6 @@
 
       --rdb-card-bg-color: #1a1d1e;
       --rdb-card-border-color: var(--rdb-board-border-color);
-      --rdb-card-ring-size: 2px;
       --rdb-card-ring-color: #004e88;
       --rdb-card-box-shadow: none;
     }
