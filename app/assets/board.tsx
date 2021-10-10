@@ -1,23 +1,32 @@
 //
 
+import { Component } from "preact";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { Column } from "./column";
-import { useState } from "preact/hooks";
 import { SelectionProvider } from "./selection";
 
-export function Board(props) {
-  const [state, setState] = useState(props);
+type Props = {
+  board: {
+    name: string;
+    url: string;
+  };
+  columns: Array<any>;
+};
 
-  const onDrop = async (cardIndex, newColumnIndex, oldColumnIndex) => {
-    const oldColumn = state.columns[oldColumnIndex];
-    const newColumn = state.columns[newColumnIndex];
+export class Board extends Component<Props, Props> {
+  constructor(props) {
+    super();
+    this.state = props;
+  }
 
-    const card = oldColumn.issues[cardIndex];
-    console.log(oldColumn, cardIndex, card);
+  onDrop = async (cardIndex, newColumnIndex, oldColumnIndex) => {
+    const oldColumn = this.state.columns[oldColumnIndex];
+    const newColumn = this.state.columns[newColumnIndex];
+    const card = oldColumn.issues.slice(cardIndex, 1)[0];
 
-    const response = await window.fetch(props.board.url, {
+    const response = await window.fetch(this.props.board.url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ issue: card.id, column: newColumn.id }),
@@ -27,21 +36,29 @@ export function Board(props) {
       return;
     }
 
-    setState(await response.json());
+    const json = await response.json();
+    this.setState(json);
   };
 
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <SelectionProvider>
-        <header>
-          <h2>{state.board.name}</h2>
-        </header>
-        <section>
-          {state.columns.map((column, index) => (
-            <Column key={column.id} index={index} onDrop={onDrop} {...column} />
-          ))}
-        </section>
-      </SelectionProvider>
-    </DndProvider>
-  );
+  render() {
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <SelectionProvider>
+          <header>
+            <h2>{this.state.board.name}</h2>
+          </header>
+          <section>
+            {this.state.columns.map((column, index) => (
+              <Column
+                key={column.id}
+                index={index}
+                onDrop={this.onDrop}
+                {...column}
+              />
+            ))}
+          </section>
+        </SelectionProvider>
+      </DndProvider>
+    );
+  }
 }
