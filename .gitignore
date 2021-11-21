@@ -13,5 +13,6 @@
 Gemfile.lock
 
 # Yarn
+/.pnp.*
 /.yarn
 /node_modules

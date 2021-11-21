@@ -47,7 +47,7 @@ export class Board extends Component<Props, Props> {
           <header>
             <h2>{this.state.board.name}</h2>
           </header>
-          <section>
+          <ol>
             {this.state.columns.map((column, index) => (
               <Column
                 key={column.id}
@@ -56,7 +56,7 @@ export class Board extends Component<Props, Props> {
                 {...column}
               />
             ))}
-          </section>
+          </ol>
         </SelectionProvider>
       </DndProvider>
     );

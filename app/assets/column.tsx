@@ -39,12 +39,12 @@ export function Column(props: ColumnProps) {
   });
 
   return (
-    <div className={cls}>
+    <li className={cls}>
       <header className="rdb-column-header">
         <h3>{props.title}</h3>
         <span>{props.issues.length}</span>
       </header>
-      <div className="rdb-column-body" ref={drop}>
+      <ul className="rdb-column-body" ref={drop}>
         {props.issues.map((issue, index) => (
           <Card
             key={issue.id}
@@ -53,7 +53,7 @@ export function Column(props: ColumnProps) {
             {...issue}
           />
         ))}
-      </div>
-    </div>
+      </ul>
+    </li>
   );
 }

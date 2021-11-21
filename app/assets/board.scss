@@ -18,12 +18,13 @@
     }
   }
 
-  > section {
+  > ol {
     display: flex;
     flex: 1 0 0;
 
     overflow-x: auto;
     padding: 0 5px;
+    margin: 0;
 
     background-color: var(--rdb-board-bg-color);
   }

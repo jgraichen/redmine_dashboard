@@ -71,7 +71,7 @@ export function Card(props: CardProps) {
   });
 
   return (
-    <div id={`issue-${props.id}`} className={cls} ref={drag}>
+    <li id={`issue-${props.id}`} className={cls} ref={drag}>
       <div ref={box}>
         <div className="rdb-card-subject">
           <a ref={issueLink} href={props.url}>
@@ -89,6 +89,6 @@ export function Card(props: CardProps) {
           ))}
         </ul>
       </div>
-    </div>
+    </li>
   );
 }
