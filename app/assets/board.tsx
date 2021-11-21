@@ -9,8 +9,8 @@ import { SelectionProvider } from "./selection";
 
 type Props = {
   board: {
-    name: string;
     url: string;
+    title: string;
   };
   columns: Array<any>;
 };
@@ -45,7 +45,7 @@ export class Board extends Component<Props, Props> {
       <DndProvider backend={HTML5Backend}>
         <SelectionProvider>
           <header>
-            <h2>{this.state.board.name}</h2>
+            <h2>{this.state.board.title}</h2>
           </header>
           <ol>
             {this.state.columns.map((column, index) => (

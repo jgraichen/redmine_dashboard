@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-class RdbDashboardsController < ApplicationController
+class RdbBoardsController < ApplicationController
   menu_item :dashboards
   before_action :find_project, :authorize
 
   def index
-    @board = Rdb::Dashboard.where(project: @project).first
+    @board = Rdb::Board.where(project: @project).first
     @board ||= create_default_board
 
-    redirect_to rdb_dashboard_path(@project, @board)
+    redirect_to rdb_board_path(@project, @board)
   end
 
   def show
-    @board = Rdb::Dashboard.find(params[:board_id])
+    @board = Rdb::Board.find(params[:board_id])
   end
 
   def update
-    @board = Rdb::Dashboard.find(params[:board_id])
+    @board = Rdb::Board.find(params[:board_id])
     issue = @board.issues.find(params[:issue])
     column = @board.columns[params[:column]]
 
@@ -44,28 +44,30 @@ class RdbDashboardsController < ApplicationController
   private
 
   def create_default_board
-    board_name = I18n.t(
-      'rdb.dashboard.autocreate.board_name',
-      project_name: @project.name,
-    )
+    ::ActiveRecord::Base.transaction do
+      board_name = I18n.t(
+        'rdb.dashboard.autocreate.board_name',
+        project_name: @project.name,
+      )
 
-    query_name = I18n.t(
-      'rdb.dashboard.autocreate.query_name',
-      project_name: @project.name,
-      board_name: board_name,
-    )
+      query_name = I18n.t(
+        'rdb.dashboard.autocreate.query_name',
+        project_name: @project.name,
+        board_name: board_name,
+      )
 
-    query = IssueQuery.create!(
-      name: query_name,
-      user: User.current,
-      project: @project,
-    )
+      query = IssueQuery.create!(
+        name: query_name,
+        user: User.current,
+        project: @project,
+      )
 
-    Rdb::Dashboard.create!(
-      name: board_name,
-      owner: User.current,
-      project: @project,
-      query: query,
-    )
+      Rdb::Board.create!(
+        title: board_name,
+        owner: User.current,
+        project: @project,
+        query: query,
+      ).tap(&:create_default_columns!)
+    end
   end
 end

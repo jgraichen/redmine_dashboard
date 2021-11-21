@@ -18,11 +18,11 @@ Redmine::Plugin.register :redmine_dashboard do
 
   project_module :dashboard do
     permission :view_dashboards,
-      rdb_dashboards: %i[index show update]
+      rdb_boards: %i[index show update]
   end
 
   menu :project_menu, :dashboards,
-    {controller: 'rdb_dashboards', action: 'index'},
+    {controller: 'rdb_boards', action: 'index'},
     caption: :'rdb.menu.project.dashboards',
     after: :new_issue
 end
