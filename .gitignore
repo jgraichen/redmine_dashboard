@@ -1,12 +1,17 @@
-#
+# Build artifacts and externals
+/assets
+/dist
+/vendor
+
+# Temporary files
+/tmp
+
+# Ruby
 /.bundle
 /.rspec
 /.ruby-version
-/assets
-/dist
-/node_modules
-/tmp
-/vendor
+Gemfile.lock
 
-*.lock
-!yarn.lock
+# Yarn
+/.yarn
+/node_modules
