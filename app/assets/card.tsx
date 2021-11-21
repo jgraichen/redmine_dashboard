@@ -84,7 +84,7 @@ export function Card(props: CardProps) {
         <ul className="rdb-card-props">
           {properties.map(([name, value]) => (
             <li key={name} className={`rdb-card-props-${name}`}>
-              <a dangerouslySetInnerHTML={{ __html: value }} />
+              <span dangerouslySetInnerHTML={{ __html: value }} />
             </li>
           ))}
         </ul>
