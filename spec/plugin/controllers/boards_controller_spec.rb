@@ -2,7 +2,7 @@
 
 require_relative '../spec_helper'
 
-describe RdbDashboardsController, type: :controller do
+describe RdbBoardsController, type: :controller do
   fixtures %i[
     member_roles
     members
@@ -27,9 +27,9 @@ describe RdbDashboardsController, type: :controller do
       get :index, params: {id: project}, session: {user_id: user.id}
     end
 
-    it 'creates a new dashboard and redirects to it' do
-      expect { subject }.to change(Rdb::Dashboard, :count).from(0).to(1)
-      expect(response.status).to redirect_to rdb_dashboard_path(project, 1)
+    it 'creates a default board and redirects to it' do
+      expect { subject }.to change(Rdb::Board, :count).from(0).to(1)
+      expect(response.status).to redirect_to rdb_board_path(project, 1)
     end
   end
 end
