@@ -2,6 +2,7 @@ name: Test
 on:
   push:
     branches-ignore: [debian]
+  pull_request:
 
 jobs:
   test:
