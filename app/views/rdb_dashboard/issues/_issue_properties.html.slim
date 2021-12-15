@@ -17,10 +17,12 @@
   .rdb-property.rdb-property-time class=(issue.estimated_hours.nil? && issue.time_entries.empty? ? 'rdb-disabled' : '')
     = t(:rdb_property_time, estimated: issue.estimated_hours.to_f.round(2), actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe
 - if issue.attachments.any?
-  %div.rdb-property.rdb-property-attachments
+  div.rdb-property.rdb-property-attachments
     = l(:label_attachment_plural)
-    %div.attachments
+    span.badge.attachment-count
+      = issue.attachments.count
+    div.attachments
       - issue.attachments.each do |attachment|
-        %div.attachment
+        div.attachment
           = link_to_attachment attachment, class: 'icon-only icon-download', title: l(:button_download), download: true
           = link_to_attachment attachment, title: attachment.description, target: '_blank'
