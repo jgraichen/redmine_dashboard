@@ -6,8 +6,7 @@ source 'https://rubygems.org'
 send :ruby, RUBY_VERSION if ENV['CI']
 
 gem 'rake'
-gem 'slim', '~> 4.1'
-gem 'slim-rails', '~> 3.3'
+gem 'slim-rails'
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
