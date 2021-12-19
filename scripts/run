@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ -z "$REDMINE_PATH" ] && exit 1
+
+pushd "${REDMINE_PATH}" || exit
+
+(
+  set -x
+  exec "$@"
+)
