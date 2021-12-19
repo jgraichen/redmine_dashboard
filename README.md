@@ -43,11 +43,9 @@ Please ask your questions, or tell us your stories or experience on [GitHub Disc
 1. Remove old plugin directory.
 2. Follow installation steps for new release.
 
-As of v2 you can also use git by cloning the repository and checkout the release tag.
-
 ## Contribute
 
-I appreciate any help and like Pull Requests. The `stable-v2` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `master` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
+I appreciate any help and like Pull Requests. The `main` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `develop` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard/) but you can also send a Pull Request. Feel free to request new languages or to join the team directly on Transifex.
 
