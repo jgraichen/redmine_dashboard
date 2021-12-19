@@ -5,13 +5,13 @@
   baseBranches: ["main", "develop"],
 
   packageRules: [
-    // Only bump minors for redmine versions in CI config, as there will a
-    // config for each major version.
+    // Only bump patch versions for redmine versions in CI config, as there will
+    // a config for each major+minor version.
     {
       matchManagers: ["regex"],
       matchPaths: ["+(.github/workflows/test.yml)"],
       matchPackageNames: ["redmine/redmine"],
-      matchUpdateTypes: ["major"],
+      matchUpdateTypes: ["major", "minor"],
       enabled: false,
     },
     // Only weekly updates to node dependencies (develop branch)
