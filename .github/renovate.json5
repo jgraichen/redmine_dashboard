@@ -11,8 +11,8 @@
       matchManagers: ["regex"],
       matchPaths: ["+(.github/workflows/test.yml)"],
       matchPackageNames: ["redmine/redmine"],
-      matchUpdateTypes: ["major", "minor"],
-      enabled: false,
+      major: { enabled: false },
+      minor: { enabled: false },
     },
     // Only weekly updates to node dependencies (develop branch)
     {
