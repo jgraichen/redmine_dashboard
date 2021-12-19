@@ -2,8 +2,11 @@
 
 [ -z "$REDMINE_PATH" ] && exit 1
 
-pushd "${REDMINE_PATH}"
+pushd "${REDMINE_PATH}" || exit
 
-(set -x; bundle exec rails console)
+(
+  set -x
+  bundle exec rails console
+)
 
-popd
+popd || exit
