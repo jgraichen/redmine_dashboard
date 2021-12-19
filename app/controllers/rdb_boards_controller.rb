@@ -18,10 +18,12 @@ class RdbBoardsController < ApplicationController
   def update
     @board = Rdb::Board.find(params[:board_id])
     issue = @board.issues.find(params[:issue])
-    column = @board.columns[params[:column]]
+    column = @board.columns.find(params[:column])
 
     # Get all status the user is allowed to assign and that are in the target column
-    statuses = issue.new_statuses_allowed_to(User.current) & column.statuses
+    statuses = issue
+      .new_statuses_allowed_to(User.current)
+      .select {|status| column.values.include?(status.id) }
 
     if statuses.empty?
       render status: 422, json: {error: 'illegal workflow action'}
