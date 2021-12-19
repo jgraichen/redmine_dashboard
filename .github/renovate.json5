@@ -9,8 +9,9 @@
     // a config for each major+minor version.
     {
       matchManagers: ["regex"],
-      matchPaths: ["+(.github/workflows/test.yml)"],
+      matchPaths: [".github/workflows/test.yml"],
       matchPackageNames: ["redmine/redmine"],
+      groupName: "redmine (CI)",
       major: { enabled: false },
       minor: { enabled: false },
     },
@@ -20,11 +21,6 @@
       matchUpdateTypes: ["major", "minor", "patch"],
       groupName: "NPM",
       schedule: ["after 16:00 on Friday"],
-    },
-    // Group redmine updates together
-    {
-      matchPackageNames: ["redmine/redmine"],
-      groupName: "redmine",
     },
   ],
 
