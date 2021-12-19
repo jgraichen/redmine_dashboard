@@ -40,7 +40,7 @@ jobs:
           bundler-cache: True
 
       - name: setup cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor
           key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
