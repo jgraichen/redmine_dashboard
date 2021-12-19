@@ -17,7 +17,7 @@ jobs:
           - ruby: "2.6"
             redmine: "4.1.4"
           - ruby: "2.5"
-            redmine: "4.0.9"
+            redmine: "4.0.8"
       fail-fast: false
 
     env:
