@@ -35,7 +35,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: npm
+          cache: yarn
 
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
@@ -48,19 +48,13 @@ jobs:
           path: vendor
           key: v4-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
 
-      - name: Setup node cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: v4-node-16-${{ hashFiles('**/package-lock.json') }}
-
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
 
       - name: Compile assets
         run: |
-          npm install
-          npm run build -- --mode production
+          yarn install
+          yarn run build -- --mode production
 
       - name: Run plugin tests
         run: ./redmine exec bundle exec rspec spec/plugin --color
