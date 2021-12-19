@@ -32,7 +32,7 @@
     // Match scripts and CI config to bump redmine versions
     {
       fileMatch: ["^redmine$"],
-      matchStrings: ["DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*)'"],
+      matchStrings: ["DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*?)'"],
       depNameTemplate: "redmine/redmine",
       datasourceTemplate: "github-tags",
     },
