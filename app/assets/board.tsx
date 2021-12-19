@@ -24,7 +24,7 @@ export class Board extends Component<Props, Props> {
   onDrop = async (cardIndex, newColumnIndex, oldColumnIndex) => {
     const oldColumn = this.state.columns[oldColumnIndex];
     const newColumn = this.state.columns[newColumnIndex];
-    const card = oldColumn.issues.slice(cardIndex, 1)[0];
+    const card = oldColumn.issues[cardIndex];
 
     const response = await window.fetch(this.props.board.url, {
       method: "POST",
