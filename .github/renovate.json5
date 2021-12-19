@@ -23,7 +23,6 @@
     },
     // Group redmine updates together
     {
-      matchPaths: ["+(package.json)"],
       matchPackageNames: ["redmine/redmine"],
       groupName: "redmine",
     },
