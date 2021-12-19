@@ -1,0 +1,47 @@
+{
+  extends: ["config:base", ":label(dependencies)"],
+
+  // Update stable main branch and current development branch
+  baseBranches: ["main", "develop"],
+
+  packageRules: [
+    // Only bump minors for redmine versions in CI config, as there will a
+    // config for each major version.
+    {
+      matchManagers: ["regex"],
+      matchPaths: ["+(.github/workflows/test.yml)"],
+      matchPackageNames: ["redmine/redmine"],
+      matchUpdateTypes: ["major"],
+      enabled: false,
+    },
+    // Only weekly updates to node dependencies (develop branch)
+    {
+      matchPaths: ["+(package.json)"],
+      matchUpdateTypes: ["major", "minor", "patch"],
+      groupName: "NPM",
+      schedule: ["after 16:00 on Friday"],
+    },
+    // Group redmine updates together
+    {
+      matchPaths: ["+(package.json)"],
+      matchPackageNames: ["redmine/redmine"],
+      groupName: "redmine",
+    },
+  ],
+
+  regexManagers: [
+    // Match scripts and CI config to bump redmine versions
+    {
+      fileMatch: ["^redmine$"],
+      matchStrings: ["DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*)'"],
+      depNameTemplate: "redmine/redmine",
+      datasourceTemplate: "github-tags",
+    },
+    {
+      fileMatch: ["^.github/workflows/test\\.yml$"],
+      matchStrings: ['redmine:\\s+"(?<currentValue>.*)"'],
+      depNameTemplate: "redmine/redmine",
+      datasourceTemplate: "github-tags",
+    },
+  ],
+}
