@@ -12,6 +12,7 @@
       matchPaths: [".github/workflows/test.yml"],
       matchPackageNames: ["redmine/redmine"],
       matchUpdateTypes: ["major", "minor"],
+      separateMinorPatch: true,
       enabled: false,
     },
     // Only weekly updates to node dependencies (develop branch)
