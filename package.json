@@ -1,12 +1,12 @@
 {
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.16.5",
-    "@babel/plugin-transform-react-jsx": "7.16.5",
-    "@babel/plugin-transform-runtime": "7.16.5",
-    "@babel/preset-env": "7.16.5",
-    "@babel/preset-typescript": "7.16.5",
-    "@babel/runtime": "7.16.5",
+    "@babel/core": "7.16.7",
+    "@babel/plugin-transform-react-jsx": "7.16.7",
+    "@babel/plugin-transform-runtime": "7.16.7",
+    "@babel/preset-env": "7.16.7",
+    "@babel/preset-typescript": "7.16.7",
+    "@babel/runtime": "7.16.7",
     "babel-loader": "8.2.3",
     "css-loader": "6.5.1",
     "cssnano": "5.0.14",
@@ -14,11 +14,11 @@
     "postcss": "8.4.5",
     "postcss-loader": "6.2.1",
     "postcss-preset-env": "7.1.0",
-    "sass": "1.45.1",
+    "sass": "1.45.2",
     "sass-loader": "12.4.0",
     "webpack": "5.65.0",
     "webpack-cli": "4.9.1",
-    "webpack-dev-server": "4.7.1"
+    "webpack-dev-server": "4.7.2"
   },
   "scripts": {
     "build": "webpack",
