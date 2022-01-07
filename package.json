@@ -9,7 +9,7 @@
     "@babel/runtime": "7.16.7",
     "babel-loader": "8.2.3",
     "css-loader": "6.5.1",
-    "cssnano": "5.0.14",
+    "cssnano": "5.0.15",
     "mini-css-extract-plugin": "2.4.6",
     "postcss": "8.4.5",
     "postcss-loader": "6.2.1",
