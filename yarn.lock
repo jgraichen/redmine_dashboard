@@ -5935,6 +5935,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"redmine-dashboard@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "redmine-dashboard@workspace:."
+  dependencies:
+    "@babel/core": 7.16.7
+    "@babel/plugin-transform-react-jsx": 7.16.7
+    "@babel/plugin-transform-runtime": 7.16.8
+    "@babel/preset-env": 7.16.8
+    "@babel/preset-typescript": 7.16.7
+    "@babel/runtime": 7.16.7
+    babel-loader: 8.2.3
+    classnames: 2.3.1
+    core-js: 3.20.2
+    css-loader: 6.5.1
+    cssnano: 5.0.15
+    mini-css-extract-plugin: 2.5.0
+    postcss: 8.4.5
+    postcss-loader: 6.2.1
+    postcss-preset-env: 7.2.3
+    preact: 10.6.4
+    react-dnd: 14.0.5
+    react-dnd-html5-backend: 14.1.0
+    react-dnd-touch-backend: 14.1.1
+    sass: 1.48.0
+    sass-loader: 12.4.0
+    webpack: 5.66.0
+    webpack-cli: 4.9.1
+    webpack-dev-server: 4.7.3
+  languageName: unknown
+  linkType: soft
+
 "redux@npm:^4.1.1":
   version: 4.1.2
   resolution: "redux@npm:4.1.2"
@@ -6106,37 +6137,6 @@ __metadata:
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    "@babel/core": 7.16.7
-    "@babel/plugin-transform-react-jsx": 7.16.7
-    "@babel/plugin-transform-runtime": 7.16.8
-    "@babel/preset-env": 7.16.8
-    "@babel/preset-typescript": 7.16.7
-    "@babel/runtime": 7.16.7
-    babel-loader: 8.2.3
-    classnames: 2.3.1
-    core-js: 3.20.2
-    css-loader: 6.5.1
-    cssnano: 5.0.15
-    mini-css-extract-plugin: 2.5.0
-    postcss: 8.4.5
-    postcss-loader: 6.2.1
-    postcss-preset-env: 7.2.3
-    preact: 10.6.4
-    react-dnd: 14.0.5
-    react-dnd-html5-backend: 14.1.0
-    react-dnd-touch-backend: 14.1.1
-    sass: 1.48.0
-    sass-loader: 12.4.0
-    webpack: 5.66.0
-    webpack-cli: 4.9.1
-    webpack-dev-server: 4.7.3
-  languageName: unknown
-  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
