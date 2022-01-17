@@ -1,7 +1,7 @@
 //
 const { resolve, join } = require("path");
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin").default;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const postcssEnv = require("postcss-preset-env");
 const cssnano = require("cssnano");
 
