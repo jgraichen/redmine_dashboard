@@ -8,9 +8,12 @@
     // Only weekly updates to node dependencies (develop branch)
     {
       matchPaths: ["+(package.json)"],
-      matchUpdateTypes: ["major", "minor", "patch"],
-      groupName: "NPM",
       schedule: ["after 16:00 on Friday"],
+    },
+    {
+      matchPaths: ["+(package.json)"],
+      matchUpdateTypes: ["minor", "patch"],
+      groupName: "NPM",
     },
     // Group all redmine updates together
     {
