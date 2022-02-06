@@ -75,6 +75,7 @@ module.exports = async function (env, argv) {
       extensions: [".tsx", ".ts", ".sass", ".scss", ".css", "..."],
       alias: {
         react: "preact/compat",
+        "react/jsx-runtime.js": "preact/compat/jsx-runtime",
         "react-dom": "preact/compat",
       },
     },
