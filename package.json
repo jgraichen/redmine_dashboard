@@ -29,9 +29,9 @@
     "classnames": "2.3.1",
     "core-js": "3.21.0",
     "preact": "10.6.5",
-    "react-dnd": "14.0.5",
-    "react-dnd-html5-backend": "14.1.0",
-    "react-dnd-touch-backend": "14.1.1"
+    "react-dnd": "15.1.0",
+    "react-dnd-html5-backend": "15.1.1",
+    "react-dnd-touch-backend": "15.1.0"
   },
   "packageManager": "yarn@3.1.1"
 }
