@@ -2,15 +2,15 @@
   "name": "redmine-dashboard",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.17.0",
+    "@babel/core": "7.17.2",
     "@babel/plugin-transform-react-jsx": "7.16.7",
     "@babel/plugin-transform-runtime": "7.17.0",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
-    "@babel/runtime": "7.17.0",
+    "@babel/runtime": "7.17.2",
     "babel-loader": "8.2.3",
     "css-loader": "6.6.0",
-    "cssnano": "5.0.16",
+    "cssnano": "5.0.17",
     "mini-css-extract-plugin": "2.5.3",
     "postcss": "8.4.6",
     "postcss-loader": "6.2.1",
@@ -29,9 +29,9 @@
     "classnames": "2.3.1",
     "core-js": "3.21.0",
     "preact": "10.6.5",
-    "react-dnd": "15.1.0",
-    "react-dnd-html5-backend": "15.1.1",
-    "react-dnd-touch-backend": "15.1.0"
+    "react-dnd": "15.1.1",
+    "react-dnd-html5-backend": "15.1.2",
+    "react-dnd-touch-backend": "15.1.1"
   },
   "packageManager": "yarn@3.1.1"
 }
