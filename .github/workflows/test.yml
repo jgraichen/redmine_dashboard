@@ -13,7 +13,7 @@ jobs:
       matrix:
         include:
           - ruby: "2.7"
-            redmine: "4.2.3"
+            redmine: "4.2.4"
       fail-fast: false
 
     env:
