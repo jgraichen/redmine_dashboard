@@ -13,12 +13,11 @@
 Gemfile.lock
 
 # Yarn
-/.pnp.*
-/.yarn
-/node_modules
-
-!/.yarn/patches
-!/.yarn/plugins
-!/.yarn/releases
-!/.yarn/sdks
-!/.yarn/versions
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+node_modules

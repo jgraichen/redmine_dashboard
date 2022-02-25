@@ -12,10 +12,10 @@
     "css-loader": "6.6.0",
     "cssnano": "5.0.17",
     "mini-css-extract-plugin": "2.5.3",
-    "postcss": "8.4.6",
+    "postcss": "8.4.7",
     "postcss-loader": "6.2.1",
     "postcss-preset-env": "7.4.1",
-    "sass": "1.49.8",
+    "sass": "1.49.9",
     "sass-loader": "12.6.0",
     "webpack": "5.69.1",
     "webpack-cli": "4.9.2",
@@ -33,5 +33,5 @@
     "react-dnd-html5-backend": "15.1.2",
     "react-dnd-touch-backend": "15.1.1"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.0"
 }
