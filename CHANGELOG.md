@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Changelog](http://keepachangelog.com/).
 
 
+
 ## Unreleased
+---
+
+### New
+
+### Changes
+
+### Fixes
+
+### Breaks
+
+
+## 2.12.0 - (2022-03-29)
 ---
 
 ### New
@@ -12,13 +25,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 * Support for Redmine 5.0
 * Show or hide spend time and estimation based on the viewers permissions (#90)
 
-### Changes
 
 ### Fixes
 * Locale code file mapping for pt-BR and zh-TW
 * Spacing and padding issues with compact card properties
-
-### Breaks
 
 
 ## 2.11.0 - (2021-08-22)
