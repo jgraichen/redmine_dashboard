@@ -37,7 +37,7 @@ def handle_command(cmd, _argv)
   command = SCRIPT_PATH.join(cmd.to_s)
 
   if command.file? && command.executable?
-    Kernel.exec command.to_s, *ARGV[1..-1]
+    Kernel.exec command.to_s, *ARGV[1..]
   else
     warn "Unknown command: #{ARGV[0]}"
     warn help
@@ -49,7 +49,7 @@ case ARGV[0]
   when '-h', '--help', nil
     $stdout.puts help
   when 'exec'
-    Dir.chdir(REDMINE_PATH) { Kernel.exec(*ARGV[1..-1]) }
+    Dir.chdir(REDMINE_PATH) { Kernel.exec(*ARGV[1..]) }
   else
-    handle_command ARGV[0], ARGV[1..-1]
+    handle_command ARGV[0], ARGV[1..]
 end

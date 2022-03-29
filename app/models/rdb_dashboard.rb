@@ -139,7 +139,7 @@ class RdbDashboard
   end
 
   def editable?(str = nil)
-    @editable ||= !!User.current.allowed_to?(:edit_issues, project)
+    @editable ||= !User.current.allowed_to?(:edit_issues, project).nil?
     if str
       @editable ? str : nil
     else

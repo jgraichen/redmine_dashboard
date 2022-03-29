@@ -40,7 +40,7 @@ class RdbGroup
 
   def visible?
     @visible ||= catch(:visible) do
-      board.columns.values.each do |column|
+      board.columns.each_value do |column|
         next if !column.visible? || column.compact?
 
         throw :visible, true if filter(column.issues).count > 0
