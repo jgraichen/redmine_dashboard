@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ---
 
 ### New
+* Support for Ruby 3.0 and 3.1 with Redmine 5.0
+* Support for Redmine 5.0
 * Show or hide spend time and estimation based on the viewers permissions (#90)
 
 ### Changes
