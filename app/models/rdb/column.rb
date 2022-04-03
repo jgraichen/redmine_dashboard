@@ -9,7 +9,7 @@ class Rdb::Column < ActiveRecord::Base
 
   validates :title, :values, presence: true
 
-  def as_json(**opts)
+  def as_json(opts = {})
     {
       id: id,
       title: title,

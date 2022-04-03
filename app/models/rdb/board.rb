@@ -11,14 +11,16 @@ class Rdb::Board < ActiveRecord::Base
 
   validates :title, :project, :owner, :query, presence: true
 
-  def as_json(view:, **opts)
+  def as_json(opts = {})
+    view = opts.fetch(:view)
+
     {
       board: {
         id: id,
         url: view.rdb_board_path(project, id, format: :json),
         title: title,
       },
-      columns: columns.as_json(view: view, **opts),
+      columns: columns.as_json(opts),
     }
   end
 
