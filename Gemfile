@@ -18,6 +18,6 @@ end
 # needed (and actually conflicting), therefore we skip them.
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development, :test do
-    gem 'rubocop', '~> 1.26.0'
+    gem 'rubocop', '~> 1.27.0'
   end
 end
