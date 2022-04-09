@@ -1924,24 +1924,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-dnd/asap@npm:4.0.1":
-  version: 4.0.1
-  resolution: "@react-dnd/asap@npm:4.0.1"
-  checksum: 757db3b5c436a95383b74f187f503321092909401ce9665d9cc1999308a44de22809bf8dbe82c9126bd73b72dd6665bbc4a788e864fc3c243c59f65057a4f87f
+"@react-dnd/asap@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@react-dnd/asap@npm:5.0.0"
+  checksum: 8a0f2972bfdf2183699fe2637523c375537a34fcf8fa17b98d68a494687d1b0433de6b6c329e5c4c36437f1d0731222f55f310fc5f3b57568b76b854d0bdecbe
   languageName: node
   linkType: hard
 
-"@react-dnd/invariant@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@react-dnd/invariant@npm:3.0.1"
-  checksum: c1626899b8b8af0dc5c10a5745709fc415a6c81f1b729e589c579ac9a563471882c1cd9ca362f6df37f3ef9a0481316aeb1f587cbf8c104e82ceda11639af8e8
+"@react-dnd/invariant@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@react-dnd/invariant@npm:4.0.0"
+  checksum: ed007d87e9b18c37f421113efa4869f7fd7857e2f2dff9d70a09c2eec3242af2015be72aa57fb9d48493f91171620703cc86b0999ce7d5837971a170293fc29d
   languageName: node
   linkType: hard
 
-"@react-dnd/shallowequal@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@react-dnd/shallowequal@npm:3.0.1"
-  checksum: 0a41d7283a113126d98072a1c9f11d38a853dd7d6473ff1d5b8c24374977451266ba01f2e27bc5159bab08dda0a0a751672bb47a432def1db2871fd323369d8c
+"@react-dnd/shallowequal@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@react-dnd/shallowequal@npm:4.0.0"
+  checksum: d41809f94256eca7be5dc623c87b451ee711ec8d6318efc758b5f5ff41b7fc88da83e97928240e2952b0d4742a380fd9f4bbeb2ed0bcb58ed67f36bb0869b1b2
   languageName: node
   linkType: hard
 
@@ -3389,14 +3389,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dnd-core@npm:15.1.2":
-  version: 15.1.2
-  resolution: "dnd-core@npm:15.1.2"
+"dnd-core@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "dnd-core@npm:16.0.0"
   dependencies:
-    "@react-dnd/asap": 4.0.1
-    "@react-dnd/invariant": 3.0.1
+    "@react-dnd/asap": ^5.0.0
+    "@react-dnd/invariant": ^4.0.0
     redux: ^4.1.2
-  checksum: c3b1759fbcdbe1f102793bdda0f422ffa3e6d99f06a6d135bb65a728849eb50746dfffdfd52652bf0332795f61a522ff4e1a57364e0ae162ac7018a234fa9b52
+  checksum: d43caab1c0e26711672e66d433179327833bd9cb7808b94e700d03fee6bbc01ae49e2dd94fe83b3ed33406f67e75d3fc66931284b735ddf7951f5288d71258ba
   languageName: node
   linkType: hard
 
@@ -6038,32 +6038,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dnd-html5-backend@npm:15.1.3":
-  version: 15.1.3
-  resolution: "react-dnd-html5-backend@npm:15.1.3"
+"react-dnd-html5-backend@npm:16.0.0":
+  version: 16.0.0
+  resolution: "react-dnd-html5-backend@npm:16.0.0"
   dependencies:
-    dnd-core: 15.1.2
-  checksum: 325672647965873365d5afaa5ddb81562202f30e11a6d4922236f5a1c46eb336db04746726fa070ee328cade45455c636330893d330dddd7d7aad6b45c7bfb7f
+    dnd-core: ^16.0.0
+  checksum: 7125c538a07dbf77ce79d94dcea0ef2d34f63fbabc308789845bc66e18a9b7ed4f9fe8ece75abf4541a9bce9b03fbad048dde72aab40dd882110a26e6a01c885
   languageName: node
   linkType: hard
 
-"react-dnd-touch-backend@npm:15.1.2":
-  version: 15.1.2
-  resolution: "react-dnd-touch-backend@npm:15.1.2"
+"react-dnd-touch-backend@npm:16.0.0":
+  version: 16.0.0
+  resolution: "react-dnd-touch-backend@npm:16.0.0"
   dependencies:
-    "@react-dnd/invariant": 3.0.1
-    dnd-core: 15.1.2
-  checksum: ab6d4e5f93777a418630afe442db3b7f7301b3c18b81df76a947dd38fa29231efbfd09a2ed91c6544af9f9bed9fd21a8a68ea0a1e938d443c739452f9cab4949
+    "@react-dnd/invariant": ^4.0.0
+    dnd-core: ^16.0.0
+  checksum: 1b0fb16cd2e7d7a90c7f02c326392ae36c7e2ad3aa7fc647d2d6f1856a7dbaca9a0b15048bcbad6ac2038e8d9f042323a2ebc34f30a679c10692b3140de956e2
   languageName: node
   linkType: hard
 
-"react-dnd@npm:15.1.2":
-  version: 15.1.2
-  resolution: "react-dnd@npm:15.1.2"
+"react-dnd@npm:16.0.0":
+  version: 16.0.0
+  resolution: "react-dnd@npm:16.0.0"
   dependencies:
-    "@react-dnd/invariant": 3.0.1
-    "@react-dnd/shallowequal": 3.0.1
-    dnd-core: 15.1.2
+    "@react-dnd/invariant": ^4.0.0
+    "@react-dnd/shallowequal": ^4.0.0
+    dnd-core: ^16.0.0
     fast-deep-equal: ^3.1.3
     hoist-non-react-statics: ^3.3.2
   peerDependencies:
@@ -6078,7 +6078,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 3e8c07ea4c1c0a0a6d2dfd8ba67f4f971dbd868ea50ccecc86f0735f4d583962d1ee4c5a8362b0b92c14538d2696567fed1309ef6ac95f575ccf1b580f99934d
+  checksum: 284bcf825ae66a3b01bad035924d8ae97cb14c0a5ae2350263c5038a6c8ac9c33c35de39ac4422deb132a26e7d883021d6507a0d7b0a4c9466a74721c6fd0e02
   languageName: node
   linkType: hard
 
@@ -6153,9 +6153,9 @@ __metadata:
     postcss-loader: 6.2.1
     postcss-preset-env: 7.4.3
     preact: 10.7.1
-    react-dnd: 15.1.2
-    react-dnd-html5-backend: 15.1.3
-    react-dnd-touch-backend: 15.1.2
+    react-dnd: 16.0.0
+    react-dnd-html5-backend: 16.0.0
+    react-dnd-touch-backend: 16.0.0
     sass: 1.50.0
     sass-loader: 12.6.0
     webpack: 5.72.0
