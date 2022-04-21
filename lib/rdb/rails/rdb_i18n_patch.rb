@@ -117,7 +117,7 @@ RDB_PLURALIZERS = {
 }
 # rubocop:enable all
 
-module RdbI18nPatch
+module Rdb::Rails::RdbI18nPatch
   def pluralize(locale, entry, count)
     return entry unless entry.is_a?(Hash) && count
 
@@ -136,4 +136,4 @@ module RdbI18nPatch
   end
 end
 
-Redmine::I18n::Backend.include RdbI18nPatch
+Redmine::I18n::Backend.include Rdb::Rails::RdbI18nPatch

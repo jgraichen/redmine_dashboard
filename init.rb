@@ -3,7 +3,7 @@
 require 'redmine'
 
 Rails.configuration.to_prepare do
-  require 'rdb/rails/i18n'
+  require 'rdb/rails/RdbI18nPatch'
 end
 
 Redmine::Plugin.register :redmine_dashboard do
