@@ -23,6 +23,12 @@ if defined?(Test::Unit::AutoRunner)
   Test::Unit::AutoRunner.need_auto_run = false
 end
 
+# Eager load Rails application in CI. This will catch any
+# eager-load-only problem that would otherwise only appear in
+# production. Tests in CI also do not need any reload, so eager loader
+# is feasable and useful.
+Rails.application.eager_load! if ENV['CI'].present?
+
 require 'rspec/rails'
 require 'database_cleaner/active_record'
 
