@@ -2,10 +2,6 @@
 
 require 'redmine'
 
-Rails.configuration.to_prepare do
-  require 'rdb/rails/i18n'
-end
-
 Redmine::Plugin.register :redmine_dashboard do
   name 'Redmine Dashboard plugin'
   author 'Jan Graichen'
