@@ -13,9 +13,15 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Changes
 
 ### Fixes
-* Zeitwerk loading issue with Redmine 5.0
 
 ### Breaks
+
+
+## 2.12.1 - (2022-05-03)
+---
+
+### Fixes
+* Zeitwerk loading issue with Redmine 5.0
 
 
 ## 2.12.0 - (2022-03-29)
