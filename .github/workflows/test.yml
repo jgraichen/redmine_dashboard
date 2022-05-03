@@ -1,4 +1,6 @@
+---
 name: test
+
 on:
   push:
     branches-ignore: [debian]
