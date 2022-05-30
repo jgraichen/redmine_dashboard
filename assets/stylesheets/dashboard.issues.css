@@ -152,6 +152,22 @@
 .rdb-property-time span {
   font-size: 140%;
 }
+.rdb-property-attachments .attachments{
+  margin:.5em .5em;
+  padding: 0;
+  max-height: 8em;
+  overflow-y: auto;
+  font-size: 1em;
+  background: #f9f9f9;
+}
+.rdb-property-attachments .attachment{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.rdb-property-attachments .attachment a.icon-only{
+  margin: 0 .5em;
+}
 
 /* ========================================================
 ** Issue Compact View
