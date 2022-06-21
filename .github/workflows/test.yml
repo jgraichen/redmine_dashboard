@@ -15,9 +15,9 @@ jobs:
       matrix:
         include:
           - ruby: "3.1"
-            redmine: "5.0.1"
+            redmine: "5.0.2"
           - ruby: "3.0"
-            redmine: "5.0.1"
+            redmine: "5.0.2"
       fail-fast: false
 
     env:
