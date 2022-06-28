@@ -32,6 +32,10 @@ class RdbBoardsController < ApplicationController
 
     issue.init_journal(User.current, nil)
     issue.status = statuses.first
+    call_hook(
+      :controller_issues_edit_before_save,
+      {:params => {}, :issue => issue,
+       :journal => issue.current_journal})
     issue.save!
 
     render json: @board.as_json(view: view_context)
