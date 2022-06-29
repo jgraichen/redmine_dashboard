@@ -47,6 +47,10 @@ class RdbTaskboardController < RdbDashboardController
       {:params => {}, :issue => @issue,
        :journal => @issue.current_journal})
     @issue.save
+    call_hook(
+      :controller_issues_edit_after_save,
+      {:params => {}, :issue => @issue,
+       :journal => @issue.current_journal})
 
     render 'index'
   end
