@@ -1,3 +1,4 @@
+---
 tr:
   project_module_dashboard: Gösterge Paneli
   permission_view_dashboards: Gösterge Panelini Görüntüle
@@ -45,15 +46,15 @@ tr:
   rdb_legend_priorities: Öncelikler
   rdb_legend_warnings: Uyarılar
   rdb_issue_overdue: Vadesi geçmiş
-  rdb_property_time: '<span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>'
+  rdb_property_time: <span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Tamam
   rdb_x_issues:
-    one: "1 İş"
+    one: 1 İş
     other: "%{count}Talepler"
   rdb_dialog_update_issue_title: Talebi Güncelle
   rdb_dialog_update_issue_status: Yeni talep durumunu seçin
-  rdb_other_issues: "Diğer Talepler <span>(%{count})</span>"
+  rdb_other_issues: Diğer Talepler <span>(%{count})</span>
   rdb_unassigned: Atanmamış
   rdb_others: Diğerleri
   rdb_all_issues: Tüm Talepler

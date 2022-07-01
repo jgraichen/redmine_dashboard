@@ -1,3 +1,4 @@
+---
 fr:
   project_module_dashboard: Tableau de bord
   permission_view_dashboards: Voir les tableaux de bord
@@ -45,15 +46,15 @@ fr:
   rdb_legend_priorities: Priorités
   rdb_legend_warnings: Avertissements
   rdb_issue_overdue: En retard
-  rdb_property_time: '<span title="Temps passé">%{actual}</span> / <span title="Temps estimé">%{estimated}</span>'
+  rdb_property_time: <span title="Temps passé">%{actual}</span> / <span title="Temps estimé">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Terminé
   rdb_x_issues:
-    one: "1 demande"
+    one: 1 demande
     other: "%{count} demandes"
   rdb_dialog_update_issue_title: Mettre à jour la demande
   rdb_dialog_update_issue_status: Choisir le statut des nouvelles demandes
-  rdb_other_issues: "Autres demandes <span>(%{count})</span>"
+  rdb_other_issues: Autres demandes <span>(%{count})</span>
   rdb_unassigned: Non assignée
   rdb_others: Autres
   rdb_all_issues: Toutes les demandes

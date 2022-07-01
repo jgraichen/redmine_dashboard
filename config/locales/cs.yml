@@ -1,3 +1,4 @@
+---
 cs:
   project_module_dashboard: Nástěnka
   permission_view_dashboards: Zobrazit nástěnky
@@ -45,17 +46,17 @@ cs:
   rdb_legend_priorities: Priority
   rdb_legend_warnings: Varování
   rdb_issue_overdue: Zpožděné
-  rdb_property_time: '<span title="Strávený čas">%{actual}</span> / <span title="Odhadovaný čas">%{estimated}</span>'
+  rdb_property_time: <span title="Strávený čas">%{actual}</span> / <span title="Odhadovaný čas">%{estimated}</span>
   rdb_not_available: Nedostupné
   rdb_column_done: Hotové
   rdb_x_issues:
-    one: "1 úkol"
+    one: 1 úkol
     few: "%{count} úkoly"
     many: "%{count} úkolů"
     other: "%{count} úkolů"
   rdb_dialog_update_issue_title: Upravit úkol
   rdb_dialog_update_issue_status: Zvolte nový stav úkolu
-  rdb_other_issues: "Ostatní úkoly <span>(%{count})</span>"
+  rdb_other_issues: Ostatní úkoly <span>(%{count})</span>
   rdb_unassigned: Nepřiřazeno
   rdb_others: Ostatní
   rdb_all_issues: Všechny úkoly

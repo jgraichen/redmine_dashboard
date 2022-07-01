@@ -1,3 +1,4 @@
+---
 ca:
   project_module_dashboard: Taulers
   permission_view_dashboards: Mostra els taulers
@@ -45,15 +46,15 @@ ca:
   rdb_legend_priorities: Prioritats
   rdb_legend_warnings: Avisos
   rdb_issue_overdue: Endarrerit
-  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_property_time: <span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>
   rdb_not_available: N/D
   rdb_column_done: Fet
   rdb_x_issues:
-    one: "1 Assumpte"
+    one: 1 Assumpte
     other: "%{count} Assumptes"
   rdb_dialog_update_issue_title: Actualitza l'assumpte
   rdb_dialog_update_issue_status: 'Escull un nou estat per l''assumpte '
-  rdb_other_issues: "Altres assumptes <span>(%{count})</span>"
+  rdb_other_issues: Altres assumptes <span>(%{count})</span>
   rdb_unassigned: Sense assignar
   rdb_others: Altres
   rdb_all_issues: Tots els assumptes

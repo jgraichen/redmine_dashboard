@@ -1,3 +1,4 @@
+---
 zh:
   project_module_dashboard: 看板
   permission_view_dashboards: 浏览看板
@@ -45,14 +46,15 @@ zh:
   rdb_legend_priorities: 优先级
   rdb_legend_warnings: 警告
   rdb_issue_overdue: 过期
-  rdb_property_time: '<span title="花费时间">%{actual}</span> / <span title="预计时间">%{estimated}</span>'
+  rdb_property_time: <span title="花费时间">%{actual}</span> / <span title="预计时间">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: 完成
   rdb_x_issues:
     other: "%{count} 问题"
+    one: "%{count} 问题"
   rdb_dialog_update_issue_title: 更新问题
   rdb_dialog_update_issue_status: 选择新问题的状态
-  rdb_other_issues: "其他问题 <span>(%{count})</span>"
+  rdb_other_issues: 其他问题 <span>(%{count})</span>
   rdb_unassigned: 未指派
   rdb_others: 其他
   rdb_all_issues: 所有问题

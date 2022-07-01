@@ -1,3 +1,4 @@
+---
 ja:
   project_module_dashboard: ダッシュボード
   permission_view_dashboards: ダッシュボードを表示
@@ -49,9 +50,10 @@ ja:
   rdb_column_done: 完了
   rdb_x_issues:
     other: "%{count} 件のチケット"
+    one: "%{count} 件のチケット"
   rdb_dialog_update_issue_title: チケットの更新
   rdb_dialog_update_issue_status: チケットのステータスを選んでください
-  rdb_other_issues: "他のチケット <span>(%{count})</span>"
+  rdb_other_issues: 他のチケット <span>(%{count})</span>
   rdb_unassigned: 未割当
   rdb_others: その他
   rdb_all_issues: すべてのチケット

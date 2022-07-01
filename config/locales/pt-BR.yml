@@ -1,3 +1,4 @@
+---
 pt-BR:
   project_module_dashboard: Dashboard
   permission_view_dashboards: Ver Dashboard
@@ -45,15 +46,15 @@ pt-BR:
   rdb_legend_priorities: Prioridades
   rdb_legend_warnings: Alertas
   rdb_issue_overdue: Atrasado
-  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_property_time: <span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Feito
   rdb_x_issues:
-    one: "1 Tarefa"
+    one: 1 Tarefa
     other: "%[count] Tarefas"
   rdb_dialog_update_issue_title: Atualizar Tarefa
   rdb_dialog_update_issue_status: Escolher status da tarefa
-  rdb_other_issues: "Outras tarefas <span>(%{count})</span>"
+  rdb_other_issues: Outras tarefas <span>(%{count})</span>
   rdb_unassigned: Não atribuidas
   rdb_others: Outras
   rdb_all_issues: Todas Tarefas

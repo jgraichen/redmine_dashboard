@@ -17,6 +17,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
+- Fix missing pluralization keys (#233)
+
 ### Breaks
 
 ## 2.12.1 - (2022-05-03)

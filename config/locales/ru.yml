@@ -1,3 +1,4 @@
+---
 ru:
   project_module_dashboard: Панель задач
   permission_view_dashboards: Просмотр Панели
@@ -45,17 +46,17 @@ ru:
   rdb_legend_priorities: Приоритеты
   rdb_legend_warnings: Предупреждения
   rdb_issue_overdue: Изменить дату
-  rdb_property_time: '<span title="Затраченное время">%{actual}</span> / <span title="Оценка времени">%{estimated}</span>'
+  rdb_property_time: <span title="Затраченное время">%{actual}</span> / <span title="Оценка времени">%{estimated}</span>
   rdb_not_available: Нет
   rdb_column_done: Выполнено
   rdb_x_issues:
-    one: "1 задача"
+    one: 1 задача
     few: "%{count} задачи"
     many: "%{count} задач"
     other: "%{count} задач"
   rdb_dialog_update_issue_title: Обновить задачу
   rdb_dialog_update_issue_status: Выбрать новый статус задачи
-  rdb_other_issues: "Другие задачи <span>(%{count})</span>"
+  rdb_other_issues: Другие задачи <span>(%{count})</span>
   rdb_unassigned: Неназначенные
   rdb_others: Другие
   rdb_all_issues: Все задачи

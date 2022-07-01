@@ -1,3 +1,4 @@
+---
 ko:
   project_module_dashboard: 현황판
   permission_view_dashboards: 현황판 보기
@@ -49,9 +50,10 @@ ko:
   rdb_column_done: 완료
   rdb_x_issues:
     other: "%{count} 일감"
+    one: "%{count} 일감"
   rdb_dialog_update_issue_title: 일감 갱신
   rdb_dialog_update_issue_status: 일감의 새 상태 선택
-  rdb_other_issues: "다른 일감들 <span>(%{count})</span>"
+  rdb_other_issues: 다른 일감들 <span>(%{count})</span>
   rdb_unassigned: 지정되지 않음
   rdb_others: 기타
   rdb_all_issues: 모든 일감

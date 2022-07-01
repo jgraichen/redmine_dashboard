@@ -1,3 +1,4 @@
+---
 nl:
   project_module_dashboard: Dashboard
   permission_view_dashboards: Dashboards bekijken
@@ -45,15 +46,15 @@ nl:
   rdb_legend_priorities: Prioriteiten
   rdb_legend_warnings: Waarschuwingen
   rdb_issue_overdue: Te laat
-  rdb_property_time: '<span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>'
+  rdb_property_time: <span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>
   rdb_not_available: Niet toepasbaar
   rdb_column_done: Klaar
   rdb_x_issues:
-    one: "1 Issue"
+    one: 1 Issue
     other: "%{count} Issues"
   rdb_dialog_update_issue_title: Issue bijwerken
   rdb_dialog_update_issue_status: Kies een nieuwe Issue status
-  rdb_other_issues: "Andere Issues <span>(%{count})</span>"
+  rdb_other_issues: Andere Issues <span>(%{count})</span>
   rdb_unassigned: Niet toegewezen
   rdb_others: Andere
   rdb_all_issues: Alle Issues

@@ -1,3 +1,4 @@
+---
 mn:
   project_module_dashboard: Хянах самбар
   permission_view_dashboards: Хянах самбар харах
@@ -45,15 +46,15 @@ mn:
   rdb_legend_priorities: Зэрэглэлүүд
   rdb_legend_warnings: Анхааруулга
   rdb_issue_overdue: Хугацаа хэтэрсэн
-  rdb_property_time: '<span title="Зарцуулсан хугацаа">%{actual}</span> / <span title="Төлөвлөсөн хугацаа">%{estimated}</span>'
+  rdb_property_time: <span title="Зарцуулсан хугацаа">%{actual}</span> / <span title="Төлөвлөсөн хугацаа">%{estimated}</span>
   rdb_not_available: Хамааралгүй
   rdb_column_done: Гүйцэтгэл
   rdb_x_issues:
-    one: "1 асуудал"
+    one: 1 асуудал
     other: "%{count} асуудал"
   rdb_dialog_update_issue_title: Асуудлыг шинэчлэх
   rdb_dialog_update_issue_status: Шинэ асуудлын төлөвийг сонго
-  rdb_other_issues: "Бусад асуудлууд <span>(%{count})</span>"
+  rdb_other_issues: Бусад асуудлууд <span>(%{count})</span>
   rdb_unassigned: Хуваарилагдаагүй
   rdb_others: Бусад
   rdb_all_issues: Бүх асуудлууд

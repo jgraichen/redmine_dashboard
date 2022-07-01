@@ -1,3 +1,4 @@
+---
 pl:
   project_module_dashboard: Tablica
   permission_view_dashboards: Przeglądanie tablic
@@ -49,13 +50,13 @@ pl:
   rdb_not_available: N/A
   rdb_column_done: Zrobione
   rdb_x_issues:
-    one: "1 zagadnienie"
+    one: 1 zagadnienie
     few: "%{count} zagadnień"
     many: "%{count} zagadnień"
     other: "%{count} zagadnień"
   rdb_dialog_update_issue_title: Aktualizacja zagadnienia
   rdb_dialog_update_issue_status: Wybierz nowy status zagadnienia
-  rdb_other_issues: "Inne zagadnienia <span>(%{count})</span>"
+  rdb_other_issues: Inne zagadnienia <span>(%{count})</span>
   rdb_unassigned: Nieprzypisane
   rdb_others: Inni
   rdb_all_issues: Wszystkie zagadnienia
