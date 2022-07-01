@@ -51,6 +51,7 @@ fr:
   rdb_column_done: Terminé
   rdb_x_issues:
     one: 1 demande
+    many: "%{count} demandes"
     other: "%{count} demandes"
   rdb_dialog_update_issue_title: Mettre à jour la demande
   rdb_dialog_update_issue_status: Choisir le statut des nouvelles demandes

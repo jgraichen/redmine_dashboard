@@ -51,6 +51,7 @@ it:
   rdb_column_done: Fatto
   rdb_x_issues:
     one: 1 segnalazione
+    many: "%{count} segnalazioni"
     other: "%{count} segnalazioni"
   rdb_dialog_update_issue_title: Aggiorna la segnalazione
   rdb_dialog_update_issue_status: Scegli lo stato della nuova segnalazione

@@ -50,8 +50,8 @@ zh-TW:
   rdb_not_available: N/A
   rdb_column_done: 完成
   rdb_x_issues:
-    one: 問題
     other: "%{count} 問題"
+    one: "%{count} 問題"
   rdb_dialog_update_issue_title: 更新問題
   rdb_dialog_update_issue_status: 選擇新問題的狀態
   rdb_other_issues: 其他問題 <span>(%{count})</span>

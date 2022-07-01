@@ -51,6 +51,7 @@ es:
   rdb_column_done: Hecho
   rdb_x_issues:
     one: 1 Tarea
+    many: "%{count} Tareas"
     other: "%{count} Tareas"
   rdb_dialog_update_issue_title: Actualizar tarea
   rdb_dialog_update_issue_status: Escoger nuevo estado de la tarea

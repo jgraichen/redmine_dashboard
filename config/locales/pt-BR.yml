@@ -51,6 +51,7 @@ pt-BR:
   rdb_column_done: Feito
   rdb_x_issues:
     one: 1 Tarefa
+    many: "%{count} Tarefas"
     other: "%{count} Tarefas"
   rdb_dialog_update_issue_title: Atualizar Tarefa
   rdb_dialog_update_issue_status: Escolher status da tarefa
