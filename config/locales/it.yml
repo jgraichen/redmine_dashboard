@@ -65,8 +65,8 @@ it:
   rdb_issue_menu_redmine_issue: Segnalazione Redmine
   rdb_issue_menu_show: Mostra
   rdb_issue_menu_edit: Edita
-  rdb_issue_menu_assigne_me: Assegnalo a me
-  rdb_issue_menu_unassigne_me: Rimuovi l'assegnazione
+  rdb_issue_menu_assign_me: Assegnalo a me
+  rdb_issue_menu_unassign_me: Rimuovi l'assegnazione
   rdb_flash_illegal_workflow_action: "<p>Non sei autorizzato a compiere quest'azione sul workflow:</p><p>Sposta <b>%{issue}</b> da <b>%{source}</b> a <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Versione lock mancante</b>: Impossibile aggiornare la segnalazione senza il lock della versione. Riprova."
   rdb_flash_stale_object: "<p>Tentativo di aggiornare una segnalazione scaduta: <b>%{issue}</b>. Controlla le modifiche e riprova."

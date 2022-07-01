@@ -64,8 +64,8 @@ zh:
   rdb_issue_menu_redmine_issue: Redmine 问题
   rdb_issue_menu_show: 显示
   rdb_issue_menu_edit: 编辑
-  rdb_issue_menu_assigne_me: 指派给我
-  rdb_issue_menu_unassigne_me: 未指派给我
+  rdb_issue_menu_assign_me: 指派给我
+  rdb_issue_menu_unassign_me: 未指派给我
   rdb_flash_illegal_workflow_action: "<p>你未经许可进行以下操作步骤:</p><p>将 <b>%{issue}</b> 从 <b>%{source}</b> 移动到 <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>丢失的冻结版本</b>: 无法更新问题，请重试。"
   rdb_flash_stale_object: "<p>试图更改已冻结的问题： <b>%{issue}</b>请重试。"

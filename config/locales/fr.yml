@@ -65,8 +65,8 @@ fr:
   rdb_issue_menu_redmine_issue: Demande Redmine
   rdb_issue_menu_show: Voir
   rdb_issue_menu_edit: Editer
-  rdb_issue_menu_assigne_me: Assigner à moi
-  rdb_issue_menu_unassigne_me: Ne plus assigner à moi
+  rdb_issue_menu_assign_me: Assigner à moi
+  rdb_issue_menu_unassign_me: Ne plus assigner à moi
   rdb_flash_illegal_workflow_action: "<p>Vous n'êtes pas autorisé à effectuer cette action du workflow :</p><p>Déplacer <b>%{issue}</b> de <b>%{source}</b> à <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Version de verrou manquante</b> : impossible de mettre à jour la demande sans version de verrou. Veuillez réessayer."
   rdb_flash_stale_object: "<p>Tentative de mise à jour d'une demande dépassée : <b>%{issue}</b>. Vérifiez les changements puis réessayez."

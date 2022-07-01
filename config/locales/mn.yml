@@ -64,8 +64,8 @@ mn:
   rdb_issue_menu_redmine_issue: Redmine Issue
   rdb_issue_menu_show: Харуулах
   rdb_issue_menu_edit: Засварлах
-  rdb_issue_menu_assigne_me: Надад хариуцуул
-  rdb_issue_menu_unassigne_me: Хариуцагчаас намайг хас
+  rdb_issue_menu_assign_me: Надад хариуцуул
+  rdb_issue_menu_unassign_me: Хариуцагчаас намайг хас
   rdb_flash_illegal_workflow_action: "<p>Танд энэ үйлдлийг хийх эрх алга:</p><p><b>%{issue}</b>-г <b>%{source}</b>-с <b>%{target}</b> уруу зөөх.</p>"
   rdb_flash_missing_lock_version: "<p><b>Түгжих хувилбар алга</b>: Түгжих хувилбаргүйгээр асуудлыг шинэчилж чадахгүй. Дахин оролд."
   rdb_flash_stale_object: "<p>Хоосон асуудлыг шинэчлэх гэж оролдсон байна: <b>%{issue}</b>. Өөрчлөлтөө шалгаад дахин оролд."

@@ -64,8 +64,8 @@ tr:
   rdb_issue_menu_redmine_issue: Redmine Talep
   rdb_issue_menu_show: Göster
   rdb_issue_menu_edit: Düzenle
-  rdb_issue_menu_assigne_me: Bana Ata
-  rdb_issue_menu_unassigne_me: Atamamı kaldır
+  rdb_issue_menu_assign_me: Bana Ata
+  rdb_issue_menu_unassign_me: Atamamı kaldır
   rdb_flash_illegal_workflow_action: "<p>Bu İş akışı eylemini gerçekleştirme izniniz yok:</p><p>Taşı <b>%{issue}</b> durumundan <b>%{source}</b>  <b>%{target}</b> durumuna.</p>"
   rdb_flash_missing_lock_version: "<p><b>Kilit uyarlaması eksik</b>: Kilit uyarlaması olmadan talep güncellenemez. Tekrar deneyin."
   rdb_flash_stale_object: "<p>Bayat bir talebi güncelleme girişimi: <b>%{issue}</b>. Değişiklikleri denetleyin ve tekrar deneyin."

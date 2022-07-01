@@ -64,8 +64,8 @@ zh-TW:
   rdb_issue_menu_redmine_issue: Redmine 問題
   rdb_issue_menu_show: 顯示
   rdb_issue_menu_edit: 編輯
-  rdb_issue_menu_assigne_me: 指派給我
-  rdb_issue_menu_unassigne_me: 解除我的指派
+  rdb_issue_menu_assign_me: 指派給我
+  rdb_issue_menu_unassign_me: 解除我的指派
   rdb_flash_illegal_workflow_action: "<p>你不被允許進行這樣的工作流程:</p><p>將 <b>%{issue}</b> 從 <b>%{source}</b> 移動到 <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>遺失的鎖定版本</b>: 無法更新問題，請重試。"
   rdb_flash_stale_object: "<p>更改已穩定的問題： <b>%{issue}</b>請重試。"

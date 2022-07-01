@@ -64,8 +64,8 @@ nl:
   rdb_issue_menu_redmine_issue: Redmine Issue
   rdb_issue_menu_show: Toon
   rdb_issue_menu_edit: Bewerken
-  rdb_issue_menu_assigne_me: Aan mezelf toewijzen
-  rdb_issue_menu_unassigne_me: Niet meer aan mezelf toewijzen
+  rdb_issue_menu_assign_me: Aan mezelf toewijzen
+  rdb_issue_menu_unassign_me: Niet meer aan mezelf toewijzen
   rdb_flash_illegal_workflow_action: "<p>U hebt geen toegang om deze werkproces actie uit te voeren :</p><p>Verplaats <b>%{issue}</b> van <b>%{source}</b> naar <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Ontbrekende lock versie</b>: Kan het issue niet bijwerken zonder lock versie. Probeer het opnieuw."
   rdb_flash_stale_object: "<p>Geprobeerd om een vastgelopen issue bij te werken : <b>%{issue}</b>. Controleer de wijzigingen en probeer opnieuw."

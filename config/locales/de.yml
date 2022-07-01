@@ -64,8 +64,8 @@ de:
   rdb_issue_menu_redmine_issue: Redmine Ticket
   rdb_issue_menu_show: Anzeigen
   rdb_issue_menu_edit: Bearbeiten
-  rdb_issue_menu_assigne_me: Mich zuweisen
-  rdb_issue_menu_unassigne_me: Zuweisung entfernen
+  rdb_issue_menu_assign_me: Mich zuweisen
+  rdb_issue_menu_unassign_me: Zuweisung entfernen
   rdb_flash_illegal_workflow_action: "<p>Diese Änderung verstößt gegen den festgelegten Arbeitsfluss:</p><p><b>%{issue}</b> von <b>%{source}</b> nach <b>%{target}</b> ändern.</p>"
   rdb_flash_missing_lock_version: "<p><b>Lock-Version fehlt</b>: Ticket kann nicht aktualisiert werden. Bitte nochmal probieren."
   rdb_flash_stale_object: "<p>Ticket wurde verändert: <b>%{issue}</b>. Überprüfe die Änderungen und probiere es erneut."

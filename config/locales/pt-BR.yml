@@ -65,8 +65,8 @@ pt-BR:
   rdb_issue_menu_redmine_issue: Tarefa Redmine
   rdb_issue_menu_show: Mostrar
   rdb_issue_menu_edit: Editar
-  rdb_issue_menu_assigne_me: Atribuir para mim
-  rdb_issue_menu_unassigne_me: Retirar atribuição
+  rdb_issue_menu_assign_me: Atribuir para mim
+  rdb_issue_menu_unassign_me: Retirar atribuição
   rdb_flash_illegal_workflow_action: "<p>Você não tem autorização para altera o fluxo:</p><p>Mover <b>%{issue}</b> de <b>%{source}</b> para <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Falta versão bloqueada</b>: Não é possível atualizar uma tarefa sem uma versão bloqueada. Tente novamente."
   rdb_flash_stale_object: "<p>Tentando atualizar uma tarefa antiga: <b>%{issue}</b>. Verifique as mudanças e tente novamente."

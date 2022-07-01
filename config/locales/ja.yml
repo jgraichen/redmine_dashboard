@@ -63,8 +63,8 @@ ja:
   rdb_issue_menu_redmine_issue: チケット
   rdb_issue_menu_show: チケットを表示
   rdb_issue_menu_edit: チケットの編集
-  rdb_issue_menu_assigne_me: 担当を自分にする
-  rdb_issue_menu_unassigne_me: 担当を未割当にする
+  rdb_issue_menu_assign_me: 担当を自分にする
+  rdb_issue_menu_unassign_me: 担当を未割当にする
   rdb_flash_illegal_workflow_action: "<p>このワークフローアクションを実行することはできません。</p><p><b>%{issue} </b><b>%{source}</b> から<b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>ロックされたバージョンがありません</b>:もう一度やり直してください"
   rdb_flash_stale_object: "<p>チケットはすでに更新されています: <b>%{issue}</b>. 変更を確認して再度更新してください"

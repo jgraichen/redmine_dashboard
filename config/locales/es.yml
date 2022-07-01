@@ -65,8 +65,8 @@ es:
   rdb_issue_menu_redmine_issue: Tarea de Redmine
   rdb_issue_menu_show: Ver
   rdb_issue_menu_edit: Editar
-  rdb_issue_menu_assigne_me: Asignar a mi
-  rdb_issue_menu_unassigne_me: Desasignar
+  rdb_issue_menu_assign_me: Asignar a mi
+  rdb_issue_menu_unassign_me: Desasignar
   rdb_flash_illegal_workflow_action: "<p>No tienes permiso para realizar la siguiente acción:</p><p>Mover <b>%{issue}</b> de <b>%{source}</b> a <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Bloqueo de la versión no encontrado</b>: No puedes actualizar la tarea sin bloquear la versión. Inténtalo de nuevo"
   rdb_flash_stale_object: "<p>Se ha intentado actualizar un tarea antigua: <b>%{issue}</b>. Comprueba los cambios e inténtalo de nuevo."

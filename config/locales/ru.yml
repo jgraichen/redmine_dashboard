@@ -66,8 +66,8 @@ ru:
   rdb_issue_menu_redmine_issue: Задача
   rdb_issue_menu_show: Просмотр
   rdb_issue_menu_edit: Изменить
-  rdb_issue_menu_assigne_me: Назначить мне
-  rdb_issue_menu_unassigne_me: Снять назначение
+  rdb_issue_menu_assign_me: Назначить мне
+  rdb_issue_menu_unassign_me: Снять назначение
   rdb_flash_illegal_workflow_action: "<p>У вас не достаточно прав для выполенния действия:</p><p>Переместить <b>%{issue}</b> из <b>%{source}</b> в <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Не задана версия</b>: Невозможно обновить задачу без определенной версии. Попробуйте позже."
   rdb_flash_stale_object: "<p>Задача устарела: <b>%{issue}</b>. Проверьте изменения и попробуйте снова."

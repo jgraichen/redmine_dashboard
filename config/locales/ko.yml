@@ -63,7 +63,7 @@ ko:
   rdb_issue_menu_redmine_issue: 일감
   rdb_issue_menu_show: 보기
   rdb_issue_menu_edit: 편집
-  rdb_issue_menu_assigne_me: 내가 맡기
-  rdb_issue_menu_unassigne_me: 일감 놓기
+  rdb_issue_menu_assign_me: 내가 맡기
+  rdb_issue_menu_unassign_me: 일감 놓기
   rdb_flash_illegal_workflow_action: "<p>이 업무흐름이 허용되지 않습니다:</p><p><b>%{source}</b>에서 <b>%{target}</b>로 <b>%{issue}</b> 이동</p>"
   rdb_flash_invalid_request: "<p>잘못된 요청.</p>"

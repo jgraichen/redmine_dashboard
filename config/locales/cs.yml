@@ -66,8 +66,8 @@ cs:
   rdb_issue_menu_redmine_issue: Úkol
   rdb_issue_menu_show: Zobrazit
   rdb_issue_menu_edit: Upravit
-  rdb_issue_menu_assigne_me: Přiřadit mně
-  rdb_issue_menu_unassigne_me: Zrušit přiřazení mně
+  rdb_issue_menu_assign_me: Přiřadit mně
+  rdb_issue_menu_unassign_me: Zrušit přiřazení mně
   rdb_flash_illegal_workflow_action: "<p>Nemáte oprávnění provést následující akci v průběhu prací:</p><p>Přesunout <b>%{issue}</b> z <b>%{source}</b> na <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Chybějící uzamčená verze</b>: Nelze aktualizovat úkol bez uzamčené verze. Opakujte akci."
   rdb_flash_stale_object: "<p>Pokus o odeslání starých změn úkolu <b>%{issue}</b>. Úkol byl nejspíše upraven jiným uživatelem. Zkontrolujte změny a opakujte akci."
