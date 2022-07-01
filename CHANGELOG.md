@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Fixes
 
 - Fix missing pluralization keys (#233)
+- Fix wrong count placeholder in pt-BR locale (#262)
 
 ### Breaks
 
