@@ -28,7 +28,7 @@
   "dependencies": {
     "classnames": "2.3.1",
     "core-js": "3.23.3",
-    "preact": "10.8.2",
+    "preact": "10.9.0",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
