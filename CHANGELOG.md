@@ -11,16 +11,24 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
-- Call issue edit hooks before save hook (#260) by @salmanmp
+### Changes
+
+### Fixes
+
+### Breaks
+
+## 2.12.2 - (2022-07-09)
+
+---
 
 ### Changes
+
+- Call issue edit hooks before save hook (#260) by @salmanmp
 
 ### Fixes
 
 - Fix missing pluralization keys (#233)
 - Fix wrong count placeholder in pt-BR locale (#262)
-
-### Breaks
 
 ## 2.12.1 - (2022-05-03)
 
