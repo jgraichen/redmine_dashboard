@@ -3020,10 +3020,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.23.3":
-  version: 3.23.3
-  resolution: "core-js@npm:3.23.3"
-  checksum: f517546388e468bd3155afbf06f38f8fe0448134fe086c4ed9c4d371d52db71e80585073b59362948777e01f2377ef7064925e1a3d9312a1c56da47eadfaca9a
+"core-js@npm:3.23.4":
+  version: 3.23.4
+  resolution: "core-js@npm:3.23.4"
+  checksum: 1317591dbd4a6dc357b68da324dfab52ffecc0193fe577c55bedc058af3ec96a47c7d68dff4dc914badf398ca120c0b58815fca3a162a497abf73166910d834c
   languageName: node
   linkType: hard
 
@@ -5395,9 +5395,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:7.0.0":
-  version: 7.0.0
-  resolution: "postcss-loader@npm:7.0.0"
+"postcss-loader@npm:7.0.1":
+  version: 7.0.1
+  resolution: "postcss-loader@npm:7.0.1"
   dependencies:
     cosmiconfig: ^7.0.0
     klona: ^2.0.5
@@ -5405,7 +5405,7 @@ __metadata:
   peerDependencies:
     postcss: ^7.0.0 || ^8.0.1
     webpack: ^5.0.0
-  checksum: b8e51e99898cae8400de8690752b64af2ca1e3eed7c0d696c9e1ec6fc45dd334c958748247632c48109a519fb59f7545d0b8fe4b52479d982ca3ec4eb8e3b0c9
+  checksum: 2a3cbcaaade598d4919824d384ae34ffbfc14a9c8db6cc3b154582356f4f44a1c9af9e731b81cf1947b089accf7d0ab7a0c51c717946985f89aa1708d2b4304d
   languageName: node
   linkType: hard
 
@@ -5897,10 +5897,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.9.0":
-  version: 10.9.0
-  resolution: "preact@npm:10.9.0"
-  checksum: 752109823affeb531fd1a97a62a08015f93aef4f46e876cdbc4db5a11023269aa24728a61916f965adc7d864e5d43b6a25c00dee49051ace6b6e95db7b0f77f5
+"preact@npm:10.10.0":
+  version: 10.10.0
+  resolution: "preact@npm:10.10.0"
+  checksum: ec34f0e7a8677080debb5e7035a749d30a23694a68389e6f577e051e91a1e1014913c56845a615d1f9a4f2cd0321c46faaded4d4a0457c755d637a3a811fd69e
   languageName: node
   linkType: hard
 
@@ -6087,14 +6087,14 @@ __metadata:
     "@babel/runtime": 7.18.6
     babel-loader: 8.2.5
     classnames: 2.3.1
-    core-js: 3.23.3
+    core-js: 3.23.4
     css-loader: 6.7.1
     cssnano: 5.1.12
     mini-css-extract-plugin: 2.6.1
     postcss: 8.4.14
-    postcss-loader: 7.0.0
+    postcss-loader: 7.0.1
     postcss-preset-env: 7.7.2
-    preact: 10.9.0
+    preact: 10.10.0
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
     react-dnd-touch-backend: 16.0.1
