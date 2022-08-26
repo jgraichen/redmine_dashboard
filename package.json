@@ -2,7 +2,7 @@
   "name": "redmine-dashboard",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.18.10",
+    "@babel/core": "7.18.13",
     "@babel/plugin-transform-react-jsx": "7.18.10",
     "@babel/plugin-transform-runtime": "7.18.10",
     "@babel/preset-env": "7.18.10",
@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "classnames": "2.3.1",
-    "core-js": "3.24.1",
+    "core-js": "3.25.0",
     "preact": "10.10.6",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.3"
 }
