@@ -18,6 +18,8 @@ jobs:
             redmine: "5.0.2"
           - ruby: "3.0"
             redmine: "5.0.2"
+          - ruby: "2.7"
+            redmine: "5.0.2"
       fail-fast: false
 
     env:
