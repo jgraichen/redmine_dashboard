@@ -19,9 +19,9 @@ jobs:
           - ruby: "3.0"
             redmine: "5.0.2"
           - ruby: "2.7"
+            redmine: "5.0.2"
+          - ruby: "2.7"
             redmine: "4.2.7"
-          - ruby: "2.6"
-            redmine: "4.1.7"
       fail-fast: false
 
     env:
@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: v3-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+          key: v4-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
       - name: setup redmine ${{ matrix.redmine }}
         run: ./redmine update
