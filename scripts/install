@@ -51,17 +51,13 @@ ${REDMINE_EXEC} genconf >"${REDMINE_PATH}/config/database.yml"
 
 pushd "${REDMINE_PATH}"
 
-sed -i -E '/selenium-webdriver|capybara/d' Gemfile
-cat <<EOF >>Gemfile
-group :test do
-  gem 'capybara', '~> 3.12'
-  gem 'selenium-webdriver', '~> 3.141'
-end
-EOF
-
 (
   set -x
-  bundle install --without rmagick --jobs=3 --retry=3
+  bundle config set --local without 'rmagick'
+)
+(
+  set -x
+  bundle install --jobs=3 --retry=3
 )
 (
   set -x

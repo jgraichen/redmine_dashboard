@@ -29,6 +29,9 @@ end
 # is feasable and useful.
 Rails.application.eager_load! if ENV['CI'].present?
 
+# Download chromedriver; Github Actions already has everything preinstalled
+require 'webdrivers' unless ENV['CI'].present?
+
 require 'rspec/rails'
 require 'database_cleaner/active_record'
 

@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: v4-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
+          key: v5-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
       - name: setup redmine ${{ matrix.redmine }}
         run: ./redmine update
