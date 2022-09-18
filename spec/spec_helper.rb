@@ -47,7 +47,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/test/fixtures"
 
   # Include request spec helpers
-  config.include RdbRequestHelpers, type: :feature
+  config.include RdbRequestHelpers
 
   config.around(:each) do |example|
     DatabaseCleaner.clean_with(:truncation)
