@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-DEFAULT_VERSION = '5.0.2'
+DEFAULT_VERSION = '5.0.3'
 
 REDMINE_VERSION = ENV['REDMINE_VERSION'] = ENV.fetch('REDMINE_VERSION') { ENV.fetch('VERSION') { DEFAULT_VERSION } }
 REDMINE_PATH    = ENV['REDMINE_PATH']    = File.expand_path("../vendor/redmine/#{REDMINE_VERSION}/", __FILE__)
