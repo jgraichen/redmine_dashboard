@@ -26,7 +26,7 @@ end
 
 group :test do
   gem 'capybara', '~> 3.37.1'
-  gem 'puma', '< 6' # capybara < 3.38 (not yet released) breaks with Puma 6
+  gem 'puma', '< 7' # capybara < 3.38 (not yet released) breaks with Puma 6
   gem 'rubocop', '~> 1.37.0'
   gem 'slim_lint', '~> 0.22.1'
 end
