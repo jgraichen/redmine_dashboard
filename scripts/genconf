@@ -24,8 +24,8 @@ def generate(env)
     'pool' => 5,
     'timeout' => 5000,
     'adapter' => uri.scheme.gsub(':', ''),
-    'port' => uri.port || ENV['DATABASE_PORT'],
-    'url' => ENV['DATABASE_URL'],
+    'port' => uri.port || ENV.fetch('DATABASE_PORT', nil),
+    'url' => ENV.fetch('DATABASE_URL', nil),
     'database' => uri.path[1..]
   }.compact
 end
