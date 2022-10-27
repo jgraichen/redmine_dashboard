@@ -9,6 +9,7 @@ require 'capybara/rspec'
 
 Capybara.default_host = 'http://example.org'
 Capybara.default_max_wait_time = 15
+Capybara.server = :webrick
 
 case (browser = ENV.fetch('BROWSER', 'chromium'))
   when /^f(irefox|f)$/i
