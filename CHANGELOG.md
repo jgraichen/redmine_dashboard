@@ -15,9 +15,15 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
-- I18n.t requires keyword arguments (#285) by @jgraichen
-
 ### Breaks
+
+## 2.12.3 - (2022-11-20)
+
+---
+
+### Fixes
+
+- I18n.t requires keyword arguments (#285) by @jgraichen
 
 ## 2.12.2 - (2022-07-09)
 
