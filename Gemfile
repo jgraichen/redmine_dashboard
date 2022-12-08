@@ -25,5 +25,5 @@ end
 
 group :test do
   gem 'capybara', '~> 3.38.0'
-  gem 'rubocop', '~> 1.39.0'
+  gem 'rubocop', '~> 1.40.0'
 end
