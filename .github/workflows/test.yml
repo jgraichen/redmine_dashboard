@@ -5,6 +5,7 @@ on:
   push:
     branches-ignore: [debian]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
