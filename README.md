@@ -1,7 +1,7 @@
 # Redmine Dashboard 2
 
 [![Last release](https://img.shields.io/github/v/release/jgraichen/redmine_dashboard?label=latest%20release&logo=github&style=flat-square)](https://github.com/jgraichen/redmine_dashboard/releases/latest)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/redmine_dashboard/Test?logo=github&style=flat-square)](https://github.com/jgraichen/redmine_dashboard/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jgraichen/redmine_dashboard/test.yml?branch=main&logo=github&style=flat-square)](https://github.com/jgraichen/redmine_dashboard/actions)
 [![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat-square)](http://www.redmine.org/plugins/redmine-dashboard)
 [![Follow at Twitter](http://img.shields.io/badge/follow%20at-twitter-blue.svg?style=flat-square)](https://twitter.com/RmDashboard)
 
