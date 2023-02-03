@@ -6081,9 +6081,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:8.0.0":
-  version: 8.0.0
-  resolution: "postcss-preset-env@npm:8.0.0"
+"postcss-preset-env@npm:8.0.1":
+  version: 8.0.1
+  resolution: "postcss-preset-env@npm:8.0.1"
   dependencies:
     "@csstools/postcss-cascade-layers": ^3.0.0
     "@csstools/postcss-color-function": ^2.0.0
@@ -6140,7 +6140,7 @@ __metadata:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: a6ba95ae98262bb55fb2293b7721abcdd7ca6aa732b3ca116a5ada7032f84cd6b104fad889828ac1d995d881da3b686070faa28545e7797ffb9bb264b9375bd0
+  checksum: 18326a03dd2bdbe2fa8c39f40ae4ac3a48d7de1deb2a1c51d84c5ed05d5ad8993bb5a50b039e452e26b793cf3cd67facd9cf744d5f3f1bf1a9d5208b2475ced9
   languageName: node
   linkType: hard
 
@@ -6476,12 +6476,12 @@ __metadata:
     mini-css-extract-plugin: 2.7.2
     postcss: 8.4.21
     postcss-loader: 7.0.2
-    postcss-preset-env: 8.0.0
+    postcss-preset-env: 8.0.1
     preact: 10.11.3
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
     react-dnd-touch-backend: 16.0.1
-    sass: 1.57.1
+    sass: 1.58.0
     sass-loader: 13.2.0
     webpack: 5.75.0
     webpack-cli: 5.0.1
@@ -6764,16 +6764,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.57.1":
-  version: 1.57.1
-  resolution: "sass@npm:1.57.1"
+"sass@npm:1.58.0":
+  version: 1.58.0
+  resolution: "sass@npm:1.58.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 734a08781bcbe0e8defb2d54864e7012014ed3e68ba5fcb766189b002929019fc37b2f83a18d4be0b5f69ad77317c92396ce6112447ab47a194ed600ae1afb27
+  checksum: a7219634881d2de6441fb619787fb1a02e3fa0333fb715be26aa335ba49d6bdb4f1105d9df70a80a67200893022b08346745783dc49046095d94fc6e044492d6
   languageName: node
   linkType: hard
 
