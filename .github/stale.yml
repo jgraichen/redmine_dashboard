@@ -7,3 +7,9 @@ onlyLabels:
   - feedback needed
 
 staleLabel: stale
+
+markComment: >
+  @jgraichen This issue needed more information. Is this still relevant?
+
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: false
