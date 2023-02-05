@@ -37,6 +37,10 @@ if [ ! -L "${REDMINE_PATH}/spec" ]; then
   ln -s "${PLUGIN_PATH}/spec" "${REDMINE_PATH}/spec"
 fi
 
+if [ ! -L "${REDMINE_PATH}/db/seeds.rb" ]; then
+  ln -s "${PLUGIN_PATH}/db/seeds.rb" "${REDMINE_PATH}/db/seeds.rb"
+fi
+
 if [ ! -L "${REDMINE_PATH}/test/fixtures/rdb" ]; then
   ln -s "${PLUGIN_PATH}/spec/fixtures" "${REDMINE_PATH}/test/fixtures/rdb"
 fi
