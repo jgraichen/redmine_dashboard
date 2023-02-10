@@ -43,7 +43,6 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: True
-          bundler: '2.3.14'
 
       - name: setup cache
         uses: actions/cache@v3
