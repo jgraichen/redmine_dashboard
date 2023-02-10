@@ -5,16 +5,6 @@ source 'https://rubygems.org'
 
 send :ruby, RUBY_VERSION if ENV['CI']
 
-# Patch `#gem` to replace an already declared gem instead of flat our
-# refusing to do anything. This is important, for example, as our tests
-# require a specific version of `capybara`, which is already defined in
-# Redmines Gemfile, but without the correct version constraint.
-def gem(name, *constraints)
-  # Remove existing dependency
-  @dependencies.reject! {|d| d.name == name }
-  super
-end
-
 gem 'rake'
 
 group :test do
@@ -30,7 +20,12 @@ group :test do
   end
 end
 
-group :test do
-  gem 'capybara', '~> 3.39.0'
-  gem 'rubocop', '~> 1.49.0'
+# If rubocop is already defined, the Gemfile is loaded through Redmins own
+# Gemfile as a plugin Gemfile. In that case our local development gems are not
+# needed (and actually conflicting), therefore we skip them.
+if @dependencies.none? {|d| d.name == 'rubocop' }
+  group :development, :test do
+    gem 'rubocop', '~> 1.49.0'
+    gem 'slim_lint', '~> 0.24.0'
+  end
 end
