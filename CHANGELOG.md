@@ -17,6 +17,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Breaks
 
+## 2.12.4 - (2023-02-10)
+
+---
+
+### Changes
+
+- Improve Gemfile for broken docker container environments by @jgraichen
+
 ## 2.12.3 - (2022-11-20)
 
 ---
