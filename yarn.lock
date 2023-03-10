@@ -3601,10 +3601,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.28.0":
-  version: 3.28.0
-  resolution: "core-js@npm:3.28.0"
-  checksum: 3155fd0ec16d0089106b145e9595280a4ea4bde0d7ff26aa14364cd4f1c203baf6620c3025acd284f363d08b9f21104101692766ca9a36ffeee7307bdf3e1881
+"core-js@npm:3.29.0":
+  version: 3.29.0
+  resolution: "core-js@npm:3.29.0"
+  checksum: 2bd69d783efcd2ef9197ce892a8b91d7b2fd86dddce805a3be0ff721013a2342eeab0f7d0b4b5548c1377b9846a8fb81485054efd39618b9d1a1fca04af81ccf
   languageName: node
   linkType: hard
 
@@ -5156,14 +5156,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:2.7.2":
-  version: 2.7.2
-  resolution: "mini-css-extract-plugin@npm:2.7.2"
+"mini-css-extract-plugin@npm:2.7.3":
+  version: 2.7.3
+  resolution: "mini-css-extract-plugin@npm:2.7.3"
   dependencies:
     schema-utils: ^4.0.0
   peerDependencies:
     webpack: ^5.0.0
-  checksum: cd65611d6dc452f230c6ebba8a47bc5f5146b813b13b0b402c6f4a69f6451242eeea781152bebd31cad8ca7c7e95dac91e7e464087f18fb65b2d1097b58cf4ae
+  checksum: 9f3a25c1298280d40e56552e5cfd7f84fea25ddd8530bd8ecfd6b08caffe59a1c55c020f1f3c8beb7c04f5e92ce71ed43a52a72deed5570c686316348f13b6f4
   languageName: node
   linkType: hard
 
@@ -6404,10 +6404,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.13.0":
-  version: 10.13.0
-  resolution: "preact@npm:10.13.0"
-  checksum: d1629e52c01f25b83c8993bc2ae739ba338534015bd62456c21e19c1a2a4369643c93f709443028d9fabc1997bdc0aee7b9b2f4ac4dedc9529a6dbcc059fb762
+"preact@npm:10.13.1":
+  version: 10.13.1
+  resolution: "preact@npm:10.13.1"
+  checksum: a10555d18f60a42e29b4ef5bf42f7a6ce4097a2e772c047fab53226e3edef4cfceb6d709452485a41017479750aa6834ab02b6a8269ceb06d489d7c3495b3d04
   languageName: node
   linkType: hard
 
@@ -6594,20 +6594,20 @@ __metadata:
     "@babel/runtime": 7.21.0
     babel-loader: 9.1.2
     classnames: 2.3.2
-    core-js: 3.28.0
+    core-js: 3.29.0
     css-loader: 6.7.3
     cssnano: 5.1.15
-    mini-css-extract-plugin: 2.7.2
+    mini-css-extract-plugin: 2.7.3
     postcss: 8.4.21
     postcss-loader: 7.0.2
     postcss-preset-env: 8.0.1
-    preact: 10.13.0
+    preact: 10.13.1
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
     react-dnd-touch-backend: 16.0.1
     sass: 1.58.3
     sass-loader: 13.2.0
-    webpack: 5.75.0
+    webpack: 5.76.0
     webpack-cli: 5.0.1
     webpack-dev-server: 4.11.1
   languageName: unknown
@@ -7658,9 +7658,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.75.0":
-  version: 5.75.0
-  resolution: "webpack@npm:5.75.0"
+"webpack@npm:5.76.0":
+  version: 5.76.0
+  resolution: "webpack@npm:5.76.0"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^0.0.51
@@ -7691,7 +7691,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 2bcc5f3c195f375944e8af2f00bf2feea39cb9fda5f763b0d1b00077f1c51783db25c94d3fae96a07dead9fa085e6ae7474417e5ab31719c9776ea5969ceb83a
+  checksum: e897b3b34068222fe910d8894837cbf39f5e66b4772fe8d24dfc0090cd13e19337a3a757a97bc185be6c64d9d5a7b1ae372821b65a6079ce8c7ceba606edb409
   languageName: node
   linkType: hard
 
