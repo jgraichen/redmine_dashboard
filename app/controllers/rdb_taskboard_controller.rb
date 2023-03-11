@@ -43,25 +43,29 @@ class RdbTaskboardController < RdbDashboardController
       end
     end
 
-    call_hook(
-      :controller_issues_edit_before_save,
-      {
-        params: {},
-        issue: @issue,
-        journal: @issue.current_journal
-      },
-    )
+    Issue.transaction do
+      call_hook(
+        :controller_issues_edit_before_save,
+        {
+          params: {},
+          issue: @issue,
+          journal: @issue.current_journal
+        },
+      )
 
-    @issue.save
-
-    call_hook(
-      :controller_issues_edit_after_save,
-      {
-        params: {},
-        issue: @issue,
-        journal: @issue.current_journal
-      },
-    )
+      if @issue.save
+        call_hook(
+          :controller_issues_edit_after_save,
+          {
+            params: {},
+            issue: @issue,
+            journal: @issue.current_journal
+          },
+        )
+      else
+        raise ActiveRecord::Rollback
+      end
+    end
 
     render 'index'
   end

@@ -13,6 +13,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Changes
 
+- Wrap issue move into transaction to ensure atomic changes by @jgraichen
+
 ### Fixes
 
 - Error message when moving issue failed by @jgraichen
