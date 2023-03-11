@@ -75,8 +75,8 @@
 							$.getScript(
 								baseURL + '/move?issue=' + issueId + '&lock_version=' + lock + '&column=' + coluid + '&group=' + groupId)
 							.fail(function(jqxhr, settings, exception) {
-								$().rdbDADShowIssue();
-								$().rdbError('<b>Ajax Error</b>: ' + exception);
+								Rdb.rdbDADShowIssue();
+								Rdb.rdbError('<b>Error</b>: ' + exception);
 							});
 						}
 					}

@@ -15,6 +15,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
+- Error message when moving issue failed by @jgraichen
+
 ### Breaks
 
 ## 2.12.4 - (2023-02-10)
