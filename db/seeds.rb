@@ -180,3 +180,8 @@ Role.where(name: 'Developer').first!.tap do |role|
   role.permissions << :view_dashboards
   role.save!
 end
+
+Role.where(name: 'Reporter').first!.tap do |role|
+  role.permissions << :view_dashboards
+  role.save!
+end

@@ -50,7 +50,9 @@ class RdbDashboardController < ApplicationController
   end
 
   def authorize_edit
-    raise Unauthorized unless User.current.allowed_to?(:edit_issues, @project)
+    return true if @issue&.attributes_editable?
+
+    raise Unauthorized
   end
 
   def find_project

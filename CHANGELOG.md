@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+- Support `:edit_own_issues` permissions on dashboards by @jgraichen
+
 ### Changes
 
 - Wrap issue move into transaction to ensure atomic changes by @jgraichen

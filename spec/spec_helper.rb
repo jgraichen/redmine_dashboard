@@ -8,7 +8,7 @@ if File.exist? env
   require env
 else
   require 'bundler'
-  ::Bundler.with_original_env do
+  Bundler.with_original_env do
     # Unset BUNDLE_GEMFILE to force using Redmines Gemfile
     ENV['BUNDLE_GEMFILE'] = nil
 
@@ -44,7 +44,7 @@ RSpec.configure do |config|
   config.order = 'random'
 
   # Use Redmine fixtures
-  config.fixture_path = "#{::Rails.root}/test/fixtures"
+  config.fixture_path = "#{Rails.root}/test/fixtures"
 
   # Include request spec helpers
   config.include RdbRequestHelpers
