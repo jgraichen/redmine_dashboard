@@ -1,0 +1,12 @@
+.editorconfig  export-ignore
+.git*          export-ignore
+.github        export-ignore
+.rubocop.yml   export-ignore
+.slim-lint.yml export-ignore
+.tx            export-ignore
+db             export-ingore
+docs           export-ingore
+log            export-ignore
+redmine        export-ingore
+scripts        export-ignore
+spec           export-ignore
