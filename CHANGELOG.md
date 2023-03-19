@@ -11,6 +11,18 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+### Changes
+
+### Fixes
+
+### Breaks
+
+## 2.13.0 - (2023-03-19)
+
+---
+
+### New
+
 - Support `:edit_own_issues` permissions on dashboards by @jgraichen
 
 ### Changes
@@ -21,8 +33,6 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 - Error message when moving issue failed by @jgraichen
 - Do not show draggable issues when allowed by workflow but not permissions by @jgraichen
-
-### Breaks
 
 ## 2.12.4 - (2023-02-10)
 
