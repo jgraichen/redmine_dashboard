@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  update_release_draft:
+  update:
     permissions:
       contents: write
     runs-on: ubuntu-latest
