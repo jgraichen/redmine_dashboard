@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Fixes
 
 - Error message when moving issue failed by @jgraichen
+- Do not show draggable issues when allowed by workflow but not permissions by @jgraichen
 
 ### Breaks
 

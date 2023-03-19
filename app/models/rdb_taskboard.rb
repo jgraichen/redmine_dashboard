@@ -203,6 +203,8 @@ class RdbTaskboard < RdbDashboard
       return column_list.reject {|c| c.statuses.include? issue.status }.map(&:id).join(' ')
     end
 
+    return false unless issue&.attributes_editable?(User.current)
+
     statuses = issue.new_statuses_allowed_to(User.current)
     statuses.delete issue.status
     column_list.select do |c|

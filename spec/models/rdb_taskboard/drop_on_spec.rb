@@ -83,5 +83,18 @@ describe RdbTaskboard do
         expect(columns).to eq 's4 sX'
       end
     end
+
+    context 'user with transitions but without permission' do
+      let(:user) { User.find_by!(login: 'dlopper') }
+
+      before do
+        # User must have role assigned but role must not have :edit_issues permission
+        issue.project.members.where(user: user).first.roles.first.update!(permissions: [])
+      end
+
+      it 'returns no columns' do
+        expect(columns).to be_blank
+      end
+    end
   end
 end
