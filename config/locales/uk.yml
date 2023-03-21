@@ -1,0 +1,74 @@
+---
+uk:
+  project_module_dashboard: Дошка завдань
+  permission_view_dashboards: Перегляд
+  permission_configure_dashboards: Керування
+  menu_label_dashboard: Дошка завдань
+  rdb_taskboard: Дошка завдань
+  rdb_planningboard: Дошка планування
+  rdb_filter_version_all: Всі версії
+  rdb_filter_version_unassigned: Без версії
+  rdb_filter_tracker_all: Всі координатори
+  rdb_filter_tracker_multiple: Декілька координаторів
+  rdb_filter_category_all: Всі категорії
+  rdb_filter_category_multiple: Декілька категорій
+  rdb_filter_assignee_all: Всі відповідальні
+  rdb_filter_assignee_me: Мої завдання
+  rdb_filter_assignee_none: Без відповідального
+  rdb_filter_assignee_others: Інші
+  rdb_options: Налаштування
+  rdb_options_change_assignee: Змінити відповідального
+  rdb_options_change_assignee_info: При перетягуванні завдання доручити його мені
+  rdb_options_hide_done: Приховати виконанні завдання
+  rdb_options_hide_done_info: Приховати виконанні завдання і зменшити колонку "Done"
+  rdb_options_reset: Скинути фільтр
+  rdb_options_reset_info: Скинути фільтр за замовчуванням
+  rdb_options_configure: Налаштування
+  rdb_options_include_subprojects: Додати підпроекти
+  rdb_options_view: Вигляд
+  rdb_options_issue_view: Вигляд
+  rdb_options_issue_view_card: У формі картки
+  rdb_options_issue_view_compact: Компактний
+  rdb_options_group: Групувати за
+  rdb_group_none: Без групування
+  rdb_group_category: Категорією
+  rdb_group_assignee: Відповідальним
+  rdb_group_tracker: Координатором
+  rdb_group_priority: Пріоритетом
+  rdb_group_version: Версією
+  rdb_group_parent: Батьківським завданням
+  rdb_group_project: Проєктом
+  rdb_options_board_view: Вигляд дошки
+  rdb_options_board_view_compact: Класичний
+  rdb_options_board_view_outline: Контур
+  rdb_options_columns: Колонки дошки
+  rdb_options_fullscreen: На повний екран
+  rdb_legend_priorities: Пріоритети
+  rdb_legend_warnings: Попередження
+  rdb_issue_overdue: Протермінований
+  rdb_property_time: <span title="Затрачено часу">%{actual}</span> / <span title="Орієнтований час">%{estimated}</span>
+  rdb_not_available: Недоступно
+  rdb_column_done: Done
+  rdb_x_issues:
+    one: 1 Завдання
+    few: 1%{count} Завдання
+    many: 1%{count} Завдання
+    other: 1%{count} Завдання
+  rdb_dialog_update_issue_title: Оновити завдання
+  rdb_dialog_update_issue_status: Виберіть новий статус для завдання
+  rdb_other_issues: Інші завдання <span>(%{count})</span>
+  rdb_unassigned: Не призначений
+  rdb_others: Інші
+  rdb_all_issues: Всі завдання
+  rdb_no_parent: Без батьківського завдання
+  rdb_issue_menu_progress_title: Оновити прогрес
+  rdb_issue_menu_progress: "%{count}%"
+  rdb_issue_menu_redmine_issue: Завдання
+  rdb_issue_menu_show: Перейти
+  rdb_issue_menu_edit: Редагувати
+  rdb_issue_menu_assign_me: Доручити мені
+  rdb_issue_menu_unassign_me: Зняти з мене
+  rdb_flash_illegal_workflow_action: "<p>Ви не маєте права виконувати цю дію в робочому процесі:</p><p>Перетягнути  <b>%{issue}</b> з  <b>%{source}</b> у <b>%{target}</b>.</p>"
+  rdb_flash_missing_lock_version: "<p><b>Не вказана версія</b>: Не можливо оновити завдання не вказавши версію. Спробуйте ще раз."
+  rdb_flash_stale_object: "<p>Завдання застарілe: <b>%{issue}</b>. Перевірте зміни і спробуйте ще раз."
+  rdb_flash_invalid_request: "<p>Невірний запит.</p>"
