@@ -17,6 +17,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Breaks
 
+## 2.14.0 - (2023-03-26)
+
+---
+
+### New
+
+- Add Ukrainian locale by @serhiyraskoley
+
 ## 2.13.0 - (2023-03-19)
 
 ---
