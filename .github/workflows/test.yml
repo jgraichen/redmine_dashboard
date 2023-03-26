@@ -4,6 +4,7 @@ name: test
 on:
   push:
     branches-ignore: [debian]
+    tags: ['*']
   pull_request:
   workflow_dispatch:
 
@@ -72,3 +73,25 @@ jobs:
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs:
+      - test
+      - rubocop
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@master
+      - run: git archive --worktree-attributes --format tar.gz -9 --prefix redmine_dashboard/ "${GITHUB_REF_NAME}" > "redmine-dashboard_${GITHUB_REF_NAME}.tar.gz"
+      - uses: ffurrer2/extract-release-notes@v1
+        id: extract
+      - uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: true
+          discussion_category_name: Announcements
+          body: |
+            ${{ steps.extract.outputs.release_notes }}
+          files: |
+            redmine-dashboard_*.tar.gz
