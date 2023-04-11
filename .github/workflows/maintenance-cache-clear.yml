@@ -1,0 +1,10 @@
+---
+on:
+  workflow_dispatch:
+
+jobs:
+  cache-clear:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: easimon/wipe-cache@main
