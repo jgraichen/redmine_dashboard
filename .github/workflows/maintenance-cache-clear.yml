@@ -1,4 +1,5 @@
 ---
+name: maintenance-cache-clear
 on:
   workflow_dispatch:
 
