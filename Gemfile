@@ -21,6 +21,13 @@ group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails'
+
+  # Webrick is no longer bundled with Ruby 3.0+ but required by
+  # capybara. If Redmine does not already include it in it's own
+  # Gemfile, we need to add it here.
+  if @dependencies.none? {|d| d.name == 'webrick' }
+    gem 'webrick'
+  end
 end
 
 group :test do
