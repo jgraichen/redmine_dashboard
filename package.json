@@ -17,7 +17,7 @@
     "postcss-preset-env": "8.5.1",
     "sass": "1.63.6",
     "sass-loader": "13.3.2",
-    "webpack": "5.88.0",
+    "webpack": "5.88.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "4.15.1"
   },
@@ -33,5 +33,5 @@
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@3.6.1"
 }
