@@ -53,7 +53,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: v5-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
+          key: v6-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
 
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
