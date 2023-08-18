@@ -3442,10 +3442,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.32.0":
-  version: 3.32.0
-  resolution: "core-js@npm:3.32.0"
-  checksum: 52921395028550e4c9d21d47b9836439bb5b6b9eefc34d45a3948a68d81fdd093acc0fadf69f9cf632b82f01f95f22f484408a93dd9e940b19119ac204cd2925
+"core-js@npm:3.32.1":
+  version: 3.32.1
+  resolution: "core-js@npm:3.32.1"
+  checksum: e4af91d9c6be7b59235feb3f273d16705126ce09a0b4a787144d131d874f0cd10be3c24fc52e5eea7d7cb03ceabe4be7b255abcd9474b5eb1ff365d2c5611f9a
   languageName: node
   linkType: hard
 
@@ -6332,14 +6332,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.27":
-  version: 8.4.27
-  resolution: "postcss@npm:8.4.27"
+"postcss@npm:8.4.28":
+  version: 8.4.28
+  resolution: "postcss@npm:8.4.28"
   dependencies:
     nanoid: ^3.3.6
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 1cdd0c298849df6cd65f7e646a3ba36870a37b65f55fd59d1a165539c263e9b4872a402bf4ed1ca1bc31f58b68b2835545e33ea1a23b161a1f8aa6d5ded81e78
+  checksum: f605c24a36f7e400bad379735fbfc893ccb8d293ad6d419bb824db77cdcb69f43d614ef35f9f7091f32ca588d130ec60dbcf53b366e6bf88a8a64bbeb3c05f6d
   languageName: node
   linkType: hard
 
@@ -6354,10 +6354,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.16.0":
-  version: 10.16.0
-  resolution: "preact@npm:10.16.0"
-  checksum: 47a91f47d583b68a4afe971a7f992c06547df6d637cadf56eb3b69fee1fb202659b199af37d0e1a90637385144cadd75aa40acdb4e125cc4b3155e2883c24c07
+"preact@npm:10.17.0":
+  version: 10.17.0
+  resolution: "preact@npm:10.17.0"
+  checksum: a106a5dd4e4e38a24f4ab62a42b4e0d9b14f0a0146819f1f2800b7033b316941987f77913893b78fe4ceb6750ec013f407ad98e2f416978fe8aecc8d7f4d086b
   languageName: node
   linkType: hard
 
@@ -6544,18 +6544,18 @@ __metadata:
     "@babel/runtime": 7.22.10
     babel-loader: 9.1.3
     classnames: 2.3.2
-    core-js: 3.32.0
+    core-js: 3.32.1
     css-loader: 6.8.1
     cssnano: 6.0.1
     mini-css-extract-plugin: 2.7.6
-    postcss: 8.4.27
+    postcss: 8.4.28
     postcss-loader: 7.3.3
     postcss-preset-env: 9.1.1
-    preact: 10.16.0
+    preact: 10.17.0
     react-dnd: 16.0.1
     react-dnd-html5-backend: 16.0.1
     react-dnd-touch-backend: 16.0.1
-    sass: 1.65.1
+    sass: 1.66.0
     sass-loader: 13.3.2
     webpack: 5.88.2
     webpack-cli: 5.1.4
@@ -6830,16 +6830,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.65.1":
-  version: 1.65.1
-  resolution: "sass@npm:1.65.1"
+"sass@npm:1.66.0":
+  version: 1.66.0
+  resolution: "sass@npm:1.66.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 33e325fc80cd07489992e0814cd4929496f87493ffe78c423c2dbafa5746a574e6f3bde20c2a3e4ea47b16ee3d6bc5afcf1d36b405227b829d6c4c9ddcc7f8e2
+  checksum: ae292e6a41a8812c0206c528885969e2f6f35870397e6d5bc33477927fd09faffda196aefe2cfe49e0c57f1448129b522f845bb134f3b6a131b184e3be86cf92
   languageName: node
   linkType: hard
 
