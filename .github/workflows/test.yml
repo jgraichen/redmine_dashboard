@@ -43,6 +43,9 @@ jobs:
           node-version: 20
           cache: yarn
 
+      - name: Enable corepack
+        run: corepack enable
+
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
