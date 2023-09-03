@@ -33,5 +33,9 @@
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
+  "engines": {
+    "node": ">= 18",
+    "yarn": "3.6.3"
+  },
   "packageManager": "yarn@3.6.3"
 }

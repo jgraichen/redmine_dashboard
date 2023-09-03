@@ -37,10 +37,10 @@ jobs:
           sudo systemctl start postgresql
           sudo -u postgres createuser -s ${USER}
 
-      - name: Install Node 16
+      - name: Install Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
           cache: yarn
 
       - name: Install Ruby ${{ matrix.ruby }}
@@ -53,7 +53,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: v6-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
+          key: v7-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
 
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
