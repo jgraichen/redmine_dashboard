@@ -101,6 +101,6 @@ jobs:
 
             ### Looking for testers!
 
-            Unfortunately, I do not have access to any larger Redmine project anymore, nor am I using Redmine anywhere anymore. I can only test with some artificially constructed local project that cannot represent any real project or usage. I would really appreciate if you can test ${GITHUB_REF_NAME} in your project or organization and report any findings (or their absence). Thank you!
+            Unfortunately, I do not have access to any larger Redmine project anymore, nor am I using Redmine anywhere anymore. I can only test with some artificially constructed local project that cannot represent any real project or usage. I would really appreciate if you can test ${{ github.ref_name }} in your project or organization and report any findings (or their absence). Thank you!
           files: |
             redmine-dashboard_*.tar.gz
