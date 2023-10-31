@@ -29,13 +29,6 @@ end
 # is feasable and useful.
 Rails.application.eager_load! if ENV['CI'].present?
 
-# Download chromedriver; Github Actions already has everything preinstalled
-begin
-  require 'webdrivers' unless ENV['CI'].present?
-rescue LoadError
-  # Since Redmine 5.1, webdrivers is not available anymore
-end
-
 require 'rspec/rails'
 require 'database_cleaner/active_record'
 
@@ -46,6 +39,7 @@ Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each {|f| require f }
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.order = 'random'
+  config.full_backtrace = true
 
   # Use Redmine fixtures
   config.fixture_path = "#{Rails.root}/test/fixtures"
