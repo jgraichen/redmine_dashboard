@@ -30,7 +30,11 @@ end
 Rails.application.eager_load! if ENV['CI'].present?
 
 # Download chromedriver; Github Actions already has everything preinstalled
-require 'webdrivers' unless ENV['CI'].present?
+begin
+  require 'webdrivers' unless ENV['CI'].present?
+rescue LoadError
+  # Since Redmine 5.1, webdrivers is not available anymore
+end
 
 require 'rspec/rails'
 require 'database_cleaner/active_record'

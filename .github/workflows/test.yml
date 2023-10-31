@@ -16,14 +16,20 @@ jobs:
     strategy:
       matrix:
         include:
+          - ruby: "3.2"
+            redmine: "5.1.0"
+          - ruby: "3.1"
+            redmine: "5.1.0"
+          - ruby: "3.0"
+            redmine: "5.1.0"
+          - ruby: "2.7"
+            redmine: "5.1.0"
           - ruby: "3.1"
             redmine: "5.0.6"
           - ruby: "3.0"
             redmine: "5.0.6"
           - ruby: "2.7"
             redmine: "5.0.6"
-          - ruby: "2.7"
-            redmine: "4.2.11"
       fail-fast: false
 
     env:
@@ -69,7 +75,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: "3.2"
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
