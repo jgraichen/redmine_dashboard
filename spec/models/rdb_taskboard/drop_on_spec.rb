@@ -53,7 +53,7 @@ describe RdbTaskboard do
       let(:role) do
         Role.new(
           name: 'Test Role',
-          permissions: [:edit_own_issues],
+          permissions: [:add_issues, :edit_own_issues],
         )
       end
 

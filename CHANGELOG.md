@@ -15,6 +15,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### Fixes
 
+- Workaround a change in Redmine 5.1 to ignore roles with only the `:edit_own_issues` permission by @jgraichen
+
 ### Breaks
 
 ## 2.14.0 - (2023-03-26)
