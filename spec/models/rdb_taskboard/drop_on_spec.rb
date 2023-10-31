@@ -25,10 +25,10 @@ describe RdbTaskboard do
   let(:issue) { Issue.first }
   let(:user) { nil }
 
-  before {
+  before do
     board.build
     User.current = user
-  }
+  end
 
   describe '#drop_on' do
     subject(:columns) { board.drop_on(issue) }
@@ -53,7 +53,7 @@ describe RdbTaskboard do
       let(:role) do
         Role.new(
           name: 'Test Role',
-          permissions: [:add_issues, :edit_own_issues],
+          permissions: %i[add_issues edit_own_issues],
         )
       end
 

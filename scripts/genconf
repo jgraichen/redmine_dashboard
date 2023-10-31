@@ -14,7 +14,7 @@ def generate(env)
   if env == 'development'
     database = 'rdb_development'
   else
-    database = "rdb_#{REDMINE_VERSION.gsub('.', '_')}_#{env}"
+    database = "rdb_#{REDMINE_VERSION.tr('.', '_')}_#{env}"
   end
 
   uri = URI.parse \
@@ -23,7 +23,7 @@ def generate(env)
   {
     'pool' => 5,
     'timeout' => 5000,
-    'adapter' => uri.scheme.gsub(':', ''),
+    'adapter' => uri.scheme.delete(':'),
     'port' => uri.port || ENV.fetch('DATABASE_PORT', nil),
     'url' => ENV.fetch('DATABASE_URL', nil),
     'database' => uri.path[1..]

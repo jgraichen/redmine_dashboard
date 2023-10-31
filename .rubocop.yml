@@ -35,6 +35,10 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Lint/UselessAssignment:
+  Exclude:
+    - db/seeds.rb
+
 Metrics/AbcSize:
   Enabled: false
 

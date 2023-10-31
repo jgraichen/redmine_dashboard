@@ -28,7 +28,7 @@ def available_commands
 end
 
 def handle_command(cmd, _argv)
-  unless ARGV[0] =~ /\A(\w+)\z/
+  unless /\A(\w+)\z/.match?(ARGV[0])
     warn "Invalid command: #{ARGV[0]}"
     warn help
     Kernel.exit 1

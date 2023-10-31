@@ -28,7 +28,7 @@ namespace :i18n do
       # `#each_key`. Therefore, we must us `keys.each` here.
       data.keys.each do |key| # rubocop:disable Style/HashEachMethods
         if key.include?('_')
-          data[key.gsub('_', '-')] = data.delete(key)
+          data[key.tr('_', '-')] = data.delete(key)
         end
       end
 

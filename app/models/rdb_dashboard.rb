@@ -103,7 +103,7 @@ class RdbDashboard
     @abbreviations[project_id] ||= begin
       abbreviation = '#'
       Project.find(project_id).custom_field_values.each do |f|
-        if f.to_s.blank? && f.custom_field.read_attribute(:name).downcase == 'abbreviation'
+        if f.to_s.blank? && f.custom_field.read_attribute(:name).casecmp('abbreviation').zero?
           abbreviation = "#{f}-"
         end
       end
@@ -148,11 +148,11 @@ class RdbDashboard
   end
 
   def filters
-    @filters ||= HashWithIndifferentAccess.new
+    @filters ||= ActiveSupport::HashWithIndifferentAccess.new
   end
 
   def groups
-    @groups ||= HashWithIndifferentAccess.new
+    @groups ||= ActiveSupport::HashWithIndifferentAccess.new
   end
 
   def group_list

@@ -24,7 +24,7 @@ class RdbVersionFilter < RdbFilter
     if RdbDashboard.defaults[:version] == :latest
       version = board.versions
         .where(status: %i[open locked])
-        .where('effective_date IS NOT NULL')
+        .where.not(effective_date: nil)
         .order('effective_date ASC')
         .first
       return [version.id] unless version.nil?

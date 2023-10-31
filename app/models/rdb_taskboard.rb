@@ -181,7 +181,7 @@ class RdbTaskboard < RdbDashboard
   end
 
   def columns
-    @columns ||= HashWithIndifferentAccess.new
+    @columns ||= ActiveSupport::HashWithIndifferentAccess.new
   end
 
   def column_list
