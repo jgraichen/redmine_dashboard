@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+- Support for Redmine 5.1 by @jgraichen
+
 ### Changes
 
 ### Fixes
