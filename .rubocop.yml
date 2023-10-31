@@ -1,8 +1,14 @@
+# vim: ft=yaml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 2.6
-
+  TargetRubyVersion: "2.7"
+  TargetRailsVersion: "6.1"
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
@@ -48,6 +54,8 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Rails/RakeEnvironment:
+  Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false
