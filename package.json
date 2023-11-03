@@ -14,7 +14,7 @@
     "mini-css-extract-plugin": "2.7.6",
     "postcss": "8.4.31",
     "postcss-loader": "7.3.3",
-    "postcss-preset-env": "9.2.0",
+    "postcss-preset-env": "9.3.0",
     "sass": "1.69.5",
     "sass-loader": "13.3.2",
     "webpack": "5.89.0",
@@ -27,15 +27,15 @@
   },
   "dependencies": {
     "classnames": "2.3.2",
-    "core-js": "3.33.1",
-    "preact": "10.18.1",
+    "core-js": "3.33.2",
+    "preact": "10.18.2",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
   "engines": {
     "node": ">= 18",
-    "yarn": "4.0.0"
+    "yarn": "4.0.1"
   },
-  "packageManager": "yarn@4.0.0"
+  "packageManager": "yarn@4.0.1"
 }
