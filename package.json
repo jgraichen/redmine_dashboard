@@ -28,14 +28,14 @@
   "dependencies": {
     "classnames": "2.3.2",
     "core-js": "3.33.2",
-    "preact": "10.18.2",
+    "preact": "10.19.2",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
   "engines": {
     "node": ">= 18",
-    "yarn": "4.0.1"
+    "yarn": "4.0.2"
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.0.2"
 }
