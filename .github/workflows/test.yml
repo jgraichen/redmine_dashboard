@@ -37,6 +37,10 @@ jobs:
           sudo systemctl start postgresql
           sudo -u postgres createuser -s ${USER}
 
+      # https://github.com/actions/setup-node/issues/899
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
+
       - name: Install Node 20
         uses: actions/setup-node@v4
         with:
