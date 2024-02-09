@@ -6466,7 +6466,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.33, postcss@npm:^8.4.33":
+"postcss@npm:8.4.35":
+  version: 8.4.35
+  resolution: "postcss@npm:8.4.35"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 10c0/e8dd04e48001eb5857abc9475365bf08f4e508ddf9bc0b8525449a95d190f10d025acebc5b56ac2e94b3c7146790e4ae78989bb9633cb7ee20d1cc9b7dc909b2
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.33":
   version: 8.4.33
   resolution: "postcss@npm:8.4.33"
   dependencies:
@@ -6477,10 +6488,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.19.3":
-  version: 10.19.3
-  resolution: "preact@npm:10.19.3"
-  checksum: 10c0/251b237cc6fc8c39e4dc6cd65df1964b9622ec6005ccdaa57ea43171ba3e1e0f1e3386bbade370b2ce26ea480ceb73ea36b40e635e35e017e2d8614a233e1bed
+"preact@npm:10.19.4":
+  version: 10.19.4
+  resolution: "preact@npm:10.19.4"
+  checksum: 10c0/cc8cc6fe8fe9ee0fd97ea68b28c8e277ccc4486bc1d2c59946b6ab7122a902fc518173046bdfc9ed12d1b2b330203888312e3ebe404f582962aa97f0fac6338e
   languageName: node
   linkType: hard
 
@@ -6671,10 +6682,10 @@ __metadata:
     css-loader: "npm:6.10.0"
     cssnano: "npm:6.0.3"
     mini-css-extract-plugin: "npm:2.8.0"
-    postcss: "npm:8.4.33"
+    postcss: "npm:8.4.35"
     postcss-loader: "npm:8.1.0"
     postcss-preset-env: "npm:9.3.0"
-    preact: "npm:10.19.3"
+    preact: "npm:10.19.4"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
