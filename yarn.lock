@@ -3731,10 +3731,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.35.1":
-  version: 3.35.1
-  resolution: "core-js@npm:3.35.1"
-  checksum: 10c0/ebc8e22c36d13bcf2140cbc1d8ad65d1b08192bff4c43ade70c72eac103cb4dcfbc521f2b1ad1c74881b0a4353e64986537893ae4f07888e49228340efa13ae6
+"core-js@npm:3.36.0":
+  version: 3.36.0
+  resolution: "core-js@npm:3.36.0"
+  checksum: 10c0/62dcb41ba79ead581e4c5b2740ae18bfe6ee230e853893736d16edb01b580574d8645ff6c5513d1c75d59620f8451aee45c119d3c4f5ebc66cff5f003a816864
   languageName: node
   linkType: hard
 
@@ -6786,10 +6786,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.19.4":
-  version: 10.19.4
-  resolution: "preact@npm:10.19.4"
-  checksum: 10c0/cc8cc6fe8fe9ee0fd97ea68b28c8e277ccc4486bc1d2c59946b6ab7122a902fc518173046bdfc9ed12d1b2b330203888312e3ebe404f582962aa97f0fac6338e
+"preact@npm:10.19.5":
+  version: 10.19.5
+  resolution: "preact@npm:10.19.5"
+  checksum: 10c0/b792ba78b6d29fbbde5dc49c7b16ad4d59145462f176bb4859852d6353bdcc13f4d052c8ab89a0c07991e644a2c63103487e754898516079663a0422a6514fd5
   languageName: node
   linkType: hard
 
@@ -6976,20 +6976,20 @@ __metadata:
     "@babel/runtime": "npm:7.23.9"
     babel-loader: "npm:9.1.3"
     classnames: "npm:2.5.1"
-    core-js: "npm:3.35.1"
+    core-js: "npm:3.36.0"
     css-loader: "npm:6.10.0"
     cssnano: "npm:6.0.3"
     mini-css-extract-plugin: "npm:2.8.0"
     postcss: "npm:8.4.35"
     postcss-loader: "npm:8.1.0"
     postcss-preset-env: "npm:9.3.0"
-    preact: "npm:10.19.4"
+    preact: "npm:10.19.5"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
-    sass: "npm:1.70.0"
+    sass: "npm:1.71.0"
     sass-loader: "npm:14.1.0"
-    webpack: "npm:5.90.1"
+    webpack: "npm:5.90.2"
     webpack-cli: "npm:5.1.4"
     webpack-dev-server: "npm:5.0.2"
   languageName: unknown
@@ -7282,16 +7282,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.70.0":
-  version: 1.70.0
-  resolution: "sass@npm:1.70.0"
+"sass@npm:1.71.0":
+  version: 1.71.0
+  resolution: "sass@npm:1.71.0"
   dependencies:
     chokidar: "npm:>=3.0.0 <4.0.0"
     immutable: "npm:^4.0.0"
     source-map-js: "npm:>=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 10c0/7c309ee1c096d591746d122da9f1ebd65b4c4b3a60c2cc0ec720fd98fe1205fa8b44c9f563d113b9fdfeb25af1e32ec9b3e048bd4b8e05d267f020953bd7baf0
+  checksum: 10c0/a20ff6e59ed560a01175adc75a4fbafa5bbfbc4d6f0c89225348d54bc9e53a0c519105d1ae595a9216fc2fe9001d3bd7629ed10ccd6fceeb42b07e8393694627
   languageName: node
   linkType: hard
 
@@ -8123,9 +8123,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.90.1":
-  version: 5.90.1
-  resolution: "webpack@npm:5.90.1"
+"webpack@npm:5.90.2":
+  version: 5.90.2
+  resolution: "webpack@npm:5.90.2"
   dependencies:
     "@types/eslint-scope": "npm:^3.7.3"
     "@types/estree": "npm:^1.0.5"
@@ -8156,7 +8156,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10c0/c36b86e5aa42f07c865cc5221d88b84bc62267ca2e60edaf69e8fccebe284c8199d352701697546a0fa6599d648a05ea427607e854c61ccc269b9c230fb25efa
+  checksum: 10c0/8ade2720dd91b6bcfa22ff4fabfeef474c9ab4cf716c4b6501dc0b0b1dfcaedb54d50f71b9e643c0e831f0996f0d8c1fc23d3faf9fb2d860c04b3b843358704e
   languageName: node
   linkType: hard
 
