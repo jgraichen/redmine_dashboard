@@ -29,6 +29,6 @@ if @dependencies.none? {|d| d.name == 'rubocop' }
     gem 'rubocop', '~> 1.61.0'
     gem 'rubocop-performance', '~> 1.20.0'
     gem 'rubocop-rails', '~> 2.24.0'
-    gem 'slim_lint', '~> 0.24.0'
+    gem 'slim_lint', '~> 0.26.0'
   end
 end
