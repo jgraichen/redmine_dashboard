@@ -89,7 +89,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: git archive --worktree-attributes --format tar.gz -9 --prefix redmine_dashboard/ "${GITHUB_REF_NAME}" > "redmine-dashboard_${GITHUB_REF_NAME}.tar.gz"
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
