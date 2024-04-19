@@ -3764,10 +3764,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.36.1":
-  version: 3.36.1
-  resolution: "core-js@npm:3.36.1"
-  checksum: 10c0/4f0ad2464535d809ba659226feca15bff14b9b5452518bddff8d81b9c94b0227b3027d9838f22f1dce664958acb4107b935cc0037695ae545edc2a303bca98bf
+"core-js@npm:3.37.0":
+  version: 3.37.0
+  resolution: "core-js@npm:3.37.0"
+  checksum: 10c0/7e00331f346318ca3f595c08ce9e74ddae744715aef137486c1399163afd79792fb94c3161280863adfdc3e30f8026912d56bd3036f93cacfc689d33e185f2ee
   languageName: node
   linkType: hard
 
@@ -3806,14 +3806,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-blank-pseudo@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "css-blank-pseudo@npm:6.0.1"
+"css-blank-pseudo@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "css-blank-pseudo@npm:6.0.2"
   dependencies:
     postcss-selector-parser: "npm:^6.0.13"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/04f2dc1c39a429cb4958b60a9d00b03e29a78e3e55fe111b3a0660b7c6c478455d5907eda7c7a495cf72dbe83ae3c80b409e0468ca1ba5ccef992e69a8f49df8
+  checksum: 10c0/609303551c2a518ca23ed12fed43945ca4f7af04140da68a5536f5dc9d42f33412c13ac3fe5c616d7401a9e13a23d80b4cfa87149a45f94b244d8067bb11f3dd
   languageName: node
   linkType: hard
 
@@ -5499,15 +5499,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:2.8.1":
-  version: 2.8.1
-  resolution: "mini-css-extract-plugin@npm:2.8.1"
+"mini-css-extract-plugin@npm:2.9.0":
+  version: 2.9.0
+  resolution: "mini-css-extract-plugin@npm:2.9.0"
   dependencies:
     schema-utils: "npm:^4.0.0"
     tapable: "npm:^2.2.1"
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 10c0/ef0064f32051294e76141ba74ddf139d313ba26f3abcef1a3906347ca75df8e69c490351bd4c2f373b0cf5c934f39c7d643c8615421c24e4d2c724345294f80a
+  checksum: 10c0/46e20747ea250420db8a82801b9779299ce3cd5ec4d6dd75e00904c39cc80f0f01decaa534b8cb9658d7d3b656b919cb2cc84b1ba7e2394d2d6548578a5c2901
   languageName: node
   linkType: hard
 
@@ -6613,9 +6613,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:9.5.5":
-  version: 9.5.5
-  resolution: "postcss-preset-env@npm:9.5.5"
+"postcss-preset-env@npm:9.5.6":
+  version: 9.5.6
+  resolution: "postcss-preset-env@npm:9.5.6"
   dependencies:
     "@csstools/postcss-cascade-layers": "npm:^4.0.4"
     "@csstools/postcss-color-function": "npm:^3.0.13"
@@ -6648,7 +6648,7 @@ __metadata:
     "@csstools/postcss-unset-value": "npm:^3.0.1"
     autoprefixer: "npm:^10.4.19"
     browserslist: "npm:^4.22.3"
-    css-blank-pseudo: "npm:^6.0.1"
+    css-blank-pseudo: "npm:^6.0.2"
     css-has-pseudo: "npm:^6.0.3"
     css-prefers-color-scheme: "npm:^9.0.1"
     cssdb: "npm:^8.0.0"
@@ -6679,7 +6679,7 @@ __metadata:
     postcss-selector-not: "npm:^7.0.2"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/afc31fb75bc5e8e223d38fd34b81da08ee340818f5e392df1781728f2ff2a9dbc75e458673ce9f52deafefa90bbc99e0bd1453271498f5e02746c785180bad07
+  checksum: 10c0/21738ecac400cca9a96841959308538516ed00ca80d4c53beb20e080c7d963120fa77b7435b02e1beefc20043abce666419b81eccf6dacdc4298f540778c111d
   languageName: node
   linkType: hard
 
@@ -7019,19 +7019,19 @@ __metadata:
     "@babel/runtime": "npm:7.24.4"
     babel-loader: "npm:9.1.3"
     classnames: "npm:2.5.1"
-    core-js: "npm:3.36.1"
+    core-js: "npm:3.37.0"
     css-loader: "npm:7.1.1"
     cssnano: "npm:6.1.2"
-    mini-css-extract-plugin: "npm:2.8.1"
+    mini-css-extract-plugin: "npm:2.9.0"
     postcss: "npm:8.4.38"
     postcss-loader: "npm:8.1.1"
-    postcss-preset-env: "npm:9.5.5"
+    postcss-preset-env: "npm:9.5.6"
     preact: "npm:10.20.2"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
     sass: "npm:1.75.0"
-    sass-loader: "npm:14.2.0"
+    sass-loader: "npm:14.2.1"
     webpack: "npm:5.91.0"
     webpack-cli: "npm:5.1.4"
     webpack-dev-server: "npm:5.0.4"
@@ -7299,9 +7299,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:14.2.0":
-  version: 14.2.0
-  resolution: "sass-loader@npm:14.2.0"
+"sass-loader@npm:14.2.1":
+  version: 14.2.1
+  resolution: "sass-loader@npm:14.2.1"
   dependencies:
     neo-async: "npm:^2.6.2"
   peerDependencies:
@@ -7321,7 +7321,7 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/03363149c93a216c727f9d62176e95bd97da0f913f5d2480c69244a8047a9de58e7b67ff876edd19e8a5481c89809ffdeb8a06eb3f32712ed8ed5019761dd0c3
+  checksum: 10c0/9a48d454584d96d6c562eb323bb9e3c6808e930eeaaa916975b97d45831e0b87936a8655cdb3a4512a25abc9587dea65a9616e42396be0d7e7c507a4795a8146
   languageName: node
   linkType: hard
 
