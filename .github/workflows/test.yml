@@ -17,19 +17,19 @@ jobs:
       matrix:
         include:
           - ruby: "3.2"
-            redmine: "5.1.2"
+            redmine: "5.1.3"
           - ruby: "3.1"
-            redmine: "5.1.2"
+            redmine: "5.1.3"
           - ruby: "3.0"
-            redmine: "5.1.2"
+            redmine: "5.1.3"
           - ruby: "2.7"
-            redmine: "5.1.2"
+            redmine: "5.1.3"
           - ruby: "3.1"
-            redmine: "5.0.8"
+            redmine: "5.0.9"
           - ruby: "3.0"
-            redmine: "5.0.8"
+            redmine: "5.0.9"
           - ruby: "2.7"
-            redmine: "5.0.8"
+            redmine: "5.0.9"
       fail-fast: false
 
     env:
