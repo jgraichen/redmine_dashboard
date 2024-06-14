@@ -15,9 +15,9 @@
     "postcss": "8.4.38",
     "postcss-loader": "8.1.1",
     "postcss-preset-env": "9.5.14",
-    "sass": "1.77.4",
+    "sass": "1.77.5",
     "sass-loader": "14.2.1",
-    "webpack": "5.91.0",
+    "webpack": "5.92.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "5.0.4"
   },
@@ -35,7 +35,7 @@
   },
   "engines": {
     "node": ">= 18",
-    "yarn": "4.2.2"
+    "yarn": "4.3.0"
   },
-  "packageManager": "yarn@4.2.2"
+  "packageManager": "yarn@4.3.0"
 }
