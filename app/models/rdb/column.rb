@@ -11,8 +11,8 @@ class Rdb::Column < ActiveRecord::Base
 
   def as_json(opts = {})
     {
-      id: id,
-      title: title,
+      id:,
+      title:,
       issues: issues_as_json(**opts),
     }
   end

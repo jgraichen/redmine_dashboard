@@ -55,7 +55,7 @@ class RdbBoardsController < ApplicationController
       query_name = I18n.t(
         'rdb.dashboard.autocreate.query_name',
         project_name: @project.name,
-        board_name: board_name,
+        board_name:,
       )
 
       query = IssueQuery.create!(
@@ -68,7 +68,7 @@ class RdbBoardsController < ApplicationController
         title: board_name,
         owner: User.current,
         project: @project,
-        query: query,
+        query:,
       ).tap(&:create_default_columns!)
     end
   end

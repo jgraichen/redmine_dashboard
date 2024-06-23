@@ -9,7 +9,7 @@ require 'database_cleaner/active_record'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each {|f| require f }
+Dir[File.expand_path('support/**/*.rb', __dir__)].each {|f| require f }
 
 RSpec.configure do |config|
   config.order = 'random'
@@ -17,7 +17,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   # Use Redmine fixtures
-  config.fixture_path = "#{::Rails.root}/test/fixtures"
+  config.fixture_path = "#{Rails.root}/test/fixtures"
 
   config.global_fixtures = %i[
     enumerations

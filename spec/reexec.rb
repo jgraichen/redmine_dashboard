@@ -7,7 +7,7 @@
 env = File.expand_path('config/environment.rb', Dir.pwd)
 unless File.exist?(env)
   require 'bundler'
-  ::Bundler.with_original_env do
+  Bundler.with_original_env do
     # Unset BUNDLE_GEMFILE to force using Redmine's Gemfile
     ENV['BUNDLE_GEMFILE'] = nil
 

@@ -16,9 +16,9 @@ class Rdb::Board < ActiveRecord::Base
 
     {
       board: {
-        id: id,
+        id:,
         url: view.rdb_board_path(project, id, format: :json),
-        title: title,
+        title:,
       },
       columns: columns.as_json(opts),
     }

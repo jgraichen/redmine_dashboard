@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_dashboard do
   url 'https://github.com/jgraichen/redmine_dashboard'
   author_url 'mailto:jgraichen@altimos.de'
 
-  requires_redmine version_or_higher: '4.2'
+  requires_redmine version_or_higher: '5.1'
 
   project_module :dashboard do
     permission :view_dashboards,
