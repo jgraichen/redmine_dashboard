@@ -36,7 +36,6 @@ module.exports = async function (env, argv) {
     loader: "sass-loader",
     options: {
       sourceMap: true,
-      implementation: require("sass"),
     },
   };
 
