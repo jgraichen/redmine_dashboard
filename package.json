@@ -12,7 +12,7 @@
     "css-loader": "7.1.2",
     "cssnano": "7.0.4",
     "mini-css-extract-plugin": "2.9.0",
-    "postcss": "8.4.39",
+    "postcss": "8.4.40",
     "postcss-loader": "8.1.1",
     "postcss-preset-env": "9.6.0",
     "sass": "1.77.8",
@@ -28,7 +28,7 @@
   "dependencies": {
     "classnames": "2.5.1",
     "core-js": "3.37.1",
-    "preact": "10.22.1",
+    "preact": "10.23.1",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
