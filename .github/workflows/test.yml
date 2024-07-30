@@ -69,7 +69,6 @@ jobs:
     env:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 10
-      BUNDLE_WITHOUT: development
 
     steps:
       - uses: actions/checkout@master
