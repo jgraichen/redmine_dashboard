@@ -2,7 +2,7 @@
 
 class RdbVersionFilter < RdbFilter
   def initialize
-    super :version
+    super(:version)
   end
 
   def scope(issues)

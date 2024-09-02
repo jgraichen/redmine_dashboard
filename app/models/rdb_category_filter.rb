@@ -2,7 +2,7 @@
 
 class RdbCategoryFilter < RdbFilter
   def initialize
-    super :category
+    super(:category)
   end
 
   def scope(scope)

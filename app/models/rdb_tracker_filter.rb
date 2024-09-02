@@ -2,7 +2,7 @@
 
 class RdbTrackerFilter < RdbFilter
   def initialize
-    super :tracker
+    super(:tracker)
   end
 
   def scope(scope)
