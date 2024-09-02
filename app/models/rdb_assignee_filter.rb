@@ -2,7 +2,7 @@
 
 class RdbAssigneeFilter < RdbFilter
   def initialize
-    super :assignee
+    super(:assignee)
   end
 
   def scope(scope)
