@@ -19,7 +19,7 @@ class RdbDashboard
     # Init board in sub class
     init if respond_to? :init
 
-    filters.each do |_id, filter|
+    filters.each_value do |filter|
       filter.values = options[:filters][filter.id] if options[:filters][filter.id]
     end
   end
@@ -31,12 +31,12 @@ class RdbDashboard
 
   def update(params)
     if params[:reset]
-      filters.each do |_id, filter|
+      filters.each_value do |filter|
         filter.values = filter.default_values
       end
       options[:filters] = {}
     else
-      filters.each do |_id, filter|
+      filters.each_value do |filter|
         filter.update params if params
         options[:filters][filter.id] = filter.values
       end
