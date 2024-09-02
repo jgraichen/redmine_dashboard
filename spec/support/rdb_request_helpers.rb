@@ -14,7 +14,12 @@ module RdbRequestHelpers
   end
 
   def login_as(user, password)
-    visit url_for(controller: 'account', action: 'login', only_path: true)
+    visit '/login'
+    if current_path != '/login'
+      click_link 'Sign out'
+      visit '/login'
+    end
+
     fill_in 'username', with: user
     fill_in 'password', with: password
     page.find(:xpath, '//input[@name="login"]').click
