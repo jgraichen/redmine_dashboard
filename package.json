@@ -14,7 +14,7 @@
     "mini-css-extract-plugin": "2.9.1",
     "postcss": "8.4.45",
     "postcss-loader": "8.1.1",
-    "postcss-preset-env": "10.0.2",
+    "postcss-preset-env": "10.0.3",
     "sass-embedded": "1.78.0",
     "sass-loader": "16.0.1",
     "webpack": "5.94.0",
@@ -28,7 +28,7 @@
   "dependencies": {
     "classnames": "2.5.1",
     "core-js": "3.38.1",
-    "preact": "10.23.2",
+    "preact": "10.24.0",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
