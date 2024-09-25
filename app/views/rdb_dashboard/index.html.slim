@@ -1,5 +1,5 @@
 - content_for :header_tags do
-  - plugin = Rails.env.development? ? 'redmine_dashboard_linked' : 'redmine_dashboard'
+  - plugin = Rails.env.development? ? 'redmine_dashboard' : 'redmine_dashboard'
   = stylesheet_link_tag 'dashboard.css', plugin: plugin
   = stylesheet_link_tag 'dashboard.ui.css', plugin: plugin
   = stylesheet_link_tag 'dashboard.issues.css', plugin: plugin
