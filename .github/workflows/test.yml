@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Redmine ${{ matrix.redmine }} / Ruby ${{ matrix.ruby }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
@@ -74,7 +74,7 @@ jobs:
         run: ./redmine exec bundle exec rspec spec/browser --color
 
   rubocop:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     env:
       BUNDLE_JOBS: 4
