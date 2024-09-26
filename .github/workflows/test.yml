@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: ${{ matrix.redmine }} on ${{ matrix.ruby }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
@@ -60,7 +60,7 @@ jobs:
         run: ./redmine exec bundle exec rspec --color --format doc
 
   rubocop:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     env:
       BUNDLE_JOBS: 4
@@ -80,7 +80,7 @@ jobs:
     needs:
       - test
       - rubocop
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@master
       - run: git archive --worktree-attributes --format tar.gz -9 --prefix redmine_dashboard/ "${GITHUB_REF_NAME}" > "redmine-dashboard_${GITHUB_REF_NAME}.tar.gz"
