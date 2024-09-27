@@ -2245,9 +2245,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-light-dark-function@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@csstools/postcss-light-dark-function@npm:2.0.2"
+"@csstools/postcss-light-dark-function@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@csstools/postcss-light-dark-function@npm:2.0.4"
   dependencies:
     "@csstools/css-parser-algorithms": "npm:^3.0.1"
     "@csstools/css-tokenizer": "npm:^3.0.1"
@@ -2255,7 +2255,7 @@ __metadata:
     "@csstools/utilities": "npm:^2.0.0"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/f8973c435868998e5d6af1fc0c35b27bbf65fa9d0c35f5055c689b8ee2807a16802044e296f7def39a7253ae544fb49559e8273ee22eb4e21845aa980a1bc82b
+  checksum: 10c0/0176422ad9747953964b1ceff002df1ecb1952ebc481db6192070d68777135b582ea6fd32ae819b9c64c96cb9170bd6907c647c85b48daa4984b7ed3d7f9bccb
   languageName: node
   linkType: hard
 
@@ -6808,9 +6808,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:10.0.3":
-  version: 10.0.3
-  resolution: "postcss-preset-env@npm:10.0.3"
+"postcss-preset-env@npm:10.0.5":
+  version: 10.0.5
+  resolution: "postcss-preset-env@npm:10.0.5"
   dependencies:
     "@csstools/postcss-cascade-layers": "npm:^5.0.0"
     "@csstools/postcss-color-function": "npm:^4.0.2"
@@ -6824,7 +6824,7 @@ __metadata:
     "@csstools/postcss-ic-unit": "npm:^4.0.0"
     "@csstools/postcss-initial": "npm:^2.0.0"
     "@csstools/postcss-is-pseudo-class": "npm:^5.0.0"
-    "@csstools/postcss-light-dark-function": "npm:^2.0.2"
+    "@csstools/postcss-light-dark-function": "npm:^2.0.4"
     "@csstools/postcss-logical-float-and-clear": "npm:^3.0.0"
     "@csstools/postcss-logical-overflow": "npm:^2.0.0"
     "@csstools/postcss-logical-overscroll-behavior": "npm:^2.0.0"
@@ -6875,7 +6875,7 @@ __metadata:
     postcss-selector-not: "npm:^8.0.0"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/da42caa2aab4d825fddfde00ebe2416d338c7b9a6f79a68840297888a8384f85991991c3fa10cf2d359fb230c885375f5cebd7bd63972725cd2a596d218f8b6a
+  checksum: 10c0/db5eb1175cb26bed3f1a4c47acc67935ffc784520321470520e59de366ac6f91be1e609fe36056af707ed20f7910721287cff0fae416c437dd3e944de13ffd05
   languageName: node
   linkType: hard
 
@@ -7015,10 +7015,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.24.0":
-  version: 10.24.0
-  resolution: "preact@npm:10.24.0"
-  checksum: 10c0/09d490d2326c511e205a96f81db0adf05f1b42dbe2a39be6fc494662c7476575494e96140252f351a0e3b3d15aee5b079bf963865bb01287f69c45c6755ed22e
+"preact@npm:10.24.1":
+  version: 10.24.1
+  resolution: "preact@npm:10.24.1"
+  checksum: 10c0/f9bc8b2f88d340f1b8f854208889244059c46916449b8f8f2174fcacbc0904c445c5870896fb0cfeaf442eeade975857e8e03f0785135c41d63cd32d9414c9c6
   languageName: node
   linkType: hard
 
@@ -7213,14 +7213,14 @@ __metadata:
     mini-css-extract-plugin: "npm:2.9.1"
     postcss: "npm:8.4.47"
     postcss-loader: "npm:8.1.1"
-    postcss-preset-env: "npm:10.0.3"
-    preact: "npm:10.24.0"
+    postcss-preset-env: "npm:10.0.5"
+    preact: "npm:10.24.1"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
     sass-embedded: "npm:1.79.3"
     sass-loader: "npm:16.0.2"
-    webpack: "npm:5.94.0"
+    webpack: "npm:5.95.0"
     webpack-cli: "npm:5.1.4"
     webpack-dev-server: "npm:5.1.0"
   languageName: unknown
@@ -8588,9 +8588,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.94.0":
-  version: 5.94.0
-  resolution: "webpack@npm:5.94.0"
+"webpack@npm:5.95.0":
+  version: 5.95.0
+  resolution: "webpack@npm:5.95.0"
   dependencies:
     "@types/estree": "npm:^1.0.5"
     "@webassemblyjs/ast": "npm:^1.12.1"
@@ -8620,7 +8620,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 10c0/b4d1b751f634079bd177a89eef84d80fa5bb8d6fc15d72ab40fc2b9ca5167a79b56585e1a849e9e27e259803ee5c4365cb719e54af70a43c06358ec268ff4ebf
+  checksum: 10c0/b9e6d0f8ebcbf0632494ac0b90fe4acb8f4a9b83f7ace4a67a15545a36fe58599c912ab58e625e1bf58ab3b0916c75fe99da6196d412ee0cab0b5065edd84238
   languageName: node
   linkType: hard
 
