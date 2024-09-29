@@ -59,6 +59,9 @@ jobs:
           path: vendor
           key: v7-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
 
+      - name: Install dependencies
+        run: sudo apt-get install --quiet --yes subversion
+
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
 
