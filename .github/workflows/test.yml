@@ -53,6 +53,9 @@ jobs:
           path: vendor
           key: v5-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}
 
+      - name: install dependencies
+        run: sudo apt-get install --quiet --yes subversion
+
       - name: setup redmine ${{ matrix.redmine }}
         run: ./redmine update
 
