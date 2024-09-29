@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Redmine ${{ matrix.redmine }} / Ruby ${{ matrix.ruby }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
@@ -59,6 +59,9 @@ jobs:
           path: vendor
           key: v7-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
 
+      - name: Install dependencies
+        run: sudo apt-get install --quiet --yes subversion
+
       - name: Setup Redmine ${{ matrix.redmine }}
         run: ./redmine update
 
@@ -74,7 +77,7 @@ jobs:
         run: ./redmine exec bundle exec rspec spec/browser --color
 
   rubocop:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     env:
       BUNDLE_JOBS: 4
