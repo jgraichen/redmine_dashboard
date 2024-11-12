@@ -76,7 +76,11 @@ class RdbDashboardController < ApplicationController
   def flash_error(sym, **options)
     flash.now[:rdb_error] = I18n.t(sym, **options).html_safe
     Rails.logger.info "Render Rdb flash error: #{sym}"
-    options[:update] ? render('index.js') : render('error.js')
+    if options[:update]
+      render('index', formats: :js)
+    else
+      render('error', formats: :js)
+    end
   end
 
   def options_for(board)
