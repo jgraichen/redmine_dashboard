@@ -45,10 +45,6 @@ if [ ! -L "${REDMINE_PATH}/test/fixtures/rdb" ]; then
   ln -s "${PLUGIN_PATH}/spec/fixtures" "${REDMINE_PATH}/test/fixtures/rdb"
 fi
 
-if [ ! -L "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked" ]; then
-  ln -s "${PLUGIN_PATH}/assets" "${REDMINE_PATH}/public/plugin_assets/redmine_dashboard_linked"
-fi
-
 echo "Generate database configuration..."
 
 ${REDMINE_EXEC} genconf >"${REDMINE_PATH}/config/database.yml"
