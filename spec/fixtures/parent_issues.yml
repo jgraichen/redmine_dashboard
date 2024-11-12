@@ -1,6 +1,6 @@
 _fixture:
   model_class: Issue
-  default: &default
+  ignore: &default
     project_id: 1
     tracker_id: 1
     status_id: 1
