@@ -16,6 +16,12 @@ jobs:
     strategy:
       matrix:
         include:
+          - ruby: "3.3"
+            redmine: "6.0.1"
+          - ruby: "3.2"
+            redmine: "6.0.1"
+          - ruby: "3.1"
+            redmine: "6.0.1"
           - ruby: "3.2"
             redmine: "5.1.4"
           - ruby: "3.1"
@@ -73,7 +79,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
