@@ -6442,10 +6442,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.25.2":
-  version: 10.25.2
-  resolution: "preact@npm:10.25.2"
-  checksum: 10c0/03eb73164eb49a77c62cead2b9a951aa8bca39ccad58257f94353404b280465c60580c7bf32a3d44c8c24b24d7974c6db9807bafa69a6fc5dc9cdbd9a0e0df30
+"preact@npm:10.25.3":
+  version: 10.25.3
+  resolution: "preact@npm:10.25.3"
+  checksum: 10c0/b555a844e5c1b8e4f1feeb6d2f083dc3d44c7b3029c5d723e02b44283d5323c08ce881009a84345a43d9ebbabbc8ccdb868201f81ab3d5be3405e3378eca70be
   languageName: node
   linkType: hard
 
@@ -6641,7 +6641,7 @@ __metadata:
     postcss: "npm:8.4.49"
     postcss-loader: "npm:8.1.1"
     postcss-preset-env: "npm:10.1.2"
-    preact: "npm:10.25.2"
+    preact: "npm:10.25.3"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
