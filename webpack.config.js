@@ -66,7 +66,7 @@ module.exports = async function (env, argv) {
 
     output: {
       clean: true,
-      path: join(__dirname, "assets"),
+      path: join(__dirname, "assets", "javascripts"),
       publicPath: "/plugin_assets/redmine_dashboard/",
     },
 
@@ -96,7 +96,9 @@ module.exports = async function (env, argv) {
     plugins: [
       // Extract CSS into standalone files instead of bundling it with the JS
       // bundles.
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: "../stylesheets/[name].css",
+      }),
     ],
 
     optimization: {
