@@ -11,11 +11,19 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+- Support for Redmine 6.0 by @jgraichen
+- Support for Redmine 5.2 by @jgraichen
+
 ### Changes
+
+- Replaced deprecated functions in new Redmine versions by @jgraichen
 
 ### Fixes
 
 ### Breaks
+
+- Require Ruby 3.0+ by @jgraichen
+- Require Redmine 5.0+ by @jgraichen
 
 ## 2.15.0 - (2023-10-31)
 
