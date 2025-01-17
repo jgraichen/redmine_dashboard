@@ -26,7 +26,7 @@ namespace :i18n do
       #
       # rubocop: We cannot modify a hash when iterating using
       # `#each_key`. Therefore, we must us `keys.each` here.
-      data.keys.each do |key| # rubocop:disable Style/HashEachMethods
+      data.keys.each do |key|
         if key.include?('_')
           data[key.tr('_', '-')] = data.delete(key)
         end
