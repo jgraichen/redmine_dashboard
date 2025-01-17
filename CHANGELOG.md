@@ -11,14 +11,24 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 ### New
 
+### Changes
+
+### Fixes
+
+### Breaks
+
+## 2.16.0 - (2025-01-17)
+
+---
+
+### New
+
 - Support for Redmine 6.0 by @jgraichen
 - Support for Redmine 5.2 by @jgraichen
 
 ### Changes
 
 - Replaced deprecated functions in new Redmine versions by @jgraichen
-
-### Fixes
 
 ### Breaks
 
