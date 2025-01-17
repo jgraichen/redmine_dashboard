@@ -1,0 +1,29 @@
+---
+name: test
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@master
+      - run: git archive --worktree-attributes --format tar.gz -9 --prefix redmine_dashboard/ "${GITHUB_REF_NAME}" > "redmine-dashboard_${GITHUB_REF_NAME}.tar.gz"
+      - uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: true
+          discussion_category_name: Announcements
+          generate_release_notes: true
+          body: |
+            ---
+
+            ### Looking for testers!
+
+            Unfortunately, I do not have access to any larger Redmine project anymore, nor am I using Redmine anywhere anymore. I can only test with some artificially constructed local project that cannot represent any real project or usage. I would really appreciate if you can test ${{ github.ref_name }} in your project or organization and report any findings (or their absence). Thank you!
+          files: |
+            redmine-dashboard_*.tar.gz
