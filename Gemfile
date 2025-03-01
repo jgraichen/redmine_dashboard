@@ -26,7 +26,7 @@ end
 # needed (and actually conflicting), therefore we skip them.
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development do
-    gem 'rubocop', '~> 1.72.0'
+    gem 'rubocop', '~> 1.73.0'
     gem 'rubocop-performance', '~> 1.24.0'
     gem 'rubocop-rails', '~> 2.30.0'
     gem 'slim_lint', '~> 0.31.0'
