@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "classnames": "2.5.1",
-    "core-js": "3.40.0",
+    "core-js": "3.41.0",
     "preact": "10.26.4",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
@@ -35,7 +35,7 @@
   },
   "engines": {
     "node": ">= 22",
-    "yarn": "4.6.0"
+    "yarn": "4.7.0"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.7.0"
 }
