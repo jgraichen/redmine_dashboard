@@ -24,6 +24,10 @@ module RdbRequestHelpers
     fill_in 'password', with: password
     page.find(:xpath, '//input[@name="login"]').click
     @user = User.find_by(login: user)
+
+    # Wait for log in to be completed sucessfully and we're on the user
+    # dashboard.
+    expect(page).to have_content('My page')
   end
 
   def login_as_user
