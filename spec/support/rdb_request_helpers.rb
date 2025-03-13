@@ -31,7 +31,7 @@ module RdbRequestHelpers
     page.find(:xpath, '//input[@name="login"]').click
     @user = User.find_by(login: user)
 
-    # Wait for log in to be completed sucessfully and we're on the user
+    # Wait for log in to be completed successfully and we're on the user
     # dashboard.
     expect(page).to have_content('My page')
   end
