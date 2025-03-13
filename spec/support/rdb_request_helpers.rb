@@ -15,10 +15,16 @@ module RdbRequestHelpers
 
   def login_as(user, password)
     visit '/login'
+
+    # Wait for current page to have been loaded
+    page.find('html')
+
     if current_path != '/login'
       click_link 'Sign out'
       visit '/login'
     end
+
+    expect(page).to have_content('Login')
 
     fill_in 'username', with: user
     fill_in 'password', with: password
