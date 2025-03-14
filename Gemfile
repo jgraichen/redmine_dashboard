@@ -10,20 +10,17 @@ gem 'slim-rails'
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
+
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails'
 
-  # Webrick is no longer bundled with Ruby 3.0+ but required by
-  # capybara. If Redmine does not already include it in it's own
-  # Gemfile, we need to add it here.
-  if @dependencies.none? {|d| d.name == 'webrick' }
-    gem 'webrick'
-  end
+  # Redmine already defines capybara and puma, which required to run
+  # browser tests.
 end
 
-# If rubocop is already defined, the Gemfile is loaded through Redmins own
-# Gemfile as a plugin Gemfile. In that case our local development gems are not
-# needed (and actually conflicting), therefore we skip them.
+# If rubocop is already defined, the Gemfile is loaded through Redmine's
+# own Gemfile as a plugin. In that case our local development gems are
+# not needed (and actually conflicting), therefore we skip them.
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development do
     gem 'rubocop', '~> 1.74.0'
