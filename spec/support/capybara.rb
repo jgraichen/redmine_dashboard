@@ -6,7 +6,6 @@ require 'capybara/rspec'
 Capybara.default_host = 'http://example.org'
 Capybara.javascript_driver = :selenium_chrome
 Capybara.default_max_wait_time = 15
-Capybara.server = :webrick
 
 if %w[0 no off false].include?(ENV['HEADLESS'])
   Capybara.javascript_driver = :selenium_chrome
