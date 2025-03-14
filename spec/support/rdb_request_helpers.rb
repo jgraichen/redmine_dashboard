@@ -15,7 +15,7 @@ module RdbRequestHelpers
 
   def login_as(user, password)
     # Ensure a current page is loaded. Otherwise, visit might be
-    # swallowed bu the current page load.
+    # swallowed by the current page load.
     page.find('html')
 
     visit '/login'
@@ -25,9 +25,7 @@ module RdbRequestHelpers
 
     if current_path != '/login'
       click_link 'Sign out'
-      page.find('html')
-
-      visit '/login'
+      click_link 'Sign in'
     end
 
     expect(page).to have_content('Login')
