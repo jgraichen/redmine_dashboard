@@ -17,7 +17,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   # Use Redmine fixtures
-  config.fixture_path = "#{Rails.root}/test/fixtures"
+  config.fixture_paths = ["#{Rails.root}/test/fixtures"]
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

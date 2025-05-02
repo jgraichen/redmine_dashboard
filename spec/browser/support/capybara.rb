@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-# Download chromedriver: Github Actions CI environments already have
-# everything preinstalled
-require 'webdrivers' unless ENV['CI'].present?
-
 require 'capybara/rails'
 require 'capybara/rspec'
 
