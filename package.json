@@ -15,7 +15,7 @@
     "postcss": "8.5.3",
     "postcss-loader": "8.1.1",
     "postcss-preset-env": "10.1.6",
-    "sass-embedded": "1.88.0",
+    "sass-embedded": "1.89.0",
     "sass-loader": "16.0.5",
     "webpack": "5.99.8",
     "webpack-cli": "6.0.1",
