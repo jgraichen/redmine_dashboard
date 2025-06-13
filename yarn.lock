@@ -1423,10 +1423,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bufbuild/protobuf@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "@bufbuild/protobuf@npm:2.1.0"
-  checksum: 10c0/d2e3b84ea1da284b6085ac2adb9bc7e51ef5d275587991fc67b431262a7b56876ea7a197d9b9b689f50b4c16ebb1225b870352c672224066f92e671258c417e1
+"@bufbuild/protobuf@npm:^2.5.0":
+  version: 2.5.2
+  resolution: "@bufbuild/protobuf@npm:2.5.2"
+  checksum: 10c0/30f0ede04b5318eda502759044329f44af27e0bebd9853d7d9baf5bcb4f4b17f813eb8904d98718d991bd56d33565ed18f8c9c65067626c3d4e55a4e039fe9b6
   languageName: node
   linkType: hard
 
@@ -1657,15 +1657,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/postcss-is-pseudo-class@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "@csstools/postcss-is-pseudo-class@npm:5.0.1"
+"@csstools/postcss-is-pseudo-class@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@csstools/postcss-is-pseudo-class@npm:5.0.3"
   dependencies:
     "@csstools/selector-specificity": "npm:^5.0.0"
     postcss-selector-parser: "npm:^7.0.0"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/3aaab18ebb2dcf5565efa79813eaa987d40de1e086765358524392a09631c68ad1ee952e6aff8f42513b2c18ab84891787e065fe287f696128498fc641520b6c
+  checksum: 10c0/7980f1cabf32850bac72552e4e9de47412359e36e259a92b9b9af25dae4cce42bbcc5fdca8f384a589565bf383ecb23dec3af9f084d8df18b82552318b2841b6
   languageName: node
   linkType: hard
 
@@ -1908,12 +1908,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/selector-resolve-nested@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@csstools/selector-resolve-nested@npm:3.0.0"
+"@csstools/selector-resolve-nested@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@csstools/selector-resolve-nested@npm:3.1.0"
   peerDependencies:
     postcss-selector-parser: ^7.0.0
-  checksum: 10c0/2b01c36b3fa81388d5bddd8db962766465d76b021a815c8bb5a48c3a42c530154cc155fc496707ade627dbba6745eb8ecd9fa840c1972133c0f7d8811e0a959d
+  checksum: 10c0/c2b1a930ad03c1427ab90b28c4940424fb39e8175130148f16209be3a3937f7a146d5483ca1da1dfc100aa7ae86df713f0ee82d4bbaa9b986e7f47f35cb67cca
   languageName: node
   linkType: hard
 
@@ -3407,10 +3407,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.42.0":
-  version: 3.42.0
-  resolution: "core-js@npm:3.42.0"
-  checksum: 10c0/2913d3d5452d54ad92f058d66046782d608c05e037bcc523aab79c04454fe640998f94e6011292969d66dfa472f398b085ce843dcb362056532a5799c627184e
+"core-js@npm:3.43.0":
+  version: 3.43.0
+  resolution: "core-js@npm:3.43.0"
+  checksum: 10c0/9d4ad66296e60380777de51d019b5c3e6cce023b7999750a5094f9a4b0ea53bf3600beb4ef11c56548f2c8791d43d4056e270d1cf55ba87273011aa7d4597871
   languageName: node
   linkType: hard
 
@@ -6112,16 +6112,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nesting@npm:^13.0.1":
-  version: 13.0.1
-  resolution: "postcss-nesting@npm:13.0.1"
+"postcss-nesting@npm:^13.0.2":
+  version: 13.0.2
+  resolution: "postcss-nesting@npm:13.0.2"
   dependencies:
-    "@csstools/selector-resolve-nested": "npm:^3.0.0"
+    "@csstools/selector-resolve-nested": "npm:^3.1.0"
     "@csstools/selector-specificity": "npm:^5.0.0"
     postcss-selector-parser: "npm:^7.0.0"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/549307c272cdd4cb5105d8fbcd582f15a1cb74e5bba240b05b27f77fe0422730be966699a49a9ad15fd9d1bc551c1edbaefb21a69686a9b131b585dbc9d90ebf
+  checksum: 10c0/bfa0578b3b686c6374f5a7b2f6ef955cb7e13400de95a919975a982ae43c1e25db37385618f210715ff15393dc7ff8c26c7b156f06b8fb3118a426099cf7f1f2
   languageName: node
   linkType: hard
 
@@ -6275,9 +6275,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:10.2.1":
-  version: 10.2.1
-  resolution: "postcss-preset-env@npm:10.2.1"
+"postcss-preset-env@npm:10.2.3":
+  version: 10.2.3
+  resolution: "postcss-preset-env@npm:10.2.3"
   dependencies:
     "@csstools/postcss-cascade-layers": "npm:^5.0.1"
     "@csstools/postcss-color-function": "npm:^4.0.10"
@@ -6291,7 +6291,7 @@ __metadata:
     "@csstools/postcss-hwb-function": "npm:^4.0.10"
     "@csstools/postcss-ic-unit": "npm:^4.0.2"
     "@csstools/postcss-initial": "npm:^2.0.1"
-    "@csstools/postcss-is-pseudo-class": "npm:^5.0.1"
+    "@csstools/postcss-is-pseudo-class": "npm:^5.0.3"
     "@csstools/postcss-light-dark-function": "npm:^2.0.9"
     "@csstools/postcss-logical-float-and-clear": "npm:^3.0.0"
     "@csstools/postcss-logical-overflow": "npm:^2.0.0"
@@ -6335,7 +6335,7 @@ __metadata:
     postcss-image-set-function: "npm:^7.0.0"
     postcss-lab-function: "npm:^7.0.10"
     postcss-logical: "npm:^8.1.0"
-    postcss-nesting: "npm:^13.0.1"
+    postcss-nesting: "npm:^13.0.2"
     postcss-opacity-percentage: "npm:^3.0.0"
     postcss-overflow-shorthand: "npm:^6.0.0"
     postcss-page-break: "npm:^3.0.4"
@@ -6345,7 +6345,7 @@ __metadata:
     postcss-selector-not: "npm:^8.0.1"
   peerDependencies:
     postcss: ^8.4
-  checksum: 10c0/1a78eb86bca8f7c2bf7686ee9ed354b21d1316a7d12ae9aec2ce4b4810f6d32e23d0787d7450e55145f14f76b715df758bb54af0ea6a151858b045bd429f596e
+  checksum: 10c0/f3d2ea8b95083acad2cf74aca93904dd3158639bf692d1d471598b538e0c6b4447ae306e7bc1c2426dd465e7c9715373678855b7e211e194b507ef8184e83f99
   languageName: node
   linkType: hard
 
@@ -6463,14 +6463,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.4":
-  version: 8.5.4
-  resolution: "postcss@npm:8.5.4"
+"postcss@npm:8.5.5":
+  version: 8.5.5
+  resolution: "postcss@npm:8.5.5"
   dependencies:
     nanoid: "npm:^3.3.11"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
-  checksum: 10c0/0feff648614a834f7cd5396ea6b05b658ca0507e10a4eaad03b56c348f6aec93f42a885fc1b30522630c6a7e49ae53b38a061e3cba526f2d9857afbe095a22bb
+  checksum: 10c0/6415873fab84de05c2d8fd18f72ea6654bca437bb4b9f02ca819c438501e4b3a450023e575e17587c6eaa5bedddaaa4dad3af210f5cf166e30cec09cac58baf8
   languageName: node
   linkType: hard
 
@@ -6485,10 +6485,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.26.8":
-  version: 10.26.8
-  resolution: "preact@npm:10.26.8"
-  checksum: 10c0/83b6a38af15386c0d93bbaf12996d624354f9c511f79d188f0d673b8f91740849b0603c207da1f10450b07a8659333864a3735d3b5fe23a790ef6cb85d1107c8
+"preact@npm:10.26.9":
+  version: 10.26.9
+  resolution: "preact@npm:10.26.9"
+  checksum: 10c0/15f187e3278ae749b70e887f88bb01be63ebcc2eea46ffa86be69180716db40b8b4304e9768767fd68a5910ef5fd1f9ea6389e17cd25e950be76574d568e8fc3
   languageName: node
   linkType: hard
 
@@ -6677,18 +6677,18 @@ __metadata:
     "@babel/runtime": "npm:7.27.6"
     babel-loader: "npm:10.0.0"
     classnames: "npm:2.5.1"
-    core-js: "npm:3.42.0"
+    core-js: "npm:3.43.0"
     css-loader: "npm:7.1.2"
     cssnano: "npm:7.0.7"
     mini-css-extract-plugin: "npm:2.9.2"
-    postcss: "npm:8.5.4"
+    postcss: "npm:8.5.5"
     postcss-loader: "npm:8.1.1"
-    postcss-preset-env: "npm:10.2.1"
-    preact: "npm:10.26.8"
+    postcss-preset-env: "npm:10.2.3"
+    preact: "npm:10.26.9"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
-    sass-embedded: "npm:1.89.1"
+    sass-embedded: "npm:1.89.2"
     sass-loader: "npm:16.0.5"
     webpack: "npm:5.99.9"
     webpack-cli: "npm:6.0.1"
@@ -6946,143 +6946,143 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-embedded-android-arm64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-android-arm64@npm:1.89.1"
+"sass-embedded-android-arm64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-android-arm64@npm:1.89.2"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-android-arm@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-android-arm@npm:1.89.1"
+"sass-embedded-android-arm@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-android-arm@npm:1.89.2"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-android-riscv64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-android-riscv64@npm:1.89.1"
+"sass-embedded-android-riscv64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-android-riscv64@npm:1.89.2"
   conditions: os=android & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-android-x64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-android-x64@npm:1.89.1"
+"sass-embedded-android-x64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-android-x64@npm:1.89.2"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-darwin-arm64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-darwin-arm64@npm:1.89.1"
+"sass-embedded-darwin-arm64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-darwin-arm64@npm:1.89.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-darwin-x64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-darwin-x64@npm:1.89.1"
+"sass-embedded-darwin-x64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-darwin-x64@npm:1.89.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-arm64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-arm64@npm:1.89.1"
+"sass-embedded-linux-arm64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-arm64@npm:1.89.2"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-arm@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-arm@npm:1.89.1"
+"sass-embedded-linux-arm@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-arm@npm:1.89.2"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-arm64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-musl-arm64@npm:1.89.1"
+"sass-embedded-linux-musl-arm64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-musl-arm64@npm:1.89.2"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-arm@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-musl-arm@npm:1.89.1"
+"sass-embedded-linux-musl-arm@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-musl-arm@npm:1.89.2"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-riscv64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-musl-riscv64@npm:1.89.1"
+"sass-embedded-linux-musl-riscv64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-musl-riscv64@npm:1.89.2"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-x64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-musl-x64@npm:1.89.1"
+"sass-embedded-linux-musl-x64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-musl-x64@npm:1.89.2"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-riscv64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-riscv64@npm:1.89.1"
+"sass-embedded-linux-riscv64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-riscv64@npm:1.89.2"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-x64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-linux-x64@npm:1.89.1"
+"sass-embedded-linux-x64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-linux-x64@npm:1.89.2"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-win32-arm64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-win32-arm64@npm:1.89.1"
+"sass-embedded-win32-arm64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-win32-arm64@npm:1.89.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-win32-x64@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded-win32-x64@npm:1.89.1"
+"sass-embedded-win32-x64@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded-win32-x64@npm:1.89.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded@npm:1.89.1":
-  version: 1.89.1
-  resolution: "sass-embedded@npm:1.89.1"
+"sass-embedded@npm:1.89.2":
+  version: 1.89.2
+  resolution: "sass-embedded@npm:1.89.2"
   dependencies:
-    "@bufbuild/protobuf": "npm:^2.0.0"
+    "@bufbuild/protobuf": "npm:^2.5.0"
     buffer-builder: "npm:^0.2.0"
     colorjs.io: "npm:^0.5.0"
     immutable: "npm:^5.0.2"
     rxjs: "npm:^7.4.0"
-    sass-embedded-android-arm: "npm:1.89.1"
-    sass-embedded-android-arm64: "npm:1.89.1"
-    sass-embedded-android-riscv64: "npm:1.89.1"
-    sass-embedded-android-x64: "npm:1.89.1"
-    sass-embedded-darwin-arm64: "npm:1.89.1"
-    sass-embedded-darwin-x64: "npm:1.89.1"
-    sass-embedded-linux-arm: "npm:1.89.1"
-    sass-embedded-linux-arm64: "npm:1.89.1"
-    sass-embedded-linux-musl-arm: "npm:1.89.1"
-    sass-embedded-linux-musl-arm64: "npm:1.89.1"
-    sass-embedded-linux-musl-riscv64: "npm:1.89.1"
-    sass-embedded-linux-musl-x64: "npm:1.89.1"
-    sass-embedded-linux-riscv64: "npm:1.89.1"
-    sass-embedded-linux-x64: "npm:1.89.1"
-    sass-embedded-win32-arm64: "npm:1.89.1"
-    sass-embedded-win32-x64: "npm:1.89.1"
+    sass-embedded-android-arm: "npm:1.89.2"
+    sass-embedded-android-arm64: "npm:1.89.2"
+    sass-embedded-android-riscv64: "npm:1.89.2"
+    sass-embedded-android-x64: "npm:1.89.2"
+    sass-embedded-darwin-arm64: "npm:1.89.2"
+    sass-embedded-darwin-x64: "npm:1.89.2"
+    sass-embedded-linux-arm: "npm:1.89.2"
+    sass-embedded-linux-arm64: "npm:1.89.2"
+    sass-embedded-linux-musl-arm: "npm:1.89.2"
+    sass-embedded-linux-musl-arm64: "npm:1.89.2"
+    sass-embedded-linux-musl-riscv64: "npm:1.89.2"
+    sass-embedded-linux-musl-x64: "npm:1.89.2"
+    sass-embedded-linux-riscv64: "npm:1.89.2"
+    sass-embedded-linux-x64: "npm:1.89.2"
+    sass-embedded-win32-arm64: "npm:1.89.2"
+    sass-embedded-win32-x64: "npm:1.89.2"
     supports-color: "npm:^8.1.1"
     sync-child-process: "npm:^1.0.2"
     varint: "npm:^6.0.0"
@@ -7121,7 +7121,7 @@ __metadata:
       optional: true
   bin:
     sass: dist/bin/sass.js
-  checksum: 10c0/feebf7b1be0b8cf13cebfc3b109e882298ace815ce4823cb7c0929bf526cdb847a2b4413efe037ef5f8860659674c5e2f7f74ccd72335c971de340f2100a3f59
+  checksum: 10c0/01cbfc9f88f1f60e1e049160204a7e0d84e7c1222346aec4cd94d52fb11f09e7c351a21e33d18dbe712259b210aaf0e1c9215e46d256700d1f42ef1c1a6196d1
   languageName: node
   linkType: hard
 
