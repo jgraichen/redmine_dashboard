@@ -16,5 +16,10 @@ end
 RSpec.configure do |config|
   config.before(:each, js: true) do
     page.driver.browser.manage.window.resize_to(1280, 1024)
+
+    # https://github.com/teamcapybara/capybara/issues/2800#issuecomment-2728801284
+    unless page.driver.invalid_element_errors.include?(Selenium::WebDriver::Error::UnknownError)
+      page.driver.invalid_element_errors << Selenium::WebDriver::Error::UnknownError
+    end
   end
 end
