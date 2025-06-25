@@ -19,7 +19,7 @@ class RdbTaskboardController < RdbDashboardController
     end
 
     # Show dialog if more than one status are available
-    return render 'rdb_dashboard/taskboard/column_dialog' if @statuses.count > 1
+    return render 'rdb_dashboard/taskboard/column_dialog' if @statuses.many?
 
     params[:status] = @statuses.first.id
     update

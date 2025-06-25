@@ -1,6 +1,6 @@
 # vim: ft=yaml
 
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
 

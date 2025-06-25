@@ -43,7 +43,7 @@ class RdbCategoryFilter < RdbFilter
 
   def title
     return I18n.t(:rdb_filter_category_all) if all?
-    return I18n.t(:rdb_filter_category_multiple) if values.count > 1
+    return I18n.t(:rdb_filter_category_multiple) if values.many?
 
     board.issue_categories.find_by(id: value).try(:name)
   end

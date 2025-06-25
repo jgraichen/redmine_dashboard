@@ -24,8 +24,8 @@ namespace :i18n do
       # identifiers (e.g. pt_BR), but Redmine needs dashed identifiers
       # (pt-bR). We need convert each top-level key to use dashes.
       #
-      # rubocop: We cannot modify a hash when iterating using
-      # `#each_key`. Therefore, we must us `keys.each` here.
+      # We cannot modify a hash while iterating using `#each_key`.
+      # Therefore, we must us `keys.each` here.
       data.keys.each do |key|
         if key.include?('_')
           data[key.tr('_', '-')] = data.delete(key)
@@ -39,7 +39,7 @@ namespace :i18n do
         # export a `one` key when only an `other` key is needed, such as
         # for Japanese.
         #
-        # This method searches the locale data for any nested dicitonary
+        # This method searches the locale data for any nested dictionary
         # that looks like a pluralized section (contains only `one`,
         # `few`, `other` `many`, `zero` keys). If found, an `one` key
         # will be added with the `other` value.

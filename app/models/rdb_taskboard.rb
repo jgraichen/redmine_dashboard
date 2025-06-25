@@ -58,7 +58,7 @@ class RdbTaskboard < RdbDashboard
       false
     end
 
-    if done_statuses.count == 1
+    if done_statuses.one?
       status = done_statuses.first
       add_column RdbColumn.new(
         "s#{status.id}",
@@ -67,7 +67,7 @@ class RdbTaskboard < RdbDashboard
         compact: options[:hide_done],
         hide: options[:hide_columns].include?("s#{status.id}"),
       )
-    elsif done_statuses.count > 0
+    elsif done_statuses.any?
       add_column RdbColumn.new(
         'sX',
         :rdb_column_done,
