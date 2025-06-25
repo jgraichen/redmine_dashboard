@@ -19,8 +19,8 @@ module RdbDashboardHelper
         concat link
       end
 
-      slim_tag :div, class: "rdb-container #{options[:right] ? 'rdb-container-right' : ''}" do
-        slim_tag :div, class: "rdb-container-wrapper #{options[:icons] ? 'rdb-icons' : ''}" do
+      slim_tag :div, class: "rdb-container #{'rdb-container-right' if options[:right]}" do
+        slim_tag :div, class: "rdb-container-wrapper #{'rdb-icons' if options[:icons]}" do
           if options[:inlet]
             slim_tag(:div, class: 'rdb-container-inlet', &container)
           else
@@ -37,7 +37,7 @@ module RdbDashboardHelper
       items = nil
     end
 
-    slim_tag :div, class: "rdb-list #{options[:async] ? 'rdb-async' : ''} #{options[:class]}" do
+    slim_tag :div, class: "rdb-list #{'rdb-async' if options[:async]} #{options[:class]}" do
       slim_tag :h3, options[:title] if options[:title]
       slim_tag options[:list_tag] || :ul, class: options[:list_class] do
         if items

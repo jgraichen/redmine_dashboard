@@ -43,7 +43,7 @@ class RdbGroup
       board.columns.each_value do |column|
         next if !column.visible? || column.compact?
 
-        throw :visible, true if filter(column.issues).count > 0
+        throw :visible, true if filter(column.issues).any?
       end
       false
     end
