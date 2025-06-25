@@ -42,7 +42,11 @@ RSpec.configure do |config|
   config.full_backtrace = true
 
   # Use Redmine fixtures
-  config.fixture_path = Rails.root.join('test/fixtures').to_s
+  if config.respond_to?(:fixture_paths)
+    config.fixture_paths = [Rails.root.join('test/fixtures')]
+  else
+    config.fixture_path = Rails.root.join('test/fixtures').to_s
+  end
 
   # Include request spec helpers
   config.include RdbRequestHelpers
