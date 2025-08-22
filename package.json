@@ -10,14 +10,14 @@
     "@babel/runtime": "7.28.3",
     "babel-loader": "10.0.0",
     "css-loader": "7.1.2",
-    "cssnano": "7.1.0",
+    "cssnano": "7.1.1",
     "mini-css-extract-plugin": "2.9.4",
     "postcss": "8.5.6",
     "postcss-loader": "8.1.1",
     "postcss-preset-env": "10.2.4",
     "sass-embedded": "1.90.0",
     "sass-loader": "16.0.5",
-    "webpack": "5.101.2",
+    "webpack": "5.101.3",
     "webpack-cli": "6.0.1",
     "webpack-dev-server": "5.2.2"
   },
@@ -27,15 +27,15 @@
   },
   "dependencies": {
     "classnames": "2.5.1",
-    "core-js": "3.45.0",
-    "preact": "10.27.0",
+    "core-js": "3.45.1",
+    "preact": "10.27.1",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
   "engines": {
     "node": ">= 22",
-    "yarn": "4.9.2"
+    "yarn": "4.9.3"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.3"
 }
