@@ -15,7 +15,7 @@
     "postcss": "8.5.6",
     "postcss-loader": "8.2.0",
     "postcss-preset-env": "10.3.1",
-    "sass-embedded": "1.92.0",
+    "sass-embedded": "1.93.0",
     "sass-loader": "16.0.5",
     "webpack": "5.101.3",
     "webpack-cli": "6.0.1",
@@ -28,14 +28,14 @@
   "dependencies": {
     "classnames": "2.5.1",
     "core-js": "3.45.1",
-    "preact": "10.27.1",
+    "preact": "10.27.2",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
   },
   "engines": {
     "node": ">= 22",
-    "yarn": "4.9.4"
+    "yarn": "4.10.0"
   },
-  "packageManager": "yarn@4.9.4"
+  "packageManager": "yarn@4.10.0"
 }
