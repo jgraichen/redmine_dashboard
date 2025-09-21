@@ -33,6 +33,7 @@
       separateMinorPatch: true,
       major: { enabled: false },
       minor: { enabled: false },
+      groupName: "Redmine CI matrix",
       automerge: true,
     },
   ],
