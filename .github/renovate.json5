@@ -9,17 +9,20 @@
     {
       matchPaths: ["+(package.json)"],
       schedule: ["after 16:00 on Friday"],
+      automerge: true,
     },
     {
       matchPaths: ["+(package.json)"],
       matchUpdateTypes: ["minor", "patch"],
       groupName: "NPM",
+      automerge: true,
     },
     // Group all redmine updates together
     {
       matchManagers: ["regex"],
       matchPackageNames: ["redmine/redmine"],
       groupName: "redmine",
+      automerge: true,
     },
     // Only bump patch versions for redmine versions in CI config, as there will
     // a config for each major+minor version.
@@ -30,6 +33,7 @@
       separateMinorPatch: true,
       major: { enabled: false },
       minor: { enabled: false },
+      automerge: true,
     },
   ],
 
