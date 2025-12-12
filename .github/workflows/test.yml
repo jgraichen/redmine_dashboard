@@ -56,7 +56,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
 
       - name: Setup ruby cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: vendor
           key: v7-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
