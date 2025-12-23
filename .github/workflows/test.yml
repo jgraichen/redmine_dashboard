@@ -90,7 +90,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.4.7"
+          ruby-version: "3.4.8"
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
