@@ -4,7 +4,7 @@ name: test
 on:
   push:
     branches-ignore: [debian]
-    tags: ['*']
+    tags: ["*"]
   pull_request:
   workflow_dispatch:
 
@@ -16,6 +16,12 @@ jobs:
     strategy:
       matrix:
         include:
+          - ruby: "3.4"
+            redmine: "6.1.1"
+          - ruby: "3.3"
+            redmine: "6.1.1"
+          - ruby: "3.2"
+            redmine: "6.1.1"
           - ruby: "3.3"
             redmine: "6.0.8"
           - ruby: "3.2"
