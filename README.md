@@ -7,7 +7,7 @@
 
 This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports drag and drop for issues and various filters.
 
-**Redmine Dashboard 2** is compatible and tested with Redmine 6.0, 5.1, 5.0, and Ruby 3.3, 3.2, 3.1, and 3.0.
+**Redmine Dashboard 2** is compatible and tested with Redmine 6.1, 6.0, 5.1, and Ruby 3.4, 3.3, 3.2, 3.1, and 3.0.
 
 ![Redmine Dashboard v2.x Screenshot](docs/rdb_2-1.png)
 
