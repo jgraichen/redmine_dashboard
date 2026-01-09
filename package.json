@@ -15,7 +15,7 @@
     "postcss": "8.5.6",
     "postcss-loader": "8.2.0",
     "postcss-preset-env": "10.6.0",
-    "sass-embedded": "1.97.1",
+    "sass-embedded": "1.97.2",
     "sass-loader": "16.0.6",
     "webpack": "5.104.1",
     "webpack-cli": "6.0.1",
@@ -28,7 +28,7 @@
   "dependencies": {
     "classnames": "2.5.1",
     "core-js": "3.47.0",
-    "preact": "10.28.1",
+    "preact": "10.28.2",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
