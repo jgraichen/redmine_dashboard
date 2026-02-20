@@ -4287,9 +4287,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-loader@npm:7.1.3":
-  version: 7.1.3
-  resolution: "css-loader@npm:7.1.3"
+"css-loader@npm:7.1.4":
+  version: 7.1.4
+  resolution: "css-loader@npm:7.1.4"
   dependencies:
     icss-utils: "npm:^5.1.0"
     postcss: "npm:^8.4.40"
@@ -4300,14 +4300,14 @@ __metadata:
     postcss-value-parser: "npm:^4.2.0"
     semver: "npm:^7.6.3"
   peerDependencies:
-    "@rspack/core": 0.x || 1.x
+    "@rspack/core": 0.x || ^1.0.0 || ^2.0.0-0
     webpack: ^5.27.0
   peerDependenciesMeta:
     "@rspack/core":
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/8743a8f1a0beff371d0fbeae7dbae7b079e546c734e3c936f0c5dc4603a716a576200e9261c934565584cf0e090cca444efb613efa4282ee3fcab81db4c73c7e
+  checksum: 10c0/a3a3a6b564d4fcf978961be8bc6ca06fb3836fc8fbd729ddae4b0b94166a0f5ccf119fb3301a6fecbe90608a8edbfd418bdc644cf053615e6271aa65b3fdc00b
   languageName: node
   linkType: hard
 
@@ -6835,15 +6835,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-loader@npm:8.2.0":
-  version: 8.2.0
-  resolution: "postcss-loader@npm:8.2.0"
+"postcss-loader@npm:8.2.1":
+  version: 8.2.1
+  resolution: "postcss-loader@npm:8.2.1"
   dependencies:
     cosmiconfig: "npm:^9.0.0"
     jiti: "npm:^2.5.1"
     semver: "npm:^7.6.2"
   peerDependencies:
-    "@rspack/core": 0.x || 1.x
+    "@rspack/core": 0.x || ^1.0.0 || ^2.0.0-0
     postcss: ^7.0.0 || ^8.0.1
     webpack: ^5.0.0
   peerDependenciesMeta:
@@ -6851,7 +6851,7 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/471f9a1c313522580f3385b92ab847cf161c6972bedc73525126a3c0a08733f0f6444d04ca9e0a8b1e36b44123e103dfcd8f53378b7e5afc95fa6d9ab423c480
+  checksum: 10c0/8ef4687f05972a85b4ad8e714f692fceec16f334d99edaa09c222dc08d01afcdcf7bed2b3a45f7888900cb9fd3324b9741d98ce694e33e87bebdc038dd17e30b
   languageName: node
   linkType: hard
 
@@ -7365,10 +7365,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.28.3":
-  version: 10.28.3
-  resolution: "preact@npm:10.28.3"
-  checksum: 10c0/e8854fae8d8d40c918538f7a90888dd4f8acd388b8ba8e0c612ed0eb1a7d2cc6c15a7dc0a7b7c7bb5c361d2df63aa283e501cf1d47f8eb1413979cee611a38ef
+"preact@npm:10.28.4":
+  version: 10.28.4
+  resolution: "preact@npm:10.28.4"
+  checksum: 10c0/712384e92d6c676c8f4c230eab81329a66acfecf700390aebfe5fc46168fa3686345d47f2292068dcc0a6d86425a3d9a3d743730e356e867a8402442afb989db
   languageName: node
   linkType: hard
 
@@ -7581,13 +7581,13 @@ __metadata:
     babel-loader: "npm:10.0.0"
     classnames: "npm:2.5.1"
     core-js: "npm:3.48.0"
-    css-loader: "npm:7.1.3"
+    css-loader: "npm:7.1.4"
     cssnano: "npm:7.1.2"
     mini-css-extract-plugin: "npm:2.10.0"
     postcss: "npm:8.5.6"
-    postcss-loader: "npm:8.2.0"
+    postcss-loader: "npm:8.2.1"
     postcss-preset-env: "npm:11.1.3"
-    preact: "npm:10.28.3"
+    preact: "npm:10.28.4"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
