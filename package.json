@@ -5,13 +5,14 @@
     "defaults and fully supports es6-module"
   ],
   "devDependencies": {
-    "lint-staged": "^16.4.0",
+    "@types/bun": "latest",
     "prettier": "^3.8.1"
   },
   "scripts": {
     "format": "prettier --write .",
-    "lint:format": "prettier --check .",
-    "postinstall": "husky"
+    "lint:format": "prettier --check ."
   },
-  "packageManager": "yarn@4.9.1"
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }
