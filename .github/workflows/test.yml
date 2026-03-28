@@ -30,7 +30,7 @@ jobs:
       REDMINE_VERSION: ${{ matrix.redmine }}
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
 
       - name: Setup database
         run: |
@@ -42,7 +42,7 @@ jobs:
         run: corepack enable
 
       - name: Install Node 22
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           node-version: "24"
           cache: yarn
@@ -56,7 +56,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
 
       - name: Setup ruby cache
-        uses: actions/cache@v5
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
         with:
           path: vendor
           key: v7-ruby-${{ matrix.ruby }}-redmine-${{ matrix.redmine }}-${{ hashFiles('Gemfile') }}
@@ -87,7 +87,7 @@ jobs:
       BUNDLE_WITHOUT: development
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4.0.2"
