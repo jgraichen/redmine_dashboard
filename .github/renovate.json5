@@ -1,58 +1,86 @@
 {
-  extends: ["config:best-practices", ":label(dependencies)"],
-
-  // Update stable main branch and current development branch
-  baseBranches: ["main", "develop"],
-
+  extends: [
+    'config:best-practices',
+    ':label(dependencies)',
+  ],
+  baseBranchPatterns: [
+    'main',
+    'develop',
+  ],
   packageRules: [
-    // Only weekly updates to node dependencies (develop branch)
     {
-      matchPaths: ["+(package.json)"],
-      schedule: ["after 16:00 on Friday"],
+      matchFileNames: [
+        '+(package.json)',
+      ],
+      schedule: [
+        'after 16:00 on Friday',
+      ],
       automerge: true,
     },
     {
-      matchPaths: ["+(package.json)"],
-      matchUpdateTypes: ["minor", "patch"],
-      groupName: "NPM",
+      matchFileNames: [
+        '+(package.json)',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      groupName: 'NPM',
       automerge: true,
     },
-    // Group all redmine updates together
     {
-      matchManagers: ["regex"],
-      matchPackageNames: ["redmine/redmine"],
-      groupName: "redmine",
+      matchManagers: [
+        'custom.regex',
+      ],
+      matchPackageNames: [
+        'redmine/redmine',
+      ],
+      groupName: 'redmine',
       automerge: true,
     },
-    // Only bump patch versions for redmine versions in CI config, as there will
-    // a config for each major+minor version.
     {
-      matchManagers: ["regex"],
-      matchPaths: [".github/workflows/test.yml"],
-      matchPackageNames: ["redmine/redmine"],
+      matchManagers: [
+        'custom.regex',
+      ],
+      matchFileNames: [
+        '.github/workflows/test.yml',
+      ],
+      matchPackageNames: [
+        'redmine/redmine',
+      ],
       separateMinorPatch: true,
-      major: { enabled: false },
-      minor: { enabled: false },
-      groupName: "Redmine CI matrix",
+      major: {
+        enabled: false,
+      },
+      minor: {
+        enabled: false,
+      },
+      groupName: 'Redmine CI matrix',
       automerge: true,
     },
   ],
-
   customManagers: [
-    // Match scripts and CI config to bump redmine versions
     {
-      customType: "regex",
-      managerFilePatterns: ["/^redmine$/"],
-      matchStrings: ["DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*?)'"],
-      depNameTemplate: "redmine/redmine",
-      datasourceTemplate: "github-tags",
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^redmine$/',
+      ],
+      matchStrings: [
+        "DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*?)'",
+      ],
+      depNameTemplate: 'redmine/redmine',
+      datasourceTemplate: 'github-tags',
     },
     {
-      customType: "regex",
-      managerFilePatterns: ["/^.github/workflows/test\\.yml$/"],
-      matchStrings: ['redmine:\\s+"(?<currentValue>.*)"'],
-      depNameTemplate: "redmine/redmine",
-      datasourceTemplate: "github-tags",
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^.github/workflows/test\\.yml$/',
+      ],
+      matchStrings: [
+        'redmine:\\s+"(?<currentValue>.*)"',
+      ],
+      depNameTemplate: 'redmine/redmine',
+      datasourceTemplate: 'github-tags',
     },
   ],
 }
