@@ -7,12 +7,12 @@
   packageRules: [
     // Only weekly updates to node dependencies (develop branch)
     {
-      matchPaths: ["+(package.json)"],
+      matchFileNames: ["+(package.json)"],
       schedule: ["after 16:00 on Friday"],
       automerge: true,
     },
     {
-      matchPaths: ["+(package.json)"],
+      matchFileNames: ["+(package.json)"],
       matchUpdateTypes: ["minor", "patch"],
       groupName: "NPM",
       automerge: true,
@@ -28,7 +28,7 @@
     // a config for each major+minor version.
     {
       matchManagers: ["regex"],
-      matchPaths: [".github/workflows/test.yml"],
+      matchFileNames: [".github/workflows/test.yml"],
       matchPackageNames: ["redmine/redmine"],
       separateMinorPatch: true,
       major: { enabled: false },
