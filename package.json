@@ -9,7 +9,10 @@
     "editorconfig-checker": "^6.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-no-unsupported-browser-features": "^8.1.1"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -17,6 +20,7 @@
   "scripts": {
     "format": "prettier --write .",
     "lint:format": "prettier --check .",
+    "lint:css": "stylelint --allow-empty-input 'assets/**/*.css'",
     "postinstall": "husky"
   },
   "lint-staged": {
@@ -24,6 +28,7 @@
       "prettier --ignore-unknown --write",
       "editorconfig-checker"
     ],
-    "*.rb": "bundle exec rubocop --force-exclusion --autocorrect"
+    "*.rb": "bundle exec rubocop --force-exclusion --autocorrect",
+    "*.css": "stylelint --fix --allow-empty-input"
   }
 }
