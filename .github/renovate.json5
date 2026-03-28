@@ -38,16 +38,18 @@
     },
   ],
 
-  regexManagers: [
+  customManagers: [
     // Match scripts and CI config to bump redmine versions
     {
-      fileMatch: ["^redmine$"],
+      customType: "regex",
+      managerFilePatterns: ["/^redmine$/"],
       matchStrings: ["DEFAULT_VERSION\\s+=\\s+'(?<currentValue>.*?)'"],
       depNameTemplate: "redmine/redmine",
       datasourceTemplate: "github-tags",
     },
     {
-      fileMatch: ["^.github/workflows/test\\.yml$"],
+      customType: "regex",
+      managerFilePatterns: ["/^.github/workflows/test\\.yml$/"],
       matchStrings: ['redmine:\\s+"(?<currentValue>.*)"'],
       depNameTemplate: "redmine/redmine",
       datasourceTemplate: "github-tags",
