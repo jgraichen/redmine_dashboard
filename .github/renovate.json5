@@ -1,8 +1,12 @@
 {
-  extends: ["config:best-practices", ":label(dependencies)"],
+  extends: [
+    "mergeConfidence:all-badges",
+    "config:best-practices",
+    ":label(dependencies)",
+  ],
 
   // Update stable main branch and current development branch
-  baseBranches: ["main", "develop"],
+  baseBranchPatterns: ["main", "develop"],
 
   packageRules: [
     // Only weekly updates to node dependencies (develop branch)
@@ -19,7 +23,7 @@
     },
     // Group all redmine updates together
     {
-      matchManagers: ["regex"],
+      matchManagers: ["custom.regex"],
       matchPackageNames: ["redmine/redmine"],
       groupName: "redmine",
       automerge: true,
@@ -27,7 +31,7 @@
     // Only bump patch versions for redmine versions in CI config, as there will
     // a config for each major+minor version.
     {
-      matchManagers: ["regex"],
+      matchManagers: ["custom.regex"],
       matchFileNames: [".github/workflows/test.yml"],
       matchPackageNames: ["redmine/redmine"],
       separateMinorPatch: true,
