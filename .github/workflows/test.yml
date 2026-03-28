@@ -43,7 +43,7 @@ jobs:
       REDMINE_VERSION: ${{ matrix.redmine }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
 
@@ -80,7 +80,7 @@ jobs:
       BUNDLE_RETRY: 10
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: ruby/setup-ruby@v1
@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: editorconfig-checker/action-editorconfig-checker@main
@@ -104,7 +104,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: streetsidesoftware/cspell-action@v8
@@ -113,7 +113,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: oven-sh/setup-bun@v2
@@ -124,7 +124,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - uses: oven-sh/setup-bun@v2
