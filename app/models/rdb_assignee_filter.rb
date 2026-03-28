@@ -25,15 +25,11 @@ class RdbAssigneeFilter < RdbFilter
   def update(params)
     return unless (assignee = params[:assignee])
 
-    Rails.logger.warn "CHANGE ASSIGNE: #{assignee}"
-
     if (assignee == 'all') || (assignee == 'me') || (assignee == 'none')
       self.value = assignee.to_sym
     elsif board.assignees.where(id: assignee.to_i).any?
       self.value = assignee.to_i
     end
-
-    Rails.logger.warn "CHANGE ASSIGNE: #{assignee} => #{values.inspect}"
   end
 
   def title

@@ -220,16 +220,16 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 
 - Fix error with pluralization patch (#53)
 - Update locales
-- Bundle transifex utility as gem instead of git repo
+- Bundle Transifex utility as gem instead of git repo
 
 ## 2.3.2
 
 ### Changes
 
-- Fix error with missing pluralization keys (#50):
-  Redmine I18n backend does not include a CLDR pluralization rule aware
-  pluralize method. Rdb now patches the backend to include
-  I18n::Backend::Pluralization as well as Redmines lazy locale load to
+- Fix error with missing pluralization keys (#50): Redmine `I18n`
+  backend does not include a CLDR pluralization rule aware `#pluralize`
+  method. Redmine Dashboard now patches the backend to include
+  `I18n::Backend::Pluralization` as well as Redmines lazy locale load to
   load the pluralization rules.
 - Update locales
 

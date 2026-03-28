@@ -99,12 +99,12 @@ class RdbTaskboard < RdbDashboard
 
       when :assignee
         add_group RdbGroup.new(
-          :assigne_me,
+          :assign_me,
           :rdb_filter_assignee_me,
           accept: proc {|issue| issue.assigned_to_id == User.current.id },
         )
         add_group RdbGroup.new(
-          :assigne_none,
+          :assign_none,
           :rdb_filter_assignee_none,
           accept: proc {|issue| issue.assigned_to_id.nil? },
         )

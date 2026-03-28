@@ -52,7 +52,7 @@ describe 'Taskboard/Filter/Versions', js: true, sauce: true do
     expect(page).to have_no_selector(:xpath, '//*[contains(@class, "rdb-property-version")][text()!="1.0"]')
   end
 
-  it 'should default to most recent not closed verion' do
+  it 'should default to most recent not closed version' do
     expect(find_menu_link(:versions)).to have_content('1.0')
   end
 end

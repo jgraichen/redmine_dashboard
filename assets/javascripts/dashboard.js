@@ -132,11 +132,9 @@
       Rdb.rdbMenuClose();
       Rdb.rdbCloseDialog();
       e.preventDefault();
-      $.getScript(link.attr("href")).fail(
-        function (jqxhr, settings, exception) {
-          Rdb.rdbError("<b>Ajax Error</b>: " + exception);
-        },
-      );
+      $.getScript(link.attr("href")).fail(function (xhr, settings, exception) {
+        Rdb.rdbError("<b>Ajax Error</b>: " + exception);
+      });
     }
   });
 
