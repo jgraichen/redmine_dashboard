@@ -108,3 +108,18 @@ jobs:
         with:
           persist-credentials: false
       - uses: streetsidesoftware/cspell-action@v8
+
+  format:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+      - uses: EPMatt/reviewdog-action-prettier@v1
+        with:
+          level: warning

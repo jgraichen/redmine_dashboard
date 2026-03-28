@@ -5,7 +5,7 @@ ca:
   permission_configure_dashboards: Configura els taulers
   menu_label_dashboard: Tauler
   rdb_taskboard: Assumptes
-  rdb_planningboard: 'Planificació '
+  rdb_planningboard: "Planificació "
   rdb_filter_version_all: Totes les versions
   rdb_filter_version_unassigned: Sense assignar
   rdb_filter_tracker_all: Tots els rastrejadors
@@ -17,7 +17,7 @@ ca:
   rdb_filter_assignee_none: Sense assignar
   rdb_filter_assignee_others: Altres
   rdb_options: Opcions
-  rdb_options_change_assignee: 'Canvia l''assignació '
+  rdb_options_change_assignee: "Canvia l'assignació "
   rdb_options_change_assignee_info: Canvia l'assignació a l'usuari actual quan l'assumpte es mou
   rdb_options_hide_done: Amaga els assumptes tancats
   rdb_options_hide_done_info: Amaga assumptes tancats i redueix la columna "fet"
@@ -35,11 +35,11 @@ ca:
   rdb_group_assignee: Assignat
   rdb_group_tracker: Rastrejador
   rdb_group_priority: Prioritat
-  rdb_group_version: 'Versió '
+  rdb_group_version: "Versió "
   rdb_group_parent: Assumpte pare
   rdb_group_project: Projecte
   rdb_options_board_view: Vista del tauler
-  rdb_options_board_view_compact: 'Clàssic '
+  rdb_options_board_view_compact: "Clàssic "
   rdb_options_board_view_outline: Esquema
   rdb_options_columns: Columnes del tauler
   rdb_options_fullscreen: Pantalla sencera
@@ -53,13 +53,13 @@ ca:
     one: 1 Assumpte
     other: "%{count} Assumptes"
   rdb_dialog_update_issue_title: Actualitza l'assumpte
-  rdb_dialog_update_issue_status: 'Escull un nou estat per l''assumpte '
+  rdb_dialog_update_issue_status: "Escull un nou estat per l'assumpte "
   rdb_other_issues: Altres assumptes <span>(%{count})</span>
   rdb_unassigned: Sense assignar
   rdb_others: Altres
   rdb_all_issues: Tots els assumptes
   rdb_no_parent: Sense assumpte pare
-  rdb_issue_menu_progress_title: 'Posa al dia l''actualització '
+  rdb_issue_menu_progress_title: "Posa al dia l'actualització "
   rdb_issue_menu_progress: "%{count}%"
   rdb_issue_menu_redmine_issue: Assumpte de Redmine
   rdb_issue_menu_show: Veure

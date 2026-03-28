@@ -32,7 +32,7 @@ fr:
   rdb_options_group: Regrouper par demande
   rdb_group_none: Pas de regroupement
   rdb_group_category: Catégorie
-  rdb_group_assignee: 'Assigné à '
+  rdb_group_assignee: "Assigné à "
   rdb_group_tracker: Tracker
   rdb_group_priority: Priorité
   rdb_group_version: Version
