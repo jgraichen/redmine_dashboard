@@ -2,7 +2,7 @@
   "name": "redmine_dashboard",
   "private": true,
   "browserslist": [
-    "defaults and fully supports es6-module"
+    "defaults and baseline widely available with downstream"
   ],
   "devDependencies": {
     "@types/bun": "latest",

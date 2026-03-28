@@ -30,26 +30,13 @@ html > body #content {
   right: 0;
   min-height: 100%;
   z-index: 9999999995;
-}
-
-#rdb.rdb-fullscreen #rdb-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999999999;
-}
-
-#rdb.rdb-fullscreen {
   padding-top: 45px;
 }
 
 #rdb-board {
   clear: both;
-
   margin: 10px 15px;
   padding: 8px 2px 2px;
-
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -80,6 +67,14 @@ html > body #content {
   padding: 7px 30px 7px 11px;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
+}
+
+#rdb.rdb-fullscreen #rdb-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999999;
 }
 
 #rdb-header .rdb-board,
@@ -116,6 +111,7 @@ html > body #content {
   padding: 0;
   white-space: nowrap;
 }
+
 #rdb-header .rdb-board h2 {
   font-size: 20px;
 }
@@ -127,25 +123,27 @@ a#rdb-refresh {
   display: block;
   width: 30px;
   height: 17px;
-  background-image: url(../../../images/reload.png);
+  background-image: url("../../../images/reload.png");
   background-repeat: no-repeat;
   background-position: 50% 40%;
   border-radius: 2px;
   border: 1px solid #fff;
 }
+
 a#rdb-refresh:hover {
   background-color: #eee;
   border: 1px solid #ccc;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
 }
+
 a#rdb-refresh:active {
   background-color: #eee;
   border: 1px solid #aaa;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 0 4px rgb(0 0 0 / 30%) inset;
 }
 
 a#rdb-reset {
-  background-image: url(../../../images/cancel.png);
+  background-image: url("../../../images/cancel.png");
   background-repeat: no-repeat;
   background-position: 6px 60%;
 }
@@ -160,28 +158,28 @@ a#rdb-reset {
   left: 35%;
   right: 35%;
 }
+
 #rdb-errors .rdb-error {
   margin: 5px 0;
   padding: 10px 20px;
-
   position: relative;
   overflow: hidden;
-
   color: #b94a48;
   background-color: #f2dede;
   border: 1px solid #c58080;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 50%);
   border-radius: 2px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2px rgb(0 0 0 / 20%);
 }
+
 #rdb-errors .rdb-error a.close {
   position: absolute;
   top: 0;
   right: 8px;
-
   font-size: 25px;
   color: #aaa;
 }
+
 #rdb-errors .rdb-error a.close:hover {
   color: #777;
   text-decoration: none;
@@ -195,24 +193,30 @@ a#rdb-reset {
 #rdb-legend {
   float: left;
 }
+
 #rdb-legend div {
-  padding: 0 0 4px 0;
+  padding: 0 0 4px;
 }
+
 #rdb-legend p {
   float: left;
   min-width: 70px;
   margin: 0;
   padding: 0;
   font-weight: bold;
-  /*text-align: right;*/
+
+  /* text-align: right; */
   padding-right: 10px;
 }
+
 #rdb-legend span {
   padding: 0 10px 0 3px;
 }
+
 #rdb-legend .rdb-overdue {
   padding: 0;
 }
+
 #rdb-legend .rdb-overdue span {
   border: 1px solid red;
   padding: 0;

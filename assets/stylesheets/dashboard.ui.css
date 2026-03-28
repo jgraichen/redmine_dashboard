@@ -49,31 +49,29 @@
 .rdb-container {
   position: absolute;
   left: -99999px;
-
   z-index: 1000;
   display: none;
   visibility: hidden;
-
-  margin: 7px 0 0 0;
+  margin: 7px 0 0;
   padding: 0;
-
   border: 1px solid #ccc;
   background-color: #fff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
   border-radius: 2px;
 }
 
 .rdb-container-wrapper {
   overflow: auto;
-
   min-width: 160px;
   max-height: 400px;
   padding: 0 1px;
 }
+
 .rdb-container-wrapper::-webkit-scrollbar {
   width: 5px;
   background-color: #eee;
 }
+
 .rdb-container-wrapper::-webkit-scrollbar-thumb {
   background-color: #bbb;
 }
@@ -86,9 +84,10 @@
   border-right: 7px solid transparent;
   border-bottom: 7px solid #ccc;
   border-left: 7px solid transparent;
-  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgb(0 0 0 / 20%);
   content: "";
 }
+
 .rdb-container::after {
   position: absolute;
   top: -6px;
@@ -104,6 +103,7 @@
   left: auto;
   right: 6px;
 }
+
 .rdb-container-right::after {
   left: auto;
   right: 7px;
@@ -130,7 +130,7 @@
 
 .rdb-container h3 {
   margin: 0;
-  padding: 1px 6px 1px;
+  padding: 1px 6px;
   font-size: 0.9em;
   font-weight: normal;
 }
@@ -146,6 +146,7 @@
 .rdb-container .rdb-list {
   border-bottom: 1px solid #ccc;
 }
+
 .rdb-container .rdb-list:last-child {
   border-bottom: none;
 }
@@ -168,8 +169,8 @@
 .rdb-list > ul > li > a,
 .rdb-list .rdb-multicheck a {
   display: block;
-  padding: 6px 10px 6px 10px;
-  margin: 0 0 1px 0;
+  padding: 6px 10px;
+  margin: 0 0 1px;
 }
 
 .rdb-small .rdb-list > ul > li > a,
@@ -187,10 +188,12 @@
 .rdb-list .rdb-multicheck a.rdb-checkbox-link:hover ~ a {
   background-color: #eee;
 }
+
 .rdb-list .rdb-multicheck {
   display: table;
   width: 100%;
 }
+
 .rdb-list .rdb-multicheck a {
   padding-left: 5px;
   padding-right: 5px;
@@ -201,7 +204,8 @@
   padding-right: 0;
   padding-left: 24px;
   margin-right: 4px;
-  /*float: left;*/
+
+  /* float: left; */
   width: 1px;
   height: 1em;
   background-position: 4px 50%;
@@ -219,11 +223,11 @@
 }
 
 .rdb-checkbox-link.rdb-checkbox-link-enabled {
-  background-image: url(../../../images/true.png);
+  background-image: url("../../../images/true.png");
 }
 
 .rdb-checkbox-link.rdb-checkbox-link-disabled {
-  background-image: url(img/disabled_true.png);
+  background-image: url("img/disabled_true.png");
 }
 
 .rdb-list > ul > li > a.rdb-checkbox-link {
