@@ -10,9 +10,9 @@ jobs:
   release:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
       - run: git archive --worktree-attributes --format tar.gz -9 --prefix redmine_dashboard/ "${GITHUB_REF_NAME}" > "redmine-dashboard_${GITHUB_REF_NAME}.tar.gz"
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
