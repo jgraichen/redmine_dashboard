@@ -9,10 +9,12 @@ set -e
 
 mkdir -p tmp log
 
-(
-  set -x
-  git clone --quiet --depth 1 "https://github.com/redmine/redmine" --branch "${REDMINE_VERSION}" "${REDMINE_PATH}"
-)
+if [ ! -f "${REDMINE_PATH}/Gemfile" ]; then
+  (
+    set -x
+    git clone --quiet --depth 1 "https://github.com/redmine/redmine" --branch "${REDMINE_VERSION}" "${REDMINE_PATH}"
+  )
+fi
 
 echo "Symlink plugin, assets and specs..."
 

@@ -13,13 +13,13 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 ## Features List
 
-* Drag-n-drop of issues
-* Configurable columns
-* Grouping & Filtering
-* Group folding
-* Hierarchical parent issue view
-* Include subproject issues
-* Quick edit of assignee and progress
+- Drag-n-drop of issues
+- Configurable columns
+- Grouping & Filtering
+- Group folding
+- Hierarchical parent issue view
+- Include subproject issues
+- Quick edit of assignee and progress
 
 Rate plugin at [redmine.org](http://www.redmine.org/plugins/redmine-dashboard).
 
