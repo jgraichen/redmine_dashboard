@@ -1,0 +1,3 @@
+{
+  "Exclude": ["LICENSE", "assets/javascripts/jquery.total-storage.js"]
+}

@@ -85,3 +85,10 @@ jobs:
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
+
+  editorconfig:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - run: editorconfig-checker
