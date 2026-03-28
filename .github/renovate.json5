@@ -1,5 +1,5 @@
 {
-  extends: ["config:base", ":label(dependencies)"],
+  extends: ["config:best-practices", ":label(dependencies)"],
 
   // Update stable main branch and current development branch
   baseBranches: ["main", "develop"],
