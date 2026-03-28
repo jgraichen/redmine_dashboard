@@ -6,13 +6,24 @@
   ],
   "devDependencies": {
     "@types/bun": "latest",
+    "editorconfig-checker": "^6.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.8.1"
-  },
-  "scripts": {
-    "format": "prettier --write .",
-    "lint:format": "prettier --check ."
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "lint:format": "prettier --check .",
+    "postinstall": "husky"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --ignore-unknown --write",
+      "editorconfig-checker"
+    ],
+    "*.rb": "bundle exec rubocop --force-exclusion --autocorrect"
   }
 }
