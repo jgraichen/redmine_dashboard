@@ -84,7 +84,7 @@
                   coluid +
                   "&group=" +
                   groupId,
-              ).fail(function (jqxhr, settings, exception) {
+              ).fail(function (xhr, settings, exception) {
                 Rdb.rdbDADShowIssue();
                 Rdb.rdbError("<b>Error</b>: " + exception);
               });

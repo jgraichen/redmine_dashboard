@@ -29,8 +29,8 @@ class RdbTaskboardController < RdbDashboardController
     @issue.init_journal(User.current, params[:notes] || nil)
 
     @issue.done_ratio = params[:done_ratio].to_i if params[:done_ratio]
-    @issue.assigned_to_id = nil if params[:unassigne_me] && @issue.assigned_to_id == User.current.id
-    @issue.assigned_to_id = User.current.id if params[:assigne_me]
+    @issue.assigned_to_id = nil if params[:unassign_me] && @issue.assigned_to_id == User.current.id
+    @issue.assigned_to_id = User.current.id if params[:assign_me]
 
     if params[:status]
       status = IssueStatus.find params[:status].to_i

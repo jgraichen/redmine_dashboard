@@ -1,2 +1,9 @@
 Redmine
 redmine
+@salmanmp
+@jgraichen
+Zeitwerk
+Transifex
+Redmines
+swimlane
+swimlanes

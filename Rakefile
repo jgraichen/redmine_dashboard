@@ -9,7 +9,7 @@ task default: [:spec]
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern    = ENV.fetch('SPEC', 'spec/**/*_spec.rb')
-  t.ruby_opts  = '-Ispec'
+  t.ruby_opts  = '-I spec'
   t.rspec_opts = '--color --backtrace'
   t.rspec_opts << " --seed #{ENV['SEED']}" if ENV['SEED']
 end

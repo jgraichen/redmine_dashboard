@@ -1,0 +1,24 @@
+---
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: "0.2"
+language: en_US
+dictionaryDefinitions:
+  - name: project-dictionary
+    path: .config/cspell/dictionary.txt
+    addWords: true
+  - name: project-users
+    path: .config/cspell/users.txt
+    addWords: true
+dictionaries:
+  - project-dictionary
+  - project-users
+  - companies
+  - html
+  - ruby
+  - shellscript
+  - softwareTerms
+ignorePaths:
+  - node_modules/
+  - vendor
+  - config/locales
+  - assets/javascripts/jquery*
