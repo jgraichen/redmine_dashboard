@@ -7,22 +7,11 @@ set -e
 [ -z "$REDMINE_PATH" ] && exit 1
 [ -z "$REDMINE_VERSION" ] && exit 1
 
-mkdir -p "${REDMINE_PATH}"
 mkdir -p tmp log
-
-case ${REDMINE_VERSION} in
-master)
-  REDMINE_SOURCE="http://svn.redmine.org/redmine/trunk"
-  ;;
-
-*)
-  REDMINE_SOURCE="http://svn.redmine.org/redmine/tags/${REDMINE_VERSION}"
-  ;;
-esac
 
 (
   set -x
-  svn export --quiet --force "${REDMINE_SOURCE}" "${REDMINE_PATH}"
+  git clone --quiet --depth 1 "https://github.com/redmine/redmine" --branch "${REDMINE_VERSION}" "${REDMINE_PATH}"
 )
 
 echo "Symlink plugin, assets and specs..."
