@@ -68,6 +68,8 @@ pl:
   rdb_issue_menu_edit: Edycja
   rdb_issue_menu_assign_me: Przypisz do mnie
   rdb_issue_menu_unassign_me: Cofnij przypisanie do mnie
+  rdb_options_issue_view_wallboard: Tablica ścienna
+  rdb_options_board_view_wallboard: Widok tablicy ściennej
   rdb_flash_illegal_workflow_action: "<p>Nie masz uprawnień do wykonania tej akcji przepływu pracy:</p><p>Przesuń <b>%{issue}</b> z <b>%{source}</b> do <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Brak wersji docelowej</b>: Nie można zaktualizować zagadnienia bez wersji docelowej. Spróbuj ponownie."
   rdb_flash_stale_object: "<p>Próba aktualizacji przestarzałego zagadnienia: <b>%{issue}</b>. Sprawdź zmiany i spróbuj ponownie."
