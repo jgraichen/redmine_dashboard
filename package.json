@@ -9,8 +9,8 @@
     "editorconfig-checker": "6.1.1",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
-    "prettier": "3.8.1",
-    "stylelint": "17.6.0",
+    "prettier": "3.8.2",
+    "stylelint": "17.7.0",
     "stylelint-config-standard": "40.0.0",
     "stylelint-no-unsupported-browser-features": "8.1.1"
   },
