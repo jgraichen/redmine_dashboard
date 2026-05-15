@@ -6466,10 +6466,10 @@ __metadata:
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
     sass-embedded: "npm:1.99.0"
-    sass-loader: "npm:16.0.7"
+    sass-loader: "npm:16.0.8"
     webpack: "npm:5.106.2"
     webpack-cli: "npm:7.0.2"
-    webpack-dev-server: "npm:5.2.3"
+    webpack-dev-server: "npm:5.2.4"
   languageName: unknown
   linkType: soft
 
@@ -6846,9 +6846,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:16.0.7":
-  version: 16.0.7
-  resolution: "sass-loader@npm:16.0.7"
+"sass-loader@npm:16.0.8":
+  version: 16.0.8
+  resolution: "sass-loader@npm:16.0.8"
   dependencies:
     neo-async: "npm:^2.6.2"
   peerDependencies:
@@ -6868,7 +6868,7 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10c0/eb352777cb3aff4bf0029c88e276a37ca10f415de0765eb1276f742455ebb152faffc2417770bf4a26da389d6115e27dd6c8e66c8b71396b21811f6e4d1b4eea
+  checksum: 10c0/c05886e6f1373eec23b05ea4d2dfc4317385dc3431ec665b611703ea60b4f9337f6547889c7b7f1c8e36d156caf1294e3d28292f104d6499076cf237f3c723bc
   languageName: node
   linkType: hard
 
@@ -7571,9 +7571,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-server@npm:5.2.3":
-  version: 5.2.3
-  resolution: "webpack-dev-server@npm:5.2.3"
+"webpack-dev-server@npm:5.2.4":
+  version: 5.2.4
+  resolution: "webpack-dev-server@npm:5.2.4"
   dependencies:
     "@types/bonjour": "npm:^3.5.13"
     "@types/connect-history-api-fallback": "npm:^1.5.4"
@@ -7612,7 +7612,7 @@ __metadata:
       optional: true
   bin:
     webpack-dev-server: bin/webpack-dev-server.js
-  checksum: 10c0/a716f1d509635ad9f2779baf242657740e6ad516ce210fe094cbf3b16f25f114e477c45a751ad2bbf1c601cbbe67b6ba9b8b43159b7c01fc3342c95b985fe963
+  checksum: 10c0/42f8afe11b7bfe65d72e30d861ddf1e4d05f27202c4c1162d204cb41a4a858dffc91c5a02bf44ec08acc8c02b4a57aaf46924ec12a5e5b97c307991379282669
   languageName: node
   linkType: hard
 
