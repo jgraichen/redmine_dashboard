@@ -2,12 +2,12 @@
   "name": "redmine-dashboard",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.29.0",
-    "@babel/plugin-transform-react-jsx": "7.28.6",
-    "@babel/plugin-transform-runtime": "7.29.0",
-    "@babel/preset-env": "7.29.5",
-    "@babel/preset-typescript": "7.28.5",
-    "@babel/runtime": "7.29.2",
+    "@babel/core": "7.29.7",
+    "@babel/plugin-transform-react-jsx": "7.29.7",
+    "@babel/plugin-transform-runtime": "7.29.7",
+    "@babel/preset-env": "7.29.7",
+    "@babel/preset-typescript": "7.29.7",
+    "@babel/runtime": "7.29.7",
     "babel-loader": "10.1.1",
     "css-loader": "7.1.4",
     "cssnano": "8.0.1",
@@ -15,10 +15,10 @@
     "postcss": "8.5.15",
     "postcss-loader": "8.2.1",
     "postcss-preset-env": "11.3.0",
-    "sass-embedded": "1.99.0",
+    "sass-embedded": "1.100.0",
     "sass-loader": "17.0.0",
-    "webpack": "5.106.2",
-    "webpack-cli": "7.0.2",
+    "webpack": "5.107.2",
+    "webpack-cli": "7.0.3",
     "webpack-dev-server": "5.2.4"
   },
   "scripts": {
@@ -35,7 +35,7 @@
   },
   "engines": {
     "node": ">= 22",
-    "yarn": "4.14.1"
+    "yarn": "4.16.0"
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.16.0"
 }
