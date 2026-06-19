@@ -10,16 +10,16 @@
     "@babel/runtime": "7.29.7",
     "babel-loader": "10.1.1",
     "css-loader": "7.1.4",
-    "cssnano": "8.0.1",
+    "cssnano": "8.0.2",
     "mini-css-extract-plugin": "2.10.2",
     "postcss": "8.5.15",
     "postcss-loader": "8.2.1",
-    "postcss-preset-env": "11.3.0",
+    "postcss-preset-env": "11.3.1",
     "sass-embedded": "1.100.0",
     "sass-loader": "17.0.0",
     "webpack": "5.107.2",
     "webpack-cli": "7.0.3",
-    "webpack-dev-server": "5.2.4"
+    "webpack-dev-server": "5.2.5"
   },
   "scripts": {
     "build": "webpack",
@@ -35,7 +35,7 @@
   },
   "engines": {
     "node": ">= 22",
-    "yarn": "4.16.0"
+    "yarn": "4.17.0"
   },
-  "packageManager": "yarn@4.16.0"
+  "packageManager": "yarn@4.17.0"
 }
