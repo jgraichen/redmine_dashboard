@@ -1,5 +1,5 @@
 <div class="rdb-card">
-  <div class="rdb-priority rdb-priority-<%= issue.priority.position %>">
+  <%= tag.div(class: class_names("rdb-priority", issue.priority.dashboard_color_css_class)) do %>
     <header class="rdb-card-header">
       <div class="rdb-card-title">
         <%= render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue} %>
@@ -22,5 +22,5 @@
 
       <%= render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue} %>
     </div>
-  </div>
+  <% end %>
 </div>
