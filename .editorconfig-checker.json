@@ -1,5 +1,12 @@
 {
-  "Exclude": ["LICENSE", "assets/javascripts/jquery.total-storage.js"],
+  "Exclude": [
+    "LICENSE",
+    "assets/javascripts/jquery.total-storage.js",
+    "^vendor/",
+    "^node_modules/",
+    "^.husky/_/",
+    "^.ruby-lsp/"
+  ],
   "Disable": {
     "IndentSize": true
   }
