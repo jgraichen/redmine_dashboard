@@ -24,7 +24,9 @@ module RdbRequestHelpers
     page.find('html')
 
     if current_path != '/login'
-      click_link 'Sign out'
+      # Redmine 7 has "Sign out" hidden in a dropdown menu under the
+      # user avatar. Therefore, click the "invisible" link there too:
+      click_link 'Sign out', visible: :all
       click_link 'Sign in'
     end
 
