@@ -14,6 +14,7 @@
       <%= rdb_menu_list([:all, :unassigned]) do |val| %>
         <%= link_to t("rdb_filter_version_#{val}"), rdb_filter_path(version: val) %>
       <% end %>
+
       <%= rdb_menu_list(@board.filters[:version].versions) do |val| %>
         <%= link_to val.name, rdb_filter_path(version: val.id) %>
       <% end %>
@@ -26,6 +27,7 @@
     <%= rdb_menu_list([:all]) do |val| %>
       <%= link_to t("rdb_filter_tracker_#{val}"), rdb_filter_path(tracker: val) %>
     <% end %>
+
     <%= rdb_menu_list(@board.trackers) do |val| %>
       <span class="rdb-multicheck">
         <%= rdb_checkbox_link_to '', rdb_filter_path(tracker: val.id), enabled: @board.filters[:tracker].enabled?(val.id), show_disabled: true %>
@@ -41,6 +43,7 @@
       <%= rdb_menu_list([:all]) do |val| %>
         <%= link_to t("rdb_filter_category_#{val}"), rdb_filter_path(category: val) %>
       <% end %>
+
       <%= rdb_menu_list(@board.issue_categories) do |val| %>
         <span class="rdb-multicheck">
           <%= rdb_checkbox_link_to '', rdb_filter_path(category: val.id), enabled: @board.filters[:category].enabled?(val.id), show_disabled: true %>
@@ -56,11 +59,13 @@
     <%= rdb_menu_list([:all, :me, :none]) do |val| %>
       <%= link_to t("rdb_filter_assignee_#{val}"), rdb_filter_path(assignee: val) %>
     <% end %>
+
     <%= rdb_menu_list(@board.assignees) do |val| %>
       <% if User === val %>
         <%= link_to val.name, rdb_filter_path(assignee: val.id) %>
       <% end %>
     <% end %>
+
     <%= rdb_menu_list(@board.assignees) do |val| %>
       <% if Group === val %>
         <%= link_to val.name, rdb_filter_path(assignee: val.id) %>
@@ -79,12 +84,14 @@
               enabled: @board.options[:change_assignee],
               title: t(:rdb_options_change_assignee_info),
             ) %>
+
         <%= rdb_checkbox_link_to(
               t(:rdb_options_hide_done),
               rdb_board_path(hide_done: !@board.options[:hide_done]),
               enabled: @board.options[:hide_done],
               title: t(:rdb_options_hide_done_info),
             ) %>
+
         <%= rdb_checkbox_link_to(
               t(:rdb_options_include_subprojects),
               rdb_board_path(include_subprojects: (@board.project_ids.size > 1) ? 'false' : 'true'),
@@ -92,6 +99,7 @@
             ) %>
       <% end %>
     <% end %>
+
     <%= rdb_menu_list(@board.column_list, title: t(:rdb_options_columns)) do |column| %>
       <%= rdb_checkbox_link_to(
             column.title,
@@ -99,10 +107,12 @@
             enabled: @board.columns[column.id].visible?,
           ) %>
     <% end %>
+
     <%= rdb_menu_list do %>
       <%= rdb_menu_list_item do %>
         <%= link_to t(:rdb_options_fullscreen), 'javascript:Rdb.rdbToggleFullscreen();', id: "rdb-option-fullscreen" %>
       <% end %>
+
       <%= rdb_menu_list_item do %>
         <%= link_to t(:rdb_options_reset), rdb_filter_path(reset: 1), id: "rdb-reset", title: t(:rdb_options_reset_info) %>
       <% end %>
@@ -119,6 +129,7 @@
             enabled: @board.options[:view] == view,
           ) %>
     <% end %>
+
     <%= rdb_menu_list(
           [:none, :tracker, :category, :priority, :assignee, :version, :parent, :project],
           title: t(:rdb_options_group),

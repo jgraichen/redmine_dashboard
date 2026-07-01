@@ -3,6 +3,7 @@
     <%= rdb_menu_list_item do %>
       <%= link_to t(:rdb_issue_menu_show), issue_path(issue) %>
     <% end %>
+
     <% if @board.editable? %>
       <%= rdb_menu_list_item do %>
         <%= link_to t(:rdb_issue_menu_edit), edit_issue_path(issue) %>
@@ -23,12 +24,17 @@
     <%= rdb_menu_list(title: t(:rdb_issue_menu_progress_title), async: true, list_tag: :div) do %>
       <ul class="rdb-issue-menu-progress">
         <% [0, 20, 40].each do |value| %>
-          <li><%= link_to t(:rdb_issue_menu_progress, count: value), rdb_update_path(issue, done_ratio: value) %></li>
+          <li>
+            <%= link_to t(:rdb_issue_menu_progress, count: value), rdb_update_path(issue, done_ratio: value) %>
+          </li>
         <% end %>
       </ul>
+
       <ul class="rdb-issue-menu-progress">
         <% [60, 80, 100].each do |value| %>
-          <li><%= link_to t(:rdb_issue_menu_progress, count: value), rdb_update_path(issue, done_ratio: value) %></li>
+          <li>
+            <%= link_to t(:rdb_issue_menu_progress, count: value), rdb_update_path(issue, done_ratio: value) %>
+          </li>
         <% end %>
       </ul>
     <% end %>

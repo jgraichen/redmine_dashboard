@@ -1,7 +1,9 @@
-<div class="rdb-issue rdb-issue-<%= @board.issue_view %> <%= @board.editable?('rdb-issue-drag') %> <%= issue.overdue? ? 'rdb-overdue' : '' %>"
-     data-rdb-drop-on="<%= @board.drop_on(issue) %>"
-     data-rdb-drop-group="<%= group.id %>"
-     data-rdb-issue-id="<%= issue.id %>"
-     data-rdb-lock-version="<%= issue.lock_version %>">
+<div
+  class="rdb-issue rdb-issue-<%= @board.issue_view %> <%= @board.editable?('rdb-issue-drag') %> <%= issue.overdue? ? 'rdb-overdue' : '' %>"
+  data-rdb-drop-on="<%= @board.drop_on(issue) %>"
+  data-rdb-drop-group="<%= group.id %>"
+  data-rdb-issue-id="<%= issue.id %>"
+  data-rdb-lock-version="<%= issue.lock_version %>"
+>
   <%= render partial: "rdb_dashboard/issues/#{@board.issue_view}", locals: {issue: issue} %>
 </div>

@@ -1,24 +1,29 @@
 <div id="rdb-footer">
   <div id="rdb-copyright">
-    <a href="https://github.com/jgraichen/redmine_dashboard">Redmine Dashboard 2</a>
+    <a href="https://github.com/jgraichen/redmine_dashboard">
+      Redmine Dashboard 2
+    </a>
+
     <%= " - v#{Redmine::Plugin.find(:redmine_dashboard).version}" %>
   </div>
 
   <div id="rdb-legend">
     <div>
       <p><%= t(:rdb_legend_priorities) %></p>
+
       <% IssuePriority.all.sort_by(&:position).each do |priority| %>
-        <span class="rdb-priority rdb-priority-<%= priority.position %>"><%= priority %></span>
+        <span class="rdb-priority rdb-priority-<%= priority.position %>">
+          <%= priority %>
+        </span>
       <% end %>
     </div>
 
     <div>
       <p><%= t(:rdb_legend_warnings) %></p>
-      <span class="rdb-overdue">
-        <span>&nbsp;</span>
-      </span>
+      <span class="rdb-overdue"><span>&nbsp;</span></span>
       <%= t(:rdb_issue_overdue) %>
     </div>
   </div>
+
   <div class="rdb-clear"></div>
 </div>

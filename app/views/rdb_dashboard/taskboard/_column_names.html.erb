@@ -3,6 +3,7 @@
     <% if column.visible? %>
       <li class="rdb-column <%= column.compact? ? 'rdb-column-compact' : '' %>">
         <h3><%= column.title %></h3>
+
         <% if column.issues.count > 0 %>
           <span><%= t :rdb_x_issues, count: column.issues.count %></span>
         <% end %>

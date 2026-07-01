@@ -1,6 +1,9 @@
 <div class="rdb-groups">
   <% if @board.groups.count == 1 %>
-    <div class="rdb-group" data-rdb-group-id="<%= @board.group_list.first.id %>">
+    <div
+      class="rdb-group"
+      data-rdb-group-id="<%= @board.group_list.first.id %>"
+    >
       <%= render partial: 'rdb_dashboard/taskboard/columns', locals: {group: @board.group_list.first} %>
     </div>
   <% else %>
