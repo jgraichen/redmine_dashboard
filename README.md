@@ -30,9 +30,9 @@ Please ask your questions, or tell us your stories or experience on [GitHub Disc
 ## Install
 
 1. Download the [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
-2. Extract archive to `<redmine>/plugins`. Make **sure** the plugin directory is called `<redmine>/plugins/redmine_dashboard/` ([#11](https://github.com/jgraichen/redmine_dashboard/issues/11)).
-3. Install required dependencies by running `bundle install --without development test` in your Redmine directory. **Note**: Bitnami and other appliance are not officially supported and may need additional option e.g. `--path vendor/bundle` ([#58](https://github.com/jgraichen/redmine_dashboard/issues/58)).
-4. A database migration is not needed. Restart Redmine.
+2. Extract archive to `<redmine>/plugins`.
+   Make **sure** the plugin directory is called `<redmine>/plugins/redmine_dashboard/` ([#11](https://github.com/jgraichen/redmine_dashboard/issues/11)).
+3. A database migration is not needed. Restart Redmine.
 
 ### Configure Redmine
 
