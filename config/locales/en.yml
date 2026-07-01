@@ -29,6 +29,8 @@ en:
   rdb_options_issue_view: Issue View
   rdb_options_issue_view_card: Card
   rdb_options_issue_view_compact: Compact
+  rdb_options_issue_view_wallboard: Wallboard
+  rdb_options_board_view_wallboard: Wallboard View
   rdb_options_group: Issue Grouping
   rdb_group_none: No Grouping
   rdb_group_category: Category
