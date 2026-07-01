@@ -1,0 +1,19 @@
+<div class="rdb-card">
+  <div class="rdb-priority rdb-priority-<%= issue.priority.position %>">
+    <header class="rdb-card-header">
+      <div class="rdb-card-title">
+        <%= render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue} %>
+      </div>
+      <div></div>
+    </header>
+
+    <div class="rdb-card-progress">
+      <div class="rdb-card-progress-bar" style="width: <%= issue.done_ratio %>%"></div>
+    </div>
+
+    <div class="rdb-card-content">
+      <div class="rdb-card-subject rdb-property-subject"><%= issue.subject %></div>
+      <%= render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue} %>
+    </div>
+  </div>
+</div>

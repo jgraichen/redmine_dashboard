@@ -1,0 +1,28 @@
+<div>
+  <div class="rdb-card rdb-card-dialog">
+    <div class="rdb-priority rdb-priority-<%= @issue.priority.position %>">
+      <header class="rdb-card-header">
+        <span class="rdb-card-title">
+          <%= link_to "#{@board.abbreviation(@issue.project_id)}#{@issue.id}", @issue %>
+        </span>
+      </header>
+
+      <div class="rdb-card-progress">
+        <div class="rdb-card-progress-bar" style="width: <%= @issue.done_ratio %>%"></div>
+      </div>
+
+      <div class="rdb-card-content">
+        <div class="rdb-card-subject rdb-property-subject"><%= @issue.subject %></div>
+      </div>
+
+      <div class="rdb-card-dialog-box rdb-async">
+        <label><%= t(:rdb_dialog_update_issue_status) %></label>
+        <ul>
+          <% @statuses.each do |status| %>
+            <li><%= link_to status.name, rdb_update_path(@issue, status: status.id) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

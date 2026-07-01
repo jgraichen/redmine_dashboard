@@ -1,0 +1,14 @@
+<div id="rdb-taskboard">
+  <header id="rdb-header">
+    <%= render partial: 'rdb_dashboard/taskboard/header' %>
+    <div class="rdb-clear"></div>
+  </header>
+
+  <div id="rdb-board">
+    <div id="rdb-board-container">
+      <%= render partial: 'rdb_dashboard/taskboard/column_names' %>
+      <%= render partial: 'rdb_dashboard/taskboard/overall_progress' %>
+      <%= render partial: 'rdb_dashboard/taskboard/groups' %>
+    </div>
+  </div>
+</div>

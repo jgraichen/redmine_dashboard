@@ -1,0 +1,24 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'dashboard.css', plugin: :redmine_dashboard %>
+  <%= stylesheet_link_tag 'dashboard.ui.css', plugin: :redmine_dashboard %>
+  <%= stylesheet_link_tag 'dashboard.issues.css', plugin: :redmine_dashboard %>
+  <%= stylesheet_link_tag 'dashboard.taskboard.css', plugin: :redmine_dashboard %>
+  <%= javascript_include_tag 'jquery.autoellipsis.js', plugin: :redmine_dashboard %>
+  <%= javascript_include_tag 'jquery.total-storage.js', plugin: :redmine_dashboard %>
+  <%= javascript_include_tag 'dashboard.js', plugin: :redmine_dashboard %>
+  <%= javascript_include_tag 'dashboard.ui.js', plugin: :redmine_dashboard %>
+  <%= javascript_include_tag 'dashboard.taskboard.js', plugin: :redmine_dashboard %>
+<% end %>
+
+<div id="rdb" data-rdb-base="<%= rdb_board_path %>">
+  <div id="rdb-wrapper">
+    <div id="rdb-header"></div>
+    <div id="rdb-board">
+      <div id="rdb-loading"></div>
+    </div>
+  </div>
+
+  <div id="rdb-errors"></div>
+  <div id="rdb-dialogs"></div>
+  <%= render partial: 'footer' %>
+</div>
