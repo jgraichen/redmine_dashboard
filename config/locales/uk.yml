@@ -46,7 +46,7 @@ uk:
   rdb_legend_priorities: Пріоритети
   rdb_legend_warnings: Попередження
   rdb_issue_overdue: Протермінований
-  rdb_property_time: <span title="Затрачено часу">%{actual}</span> / <span title="Орієнтований час">%{estimated}</span>
+  rdb_property_time_html: <span title="Затрачено часу">%{actual}</span> / <span title="Орієнтований час">%{estimated}</span>
   rdb_not_available: Недоступно
   rdb_column_done: Done
   rdb_x_issues:

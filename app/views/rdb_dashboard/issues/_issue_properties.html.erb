@@ -36,6 +36,10 @@
 
 <% if User.current.allowed_to?(:view_time_entries, @project) %>
   <div class="rdb-property rdb-property-time <%= issue.estimated_hours.nil? && issue.time_entries.empty? ? 'rdb-disabled' : '' %>">
-    <%= t(:rdb_property_time, estimated: issue.estimated_hours.to_f.round(2), actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)).html_safe %>
+    <%= t(
+          :rdb_property_time_html,
+          estimated: issue.estimated_hours.to_f.round(2),
+          actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)
+        ) %>
   </div>
 <% end %>

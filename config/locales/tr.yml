@@ -46,7 +46,7 @@ tr:
   rdb_legend_priorities: Öncelikler
   rdb_legend_warnings: Uyarılar
   rdb_issue_overdue: Vadesi geçmiş
-  rdb_property_time: <span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>
+  rdb_property_time_html: <span title="Gerçekleşen Zaman">%{actual}</span> / <span title="Tahmini zaman">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Tamam
   rdb_x_issues:

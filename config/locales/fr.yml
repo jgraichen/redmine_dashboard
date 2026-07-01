@@ -46,7 +46,7 @@ fr:
   rdb_legend_priorities: Priorités
   rdb_legend_warnings: Avertissements
   rdb_issue_overdue: En retard
-  rdb_property_time: <span title="Temps passé">%{actual}</span> / <span title="Temps estimé">%{estimated}</span>
+  rdb_property_time_html: <span title="Temps passé">%{actual}</span> / <span title="Temps estimé">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Terminé
   rdb_x_issues:

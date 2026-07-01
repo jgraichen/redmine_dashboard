@@ -46,7 +46,7 @@ pl:
   rdb_legend_priorities: Priorytety
   rdb_legend_warnings: Ostrzeżenia
   rdb_issue_overdue: Opóźnienie
-  rdb_property_time: '''<span title="Spędzony czas">%{actual}</span> / <span title="Szacowany czas">%{estimated}</span>'''
+  rdb_property_time_html: '''<span title="Spędzony czas">%{actual}</span> / <span title="Szacowany czas">%{estimated}</span>'''
   rdb_not_available: N/A
   rdb_column_done: Zrobione
   rdb_x_issues:

@@ -46,7 +46,7 @@ cs:
   rdb_legend_priorities: Priority
   rdb_legend_warnings: Varování
   rdb_issue_overdue: Zpožděné
-  rdb_property_time: <span title="Strávený čas">%{actual}</span> / <span title="Odhadovaný čas">%{estimated}</span>
+  rdb_property_time_html: <span title="Strávený čas">%{actual}</span> / <span title="Odhadovaný čas">%{estimated}</span>
   rdb_not_available: Nedostupné
   rdb_column_done: Hotové
   rdb_x_issues:
