@@ -14,23 +14,11 @@ module RdbRequestHelpers
   end
 
   def login_as(user, password)
-    # Ensure a current page is loaded. Otherwise, visit might be
-    # swallowed by the current page load.
-    page.find('html')
+    visit '/'
+
+    Capybara.reset_sessions!
 
     visit '/login'
-
-    # Wait for current page to have been loaded
-    page.find('html')
-
-    if current_path != '/login'
-      # Redmine 7 has "Sign out" hidden in a dropdown menu under the
-      # user avatar. Therefore, click the "invisible" link there too:
-      click_link 'Sign out', visible: :all
-      click_link 'Sign in'
-    end
-
-    expect(page).to have_content('Login')
 
     fill_in 'username', with: user
     fill_in 'password', with: password
