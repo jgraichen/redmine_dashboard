@@ -6,7 +6,6 @@ source 'https://rubygems.org'
 send :ruby, RUBY_VERSION if ENV['CI']
 
 gem 'rake'
-gem 'slim-rails'
 
 group :test do
   gem 'database_cleaner-active_record', '~> 2.0'
@@ -23,9 +22,9 @@ end
 # not needed (and actually conflicting), therefore we skip them.
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development do
+    gem 'herb', '~> 0.10.1'
     gem 'rubocop', '~> 1.88.0'
     gem 'rubocop-performance', '~> 1.26.0'
     gem 'rubocop-rails', '~> 2.35.0'
-    gem 'slim_lint', '~> 0.34.0'
   end
 end

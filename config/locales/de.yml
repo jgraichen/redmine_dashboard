@@ -46,7 +46,7 @@ de:
   rdb_legend_priorities: Prioritäten
   rdb_legend_warnings: Warnungen
   rdb_issue_overdue: Überfällig
-  rdb_property_time: <span title="Verbrauchte Zeit">%{actual}</span> / <span title="Geschätzte Zeit">%{estimated}</span>
+  rdb_property_time_html: <span title="Verbrauchte Zeit">%{actual}</span> / <span title="Geschätzte Zeit">%{estimated}</span>
   rdb_not_available: N/A
   rdb_column_done: Fertig
   rdb_x_issues:

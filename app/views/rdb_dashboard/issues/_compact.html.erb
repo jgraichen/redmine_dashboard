@@ -1,0 +1,26 @@
+<div class="rdb-compact">
+  <div class="rdb-priority rdb-priority-<%= issue.priority.position %>">
+    <div class="rdb-compact-progress">
+      <div
+        class="rdb-compact-progress-bar"
+        style="width: <%= issue.done_ratio %>%"
+      ></div>
+    </div>
+
+    <header class="rdb-compact-header">
+      <div class="rdb-compact-title">
+        <%= render partial: 'rdb_dashboard/issues/issue_menu', locals: {issue: issue} %>
+      </div>
+
+      <div class="rdb-compact-header-data">
+        <%= render partial: 'rdb_dashboard/issues/issue_properties', locals: {issue: issue} %>
+      </div>
+    </header>
+
+    <div class="rdb-compact-content">
+      <div class="rdb-compact-subject rdb-property-subject">
+        <%= issue.subject %>
+      </div>
+    </div>
+  </div>
+</div>

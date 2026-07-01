@@ -1,0 +1,8 @@
+<div class="rdb-overall-progress">
+  <% @board.column_list[0..-2].each do |column| %>
+    <a
+      class="rdb-overall-progress rdb-column-<%= column.id %>"
+      style="width: <%= column.percentage %>%"
+    ></a>
+  <% end %>
+</div>

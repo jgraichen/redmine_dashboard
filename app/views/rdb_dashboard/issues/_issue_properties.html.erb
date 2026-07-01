@@ -1,0 +1,45 @@
+<div class="rdb-property rdb-property-tracker"><%= issue.tracker %></div>
+
+<% if @board.versions.any? %>
+  <% if issue.fixed_version %>
+    <div class="rdb-property rdb-property-version">
+      <%= issue.fixed_version.name %>
+    </div>
+  <% else %>
+    <div class="rdb-property rdb-property-version rdb-disabled">
+      <%= t(:rdb_filter_version_unassigned) %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if issue.assigned_to %>
+  <div class="rdb-property rdb-property-assignee">
+    <%= issue.assigned_to.name %>
+  </div>
+<% else %>
+  <div class="rdb-property rdb-property-assignee rdb-disabled">
+    <%= t(:rdb_unassigned) %>
+  </div>
+<% end %>
+
+<% if @board.issue_categories.any? %>
+  <% if issue.category %>
+    <div class="rdb-property rdb-property-category">
+      <%= issue.category.name %>
+    </div>
+  <% else %>
+    <div class="rdb-property rdb-property-category rdb-disabled">
+      <%= t(:rdb_unassigned) %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if User.current.allowed_to?(:view_time_entries, @project) %>
+  <div class="rdb-property rdb-property-time <%= issue.estimated_hours.nil? && issue.time_entries.empty? ? 'rdb-disabled' : '' %>">
+    <%= t(
+          :rdb_property_time_html,
+          estimated: issue.estimated_hours.to_f.round(2),
+          actual: issue.time_entries.map(&:hours).reduce(&:+).to_f.round(2)
+        ) %>
+  </div>
+<% end %>

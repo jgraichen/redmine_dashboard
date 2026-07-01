@@ -1,0 +1,20 @@
+<ul class="rdb-columns">
+  <% @board.visible_columns.each do |column| %>
+    <li
+      class="rdb-column <%= column.compact? ? 'rdb-column-compact' : '' %>"
+      data-rdb-column-id="<%= column.id %>"
+      data-rdb-drop-group="<%= group.id %>"
+    >
+      <% unless column.compact? %>
+        <%= render(
+              partial: 'rdb_dashboard/taskboard/column',
+              locals: {
+                column: column,
+                issues: group.filter(column.issues),
+                group: group,
+              }
+            ) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

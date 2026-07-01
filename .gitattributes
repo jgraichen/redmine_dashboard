@@ -2,7 +2,6 @@
 /.git*          export-ignore
 /.github        export-ignore
 /.rubocop.yml   export-ignore
-/.slim-lint.yml export-ignore
 /.tx            export-ignore
 /db             export-ignore
 /docs           export-ignore

@@ -1,0 +1,10 @@
+<div class="rdb-group" data-rdb-group-id="<%= group.id %>">
+  <div class="rdb-group-header">
+    <a class="rdb-evt-group-toggle">
+      <h4><%= group.title %></h4>
+      <span><%= t(:rdb_x_issues, count: group.issue_count) %></span>
+    </a>
+  </div>
+
+  <%= render partial: 'rdb_dashboard/taskboard/columns', locals: {group: group} %>
+</div>

@@ -46,7 +46,7 @@ ca:
   rdb_legend_priorities: Prioritats
   rdb_legend_warnings: Avisos
   rdb_issue_overdue: Endarrerit
-  rdb_property_time: <span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>
+  rdb_property_time_html: <span title="Spend time">%{actual}</span> / <span title="Estimated time">%{estimated}</span>
   rdb_not_available: N/D
   rdb_column_done: Fet
   rdb_x_issues:

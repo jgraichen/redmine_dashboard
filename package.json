@@ -5,6 +5,8 @@
     "defaults and baseline widely available with downstream"
   ],
   "devDependencies": {
+    "@herb-tools/formatter": "^0.10.1",
+    "@herb-tools/linter": "^0.10.1",
     "@types/bun": "latest",
     "editorconfig-checker": "6.1.1",
     "husky": "9.1.7",
@@ -19,8 +21,10 @@
   },
   "scripts": {
     "format": "prettier --write .",
+    "format:erb": "bundle exec herb format app/views",
     "lint:format": "prettier --check .",
     "lint:css": "stylelint --allow-empty-input 'assets/**/*.css'",
+    "lint:erb": "bundle exec herb lint app/views",
     "postinstall": "husky"
   },
   "lint-staged": {
@@ -29,6 +33,10 @@
       "editorconfig-checker"
     ],
     "*.rb": "bundle exec rubocop --force-exclusion --autocorrect",
+    "*.erb": [
+      "bundle exec herb format",
+      "bundle exec herb lint --fix"
+    ],
     "*.css": "stylelint --fix --allow-empty-input"
   }
 }
