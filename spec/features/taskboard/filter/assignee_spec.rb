@@ -55,16 +55,16 @@ describe 'Taskboard/Filter/Assignee', js: true, sauce: true do
     unset_all_filter
     select_filter :assignee, 'Dave Lopper'
 
-    expect(page).to have_no_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()!="Dave Lopper"]')
-    expect(page).to have_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()="Dave Lopper"]', count: 2)
+    expect(page).to have_no_css('.rdb-property-assignee', text: /^(?!Dave Lopper$).*/)
+    expect(page).to have_css('.rdb-property-assignee', text: 'Dave Lopper', count: 2)
   end
 
   it 'should allow to filter issues for groups' do
     unset_all_filter
     select_filter :assignee, 'Dave Lopper'
 
-    expect(page).to have_no_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()!="Dave Lopper"]')
-    expect(page).to have_selector(:xpath, '//*[contains(@class, "rdb-property-assignee")][text()="Dave Lopper"]', count: 2)
+    expect(page).to have_no_css('.rdb-property-assignee', text: /^(?!Dave Lopper$).*/)
+    expect(page).to have_css('.rdb-property-assignee', text: 'Dave Lopper', count: 2)
   end
 
   it 'should default to my issues' do
