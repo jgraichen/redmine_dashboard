@@ -1,3 +1,6 @@
 {
-  "Exclude": ["LICENSE", "assets/javascripts/jquery.total-storage.js"]
+  "Exclude": ["LICENSE", "assets/javascripts/jquery.total-storage.js"],
+  "Disable": {
+    "IndentSize": true
+  }
 }
