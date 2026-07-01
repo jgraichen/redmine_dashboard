@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Taskboard/Filter/Assignee', js: true, sauce: true do
+describe 'Taskboard/Filter/Assignee', js: true do
   fixtures %i[
     enabled_modules
     enumerations

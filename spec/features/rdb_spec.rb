@@ -2,7 +2,7 @@
 
 require File.expand_path('../spec_helper', __dir__)
 
-describe 'Rdb', js: true, sauce: true do
+describe 'Rdb', js: true do
   fixtures %i[
     enabled_modules
     enumerations
