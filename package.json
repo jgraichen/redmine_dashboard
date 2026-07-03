@@ -5,8 +5,8 @@
     "defaults and baseline widely available with downstream"
   ],
   "devDependencies": {
-    "@herb-tools/formatter": "^0.10.1",
-    "@herb-tools/linter": "^0.10.1",
+    "@herb-tools/formatter": "0.10.1",
+    "@herb-tools/linter": "0.10.1",
     "@types/bun": "latest",
     "editorconfig-checker": "6.1.1",
     "husky": "9.1.7",
