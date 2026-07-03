@@ -12,13 +12,13 @@
     "css-loader": "7.1.4",
     "cssnano": "8.0.2",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.15",
+    "postcss": "8.5.16",
     "postcss-loader": "8.2.1",
-    "postcss-preset-env": "11.3.1",
+    "postcss-preset-env": "11.3.2",
     "sass-embedded": "1.100.0",
     "sass-loader": "17.0.0",
-    "webpack": "5.107.2",
-    "webpack-cli": "7.0.3",
+    "webpack": "5.108.3",
+    "webpack-cli": "7.1.0",
     "webpack-dev-server": "5.2.5"
   },
   "scripts": {
@@ -28,7 +28,7 @@
   "dependencies": {
     "classnames": "2.5.1",
     "core-js": "3.49.0",
-    "preact": "10.29.2",
+    "preact": "10.29.3",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1"
