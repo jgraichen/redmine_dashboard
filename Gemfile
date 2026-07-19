@@ -25,6 +25,6 @@ if @dependencies.none? {|d| d.name == 'rubocop' }
     gem 'herb', '~> 0.10.1'
     gem 'rubocop', '~> 1.88.0'
     gem 'rubocop-performance', '~> 1.26.0'
-    gem 'rubocop-rails', '~> 2.35.0'
+    gem 'rubocop-rails', '~> 2.36.0'
   end
 end
