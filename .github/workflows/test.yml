@@ -79,7 +79,7 @@ jobs:
           persist-credentials: false
       - uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
         with:
-          ruby-version: "4.0.5"
+          ruby-version: "4.0.6"
           bundler-cache: True
 
       - run: bundle exec rubocop --fail-level E --extra-details --display-time --color
@@ -112,7 +112,7 @@ jobs:
           persist-credentials: false
       - uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
         with:
-          ruby-version: "4.0.5"
+          ruby-version: "4.0.6"
           bundler-cache: True
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
       - run: bun install
@@ -128,7 +128,7 @@ jobs:
           persist-credentials: false
       - uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
         with:
-          ruby-version: "4.0.5"
+          ruby-version: "4.0.6"
           bundler-cache: True
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
       - run: bun install
