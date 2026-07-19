@@ -29,6 +29,9 @@ end
 # is feasible and useful.
 Rails.application.eager_load! if ENV['CI'].present?
 
+ActiveRecord::Migrator.migrations_paths << File.expand_path('../db/migrate', __dir__)
+ActiveRecord::Migration.maintain_test_schema!
+
 require 'rspec/rails'
 require 'database_cleaner/active_record'
 

@@ -1,6 +1,6 @@
 <div>
   <div class="rdb-card rdb-card-dialog">
-    <div class="rdb-priority rdb-priority-<%= @issue.priority.position %>">
+    <%= tag.div(class: class_names("rdb-priority", @issue.priority.dashboard_color_css_class)) do %>
       <header class="rdb-card-header">
         <span class="rdb-card-title">
           <%= link_to "#{@board.abbreviation(@issue.project_id)}#{@issue.id}", @issue %>
@@ -31,6 +31,6 @@
           <% end %>
         </ul>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

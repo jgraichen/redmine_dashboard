@@ -6,7 +6,7 @@
   margin: 3px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 3px;
+  gap: 4px;
 }
 
 .rdb-issue-dragged {
@@ -20,27 +20,7 @@
 */
 
 .rdb-priority {
-  border-left: 5px solid black;
-}
-
-.rdb-priority-1 {
-  border-color: #aaa;
-}
-
-.rdb-priority-2 {
-  border-color: #6b6;
-}
-
-.rdb-priority-3 {
-  border-color: orange;
-}
-
-.rdb-priority-4 {
-  border-color: red;
-}
-
-.rdb-priority-5 {
-  border-color: black;
+  border-left: 6px solid var(--rdb-color);
 }
 
 /* ========================================================
@@ -48,18 +28,20 @@
 */
 
 .rdb-card {
-  border: 1px solid #ccc;
   background: #ffd;
-  border-radius: 2px;
+  border: 1px solid #d0d7de;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
   position: relative;
-}
 
-.rdb-overdue .rdb-card {
-  border-color: red;
-}
+  .rdb-overdue & {
+    border-color: var(--rdb-overdue-color);
+    outline: 1px dotted var(--rdb-overdue-color);
+  }
 
-.rdb-card-title {
-  float: left;
+  .rdb-priority {
+    border-radius: 2px;
+  }
 }
 
 .rdb-card-header-data {
@@ -176,7 +158,8 @@
 }
 
 .rdb-overdue .rdb-compact {
-  border-color: red;
+  border-color: var(--rdb-overdue-color);
+  outline: 1px dotted var(--rdb-overdue-color);
 }
 
 .rdb-compact-header {
@@ -230,6 +213,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
