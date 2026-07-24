@@ -17,7 +17,7 @@
     "stylelint-no-unsupported-browser-features": "8.1.1"
   },
   "peerDependencies": {
-    "typescript": "^6.0.0"
+    "typescript": "^6.0.0 || ^7.0.0"
   },
   "scripts": {
     "format": "prettier --write .",
