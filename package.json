@@ -5,14 +5,14 @@
     "defaults and baseline widely available with downstream"
   ],
   "devDependencies": {
-    "@herb-tools/formatter": "0.10.1",
-    "@herb-tools/linter": "0.10.1",
+    "@herb-tools/formatter": "0.10.2",
+    "@herb-tools/linter": "0.10.2",
     "@types/bun": "latest",
     "editorconfig-checker": "6.1.1",
     "husky": "9.1.7",
-    "lint-staged": "17.0.8",
-    "prettier": "3.9.4",
-    "stylelint": "17.14.0",
+    "lint-staged": "17.1.0",
+    "prettier": "3.9.6",
+    "stylelint": "17.14.1",
     "stylelint-config-standard": "40.0.0",
     "stylelint-no-unsupported-browser-features": "8.1.1"
   },
