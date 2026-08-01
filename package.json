@@ -12,13 +12,13 @@
     "css-loader": "7.1.4",
     "cssnano": "8.0.2",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.21",
+    "postcss": "8.5.24",
     "postcss-loader": "8.2.1",
     "postcss-preset-env": "11.3.2",
     "sass-embedded": "1.100.0",
     "sass-loader": "17.0.0",
-    "webpack": "5.108.4",
-    "webpack-cli": "7.2.1",
+    "webpack": "5.109.2",
+    "webpack-cli": "7.2.2",
     "webpack-dev-server": "5.2.6"
   },
   "scripts": {
