@@ -6,7 +6,7 @@
 # also stored in the user session (cookie).
 
 # Default view mode.
-# Allowed values are: `card` or `compact`.
+# Allowed values are: `card` ,  `compact` or `wallboard`.
 view: card
 
 # Should subproject be included by default.

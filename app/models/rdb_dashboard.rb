@@ -3,7 +3,7 @@
 class RdbDashboard
   attr_reader :project, :options
 
-  VIEW_MODES = %i[card compact].freeze
+  VIEW_MODES = %i[card compact wallboard].freeze
 
   def initialize(project, opts, params = nil)
     @project = project
@@ -172,7 +172,7 @@ class RdbDashboard
       config = YAML.load_file File.expand_path('../../config/default.yml', __dir__)
 
       {
-        view: check_opts(config, 'view', :card, :compact),
+        view: check_opts(config, 'view', :card, :compact, :wallboard),
         include_subprojects: check_opts(config, 'include_subprojects', false, true),
         assignee: check_opts(config, 'assignee', :me, :all),
         version: check_opts(config, 'version', :latest, :all),
