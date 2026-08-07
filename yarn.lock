@@ -6098,14 +6098,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.24":
-  version: 8.5.24
-  resolution: "postcss@npm:8.5.24"
+"postcss@npm:8.5.25":
+  version: 8.5.25
+  resolution: "postcss@npm:8.5.25"
   dependencies:
     nanoid: "npm:^3.3.16"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
-  checksum: 10c0/b3854840ffee4604249a1bad97291105a974009d63b068b716dbee1d2e034bb965353a9fb4d6e957ede475b2acf4167cd4b1d41074f8dd3ce2fe488b60c8ce44
+  checksum: 10c0/0a12c1e74b456c57122e81f684e02fd98ff4d57526f794d10c996df1147158808f5ae373ac82b988c8de6cbbaa82dbd7b13803b14f5dd3cf7cc6a42ccad5c9f2
   languageName: node
   linkType: hard
 
@@ -6127,15 +6127,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.29.7":
-  version: 10.29.7
-  resolution: "preact@npm:10.29.7"
+"preact@npm:10.29.8":
+  version: 10.29.8
+  resolution: "preact@npm:10.29.8"
   peerDependencies:
     preact-render-to-string: ">=5"
   peerDependenciesMeta:
     preact-render-to-string:
       optional: true
-  checksum: 10c0/c16df6d83d1f1d7117f5e27c64121989c317c54561535a98d1cce874406b7edcd68c2230dc4d440ef8509f29638d7a6fcb1ae0f974e9f71852aee17d90ccc87b
+  checksum: 10c0/505460352139e0ce5b9c971b69d8d9f3b73ea0f316e3ff1c0b3db9a1abe206c9dff6ba385eb796253c38fcc08b5ade70cd8da3d9d6c9e9aec1a2fd59348253ae
   languageName: node
   linkType: hard
 
@@ -6284,10 +6284,10 @@ __metadata:
     css-loader: "npm:7.1.4"
     cssnano: "npm:8.0.2"
     mini-css-extract-plugin: "npm:2.10.2"
-    postcss: "npm:8.5.24"
+    postcss: "npm:8.5.25"
     postcss-loader: "npm:8.2.1"
     postcss-preset-env: "npm:11.3.2"
-    preact: "npm:10.29.7"
+    preact: "npm:10.29.8"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
     react-dnd-touch-backend: "npm:16.0.1"
