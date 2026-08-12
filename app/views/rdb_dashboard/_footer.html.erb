@@ -9,16 +9,15 @@
       <p><%= t(:rdb_legend_priorities) %></p>
 
       <% IssuePriority.all.sort_by(&:position).each do |priority| %>
-        <span class="rdb-priority rdb-priority-<%= priority.position %>">
+        <%= tag.span(class: class_names("rdb-priority", priority.dashboard_color_css_class)) do %>
           <%= priority %>
-        </span>
+        <% end %>
       <% end %>
     </div>
 
     <div>
       <p><%= t(:rdb_legend_warnings) %></p>
-      <span class="rdb-overdue"><span>&nbsp;</span></span>
-      <%= t(:rdb_issue_overdue) %>
+      <span class="rdb-overdue"><%= t(:rdb_issue_overdue) %></span>
     </div>
   </div>
 
