@@ -8,7 +8,7 @@
     "@herb-tools/formatter": "0.10.3",
     "@herb-tools/linter": "0.10.3",
     "@types/bun": "latest",
-    "editorconfig-checker": "6.2.0",
+    "editorconfig-checker": "7.0.0",
     "husky": "9.1.7",
     "lint-staged": "17.4.1",
     "prettier": "3.9.6",
