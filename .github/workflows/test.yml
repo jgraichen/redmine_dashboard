@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: editorconfig-checker/action-editorconfig-checker@f3685dc79be095dbcded1cb9ae4bc9a67e05fb73 # main
+      - uses: editorconfig-checker/action-editorconfig-checker@52c9b3667d59817ab9d523c644ee59a70886aec1 # main
       - run: editorconfig-checker
 
   spellcheck:
