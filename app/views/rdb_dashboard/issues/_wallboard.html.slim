@@ -1,0 +1,26 @@
+/ ISSUE WALLBOARD
+
+- @wallboard_subject_cf ||= IssueCustomField.find_by(name: 'wallboard-subject')
+- wallboard_subject = @wallboard_subject_cf && issue.custom_field_value(@wallboard_subject_cf).presence
+
+.rdb-compact.rdb-wallboard
+  .rdb-priority class="rdb-priority-#{issue.priority.position}"
+
+  .rdb-compact-progress
+    .rdb-compact-progress-bar style="width: #{issue.done_ratio}%"
+
+  header.rdb-compact-header
+    .rdb-compact-title
+      = render partial: 'rdb_dashboard/issues/issue_menu', locals: { issue: issue }
+
+    .rdb-compact-header-data
+      = render partial: 'rdb_dashboard/issues/issue_properties', locals: { issue: issue }
+
+      - if issue.start_date.present?
+        .rdb-property.rdb-property-start-date
+          = "#{l(:field_start_date)}: #{format_date(issue.start_date)}"
+
+  .rdb-compact-content
+    .rdb-compact-subject.rdb-property-subject = wallboard_subject || issue.subject
+
+/ ISSUE WALLBOARD END
