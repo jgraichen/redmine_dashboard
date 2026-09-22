@@ -195,7 +195,7 @@ a#rdb-reset {
 }
 
 #rdb-legend div {
-  padding: 0 0 4px;
+  padding: 0 0 0.75em;
 }
 
 #rdb-legend p {
@@ -214,12 +214,11 @@ a#rdb-reset {
 }
 
 #rdb-legend .rdb-overdue {
-  padding: 0;
-}
-
-#rdb-legend .rdb-overdue span {
-  border: 1px solid red;
-  padding: 0;
+  padding: 1px 0.25em;
+  margin: 0 3px 0 0;
+  border: 1px solid var(--rdb-overdue-color);
+  border-radius: 3px;
+  outline: 1px dotted var(--rdb-overdue-color);
 }
 
 #rdb-footer {
