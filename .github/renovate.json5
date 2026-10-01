@@ -5,9 +5,6 @@
     ":label(dependencies)",
   ],
 
-  // Update stable main branch and current development branch
-  baseBranchPatterns: ["main", "develop"],
-
   packageRules: [
     // Only weekly updates to node dependencies (develop branch)
     {
