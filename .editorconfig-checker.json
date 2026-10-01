@@ -1,11 +1,11 @@
 {
   "Exclude": [
-    "LICENSE",
+    ".husky/",
+    ".ruby-lsp/",
     "assets/javascripts/jquery.total-storage.js",
-    "^vendor/",
-    "^node_modules/",
-    "^.husky/_/",
-    "^.ruby-lsp/"
+    "LICENSE",
+    "node_modules/",
+    "vendor/redmine/"
   ],
   "Disable": {
     "IndentSize": true

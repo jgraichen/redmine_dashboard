@@ -1,5 +1,5 @@
 <div class="rdb-compact">
-  <div class="rdb-priority rdb-priority-<%= issue.priority.position %>">
+  <%= tag.div(class: class_names("rdb-priority", issue.priority.dashboard_color_css_class)) do %>
     <div class="rdb-compact-progress">
       <div
         class="rdb-compact-progress-bar"
@@ -22,5 +22,5 @@
         <%= issue.subject %>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

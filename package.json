@@ -25,6 +25,7 @@
     "lint:format": "prettier --check .",
     "lint:css": "stylelint --allow-empty-input 'assets/**/*.css'",
     "lint:erb": "bundle exec herb lint app/views",
+    "lint:ec": "editorconfig-checker .",
     "postinstall": "husky"
   },
   "lint-staged": {
