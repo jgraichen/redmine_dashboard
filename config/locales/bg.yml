@@ -27,4 +27,6 @@ bg:
   rdb_no_parent: Без родителски задачи
   rdb_issue_menu_redmine_issue: Redmine задача
   rdb_issue_menu_edit: Редакция
+  rdb_options_issue_view_wallboard: Стено табло
+  rdb_options_board_view_wallboard: Изглед на стенно табло
   rdb_flash_invalid_request: "<p>Невалидна заявка.</p>"
