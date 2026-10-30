@@ -23,7 +23,7 @@ end
 if @dependencies.none? {|d| d.name == 'rubocop' }
   group :development do
     gem 'herb', '~> 0.11.0'
-    gem 'rubocop', '~> 1.91.0'
+    gem 'rubocop', '~> 1.92.0'
     gem 'rubocop-performance', '~> 1.27.0'
     gem 'rubocop-rails', '~> 2.38.0'
   end
