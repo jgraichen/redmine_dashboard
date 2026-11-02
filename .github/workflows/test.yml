@@ -17,17 +17,17 @@ jobs:
       matrix:
         include:
           - ruby: "4.0"
-            redmine: "7.0.2"
+            redmine: "7.0.3"
           - ruby: "3.4"
-            redmine: "7.0.2"
+            redmine: "7.0.3"
           - ruby: "3.4"
-            redmine: "6.1.5"
+            redmine: "6.1.6"
           - ruby: "3.3"
-            redmine: "6.1.5"
+            redmine: "6.1.6"
           - ruby: "3.3"
-            redmine: "6.0.11"
+            redmine: "6.0.12"
           - ruby: "3.2"
-            redmine: "6.0.11"
+            redmine: "6.0.12"
       fail-fast: false
 
     env:
