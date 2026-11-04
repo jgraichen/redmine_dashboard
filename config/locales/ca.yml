@@ -66,6 +66,8 @@ ca:
   rdb_issue_menu_edit: Edita
   rdb_issue_menu_assign_me: Assigna-m'ho
   rdb_issue_menu_unassign_me: Desassigna-m'ho
+  rdb_options_issue_view_wallboard: Tauler mural
+  rdb_options_board_view_wallboard: Vista de tauler mural
   rdb_flash_illegal_workflow_action: "<p>No tens permís per realitzar l'acció següent:</p><p>Moure<b>%{issue}</b> des de <b>%{source}</b> a <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>No s'ha trobat el bloqueig de la versió </b>:No es pot actualitzar l'assumpte sense el bloqueig de la versió. Torna-ho a provar"
   rdb_flash_stale_object: "<p>S'ha intentat actualitzar un assumpte antic: <b>%{issue}</b>. Comprova el canvis i torna-ho a intentar."

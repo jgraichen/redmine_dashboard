@@ -29,6 +29,8 @@ de:
   rdb_options_issue_view: Ticket-Ansicht
   rdb_options_issue_view_card: Karte
   rdb_options_issue_view_compact: Kompakt
+  rdb_options_issue_view_wallboard: Großbildschirm
+  rdb_options_board_view_wallboard: Großbildschirm-Ansicht
   rdb_options_group: Gruppierung
   rdb_group_none: Keine Gruppierung
   rdb_group_category: Kategorie
