@@ -13,7 +13,7 @@ This [Redmine](http://redmine.org) plugin adds an issue dashboard that supports 
 
 ## Features List
 
-- Drag-n-drop of issues
+- Drag-and-drop of issues
 - Configurable columns
 - Grouping & Filtering
 - Group folding
@@ -32,7 +32,8 @@ Please ask your questions, or tell us your stories or experience on [GitHub Disc
 1. Download the [latest release](https://github.com/jgraichen/redmine_dashboard/releases).
 2. Extract archive to `<redmine>/plugins`.
    Make **sure** the plugin directory is called `<redmine>/plugins/redmine_dashboard/` ([#11](https://github.com/jgraichen/redmine_dashboard/issues/11)).
-3. A database migration is not needed. Restart Redmine.
+3. Run database migrations with `bundle exec rake redmine:plugins:migrate RAILS_ENV=production`.
+4. Restart Redmine.
 
 ### Configure Redmine
 
@@ -46,11 +47,11 @@ Please ask your questions, or tell us your stories or experience on [GitHub Disc
 
 ## Contribute
 
-I appreciate any help and like Pull Requests. The `main` branch is the current stable branch for v2. The next version, Redmine Dashboard 3, a complete rewrite had been under development on the `develop` branch. Due to limited available time the project is in maintenance only mode but open to new contributors.
+I appreciate any help and like Pull Requests. The `main` branch is the current stable branch for v2. Due to limited available time the project is in maintenance-only mode but open to new contributions and bug fixes.
 
 I gladly accept new translations or language additions for any version of Redmine Dashboard. I would prefer new translations via [Transifex](https://www.transifex.com/projects/p/redmine-dashboard/), but you can also send a Pull Request. Feel free to request new languages or to join the team directly on Transifex.
 
 ## License
 
-Redmine dashboard is licensed under the Apache License, Version 2.0.
+Redmine Dashboard is licensed under the Apache License, Version 2.0.
 See LICENSE for more information.
