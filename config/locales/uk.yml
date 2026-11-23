@@ -68,6 +68,8 @@ uk:
   rdb_issue_menu_edit: Редагувати
   rdb_issue_menu_assign_me: Доручити мені
   rdb_issue_menu_unassign_me: Зняти з мене
+  rdb_options_issue_view_wallboard: Настінне табло
+  rdb_options_board_view_wallboard: Вигляд настінного табло
   rdb_flash_illegal_workflow_action: "<p>Ви не маєте права виконувати цю дію в робочому процесі:</p><p>Перетягнути  <b>%{issue}</b> з  <b>%{source}</b> у <b>%{target}</b>.</p>"
   rdb_flash_missing_lock_version: "<p><b>Не вказана версія</b>: Не можливо оновити завдання не вказавши версію. Спробуйте ще раз."
   rdb_flash_stale_object: "<p>Завдання застарілe: <b>%{issue}</b>. Перевірте зміни і спробуйте ще раз."

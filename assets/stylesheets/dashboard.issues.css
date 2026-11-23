@@ -275,3 +275,46 @@
 .rdb-issue-menu-progress li a:hover {
   background-color: #eee;
 }
+
+/* ========================================================
+** Issue Wallboard View */
+.rdb-wallboard .rdb-compact-header {
+  height: auto;
+  min-height: 1.5em;
+  padding: 0 2px 0 0;
+  font-size: 1em;
+}
+
+.rdb-wallboard .rdb-compact-header .rdb-compact-header-data {
+  height: auto;
+  min-height: 1.5em;
+  font-size: 0.8em;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+.rdb-wallboard .rdb-compact-header .rdb-property {
+  display: inline-block;
+  color: #888;
+  margin: 0 6px 0 0;
+  white-space: nowrap;
+}
+
+.rdb-wallboard .rdb-compact-content {
+  padding: 2px 4px 4px 5px;
+  font-size: 0.95em;
+}
+
+.rdb-wallboard .rdb-compact-subject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.rdb-wallboard .rdb-property-start-date {
+  color: #666;
+}
